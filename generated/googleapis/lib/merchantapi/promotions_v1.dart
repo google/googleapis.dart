@@ -616,6 +616,9 @@ class Attributes {
   /// - "CUSTOM" : The promotion can only be redeemed with a custom redemption
   /// restriction. In this case, the `custom_redemption_restriction` field must
   /// be set.
+  /// - "FORMS_OF_PAYMENT" : The promotion is only available when the customer
+  /// uses a specific form of payment, such as a specific credit card, bank
+  /// card, or digital wallet.
   core.String? redemptionRestriction;
 
   /// A list of

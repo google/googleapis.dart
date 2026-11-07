@@ -11076,6 +11076,9 @@ class VmwareNodePool {
   /// Output only.
   core.String? updateTime;
 
+  /// The validation check for the node pool.
+  ValidationCheck? validationCheck;
+
   VmwareNodePool({
     this.annotations,
     this.config,
@@ -11091,6 +11094,7 @@ class VmwareNodePool {
     this.status,
     this.uid,
     this.updateTime,
+    this.validationCheck,
   });
 
   VmwareNodePool.fromJson(core.Map json_)
@@ -11125,6 +11129,11 @@ class VmwareNodePool {
             : null,
         uid: json_['uid'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
+        validationCheck: json_.containsKey('validationCheck')
+            ? ValidationCheck.fromJson(
+                json_['validationCheck'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -11142,6 +11151,7 @@ class VmwareNodePool {
     final status = this.status;
     final uid = this.uid;
     final updateTime = this.updateTime;
+    final validationCheck = this.validationCheck;
     return {
       'annotations': ?annotations,
       'config': ?config,
@@ -11157,6 +11167,7 @@ class VmwareNodePool {
       'status': ?status,
       'uid': ?uid,
       'updateTime': ?updateTime,
+      'validationCheck': ?validationCheck,
     };
   }
 }

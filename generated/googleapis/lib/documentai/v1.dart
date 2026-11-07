@@ -2110,7 +2110,56 @@ class ProjectsOperationsResource {
 }
 
 /// Encodes the detailed information of a barcode.
-typedef GoogleCloudDocumentaiV1Barcode = $GoogleCloudDocumentaiV1Barcode;
+class GoogleCloudDocumentaiV1Barcode {
+  /// Format of a barcode.
+  ///
+  /// The supported formats are: - `CODE_128`: Code 128 type. - `CODE_39`: Code
+  /// 39 type. - `CODE_93`: Code 93 type. - `CODABAR`: Codabar type. -
+  /// `DATA_MATRIX`: 2D Data Matrix type. - `ITF`: ITF type. - `EAN_13`: EAN-13
+  /// type. - `EAN_8`: EAN-8 type. - `QR_CODE`: 2D QR code type. - `UPC_A`:
+  /// UPC-A type. - `UPC_E`: UPC-E type. - `PDF417`: PDF417 type. - `AZTEC`: 2D
+  /// Aztec code type. - `DATABAR`: GS1 DataBar code type.
+  core.String? format;
+
+  /// Raw value encoded in the barcode.
+  ///
+  /// For example: `'MEBKM:TITLE:Google;URL:https://www.google.com;;'`.
+  core.String? rawValue;
+
+  /// Value format describes the format of the value that a barcode encodes.
+  ///
+  /// The supported formats are: - `CONTACT_INFO`: Contact information. -
+  /// `EMAIL`: Email address. - `ISBN`: ISBN identifier. - `PHONE`: Phone
+  /// number. - `PRODUCT`: Product. - `SMS`: SMS message. - `TEXT`: Text string.
+  /// - `URL`: URL address. - `WIFI`: Wifi information. - `GEO`:
+  /// Geo-localization. - `CALENDAR_EVENT`: Calendar event. - `DRIVER_LICENSE`:
+  /// Driver's license.
+  core.String? valueFormat;
+
+  GoogleCloudDocumentaiV1Barcode({
+    this.format,
+    this.rawValue,
+    this.valueFormat,
+  });
+
+  GoogleCloudDocumentaiV1Barcode.fromJson(core.Map json_)
+    : this(
+        format: json_['format'] as core.String?,
+        rawValue: json_['rawValue'] as core.String?,
+        valueFormat: json_['valueFormat'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final format = this.format;
+    final rawValue = this.rawValue;
+    final valueFormat = this.valueFormat;
+    return {
+      'format': ?format,
+      'rawValue': ?rawValue,
+      'valueFormat': ?valueFormat,
+    };
+  }
+}
 
 /// The common config to specify a set of documents used as input.
 class GoogleCloudDocumentaiV1BatchDocumentsInputConfig {
@@ -2837,8 +2886,31 @@ class GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeader {
 }
 
 /// Represents where the chunk starts and ends in the document.
-typedef GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan =
-    $GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan;
+class GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan {
+  /// Page where chunk ends in the document.
+  core.int? pageEnd;
+
+  /// Page where chunk starts in the document.
+  core.int? pageStart;
+
+  GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan({
+    this.pageEnd,
+    this.pageStart,
+  });
+
+  GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan.fromJson(
+    core.Map json_,
+  ) : this(
+        pageEnd: json_['pageEnd'] as core.int?,
+        pageStart: json_['pageStart'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final pageEnd = this.pageEnd;
+    final pageStart = this.pageStart;
+    return {'pageEnd': ?pageEnd, 'pageStart': ?pageStart};
+  }
+}
 
 /// The image chunk field in the chunk.
 class GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkImageChunkField {
@@ -3196,8 +3268,31 @@ class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutList
 }
 
 /// Represents where the block starts and ends in the document.
-typedef GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan =
-    $GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan;
+class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan {
+  /// Page where block ends in the document.
+  core.int? pageEnd;
+
+  /// Page where block starts in the document.
+  core.int? pageStart;
+
+  GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan({
+    this.pageEnd,
+    this.pageStart,
+  });
+
+  GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan.fromJson(
+    core.Map json_,
+  ) : this(
+        pageEnd: json_['pageEnd'] as core.int?,
+        pageStart: json_['pageStart'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final pageEnd = this.pageEnd;
+    final pageStart = this.pageStart;
+    return {'pageEnd': ?pageEnd, 'pageStart': ?pageStart};
+  }
+}
 
 /// Represents a table type block.
 class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableBlock {
@@ -3750,8 +3845,40 @@ class GoogleCloudDocumentaiV1DocumentEntityNormalizedValue {
 }
 
 /// Relationship between Entities.
-typedef GoogleCloudDocumentaiV1DocumentEntityRelation =
-    $GoogleCloudDocumentaiV1DocumentEntityRelation;
+class GoogleCloudDocumentaiV1DocumentEntityRelation {
+  /// Object entity id.
+  core.String? objectId;
+
+  /// Relationship description.
+  core.String? relation;
+
+  /// Subject entity id.
+  core.String? subjectId;
+
+  GoogleCloudDocumentaiV1DocumentEntityRelation({
+    this.objectId,
+    this.relation,
+    this.subjectId,
+  });
+
+  GoogleCloudDocumentaiV1DocumentEntityRelation.fromJson(core.Map json_)
+    : this(
+        objectId: json_['objectId'] as core.String?,
+        relation: json_['relation'] as core.String?,
+        subjectId: json_['subjectId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final objectId = this.objectId;
+    final relation = this.relation;
+    final subjectId = this.subjectId;
+    return {
+      'objectId': ?objectId,
+      'relation': ?relation,
+      'subjectId': ?subjectId,
+    };
+  }
+}
 
 /// The output of the validation given the document and the validation rules.
 class GoogleCloudDocumentaiV1DocumentEntityValidationOutput {
@@ -4402,12 +4529,66 @@ class GoogleCloudDocumentaiV1DocumentPageDetectedBarcode {
 }
 
 /// Detected language for a structural component.
-typedef GoogleCloudDocumentaiV1DocumentPageDetectedLanguage =
-    $GoogleCloudDocumentaiV1DocumentPageDetectedLanguage;
+class GoogleCloudDocumentaiV1DocumentPageDetectedLanguage {
+  /// Confidence of detected language.
+  ///
+  /// Range `[0, 1]`.
+  core.double? confidence;
+
+  /// The \[BCP-47 language
+  /// code\](https://www.unicode.org/reports/tr35/#Unicode_locale_identifier),
+  /// such as `en-US` or `sr-Latn`.
+  core.String? languageCode;
+
+  GoogleCloudDocumentaiV1DocumentPageDetectedLanguage({
+    this.confidence,
+    this.languageCode,
+  });
+
+  GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromJson(core.Map json_)
+    : this(
+        confidence: (json_['confidence'] as core.num?)?.toDouble(),
+        languageCode: json_['languageCode'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final confidence = this.confidence;
+    final languageCode = this.languageCode;
+    return {'confidence': ?confidence, 'languageCode': ?languageCode};
+  }
+}
 
 /// Dimension for the page.
-typedef GoogleCloudDocumentaiV1DocumentPageDimension =
-    $GoogleCloudDocumentaiV1DocumentPageDimension;
+class GoogleCloudDocumentaiV1DocumentPageDimension {
+  /// Page height.
+  core.double? height;
+
+  /// Dimension unit.
+  core.String? unit;
+
+  /// Page width.
+  core.double? width;
+
+  GoogleCloudDocumentaiV1DocumentPageDimension({
+    this.height,
+    this.unit,
+    this.width,
+  });
+
+  GoogleCloudDocumentaiV1DocumentPageDimension.fromJson(core.Map json_)
+    : this(
+        height: (json_['height'] as core.num?)?.toDouble(),
+        unit: json_['unit'] as core.String?,
+        width: (json_['width'] as core.num?)?.toDouble(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final height = this.height;
+    final unit = this.unit;
+    final width = this.width;
+    return {'height': ?height, 'unit': ?unit, 'width': ?width};
+  }
+}
 
 /// A form field detected on the page.
 class GoogleCloudDocumentaiV1DocumentPageFormField {
@@ -4520,8 +4701,57 @@ class GoogleCloudDocumentaiV1DocumentPageFormField {
 }
 
 /// Rendered image contents for this page.
-typedef GoogleCloudDocumentaiV1DocumentPageImage =
-    $GoogleCloudDocumentaiV1DocumentPageImage;
+class GoogleCloudDocumentaiV1DocumentPageImage {
+  /// Raw byte content of the image.
+  core.String? content;
+  core.List<core.int> get contentAsBytes => convert.base64.decode(content!);
+
+  set contentAsBytes(core.List<core.int> bytes_) {
+    content = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  /// Height of the image in pixels.
+  core.int? height;
+
+  /// Encoding \[media type (MIME
+  /// type)\](https://www.iana.org/assignments/media-types/media-types.xhtml)
+  /// for the image.
+  core.String? mimeType;
+
+  /// Width of the image in pixels.
+  core.int? width;
+
+  GoogleCloudDocumentaiV1DocumentPageImage({
+    this.content,
+    this.height,
+    this.mimeType,
+    this.width,
+  });
+
+  GoogleCloudDocumentaiV1DocumentPageImage.fromJson(core.Map json_)
+    : this(
+        content: json_['content'] as core.String?,
+        height: json_['height'] as core.int?,
+        mimeType: json_['mimeType'] as core.String?,
+        width: json_['width'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final content = this.content;
+    final height = this.height;
+    final mimeType = this.mimeType;
+    final width = this.width;
+    return {
+      'content': ?content,
+      'height': ?height,
+      'mimeType': ?mimeType,
+      'width': ?width,
+    };
+  }
+}
 
 /// Image quality scores for the page image.
 class GoogleCloudDocumentaiV1DocumentPageImageQualityScores {
@@ -4562,8 +4792,39 @@ class GoogleCloudDocumentaiV1DocumentPageImageQualityScores {
 }
 
 /// Image Quality Defects
-typedef GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect =
-    $GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect;
+class GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect {
+  /// Confidence of detected defect.
+  ///
+  /// Range `[0, 1]` where `1` indicates strong confidence that the defect
+  /// exists.
+  core.double? confidence;
+
+  /// Name of the defect type.
+  ///
+  /// Supported values are: - `quality/defect_blurry` - `quality/defect_noisy` -
+  /// `quality/defect_dark` - `quality/defect_faint` -
+  /// `quality/defect_text_too_small` - `quality/defect_document_cutoff` -
+  /// `quality/defect_text_cutoff` - `quality/defect_glare`
+  core.String? type;
+
+  GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect({
+    this.confidence,
+    this.type,
+  });
+
+  GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect.fromJson(
+    core.Map json_,
+  ) : this(
+        confidence: (json_['confidence'] as core.num?)?.toDouble(),
+        type: json_['type'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final confidence = this.confidence;
+    final type = this.type;
+    return {'confidence': ?confidence, 'type': ?type};
+  }
+}
 
 /// Visual element describing a layout unit on a page.
 class GoogleCloudDocumentaiV1DocumentPageLayout {
@@ -4688,8 +4949,54 @@ class GoogleCloudDocumentaiV1DocumentPageLine {
 
 /// Representation for transformation matrix, intended to be compatible and used
 /// with OpenCV format for image manipulation.
-typedef GoogleCloudDocumentaiV1DocumentPageMatrix =
-    $GoogleCloudDocumentaiV1DocumentPageMatrix;
+class GoogleCloudDocumentaiV1DocumentPageMatrix {
+  /// Number of columns in the matrix.
+  core.int? cols;
+
+  /// The matrix data.
+  core.String? data;
+  core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
+
+  set dataAsBytes(core.List<core.int> bytes_) {
+    data = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  /// Number of rows in the matrix.
+  core.int? rows;
+
+  /// This encodes information about what data type the matrix uses.
+  ///
+  /// For example, 0 (CV_8U) is an unsigned 8-bit image. For the full list of
+  /// OpenCV primitive data types, please refer to
+  /// https://docs.opencv.org/4.3.0/d1/d1b/group__core__hal__interface.html
+  core.int? type;
+
+  GoogleCloudDocumentaiV1DocumentPageMatrix({
+    this.cols,
+    this.data,
+    this.rows,
+    this.type,
+  });
+
+  GoogleCloudDocumentaiV1DocumentPageMatrix.fromJson(core.Map json_)
+    : this(
+        cols: json_['cols'] as core.int?,
+        data: json_['data'] as core.String?,
+        rows: json_['rows'] as core.int?,
+        type: json_['type'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final cols = this.cols;
+    final data = this.data;
+    final rows = this.rows;
+    final type = this.type;
+    return {'cols': ?cols, 'data': ?data, 'rows': ?rows, 'type': ?type};
+  }
+}
 
 /// A collection of lines that a human would perceive as a paragraph.
 class GoogleCloudDocumentaiV1DocumentPageParagraph {
@@ -5025,8 +5332,26 @@ class GoogleCloudDocumentaiV1DocumentPageToken {
 }
 
 /// Detected break at the end of a Token.
-typedef GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak =
-    $GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak;
+class GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak {
+  /// Detected break type.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Unspecified break type.
+  /// - "SPACE" : A single whitespace.
+  /// - "WIDE_SPACE" : A wider whitespace.
+  /// - "HYPHEN" : A hyphen that indicates that a token has been split across
+  /// lines.
+  core.String? type;
+
+  GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak({this.type});
+
+  GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak.fromJson(core.Map json_)
+    : this(type: json_['type'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final type = this.type;
+    return {'type': ?type};
+  }
+}
 
 /// Font and other text style attributes.
 class GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo {
@@ -5894,8 +6219,29 @@ class GoogleCloudDocumentaiV1DocumentStyle {
 }
 
 /// Font size with unit.
-typedef GoogleCloudDocumentaiV1DocumentStyleFontSize =
-    $GoogleCloudDocumentaiV1DocumentStyleFontSize;
+class GoogleCloudDocumentaiV1DocumentStyleFontSize {
+  /// Font size for the text.
+  core.double? size;
+
+  /// Unit for the font size.
+  ///
+  /// Follows CSS naming (such as `in`, `px`, and `pt`).
+  core.String? unit;
+
+  GoogleCloudDocumentaiV1DocumentStyleFontSize({this.size, this.unit});
+
+  GoogleCloudDocumentaiV1DocumentStyleFontSize.fromJson(core.Map json_)
+    : this(
+        size: (json_['size'] as core.num?)?.toDouble(),
+        unit: json_['unit'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final size = this.size;
+    final unit = this.unit;
+    return {'size': ?size, 'unit': ?unit};
+  }
+}
 
 /// Text reference indexing into the Document.text.
 class GoogleCloudDocumentaiV1DocumentTextAnchor {
@@ -5935,8 +6281,30 @@ class GoogleCloudDocumentaiV1DocumentTextAnchor {
 /// The indices may be out of bounds which indicate that the text extends into
 /// another document shard for large sharded documents. See
 /// ShardInfo.text_offset
-typedef GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment =
-    $GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment;
+class GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment {
+  /// TextSegment half open end UTF-8 char index in the Document.text.
+  core.String? endIndex;
+
+  /// TextSegment start UTF-8 char index in the Document.text.
+  core.String? startIndex;
+
+  GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment({
+    this.endIndex,
+    this.startIndex,
+  });
+
+  GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment.fromJson(core.Map json_)
+    : this(
+        endIndex: json_['endIndex'] as core.String?,
+        startIndex: json_['startIndex'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final endIndex = this.endIndex;
+    final startIndex = this.startIndex;
+    return {'endIndex': ?endIndex, 'startIndex': ?startIndex};
+  }
+}
 
 /// This message is used for text changes aka.
 ///
@@ -7094,8 +7462,27 @@ class GoogleCloudDocumentaiV1NextSchema {
 ///
 /// NOTE: the normalized vertex coordinates are relative to the original image
 /// and range from 0 to 1.
-typedef GoogleCloudDocumentaiV1NormalizedVertex =
-    $GoogleCloudDocumentaiV1NormalizedVertex;
+class GoogleCloudDocumentaiV1NormalizedVertex {
+  /// X coordinate.
+  core.double? x;
+
+  /// Y coordinate (starts from the top of the image).
+  core.double? y;
+
+  GoogleCloudDocumentaiV1NormalizedVertex({this.x, this.y});
+
+  GoogleCloudDocumentaiV1NormalizedVertex.fromJson(core.Map json_)
+    : this(
+        x: (json_['x'] as core.num?)?.toDouble(),
+        y: (json_['y'] as core.num?)?.toDouble(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final x = this.x;
+    final y = this.y;
+    return {'x': ?x, 'y': ?y};
+  }
+}
 
 /// Config for Document OCR.
 class GoogleCloudDocumentaiV1OcrConfig {
@@ -8777,7 +9164,24 @@ typedef GoogleCloudDocumentaiV1UndeployProcessorVersionRequest = $Empty;
 /// A vertex represents a 2D point in the image.
 ///
 /// NOTE: the vertex coordinates are in the same scale as the original image.
-typedef GoogleCloudDocumentaiV1Vertex = $GoogleCloudDocumentaiV1Vertex;
+class GoogleCloudDocumentaiV1Vertex {
+  /// X coordinate.
+  core.int? x;
+
+  /// Y coordinate (starts from the top of the image).
+  core.int? y;
+
+  GoogleCloudDocumentaiV1Vertex({this.x, this.y});
+
+  GoogleCloudDocumentaiV1Vertex.fromJson(core.Map json_)
+    : this(x: json_['x'] as core.int?, y: json_['y'] as core.int?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final x = this.x;
+    final y = this.y;
+    return {'x': ?x, 'y': ?y};
+  }
+}
 
 /// The response message for Locations.ListLocations.
 class GoogleCloudLocationListLocationsResponse {

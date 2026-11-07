@@ -525,6 +525,7 @@ api.ApplicationAttemptInfo buildApplicationAttemptInfo() {
     o.completed = true;
     o.durationMillis = 'foo';
     o.endTime = 'foo';
+    o.eventLogPath = 'foo';
     o.lastUpdated = 'foo';
     o.sparkUser = 'foo';
     o.startTime = 'foo';
@@ -541,6 +542,7 @@ void checkApplicationAttemptInfo(api.ApplicationAttemptInfo o) {
     unittest.expect(o.completed!, unittest.isTrue);
     unittest.expect(o.durationMillis!, unittest.equals('foo'));
     unittest.expect(o.endTime!, unittest.equals('foo'));
+    unittest.expect(o.eventLogPath!, unittest.equals('foo'));
     unittest.expect(o.lastUpdated!, unittest.equals('foo'));
     unittest.expect(o.sparkUser!, unittest.equals('foo'));
     unittest.expect(o.startTime!, unittest.equals('foo'));
@@ -1137,12 +1139,16 @@ api.ClusterConfig buildClusterConfig() {
     o.initializationActions = buildUnnamed15();
     o.lifecycleConfig = buildLifecycleConfig();
     o.masterConfig = buildInstanceGroupConfig();
+    o.masterFlexibleConfig = buildFlexibleInstanceGroupConfig();
     o.metastoreConfig = buildMetastoreConfig();
+    o.schedulingConfig = buildSchedulingConfig();
     o.secondaryWorkerConfig = buildInstanceGroupConfig();
+    o.secondaryWorkerFlexibleConfig = buildFlexibleInstanceGroupConfig();
     o.securityConfig = buildSecurityConfig();
     o.softwareConfig = buildSoftwareConfig();
     o.tempBucket = 'foo';
     o.workerConfig = buildInstanceGroupConfig();
+    o.workerFlexibleConfig = buildFlexibleInstanceGroupConfig();
   }
   buildCounterClusterConfig--;
   return o;
@@ -1166,12 +1172,16 @@ void checkClusterConfig(api.ClusterConfig o) {
     checkUnnamed15(o.initializationActions!);
     checkLifecycleConfig(o.lifecycleConfig!);
     checkInstanceGroupConfig(o.masterConfig!);
+    checkFlexibleInstanceGroupConfig(o.masterFlexibleConfig!);
     checkMetastoreConfig(o.metastoreConfig!);
+    checkSchedulingConfig(o.schedulingConfig!);
     checkInstanceGroupConfig(o.secondaryWorkerConfig!);
+    checkFlexibleInstanceGroupConfig(o.secondaryWorkerFlexibleConfig!);
     checkSecurityConfig(o.securityConfig!);
     checkSoftwareConfig(o.softwareConfig!);
     unittest.expect(o.tempBucket!, unittest.equals('foo'));
     checkInstanceGroupConfig(o.workerConfig!);
+    checkFlexibleInstanceGroupConfig(o.workerFlexibleConfig!);
   }
   buildCounterClusterConfig--;
 }
@@ -2156,6 +2166,31 @@ void checkFallbackReason(api.FallbackReason o) {
   buildCounterFallbackReason--;
 }
 
+core.int buildCounterFlexibleInstanceGroupConfig = 0;
+api.FlexibleInstanceGroupConfig buildFlexibleInstanceGroupConfig() {
+  final o = api.FlexibleInstanceGroupConfig();
+  buildCounterFlexibleInstanceGroupConfig++;
+  if (buildCounterFlexibleInstanceGroupConfig < 3) {
+    o.bootDiskSizeGb = 42;
+    o.coreCount = 42;
+    o.hardwareClass = 'foo';
+    o.numInstances = 42;
+  }
+  buildCounterFlexibleInstanceGroupConfig--;
+  return o;
+}
+
+void checkFlexibleInstanceGroupConfig(api.FlexibleInstanceGroupConfig o) {
+  buildCounterFlexibleInstanceGroupConfig++;
+  if (buildCounterFlexibleInstanceGroupConfig < 3) {
+    unittest.expect(o.bootDiskSizeGb!, unittest.equals(42));
+    unittest.expect(o.coreCount!, unittest.equals(42));
+    unittest.expect(o.hardwareClass!, unittest.equals('foo'));
+    unittest.expect(o.numInstances!, unittest.equals(42));
+  }
+  buildCounterFlexibleInstanceGroupConfig--;
+}
+
 core.List<core.String> buildUnnamed49() => ['foo', 'foo'];
 
 void checkUnnamed49(core.List<core.String> o) {
@@ -2260,6 +2295,7 @@ api.GceClusterConfig buildGceClusterConfig() {
     o.confidentialInstanceConfig = buildConfidentialInstanceConfig();
     o.internalIpOnly = true;
     o.metadata = buildUnnamed53();
+    o.multiZoneConfig = buildMultiZoneConfig();
     o.networkUri = 'foo';
     o.nodeGroupAffinity = buildNodeGroupAffinity();
     o.privateIpv6GoogleAccess = 'foo';
@@ -2283,6 +2319,7 @@ void checkGceClusterConfig(api.GceClusterConfig o) {
     checkConfidentialInstanceConfig(o.confidentialInstanceConfig!);
     unittest.expect(o.internalIpOnly!, unittest.isTrue);
     checkUnnamed53(o.metadata!);
+    checkMultiZoneConfig(o.multiZoneConfig!);
     unittest.expect(o.networkUri!, unittest.equals('foo'));
     checkNodeGroupAffinity(o.nodeGroupAffinity!);
     unittest.expect(o.privateIpv6GoogleAccess!, unittest.equals('foo'));
@@ -3970,6 +4007,25 @@ void checkMetric(api.Metric o) {
   buildCounterMetric--;
 }
 
+core.int buildCounterMultiZoneConfig = 0;
+api.MultiZoneConfig buildMultiZoneConfig() {
+  final o = api.MultiZoneConfig();
+  buildCounterMultiZoneConfig++;
+  if (buildCounterMultiZoneConfig < 3) {
+    o.targetShape = 'foo';
+  }
+  buildCounterMultiZoneConfig--;
+  return o;
+}
+
+void checkMultiZoneConfig(api.MultiZoneConfig o) {
+  buildCounterMultiZoneConfig++;
+  if (buildCounterMultiZoneConfig < 3) {
+    unittest.expect(o.targetShape!, unittest.equals('foo'));
+  }
+  buildCounterMultiZoneConfig--;
+}
+
 core.int buildCounterNamespacedGkeDeploymentTarget = 0;
 api.NamespacedGkeDeploymentTarget buildNamespacedGkeDeploymentTarget() {
   final o = api.NamespacedGkeDeploymentTarget();
@@ -5583,6 +5639,27 @@ void checkRuntimeInfo(api.RuntimeInfo o) {
   buildCounterRuntimeInfo--;
 }
 
+core.int buildCounterSchedulingConfig = 0;
+api.SchedulingConfig buildSchedulingConfig() {
+  final o = api.SchedulingConfig();
+  buildCounterSchedulingConfig++;
+  if (buildCounterSchedulingConfig < 3) {
+    o.requestedRunDuration = 'foo';
+    o.schedulingTimeout = 'foo';
+  }
+  buildCounterSchedulingConfig--;
+  return o;
+}
+
+void checkSchedulingConfig(api.SchedulingConfig o) {
+  buildCounterSchedulingConfig++;
+  if (buildCounterSchedulingConfig < 3) {
+    unittest.expect(o.requestedRunDuration!, unittest.equals('foo'));
+    unittest.expect(o.schedulingTimeout!, unittest.equals('foo'));
+  }
+  buildCounterSchedulingConfig--;
+}
+
 core.List<api.ExecutorStageSummary> buildUnnamed155() => [
   buildExecutorStageSummary(),
   buildExecutorStageSummary(),
@@ -6337,6 +6414,7 @@ api.SessionTemplate buildSessionTemplate() {
     o.createTime = 'foo';
     o.creator = 'foo';
     o.description = 'foo';
+    o.displayName = 'foo';
     o.environmentConfig = buildEnvironmentConfig();
     o.jupyterSession = buildJupyterConfig();
     o.labels = buildUnnamed175();
@@ -6356,6 +6434,7 @@ void checkSessionTemplate(api.SessionTemplate o) {
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.creator!, unittest.equals('foo'));
     unittest.expect(o.description!, unittest.equals('foo'));
+    unittest.expect(o.displayName!, unittest.equals('foo'));
     checkEnvironmentConfig(o.environmentConfig!);
     checkJupyterConfig(o.jupyterSession!);
     checkUnnamed175(o.labels!);
@@ -10189,6 +10268,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-FlexibleInstanceGroupConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildFlexibleInstanceGroupConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.FlexibleInstanceGroupConfig.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkFlexibleInstanceGroupConfig(od);
+    });
+  });
+
   unittest.group('obj-schema-FlinkJob', () {
     unittest.test('to-json--from-json', () async {
       final o = buildFlinkJob();
@@ -10752,6 +10842,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-MultiZoneConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMultiZoneConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MultiZoneConfig.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkMultiZoneConfig(od);
+    });
+  });
+
   unittest.group('obj-schema-NamespacedGkeDeploymentTarget', () {
     unittest.test('to-json--from-json', () async {
       final o = buildNamespacedGkeDeploymentTarget();
@@ -11222,6 +11323,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkRuntimeInfo(od);
+    });
+  });
+
+  unittest.group('obj-schema-SchedulingConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSchedulingConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SchedulingConfig.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkSchedulingConfig(od);
     });
   });
 

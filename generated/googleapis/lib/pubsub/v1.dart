@@ -725,10 +725,10 @@ class ProjectsSnapshotsResource {
   /// `FAILED_PRECONDITION` is returned. See also the `Snapshot.expire_time`
   /// field. If the name is not provided in the request, the server will assign
   /// a random name for this snapshot on the same project as the subscription,
-  /// conforming to the
-  /// [resource name format](https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names).
-  /// The generated name is populated in the returned Snapshot object. Note that
-  /// for REST API requests, you must specify a name in the request.
+  /// conforming to the \[resource name format\](
+  /// https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names). The
+  /// generated name is populated in the returned Snapshot object. Note that for
+  /// REST API requests, you must specify a name in the request.
   ///
   /// [request] - The metadata request object.
   ///
@@ -775,15 +775,15 @@ class ProjectsSnapshotsResource {
 
   /// Removes an existing snapshot.
   ///
-  /// Snapshots are used in
-  /// [Seek](https://cloud.google.com/pubsub/docs/replay-overview) operations,
-  /// which allow you to manage message acknowledgments in bulk. That is, you
-  /// can set the acknowledgment state of messages in an existing subscription
-  /// to the state captured by a snapshot. When the snapshot is deleted, all
-  /// messages retained in the snapshot are immediately dropped. After a
-  /// snapshot is deleted, a new one may be created with the same name, but the
-  /// new one has no association with the old snapshot or its subscription,
-  /// unless the same subscription is specified.
+  /// Snapshots are used in \[Seek\](
+  /// https://cloud.google.com/pubsub/docs/replay-overview) operations, which
+  /// allow you to manage message acknowledgments in bulk. That is, you can set
+  /// the acknowledgment state of messages in an existing subscription to the
+  /// state captured by a snapshot. When the snapshot is deleted, all messages
+  /// retained in the snapshot are immediately dropped. After a snapshot is
+  /// deleted, a new one may be created with the same name, but the new one has
+  /// no association with the old snapshot or its subscription, unless the same
+  /// subscription is specified.
   ///
   /// Request parameters:
   ///
@@ -1173,15 +1173,16 @@ class ProjectsSubscriptionsResource {
 
   /// Creates a subscription to a given topic.
   ///
-  /// See the
-  /// [resource name rules](https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names).
-  /// If the subscription already exists, returns `ALREADY_EXISTS`. If the
+  /// See the \[resource name rules\](
+  /// https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names). If the
+  /// subscription already exists, returns `ALREADY_EXISTS`. If the
   /// corresponding topic doesn't exist, returns `NOT_FOUND`. If the name is not
   /// provided in the request, the server will assign a random name for this
   /// subscription on the same project as the topic, conforming to the
-  /// [resource name format](https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names).
-  /// The generated name is populated in the returned Subscription object. Note
-  /// that for REST API requests, you must specify a name in the request.
+  /// \[resource name format\](
+  /// https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names). The
+  /// generated name is populated in the returned Subscription object. Note that
+  /// for REST API requests, you must specify a name in the request.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1647,12 +1648,12 @@ class ProjectsSubscriptionsResource {
   /// Seeks an existing subscription to a point in time or to a given snapshot,
   /// whichever is provided in the request.
   ///
-  /// Snapshots are used in
-  /// [Seek](https://cloud.google.com/pubsub/docs/replay-overview) operations,
-  /// which allow you to manage message acknowledgments in bulk. That is, you
-  /// can set the acknowledgment state of messages in an existing subscription
-  /// to the state captured by a snapshot. Note that both the subscription and
-  /// the snapshot must be on the same topic.
+  /// Snapshots are used in \[Seek\](
+  /// https://cloud.google.com/pubsub/docs/replay-overview) operations, which
+  /// allow you to manage message acknowledgments in bulk. That is, you can set
+  /// the acknowledgment state of messages in an existing subscription to the
+  /// state captured by a snapshot. Note that both the subscription and the
+  /// snapshot must be on the same topic.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1804,8 +1805,8 @@ class ProjectsTopicsResource {
 
   /// Creates the given topic with the given name.
   ///
-  /// See the
-  /// [resource name rules](https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names).
+  /// See the \[resource name rules\](
+  /// https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names).
   ///
   /// [request] - The metadata request object.
   ///
@@ -2875,13 +2876,11 @@ class BigQueryConfig {
   }
 }
 
-/// Configuration for a Bigtable subscription.
+/// Configuration for a Bigtable subscription, which will write a Pub/Sub
+/// message to a Bigtable row.
 ///
-/// The Pub/Sub message will be written to a Bigtable row as follows: - row key:
-/// subscription name, message ID hash, and message ID delimited by `#`. -
-/// columns: message bytes written to a single column family `data` with an
-/// empty-string column qualifier. - cell timestamp: the message publish
-/// timestamp.
+/// See the ColumnFamilyMapping documentation below for details on how the row
+/// keys and columns will be written.
 class BigtableConfig {
   /// The app profile to use for the Bigtable writes.
   ///
@@ -2890,6 +2889,14 @@ class BigtableConfig {
   ///
   /// Optional.
   core.String? appProfileId;
+
+  /// Configuration that allows writing row keys and/or columns based on fields
+  /// in the input message.
+  ///
+  /// The input message format must be JSON if this field is set.
+  ///
+  /// Optional.
+  ColumnFamilyMapping? columnFamilyMapping;
 
   /// The service account to use to write to Bigtable.
   ///
@@ -2952,6 +2959,7 @@ class BigtableConfig {
 
   BigtableConfig({
     this.appProfileId,
+    this.columnFamilyMapping,
     this.serviceAccountEmail,
     this.state,
     this.table,
@@ -2961,6 +2969,12 @@ class BigtableConfig {
   BigtableConfig.fromJson(core.Map json_)
     : this(
         appProfileId: json_['appProfileId'] as core.String?,
+        columnFamilyMapping: json_.containsKey('columnFamilyMapping')
+            ? ColumnFamilyMapping.fromJson(
+                json_['columnFamilyMapping']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         serviceAccountEmail: json_['serviceAccountEmail'] as core.String?,
         state: json_['state'] as core.String?,
         table: json_['table'] as core.String?,
@@ -2969,12 +2983,14 @@ class BigtableConfig {
 
   core.Map<core.String, core.dynamic> toJson() {
     final appProfileId = this.appProfileId;
+    final columnFamilyMapping = this.columnFamilyMapping;
     final serviceAccountEmail = this.serviceAccountEmail;
     final state = this.state;
     final table = this.table;
     final writeMetadata = this.writeMetadata;
     return {
       'appProfileId': ?appProfileId,
+      'columnFamilyMapping': ?columnFamilyMapping,
       'serviceAccountEmail': ?serviceAccountEmail,
       'state': ?state,
       'table': ?table,
@@ -3095,8 +3111,9 @@ class CloudStorage {
 
   /// Cloud Storage bucket.
   ///
-  /// The bucket name must be without any prefix like "gs://". See the
-  /// [bucket naming requirements](https://cloud.google.com/storage/docs/buckets#naming).
+  /// The bucket name must be without any prefix like "gs://". See the \[bucket
+  /// naming requirements\](
+  /// https://cloud.google.com/storage/docs/buckets#naming).
   ///
   /// Optional.
   core.String? bucket;
@@ -3377,6 +3394,64 @@ class CloudStorageConfig {
   }
 }
 
+/// Configuration for writing a Pub/Sub message to a Bigtable row with a
+/// user-defined key and writing to column families.
+///
+/// If this field is set: - The subscription messages must be formatted as JSON.
+/// - The row key mapping is configured in the `key_definition` section. - The
+/// top-level fields will be written either: - By default, they will be written
+/// to the `data` column family with the field name as the column qualifier. -
+/// But if the field name matches an existing column family (except for the
+/// default `data` column), then that field will be written to that column
+/// family, either as a scalar or its next level nested fields if it's a JSON
+/// object. - The cell timestamp will be the message publish timestamp. If the
+/// field is not set, the default behavior is to write: - row key: subscription
+/// name, message ID hash, and message ID delimited by `#`. - columns: message
+/// bytes written to a single column family `data` with an empty-string column
+/// qualifier. - cell timestamp: the message publish timestamp.
+class ColumnFamilyMapping {
+  /// If set, the row key is constructed from the given key fields and
+  /// delimiter.
+  ///
+  /// All key fields must be present in the message; otherwise, the message
+  /// remains in the subscription backlog.
+  ///
+  /// Optional.
+  DelimitedKey? delimitedKey;
+
+  /// If set, the row key is constructed from the field names of the table's
+  /// structured row key
+  /// ({$universe.dns_names.final_documentation_domain}/bigtable/docs/manage-row-key-schemas).
+  ///
+  /// Note that if the field is nullable in the structured row key, then it need
+  /// not be present in the message; null will be used instead.
+  ///
+  /// Optional.
+  RowKeySchema? rowKeySchema;
+
+  ColumnFamilyMapping({this.delimitedKey, this.rowKeySchema});
+
+  ColumnFamilyMapping.fromJson(core.Map json_)
+    : this(
+        delimitedKey: json_.containsKey('delimitedKey')
+            ? DelimitedKey.fromJson(
+                json_['delimitedKey'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        rowKeySchema: json_.containsKey('rowKeySchema')
+            ? RowKeySchema.fromJson(
+                json_['rowKeySchema'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final delimitedKey = this.delimitedKey;
+    final rowKeySchema = this.rowKeySchema;
+    return {'delimitedKey': ?delimitedKey, 'rowKeySchema': ?rowKeySchema};
+  }
+}
+
 /// Request for CommitSchema method.
 class CommitSchemaRequest {
   /// The schema revision to commit.
@@ -3634,6 +3709,9 @@ class DeadLetterPolicy {
     };
   }
 }
+
+/// Row key definition based on fields from the message.
+typedef DelimitedKey = $DelimitedKey;
 
 /// Response for the DetachSubscription method.
 ///
@@ -4430,14 +4508,14 @@ class PublishResponse {
 /// attribute. Note that client libraries represent this object differently
 /// depending on the language. See the corresponding
 /// [client library documentation](https://cloud.google.com/pubsub/docs/reference/libraries)
-/// for more information. See
-/// [quotas and limits](https://cloud.google.com/pubsub/quotas) for more
-/// information about message limits.
+/// for more information. See \[quotas and limits\](
+/// https://cloud.google.com/pubsub/quotas) for more information about message
+/// limits.
 typedef PubsubMessage = $PubsubMessage;
 
 /// The payload to the push endpoint is in the form of the JSON representation
-/// of a PubsubMessage
-/// (https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#pubsubmessage).
+/// of a
+/// [PubsubMessage](https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#pubsubmessage).
 typedef PubsubWrapper = $Empty;
 
 /// Request for the `Pull` method.
@@ -4549,8 +4627,8 @@ class PushConfig {
   OidcToken? oidcToken;
 
   /// When set, the payload to the push endpoint is in the form of the JSON
-  /// representation of a PubsubMessage
-  /// (https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#pubsubmessage).
+  /// representation of a \[PubsubMessage\](
+  /// https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#pubsubmessage).
   ///
   /// Optional.
   PubsubWrapper? pubsubWrapper;
@@ -4692,6 +4770,14 @@ class RollbackSchemaRequest {
     return {'revisionId': ?revisionId};
   }
 }
+
+/// Row key definition that reads the input message fields based on the field
+/// names of the table's structured row key
+/// ({$universe.dns_names.final_documentation_domain}/bigtable/docs/manage-row-key-schemas).
+///
+/// Note that if the field is nullable in the structured row key, then it need
+/// not be present in the message; null will be used instead.
+typedef RowKeySchema = $Empty;
 
 /// A schema resource.
 class Schema {
@@ -4934,8 +5020,8 @@ class Snapshot {
   /// Optional.
   core.String? expireTime;
 
-  /// See
-  /// [Creating and managing labels](https://cloud.google.com/pubsub/docs/labels).
+  /// See \[Creating and managing labels\](
+  /// https://cloud.google.com/pubsub/docs/labels).
   ///
   /// Optional.
   core.Map<core.String, core.String>? labels;
@@ -5141,9 +5227,9 @@ class Subscription {
   /// If true, then messages are not expunged from the subscription's backlog,
   /// even if they are acknowledged, until they fall out of the
   /// `message_retention_duration` window. This must be true if you would like
-  /// to \[`Seek` to a
-  /// timestamp\](https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time)
-  /// in the past to replay previously-acknowledged messages.
+  /// to \[`Seek` to a timestamp\](
+  /// https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) in
+  /// the past to replay previously-acknowledged messages.
   ///
   /// Optional.
   core.bool? retainAckedMessages;
@@ -5401,8 +5487,8 @@ class Topic {
   /// Optional.
   core.String? kmsKeyName;
 
-  /// See
-  /// [Creating and managing labels](https://cloud.google.com/pubsub/docs/labels).
+  /// See \[Creating and managing labels\](
+  /// https://cloud.google.com/pubsub/docs/labels).
   ///
   /// Optional.
   core.Map<core.String, core.String>? labels;

@@ -202,27 +202,27 @@ void checkBinding(api.Binding o) {
   buildCounterBinding--;
 }
 
-core.int buildCounterCloudSQLSingleUserCredentials = 0;
-api.CloudSQLSingleUserCredentials buildCloudSQLSingleUserCredentials() {
-  final o = api.CloudSQLSingleUserCredentials();
-  buildCounterCloudSQLSingleUserCredentials++;
-  if (buildCounterCloudSQLSingleUserCredentials < 3) {
+core.int buildCounterCloudSqlSingleUserCredentials = 0;
+api.CloudSqlSingleUserCredentials buildCloudSqlSingleUserCredentials() {
+  final o = api.CloudSqlSingleUserCredentials();
+  buildCounterCloudSqlSingleUserCredentials++;
+  if (buildCounterCloudSqlSingleUserCredentials < 3) {
     o.instanceId = 'foo';
     o.password = 'foo';
     o.username = 'foo';
   }
-  buildCounterCloudSQLSingleUserCredentials--;
+  buildCounterCloudSqlSingleUserCredentials--;
   return o;
 }
 
-void checkCloudSQLSingleUserCredentials(api.CloudSQLSingleUserCredentials o) {
-  buildCounterCloudSQLSingleUserCredentials++;
-  if (buildCounterCloudSQLSingleUserCredentials < 3) {
+void checkCloudSqlSingleUserCredentials(api.CloudSqlSingleUserCredentials o) {
+  buildCounterCloudSqlSingleUserCredentials++;
+  if (buildCounterCloudSqlSingleUserCredentials < 3) {
     unittest.expect(o.instanceId!, unittest.equals('foo'));
     unittest.expect(o.password!, unittest.equals('foo'));
     unittest.expect(o.username!, unittest.equals('foo'));
   }
-  buildCounterCloudSQLSingleUserCredentials--;
+  buildCounterCloudSqlSingleUserCredentials--;
 }
 
 core.int buildCounterCustomerManagedEncryption = 0;
@@ -323,7 +323,7 @@ api.EnableManagedRotationRequest buildEnableManagedRotationRequest() {
   final o = api.EnableManagedRotationRequest();
   buildCounterEnableManagedRotationRequest++;
   if (buildCounterEnableManagedRotationRequest < 3) {
-    o.cloudSqlSingleUserCredentials = buildCloudSQLSingleUserCredentials();
+    o.cloudSqlSingleUserCredentials = buildCloudSqlSingleUserCredentials();
   }
   buildCounterEnableManagedRotationRequest--;
   return o;
@@ -332,7 +332,7 @@ api.EnableManagedRotationRequest buildEnableManagedRotationRequest() {
 void checkEnableManagedRotationRequest(api.EnableManagedRotationRequest o) {
   buildCounterEnableManagedRotationRequest++;
   if (buildCounterEnableManagedRotationRequest < 3) {
-    checkCloudSQLSingleUserCredentials(o.cloudSqlSingleUserCredentials!);
+    checkCloudSqlSingleUserCredentials(o.cloudSqlSingleUserCredentials!);
   }
   buildCounterEnableManagedRotationRequest--;
 }
@@ -1188,14 +1188,14 @@ void main() {
     });
   });
 
-  unittest.group('obj-schema-CloudSQLSingleUserCredentials', () {
+  unittest.group('obj-schema-CloudSqlSingleUserCredentials', () {
     unittest.test('to-json--from-json', () async {
-      final o = buildCloudSQLSingleUserCredentials();
+      final o = buildCloudSqlSingleUserCredentials();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.CloudSQLSingleUserCredentials.fromJson(
+      final od = api.CloudSqlSingleUserCredentials.fromJson(
         oJson as core.Map<core.String, core.dynamic>,
       );
-      checkCloudSQLSingleUserCredentials(od);
+      checkCloudSqlSingleUserCredentials(od);
     });
   });
 

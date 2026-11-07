@@ -173,20 +173,24 @@ class ProjectsLocationsResource {
 
   /// Lists information about the supported locations for this service.
   ///
-  /// This method can be called in two ways: * **List all public locations:**
-  /// Use the path `GET /v1/locations`. * **List project-visible locations:**
-  /// Use the path `GET /v1/projects/{project_id}/locations`. This may include
-  /// public locations as well as private or other locations specifically
-  /// visible to the project.
+  /// This method lists locations based on the resource scope provided in the
+  /// ListLocationsRequest.name field: * **Global locations**: If `name` is
+  /// empty, the method lists the public locations available to all projects. *
+  /// **Project-specific locations**: If `name` follows the format
+  /// `projects/{project}`, the method lists locations visible to that specific
+  /// project. This includes public, private, or other project-specific
+  /// locations enabled for the project. For gRPC and client library
+  /// implementations, the resource name is passed as the `name` field. For
+  /// direct service calls, the resource name is incorporated into the request
+  /// path based on the specific service implementation and version.
   ///
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
-  /// and is ignored unless explicitly documented otherwise. This is primarily
-  /// for internal usage.
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -2073,6 +2077,26 @@ class Node {
   /// Output only.
   core.List<NetworkEndpoint>? networkEndpoints;
 
+  /// Protection tier for the workload which specifies the workload expectations
+  /// in the event of infrastructure failures at data center (e.g. power and/or
+  /// cooling failures).
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "PROTECTION_TIER_UNSPECIFIED" : Protection tier is unknown.
+  /// - "STANDARD" : STANDARD protection for workload that should be protected
+  /// by redundancies (e.g. power, cooling) at the data center level. In the
+  /// event of infrastructure failures at data center (e.g. power and/or cooling
+  /// failures), this workload is expected to continue as normal using the
+  /// redundancies.
+  /// - "CAPACITY_OPTIMIZED" : CAPACITY_OPTIMIZED capacity leverages
+  /// redundancies (e.g. power, cooling) at the data center during normal
+  /// operating conditions. In the event of infrastructure failures at data
+  /// center (e.g. power and/or cooling failures), this workload may be
+  /// disrupted. As a consequence, it has a weaker availability SLO than
+  /// STANDARD.
+  core.String? protectionTier;
+
   /// The qualified name of the QueuedResource that requested this Node.
   ///
   /// Output only.
@@ -2153,6 +2177,7 @@ class Node {
     this.networkConfig,
     this.networkConfigs,
     this.networkEndpoints,
+    this.protectionTier,
     this.queuedResource,
     this.runtimeVersion,
     this.schedulingConfig,
@@ -2218,6 +2243,7 @@ class Node {
               ),
             )
             .toList(),
+        protectionTier: json_['protectionTier'] as core.String?,
         queuedResource: json_['queuedResource'] as core.String?,
         runtimeVersion: json_['runtimeVersion'] as core.String?,
         schedulingConfig: json_.containsKey('schedulingConfig')
@@ -2275,6 +2301,7 @@ class Node {
     final networkConfig = this.networkConfig;
     final networkConfigs = this.networkConfigs;
     final networkEndpoints = this.networkEndpoints;
+    final protectionTier = this.protectionTier;
     final queuedResource = this.queuedResource;
     final runtimeVersion = this.runtimeVersion;
     final schedulingConfig = this.schedulingConfig;
@@ -2303,6 +2330,7 @@ class Node {
       'networkConfig': ?networkConfig,
       'networkConfigs': ?networkConfigs,
       'networkEndpoints': ?networkEndpoints,
+      'protectionTier': ?protectionTier,
       'queuedResource': ?queuedResource,
       'runtimeVersion': ?runtimeVersion,
       'schedulingConfig': ?schedulingConfig,

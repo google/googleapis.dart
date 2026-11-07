@@ -3277,7 +3277,7 @@ class EntityAnnotation {
 
 /// A face annotation object contains the results of face detection.
 class FaceAnnotation {
-  /// Anger likelihood.
+  /// Deprecated: No longer populated.
   /// Possible string values are:
   /// - "UNKNOWN" : Unknown likelihood.
   /// - "VERY_UNLIKELY" : It is very unlikely.
@@ -3285,6 +3285,9 @@ class FaceAnnotation {
   /// - "POSSIBLE" : It is possible.
   /// - "LIKELY" : It is likely.
   /// - "VERY_LIKELY" : It is very likely.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? angerLikelihood;
 
   /// Blurred likelihood.
@@ -3331,7 +3334,7 @@ class FaceAnnotation {
   /// - "VERY_LIKELY" : It is very likely.
   core.String? headwearLikelihood;
 
-  /// Joy likelihood.
+  /// Deprecated: No longer populated.
   /// Possible string values are:
   /// - "UNKNOWN" : Unknown likelihood.
   /// - "VERY_UNLIKELY" : It is very unlikely.
@@ -3339,6 +3342,9 @@ class FaceAnnotation {
   /// - "POSSIBLE" : It is possible.
   /// - "LIKELY" : It is likely.
   /// - "VERY_LIKELY" : It is very likely.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? joyLikelihood;
 
   /// Face landmarking confidence.
@@ -3362,7 +3368,7 @@ class FaceAnnotation {
   /// Range \[-180,180\].
   core.double? rollAngle;
 
-  /// Sorrow likelihood.
+  /// Deprecated: No longer populated.
   /// Possible string values are:
   /// - "UNKNOWN" : Unknown likelihood.
   /// - "VERY_UNLIKELY" : It is very unlikely.
@@ -3370,9 +3376,12 @@ class FaceAnnotation {
   /// - "POSSIBLE" : It is possible.
   /// - "LIKELY" : It is likely.
   /// - "VERY_LIKELY" : It is very likely.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? sorrowLikelihood;
 
-  /// Surprise likelihood.
+  /// Deprecated: No longer populated.
   /// Possible string values are:
   /// - "UNKNOWN" : Unknown likelihood.
   /// - "VERY_UNLIKELY" : It is very unlikely.
@@ -3380,6 +3389,9 @@ class FaceAnnotation {
   /// - "POSSIBLE" : It is possible.
   /// - "LIKELY" : It is likely.
   /// - "VERY_LIKELY" : It is very likely.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? surpriseLikelihood;
 
   /// Pitch angle, which indicates the upwards/downwards angle that the face is

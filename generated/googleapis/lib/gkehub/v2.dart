@@ -904,10 +904,10 @@ class ConfigManagementConfigSync {
   /// Optional.
   core.bool? preventDrift;
 
-  /// Specifies whether the Config Sync repo is in `hierarchical` or
-  /// `unstructured` mode.
+  /// Specifies whether the Config Sync repo is in `hierarchy` or `unstructured`
+  /// mode.
   ///
-  /// Defaults to `hierarchical`. See
+  /// Defaults to `hierarchy`. See
   /// https://docs.cloud.google.com/kubernetes-engine/config-sync/docs/concepts/configs#organize-configs
   /// for an explanation.
   ///
@@ -1787,7 +1787,7 @@ typedef ConfigManagementPolicyControllerMigration =
 ///
 /// For example, to specify metrics should be exported to Cloud Monitoring and
 /// Prometheus, specify backends: \["cloudmonitoring", "prometheus"\]
-typedef ConfigManagementPolicyControllerMonitoring = $Shared06;
+typedef ConfigManagementPolicyControllerMonitoring = $Shared07;
 
 /// State for PolicyControllerState.
 class ConfigManagementPolicyControllerState {
@@ -3390,7 +3390,7 @@ class PolicyControllerHubConfig {
 ///
 /// For example, to specify metrics should be exported to Cloud Monitoring and
 /// Prometheus, specify backends: \["cloudmonitoring", "prometheus"\]
-typedef PolicyControllerMonitoringConfig = $Shared06;
+typedef PolicyControllerMonitoringConfig = $Shared07;
 
 /// OnClusterState represents the state of a sub-component of Policy Controller.
 class PolicyControllerOnClusterState {

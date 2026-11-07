@@ -31,6 +31,7 @@
 ///   - [AccountTypesAccountsResource]
 ///     - [AccountTypesAccountsInsightsResource]
 ///     - [AccountTypesAccountsPartnerLinksResource]
+///     - [AccountTypesAccountsReportsResource]
 ///     - [AccountTypesAccountsUserListDirectLicensesResource]
 ///     - [AccountTypesAccountsUserListGlobalLicensesResource]
 /// -
@@ -40,6 +41,7 @@
 /// - [AudienceMembersResource]
 /// - [EventsResource]
 /// - [RequestStatusResource]
+/// - [UsersResource]
 library;
 
 import 'dart:async' as async;
@@ -77,6 +79,7 @@ class DataManagerApi {
       AudienceMembersResource(_requester);
   EventsResource get events => EventsResource(_requester);
   RequestStatusResource get requestStatus => RequestStatusResource(_requester);
+  UsersResource get users => UsersResource(_requester);
 
   DataManagerApi(
     http.Client client, {
@@ -106,6 +109,8 @@ class AccountTypesAccountsResource {
       AccountTypesAccountsInsightsResource(_requester);
   AccountTypesAccountsPartnerLinksResource get partnerLinks =>
       AccountTypesAccountsPartnerLinksResource(_requester);
+  AccountTypesAccountsReportsResource get reports =>
+      AccountTypesAccountsReportsResource(_requester);
   AccountTypesAccountsUserListDirectLicensesResource
   get userListDirectLicenses =>
       AccountTypesAccountsUserListDirectLicensesResource(_requester);
@@ -287,6 +292,75 @@ class AccountTypesAccountsPartnerLinksResource {
       queryParams: queryParams_,
     );
     return SearchPartnerLinksResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class AccountTypesAccountsReportsResource {
+  final commons.ApiRequester _requester;
+
+  AccountTypesAccountsReportsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Request parameters:
+  ///
+  /// [parent] - null
+  /// Value must have pattern `^accountTypes/\[^/\]+/accounts/\[^/\]+$`.
+  ///
+  /// [currencyCode] - null
+  ///
+  /// [endDate] - null
+  ///
+  /// [filter] - null
+  ///
+  /// [pageSize] - null
+  ///
+  /// [pageToken] - null
+  ///
+  /// [startDate] - null
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RetrievePartnerMatchReportResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RetrievePartnerMatchReportResponse> retrievePartnerMatchReport(
+    core.String parent, {
+    core.String? currencyCode,
+    core.String? endDate,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? startDate,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'currencyCode': ?currencyCode == null ? null : [currencyCode],
+      'endDate': ?endDate == null ? null : [endDate],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'startDate': ?startDate == null ? null : [startDate],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/reports:retrievePartnerMatchReport';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return RetrievePartnerMatchReportResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -1164,6 +1238,84 @@ class RequestStatusResource {
   }
 }
 
+class UsersResource {
+  final commons.ApiRequester _requester;
+
+  UsersResource(commons.ApiRequester client) : _requester = client;
+
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [IngestUsersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<IngestUsersResponse> ingest(
+    IngestUsersRequest request, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    const url_ = 'v1/users:ingest';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return IngestUsersResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RemoveUsersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RemoveUsersResponse> remove(
+    RemoveUsersRequest request, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    const url_ = 'v1/users:remove';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return RemoveUsersResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 class AdEvent {
   ///
   /// Possible string values are:
@@ -1461,6 +1613,7 @@ class AdIdentifiers {
   core.String? gclid;
   core.String? impressionId;
   DeviceInfo? landingPageDeviceInfo;
+  core.String? leadId;
   core.String? matchId;
   core.String? mobileDeviceId;
   core.String? ppid;
@@ -1475,6 +1628,7 @@ class AdIdentifiers {
     this.gclid,
     this.impressionId,
     this.landingPageDeviceInfo,
+    this.leadId,
     this.matchId,
     this.mobileDeviceId,
     this.ppid,
@@ -1502,6 +1656,7 @@ class AdIdentifiers {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        leadId: json_['leadId'] as core.String?,
         matchId: json_['matchId'] as core.String?,
         mobileDeviceId: json_['mobileDeviceId'] as core.String?,
         ppid: json_['ppid'] as core.String?,
@@ -1517,6 +1672,7 @@ class AdIdentifiers {
     final gclid = this.gclid;
     final impressionId = this.impressionId;
     final landingPageDeviceInfo = this.landingPageDeviceInfo;
+    final leadId = this.leadId;
     final matchId = this.matchId;
     final mobileDeviceId = this.mobileDeviceId;
     final ppid = this.ppid;
@@ -1530,6 +1686,7 @@ class AdIdentifiers {
       'gclid': ?gclid,
       'impressionId': ?impressionId,
       'landingPageDeviceInfo': ?landingPageDeviceInfo,
+      'leadId': ?leadId,
       'matchId': ?matchId,
       'mobileDeviceId': ?mobileDeviceId,
       'ppid': ?ppid,
@@ -1760,6 +1917,20 @@ class Baseline {
       'baselineLocation': ?baselineLocation,
       'locationAutoDetectionEnabled': ?locationAutoDetectionEnabled,
     };
+  }
+}
+
+class CallInfo {
+  core.String? startTimestamp;
+
+  CallInfo({this.startTimestamp});
+
+  CallInfo.fromJson(core.Map json_)
+    : this(startTimestamp: json_['startTimestamp'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final startTimestamp = this.startTimestamp;
+    return {'startTimestamp': ?startTimestamp};
   }
 }
 
@@ -2223,21 +2394,35 @@ class ErrorCount {
   /// - "PROCESSING_ERROR_REASON_INVALID_OPERATING_ACCOUNT_FOR_CLICK"
   /// - "PROCESSING_ERROR_REASON_CLICK_NOT_FOUND"
   /// - "PROCESSING_ERROR_REASON_EXTERNAL_ATTRIBUTION_DATA_MISSING"
+  /// - "PROCESSING_ERROR_REASON_DESTINATION_TOO_RECENTLY_CREATED"
+  /// - "PROCESSING_ERROR_REASON_EXPIRED_CLICK"
+  /// - "PROCESSING_ERROR_REASON_TOO_RECENT_CALL"
+  /// - "PROCESSING_ERROR_REASON_EXPIRED_CALL"
+  /// - "PROCESSING_ERROR_REASON_INVALID_CALL"
   core.String? reason;
   core.String? recordCount;
+  core.List<core.int>? recordIndices;
 
-  ErrorCount({this.reason, this.recordCount});
+  ErrorCount({this.reason, this.recordCount, this.recordIndices});
 
   ErrorCount.fromJson(core.Map json_)
     : this(
         reason: json_['reason'] as core.String?,
         recordCount: json_['recordCount'] as core.String?,
+        recordIndices: (json_['recordIndices'] as core.List?)
+            ?.map((value) => value as core.int)
+            .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final reason = this.reason;
     final recordCount = this.recordCount;
-    return {'reason': ?reason, 'recordCount': ?recordCount};
+    final recordIndices = this.recordIndices;
+    return {
+      'reason': ?reason,
+      'recordCount': ?recordCount,
+      'recordIndices': ?recordIndices,
+    };
   }
 }
 
@@ -2267,6 +2452,7 @@ class Event {
   AdIdentifiers? adIdentifiers;
   core.List<EventParameter>? additionalEventParameters;
   core.String? appInstanceId;
+  CallInfo? callInfo;
   CartData? cartData;
   core.String? clientId;
   Consent? consent;
@@ -2302,6 +2488,7 @@ class Event {
     this.adIdentifiers,
     this.additionalEventParameters,
     this.appInstanceId,
+    this.callInfo,
     this.cartData,
     this.clientId,
     this.consent,
@@ -2340,6 +2527,11 @@ class Event {
                 )
                 .toList(),
         appInstanceId: json_['appInstanceId'] as core.String?,
+        callInfo: json_.containsKey('callInfo')
+            ? CallInfo.fromJson(
+                json_['callInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         cartData: json_.containsKey('cartData')
             ? CartData.fromJson(
                 json_['cartData'] as core.Map<core.String, core.dynamic>,
@@ -2409,6 +2601,7 @@ class Event {
     final adIdentifiers = this.adIdentifiers;
     final additionalEventParameters = this.additionalEventParameters;
     final appInstanceId = this.appInstanceId;
+    final callInfo = this.callInfo;
     final cartData = this.cartData;
     final clientId = this.clientId;
     final consent = this.consent;
@@ -2433,6 +2626,7 @@ class Event {
       'adIdentifiers': ?adIdentifiers,
       'additionalEventParameters': ?additionalEventParameters,
       'appInstanceId': ?appInstanceId,
+      'callInfo': ?callInfo,
       'cartData': ?cartData,
       'clientId': ?clientId,
       'consent': ?consent,
@@ -2544,6 +2738,17 @@ class FieldWarning {
   /// - "WARNING_REASON_INVALID_DEVICE_CATEGORY"
   /// - "WARNING_REASON_INVALID_DEVICE_SCREEN_RESOLUTION"
   /// - "WARNING_REASON_INVALID_MERCHANT_ID"
+  /// - "WARNING_REASON_INVALID_NUMBER_FORMAT"
+  /// - "WARNING_REASON_INVALID_SHA256_FORMAT"
+  /// - "WARNING_REASON_INVALID_MERCHANT_FEED_LANGUAGE_CODE"
+  /// - "WARNING_REASON_FIELD_VALUE_TOO_LONG"
+  /// - "WARNING_REASON_FIELD_VALUE_TOO_SHORT"
+  /// - "WARNING_REASON_VALUE_TOO_HIGH"
+  /// - "WARNING_REASON_VALUE_TOO_LOW"
+  /// - "WARNING_REASON_TOO_MANY_ELEMENTS"
+  /// - "WARNING_REASON_DUPLICATE_ELEMENTS"
+  /// - "WARNING_REASON_CUSTOM_VARIABLES_NOT_SUPPORTED_WITH_GBRAID_OR_WBRAID"
+  /// - "WARNING_REASON_ADIDENTIFIER_NOT_USED"
   core.String? reason;
 
   FieldWarning({this.description, this.field, this.reason});
@@ -3085,6 +3290,69 @@ class IngestUserDataStatus {
 
 typedef IngestUserIdDataStatus = $UserIdDataStatus;
 
+class IngestUsersRequest {
+  core.List<Destination>? destinations;
+
+  ///
+  /// Possible string values are:
+  /// - "ENCODING_UNSPECIFIED"
+  /// - "HEX"
+  /// - "BASE64"
+  core.String? encoding;
+  EncryptionInfo? encryptionInfo;
+  core.List<User>? users;
+  core.bool? validateOnly;
+
+  IngestUsersRequest({
+    this.destinations,
+    this.encoding,
+    this.encryptionInfo,
+    this.users,
+    this.validateOnly,
+  });
+
+  IngestUsersRequest.fromJson(core.Map json_)
+    : this(
+        destinations: (json_['destinations'] as core.List?)
+            ?.map(
+              (value) => Destination.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        encoding: json_['encoding'] as core.String?,
+        encryptionInfo: json_.containsKey('encryptionInfo')
+            ? EncryptionInfo.fromJson(
+                json_['encryptionInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        users: (json_['users'] as core.List?)
+            ?.map(
+              (value) =>
+                  User.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+        validateOnly: json_['validateOnly'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final destinations = this.destinations;
+    final encoding = this.encoding;
+    final encryptionInfo = this.encryptionInfo;
+    final users = this.users;
+    final validateOnly = this.validateOnly;
+    return {
+      'destinations': ?destinations,
+      'encoding': ?encoding,
+      'encryptionInfo': ?encryptionInfo,
+      'users': ?users,
+      'validateOnly': ?validateOnly,
+    };
+  }
+}
+
+typedef IngestUsersResponse = $Response00;
+
 class IngestedUserListInfo {
   ContactIdInfo? contactIdInfo;
   MobileIdInfo? mobileIdInfo;
@@ -3554,6 +3822,28 @@ class MobileIdInfo {
   }
 }
 
+class Money {
+  core.String? currencyCode;
+  core.int? nanos;
+  core.String? units;
+
+  Money({this.currencyCode, this.nanos, this.units});
+
+  Money.fromJson(core.Map json_)
+    : this(
+        currencyCode: json_['currencyCode'] as core.String?,
+        nanos: json_['nanos'] as core.int?,
+        units: json_['units'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final currencyCode = this.currencyCode;
+    final nanos = this.nanos;
+    final units = this.units;
+    return {'currencyCode': ?currencyCode, 'nanos': ?nanos, 'units': ?units};
+  }
+}
+
 class PairData {
   core.List<core.String>? pairIds;
 
@@ -3763,6 +4053,196 @@ class PartnerLinkMetadata {
   }
 }
 
+class PartnerMatchAdGroup {
+  core.String? adGroupId;
+  core.String? displayName;
+
+  PartnerMatchAdGroup({this.adGroupId, this.displayName});
+
+  PartnerMatchAdGroup.fromJson(core.Map json_)
+    : this(
+        adGroupId: json_['adGroupId'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final adGroupId = this.adGroupId;
+    final displayName = this.displayName;
+    return {'adGroupId': ?adGroupId, 'displayName': ?displayName};
+  }
+}
+
+class PartnerMatchAdvertiserAccount {
+  core.String? accountId;
+  core.String? accountType;
+  core.String? displayName;
+
+  PartnerMatchAdvertiserAccount({
+    this.accountId,
+    this.accountType,
+    this.displayName,
+  });
+
+  PartnerMatchAdvertiserAccount.fromJson(core.Map json_)
+    : this(
+        accountId: json_['accountId'] as core.String?,
+        accountType: json_['accountType'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final accountId = this.accountId;
+    final accountType = this.accountType;
+    final displayName = this.displayName;
+    return {
+      'accountId': ?accountId,
+      'accountType': ?accountType,
+      'displayName': ?displayName,
+    };
+  }
+}
+
+class PartnerMatchCampaign {
+  core.String? campaignId;
+  core.String? displayName;
+
+  PartnerMatchCampaign({this.campaignId, this.displayName});
+
+  PartnerMatchCampaign.fromJson(core.Map json_)
+    : this(
+        campaignId: json_['campaignId'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final campaignId = this.campaignId;
+    final displayName = this.displayName;
+    return {'campaignId': ?campaignId, 'displayName': ?displayName};
+  }
+}
+
+class PartnerMatchLineItem {
+  core.String? displayName;
+  core.String? lineItemId;
+
+  PartnerMatchLineItem({this.displayName, this.lineItemId});
+
+  PartnerMatchLineItem.fromJson(core.Map json_)
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        lineItemId: json_['lineItemId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    final lineItemId = this.lineItemId;
+    return {'displayName': ?displayName, 'lineItemId': ?lineItemId};
+  }
+}
+
+class PartnerMatchReportEntry {
+  PartnerMatchAdGroup? adGroup;
+  PartnerMatchAdvertiserAccount? advertiserAccount;
+  PartnerMatchCampaign? campaign;
+  Money? dataFees;
+  core.String? impressionCount;
+  PartnerMatchLineItem? lineItem;
+  Money? mediaCost;
+  PartnerMatchUserList? userList;
+
+  PartnerMatchReportEntry({
+    this.adGroup,
+    this.advertiserAccount,
+    this.campaign,
+    this.dataFees,
+    this.impressionCount,
+    this.lineItem,
+    this.mediaCost,
+    this.userList,
+  });
+
+  PartnerMatchReportEntry.fromJson(core.Map json_)
+    : this(
+        adGroup: json_.containsKey('adGroup')
+            ? PartnerMatchAdGroup.fromJson(
+                json_['adGroup'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        advertiserAccount: json_.containsKey('advertiserAccount')
+            ? PartnerMatchAdvertiserAccount.fromJson(
+                json_['advertiserAccount']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        campaign: json_.containsKey('campaign')
+            ? PartnerMatchCampaign.fromJson(
+                json_['campaign'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        dataFees: json_.containsKey('dataFees')
+            ? Money.fromJson(
+                json_['dataFees'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        impressionCount: json_['impressionCount'] as core.String?,
+        lineItem: json_.containsKey('lineItem')
+            ? PartnerMatchLineItem.fromJson(
+                json_['lineItem'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        mediaCost: json_.containsKey('mediaCost')
+            ? Money.fromJson(
+                json_['mediaCost'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        userList: json_.containsKey('userList')
+            ? PartnerMatchUserList.fromJson(
+                json_['userList'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final adGroup = this.adGroup;
+    final advertiserAccount = this.advertiserAccount;
+    final campaign = this.campaign;
+    final dataFees = this.dataFees;
+    final impressionCount = this.impressionCount;
+    final lineItem = this.lineItem;
+    final mediaCost = this.mediaCost;
+    final userList = this.userList;
+    return {
+      'adGroup': ?adGroup,
+      'advertiserAccount': ?advertiserAccount,
+      'campaign': ?campaign,
+      'dataFees': ?dataFees,
+      'impressionCount': ?impressionCount,
+      'lineItem': ?lineItem,
+      'mediaCost': ?mediaCost,
+      'userList': ?userList,
+    };
+  }
+}
+
+class PartnerMatchUserList {
+  core.String? displayName;
+  core.String? userListId;
+
+  PartnerMatchUserList({this.displayName, this.userListId});
+
+  PartnerMatchUserList.fromJson(core.Map json_)
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        userListId: json_['userListId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    final userListId = this.userListId;
+    return {'displayName': ?displayName, 'userListId': ?userListId};
+  }
+}
+
 class PartnerProvidedIdData {
   core.List<core.String>? partnerProvidedIds;
 
@@ -3913,7 +4393,7 @@ class RemoveAllAudienceMembersRequest {
   }
 }
 
-typedef RemoveAllAudienceMembersResponse = $AudienceMembersResponse;
+typedef RemoveAllAudienceMembersResponse = $Response00;
 typedef RemoveAllAudienceMembersStatus = $Empty;
 
 class RemoveAudienceMembersRequest {
@@ -3978,7 +4458,7 @@ class RemoveAudienceMembersRequest {
   }
 }
 
-typedef RemoveAudienceMembersResponse = $AudienceMembersResponse;
+typedef RemoveAudienceMembersResponse = $Response00;
 
 class RemoveAudienceMembersStatus {
   RemoveCompositeDataStatus? compositeDataRemovalStatus;
@@ -4134,6 +4614,70 @@ class RemoveUserDataStatus {
 
 typedef RemoveUserIdDataStatus = $UserIdDataStatus;
 
+class RemoveUsersRequest {
+  core.List<Destination>? destinations;
+
+  ///
+  /// Possible string values are:
+  /// - "ENCODING_UNSPECIFIED"
+  /// - "HEX"
+  /// - "BASE64"
+  core.String? encoding;
+  EncryptionInfo? encryptionInfo;
+  core.List<UserData>? userData;
+  core.bool? validateOnly;
+
+  RemoveUsersRequest({
+    this.destinations,
+    this.encoding,
+    this.encryptionInfo,
+    this.userData,
+    this.validateOnly,
+  });
+
+  RemoveUsersRequest.fromJson(core.Map json_)
+    : this(
+        destinations: (json_['destinations'] as core.List?)
+            ?.map(
+              (value) => Destination.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        encoding: json_['encoding'] as core.String?,
+        encryptionInfo: json_.containsKey('encryptionInfo')
+            ? EncryptionInfo.fromJson(
+                json_['encryptionInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        userData: (json_['userData'] as core.List?)
+            ?.map(
+              (value) => UserData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        validateOnly: json_['validateOnly'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final destinations = this.destinations;
+    final encoding = this.encoding;
+    final encryptionInfo = this.encryptionInfo;
+    final userData = this.userData;
+    final validateOnly = this.validateOnly;
+    return {
+      'destinations': ?destinations,
+      'encoding': ?encoding,
+      'encryptionInfo': ?encryptionInfo,
+      'userData': ?userData,
+      'validateOnly': ?validateOnly,
+    };
+  }
+}
+
+typedef RemoveUsersResponse = $Response00;
+
 class RequestStatusPerDestination {
   IngestAudienceMembersStatus? audienceMembersIngestionStatus;
   RemoveAudienceMembersStatus? audienceMembersRemovalStatus;
@@ -4277,6 +4821,38 @@ class RetrieveInsightsResponse {
   }
 }
 
+class RetrievePartnerMatchReportResponse {
+  core.String? nextPageToken;
+  core.List<PartnerMatchReportEntry>? partnerMatchReportEntries;
+
+  RetrievePartnerMatchReportResponse({
+    this.nextPageToken,
+    this.partnerMatchReportEntries,
+  });
+
+  RetrievePartnerMatchReportResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        partnerMatchReportEntries:
+            (json_['partnerMatchReportEntries'] as core.List?)
+                ?.map(
+                  (value) => PartnerMatchReportEntry.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final partnerMatchReportEntries = this.partnerMatchReportEntries;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'partnerMatchReportEntries': ?partnerMatchReportEntries,
+    };
+  }
+}
+
 class RetrieveRequestStatusResponse {
   core.List<RequestStatusPerDestination>? requestStatusPerDestination;
 
@@ -4406,6 +4982,33 @@ class TermsOfService {
     return {
       'customerMatchTermsOfServiceStatus': ?customerMatchTermsOfServiceStatus,
     };
+  }
+}
+
+class User {
+  MobileData? mobileData;
+  UserData? userData;
+
+  User({this.mobileData, this.userData});
+
+  User.fromJson(core.Map json_)
+    : this(
+        mobileData: json_.containsKey('mobileData')
+            ? MobileData.fromJson(
+                json_['mobileData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        userData: json_.containsKey('userData')
+            ? UserData.fromJson(
+                json_['userData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final mobileData = this.mobileData;
+    final userData = this.userData;
+    return {'mobileData': ?mobileData, 'userData': ?userData};
   }
 }
 
@@ -5168,21 +5771,32 @@ class WarningCount {
   /// - "PROCESSING_WARNING_REASON_USER_IDENTIFIER_DECRYPTION_ERROR"
   /// - "PROCESSING_WARNING_REASON_INTERNAL_ERROR"
   /// - "PROCESSING_WARNING_REASON_AWS_AUTH_FAILED"
+  /// - "PROCESSING_WARNING_REASON_CUSTOM_VARIABLE_NOT_ENABLED"
+  /// - "PROCESSING_WARNING_REASON_CUSTOM_VARIABLE_NOT_PREDEFINED"
   core.String? reason;
   core.String? recordCount;
+  core.List<core.int>? recordIndices;
 
-  WarningCount({this.reason, this.recordCount});
+  WarningCount({this.reason, this.recordCount, this.recordIndices});
 
   WarningCount.fromJson(core.Map json_)
     : this(
         reason: json_['reason'] as core.String?,
         recordCount: json_['recordCount'] as core.String?,
+        recordIndices: (json_['recordIndices'] as core.List?)
+            ?.map((value) => value as core.int)
+            .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final reason = this.reason;
     final recordCount = this.recordCount;
-    return {'reason': ?reason, 'recordCount': ?recordCount};
+    final recordIndices = this.recordIndices;
+    return {
+      'reason': ?reason,
+      'recordCount': ?recordCount,
+      'recordIndices': ?recordIndices,
+    };
   }
 }
 

@@ -400,6 +400,27 @@ void checkLocation(api.Location o) {
   buildCounterLocation--;
 }
 
+core.int buildCounterLoggingConfig = 0;
+api.LoggingConfig buildLoggingConfig() {
+  final o = api.LoggingConfig();
+  buildCounterLoggingConfig++;
+  if (buildCounterLoggingConfig < 3) {
+    o.enabled = true;
+    o.verbosity = 'foo';
+  }
+  buildCounterLoggingConfig--;
+  return o;
+}
+
+void checkLoggingConfig(api.LoggingConfig o) {
+  buildCounterLoggingConfig++;
+  if (buildCounterLoggingConfig < 3) {
+    unittest.expect(o.enabled!, unittest.isTrue);
+    unittest.expect(o.verbosity!, unittest.equals('foo'));
+  }
+  buildCounterLoggingConfig--;
+}
+
 core.Map<core.String, core.Object?> buildUnnamed13() => {
   'x': {
     'list': [1, 2, 3],
@@ -524,6 +545,7 @@ api.Server buildServer() {
     o.googleManagedServerCredential = buildServerCredential();
     o.internalConfig = buildInternalServerConfig();
     o.labels = buildUnnamed15();
+    o.loggingConfig = buildLoggingConfig();
     o.name = 'foo';
     o.satisfiesPzi = true;
     o.satisfiesPzs = true;
@@ -545,6 +567,7 @@ void checkServer(api.Server o) {
     checkServerCredential(o.googleManagedServerCredential!);
     checkInternalServerConfig(o.internalConfig!);
     checkUnnamed15(o.labels!);
+    checkLoggingConfig(o.loggingConfig!);
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.satisfiesPzi!, unittest.isTrue);
     unittest.expect(o.satisfiesPzs!, unittest.isTrue);
@@ -907,6 +930,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkLocation(od);
+    });
+  });
+
+  unittest.group('obj-schema-LoggingConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildLoggingConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LoggingConfig.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkLoggingConfig(od);
     });
   });
 

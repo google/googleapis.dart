@@ -172,7 +172,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260612",
+    "revision": "20261002",
     "rootUrl": "https://eventarc.googleapis.com/",
     "servicePath": "",
     "title": "Eventarc API",
@@ -4130,7 +4130,7 @@
                     "type": "string"
                 },
                 "eventFilters": {
-                    "description": "Required. Unordered list. The list of filters that applies to event attributes. Only events that match all the provided filters are sent to the destination.",
+                    "description": "Optional. Unordered list. The list of filters that applies to event attributes. Only events that match all the provided filters are sent to the destination.",
                     "items": {
                         "$ref": "EventFilter"
                     },

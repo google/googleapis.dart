@@ -5134,9 +5134,11 @@ class Cluster {
   /// Required.
   GcpConfig? gcpConfig;
 
-  /// The Apache Kafka version of the cluster (for example, `3.7.x`, `4.3.x`).
+  /// The Apache Kafka version of the cluster.
   ///
-  /// If not specified during cluster creation, defaults to `3.7.x`.
+  /// Specifically, this value is the finalized metadata version. If not
+  /// specified during cluster creation, defaults to `3.7.x`. Supported values:
+  /// `3.7.x`.
   ///
   /// Optional.
   core.String? kafkaVersion;

@@ -691,6 +691,14 @@ class ProjectsJobsResource {
   ///
   /// [projectId] - The project which owns the jobs.
   ///
+  /// [createTimeRange_endTime] - Optional. Exclusive end of the interval. If
+  /// specified, a Timestamp matching this interval will have to be before the
+  /// end.
+  ///
+  /// [createTimeRange_startTime] - Optional. Inclusive start of the interval.
+  /// If specified, a Timestamp matching this interval will have to be the same
+  /// or after the start.
+  ///
   /// [filter] - The kind of filter to use.
   /// Possible string values are:
   /// - "UNKNOWN" : The filter isn't specified, or is unknown. This returns all
@@ -717,6 +725,14 @@ class ProjectsJobsResource {
   /// response to request additional results in a long list.
   ///
   /// [regionalFanoutRequested] - Optional.
+  ///
+  /// [terminationTimeRange_endTime] - Optional. Exclusive end of the interval.
+  /// If specified, a Timestamp matching this interval will have to be before
+  /// the end.
+  ///
+  /// [terminationTimeRange_startTime] - Optional. Inclusive start of the
+  /// interval. If specified, a Timestamp matching this interval will have to be
+  /// the same or after the start.
   ///
   /// [view] - Deprecated. ListJobs always returns summaries now. Use GetJob for
   /// other JobViews.
@@ -748,16 +764,26 @@ class ProjectsJobsResource {
   /// this method will complete with the same error.
   async.Future<ListJobsResponse> aggregated(
     core.String projectId, {
+    core.String? createTimeRange_endTime,
+    core.String? createTimeRange_startTime,
     core.String? filter,
     core.String? location,
     core.String? name,
     core.int? pageSize,
     core.String? pageToken,
     core.bool? regionalFanoutRequested,
+    core.String? terminationTimeRange_endTime,
+    core.String? terminationTimeRange_startTime,
     core.String? view,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      'createTimeRange.endTime': ?createTimeRange_endTime == null
+          ? null
+          : [createTimeRange_endTime],
+      'createTimeRange.startTime': ?createTimeRange_startTime == null
+          ? null
+          : [createTimeRange_startTime],
       'filter': ?filter == null ? null : [filter],
       'location': ?location == null ? null : [location],
       'name': ?name == null ? null : [name],
@@ -766,6 +792,12 @@ class ProjectsJobsResource {
       'regionalFanoutRequested': ?regionalFanoutRequested == null
           ? null
           : ['${regionalFanoutRequested}'],
+      'terminationTimeRange.endTime': ?terminationTimeRange_endTime == null
+          ? null
+          : [terminationTimeRange_endTime],
+      'terminationTimeRange.startTime': ?terminationTimeRange_startTime == null
+          ? null
+          : [terminationTimeRange_startTime],
       'view': ?view == null ? null : [view],
       'fields': ?$fields == null ? null : [$fields],
     };
@@ -1018,6 +1050,14 @@ class ProjectsJobsResource {
   ///
   /// [projectId] - The project which owns the jobs.
   ///
+  /// [createTimeRange_endTime] - Optional. Exclusive end of the interval. If
+  /// specified, a Timestamp matching this interval will have to be before the
+  /// end.
+  ///
+  /// [createTimeRange_startTime] - Optional. Inclusive start of the interval.
+  /// If specified, a Timestamp matching this interval will have to be the same
+  /// or after the start.
+  ///
   /// [filter] - The kind of filter to use.
   /// Possible string values are:
   /// - "UNKNOWN" : The filter isn't specified, or is unknown. This returns all
@@ -1044,6 +1084,14 @@ class ProjectsJobsResource {
   /// response to request additional results in a long list.
   ///
   /// [regionalFanoutRequested] - Optional.
+  ///
+  /// [terminationTimeRange_endTime] - Optional. Exclusive end of the interval.
+  /// If specified, a Timestamp matching this interval will have to be before
+  /// the end.
+  ///
+  /// [terminationTimeRange_startTime] - Optional. Inclusive start of the
+  /// interval. If specified, a Timestamp matching this interval will have to be
+  /// the same or after the start.
   ///
   /// [view] - Deprecated. ListJobs always returns summaries now. Use GetJob for
   /// other JobViews.
@@ -1075,16 +1123,26 @@ class ProjectsJobsResource {
   /// this method will complete with the same error.
   async.Future<ListJobsResponse> list(
     core.String projectId, {
+    core.String? createTimeRange_endTime,
+    core.String? createTimeRange_startTime,
     core.String? filter,
     core.String? location,
     core.String? name,
     core.int? pageSize,
     core.String? pageToken,
     core.bool? regionalFanoutRequested,
+    core.String? terminationTimeRange_endTime,
+    core.String? terminationTimeRange_startTime,
     core.String? view,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      'createTimeRange.endTime': ?createTimeRange_endTime == null
+          ? null
+          : [createTimeRange_endTime],
+      'createTimeRange.startTime': ?createTimeRange_startTime == null
+          ? null
+          : [createTimeRange_startTime],
       'filter': ?filter == null ? null : [filter],
       'location': ?location == null ? null : [location],
       'name': ?name == null ? null : [name],
@@ -1093,6 +1151,12 @@ class ProjectsJobsResource {
       'regionalFanoutRequested': ?regionalFanoutRequested == null
           ? null
           : ['${regionalFanoutRequested}'],
+      'terminationTimeRange.endTime': ?terminationTimeRange_endTime == null
+          ? null
+          : [terminationTimeRange_endTime],
+      'terminationTimeRange.startTime': ?terminationTimeRange_startTime == null
+          ? null
+          : [terminationTimeRange_startTime],
       'view': ?view == null ? null : [view],
       'fields': ?$fields == null ? null : [$fields],
     };
@@ -2237,6 +2301,14 @@ class ProjectsLocationsJobsResource {
   /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// that contains this job.
   ///
+  /// [createTimeRange_endTime] - Optional. Exclusive end of the interval. If
+  /// specified, a Timestamp matching this interval will have to be before the
+  /// end.
+  ///
+  /// [createTimeRange_startTime] - Optional. Inclusive start of the interval.
+  /// If specified, a Timestamp matching this interval will have to be the same
+  /// or after the start.
+  ///
   /// [filter] - The kind of filter to use.
   /// Possible string values are:
   /// - "UNKNOWN" : The filter isn't specified, or is unknown. This returns all
@@ -2259,6 +2331,14 @@ class ProjectsLocationsJobsResource {
   /// response to request additional results in a long list.
   ///
   /// [regionalFanoutRequested] - Optional.
+  ///
+  /// [terminationTimeRange_endTime] - Optional. Exclusive end of the interval.
+  /// If specified, a Timestamp matching this interval will have to be before
+  /// the end.
+  ///
+  /// [terminationTimeRange_startTime] - Optional. Inclusive start of the
+  /// interval. If specified, a Timestamp matching this interval will have to be
+  /// the same or after the start.
   ///
   /// [view] - Deprecated. ListJobs always returns summaries now. Use GetJob for
   /// other JobViews.
@@ -2291,15 +2371,25 @@ class ProjectsLocationsJobsResource {
   async.Future<ListJobsResponse> list(
     core.String projectId,
     core.String location, {
+    core.String? createTimeRange_endTime,
+    core.String? createTimeRange_startTime,
     core.String? filter,
     core.String? name,
     core.int? pageSize,
     core.String? pageToken,
     core.bool? regionalFanoutRequested,
+    core.String? terminationTimeRange_endTime,
+    core.String? terminationTimeRange_startTime,
     core.String? view,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      'createTimeRange.endTime': ?createTimeRange_endTime == null
+          ? null
+          : [createTimeRange_endTime],
+      'createTimeRange.startTime': ?createTimeRange_startTime == null
+          ? null
+          : [createTimeRange_startTime],
       'filter': ?filter == null ? null : [filter],
       'name': ?name == null ? null : [name],
       'pageSize': ?pageSize == null ? null : ['${pageSize}'],
@@ -2307,6 +2397,12 @@ class ProjectsLocationsJobsResource {
       'regionalFanoutRequested': ?regionalFanoutRequested == null
           ? null
           : ['${regionalFanoutRequested}'],
+      'terminationTimeRange.endTime': ?terminationTimeRange_endTime == null
+          ? null
+          : [terminationTimeRange_endTime],
+      'terminationTimeRange.startTime': ?terminationTimeRange_startTime == null
+          ? null
+          : [terminationTimeRange_startTime],
       'view': ?view == null ? null : [view],
       'fields': ?$fields == null ? null : [$fields],
     };
@@ -3974,7 +4070,8 @@ class AutoscalingSchedule {
   /// Specifies the priority of the schedule.
   ///
   /// If two schedules overlap, the one with the higher priority will be used.
-  /// The higher the value, the higher the priority of the schedule.
+  /// The higher the value, the higher the priority of the schedule. The value
+  /// must be non-negative; the lowest priority is `0`, which is the default.
   ///
   /// Optional.
   core.String? priority;

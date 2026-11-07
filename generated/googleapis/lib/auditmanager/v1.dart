@@ -30,6 +30,7 @@
 /// - [FoldersResource]
 ///   - [FoldersLocationsResource]
 ///     - [FoldersLocationsAuditReportsResource]
+///     - [FoldersLocationsAuditSchedulesResource]
 ///     - [FoldersLocationsAuditScopeReportsResource]
 ///     - [FoldersLocationsOperationDetailsResource]
 ///     - [FoldersLocationsOperationIdsResource]
@@ -39,6 +40,7 @@
 /// - [OrganizationsResource]
 ///   - [OrganizationsLocationsResource]
 ///     - [OrganizationsLocationsAuditReportsResource]
+///     - [OrganizationsLocationsAuditSchedulesResource]
 ///     - [OrganizationsLocationsAuditScopeReportsResource]
 ///     - [OrganizationsLocationsOperationDetailsResource]
 ///     - [OrganizationsLocationsOperationIdsResource]
@@ -49,6 +51,7 @@
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsAuditReportsResource]
+///     - [ProjectsLocationsAuditSchedulesResource]
 ///     - [ProjectsLocationsAuditScopeReportsResource]
 ///     - [ProjectsLocationsOperationDetailsResource]
 ///     - [ProjectsLocationsOperationIdsResource]
@@ -115,6 +118,8 @@ class FoldersLocationsResource {
 
   FoldersLocationsAuditReportsResource get auditReports =>
       FoldersLocationsAuditReportsResource(_requester);
+  FoldersLocationsAuditSchedulesResource get auditSchedules =>
+      FoldersLocationsAuditSchedulesResource(_requester);
   FoldersLocationsAuditScopeReportsResource get auditScopeReports =>
       FoldersLocationsAuditScopeReportsResource(_requester);
   FoldersLocationsOperationDetailsResource get operationDetails =>
@@ -327,6 +332,233 @@ class FoldersLocationsAuditReportsResource {
       queryParams: queryParams_,
     );
     return ListAuditReportsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class FoldersLocationsAuditSchedulesResource {
+  final commons.ApiRequester _requester;
+
+  FoldersLocationsAuditSchedulesResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates a new audit schedule in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Project or folder that this audit schedule is for, in
+  /// one of the following formats: * `projects/{project}/locations/{location}`
+  /// * `folders/{folder}/locations/{location}`
+  /// Value must have pattern `^folders/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [auditScheduleId] - Required. ID to use for the audit schedule, which
+  /// becomes the final component of the audit schedule's resource name.
+  ///
+  /// [validateOnly] - Optional. If `true`, only validates the request and does
+  /// not create the audit schedule. This executes standard request validation
+  /// (such as schema, framework existence, scope, and IAM checks) and skips the
+  /// apply phase. Use this field for the following purposes: * **Infrastructure
+  /// as Code (IaC)**: Allow tools like Terraform to run dry-run mutations
+  /// (e.g., `terraform plan`) without creating real resources or incurring
+  /// costs. * **User Interface Validation**: Enable real-time form and
+  /// permission validation in custom UIs before submitting requests. * **CI/CD
+  /// & Automation**: Test your scripts, permissions, and parameters safely
+  /// without consuming resource quotas.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AuditSchedule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AuditSchedule> create(
+    AuditSchedule request,
+    core.String parent, {
+    core.String? auditScheduleId,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'auditScheduleId': ?auditScheduleId == null ? null : [auditScheduleId],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/auditSchedules';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return AuditSchedule.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Gets details of a single audit schedule.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the audit schedule to retrieve, in one of the
+  /// following formats: *
+  /// `projects/{project}/locations/{location}/auditSchedules/{audit_schedule}`
+  /// * `folders/{folder}/locations/{location}/auditSchedules/{audit_schedule}`
+  /// *
+  /// `organizations/{organization}/locations/{location}/auditSchedules/{audit_schedule}`
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/locations/\[^/\]+/auditSchedules/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AuditSchedule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AuditSchedule> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AuditSchedule.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists audit schedules in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent for the audit schedule, in one of the
+  /// following formats: * `projects/{project}/locations/{location}` *
+  /// `folders/{folder}/locations/{location}` *
+  /// `organizations/{organization}/locations/{location}`
+  /// Value must have pattern `^folders/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. Maximum number of items to return in a single page.
+  /// The service might return fewer items than this value. If unspecified, the
+  /// service picks an appropriate default. The maximum value is 100; values
+  /// above 100 are reduced to 100.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous call, to
+  /// retrieve the next page of results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAuditSchedulesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAuditSchedulesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/auditSchedules';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListAuditSchedulesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates an existing audit schedule.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. Unique identifier for the audit schedule. Format:
+  /// projects/{project}/locations/{location}/auditSchedules/{audit_schedule}
+  /// folders/{folder}/locations/{location}/auditSchedules/{audit_schedule}
+  /// organizations/{organization}/locations/{location}/auditSchedules/{audit_schedule}
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/locations/\[^/\]+/auditSchedules/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. List of fields to update.
+  ///
+  /// [validateOnly] - Optional. If `true`, only validates the request and does
+  /// not update the audit schedule. This executes standard request validation
+  /// (such as schema, framework existence, scope, and IAM checks) and skips the
+  /// apply phase. Use this field for the following purposes: * **Infrastructure
+  /// as Code (IaC)**: Allow tools like Terraform to run dry-run mutations
+  /// (e.g., `terraform plan`) without creating real resources or incurring
+  /// costs. * **User Interface Validation**: Enable real-time form and
+  /// permission validation in custom UIs before submitting requests. * **CI/CD
+  /// & Automation**: Test your scripts, permissions, and parameters safely
+  /// without consuming resource quotas.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AuditSchedule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AuditSchedule> patch(
+    AuditSchedule request,
+    core.String name, {
+    core.String? updateMask,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return AuditSchedule.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -663,6 +895,8 @@ class OrganizationsLocationsResource {
 
   OrganizationsLocationsAuditReportsResource get auditReports =>
       OrganizationsLocationsAuditReportsResource(_requester);
+  OrganizationsLocationsAuditSchedulesResource get auditSchedules =>
+      OrganizationsLocationsAuditSchedulesResource(_requester);
   OrganizationsLocationsAuditScopeReportsResource get auditScopeReports =>
       OrganizationsLocationsAuditScopeReportsResource(_requester);
   OrganizationsLocationsOperationDetailsResource get operationDetails =>
@@ -878,6 +1112,233 @@ class OrganizationsLocationsAuditReportsResource {
       queryParams: queryParams_,
     );
     return ListAuditReportsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class OrganizationsLocationsAuditSchedulesResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsAuditSchedulesResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates a new audit schedule in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Project or folder that this audit schedule is for, in
+  /// one of the following formats: * `projects/{project}/locations/{location}`
+  /// * `folders/{folder}/locations/{location}`
+  /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [auditScheduleId] - Required. ID to use for the audit schedule, which
+  /// becomes the final component of the audit schedule's resource name.
+  ///
+  /// [validateOnly] - Optional. If `true`, only validates the request and does
+  /// not create the audit schedule. This executes standard request validation
+  /// (such as schema, framework existence, scope, and IAM checks) and skips the
+  /// apply phase. Use this field for the following purposes: * **Infrastructure
+  /// as Code (IaC)**: Allow tools like Terraform to run dry-run mutations
+  /// (e.g., `terraform plan`) without creating real resources or incurring
+  /// costs. * **User Interface Validation**: Enable real-time form and
+  /// permission validation in custom UIs before submitting requests. * **CI/CD
+  /// & Automation**: Test your scripts, permissions, and parameters safely
+  /// without consuming resource quotas.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AuditSchedule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AuditSchedule> create(
+    AuditSchedule request,
+    core.String parent, {
+    core.String? auditScheduleId,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'auditScheduleId': ?auditScheduleId == null ? null : [auditScheduleId],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/auditSchedules';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return AuditSchedule.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Gets details of a single audit schedule.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the audit schedule to retrieve, in one of the
+  /// following formats: *
+  /// `projects/{project}/locations/{location}/auditSchedules/{audit_schedule}`
+  /// * `folders/{folder}/locations/{location}/auditSchedules/{audit_schedule}`
+  /// *
+  /// `organizations/{organization}/locations/{location}/auditSchedules/{audit_schedule}`
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/auditSchedules/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AuditSchedule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AuditSchedule> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AuditSchedule.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists audit schedules in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent for the audit schedule, in one of the
+  /// following formats: * `projects/{project}/locations/{location}` *
+  /// `folders/{folder}/locations/{location}` *
+  /// `organizations/{organization}/locations/{location}`
+  /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. Maximum number of items to return in a single page.
+  /// The service might return fewer items than this value. If unspecified, the
+  /// service picks an appropriate default. The maximum value is 100; values
+  /// above 100 are reduced to 100.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous call, to
+  /// retrieve the next page of results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAuditSchedulesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAuditSchedulesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/auditSchedules';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListAuditSchedulesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates an existing audit schedule.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. Unique identifier for the audit schedule. Format:
+  /// projects/{project}/locations/{location}/auditSchedules/{audit_schedule}
+  /// folders/{folder}/locations/{location}/auditSchedules/{audit_schedule}
+  /// organizations/{organization}/locations/{location}/auditSchedules/{audit_schedule}
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/auditSchedules/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. List of fields to update.
+  ///
+  /// [validateOnly] - Optional. If `true`, only validates the request and does
+  /// not update the audit schedule. This executes standard request validation
+  /// (such as schema, framework existence, scope, and IAM checks) and skips the
+  /// apply phase. Use this field for the following purposes: * **Infrastructure
+  /// as Code (IaC)**: Allow tools like Terraform to run dry-run mutations
+  /// (e.g., `terraform plan`) without creating real resources or incurring
+  /// costs. * **User Interface Validation**: Enable real-time form and
+  /// permission validation in custom UIs before submitting requests. * **CI/CD
+  /// & Automation**: Test your scripts, permissions, and parameters safely
+  /// without consuming resource quotas.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AuditSchedule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AuditSchedule> patch(
+    AuditSchedule request,
+    core.String name, {
+    core.String? updateMask,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return AuditSchedule.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -1407,6 +1868,8 @@ class ProjectsLocationsResource {
 
   ProjectsLocationsAuditReportsResource get auditReports =>
       ProjectsLocationsAuditReportsResource(_requester);
+  ProjectsLocationsAuditSchedulesResource get auditSchedules =>
+      ProjectsLocationsAuditSchedulesResource(_requester);
   ProjectsLocationsAuditScopeReportsResource get auditScopeReports =>
       ProjectsLocationsAuditScopeReportsResource(_requester);
   ProjectsLocationsOperationDetailsResource get operationDetails =>
@@ -1722,6 +2185,233 @@ class ProjectsLocationsAuditReportsResource {
       queryParams: queryParams_,
     );
     return ListAuditReportsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsAuditSchedulesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAuditSchedulesResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates a new audit schedule in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Project or folder that this audit schedule is for, in
+  /// one of the following formats: * `projects/{project}/locations/{location}`
+  /// * `folders/{folder}/locations/{location}`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [auditScheduleId] - Required. ID to use for the audit schedule, which
+  /// becomes the final component of the audit schedule's resource name.
+  ///
+  /// [validateOnly] - Optional. If `true`, only validates the request and does
+  /// not create the audit schedule. This executes standard request validation
+  /// (such as schema, framework existence, scope, and IAM checks) and skips the
+  /// apply phase. Use this field for the following purposes: * **Infrastructure
+  /// as Code (IaC)**: Allow tools like Terraform to run dry-run mutations
+  /// (e.g., `terraform plan`) without creating real resources or incurring
+  /// costs. * **User Interface Validation**: Enable real-time form and
+  /// permission validation in custom UIs before submitting requests. * **CI/CD
+  /// & Automation**: Test your scripts, permissions, and parameters safely
+  /// without consuming resource quotas.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AuditSchedule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AuditSchedule> create(
+    AuditSchedule request,
+    core.String parent, {
+    core.String? auditScheduleId,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'auditScheduleId': ?auditScheduleId == null ? null : [auditScheduleId],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/auditSchedules';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return AuditSchedule.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Gets details of a single audit schedule.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the audit schedule to retrieve, in one of the
+  /// following formats: *
+  /// `projects/{project}/locations/{location}/auditSchedules/{audit_schedule}`
+  /// * `folders/{folder}/locations/{location}/auditSchedules/{audit_schedule}`
+  /// *
+  /// `organizations/{organization}/locations/{location}/auditSchedules/{audit_schedule}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/auditSchedules/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AuditSchedule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AuditSchedule> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AuditSchedule.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists audit schedules in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent for the audit schedule, in one of the
+  /// following formats: * `projects/{project}/locations/{location}` *
+  /// `folders/{folder}/locations/{location}` *
+  /// `organizations/{organization}/locations/{location}`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. Maximum number of items to return in a single page.
+  /// The service might return fewer items than this value. If unspecified, the
+  /// service picks an appropriate default. The maximum value is 100; values
+  /// above 100 are reduced to 100.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous call, to
+  /// retrieve the next page of results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAuditSchedulesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAuditSchedulesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/auditSchedules';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListAuditSchedulesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates an existing audit schedule.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. Unique identifier for the audit schedule. Format:
+  /// projects/{project}/locations/{location}/auditSchedules/{audit_schedule}
+  /// folders/{folder}/locations/{location}/auditSchedules/{audit_schedule}
+  /// organizations/{organization}/locations/{location}/auditSchedules/{audit_schedule}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/auditSchedules/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. List of fields to update.
+  ///
+  /// [validateOnly] - Optional. If `true`, only validates the request and does
+  /// not update the audit schedule. This executes standard request validation
+  /// (such as schema, framework existence, scope, and IAM checks) and skips the
+  /// apply phase. Use this field for the following purposes: * **Infrastructure
+  /// as Code (IaC)**: Allow tools like Terraform to run dry-run mutations
+  /// (e.g., `terraform plan`) without creating real resources or incurring
+  /// costs. * **User Interface Validation**: Enable real-time form and
+  /// permission validation in custom UIs before submitting requests. * **CI/CD
+  /// & Automation**: Test your scripts, permissions, and parameters safely
+  /// without consuming resource quotas.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AuditSchedule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AuditSchedule> patch(
+    AuditSchedule request,
+    core.String name, {
+    core.String? updateMask,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return AuditSchedule.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -2185,6 +2875,13 @@ class ProjectsLocationsStandardsControlsResource {
 
 /// An audit report.
 class AuditReport {
+  /// Parameter values provided by the user and values for tunable parameters,
+  /// stored in the DB, keyed by control name.
+  ///
+  /// Output only.
+  core.Map<core.String, CloudControlParameterStates>?
+  cloudControlParameterStates;
+
   /// Compliance framework to use for the audit report.
   ///
   /// For example, `CIS_GCP_FOUNDATIONS_V1_2_0`.
@@ -2267,6 +2964,7 @@ class AuditReport {
   core.String? scopeId;
 
   AuditReport({
+    this.cloudControlParameterStates,
     this.complianceFramework,
     this.complianceStandard,
     this.controlDetails,
@@ -2282,6 +2980,17 @@ class AuditReport {
 
   AuditReport.fromJson(core.Map json_)
     : this(
+        cloudControlParameterStates:
+            (json_['cloudControlParameterStates']
+                    as core.Map<core.String, core.dynamic>?)
+                ?.map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    CloudControlParameterStates.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  ),
+                ),
         complianceFramework: json_['complianceFramework'] as core.String?,
         complianceStandard: json_['complianceStandard'] as core.String?,
         controlDetails: (json_['controlDetails'] as core.List?)
@@ -2311,6 +3020,7 @@ class AuditReport {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final cloudControlParameterStates = this.cloudControlParameterStates;
     final complianceFramework = this.complianceFramework;
     final complianceStandard = this.complianceStandard;
     final controlDetails = this.controlDetails;
@@ -2323,6 +3033,7 @@ class AuditReport {
     final scope = this.scope;
     final scopeId = this.scopeId;
     return {
+      'cloudControlParameterStates': ?cloudControlParameterStates,
       'complianceFramework': ?complianceFramework,
       'complianceStandard': ?complianceStandard,
       'controlDetails': ?controlDetails,
@@ -2334,6 +3045,186 @@ class AuditReport {
       'reportSummary': ?reportSummary,
       'scope': ?scope,
       'scopeId': ?scopeId,
+    };
+  }
+}
+
+/// An audit schedule, in one of the following formats: *
+/// `projects/{project}/locations/{location}/auditSchedules/{audit_schedule}` *
+/// `folders/{folder}/locations/{location}/auditSchedules/{audit_schedule}`
+class AuditSchedule {
+  /// Framework (set of controls) that the audit scope report is generated
+  /// against.
+  ///
+  /// For example, `NIST_800_53`.
+  ///
+  /// Required.
+  core.String? complianceFramework;
+
+  /// Timestamp when the schedule was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Display name for the audit schedule.
+  ///
+  /// Optional.
+  core.String? displayName;
+
+  /// Describes the error if the schedule is in an error state.
+  ///
+  /// Output only.
+  core.String? errorMessage;
+
+  /// Cloud Storage bucket where Audit Manager can upload the audit report and
+  /// evidence.
+  ///
+  /// The format is `gs://{bucket_name}`.
+  ///
+  /// Required.
+  core.String? gcsUri;
+
+  /// Timestamp when the audit run was last triggered.
+  ///
+  /// Output only.
+  core.String? lastTriggerTime;
+
+  /// Identifier.
+  ///
+  /// Unique identifier for the audit schedule. Format:
+  /// projects/{project}/locations/{location}/auditSchedules/{audit_schedule}
+  /// folders/{folder}/locations/{location}/auditSchedules/{audit_schedule}
+  /// organizations/{organization}/locations/{location}/auditSchedules/{audit_schedule}
+  core.String? name;
+
+  /// Calculated timestamp for the next scheduled run.
+  ///
+  /// Output only.
+  core.String? nextRunTime;
+
+  /// Maps dynamic parameter overrides by Cloud Control resource name at
+  /// execution time.
+  ///
+  /// For example,
+  /// `{"organizations/123/locations/global/cloudControls/control-1":
+  /// {parameters: [...]}}`
+  ///
+  /// Optional.
+  core.Map<core.String, ParameterOverrides>? parameterOverrides;
+
+  /// Format for the audit report.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "AUDIT_REPORT_FORMAT_UNSPECIFIED" : Default value. This value is unused.
+  /// - "AUDIT_REPORT_FORMAT_ODF" : Open Document Format (ODF).
+  core.String? reportFormat;
+
+  /// Configuration that defines when and how often audit runs are automatically
+  /// triggered for this schedule.
+  ///
+  /// Required.
+  ScheduleConfig? scheduleConfig;
+
+  /// State of the audit schedule.
+  ///
+  /// While most states are managed by the system, you can use
+  /// UpdateAuditSchedule to start, pause, or delete the schedule.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "SCHEDULE_STATE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "SCHEDULE_STATE_ACTIVE" : Schedule is active and will trigger runs.
+  /// - "SCHEDULE_STATE_PAUSED" : Schedule is paused and will not trigger runs.
+  /// - "SCHEDULE_STATE_COMPLETED" : Schedule end time has passed.
+  /// - "SCHEDULE_STATE_FAILED_SETUP" : Schedule setup failed during creation or
+  /// update.
+  /// - "SCHEDULE_STATE_ERROR" : Schedule is in an error state due to persistent
+  /// failure to trigger an audit. Manual intervention is required.
+  /// - "SCHEDULE_STATE_DELETED" : Schedule has been marked for deletion by the
+  /// user.
+  core.String? state;
+
+  /// Timestamp when the schedule was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  AuditSchedule({
+    this.complianceFramework,
+    this.createTime,
+    this.displayName,
+    this.errorMessage,
+    this.gcsUri,
+    this.lastTriggerTime,
+    this.name,
+    this.nextRunTime,
+    this.parameterOverrides,
+    this.reportFormat,
+    this.scheduleConfig,
+    this.state,
+    this.updateTime,
+  });
+
+  AuditSchedule.fromJson(core.Map json_)
+    : this(
+        complianceFramework: json_['complianceFramework'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        errorMessage: json_['errorMessage'] as core.String?,
+        gcsUri: json_['gcsUri'] as core.String?,
+        lastTriggerTime: json_['lastTriggerTime'] as core.String?,
+        name: json_['name'] as core.String?,
+        nextRunTime: json_['nextRunTime'] as core.String?,
+        parameterOverrides:
+            (json_['parameterOverrides']
+                    as core.Map<core.String, core.dynamic>?)
+                ?.map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    ParameterOverrides.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  ),
+                ),
+        reportFormat: json_['reportFormat'] as core.String?,
+        scheduleConfig: json_.containsKey('scheduleConfig')
+            ? ScheduleConfig.fromJson(
+                json_['scheduleConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        state: json_['state'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final complianceFramework = this.complianceFramework;
+    final createTime = this.createTime;
+    final displayName = this.displayName;
+    final errorMessage = this.errorMessage;
+    final gcsUri = this.gcsUri;
+    final lastTriggerTime = this.lastTriggerTime;
+    final name = this.name;
+    final nextRunTime = this.nextRunTime;
+    final parameterOverrides = this.parameterOverrides;
+    final reportFormat = this.reportFormat;
+    final scheduleConfig = this.scheduleConfig;
+    final state = this.state;
+    final updateTime = this.updateTime;
+    return {
+      'complianceFramework': ?complianceFramework,
+      'createTime': ?createTime,
+      'displayName': ?displayName,
+      'errorMessage': ?errorMessage,
+      'gcsUri': ?gcsUri,
+      'lastTriggerTime': ?lastTriggerTime,
+      'name': ?name,
+      'nextRunTime': ?nextRunTime,
+      'parameterOverrides': ?parameterOverrides,
+      'reportFormat': ?reportFormat,
+      'scheduleConfig': ?scheduleConfig,
+      'state': ?state,
+      'updateTime': ?updateTime,
     };
   }
 }
@@ -2379,6 +3270,32 @@ class AuditScopeReport {
 
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
+
+/// Collection of parameter states for a cloud control.
+class CloudControlParameterStates {
+  /// The parameter states for the cloud control.
+  ///
+  /// Output only.
+  core.List<ParameterState>? parameterStates;
+
+  CloudControlParameterStates({this.parameterStates});
+
+  CloudControlParameterStates.fromJson(core.Map json_)
+    : this(
+        parameterStates: (json_['parameterStates'] as core.List?)
+            ?.map(
+              (value) => ParameterState.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final parameterStates = this.parameterStates;
+    return {'parameterStates': ?parameterStates};
+  }
+}
 
 /// A control.
 class Control {
@@ -2758,6 +3675,16 @@ class GenerateAuditReportRequest {
   /// You must select a bucket that was provided during the enrollment process.
   core.String? gcsUri;
 
+  /// Maps dynamic parameter overrides by Cloud Control resource name at
+  /// execution time.
+  ///
+  /// For example,
+  /// `{"organizations/123/locations/global/cloudControls/control-1":
+  /// {parameters: [...]}}`
+  ///
+  /// Optional.
+  core.Map<core.String, ParameterOverrides>? parameterOverrides;
+
   /// Format for the audit report.
   ///
   /// Required.
@@ -2786,6 +3713,7 @@ class GenerateAuditReportRequest {
     this.complianceFramework,
     this.complianceStandard,
     this.gcsUri,
+    this.parameterOverrides,
     this.reportFormat,
     this.validateOnly,
   });
@@ -2795,6 +3723,17 @@ class GenerateAuditReportRequest {
         complianceFramework: json_['complianceFramework'] as core.String?,
         complianceStandard: json_['complianceStandard'] as core.String?,
         gcsUri: json_['gcsUri'] as core.String?,
+        parameterOverrides:
+            (json_['parameterOverrides']
+                    as core.Map<core.String, core.dynamic>?)
+                ?.map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    ParameterOverrides.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  ),
+                ),
         reportFormat: json_['reportFormat'] as core.String?,
         validateOnly: json_['validateOnly'] as core.bool?,
       );
@@ -2803,12 +3742,14 @@ class GenerateAuditReportRequest {
     final complianceFramework = this.complianceFramework;
     final complianceStandard = this.complianceStandard;
     final gcsUri = this.gcsUri;
+    final parameterOverrides = this.parameterOverrides;
     final reportFormat = this.reportFormat;
     final validateOnly = this.validateOnly;
     return {
       'complianceFramework': ?complianceFramework,
       'complianceStandard': ?complianceStandard,
       'gcsUri': ?gcsUri,
+      'parameterOverrides': ?parameterOverrides,
       'reportFormat': ?reportFormat,
       'validateOnly': ?validateOnly,
     };
@@ -2835,6 +3776,16 @@ class GenerateAuditScopeReportRequest {
     'Not supported. Member documentation may have more information.',
   )
   core.String? complianceStandard;
+
+  /// Maps dynamic parameter overrides by Cloud Control resource name at
+  /// execution time.
+  ///
+  /// For example,
+  /// `{"organizations/123/locations/global/cloudControls/control-1":
+  /// {parameters: [...]}}`
+  ///
+  /// Optional.
+  core.Map<core.String, ParameterOverrides>? parameterOverrides;
 
   /// Format for the audit scope report.
   ///
@@ -2864,6 +3815,7 @@ class GenerateAuditScopeReportRequest {
   GenerateAuditScopeReportRequest({
     this.complianceFramework,
     this.complianceStandard,
+    this.parameterOverrides,
     this.reportFormat,
     this.validateOnly,
   });
@@ -2872,6 +3824,17 @@ class GenerateAuditScopeReportRequest {
     : this(
         complianceFramework: json_['complianceFramework'] as core.String?,
         complianceStandard: json_['complianceStandard'] as core.String?,
+        parameterOverrides:
+            (json_['parameterOverrides']
+                    as core.Map<core.String, core.dynamic>?)
+                ?.map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    ParameterOverrides.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  ),
+                ),
         reportFormat: json_['reportFormat'] as core.String?,
         validateOnly: json_['validateOnly'] as core.bool?,
       );
@@ -2879,11 +3842,13 @@ class GenerateAuditScopeReportRequest {
   core.Map<core.String, core.dynamic> toJson() {
     final complianceFramework = this.complianceFramework;
     final complianceStandard = this.complianceStandard;
+    final parameterOverrides = this.parameterOverrides;
     final reportFormat = this.reportFormat;
     final validateOnly = this.validateOnly;
     return {
       'complianceFramework': ?complianceFramework,
       'complianceStandard': ?complianceStandard,
+      'parameterOverrides': ?parameterOverrides,
       'reportFormat': ?reportFormat,
       'validateOnly': ?validateOnly,
     };
@@ -2923,6 +3888,53 @@ class ListAuditReportsResponse {
     final auditReports = this.auditReports;
     final nextPageToken = this.nextPageToken;
     return {'auditReports': ?auditReports, 'nextPageToken': ?nextPageToken};
+  }
+}
+
+/// Response message for ListAuditSchedules.
+class ListAuditSchedulesResponse {
+  /// List of audit schedules.
+  core.List<AuditSchedule>? auditSchedules;
+
+  /// A token that you can send as the `page_token` in a subsequent request to
+  /// retrieve the next page of results.
+  ///
+  /// If this field is empty, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// Locations that can't be reached.
+  core.List<core.String>? unreachable;
+
+  ListAuditSchedulesResponse({
+    this.auditSchedules,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListAuditSchedulesResponse.fromJson(core.Map json_)
+    : this(
+        auditSchedules: (json_['auditSchedules'] as core.List?)
+            ?.map(
+              (value) => AuditSchedule.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final auditSchedules = this.auditSchedules;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'auditSchedules': ?auditSchedules,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
   }
 }
 
@@ -3162,6 +4174,163 @@ class Operation {
   }
 }
 
+/// The possible parameter value types.
+class ParamValue {
+  /// A boolean value.
+  ///
+  /// Optional.
+  core.bool? boolValue;
+
+  /// A double value.
+  ///
+  /// Optional.
+  core.double? numberValue;
+
+  /// Sub-parameter values.
+  ///
+  /// Optional.
+  Parameter? oneofValue;
+
+  /// A repeated string.
+  ///
+  /// Optional.
+  StringList? stringListValue;
+
+  /// A string value.
+  ///
+  /// Optional.
+  core.String? stringValue;
+
+  ParamValue({
+    this.boolValue,
+    this.numberValue,
+    this.oneofValue,
+    this.stringListValue,
+    this.stringValue,
+  });
+
+  ParamValue.fromJson(core.Map json_)
+    : this(
+        boolValue: json_['boolValue'] as core.bool?,
+        numberValue: (json_['numberValue'] as core.num?)?.toDouble(),
+        oneofValue: json_.containsKey('oneofValue')
+            ? Parameter.fromJson(
+                json_['oneofValue'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        stringListValue: json_.containsKey('stringListValue')
+            ? StringList.fromJson(
+                json_['stringListValue'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        stringValue: json_['stringValue'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final boolValue = this.boolValue;
+    final numberValue = this.numberValue;
+    final oneofValue = this.oneofValue;
+    final stringListValue = this.stringListValue;
+    final stringValue = this.stringValue;
+    return {
+      'boolValue': ?boolValue,
+      'numberValue': ?numberValue,
+      'oneofValue': ?oneofValue,
+      'stringListValue': ?stringListValue,
+      'stringValue': ?stringValue,
+    };
+  }
+}
+
+/// Parameters are key-value pairs that let you provide your custom location
+/// requirements, environment requirements, or other settings that are relevant
+/// to the cloud control.
+class Parameter {
+  /// The name or key of the parameter.
+  ///
+  /// Required.
+  core.String? name;
+
+  /// The value of the parameter.
+  ///
+  /// Required.
+  ParamValue? parameterValue;
+
+  Parameter({this.name, this.parameterValue});
+
+  Parameter.fromJson(core.Map json_)
+    : this(
+        name: json_['name'] as core.String?,
+        parameterValue: json_.containsKey('parameterValue')
+            ? ParamValue.fromJson(
+                json_['parameterValue'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final parameterValue = this.parameterValue;
+    return {'name': ?name, 'parameterValue': ?parameterValue};
+  }
+}
+
+/// Wrapper message to associate a list of CSC internal parameter overrides with
+/// a control name.
+class ParameterOverrides {
+  /// The list of parameter overrides.
+  core.List<Parameter>? parameters;
+
+  ParameterOverrides({this.parameters});
+
+  ParameterOverrides.fromJson(core.Map json_)
+    : this(
+        parameters: (json_['parameters'] as core.List?)
+            ?.map(
+              (value) => Parameter.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final parameters = this.parameters;
+    return {'parameters': ?parameters};
+  }
+}
+
+/// State of a parameter for a cloud control.
+class ParameterState {
+  /// Whether this parameter was overridden by the user.
+  ///
+  /// Output only.
+  core.bool? isOverridden;
+
+  /// The parameter key and value.
+  ///
+  /// Output only.
+  Parameter? parameter;
+
+  ParameterState({this.isOverridden, this.parameter});
+
+  ParameterState.fromJson(core.Map json_)
+    : this(
+        isOverridden: json_['isOverridden'] as core.bool?,
+        parameter: json_.containsKey('parameter')
+            ? Parameter.fromJson(
+                json_['parameter'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final isOverridden = this.isOverridden;
+    final parameter = this.parameter;
+    return {'isOverridden': ?isOverridden, 'parameter': ?parameter};
+  }
+}
+
 /// Additional information about the number of checks that were made during an
 /// audit operation.
 class ReportSummary {
@@ -3293,6 +4462,72 @@ class ResourceEnrollmentStatus {
   }
 }
 
+/// Timing and frequency parameters for recurring audit runs.
+class ScheduleConfig {
+  /// Date that the schedule stops.
+  ///
+  /// If not specified, the schedule runs indefinitely.
+  ///
+  /// Optional.
+  core.String? endTime;
+
+  /// Frequency of audit runs.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "FREQUENCY_UNSPECIFIED" : Default value. This value is unused.
+  /// - "DAILY" : The audit runs every day.
+  /// - "WEEKLY" : The audit runs weekly on the same day of the week as
+  /// `start_time`.
+  /// - "MONTHLY" : The audit runs monthly on the same day of the month as
+  /// `start_time`.
+  /// - "QUARTERLY" : The audit runs quarterly (every 3 months) on the same day
+  /// of the month as `start_time`.
+  /// - "ANNUALLY" : The audit runs annually on the same month and day as
+  /// `start_time`.
+  core.String? frequency;
+
+  /// Date and time when the first audit run is triggered.
+  ///
+  /// Subsequent runs are based on this time and the chosen frequency.
+  ///
+  /// Required.
+  core.String? startTime;
+
+  /// Time zone for the audit schedule in IANA format (for example,
+  /// `America/New_York`).
+  ///
+  /// The time zone is used to interpret the `start_time` and the `end_time`,
+  /// and to calculate subsequent run dates. If not specified, the time zone
+  /// default is UTC.
+  ///
+  /// Optional.
+  core.String? timeZone;
+
+  ScheduleConfig({this.endTime, this.frequency, this.startTime, this.timeZone});
+
+  ScheduleConfig.fromJson(core.Map json_)
+    : this(
+        endTime: json_['endTime'] as core.String?,
+        frequency: json_['frequency'] as core.String?,
+        startTime: json_['startTime'] as core.String?,
+        timeZone: json_['timeZone'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final endTime = this.endTime;
+    final frequency = this.frequency;
+    final startTime = this.startTime;
+    final timeZone = this.timeZone;
+    return {
+      'endTime': ?endTime,
+      'frequency': ?frequency,
+      'startTime': ?startTime,
+      'timeZone': ?timeZone,
+    };
+  }
+}
+
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.
 ///
@@ -3301,3 +4536,6 @@ class ResourceEnrollmentStatus {
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status00;
+
+/// A list of strings for the parameter value.
+typedef StringList = $StringList02;

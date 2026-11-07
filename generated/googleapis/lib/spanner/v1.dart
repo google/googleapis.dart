@@ -9252,6 +9252,13 @@ class Instance {
   /// creating databases.
   core.String? state;
 
+  /// Tag keys/values directly bound to this resource.
+  ///
+  /// For example: "123/environment": "prod", "123/costCenter": "marketing"
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? tags;
+
   /// The time at which the instance was most recently updated.
   ///
   /// Output only.
@@ -9273,6 +9280,7 @@ class Instance {
     this.processingUnits,
     this.replicaComputeCapacity,
     this.state,
+    this.tags,
     this.updateTime,
   });
 
@@ -9314,6 +9322,9 @@ class Instance {
             )
             .toList(),
         state: json_['state'] as core.String?,
+        tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
         updateTime: json_['updateTime'] as core.String?,
       );
 
@@ -9333,6 +9344,7 @@ class Instance {
     final processingUnits = this.processingUnits;
     final replicaComputeCapacity = this.replicaComputeCapacity;
     final state = this.state;
+    final tags = this.tags;
     final updateTime = this.updateTime;
     return {
       'autoscalingConfig': ?autoscalingConfig,
@@ -9350,6 +9362,7 @@ class Instance {
       'processingUnits': ?processingUnits,
       'replicaComputeCapacity': ?replicaComputeCapacity,
       'state': ?state,
+      'tags': ?tags,
       'updateTime': ?updateTime,
     };
   }

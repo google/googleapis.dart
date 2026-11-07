@@ -118,6 +118,10 @@ class CalendarApi {
   static const calendarReadonlyScope =
       'https://www.googleapis.com/auth/calendar.readonly';
 
+  /// View and edit your Calendar settings
+  static const calendarSettingsScope =
+      'https://www.googleapis.com/auth/calendar.settings';
+
   /// View your Calendar settings
   static const calendarSettingsReadonlyScope =
       'https://www.googleapis.com/auth/calendar.settings.readonly';
@@ -2860,6 +2864,98 @@ class AclRule {
   }
 }
 
+class CalendarWorkingHoursAvailableTimes {
+  /// Day of the week.
+  ///
+  /// Required. Possible values are:
+  /// - "monday"
+  /// - "tuesday"
+  /// - "wednesday"
+  /// - "thursday"
+  /// - "friday"
+  /// - "saturday"
+  /// - "sunday"
+  core.String? dayOfWeek;
+
+  /// Period end, in minutes from the start of the day, exclusive.
+  ///
+  /// Required.
+  core.int? periodEnd;
+
+  /// Period start, in minutes from the start of the day, inclusive.
+  ///
+  /// Required.
+  core.int? periodStart;
+
+  CalendarWorkingHoursAvailableTimes({
+    this.dayOfWeek,
+    this.periodEnd,
+    this.periodStart,
+  });
+
+  CalendarWorkingHoursAvailableTimes.fromJson(core.Map json_)
+    : this(
+        dayOfWeek: json_['dayOfWeek'] as core.String?,
+        periodEnd: json_['periodEnd'] as core.int?,
+        periodStart: json_['periodStart'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final dayOfWeek = this.dayOfWeek;
+    final periodEnd = this.periodEnd;
+    final periodStart = this.periodStart;
+    return {
+      'dayOfWeek': ?dayOfWeek,
+      'periodEnd': ?periodEnd,
+      'periodStart': ?periodStart,
+    };
+  }
+}
+
+/// Represents the information about the user's working hours.
+///
+/// Only available for primary calendars of Google Workspace users. To update
+/// the working hours, the entire working hours object must be passed. If not
+/// specified (or passed as null or an empty object), the existing working hours
+/// remain unchanged. To disable working hours or clear the schedule, set
+/// workingHoursEnabled to false (and omit availableTimes or pass an empty
+/// list).
+class CalendarWorkingHours {
+  /// Working hours.
+  ///
+  /// Each availability period represents the user's working hours block during
+  /// one day.
+  core.List<CalendarWorkingHoursAvailableTimes>? availableTimes;
+
+  /// Whether the working hours are enabled for this calendar.
+  ///
+  /// Cannot be set to true when availableTimes is empty.
+  core.bool? workingHoursEnabled;
+
+  CalendarWorkingHours({this.availableTimes, this.workingHoursEnabled});
+
+  CalendarWorkingHours.fromJson(core.Map json_)
+    : this(
+        availableTimes: (json_['availableTimes'] as core.List?)
+            ?.map(
+              (value) => CalendarWorkingHoursAvailableTimes.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        workingHoursEnabled: json_['workingHoursEnabled'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final availableTimes = this.availableTimes;
+    final workingHoursEnabled = this.workingHoursEnabled;
+    return {
+      'availableTimes': ?availableTimes,
+      'workingHoursEnabled': ?workingHoursEnabled,
+    };
+  }
+}
+
 class Calendar {
   /// Whether this calendar automatically accepts invitations.
   ///
@@ -2911,6 +3007,16 @@ class Calendar {
   /// Optional.
   core.String? timeZone;
 
+  /// Represents the information about the user's working hours.
+  ///
+  /// Only available for primary calendars of Google Workspace users. To update
+  /// the working hours, the entire working hours object must be passed. If not
+  /// specified (or passed as null or an empty object), the existing working
+  /// hours remain unchanged. To disable working hours or clear the schedule,
+  /// set workingHoursEnabled to false (and omit availableTimes or pass an empty
+  /// list).
+  CalendarWorkingHours? workingHours;
+
   Calendar({
     this.autoAcceptInvitations,
     this.conferenceProperties,
@@ -2923,6 +3029,7 @@ class Calendar {
     this.location,
     this.summary,
     this.timeZone,
+    this.workingHours,
   });
 
   Calendar.fromJson(core.Map json_)
@@ -2947,6 +3054,11 @@ class Calendar {
         location: json_['location'] as core.String?,
         summary: json_['summary'] as core.String?,
         timeZone: json_['timeZone'] as core.String?,
+        workingHours: json_.containsKey('workingHours')
+            ? CalendarWorkingHours.fromJson(
+                json_['workingHours'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -2961,6 +3073,7 @@ class Calendar {
     final location = this.location;
     final summary = this.summary;
     final timeZone = this.timeZone;
+    final workingHours = this.workingHours;
     return {
       'autoAcceptInvitations': ?autoAcceptInvitations,
       'conferenceProperties': ?conferenceProperties,
@@ -2973,6 +3086,7 @@ class Calendar {
       'location': ?location,
       'summary': ?summary,
       'timeZone': ?timeZone,
+      'workingHours': ?workingHours,
     };
   }
 }

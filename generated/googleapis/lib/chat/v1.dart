@@ -178,12 +178,12 @@ class HangoutsChatApi {
   static const chatMembershipsReadonlyScope =
       'https://www.googleapis.com/auth/chat.memberships.readonly';
 
-  /// See, compose, send, update, and delete messages as well as their message
-  /// content; add, see, and delete reactions to messages.
+  /// See, compose, send, update, and delete messages, their content, and
+  /// attached cards; add, see, and delete reactions to messages.
   static const chatMessagesScope =
       'https://www.googleapis.com/auth/chat.messages';
 
-  /// Compose and send messages in Google Chat
+  /// Compose and send messages and attach cards
   static const chatMessagesCreateScope =
       'https://www.googleapis.com/auth/chat.messages.create';
 
@@ -1258,7 +1258,8 @@ class SpacesResource {
   /// `access_settings.access_permission_settings` is not supported with
   /// `useAdminAccess`. The supported field masks include: -
   /// `access_settings.access_permission_settings.discoverSpaceSetting` -
-  /// `access_settings.access_permission_settings.joinSpaceSetting`
+  /// `access_settings.access_permission_settings.joinSpaceSetting` -
+  /// `access_settings.access_permission_settings.viewSpaceMembershipSetting`
   /// `permission_settings`: Supports changing the
   /// [permission settings](https://support.google.com/chat/answer/13340792) of
   /// a space. When updating permission settings, you can only specify
@@ -1269,6 +1270,7 @@ class SpacesResource {
   /// `permission_settings.toggleHistory` -
   /// `permission_settings.useAtMentionAll` - `permission_settings.manageApps` -
   /// `permission_settings.manageWebhooks` - `permission_settings.replyMessages`
+  /// - `permission_settings.viewSpaceMembership`
   ///
   /// [useAdminAccess] - Optional. When `true`, the method runs using the user's
   /// Google Workspace administrator privileges. The calling user must be a
@@ -2679,6 +2681,59 @@ class SpacesMessagesResource {
       queryParams: queryParams_,
     );
     return Message.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Replaces the cards included in a message.
+  ///
+  /// A Chat app can only replace cards on a human-created message if the
+  /// message already contains cards, and the cards were created by the app. If
+  /// the app replaces the cards with an empty list, the cards are removed.
+  /// After removing the cards, the app cannot add cards back to the message.
+  /// Requires
+  /// [app authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app)
+  /// with the
+  /// [authorization scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes):
+  /// - `https://www.googleapis.com/auth/chat.bot`
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the message. Format:
+  /// `spaces/{space}/messages/{message}`
+  /// Value must have pattern `^spaces/\[^/\]+/messages/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ReplaceMessageCardsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ReplaceMessageCardsResponse> replaceCards(
+    ReplaceMessageCardsRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':replaceCards';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return ReplaceMessageCardsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Searches for messages in Google Chat that the calling user has access to.
@@ -4318,7 +4373,24 @@ class AccessPermissionSettings {
   /// Optional.
   AccessPermissionSetting? joinSpaceSetting;
 
-  AccessPermissionSettings({this.discoverSpaceSetting, this.joinSpaceSetting});
+  /// Access permission setting for viewing space membership.
+  ///
+  /// Must be specified together with `PermissionSettings.view_space_membership`
+  /// in the update mask and request body when updating who can view space
+  /// membership. When granting view access to a target audience, you must also
+  /// grant `PermissionSettings.view_space_membership` to all members in the
+  /// same request. To remove an existing target audience (for example, to
+  /// restrict view access to space managers or assistant managers only),
+  /// specify an empty `AccessPermissionSetting` (with no `principals`).
+  ///
+  /// Optional.
+  AccessPermissionSetting? viewSpaceMembershipSetting;
+
+  AccessPermissionSettings({
+    this.discoverSpaceSetting,
+    this.joinSpaceSetting,
+    this.viewSpaceMembershipSetting,
+  });
 
   AccessPermissionSettings.fromJson(core.Map json_)
     : this(
@@ -4334,14 +4406,23 @@ class AccessPermissionSettings {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        viewSpaceMembershipSetting:
+            json_.containsKey('viewSpaceMembershipSetting')
+            ? AccessPermissionSetting.fromJson(
+                json_['viewSpaceMembershipSetting']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final discoverSpaceSetting = this.discoverSpaceSetting;
     final joinSpaceSetting = this.joinSpaceSetting;
+    final viewSpaceMembershipSetting = this.viewSpaceMembershipSetting;
     return {
       'discoverSpaceSetting': ?discoverSpaceSetting,
       'joinSpaceSetting': ?joinSpaceSetting,
+      'viewSpaceMembershipSetting': ?viewSpaceMembershipSetting,
     };
   }
 }
@@ -5230,7 +5311,12 @@ class CardWithId {
   /// A unique identifier for a card in a message.
   core.String? cardId;
 
-  CardWithId({this.card, this.cardId});
+  /// The app that owns the card.
+  ///
+  /// Output only.
+  User? ownerUser;
+
+  CardWithId({this.card, this.cardId, this.ownerUser});
 
   CardWithId.fromJson(core.Map json_)
     : this(
@@ -5240,12 +5326,18 @@ class CardWithId {
               )
             : null,
         cardId: json_['cardId'] as core.String?,
+        ownerUser: json_.containsKey('ownerUser')
+            ? User.fromJson(
+                json_['ownerUser'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final card = this.card;
     final cardId = this.cardId;
-    return {'card': ?card, 'cardId': ?cardId};
+    final ownerUser = this.ownerUser;
+    return {'card': ?card, 'cardId': ?cardId, 'ownerUser': ?ownerUser};
   }
 }
 
@@ -5307,6 +5399,109 @@ class ChatSpaceLinkData {
     final space = this.space;
     final thread = this.thread;
     return {'message': ?message, 'space': ?space, 'thread': ?thread};
+  }
+}
+
+/// Citations are inline references that can provide users more detailed
+/// information about the inline reference.
+///
+/// Corresponding inline citations should be present in the message text in a
+/// markup format of `{text}`. Citations are only supported when the message's
+/// `markup_syntax` is set to `MARKDOWN`. Unreferenced citations in
+/// `Elements.citations` (those without a matching `` tag in the message text)
+/// are ignored and do not cause the message to be rejected.
+class Citation {
+  /// A list of sources that are relevant to the citation.
+  ///
+  /// Sources are displayed in the citation hover card.
+  ///
+  /// Optional.
+  core.List<CitedSource>? citedSources;
+
+  /// The ID of the citation.
+  ///
+  /// This ID is defined by the app creating the citation and must match the
+  /// `data-id` attribute of the `` tag in the message text. Must contain only
+  /// ASCII letters and numbers, and less than 63 characters.
+  ///
+  /// Required.
+  core.String? id;
+
+  Citation({this.citedSources, this.id});
+
+  Citation.fromJson(core.Map json_)
+    : this(
+        citedSources: (json_['citedSources'] as core.List?)
+            ?.map(
+              (value) => CitedSource.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        id: json_['id'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final citedSources = this.citedSources;
+    final id = this.id;
+    return {'citedSources': ?citedSources, 'id': ?id};
+  }
+}
+
+/// A reference to a source of information.
+class CitedSource {
+  /// Additional information to show alongside the snippet in the form of a
+  /// footer.
+  ///
+  /// Optional.
+  Footer? footer;
+
+  /// Snippet containing information directly from the source.
+  ///
+  /// Optional.
+  Snippet? snippet;
+
+  /// The plaintext title of the `CitedSource`.
+  ///
+  /// Does not support markdown format.
+  ///
+  /// Required.
+  core.String? title;
+
+  /// The URI pointing to the resource referenced by this `CitedSource`.
+  ///
+  /// Required.
+  core.String? uri;
+
+  CitedSource({this.footer, this.snippet, this.title, this.uri});
+
+  CitedSource.fromJson(core.Map json_)
+    : this(
+        footer: json_.containsKey('footer')
+            ? Footer.fromJson(
+                json_['footer'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        snippet: json_.containsKey('snippet')
+            ? Snippet.fromJson(
+                json_['snippet'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        title: json_['title'] as core.String?,
+        uri: json_['uri'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final footer = this.footer;
+    final snippet = this.snippet;
+    final title = this.title;
+    final uri = this.uri;
+    return {
+      'footer': ?footer,
+      'snippet': ?snippet,
+      'title': ?title,
+      'uri': ?uri,
+    };
   }
 }
 
@@ -5620,8 +5815,7 @@ class DeletionMetadata {
 class Dialog {
   /// Input only.
   ///
-  /// Body of the dialog, which is rendered in a modal. Google Chat apps don't
-  /// support the following card entities: `DateTimePicker`, `OnChangeAction`.
+  /// Body of the dialog, which is rendered in a modal.
   GoogleAppsCardV1Card? body;
 
   Dialog({this.body});
@@ -5749,6 +5943,77 @@ class DriveLinkData {
   }
 }
 
+/// Elements are additional message components, including inline `citations`
+/// (where each citation is associated with a specific portion of the message
+/// text) and `cited_sources` (which are general references used to generate the
+/// response and are not directly linked to specific segments of the text).
+///
+/// Both `citations` and `cited_sources` can be provided as input when creating
+/// or updating a message and are populated on output when reading a message.
+class Elements {
+  /// A list of inline citations referenced within the message text (via ``
+  /// tags) that render as interactive hover cards.
+  ///
+  /// Optional.
+  core.List<Citation>? citations;
+
+  /// A list of sources to be displayed under the message as footer links.
+  ///
+  /// These are not referenced inline. For inline references, use `citations`.
+  ///
+  /// Optional.
+  core.List<CitedSource>? citedSources;
+
+  Elements({this.citations, this.citedSources});
+
+  Elements.fromJson(core.Map json_)
+    : this(
+        citations: (json_['citations'] as core.List?)
+            ?.map(
+              (value) => Citation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        citedSources: (json_['citedSources'] as core.List?)
+            ?.map(
+              (value) => CitedSource.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final citations = this.citations;
+    final citedSources = this.citedSources;
+    return {'citations': ?citations, 'citedSources': ?citedSources};
+  }
+}
+
+/// An object encapsulating different ways of representing an image.
+///
+/// Currently supported representations: * An image fetched from a URI.
+/// Additional representations might be supported in the future.
+class ElementsImage {
+  /// The URI of the image.
+  ///
+  /// Must be a publicly accessible URI so that Chat can fetch and display it.
+  ///
+  /// Required.
+  core.String? imageUri;
+
+  ElementsImage({this.imageUri});
+
+  ElementsImage.fromJson(core.Map json_)
+    : this(imageUri: json_['imageUri'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final imageUri = this.imageUri;
+    return {'imageUri': ?imageUri};
+  }
+}
+
 /// An emoji that is used as a reaction to a message.
 class Emoji {
   /// A custom emoji.
@@ -5846,6 +6111,25 @@ class FindGroupChatsResponse {
     final nextPageToken = this.nextPageToken;
     final spaces = this.spaces;
     return {'nextPageToken': ?nextPageToken, 'spaces': ?spaces};
+  }
+}
+
+/// A footer for a source, used for attribution.
+class Footer {
+  /// The plaintext to display in the footer.
+  ///
+  /// Does not support markdown format.
+  ///
+  /// Optional.
+  core.String? text;
+
+  Footer({this.text});
+
+  Footer.fromJson(core.Map json_) : this(text: json_['text'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final text = this.text;
+    return {'text': ?text};
   }
 }
 
@@ -6308,7 +6592,8 @@ class GoogleAppsCardV1ButtonList {
 class GoogleAppsCardV1Card {
   /// The card's actions.
   ///
-  /// Actions are added to the card's toolbar menu. \[Google Workspace
+  /// Actions are added to the card's toolbar menu. Supports up to 10
+  /// `CardAction` items. \[Google Workspace
   /// add-ons\](https://developers.google.com/workspace/add-ons): For example,
   /// the following JSON constructs a card action menu with `Settings` and `Send
   /// Feedback` options: ``` "card_actions": [ { "actionLabel": "Settings",
@@ -6616,16 +6901,15 @@ class GoogleAppsCardV1CardHeader {
   }
 }
 
-/// A carousel, also known as a slider, rotates and displays a list of widgets
-/// in a slideshow format, with buttons navigating to the previous or next
-/// widget.
+/// Rotates and displays a list of carousel cards in a slideshow format, with
+/// buttons navigating to the previous or next card.
 ///
 /// For example, this is a JSON representation of a carousel that contains three
 /// text paragraph widgets. ``` { "carouselCards": [ { "widgets": [ {
-/// "textParagraph": { "text": "First text paragraph in carousel", } } ] }, {
+/// "textParagraph": { "text": "First text paragraph in carousel" } } ] }, {
 /// "widgets": [ { "textParagraph": { "text": "Second text paragraph in
-/// carousel", } } ] }, { "widgets": [ { "textParagraph": { "text": "Third text
-/// paragraph in carousel", } } ] } ] } ```
+/// carousel" } } ] }, { "widgets": [ { "textParagraph": { "text": "Third text
+/// paragraph in carousel" } } ] } ] } ```
 /// [Google Chat apps](https://developers.google.com/workspace/chat):
 class GoogleAppsCardV1Carousel {
   /// A list of cards included in the carousel.
@@ -6709,9 +6993,9 @@ class GoogleAppsCardV1Chip {
   /// Defaults to `false`.
   core.bool? disabled;
 
-  /// Whether the chip is in an active state and responds to user actions.
+  /// Deprecated: Use `disabled` instead.
   ///
-  /// Defaults to `true`. Deprecated. Use `disabled` instead.
+  /// Whether the chip is in an active state and responds to user actions.
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
   )
@@ -6719,7 +7003,8 @@ class GoogleAppsCardV1Chip {
 
   /// The icon image.
   ///
-  /// If both `icon` and `text` are set, then the icon appears before the text.
+  /// If both `icon` and `label` are set, then the icon appears before the
+  /// label.
   GoogleAppsCardV1Icon? icon;
 
   /// The text displayed inside the chip.
@@ -7153,7 +7438,9 @@ class GoogleAppsCardV1DateTimePicker {
   /// The number representing the time zone offset from UTC, in minutes.
   ///
   /// If set, the `value_ms_epoch` is displayed in the specified time zone. If
-  /// unset, the value defaults to the user's time zone setting.
+  /// unset, the value defaults to the user's time zone setting. Note: This
+  /// field is in minutes, whereas user interaction event payloads typically
+  /// provide time zone offsets in milliseconds (divide by `60000` to convert).
   core.int? timezoneOffsetDate;
 
   /// Whether the widget supports inputting a date, a time, or the date and
@@ -7269,7 +7556,10 @@ class GoogleAppsCardV1DecoratedText {
   )
   GoogleAppsCardV1Icon? icon;
 
-  /// This action is triggered when users click `topLabel` or `bottomLabel`.
+  /// This action is triggered when users click anywhere on the `DecoratedText`
+  /// widget (including `text`, `top_label`, `bottom_label`, and icons), except
+  /// when clicking a separate interactive control (`button` or
+  /// `switch_control`).
   GoogleAppsCardV1OnClick? onClick;
 
   /// The icon displayed in front of the text.
@@ -7604,7 +7894,8 @@ class GoogleAppsCardV1Grid {
   core.List<GoogleAppsCardV1GridItem>? items;
 
   /// This callback is reused by each individual grid item, but with the item's
-  /// identifier and index in the items list added to the callback's parameters.
+  /// identifier added to the callback's parameters (under the key
+  /// `"grid_item_identifier"`).
   GoogleAppsCardV1OnClick? onClick;
 
   /// The text that displays in the grid header.
@@ -8395,7 +8686,8 @@ class GoogleAppsCardV1Section {
 
   /// All the widgets in the section.
   ///
-  /// Must contain at least one widget.
+  /// Must contain at least one widget. A card supports up to 100 widgets across
+  /// all sections.
   core.List<GoogleAppsCardV1Widget>? widgets;
 
   GoogleAppsCardV1Section({
@@ -8798,7 +9090,8 @@ class GoogleAppsCardV1SwitchControl {
   /// - "CHECK_BOX" : A checkbox.
   core.String? controlType;
 
-  /// The name by which the switch widget is identified in a form input event.
+  /// The name by which the switch widget is identified in a form input event
+  /// (as the key in `CommonEventObject.form_inputs`).
   ///
   /// For details about working with form inputs, see
   /// [Receive form data](https://developers.google.com/workspace/chat/read-form-data).
@@ -8808,12 +9101,17 @@ class GoogleAppsCardV1SwitchControl {
   /// function to run.
   GoogleAppsCardV1Action? onChangeAction;
 
-  /// When `true`, the switch is selected.
+  /// When `true`, the switch is selected, and its `value` is included in
+  /// `CommonEventObject.form_inputs[name].string_inputs.value`.
   core.bool? selected;
 
-  /// The value entered by a user, returned as part of a form input event.
+  /// The value returned in `CommonEventObject.form_inputs[name].string_inputs`
+  /// when the switch is selected (`selected` is `true`).
   ///
-  /// For details about working with form inputs, see
+  /// If `selected` is `true` and `value` is unset, an empty string (`""`) is
+  /// returned in `string_inputs.value`. When `selected` is `false`, this value
+  /// is omitted from `string_inputs.value`. For details about working with form
+  /// inputs, see
   /// [Receive form data](https://developers.google.com/workspace/chat/read-form-data).
   core.String? value;
 
@@ -9187,19 +9485,21 @@ class GoogleAppsCardV1Widget {
   /// "https://example.com/calendar" } } } ] } ```
   GoogleAppsCardV1ButtonList? buttonList;
 
-  /// A carousel contains a collection of nested widgets.
+  /// Contains a collection of `CarouselCard` items, each of which contains
+  /// nested widgets.
   ///
   /// For example, this is a JSON representation of a carousel that contains two
-  /// text paragraphs. ``` { "widgets": [ { "textParagraph": { "text": "First
-  /// text paragraph in the carousel." } }, { "textParagraph": { "text": "Second
-  /// text paragraph in the carousel." } } ] } ```
+  /// carousel cards, each with a text paragraph: ``` { "carouselCards": [ {
+  /// "widgets": [ { "textParagraph": { "text": "First text paragraph in the
+  /// carousel." } } ] }, { "widgets": [ { "textParagraph": { "text": "Second
+  /// text paragraph in the carousel." } } ] } ] } ```
   GoogleAppsCardV1Carousel? carousel;
 
   /// A list of chips.
   ///
   /// For example, the following JSON creates two chips. The first is a text
   /// chip and the second is an icon chip that opens a link: ``` "chipList": {
-  /// "chips": [ { "text": "Edit", "disabled": true, }, { "icon": { "knownIcon":
+  /// "chips": [ { "label": "Edit", "disabled": true }, { "icon": { "knownIcon":
   /// "INVITE", "altText": "check calendar" }, "onClick": { "openLink": { "url":
   /// "https://example.com/calendar" } } } ] } ```
   GoogleAppsCardV1ChipList? chipList;
@@ -10419,9 +10719,11 @@ class Membership {
   ///
   /// If your Chat app
   /// [authenticates as a user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user),
-  /// the output populates the
+  /// the output only populates the
   /// [user](https://developers.google.com/workspace/chat/api/reference/rest/v1/User)
-  /// `name` and `type`.
+  /// `name` and `type` fields for both internal and external users, unless they
+  /// are members of the space or have a prior affinity, like a direct message
+  /// (DM) conversation, with the calling user.
   ///
   /// Optional.
   User? member;
@@ -10824,6 +11126,22 @@ class Message {
   /// Output only.
   DeletionMetadata? deletionMetadata;
 
+  /// Additional message components, including inline `citations` (where each
+  /// citation is associated with a specific portion of the message text) and
+  /// `cited_sources` (which are general references used to generate the
+  /// response and are not directly linked to specific segments of the text).
+  ///
+  /// On input, provide `elements` when creating or updating a message. On
+  /// output, both `citations` and `cited_sources` are populated when reading a
+  /// message that contains them. Callers can read structured citation metadata
+  /// from `elements`, while `formatted_text` also includes inline citation tags
+  /// or source links depending on `markup_syntax`. These differ from
+  /// `annotations`, which are output-only and offer supplementary information
+  /// tied to message fragments or the entire message text.
+  ///
+  /// Optional.
+  Elements? elements;
+
   /// The list of emoji reaction summaries on the message.
   ///
   /// Output only.
@@ -10861,7 +11179,12 @@ class Message {
   /// Output only.
   core.String? lastUpdateTime;
 
-  /// Specifies how the server interprets the message `text` field content.
+  /// Specifies how the server interprets the message `text` field content when
+  /// creating a message or updating the `text` field of a message.
+  ///
+  /// When calling `UpdateMessage`, set `markup_syntax` and `text` on the
+  /// `Message` resource and include `text` (not `markup_syntax`) in
+  /// `update_mask`.
   ///
   /// Optional.
   /// Possible string values are:
@@ -10928,9 +11251,11 @@ class Message {
   ///
   /// If your Chat app
   /// [authenticates as a user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user),
-  /// the output populates the
+  /// the output only populates the
   /// [user](https://developers.google.com/workspace/chat/api/reference/rest/v1/User)
-  /// `name` and `type`.
+  /// `name` and `type` fields for both internal and external users, unless they
+  /// are members of the space or have a prior affinity, like a direct message
+  /// (DM) conversation, with the calling user.
   ///
   /// Output only.
   User? sender;
@@ -10998,6 +11323,7 @@ class Message {
     this.createTime,
     this.deleteTime,
     this.deletionMetadata,
+    this.elements,
     this.emojiReactionSummaries,
     this.fallbackText,
     this.formattedText,
@@ -11075,6 +11401,11 @@ class Message {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        elements: json_.containsKey('elements')
+            ? Elements.fromJson(
+                json_['elements'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         emojiReactionSummaries: (json_['emojiReactionSummaries'] as core.List?)
             ?.map(
               (value) => EmojiReactionSummary.fromJson(
@@ -11142,6 +11473,7 @@ class Message {
     final createTime = this.createTime;
     final deleteTime = this.deleteTime;
     final deletionMetadata = this.deletionMetadata;
+    final elements = this.elements;
     final emojiReactionSummaries = this.emojiReactionSummaries;
     final fallbackText = this.fallbackText;
     final formattedText = this.formattedText;
@@ -11171,6 +11503,7 @@ class Message {
       'createTime': ?createTime,
       'deleteTime': ?deleteTime,
       'deletionMetadata': ?deletionMetadata,
+      'elements': ?elements,
       'emojiReactionSummaries': ?emojiReactionSummaries,
       'fallbackText': ?fallbackText,
       'formattedText': ?formattedText,
@@ -11557,6 +11890,21 @@ class PermissionSettings {
   /// Optional.
   PermissionSetting? useAtMentionAll;
 
+  /// Setting for viewing space membership.
+  ///
+  /// Must be specified together with
+  /// `AccessPermissionSettings.view_space_membership_setting` in the update
+  /// mask and request body when updating who can view space membership. When
+  /// restricting view access to specific roles (for example, space managers or
+  /// assistant managers only), specify the desired role permissions here and
+  /// provide an empty `AccessPermissionSettings.view_space_membership_setting`
+  /// in the same request. If a target audience is configured in
+  /// `AccessPermissionSettings.view_space_membership_setting`, this setting
+  /// must be granted to all members.
+  ///
+  /// Optional.
+  PermissionSetting? viewSpaceMembership;
+
   PermissionSettings({
     this.manageApps,
     this.manageMembersAndGroups,
@@ -11566,6 +11914,7 @@ class PermissionSettings {
     this.replyMessages,
     this.toggleHistory,
     this.useAtMentionAll,
+    this.viewSpaceMembership,
   });
 
   PermissionSettings.fromJson(core.Map json_)
@@ -11612,6 +11961,12 @@ class PermissionSettings {
                 json_['useAtMentionAll'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        viewSpaceMembership: json_.containsKey('viewSpaceMembership')
+            ? PermissionSetting.fromJson(
+                json_['viewSpaceMembership']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -11623,6 +11978,7 @@ class PermissionSettings {
     final replyMessages = this.replyMessages;
     final toggleHistory = this.toggleHistory;
     final useAtMentionAll = this.useAtMentionAll;
+    final viewSpaceMembership = this.viewSpaceMembership;
     return {
       'manageApps': ?manageApps,
       'manageMembersAndGroups': ?manageMembersAndGroups,
@@ -11632,6 +11988,7 @@ class PermissionSettings {
       'replyMessages': ?replyMessages,
       'toggleHistory': ?toggleHistory,
       'useAtMentionAll': ?useAtMentionAll,
+      'viewSpaceMembership': ?viewSpaceMembership,
     };
   }
 }
@@ -12038,6 +12395,40 @@ class ReactionDeletedEventData {
   }
 }
 
+/// Request message for ReplaceMessageCards API method.
+class ReplaceMessageCardsRequest {
+  /// An array of
+  /// [cards](https://developers.google.com/workspace/chat/api/reference/rest/v1/cards)
+  /// to be included in the message.
+  ///
+  /// These cards will replace the existing cards of the message. If empty, the
+  /// original cards included in the message will be cleared.
+  ///
+  /// Optional.
+  core.List<CardWithId>? cardsV2;
+
+  ReplaceMessageCardsRequest({this.cardsV2});
+
+  ReplaceMessageCardsRequest.fromJson(core.Map json_)
+    : this(
+        cardsV2: (json_['cardsV2'] as core.List?)
+            ?.map(
+              (value) => CardWithId.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final cardsV2 = this.cardsV2;
+    return {'cardsV2': ?cardsV2};
+  }
+}
+
+/// Response message for ReplaceMessageCards API.
+typedef ReplaceMessageCardsResponse = $Empty;
+
 /// A rich link to a resource.
 ///
 /// Rich links can be associated with the plain-text body of the message or
@@ -12205,8 +12596,11 @@ class SearchMessagesRequest {
   /// their display name. Results are limited to the top five space matches. For
   /// example, `space.display_name:Project` searches for messages in the top
   /// five spaces that contain the word "Project" in their display names. -
-  /// `attachment`: Supports the operator `:*` (has any) to check for the
-  /// presence of attachments. If `attachment:*` is specified, only messages
+  /// `space.space_type`: The type of the space. Only supports `=`. For example,
+  /// `space.space_type="DIRECT_MESSAGE"` returns only messages from direct
+  /// messages. The possible values are `DIRECT_MESSAGE`, `GROUP_CHAT`, and
+  /// `SPACE`. - `attachment`: Supports the operator `:*` (has any) to check for
+  /// the presence of attachments. If `attachment:*` is specified, only messages
   /// that have at least one attachment are returned. -
   /// `annotations.user_mentions.user.name`: The resource name of the mentioned
   /// user (`users/{user}`). Only supports `:` (has). For example:
@@ -12219,8 +12613,8 @@ class SearchMessagesRequest {
   /// are also available: - `has_link()`: Returns only messages that have at
   /// least one hyperlink in the message text. - `is_unread()`: Filters out
   /// messages that have been read by the calling user. Using the
-  /// `space.display_name` filter requires that the calling credentials include
-  /// one of the following
+  /// `space.display_name` or the `space.space_type` filters requires that the
+  /// calling credentials include one of the following
   /// [authorization scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes):
   /// - `https://www.googleapis.com/auth/chat.spaces.readonly` -
   /// `https://www.googleapis.com/auth/chat.spaces` Using the `is_unread()`
@@ -12247,7 +12641,9 @@ class SearchMessagesRequest {
   /// display names containing both `Project` and `Tasks`, whereas
   /// `space.display_name:Project OR space.display_name:Tasks` returns messages
   /// that are in spaces with display names containing either `Project` or
-  /// `Tasks` or both. - `annotations.user_mentions.user.name` supports the
+  /// `Tasks` or both. - `space.space_type` supports only the `OR` operator, for
+  /// example: `space.space_type = "DIRECT_MESSAGE" OR space.space_type =
+  /// "GROUP_CHAT"`. - `annotations.user_mentions.user.name` supports the
   /// operators `AND` and `OR`, but not a mix of both. For example:
   /// `annotations.user_mentions.user.name:"users/1234567890" AND
   /// annotations.user_mentions.user.name:"users/0987654321"` returns only
@@ -12762,6 +13158,44 @@ class SlashCommandMetadata {
   }
 }
 
+/// A snippet object representing an excerpt from a larger corpus.
+class Snippet {
+  /// Image preview of the snippet provided as an input when creating the
+  /// citation.
+  ///
+  /// Optional.
+  ElementsImage? imagePreview;
+
+  /// A short plaintext excerpt directly from the corpus that is rendered in the
+  /// citation hover card or source preview.
+  ///
+  /// When footer sources are automatically populated from inline `citations`
+  /// (because `Elements.cited_sources` is not set), snippets are omitted from
+  /// the deduplicated footer sources. Does not support markdown format, and
+  /// must not exceed 1,000 characters.
+  ///
+  /// Optional.
+  core.String? text;
+
+  Snippet({this.imagePreview, this.text});
+
+  Snippet.fromJson(core.Map json_)
+    : this(
+        imagePreview: json_.containsKey('imagePreview')
+            ? ElementsImage.fromJson(
+                json_['imagePreview'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        text: json_['text'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final imagePreview = this.imagePreview;
+    final text = this.text;
+    return {'imagePreview': ?imagePreview, 'text': ?text};
+  }
+}
+
 /// A space in Google Chat.
 ///
 /// Spaces are conversations between two or more users or 1:1 messages between a
@@ -13168,7 +13602,7 @@ class SpaceDetails {
   /// A description of the space.
   ///
   /// For example, describe the space's discussion topic, functional purpose, or
-  /// participants. Supports up to 150 characters.
+  /// participants. Supports up to 4,096 characters.
   ///
   /// Optional.
   core.String? description;
@@ -13680,7 +14114,7 @@ class TextButton {
 /// [Formatting text in Google Chat apps](https://developers.google.com/workspace/chat/format-messages#card-formatting)
 /// and \[Formatting text in Google Workspace
 /// Add-ons\](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
-typedef TextParagraph = $Shared04;
+typedef TextParagraph = $Shared02;
 
 /// A thread in a Google Chat space.
 ///
@@ -13822,14 +14256,36 @@ class UploadAttachmentResponse {
   }
 }
 
-/// A user in Google Chat.
-///
-/// When returned as an output from a request, if your Chat app
+/// If your Chat app
 /// [authenticates as a user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user),
-/// the output for a `User` resource only populates the user's `name` and
-/// `type`.
+/// the output for a `User` resource (such as in the Messages and Memberships
+/// APIs) only populates the `name` and `type` fields for both internal and
+/// external users, unless they are members of the space or have prior affinity
+/// with the calling user.
 class User {
+  /// The user's avatar image URL.
+  ///
+  /// When calling the Messages and Memberships APIs with
+  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user),
+  /// this field is populated for both internal and external users for the
+  /// `sender` of a message, users within `annotations` (such as user mentions),
+  /// and within `Membership` resources, provided the user is a member of the
+  /// space or has prior affinity with the calling user.
+  ///
+  /// Output only.
+  core.String? avatarUrl;
+
   /// The user's display name.
+  ///
+  /// Populated for both app authentication and user authentication. This field
+  /// is always populated for requests made with
+  /// [app authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app).
+  /// When calling the Messages and Memberships APIs with
+  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user),
+  /// this field is populated for both internal and external users for the
+  /// `sender` of a message, users within `annotations` (such as user mentions),
+  /// and within `Membership` resources, provided the user is a member of the
+  /// space or has prior affinity with the calling user.
   ///
   /// Output only.
   core.String? displayName;
@@ -13837,7 +14293,21 @@ class User {
   /// Unique identifier of the user's Google Workspace domain.
   core.String? domainId;
 
-  /// When `true`, the user is deleted or their profile is not visible.
+  /// The user's email address.
+  ///
+  /// When calling the Messages and Memberships APIs with
+  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user),
+  /// this field is populated for both internal and external users for the
+  /// `sender` of a message, users within `annotations` (such as user mentions),
+  /// and within `Membership` resources, provided the user is a member of the
+  /// space or has prior affinity with the calling user.
+  ///
+  /// Output only.
+  core.String? email;
+
+  /// When `true`, the user is deleted or their profile is not visible, such as
+  /// when a user is mentioned in a space without being a member and without
+  /// prior affinity with the calling user.
   ///
   /// Output only.
   core.bool? isAnonymous;
@@ -13868,8 +14338,10 @@ class User {
   core.String? type;
 
   User({
+    this.avatarUrl,
     this.displayName,
     this.domainId,
+    this.email,
     this.isAnonymous,
     this.name,
     this.type,
@@ -13877,22 +14349,28 @@ class User {
 
   User.fromJson(core.Map json_)
     : this(
+        avatarUrl: json_['avatarUrl'] as core.String?,
         displayName: json_['displayName'] as core.String?,
         domainId: json_['domainId'] as core.String?,
+        email: json_['email'] as core.String?,
         isAnonymous: json_['isAnonymous'] as core.bool?,
         name: json_['name'] as core.String?,
         type: json_['type'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final avatarUrl = this.avatarUrl;
     final displayName = this.displayName;
     final domainId = this.domainId;
+    final email = this.email;
     final isAnonymous = this.isAnonymous;
     final name = this.name;
     final type = this.type;
     return {
+      'avatarUrl': ?avatarUrl,
       'displayName': ?displayName,
       'domainId': ?domainId,
+      'email': ?email,
       'isAnonymous': ?isAnonymous,
       'name': ?name,
       'type': ?type,

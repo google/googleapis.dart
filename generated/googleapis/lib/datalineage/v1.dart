@@ -2826,6 +2826,15 @@ class GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFilters 
   /// entities with the `field` field set are not returned.
   core.String? entitySet;
 
+  /// Projects to restrict lineage links to.
+  ///
+  /// Callers can provide project IDs (for example, `projects/my-project`) or
+  /// project numbers (for example, `projects/123456789`). If unspecified,
+  /// lineage is returned from all projects.
+  ///
+  /// Optional.
+  core.List<core.String>? projects;
+
   /// Time interval to search for lineage.
   ///
   /// If unspecified, all lineage is returned. Currently, at most one of
@@ -2837,6 +2846,7 @@ class GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFilters 
   GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFilters({
     this.dependencyTypes,
     this.entitySet,
+    this.projects,
     this.timeRange,
   });
 
@@ -2847,6 +2857,9 @@ class GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFilters 
             ?.map((value) => value as core.String)
             .toList(),
         entitySet: json_['entitySet'] as core.String?,
+        projects: (json_['projects'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         timeRange: json_.containsKey('timeRange')
             ? GoogleTypeInterval.fromJson(
                 json_['timeRange'] as core.Map<core.String, core.dynamic>,
@@ -2857,10 +2870,12 @@ class GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFilters 
   core.Map<core.String, core.dynamic> toJson() {
     final dependencyTypes = this.dependencyTypes;
     final entitySet = this.entitySet;
+    final projects = this.projects;
     final timeRange = this.timeRange;
     return {
       'dependencyTypes': ?dependencyTypes,
       'entitySet': ?entitySet,
+      'projects': ?projects,
       'timeRange': ?timeRange,
     };
   }

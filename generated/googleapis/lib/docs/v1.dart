@@ -186,6 +186,32 @@ class DocumentsResource {
   ///
   /// [documentId] - The ID of the document to retrieve.
   ///
+  /// [commentsViewMode] - The comments view mode to apply to the document. This
+  /// allows viewing the document with comments omitted or included. If one is
+  /// not specified, COMMENTS_VIEW_MODE_OMITTED is used. If you set
+  /// comments_view_mode to any value, you must also set include_tabs_content to
+  /// `true` or use a field mask that references the Document.tabs field (or any
+  /// subfield). If you set comments_view_mode to COMMENTS_VIEW_MODE_INCLUDED,
+  /// you must also explicitly set suggestions_view_mode to SUGGESTIONS_INLINE.
+  /// If you set comments_view_mode to COMMENTS_VIEW_MODE_INCLUDED or
+  /// COMMENTS_VIEW_MODE_DEFAULT_FOR_CURRENT_ACCESS, you may not set
+  /// suggestions_view_mode to PREVIEW_WITHOUT_SUGGESTIONS or
+  /// PREVIEW_SUGGESTIONS_ACCEPTED.
+  /// Possible string values are:
+  /// - "COMMENTS_VIEW_MODE_UNSPECIFIED" : The CommentsViewMode is unspecified.
+  /// COMMENTS_VIEW_MODE_OMITTED is applied.
+  /// - "COMMENTS_VIEW_MODE_DEFAULT_FOR_CURRENT_ACCESS" : The CommentsViewMode
+  /// applied to the returned document depends on the user's current access
+  /// level. If the user only has view access, COMMENTS_VIEW_MODE_OMITTED is
+  /// applied. Otherwise, COMMENTS_VIEW_MODE_INCLUDED is applied.
+  /// - "COMMENTS_VIEW_MODE_OMITTED" : The returned document has comments
+  /// omitted.
+  /// - "COMMENTS_VIEW_MODE_INCLUDED" : The returned document has comments
+  /// included. Requests to retrieve a document using this mode will return a
+  /// 403 error if the user does not have permission to view comments. When set,
+  /// suggestions_view_mode must also be set to SUGGESTIONS_INLINE. Returns a
+  /// 400 bad request error otherwise.
+  ///
   /// [includeTabsContent] - Whether to populate the `Document.tabs` field
   /// instead of the text content fields like `body` and `documentStyle` on
   /// `Document`. - When `true`: Document content populates in the
@@ -230,11 +256,13 @@ class DocumentsResource {
   /// this method will complete with the same error.
   async.Future<Document> get(
     core.String documentId, {
+    core.String? commentsViewMode,
     core.bool? includeTabsContent,
     core.String? suggestionsViewMode,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      'commentsViewMode': ?commentsViewMode == null ? null : [commentsViewMode],
       'includeTabsContent': ?includeTabsContent == null
           ? null
           : ['${includeTabsContent}'],
@@ -252,6 +280,70 @@ class DocumentsResource {
       queryParams: queryParams_,
     );
     return Document.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+/// Accepts a suggestion.
+///
+/// Returns a 403 forbidden error if the requesting user does not have edit
+/// access to the document.
+typedef AcceptSuggestionRequest = $SuggestionRequest;
+
+/// Inserts a reply Post into a CommentThread or SuggestionThread.
+class AddCommentReplyRequest {
+  /// The ID of the CommentThread to add the reply to.
+  core.String? commentId;
+
+  /// The Post representing the reply.
+  Post? post;
+
+  /// The ID of the SuggestionThread to add the reply to.
+  core.String? suggestionId;
+
+  AddCommentReplyRequest({this.commentId, this.post, this.suggestionId});
+
+  AddCommentReplyRequest.fromJson(core.Map json_)
+    : this(
+        commentId: json_['commentId'] as core.String?,
+        post: json_.containsKey('post')
+            ? Post.fromJson(
+                json_['post'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        suggestionId: json_['suggestionId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final commentId = this.commentId;
+    final post = this.post;
+    final suggestionId = this.suggestionId;
+    return {
+      'commentId': ?commentId,
+      'post': ?post,
+      'suggestionId': ?suggestionId,
+    };
+  }
+}
+
+/// Response message for adding a reply.
+class AddCommentReplyResponse {
+  /// The newly-inserted reply Post.
+  Post? post;
+
+  AddCommentReplyResponse({this.post});
+
+  AddCommentReplyResponse.fromJson(core.Map json_)
+    : this(
+        post: json_.containsKey('post')
+            ? Post.fromJson(
+                json_['post'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final post = this.post;
+    return {'post': ?post};
   }
 }
 
@@ -464,6 +556,17 @@ class BatchUpdateDocumentRequest {
 
 /// Response message from a BatchUpdateDocument request.
 class BatchUpdateDocumentResponse {
+  /// Whether comment updates were applied in the batch request.
+  /// Possible string values are:
+  /// - "COMMENT_UPDATE_STATE_UNSPECIFIED" : The status of comment updates is
+  /// unspecified.
+  /// - "NO_UPDATES_REQUESTED" : No comment updates were requested in the batch
+  /// request.
+  /// - "ALL_SAVED" : All requested comment updates were applied in the batch
+  /// request.
+  /// - "ALL_FAILED_UNKNOWN_REASON" : All requested comment updates failed.
+  core.String? commentUpdateState;
+
   /// The ID of the document to which the updates were applied to.
   core.String? documentId;
 
@@ -473,21 +576,36 @@ class BatchUpdateDocumentResponse {
   /// empty.
   core.List<Response>? replies;
 
+  /// The suggestions which were affected by each update.
+  ///
+  /// This maps 1:1 with the updates.
+  core.List<SuggestionResponse>? suggestionResponses;
+
   /// The updated write control after applying the request.
   WriteControl? writeControl;
 
   BatchUpdateDocumentResponse({
+    this.commentUpdateState,
     this.documentId,
     this.replies,
+    this.suggestionResponses,
     this.writeControl,
   });
 
   BatchUpdateDocumentResponse.fromJson(core.Map json_)
     : this(
+        commentUpdateState: json_['commentUpdateState'] as core.String?,
         documentId: json_['documentId'] as core.String?,
         replies: (json_['replies'] as core.List?)
             ?.map(
               (value) => Response.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        suggestionResponses: (json_['suggestionResponses'] as core.List?)
+            ?.map(
+              (value) => SuggestionResponse.fromJson(
                 value as core.Map<core.String, core.dynamic>,
               ),
             )
@@ -500,12 +618,16 @@ class BatchUpdateDocumentResponse {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final commentUpdateState = this.commentUpdateState;
     final documentId = this.documentId;
     final replies = this.replies;
+    final suggestionResponses = this.suggestionResponses;
     final writeControl = this.writeControl;
     return {
+      'commentUpdateState': ?commentUpdateState,
       'documentId': ?documentId,
       'replies': ?replies,
+      'suggestionResponses': ?suggestionResponses,
       'writeControl': ?writeControl,
     };
   }
@@ -737,6 +859,170 @@ class ColumnBreak {
       'suggestedTextStyleChanges': ?suggestedTextStyleChanges,
       'textStyle': ?textStyle,
     };
+  }
+}
+
+/// One or more locations in the document that are tied to CommentThreads with
+/// the same anchorId.
+///
+/// Note: Multiple anchors may refer to the same location.
+class CommentAnchor {
+  /// The ID of the comment anchor.
+  core.String? anchorId;
+
+  /// A collection of Ranges in the document which are tied to this anchor.
+  core.List<Range>? ranges;
+
+  CommentAnchor({this.anchorId, this.ranges});
+
+  CommentAnchor.fromJson(core.Map json_)
+    : this(
+        anchorId: json_['anchorId'] as core.String?,
+        ranges: (json_['ranges'] as core.List?)
+            ?.map(
+              (value) =>
+                  Range.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final anchorId = this.anchorId;
+    final ranges = this.ranges;
+    return {'anchorId': ?anchorId, 'ranges': ?ranges};
+  }
+}
+
+/// Represents a single comment thread.
+class CommentThread {
+  /// The ID of the CommentAnchor in the document that this thread is tied to.
+  ///
+  /// Multiple comment threads may be anchored to the same CommentAnchor.
+  core.String? anchorId;
+
+  /// The unique ID of the comment thread.
+  core.String? commentId;
+
+  /// The first post in the thread.
+  Post? headPost;
+
+  /// The quoted text from the document when the comment was created, formatted
+  /// as plain-text.
+  core.String? plainTextQuote;
+
+  /// Replies to the head post.
+  core.List<Post>? replies;
+
+  /// Whether the thread is open or resolved.
+  /// Possible string values are:
+  /// - "STATUS_UNSPECIFIED" : Default value. This value is unused.
+  /// - "OPEN" : The comment thread is open.
+  /// - "RESOLVED" : The comment thread is resolved.
+  core.String? status;
+
+  CommentThread({
+    this.anchorId,
+    this.commentId,
+    this.headPost,
+    this.plainTextQuote,
+    this.replies,
+    this.status,
+  });
+
+  CommentThread.fromJson(core.Map json_)
+    : this(
+        anchorId: json_['anchorId'] as core.String?,
+        commentId: json_['commentId'] as core.String?,
+        headPost: json_.containsKey('headPost')
+            ? Post.fromJson(
+                json_['headPost'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        plainTextQuote: json_['plainTextQuote'] as core.String?,
+        replies: (json_['replies'] as core.List?)
+            ?.map(
+              (value) =>
+                  Post.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+        status: json_['status'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final anchorId = this.anchorId;
+    final commentId = this.commentId;
+    final headPost = this.headPost;
+    final plainTextQuote = this.plainTextQuote;
+    final replies = this.replies;
+    final status = this.status;
+    return {
+      'anchorId': ?anchorId,
+      'commentId': ?commentId,
+      'headPost': ?headPost,
+      'plainTextQuote': ?plainTextQuote,
+      'replies': ?replies,
+      'status': ?status,
+    };
+  }
+}
+
+/// Creates a new DropdownDefinition in the document.
+class CreateDropdownDefinitionRequest {
+  /// The DropdownDefinition to create.
+  ///
+  /// Required.
+  DropdownDefinition? dropdownDefinition;
+
+  /// The ID of the tab to create the dropdown definition in.
+  ///
+  /// When omitted, the request is applied to the first tab. In a document
+  /// containing a single tab: - If provided, must match the singular tab's ID.
+  /// - If omitted, the request applies to the singular tab. In a document
+  /// containing multiple tabs: - If provided, the request applies to the
+  /// specified tab. - If omitted, the request applies to the first tab in the
+  /// document.
+  core.String? tabId;
+
+  CreateDropdownDefinitionRequest({this.dropdownDefinition, this.tabId});
+
+  CreateDropdownDefinitionRequest.fromJson(core.Map json_)
+    : this(
+        dropdownDefinition: json_.containsKey('dropdownDefinition')
+            ? DropdownDefinition.fromJson(
+                json_['dropdownDefinition']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        tabId: json_['tabId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final dropdownDefinition = this.dropdownDefinition;
+    final tabId = this.tabId;
+    return {'dropdownDefinition': ?dropdownDefinition, 'tabId': ?tabId};
+  }
+}
+
+/// Response message for creating a dropdown definition.
+class CreateDropdownDefinitionResponse {
+  /// The newly-created DropdownDefinition.
+  DropdownDefinition? dropdownDefinition;
+
+  CreateDropdownDefinitionResponse({this.dropdownDefinition});
+
+  CreateDropdownDefinitionResponse.fromJson(core.Map json_)
+    : this(
+        dropdownDefinition: json_.containsKey('dropdownDefinition')
+            ? DropdownDefinition.fromJson(
+                json_['dropdownDefinition']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final dropdownDefinition = this.dropdownDefinition;
+    return {'dropdownDefinition': ?dropdownDefinition};
   }
 }
 
@@ -1440,6 +1726,48 @@ class DateElementPropertiesSuggestionState {
   }
 }
 
+/// Deletes a reply Post from a CommentThread or SuggestionThread.
+///
+/// Returns a 400 bad request error if: - The requesting user is not the author
+/// of the post. - The reply post contains an action. - The reply post contains
+/// an assignee.
+class DeleteCommentReplyRequest {
+  /// The ID of the CommentThread which the post belongs to.
+  core.String? commentId;
+
+  /// The ID of the reply Post being deleted.
+  core.String? postId;
+
+  /// The ID of the SuggestionThread which the post belongs to.
+  core.String? suggestionId;
+
+  DeleteCommentReplyRequest({this.commentId, this.postId, this.suggestionId});
+
+  DeleteCommentReplyRequest.fromJson(core.Map json_)
+    : this(
+        commentId: json_['commentId'] as core.String?,
+        postId: json_['postId'] as core.String?,
+        suggestionId: json_['suggestionId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final commentId = this.commentId;
+    final postId = this.postId;
+    final suggestionId = this.suggestionId;
+    return {
+      'commentId': ?commentId,
+      'postId': ?postId,
+      'suggestionId': ?suggestionId,
+    };
+  }
+}
+
+/// Deletes a CommentThread.
+///
+/// Returns a 400 bad request error if the requesting user is not the author of
+/// the headPost.
+typedef DeleteCommentRequest = $DeleteCommentRequest;
+
 /// Deletes content from the document.
 class DeleteContentRangeRequest {
   /// The range of content to delete.
@@ -1472,6 +1800,39 @@ class DeleteContentRangeRequest {
   core.Map<core.String, core.dynamic> toJson() {
     final range = this.range;
     return {'range': ?range};
+  }
+}
+
+/// Deletes a DropdownDefinition.
+///
+/// If the dropdown definition is referenced by any dropdown instances (chips)
+/// in the document, a 400 bad request error is returned.
+class DeleteDropdownDefinitionRequest {
+  /// The ID of the DropdownDefinition to delete.
+  core.String? dropdownDefinitionId;
+
+  /// The ID of the tab that contains the dropdown definition to delete.
+  ///
+  /// When omitted, the request is applied to the first tab. In a document
+  /// containing a single tab: - If provided, must match the singular tab's ID.
+  /// - If omitted, the request applies to the singular tab. In a document
+  /// containing multiple tabs: - If provided, the request applies to the
+  /// specified tab. - If omitted, the request applies to the first tab in the
+  /// document.
+  core.String? tabId;
+
+  DeleteDropdownDefinitionRequest({this.dropdownDefinitionId, this.tabId});
+
+  DeleteDropdownDefinitionRequest.fromJson(core.Map json_)
+    : this(
+        dropdownDefinitionId: json_['dropdownDefinitionId'] as core.String?,
+        tabId: json_['tabId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final dropdownDefinitionId = this.dropdownDefinitionId;
+    final tabId = this.tabId;
+    return {'dropdownDefinitionId': ?dropdownDefinitionId, 'tabId': ?tabId};
   }
 }
 
@@ -1651,6 +2012,12 @@ class DeletePositionedObjectRequest {
   }
 }
 
+/// Deletes a suggestion.
+///
+/// Returns a 403 forbidden error if the requesting user is not the author of
+/// the suggestion.
+typedef DeleteSuggestionRequest = $SuggestionRequest;
+
 /// Deletes a tab.
 ///
 /// If the tab has child tabs, they are deleted as well.
@@ -1761,6 +2128,33 @@ class Document {
   ///
   /// Output only.
   Body? body;
+
+  /// The comments associated with the document.
+  ///
+  /// Only populated if the commentsViewMode parameter is set to require
+  /// comments (such as `COMMENTS_VIEW_MODE_INCLUDED`).
+  ///
+  /// Output only.
+  core.List<CommentThread>? comments;
+
+  /// The comments view mode applied to the document.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "COMMENTS_VIEW_MODE_UNSPECIFIED" : The CommentsViewMode is unspecified.
+  /// COMMENTS_VIEW_MODE_OMITTED is applied.
+  /// - "COMMENTS_VIEW_MODE_DEFAULT_FOR_CURRENT_ACCESS" : The CommentsViewMode
+  /// applied to the returned document depends on the user's current access
+  /// level. If the user only has view access, COMMENTS_VIEW_MODE_OMITTED is
+  /// applied. Otherwise, COMMENTS_VIEW_MODE_INCLUDED is applied.
+  /// - "COMMENTS_VIEW_MODE_OMITTED" : The returned document has comments
+  /// omitted.
+  /// - "COMMENTS_VIEW_MODE_INCLUDED" : The returned document has comments
+  /// included. Requests to retrieve a document using this mode will return a
+  /// 403 error if the user does not have permission to view comments. When set,
+  /// suggestions_view_mode must also be set to SUGGESTIONS_INLINE. Returns a
+  /// 400 bad request error otherwise.
+  core.String? commentsViewMode;
 
   /// The ID of the document.
   ///
@@ -1898,6 +2292,14 @@ class Document {
   /// Output only.
   core.Map<core.String, SuggestedNamedStyles>? suggestedNamedStylesChanges;
 
+  /// The suggestions associated with the document.
+  ///
+  /// Only populated if the commentsViewMode parameter is set to require
+  /// comments (such as `COMMENTS_VIEW_MODE_INCLUDED`).
+  ///
+  /// Output only.
+  core.List<SuggestionThread>? suggestions;
+
   /// The suggestions view mode applied to the document.
   ///
   /// Note: When editing a document, changes must be based on a document with
@@ -1935,6 +2337,8 @@ class Document {
 
   Document({
     this.body,
+    this.comments,
+    this.commentsViewMode,
     this.documentId,
     this.documentStyle,
     this.footers,
@@ -1948,6 +2352,7 @@ class Document {
     this.revisionId,
     this.suggestedDocumentStyleChanges,
     this.suggestedNamedStylesChanges,
+    this.suggestions,
     this.suggestionsViewMode,
     this.tabs,
     this.title,
@@ -1960,6 +2365,14 @@ class Document {
                 json_['body'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        comments: (json_['comments'] as core.List?)
+            ?.map(
+              (value) => CommentThread.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        commentsViewMode: json_['commentsViewMode'] as core.String?,
         documentId: json_['documentId'] as core.String?,
         documentStyle: json_.containsKey('documentStyle')
             ? DocumentStyle.fromJson(
@@ -2050,6 +2463,13 @@ class Document {
                     ),
                   ),
                 ),
+        suggestions: (json_['suggestions'] as core.List?)
+            ?.map(
+              (value) => SuggestionThread.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         suggestionsViewMode: json_['suggestionsViewMode'] as core.String?,
         tabs: (json_['tabs'] as core.List?)
             ?.map(
@@ -2062,6 +2482,8 @@ class Document {
 
   core.Map<core.String, core.dynamic> toJson() {
     final body = this.body;
+    final comments = this.comments;
+    final commentsViewMode = this.commentsViewMode;
     final documentId = this.documentId;
     final documentStyle = this.documentStyle;
     final footers = this.footers;
@@ -2075,11 +2497,14 @@ class Document {
     final revisionId = this.revisionId;
     final suggestedDocumentStyleChanges = this.suggestedDocumentStyleChanges;
     final suggestedNamedStylesChanges = this.suggestedNamedStylesChanges;
+    final suggestions = this.suggestions;
     final suggestionsViewMode = this.suggestionsViewMode;
     final tabs = this.tabs;
     final title = this.title;
     return {
       'body': ?body,
+      'comments': ?comments,
+      'commentsViewMode': ?commentsViewMode,
       'documentId': ?documentId,
       'documentStyle': ?documentStyle,
       'footers': ?footers,
@@ -2093,6 +2518,7 @@ class Document {
       'revisionId': ?revisionId,
       'suggestedDocumentStyleChanges': ?suggestedDocumentStyleChanges,
       'suggestedNamedStylesChanges': ?suggestedNamedStylesChanges,
+      'suggestions': ?suggestions,
       'suggestionsViewMode': ?suggestionsViewMode,
       'tabs': ?tabs,
       'title': ?title,
@@ -2573,8 +2999,18 @@ class DocumentTab {
   /// The main body of the document tab.
   Body? body;
 
+  /// The comment anchors in a document tab, keyed by anchor ID.
+  ///
+  /// Only populated if the commentsViewMode parameter is set to require
+  /// comments (such as `COMMENTS_VIEW_MODE_INCLUDED`).
+  core.Map<core.String, CommentAnchor>? commentAnchors;
+
   /// The style of the document tab.
   DocumentStyle? documentStyle;
+
+  /// The dropdown definitions in a document tab, keyed by dropdown definition
+  /// ID.
+  core.Map<core.String, DropdownDefinition>? dropdownDefinitions;
 
   /// The footers in the document tab, keyed by footer ID.
   core.Map<core.String, Footer>? footers;
@@ -2610,7 +3046,9 @@ class DocumentTab {
 
   DocumentTab({
     this.body,
+    this.commentAnchors,
     this.documentStyle,
+    this.dropdownDefinitions,
     this.footers,
     this.footnotes,
     this.headers,
@@ -2630,11 +3068,32 @@ class DocumentTab {
                 json_['body'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        commentAnchors:
+            (json_['commentAnchors'] as core.Map<core.String, core.dynamic>?)
+                ?.map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    CommentAnchor.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  ),
+                ),
         documentStyle: json_.containsKey('documentStyle')
             ? DocumentStyle.fromJson(
                 json_['documentStyle'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        dropdownDefinitions:
+            (json_['dropdownDefinitions']
+                    as core.Map<core.String, core.dynamic>?)
+                ?.map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    DropdownDefinition.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  ),
+                ),
         footers: (json_['footers'] as core.Map<core.String, core.dynamic>?)
             ?.map(
               (key, value) => core.MapEntry(
@@ -2722,7 +3181,9 @@ class DocumentTab {
 
   core.Map<core.String, core.dynamic> toJson() {
     final body = this.body;
+    final commentAnchors = this.commentAnchors;
     final documentStyle = this.documentStyle;
+    final dropdownDefinitions = this.dropdownDefinitions;
     final footers = this.footers;
     final footnotes = this.footnotes;
     final headers = this.headers;
@@ -2735,7 +3196,9 @@ class DocumentTab {
     final suggestedNamedStylesChanges = this.suggestedNamedStylesChanges;
     return {
       'body': ?body,
+      'commentAnchors': ?commentAnchors,
       'documentStyle': ?documentStyle,
+      'dropdownDefinitions': ?dropdownDefinitions,
       'footers': ?footers,
       'footnotes': ?footnotes,
       'headers': ?headers,
@@ -2747,6 +3210,358 @@ class DocumentTab {
       'suggestedDocumentStyleChanges': ?suggestedDocumentStyleChanges,
       'suggestedNamedStylesChanges': ?suggestedNamedStylesChanges,
     };
+  }
+}
+
+/// A dropdown in the document.
+///
+/// The chip is displayed as a dropdown menu that allows users to select an
+/// option from a configurable list of options.
+class Dropdown {
+  /// The ID of this dropdown.
+  core.String? dropdownId;
+
+  /// The properties of this dropdown.
+  DropdownProperties? dropdownProperties;
+
+  /// IDs for suggestions that remove this dropdown from the document.
+  ///
+  /// If empty, then this dropdown isn't suggested for deletion.
+  core.List<core.String>? suggestedDeletionIds;
+
+  /// The suggested properties changes to this dropdown, keyed by suggestion ID.
+  core.Map<core.String, SuggestedDropdownProperties>?
+  suggestedDropdownPropertiesChanges;
+
+  /// IDs for suggestions that insert this dropdown into the document.
+  ///
+  /// If empty, then this dropdown isn't a suggested insertion.
+  core.List<core.String>? suggestedInsertionIds;
+
+  /// The suggested text style changes to this dropdown, keyed by suggestion ID.
+  core.Map<core.String, SuggestedTextStyle>? suggestedTextStyleChanges;
+
+  /// The text style of this dropdown.
+  TextStyle? textStyle;
+
+  Dropdown({
+    this.dropdownId,
+    this.dropdownProperties,
+    this.suggestedDeletionIds,
+    this.suggestedDropdownPropertiesChanges,
+    this.suggestedInsertionIds,
+    this.suggestedTextStyleChanges,
+    this.textStyle,
+  });
+
+  Dropdown.fromJson(core.Map json_)
+    : this(
+        dropdownId: json_['dropdownId'] as core.String?,
+        dropdownProperties: json_.containsKey('dropdownProperties')
+            ? DropdownProperties.fromJson(
+                json_['dropdownProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        suggestedDeletionIds: (json_['suggestedDeletionIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        suggestedDropdownPropertiesChanges:
+            (json_['suggestedDropdownPropertiesChanges']
+                    as core.Map<core.String, core.dynamic>?)
+                ?.map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    SuggestedDropdownProperties.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  ),
+                ),
+        suggestedInsertionIds: (json_['suggestedInsertionIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        suggestedTextStyleChanges:
+            (json_['suggestedTextStyleChanges']
+                    as core.Map<core.String, core.dynamic>?)
+                ?.map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    SuggestedTextStyle.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  ),
+                ),
+        textStyle: json_.containsKey('textStyle')
+            ? TextStyle.fromJson(
+                json_['textStyle'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final dropdownId = this.dropdownId;
+    final dropdownProperties = this.dropdownProperties;
+    final suggestedDeletionIds = this.suggestedDeletionIds;
+    final suggestedDropdownPropertiesChanges =
+        this.suggestedDropdownPropertiesChanges;
+    final suggestedInsertionIds = this.suggestedInsertionIds;
+    final suggestedTextStyleChanges = this.suggestedTextStyleChanges;
+    final textStyle = this.textStyle;
+    return {
+      'dropdownId': ?dropdownId,
+      'dropdownProperties': ?dropdownProperties,
+      'suggestedDeletionIds': ?suggestedDeletionIds,
+      'suggestedDropdownPropertiesChanges': ?suggestedDropdownPropertiesChanges,
+      'suggestedInsertionIds': ?suggestedInsertionIds,
+      'suggestedTextStyleChanges': ?suggestedTextStyleChanges,
+      'textStyle': ?textStyle,
+    };
+  }
+}
+
+/// A dropdown definition in the document.
+class DropdownDefinition {
+  /// The ID of this dropdown definition.
+  ///
+  /// If you specify an ID, it must be unique among all IDs in the tab. The ID
+  /// must start with `kix.` and match regex `^kix\.[a-zA-Z0-9_-]{2,14}$`
+  /// (length 6-18 chars). If you don't specify an ID, a unique one is
+  /// generated.
+  core.String? dropdownDefinitionId;
+
+  /// The properties of this dropdown definition.
+  DropdownDefinitionProperties? dropdownDefinitionProperties;
+
+  /// ID for suggestion that deletes this dropdown definition.
+  core.String? suggestedDeletionId;
+
+  /// Suggested property changes to this definition, keyed by suggestion ID.
+  core.Map<core.String, SuggestedDropdownDefinitionProperties>?
+  suggestedDropdownDefinitionPropertiesChanges;
+
+  /// ID for suggestion that inserts this dropdown definition.
+  core.String? suggestedInsertionId;
+
+  DropdownDefinition({
+    this.dropdownDefinitionId,
+    this.dropdownDefinitionProperties,
+    this.suggestedDeletionId,
+    this.suggestedDropdownDefinitionPropertiesChanges,
+    this.suggestedInsertionId,
+  });
+
+  DropdownDefinition.fromJson(core.Map json_)
+    : this(
+        dropdownDefinitionId: json_['dropdownDefinitionId'] as core.String?,
+        dropdownDefinitionProperties:
+            json_.containsKey('dropdownDefinitionProperties')
+            ? DropdownDefinitionProperties.fromJson(
+                json_['dropdownDefinitionProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        suggestedDeletionId: json_['suggestedDeletionId'] as core.String?,
+        suggestedDropdownDefinitionPropertiesChanges:
+            (json_['suggestedDropdownDefinitionPropertiesChanges']
+                    as core.Map<core.String, core.dynamic>?)
+                ?.map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    SuggestedDropdownDefinitionProperties.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  ),
+                ),
+        suggestedInsertionId: json_['suggestedInsertionId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final dropdownDefinitionId = this.dropdownDefinitionId;
+    final dropdownDefinitionProperties = this.dropdownDefinitionProperties;
+    final suggestedDeletionId = this.suggestedDeletionId;
+    final suggestedDropdownDefinitionPropertiesChanges =
+        this.suggestedDropdownDefinitionPropertiesChanges;
+    final suggestedInsertionId = this.suggestedInsertionId;
+    return {
+      'dropdownDefinitionId': ?dropdownDefinitionId,
+      'dropdownDefinitionProperties': ?dropdownDefinitionProperties,
+      'suggestedDeletionId': ?suggestedDeletionId,
+      'suggestedDropdownDefinitionPropertiesChanges':
+          ?suggestedDropdownDefinitionPropertiesChanges,
+      'suggestedInsertionId': ?suggestedInsertionId,
+    };
+  }
+}
+
+/// Properties of a dropdown definition.
+class DropdownDefinitionProperties {
+  /// The list of options defined by this dropdown definition.
+  ///
+  /// A dropdown definition must have at least 2 options and at most 50 options.
+  core.List<DropdownOption>? options;
+
+  /// The title of the dropdown definition.
+  core.String? title;
+
+  DropdownDefinitionProperties({this.options, this.title});
+
+  DropdownDefinitionProperties.fromJson(core.Map json_)
+    : this(
+        options: (json_['options'] as core.List?)
+            ?.map(
+              (value) => DropdownOption.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        title: json_['title'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final options = this.options;
+    final title = this.title;
+    return {'options': ?options, 'title': ?title};
+  }
+}
+
+/// A mask that indicates which of the fields on the base
+/// DropdownDefinitionProperties have been changed in this suggestion.
+///
+/// For any field set to true, there's a new suggested value.
+class DropdownDefinitionPropertiesSuggestionState {
+  /// Indicates if there was a suggested change to options.
+  core.bool? optionsSuggested;
+
+  /// Indicates if there was a suggested change to title.
+  core.bool? titleSuggested;
+
+  DropdownDefinitionPropertiesSuggestionState({
+    this.optionsSuggested,
+    this.titleSuggested,
+  });
+
+  DropdownDefinitionPropertiesSuggestionState.fromJson(core.Map json_)
+    : this(
+        optionsSuggested: json_['optionsSuggested'] as core.bool?,
+        titleSuggested: json_['titleSuggested'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final optionsSuggested = this.optionsSuggested;
+    final titleSuggested = this.titleSuggested;
+    return {
+      'optionsSuggested': ?optionsSuggested,
+      'titleSuggested': ?titleSuggested,
+    };
+  }
+}
+
+/// An option in a Dropdown.
+class DropdownOption {
+  /// The display value of this dropdown option.
+  core.String? displayValue;
+
+  /// The ID of this dropdown option.
+  ///
+  /// If you specify an ID, it must be unique among all options in this dropdown
+  /// definition. The ID must start with `dropdownItem.` and match regex
+  /// `^dropdownItem\.[a-zA-Z0-9_-]{2,14}$` (length 15-27 chars). If you don't
+  /// specify an ID, a unique one is generated.
+  core.String? optionId;
+
+  /// The text style of this dropdown option.
+  ///
+  /// Currently, only the `foreground_color` and `background_color` properties
+  /// are supported. If other properties are set, a 400 bad request error is
+  /// returned.
+  TextStyle? textStyle;
+
+  DropdownOption({this.displayValue, this.optionId, this.textStyle});
+
+  DropdownOption.fromJson(core.Map json_)
+    : this(
+        displayValue: json_['displayValue'] as core.String?,
+        optionId: json_['optionId'] as core.String?,
+        textStyle: json_.containsKey('textStyle')
+            ? TextStyle.fromJson(
+                json_['textStyle'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayValue = this.displayValue;
+    final optionId = this.optionId;
+    final textStyle = this.textStyle;
+    return {
+      'displayValue': ?displayValue,
+      'optionId': ?optionId,
+      'textStyle': ?textStyle,
+    };
+  }
+}
+
+/// Properties specific to a dropdown.
+class DropdownProperties {
+  /// The human-readable display text of the currently selected item.
+  ///
+  /// This field is populated by the server based on the dropdown definition and
+  /// the selected option ID. It may differ from `DropdownOption.display_value`
+  /// if the underlying option definition was modified or deleted, or during
+  /// pending suggested changes.
+  core.String? displayValue;
+
+  /// The ID of the DropdownDefinition that defines the options for this
+  /// dropdown.
+  core.String? dropdownDefinitionId;
+
+  /// The ID of the selected option in this dropdown.
+  core.String? selectedOptionId;
+
+  DropdownProperties({
+    this.displayValue,
+    this.dropdownDefinitionId,
+    this.selectedOptionId,
+  });
+
+  DropdownProperties.fromJson(core.Map json_)
+    : this(
+        displayValue: json_['displayValue'] as core.String?,
+        dropdownDefinitionId: json_['dropdownDefinitionId'] as core.String?,
+        selectedOptionId: json_['selectedOptionId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayValue = this.displayValue;
+    final dropdownDefinitionId = this.dropdownDefinitionId;
+    final selectedOptionId = this.selectedOptionId;
+    return {
+      'displayValue': ?displayValue,
+      'dropdownDefinitionId': ?dropdownDefinitionId,
+      'selectedOptionId': ?selectedOptionId,
+    };
+  }
+}
+
+/// A mask that indicates which of the fields on the base DropdownProperties
+/// have been changed in this suggestion.
+///
+/// For any field set to true, there's a new suggested value.
+class DropdownPropertiesSuggestionState {
+  /// Indicates if there was a suggested change to selected_option_id.
+  core.bool? selectedOptionIdSuggested;
+
+  DropdownPropertiesSuggestionState({this.selectedOptionIdSuggested});
+
+  DropdownPropertiesSuggestionState.fromJson(core.Map json_)
+    : this(
+        selectedOptionIdSuggested:
+            json_['selectedOptionIdSuggested'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final selectedOptionIdSuggested = this.selectedOptionIdSuggested;
+    return {'selectedOptionIdSuggested': ?selectedOptionIdSuggested};
   }
 }
 
@@ -3855,6 +4670,74 @@ class InlineObjectPropertiesSuggestionState {
   }
 }
 
+/// Inserts a CommentThread into the document.
+class InsertCommentRequest {
+  /// The email address of the assignee of the comment.
+  ///
+  /// Leave empty for a non-assigned comment. May not exceed 2048 UTF-8 code
+  /// units.
+  ///
+  /// Optional.
+  core.String? assigneeEmailAddress;
+
+  /// The text of the comment, as plain text.
+  ///
+  /// This text content will be handled similarly to comments created in the
+  /// Docs editor. It will have similar behaviors for formatting, notifications,
+  /// etc. This field cannot be empty, and must not exceed 2048 UTF-8 code
+  /// units.
+  core.String? content;
+
+  /// The Range in the document that is tied to this comment.
+  Range? range;
+
+  InsertCommentRequest({this.assigneeEmailAddress, this.content, this.range});
+
+  InsertCommentRequest.fromJson(core.Map json_)
+    : this(
+        assigneeEmailAddress: json_['assigneeEmailAddress'] as core.String?,
+        content: json_['content'] as core.String?,
+        range: json_.containsKey('range')
+            ? Range.fromJson(
+                json_['range'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final assigneeEmailAddress = this.assigneeEmailAddress;
+    final content = this.content;
+    final range = this.range;
+    return {
+      'assigneeEmailAddress': ?assigneeEmailAddress,
+      'content': ?content,
+      'range': ?range,
+    };
+  }
+}
+
+/// Response message for inserting a comment.
+class InsertCommentResponse {
+  /// The newly-inserted comment thread.
+  CommentThread? commentThread;
+
+  InsertCommentResponse({this.commentThread});
+
+  InsertCommentResponse.fromJson(core.Map json_)
+    : this(
+        commentThread: json_.containsKey('commentThread')
+            ? CommentThread.fromJson(
+                json_['commentThread'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final commentThread = this.commentThread;
+    return {'commentThread': ?commentThread};
+  }
+}
+
 /// Inserts a date at the specified location.
 class InsertDateRequest {
   /// The properties of the date to insert.
@@ -3906,6 +4789,87 @@ class InsertDateRequest {
       'endOfSegmentLocation': ?endOfSegmentLocation,
       'location': ?location,
     };
+  }
+}
+
+/// Inserts a Dropdown at the specified location.
+class InsertDropdownRequest {
+  /// The DropdownDefinition ID.
+  ///
+  /// Required.
+  core.String? dropdownDefinitionId;
+
+  /// The EndOfSegmentLocation in the document to insert the dropdown at.
+  EndOfSegmentLocation? endOfSegmentLocation;
+
+  /// The Location in the document to insert the dropdown at.
+  Location? location;
+
+  /// Optional initial value for the dropdown.
+  ///
+  /// If this field is not specified, the new dropdown will default to selecting
+  /// the first option defined in the dropdown definition. If this field is
+  /// specified but does not reference a valid option in the dropdown
+  /// definition, a 400 bad request error is returned.
+  core.String? selectedOptionId;
+
+  InsertDropdownRequest({
+    this.dropdownDefinitionId,
+    this.endOfSegmentLocation,
+    this.location,
+    this.selectedOptionId,
+  });
+
+  InsertDropdownRequest.fromJson(core.Map json_)
+    : this(
+        dropdownDefinitionId: json_['dropdownDefinitionId'] as core.String?,
+        endOfSegmentLocation: json_.containsKey('endOfSegmentLocation')
+            ? EndOfSegmentLocation.fromJson(
+                json_['endOfSegmentLocation']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        location: json_.containsKey('location')
+            ? Location.fromJson(
+                json_['location'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        selectedOptionId: json_['selectedOptionId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final dropdownDefinitionId = this.dropdownDefinitionId;
+    final endOfSegmentLocation = this.endOfSegmentLocation;
+    final location = this.location;
+    final selectedOptionId = this.selectedOptionId;
+    return {
+      'dropdownDefinitionId': ?dropdownDefinitionId,
+      'endOfSegmentLocation': ?endOfSegmentLocation,
+      'location': ?location,
+      'selectedOptionId': ?selectedOptionId,
+    };
+  }
+}
+
+/// The result of inserting a Dropdown.
+class InsertDropdownResponse {
+  /// The newly-inserted Dropdown.
+  Dropdown? dropdown;
+
+  InsertDropdownResponse({this.dropdown});
+
+  InsertDropdownResponse.fromJson(core.Map json_)
+    : this(
+        dropdown: json_.containsKey('dropdown')
+            ? Dropdown.fromJson(
+                json_['dropdown'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final dropdown = this.dropdown;
+    return {'dropdown': ?dropdown};
   }
 }
 
@@ -5560,6 +6524,9 @@ class ParagraphElement {
   /// A paragraph element that represents a date.
   DateElement? dateElement;
 
+  /// A paragraph element that represents a dropdown menu.
+  Dropdown? dropdown;
+
   /// The zero-base end index of this paragraph element, exclusive, in UTF-16
   /// code units.
   core.int? endIndex;
@@ -5597,6 +6564,7 @@ class ParagraphElement {
     this.autoText,
     this.columnBreak,
     this.dateElement,
+    this.dropdown,
     this.endIndex,
     this.equation,
     this.footnoteReference,
@@ -5624,6 +6592,11 @@ class ParagraphElement {
         dateElement: json_.containsKey('dateElement')
             ? DateElement.fromJson(
                 json_['dateElement'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        dropdown: json_.containsKey('dropdown')
+            ? Dropdown.fromJson(
+                json_['dropdown'] as core.Map<core.String, core.dynamic>,
               )
             : null,
         endIndex: json_['endIndex'] as core.int?,
@@ -5676,6 +6649,7 @@ class ParagraphElement {
     final autoText = this.autoText;
     final columnBreak = this.columnBreak;
     final dateElement = this.dateElement;
+    final dropdown = this.dropdown;
     final endIndex = this.endIndex;
     final equation = this.equation;
     final footnoteReference = this.footnoteReference;
@@ -5690,6 +6664,7 @@ class ParagraphElement {
       'autoText': ?autoText,
       'columnBreak': ?columnBreak,
       'dateElement': ?dateElement,
+      'dropdown': ?dropdown,
       'endIndex': ?endIndex,
       'equation': ?equation,
       'footnoteReference': ?footnoteReference,
@@ -6620,6 +7595,215 @@ class PositionedObjectPropertiesSuggestionState {
   }
 }
 
+/// Represents a single post in a comment or suggestion thread.
+class Post {
+  /// The email of the user who is being newly assigned to the thread as part of
+  /// this post.
+  ///
+  /// Returns a 400 bad request error if: - The parent thread is a CommentThread
+  /// whose headPost does not have an assignee. - The parent thread is a
+  /// SuggestionThread. - commentAction is specified as `RESOLVE` or `REOPEN`. -
+  /// `assigneeEmail` exceeds 2048 UTF-8 code units.
+  ///
+  /// Optional.
+  core.String? assigneeEmail;
+
+  /// The user who created the post.
+  ///
+  /// Output only.
+  PostAuthor? author;
+
+  /// The action type for comment posts.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "COMMENT_ACTION_TYPE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "NO_COMMENT_ACTION_CHANGE" : No action change in this post.
+  /// - "RESOLVE" : This post resolves the thread.
+  /// - "REOPEN" : This post reopens the thread.
+  core.String? commentAction;
+
+  /// The content of the post.
+  ///
+  /// Required to be non-empty if commentAction is not `RESOLVE` or `REOPEN`.
+  /// This text content will be handled similarly to comments created in the
+  /// Docs editor. It will have similar behaviors for formatting, notifications,
+  /// etc. May not exceed 2048 UTF-8 code units.
+  core.String? content;
+
+  /// The content of the post as HTML.
+  ///
+  /// Output only.
+  core.String? contentHtml;
+
+  /// The time the post was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Whether the post is deleted.
+  ///
+  /// If `true`, content and author fields will be empty.
+  ///
+  /// Output only.
+  core.bool? deleted;
+
+  /// Whether the post is from a copied document.
+  ///
+  /// This field cannot be set directly by callers.
+  ///
+  /// Output only.
+  core.bool? fromCopiedDocument;
+
+  /// Whether the post is from a document comparison.
+  ///
+  /// This field cannot be set directly by callers.
+  ///
+  /// Output only.
+  core.bool? fromDocumentComparison;
+
+  /// Whether the post is from an imported document.
+  ///
+  /// This field cannot be set directly by callers.
+  ///
+  /// Output only.
+  core.bool? fromImportedDocument;
+
+  /// The unique ID of the post.
+  ///
+  /// Output only.
+  core.String? postId;
+
+  /// The action type for suggestion posts.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "SUGGESTION_ACTION_TYPE_UNSPECIFIED" : Default value. This value is
+  /// unused.
+  /// - "NO_SUGGESTION_ACTION_CHANGE" : No action change in this post.
+  /// - "ACCEPT" : This post accepts the suggestion.
+  /// - "REJECT" : This post rejects the suggestion.
+  core.String? suggestionAction;
+
+  /// The time the post was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  Post({
+    this.assigneeEmail,
+    this.author,
+    this.commentAction,
+    this.content,
+    this.contentHtml,
+    this.createTime,
+    this.deleted,
+    this.fromCopiedDocument,
+    this.fromDocumentComparison,
+    this.fromImportedDocument,
+    this.postId,
+    this.suggestionAction,
+    this.updateTime,
+  });
+
+  Post.fromJson(core.Map json_)
+    : this(
+        assigneeEmail: json_['assigneeEmail'] as core.String?,
+        author: json_.containsKey('author')
+            ? PostAuthor.fromJson(
+                json_['author'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        commentAction: json_['commentAction'] as core.String?,
+        content: json_['content'] as core.String?,
+        contentHtml: json_['contentHtml'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        deleted: json_['deleted'] as core.bool?,
+        fromCopiedDocument: json_['fromCopiedDocument'] as core.bool?,
+        fromDocumentComparison: json_['fromDocumentComparison'] as core.bool?,
+        fromImportedDocument: json_['fromImportedDocument'] as core.bool?,
+        postId: json_['postId'] as core.String?,
+        suggestionAction: json_['suggestionAction'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final assigneeEmail = this.assigneeEmail;
+    final author = this.author;
+    final commentAction = this.commentAction;
+    final content = this.content;
+    final contentHtml = this.contentHtml;
+    final createTime = this.createTime;
+    final deleted = this.deleted;
+    final fromCopiedDocument = this.fromCopiedDocument;
+    final fromDocumentComparison = this.fromDocumentComparison;
+    final fromImportedDocument = this.fromImportedDocument;
+    final postId = this.postId;
+    final suggestionAction = this.suggestionAction;
+    final updateTime = this.updateTime;
+    return {
+      'assigneeEmail': ?assigneeEmail,
+      'author': ?author,
+      'commentAction': ?commentAction,
+      'content': ?content,
+      'contentHtml': ?contentHtml,
+      'createTime': ?createTime,
+      'deleted': ?deleted,
+      'fromCopiedDocument': ?fromCopiedDocument,
+      'fromDocumentComparison': ?fromDocumentComparison,
+      'fromImportedDocument': ?fromImportedDocument,
+      'postId': ?postId,
+      'suggestionAction': ?suggestionAction,
+      'updateTime': ?updateTime,
+    };
+  }
+}
+
+/// Represents a user who authored a comment or suggestion post.
+class PostAuthor {
+  /// Whether the user is anonymous.
+  core.bool? anonymous;
+
+  /// The display name of the user.
+  ///
+  /// May be absent if the author is anonymous.
+  core.String? displayName;
+
+  /// Whether the user is the authenticated user making the request.
+  core.bool? me;
+
+  /// The resource name of the post author user, which can also be used to
+  /// identify the user in the
+  /// [Google People API](https://developers.google.com/people/api/rest/v1/people).
+  ///
+  /// Format: `users/{user}`. Will not be populated if the anonymous field is
+  /// `true` or if the post is from an imported document.
+  core.String? user;
+
+  PostAuthor({this.anonymous, this.displayName, this.me, this.user});
+
+  PostAuthor.fromJson(core.Map json_)
+    : this(
+        anonymous: json_['anonymous'] as core.bool?,
+        displayName: json_['displayName'] as core.String?,
+        me: json_['me'] as core.bool?,
+        user: json_['user'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final anonymous = this.anonymous;
+    final displayName = this.displayName;
+    final me = this.me;
+    final user = this.user;
+    return {
+      'anonymous': ?anonymous,
+      'displayName': ?displayName,
+      'me': ?me,
+      'user': ?user,
+    };
+  }
+}
+
 /// Specifies a contiguous range of text.
 class Range {
   /// The zero-based end index of this range, exclusive, in UTF-16 code units.
@@ -6674,6 +7858,12 @@ class Range {
     };
   }
 }
+
+/// Rejects a suggestion.
+///
+/// Returns a 403 forbidden error if the requesting user does not have edit
+/// access to the document and is not the author of the suggestion.
+typedef RejectSuggestionRequest = $SuggestionRequest;
 
 /// Replaces all instances of text matching a criteria with replace text.
 class ReplaceAllTextRequest {
@@ -6869,8 +8059,17 @@ class ReplaceNamedRangeContentRequest {
 
 /// A single update to apply to a document.
 class Request {
+  /// Accepts a suggestion.
+  AcceptSuggestionRequest? acceptSuggestion;
+
+  /// Adds a reply to a CommentThread or SuggestionThread.
+  AddCommentReplyRequest? addCommentReply;
+
   /// Adds a document tab.
   AddDocumentTabRequest? addDocumentTab;
+
+  /// Creates a DropdownDefinition.
+  CreateDropdownDefinitionRequest? createDropdownDefinition;
 
   /// Creates a footer.
   CreateFooterRequest? createFooter;
@@ -6887,8 +8086,17 @@ class Request {
   /// Creates bullets for paragraphs.
   CreateParagraphBulletsRequest? createParagraphBullets;
 
+  /// Deletes a CommentThread.
+  DeleteCommentRequest? deleteComment;
+
+  /// Deletes a reply Post from a CommentThread or SuggestionThread.
+  DeleteCommentReplyRequest? deleteCommentReply;
+
   /// Deletes content from the document.
   DeleteContentRangeRequest? deleteContentRange;
+
+  /// Deletes a DropdownDefinition.
+  DeleteDropdownDefinitionRequest? deleteDropdownDefinition;
 
   /// Deletes a footer from the document.
   DeleteFooterRequest? deleteFooter;
@@ -6905,6 +8113,9 @@ class Request {
   /// Deletes a positioned object from the document.
   DeletePositionedObjectRequest? deletePositionedObject;
 
+  /// Deletes a suggestion.
+  DeleteSuggestionRequest? deleteSuggestion;
+
   /// Deletes a document tab.
   DeleteTabRequest? deleteTab;
 
@@ -6914,8 +8125,14 @@ class Request {
   /// Deletes a row from a table.
   DeleteTableRowRequest? deleteTableRow;
 
+  /// Inserts a CommentThread into the document.
+  InsertCommentRequest? insertComment;
+
   /// Inserts a date.
   InsertDateRequest? insertDate;
+
+  /// Inserts a Dropdown at the specified location.
+  InsertDropdownRequest? insertDropdown;
 
   /// Inserts an inline image at the specified location.
   InsertInlineImageRequest? insertInlineImage;
@@ -6950,6 +8167,9 @@ class Request {
   /// Updates the number of pinned header rows in a table.
   PinTableHeaderRowsRequest? pinTableHeaderRows;
 
+  /// Rejects a suggestion.
+  RejectSuggestionRequest? rejectSuggestion;
+
   /// Replaces all instances of the specified text.
   ReplaceAllTextRequest? replaceAllText;
 
@@ -6962,11 +8182,21 @@ class Request {
   /// Unmerges cells in a table.
   UnmergeTableCellsRequest? unmergeTableCells;
 
+  /// Updates an existing post (head post or reply) of a CommentThread or
+  /// SuggestionThread.
+  UpdateCommentPostRequest? updateCommentPost;
+
   /// Updates the style of the document.
   UpdateDocumentStyleRequest? updateDocumentStyle;
 
   /// Updates the properties of a document tab.
   UpdateDocumentTabPropertiesRequest? updateDocumentTabProperties;
+
+  /// Updates the properties of a DropdownDefinition.
+  UpdateDropdownDefinitionPropertiesRequest? updateDropdownDefinitionProperties;
+
+  /// Updates the properties of a Dropdown.
+  UpdateDropdownPropertiesRequest? updateDropdownProperties;
 
   /// Updates a named style.
   UpdateNamedStyleRequest? updateNamedStyle;
@@ -6990,22 +8220,31 @@ class Request {
   UpdateTextStyleRequest? updateTextStyle;
 
   Request({
+    this.acceptSuggestion,
+    this.addCommentReply,
     this.addDocumentTab,
+    this.createDropdownDefinition,
     this.createFooter,
     this.createFootnote,
     this.createHeader,
     this.createNamedRange,
     this.createParagraphBullets,
+    this.deleteComment,
+    this.deleteCommentReply,
     this.deleteContentRange,
+    this.deleteDropdownDefinition,
     this.deleteFooter,
     this.deleteHeader,
     this.deleteNamedRange,
     this.deleteParagraphBullets,
     this.deletePositionedObject,
+    this.deleteSuggestion,
     this.deleteTab,
     this.deleteTableColumn,
     this.deleteTableRow,
+    this.insertComment,
     this.insertDate,
+    this.insertDropdown,
     this.insertInlineImage,
     this.insertPageBreak,
     this.insertPerson,
@@ -7017,12 +8256,16 @@ class Request {
     this.insertText,
     this.mergeTableCells,
     this.pinTableHeaderRows,
+    this.rejectSuggestion,
     this.replaceAllText,
     this.replaceImage,
     this.replaceNamedRangeContent,
     this.unmergeTableCells,
+    this.updateCommentPost,
     this.updateDocumentStyle,
     this.updateDocumentTabProperties,
+    this.updateDropdownDefinitionProperties,
+    this.updateDropdownProperties,
     this.updateNamedStyle,
     this.updateParagraphStyle,
     this.updateSectionStyle,
@@ -7034,9 +8277,26 @@ class Request {
 
   Request.fromJson(core.Map json_)
     : this(
+        acceptSuggestion: json_.containsKey('acceptSuggestion')
+            ? AcceptSuggestionRequest.fromJson(
+                json_['acceptSuggestion']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        addCommentReply: json_.containsKey('addCommentReply')
+            ? AddCommentReplyRequest.fromJson(
+                json_['addCommentReply'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         addDocumentTab: json_.containsKey('addDocumentTab')
             ? AddDocumentTabRequest.fromJson(
                 json_['addDocumentTab'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        createDropdownDefinition: json_.containsKey('createDropdownDefinition')
+            ? CreateDropdownDefinitionRequest.fromJson(
+                json_['createDropdownDefinition']
+                    as core.Map<core.String, core.dynamic>,
               )
             : null,
         createFooter: json_.containsKey('createFooter')
@@ -7066,9 +8326,26 @@ class Request {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        deleteComment: json_.containsKey('deleteComment')
+            ? DeleteCommentRequest.fromJson(
+                json_['deleteComment'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        deleteCommentReply: json_.containsKey('deleteCommentReply')
+            ? DeleteCommentReplyRequest.fromJson(
+                json_['deleteCommentReply']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         deleteContentRange: json_.containsKey('deleteContentRange')
             ? DeleteContentRangeRequest.fromJson(
                 json_['deleteContentRange']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        deleteDropdownDefinition: json_.containsKey('deleteDropdownDefinition')
+            ? DeleteDropdownDefinitionRequest.fromJson(
+                json_['deleteDropdownDefinition']
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
@@ -7100,6 +8377,12 @@ class Request {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        deleteSuggestion: json_.containsKey('deleteSuggestion')
+            ? DeleteSuggestionRequest.fromJson(
+                json_['deleteSuggestion']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         deleteTab: json_.containsKey('deleteTab')
             ? DeleteTabRequest.fromJson(
                 json_['deleteTab'] as core.Map<core.String, core.dynamic>,
@@ -7116,9 +8399,19 @@ class Request {
                 json_['deleteTableRow'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        insertComment: json_.containsKey('insertComment')
+            ? InsertCommentRequest.fromJson(
+                json_['insertComment'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         insertDate: json_.containsKey('insertDate')
             ? InsertDateRequest.fromJson(
                 json_['insertDate'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        insertDropdown: json_.containsKey('insertDropdown')
+            ? InsertDropdownRequest.fromJson(
+                json_['insertDropdown'] as core.Map<core.String, core.dynamic>,
               )
             : null,
         insertInlineImage: json_.containsKey('insertInlineImage')
@@ -7180,6 +8473,12 @@ class Request {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        rejectSuggestion: json_.containsKey('rejectSuggestion')
+            ? RejectSuggestionRequest.fromJson(
+                json_['rejectSuggestion']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         replaceAllText: json_.containsKey('replaceAllText')
             ? ReplaceAllTextRequest.fromJson(
                 json_['replaceAllText'] as core.Map<core.String, core.dynamic>,
@@ -7202,6 +8501,12 @@ class Request {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        updateCommentPost: json_.containsKey('updateCommentPost')
+            ? UpdateCommentPostRequest.fromJson(
+                json_['updateCommentPost']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         updateDocumentStyle: json_.containsKey('updateDocumentStyle')
             ? UpdateDocumentStyleRequest.fromJson(
                 json_['updateDocumentStyle']
@@ -7212,6 +8517,19 @@ class Request {
             json_.containsKey('updateDocumentTabProperties')
             ? UpdateDocumentTabPropertiesRequest.fromJson(
                 json_['updateDocumentTabProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        updateDropdownDefinitionProperties:
+            json_.containsKey('updateDropdownDefinitionProperties')
+            ? UpdateDropdownDefinitionPropertiesRequest.fromJson(
+                json_['updateDropdownDefinitionProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        updateDropdownProperties: json_.containsKey('updateDropdownProperties')
+            ? UpdateDropdownPropertiesRequest.fromJson(
+                json_['updateDropdownProperties']
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
@@ -7260,22 +8578,31 @@ class Request {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final acceptSuggestion = this.acceptSuggestion;
+    final addCommentReply = this.addCommentReply;
     final addDocumentTab = this.addDocumentTab;
+    final createDropdownDefinition = this.createDropdownDefinition;
     final createFooter = this.createFooter;
     final createFootnote = this.createFootnote;
     final createHeader = this.createHeader;
     final createNamedRange = this.createNamedRange;
     final createParagraphBullets = this.createParagraphBullets;
+    final deleteComment = this.deleteComment;
+    final deleteCommentReply = this.deleteCommentReply;
     final deleteContentRange = this.deleteContentRange;
+    final deleteDropdownDefinition = this.deleteDropdownDefinition;
     final deleteFooter = this.deleteFooter;
     final deleteHeader = this.deleteHeader;
     final deleteNamedRange = this.deleteNamedRange;
     final deleteParagraphBullets = this.deleteParagraphBullets;
     final deletePositionedObject = this.deletePositionedObject;
+    final deleteSuggestion = this.deleteSuggestion;
     final deleteTab = this.deleteTab;
     final deleteTableColumn = this.deleteTableColumn;
     final deleteTableRow = this.deleteTableRow;
+    final insertComment = this.insertComment;
     final insertDate = this.insertDate;
+    final insertDropdown = this.insertDropdown;
     final insertInlineImage = this.insertInlineImage;
     final insertPageBreak = this.insertPageBreak;
     final insertPerson = this.insertPerson;
@@ -7287,12 +8614,17 @@ class Request {
     final insertText = this.insertText;
     final mergeTableCells = this.mergeTableCells;
     final pinTableHeaderRows = this.pinTableHeaderRows;
+    final rejectSuggestion = this.rejectSuggestion;
     final replaceAllText = this.replaceAllText;
     final replaceImage = this.replaceImage;
     final replaceNamedRangeContent = this.replaceNamedRangeContent;
     final unmergeTableCells = this.unmergeTableCells;
+    final updateCommentPost = this.updateCommentPost;
     final updateDocumentStyle = this.updateDocumentStyle;
     final updateDocumentTabProperties = this.updateDocumentTabProperties;
+    final updateDropdownDefinitionProperties =
+        this.updateDropdownDefinitionProperties;
+    final updateDropdownProperties = this.updateDropdownProperties;
     final updateNamedStyle = this.updateNamedStyle;
     final updateParagraphStyle = this.updateParagraphStyle;
     final updateSectionStyle = this.updateSectionStyle;
@@ -7301,22 +8633,31 @@ class Request {
     final updateTableRowStyle = this.updateTableRowStyle;
     final updateTextStyle = this.updateTextStyle;
     return {
+      'acceptSuggestion': ?acceptSuggestion,
+      'addCommentReply': ?addCommentReply,
       'addDocumentTab': ?addDocumentTab,
+      'createDropdownDefinition': ?createDropdownDefinition,
       'createFooter': ?createFooter,
       'createFootnote': ?createFootnote,
       'createHeader': ?createHeader,
       'createNamedRange': ?createNamedRange,
       'createParagraphBullets': ?createParagraphBullets,
+      'deleteComment': ?deleteComment,
+      'deleteCommentReply': ?deleteCommentReply,
       'deleteContentRange': ?deleteContentRange,
+      'deleteDropdownDefinition': ?deleteDropdownDefinition,
       'deleteFooter': ?deleteFooter,
       'deleteHeader': ?deleteHeader,
       'deleteNamedRange': ?deleteNamedRange,
       'deleteParagraphBullets': ?deleteParagraphBullets,
       'deletePositionedObject': ?deletePositionedObject,
+      'deleteSuggestion': ?deleteSuggestion,
       'deleteTab': ?deleteTab,
       'deleteTableColumn': ?deleteTableColumn,
       'deleteTableRow': ?deleteTableRow,
+      'insertComment': ?insertComment,
       'insertDate': ?insertDate,
+      'insertDropdown': ?insertDropdown,
       'insertInlineImage': ?insertInlineImage,
       'insertPageBreak': ?insertPageBreak,
       'insertPerson': ?insertPerson,
@@ -7328,12 +8669,16 @@ class Request {
       'insertText': ?insertText,
       'mergeTableCells': ?mergeTableCells,
       'pinTableHeaderRows': ?pinTableHeaderRows,
+      'rejectSuggestion': ?rejectSuggestion,
       'replaceAllText': ?replaceAllText,
       'replaceImage': ?replaceImage,
       'replaceNamedRangeContent': ?replaceNamedRangeContent,
       'unmergeTableCells': ?unmergeTableCells,
+      'updateCommentPost': ?updateCommentPost,
       'updateDocumentStyle': ?updateDocumentStyle,
       'updateDocumentTabProperties': ?updateDocumentTabProperties,
+      'updateDropdownDefinitionProperties': ?updateDropdownDefinitionProperties,
+      'updateDropdownProperties': ?updateDropdownProperties,
       'updateNamedStyle': ?updateNamedStyle,
       'updateParagraphStyle': ?updateParagraphStyle,
       'updateSectionStyle': ?updateSectionStyle,
@@ -7347,8 +8692,14 @@ class Request {
 
 /// A single response from an update.
 class Response {
+  /// The result of adding a reply to a comment or suggestion.
+  AddCommentReplyResponse? addCommentReply;
+
   /// The result of adding a document tab.
   AddDocumentTabResponse? addDocumentTab;
+
+  /// The result of creating a dropdown definition.
+  CreateDropdownDefinitionResponse? createDropdownDefinition;
 
   /// The result of creating a footer.
   CreateFooterResponse? createFooter;
@@ -7362,6 +8713,12 @@ class Response {
   /// The result of creating a named range.
   CreateNamedRangeResponse? createNamedRange;
 
+  /// The result of inserting a comment.
+  InsertCommentResponse? insertComment;
+
+  /// The result of inserting a dropdown.
+  InsertDropdownResponse? insertDropdown;
+
   /// The result of inserting an inline image.
   InsertInlineImageResponse? insertInlineImage;
 
@@ -7372,11 +8729,15 @@ class Response {
   ReplaceAllTextResponse? replaceAllText;
 
   Response({
+    this.addCommentReply,
     this.addDocumentTab,
+    this.createDropdownDefinition,
     this.createFooter,
     this.createFootnote,
     this.createHeader,
     this.createNamedRange,
+    this.insertComment,
+    this.insertDropdown,
     this.insertInlineImage,
     this.insertInlineSheetsChart,
     this.replaceAllText,
@@ -7384,9 +8745,20 @@ class Response {
 
   Response.fromJson(core.Map json_)
     : this(
+        addCommentReply: json_.containsKey('addCommentReply')
+            ? AddCommentReplyResponse.fromJson(
+                json_['addCommentReply'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         addDocumentTab: json_.containsKey('addDocumentTab')
             ? AddDocumentTabResponse.fromJson(
                 json_['addDocumentTab'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        createDropdownDefinition: json_.containsKey('createDropdownDefinition')
+            ? CreateDropdownDefinitionResponse.fromJson(
+                json_['createDropdownDefinition']
+                    as core.Map<core.String, core.dynamic>,
               )
             : null,
         createFooter: json_.containsKey('createFooter')
@@ -7410,6 +8782,16 @@ class Response {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        insertComment: json_.containsKey('insertComment')
+            ? InsertCommentResponse.fromJson(
+                json_['insertComment'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        insertDropdown: json_.containsKey('insertDropdown')
+            ? InsertDropdownResponse.fromJson(
+                json_['insertDropdown'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         insertInlineImage: json_.containsKey('insertInlineImage')
             ? InsertInlineImageResponse.fromJson(
                 json_['insertInlineImage']
@@ -7430,20 +8812,28 @@ class Response {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final addCommentReply = this.addCommentReply;
     final addDocumentTab = this.addDocumentTab;
+    final createDropdownDefinition = this.createDropdownDefinition;
     final createFooter = this.createFooter;
     final createFootnote = this.createFootnote;
     final createHeader = this.createHeader;
     final createNamedRange = this.createNamedRange;
+    final insertComment = this.insertComment;
+    final insertDropdown = this.insertDropdown;
     final insertInlineImage = this.insertInlineImage;
     final insertInlineSheetsChart = this.insertInlineSheetsChart;
     final replaceAllText = this.replaceAllText;
     return {
+      'addCommentReply': ?addCommentReply,
       'addDocumentTab': ?addDocumentTab,
+      'createDropdownDefinition': ?createDropdownDefinition,
       'createFooter': ?createFooter,
       'createFootnote': ?createFootnote,
       'createHeader': ?createHeader,
       'createNamedRange': ?createNamedRange,
+      'insertComment': ?insertComment,
+      'insertDropdown': ?insertDropdown,
       'insertInlineImage': ?insertInlineImage,
       'insertInlineSheetsChart': ?insertInlineSheetsChart,
       'replaceAllText': ?replaceAllText,
@@ -8388,6 +9778,102 @@ class SuggestedDocumentStyle {
   }
 }
 
+/// A suggested change to dropdown definition properties.
+class SuggestedDropdownDefinitionProperties {
+  /// A DropdownDefinitionProperties that only includes the changes made in this
+  /// suggestion.
+  ///
+  /// This can be used along with the
+  /// dropdown_definition_properties_suggestion_state to see which fields have
+  /// changed and their new values.
+  DropdownDefinitionProperties? dropdownDefinitionProperties;
+
+  /// A mask that indicates which of the fields on the base
+  /// DropdownDefinitionProperties have been changed in this suggestion.
+  DropdownDefinitionPropertiesSuggestionState?
+  dropdownDefinitionPropertiesSuggestionState;
+
+  SuggestedDropdownDefinitionProperties({
+    this.dropdownDefinitionProperties,
+    this.dropdownDefinitionPropertiesSuggestionState,
+  });
+
+  SuggestedDropdownDefinitionProperties.fromJson(core.Map json_)
+    : this(
+        dropdownDefinitionProperties:
+            json_.containsKey('dropdownDefinitionProperties')
+            ? DropdownDefinitionProperties.fromJson(
+                json_['dropdownDefinitionProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        dropdownDefinitionPropertiesSuggestionState:
+            json_.containsKey('dropdownDefinitionPropertiesSuggestionState')
+            ? DropdownDefinitionPropertiesSuggestionState.fromJson(
+                json_['dropdownDefinitionPropertiesSuggestionState']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final dropdownDefinitionProperties = this.dropdownDefinitionProperties;
+    final dropdownDefinitionPropertiesSuggestionState =
+        this.dropdownDefinitionPropertiesSuggestionState;
+    return {
+      'dropdownDefinitionProperties': ?dropdownDefinitionProperties,
+      'dropdownDefinitionPropertiesSuggestionState':
+          ?dropdownDefinitionPropertiesSuggestionState,
+    };
+  }
+}
+
+/// A suggested change to dropdown properties.
+class SuggestedDropdownProperties {
+  /// A DropdownProperties that only includes the changes made in this
+  /// suggestion.
+  ///
+  /// This can be used along with the dropdown_properties_suggestion_state to
+  /// see which fields have changed and their new values.
+  DropdownProperties? dropdownProperties;
+
+  /// A mask that indicates which of the fields on the base DropdownProperties
+  /// have been changed in this suggestion.
+  DropdownPropertiesSuggestionState? dropdownPropertiesSuggestionState;
+
+  SuggestedDropdownProperties({
+    this.dropdownProperties,
+    this.dropdownPropertiesSuggestionState,
+  });
+
+  SuggestedDropdownProperties.fromJson(core.Map json_)
+    : this(
+        dropdownProperties: json_.containsKey('dropdownProperties')
+            ? DropdownProperties.fromJson(
+                json_['dropdownProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        dropdownPropertiesSuggestionState:
+            json_.containsKey('dropdownPropertiesSuggestionState')
+            ? DropdownPropertiesSuggestionState.fromJson(
+                json_['dropdownPropertiesSuggestionState']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final dropdownProperties = this.dropdownProperties;
+    final dropdownPropertiesSuggestionState =
+        this.dropdownPropertiesSuggestionState;
+    return {
+      'dropdownProperties': ?dropdownProperties,
+      'dropdownPropertiesSuggestionState': ?dropdownPropertiesSuggestionState,
+    };
+  }
+}
+
 /// A suggested change to InlineObjectProperties.
 class SuggestedInlineObjectProperties {
   /// An InlineObjectProperties that only includes the changes made in this
@@ -8732,6 +10218,145 @@ class SuggestedTextStyle {
     return {
       'textStyle': ?textStyle,
       'textStyleSuggestionState': ?textStyleSuggestionState,
+    };
+  }
+}
+
+/// The suggestions which were affected by a given update.
+class SuggestionResponse {
+  /// The IDs of suggestions which were accepted during the update.
+  core.List<core.String>? acceptedSuggestionIds;
+
+  /// The IDs of suggestions which were created during the update.
+  core.List<core.String>? createdSuggestionIds;
+
+  /// The IDs of suggestions which were deleted during the update.
+  core.List<core.String>? deletedSuggestionIds;
+
+  /// The IDs of suggestions which were rejected during the update.
+  core.List<core.String>? rejectedSuggestionIds;
+
+  /// The IDs of suggestions whose summaries were updated during the update.
+  core.List<core.String>? updatedSummarySuggestionIds;
+
+  SuggestionResponse({
+    this.acceptedSuggestionIds,
+    this.createdSuggestionIds,
+    this.deletedSuggestionIds,
+    this.rejectedSuggestionIds,
+    this.updatedSummarySuggestionIds,
+  });
+
+  SuggestionResponse.fromJson(core.Map json_)
+    : this(
+        acceptedSuggestionIds: (json_['acceptedSuggestionIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        createdSuggestionIds: (json_['createdSuggestionIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        deletedSuggestionIds: (json_['deletedSuggestionIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        rejectedSuggestionIds: (json_['rejectedSuggestionIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        updatedSummarySuggestionIds:
+            (json_['updatedSummarySuggestionIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final acceptedSuggestionIds = this.acceptedSuggestionIds;
+    final createdSuggestionIds = this.createdSuggestionIds;
+    final deletedSuggestionIds = this.deletedSuggestionIds;
+    final rejectedSuggestionIds = this.rejectedSuggestionIds;
+    final updatedSummarySuggestionIds = this.updatedSummarySuggestionIds;
+    return {
+      'acceptedSuggestionIds': ?acceptedSuggestionIds,
+      'createdSuggestionIds': ?createdSuggestionIds,
+      'deletedSuggestionIds': ?deletedSuggestionIds,
+      'rejectedSuggestionIds': ?rejectedSuggestionIds,
+      'updatedSummarySuggestionIds': ?updatedSummarySuggestionIds,
+    };
+  }
+}
+
+/// Represents a single suggestion thread.
+///
+/// Suggestion threads are created as a byproduct of saving changes to the
+/// document while in suggestion mode, and cannot be created directly.
+class SuggestionThread {
+  /// The first post in the thread.
+  Post? headPost;
+
+  /// Replies to the head post.
+  core.List<Post>? replies;
+
+  /// Whether the thread is open, accepted, or rejected.
+  /// Possible string values are:
+  /// - "STATUS_UNSPECIFIED" : Default value. This value is unused.
+  /// - "OPEN" : The suggestion thread is open.
+  /// - "ACCEPTED" : The suggestion thread is accepted.
+  /// - "REJECTED" : The suggestion thread is rejected.
+  core.String? status;
+
+  /// The unique ID of the suggestion.
+  core.String? suggestionId;
+
+  /// Summary of the suggested differences in the document, in HTML.
+  ///
+  /// May be empty.
+  core.String? summaryHtml;
+
+  /// Summary of the suggested differences in the document, in plain text.
+  ///
+  /// May be empty.
+  core.String? summaryText;
+
+  SuggestionThread({
+    this.headPost,
+    this.replies,
+    this.status,
+    this.suggestionId,
+    this.summaryHtml,
+    this.summaryText,
+  });
+
+  SuggestionThread.fromJson(core.Map json_)
+    : this(
+        headPost: json_.containsKey('headPost')
+            ? Post.fromJson(
+                json_['headPost'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        replies: (json_['replies'] as core.List?)
+            ?.map(
+              (value) =>
+                  Post.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+        status: json_['status'] as core.String?,
+        suggestionId: json_['suggestionId'] as core.String?,
+        summaryHtml: json_['summaryHtml'] as core.String?,
+        summaryText: json_['summaryText'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final headPost = this.headPost;
+    final replies = this.replies;
+    final status = this.status;
+    final suggestionId = this.suggestionId;
+    final summaryHtml = this.summaryHtml;
+    final summaryText = this.summaryText;
+    return {
+      'headPost': ?headPost,
+      'replies': ?replies,
+      'status': ?status,
+      'suggestionId': ?suggestionId,
+      'summaryHtml': ?summaryHtml,
+      'summaryText': ?summaryText,
     };
   }
 }
@@ -10114,6 +11739,57 @@ class UnmergeTableCellsRequest {
   }
 }
 
+/// Updates a Post in a CommentThread or SuggestionThread.
+///
+/// Returns a 400 bad request error if: - The post is the headPost of a
+/// SuggestionThread. - The requesting user is not the author of the post.
+class UpdateCommentPostRequest {
+  /// The ID of the CommentThread which the post belongs to.
+  core.String? commentId;
+
+  /// The new text of the comment, as plain text.
+  ///
+  /// This text content will be handled similarly to comments created in the
+  /// Docs editor. It will have similar behaviors for formatting, notifications,
+  /// etc. This field cannot be empty, and must not exceed 2048 UTF-8 code
+  /// units.
+  core.String? content;
+
+  /// The ID of the post being updated.
+  core.String? postId;
+
+  /// The ID of the SuggestionThread which the post belongs to.
+  core.String? suggestionId;
+
+  UpdateCommentPostRequest({
+    this.commentId,
+    this.content,
+    this.postId,
+    this.suggestionId,
+  });
+
+  UpdateCommentPostRequest.fromJson(core.Map json_)
+    : this(
+        commentId: json_['commentId'] as core.String?,
+        content: json_['content'] as core.String?,
+        postId: json_['postId'] as core.String?,
+        suggestionId: json_['suggestionId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final commentId = this.commentId;
+    final content = this.content;
+    final postId = this.postId;
+    final suggestionId = this.suggestionId;
+    return {
+      'commentId': ?commentId,
+      'content': ?content,
+      'postId': ?postId,
+      'suggestionId': ?suggestionId,
+    };
+  }
+}
+
 /// Updates the DocumentStyle.
 class UpdateDocumentStyleRequest {
   /// The styles to set on the document.
@@ -10194,6 +11870,151 @@ class UpdateDocumentTabPropertiesRequest {
     final fields = this.fields;
     final tabProperties = this.tabProperties;
     return {'fields': ?fields, 'tabProperties': ?tabProperties};
+  }
+}
+
+/// Updates the properties of a DropdownDefinition.
+class UpdateDropdownDefinitionPropertiesRequest {
+  /// The ID of the DropdownDefinition to update.
+  core.String? dropdownDefinitionId;
+
+  /// The properties to update.
+  DropdownDefinitionProperties? dropdownDefinitionProperties;
+
+  /// The fields that should be updated.
+  ///
+  /// At least one field must be specified. The root
+  /// `dropdown_definition_properties` is implied and should not be specified. A
+  /// single `"*"` can be used as short-hand for listing every field. When
+  /// `dropdown_definition_properties.options` is included in the field mask,
+  /// the full, complete list of desired options must be provided in
+  /// `dropdown_definition_properties.options`.
+  core.String? fields;
+
+  /// A map of option IDs to their replacements, used to automatically reassign
+  /// orphaned Dropdown chips when an option is deleted.
+  ///
+  /// The keys are the IDs of the options being deleted, and the values are the
+  /// IDs of their replacement options. If an option being deleted is selected
+  /// in one or more Dropdown chips in the document, a replacement entry for
+  /// that option must be provided in this map, and the replacement option ID
+  /// must exist in the updated DropdownDefinition. If a replacement is required
+  /// but not provided, a 400 bad request error is returned. Options being
+  /// deleted that are not selected in any Dropdown chips do not require a
+  /// replacement. For example, if option A is being replaced by option B, the
+  /// map should be `{"A": "B"}`.
+  core.Map<core.String, core.String>? selectedOptionIdReplacements;
+
+  /// The ID of the tab that contains the dropdown definition to update.
+  ///
+  /// When omitted, the request is applied to the first tab. In a document
+  /// containing a single tab: - If provided, must match the singular tab's ID.
+  /// - If omitted, the request applies to the singular tab. In a document
+  /// containing multiple tabs: - If provided, the request applies to the
+  /// specified tab. - If omitted, the request applies to the first tab in the
+  /// document.
+  core.String? tabId;
+
+  UpdateDropdownDefinitionPropertiesRequest({
+    this.dropdownDefinitionId,
+    this.dropdownDefinitionProperties,
+    this.fields,
+    this.selectedOptionIdReplacements,
+    this.tabId,
+  });
+
+  UpdateDropdownDefinitionPropertiesRequest.fromJson(core.Map json_)
+    : this(
+        dropdownDefinitionId: json_['dropdownDefinitionId'] as core.String?,
+        dropdownDefinitionProperties:
+            json_.containsKey('dropdownDefinitionProperties')
+            ? DropdownDefinitionProperties.fromJson(
+                json_['dropdownDefinitionProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        fields: json_['fields'] as core.String?,
+        selectedOptionIdReplacements:
+            (json_['selectedOptionIdReplacements']
+                    as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        tabId: json_['tabId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final dropdownDefinitionId = this.dropdownDefinitionId;
+    final dropdownDefinitionProperties = this.dropdownDefinitionProperties;
+    final fields = this.fields;
+    final selectedOptionIdReplacements = this.selectedOptionIdReplacements;
+    final tabId = this.tabId;
+    return {
+      'dropdownDefinitionId': ?dropdownDefinitionId,
+      'dropdownDefinitionProperties': ?dropdownDefinitionProperties,
+      'fields': ?fields,
+      'selectedOptionIdReplacements': ?selectedOptionIdReplacements,
+      'tabId': ?tabId,
+    };
+  }
+}
+
+/// Updates the properties of a Dropdown.
+class UpdateDropdownPropertiesRequest {
+  /// The Dropdown ID.
+  ///
+  /// Required.
+  core.String? dropdownId;
+
+  /// The properties to update.
+  DropdownProperties? dropdownProperties;
+
+  /// The fields that should be updated.
+  ///
+  /// At least one field must be specified. The root `dropdown_properties` is
+  /// implied and should not be specified. A single `"*"` can be used as
+  /// short-hand for listing every field.
+  core.String? fields;
+
+  /// The ID of the tab that contains the dropdown to update.
+  ///
+  /// When omitted, the request is applied to the first tab. In a document
+  /// containing a single tab: - If provided, must match the singular tab's ID.
+  /// - If omitted, the request applies to the singular tab. In a document
+  /// containing multiple tabs: - If provided, the request applies to the
+  /// specified tab. - If omitted, the request applies to the first tab in the
+  /// document.
+  core.String? tabId;
+
+  UpdateDropdownPropertiesRequest({
+    this.dropdownId,
+    this.dropdownProperties,
+    this.fields,
+    this.tabId,
+  });
+
+  UpdateDropdownPropertiesRequest.fromJson(core.Map json_)
+    : this(
+        dropdownId: json_['dropdownId'] as core.String?,
+        dropdownProperties: json_.containsKey('dropdownProperties')
+            ? DropdownProperties.fromJson(
+                json_['dropdownProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        fields: json_['fields'] as core.String?,
+        tabId: json_['tabId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final dropdownId = this.dropdownId;
+    final dropdownProperties = this.dropdownProperties;
+    final fields = this.fields;
+    final tabId = this.tabId;
+    return {
+      'dropdownId': ?dropdownId,
+      'dropdownProperties': ?dropdownProperties,
+      'fields': ?fields,
+      'tabId': ?tabId,
+    };
   }
 }
 
@@ -10662,20 +12483,37 @@ class WriteControl {
   /// frequently edited documents this window might be shorter.
   core.String? targetRevisionId;
 
-  WriteControl({this.requiredRevisionId, this.targetRevisionId});
+  /// How the request updates should be applied to the document.
+  ///
+  /// If unspecified, the request updates will be applied as normal edits.
+  /// Possible string values are:
+  /// - "WRITE_MODE_UNSPECIFIED" : The write mode is unspecified. Defaults to
+  /// EDIT behavior.
+  /// - "EDIT" : Apply all updates as normal edits.
+  /// - "SUGGEST" : Apply all updates as suggestions.
+  core.String? writeMode;
+
+  WriteControl({
+    this.requiredRevisionId,
+    this.targetRevisionId,
+    this.writeMode,
+  });
 
   WriteControl.fromJson(core.Map json_)
     : this(
         requiredRevisionId: json_['requiredRevisionId'] as core.String?,
         targetRevisionId: json_['targetRevisionId'] as core.String?,
+        writeMode: json_['writeMode'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final requiredRevisionId = this.requiredRevisionId;
     final targetRevisionId = this.targetRevisionId;
+    final writeMode = this.writeMode;
     return {
       'requiredRevisionId': ?requiredRevisionId,
       'targetRevisionId': ?targetRevisionId,
+      'writeMode': ?writeMode,
     };
   }
 }

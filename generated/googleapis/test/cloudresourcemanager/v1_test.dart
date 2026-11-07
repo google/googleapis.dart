@@ -894,6 +894,7 @@ api.Project buildProject() {
     o.isManagementProject = true;
     o.labels = buildUnnamed16();
     o.lifecycleState = 'foo';
+    o.managementType = 'foo';
     o.name = 'foo';
     o.parent = buildResourceId();
     o.projectId = 'foo';
@@ -912,6 +913,7 @@ void checkProject(api.Project o) {
     unittest.expect(o.isManagementProject!, unittest.isTrue);
     checkUnnamed16(o.labels!);
     unittest.expect(o.lifecycleState!, unittest.equals('foo'));
+    unittest.expect(o.managementType!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
     checkResourceId(o.parent!);
     unittest.expect(o.projectId!, unittest.equals('foo'));

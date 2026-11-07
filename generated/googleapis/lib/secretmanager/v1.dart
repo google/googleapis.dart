@@ -2144,7 +2144,7 @@ class Binding {
 
 /// These are the credentials required for Cloud SQL DB for Single user Managed
 /// Rotation.
-class CloudSQLSingleUserCredentials {
+class CloudSqlSingleUserCredentials {
   /// Instance ID of the Cloud SQL instance.
   ///
   /// Required.
@@ -2162,13 +2162,13 @@ class CloudSQLSingleUserCredentials {
   /// Required.
   core.String? username;
 
-  CloudSQLSingleUserCredentials({
+  CloudSqlSingleUserCredentials({
     this.instanceId,
     this.password,
     this.username,
   });
 
-  CloudSQLSingleUserCredentials.fromJson(core.Map json_)
+  CloudSqlSingleUserCredentials.fromJson(core.Map json_)
     : this(
         instanceId: json_['instanceId'] as core.String?,
         password: json_['password'] as core.String?,
@@ -2250,7 +2250,7 @@ typedef Empty = $Empty;
 /// Request message for SecretManagerService.EnableManagedRotation.
 class EnableManagedRotationRequest {
   /// Credentials required for Cloud SQL DB for Single user Managed Rotation.
-  CloudSQLSingleUserCredentials? cloudSqlSingleUserCredentials;
+  CloudSqlSingleUserCredentials? cloudSqlSingleUserCredentials;
 
   EnableManagedRotationRequest({this.cloudSqlSingleUserCredentials});
 
@@ -2258,7 +2258,7 @@ class EnableManagedRotationRequest {
     : this(
         cloudSqlSingleUserCredentials:
             json_.containsKey('cloudSqlSingleUserCredentials')
-            ? CloudSQLSingleUserCredentials.fromJson(
+            ? CloudSqlSingleUserCredentials.fromJson(
                 json_['cloudSqlSingleUserCredentials']
                     as core.Map<core.String, core.dynamic>,
               )

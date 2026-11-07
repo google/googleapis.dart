@@ -397,6 +397,7 @@ api.PrimaryProductDataSource buildPrimaryProductDataSource() {
   final o = api.PrimaryProductDataSource();
   buildCounterPrimaryProductDataSource++;
   if (buildCounterPrimaryProductDataSource < 3) {
+    o.channel = 'foo';
     o.contentLanguage = 'foo';
     o.countries = buildUnnamed3();
     o.defaultRule = buildDefaultRule();
@@ -411,6 +412,7 @@ api.PrimaryProductDataSource buildPrimaryProductDataSource() {
 void checkPrimaryProductDataSource(api.PrimaryProductDataSource o) {
   buildCounterPrimaryProductDataSource++;
   if (buildCounterPrimaryProductDataSource < 3) {
+    unittest.expect(o.channel!, unittest.equals('foo'));
     unittest.expect(o.contentLanguage!, unittest.equals('foo'));
     checkUnnamed3(o.countries!);
     checkDefaultRule(o.defaultRule!);

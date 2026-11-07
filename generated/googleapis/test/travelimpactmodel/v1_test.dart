@@ -638,6 +638,7 @@ api.Scope3FlightEmissions buildScope3FlightEmissions() {
   buildCounterScope3FlightEmissions++;
   if (buildCounterScope3FlightEmissions < 3) {
     o.flight = buildScope3FlightSegment();
+    o.modelVersion = buildModelVersion();
     o.source = 'foo';
     o.ttwEmissionsGramsPerPax = 'foo';
     o.wttEmissionsGramsPerPax = 'foo';
@@ -651,6 +652,7 @@ void checkScope3FlightEmissions(api.Scope3FlightEmissions o) {
   buildCounterScope3FlightEmissions++;
   if (buildCounterScope3FlightEmissions < 3) {
     checkScope3FlightSegment(o.flight!);
+    checkModelVersion(o.modelVersion!);
     unittest.expect(o.source!, unittest.equals('foo'));
     unittest.expect(o.ttwEmissionsGramsPerPax!, unittest.equals('foo'));
     unittest.expect(o.wttEmissionsGramsPerPax!, unittest.equals('foo'));

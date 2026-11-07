@@ -1503,6 +1503,9 @@ class LoyaltyPoints {
 }
 
 /// A message that represents loyalty program.
+///
+/// For more information on loyalty programs, see \[Overview of loyalty
+/// programs\](/merchant/api/guides/loyalty/loyalty-programs).
 class LoyaltyProgram {
   /// The cashback that can be used for future purchases.
   Price? cashbackForFutureUse;
@@ -2806,8 +2809,8 @@ class ProductAttributes {
   /// for more information.
   core.String? virtualModelLink;
 
-  /// The [warranty](https://support.google.com/google-ads/answer/15957626) of
-  /// the vehicle.
+  /// The \[`warranty`\](https://support.google.com/merchants/answer/18562485)
+  /// of the product.
   Warranty? warranty;
 
   /// The [Year](https://support.google.com/google-ads/answer/14152816) of the
@@ -3721,6 +3724,7 @@ class ProductCertification {
   /// - "BMWK" : For the German CO2 emissions classes for vehicles.
   /// - "EPA" : Environment Protection Agency.
   /// - "EC" : European Commission for energy labels in the EU.
+  /// - "DESNZ" : Department for Energy Security and Net Zero.
   core.String? certificationAuthority;
 
   /// The certification code.
@@ -3759,6 +3763,7 @@ class ProductCertification {
   /// - "VEHICLE_ENERGY_EFFICIENCY" : The overall CO2 class of a vehicle
   /// - "VEHICLE_ENERGY_EFFICIENCY_DISCHARGED_BATTERY" : For the CO2 class of a
   /// vehicle with a discharged battery.
+  /// - "GB_ENERGY_INFO" : Great Britain Energy Information.
   core.String? certificationName;
 
   /// The certification value (also known as class, level or grade), for example
@@ -5023,19 +5028,32 @@ class VariantOption {
   }
 }
 
-/// The warranty of the vehicle.
+/// The warranty of the product.
 class Warranty {
-  /// The warranty duration in months.
+  /// The warranty duration in units.
+  ///
+  /// Default is in months, can be overridden by the `duration_unit` field.
   core.String? duration;
 
-  /// The warranty mileage.
+  /// The unit for the warranty duration.
+  ///
+  /// Assumed to be `MONTH` if equal to `WARRANTY_DURATION_UNIT_UNSPECIFIED`.
+  /// Possible string values are:
+  /// - "WARRANTY_DURATION_UNIT_UNSPECIFIED" : Indicates that the warranty
+  /// duration unit is unspecified.
+  /// - "MONTH" : Indicates that the warranty duration unit is month.
+  /// - "YEAR" : Indicates that the warranty duration unit is year.
+  core.String? durationUnit;
+
+  /// The warranty mileage (only applies to vehicles).
   Mileage? mileage;
 
-  Warranty({this.duration, this.mileage});
+  Warranty({this.duration, this.durationUnit, this.mileage});
 
   Warranty.fromJson(core.Map json_)
     : this(
         duration: json_['duration'] as core.String?,
+        durationUnit: json_['durationUnit'] as core.String?,
         mileage: json_.containsKey('mileage')
             ? Mileage.fromJson(
                 json_['mileage'] as core.Map<core.String, core.dynamic>,
@@ -5045,7 +5063,12 @@ class Warranty {
 
   core.Map<core.String, core.dynamic> toJson() {
     final duration = this.duration;
+    final durationUnit = this.durationUnit;
     final mileage = this.mileage;
-    return {'duration': ?duration, 'mileage': ?mileage};
+    return {
+      'duration': ?duration,
+      'durationUnit': ?durationUnit,
+      'mileage': ?mileage,
+    };
   }
 }

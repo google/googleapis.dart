@@ -947,6 +947,88 @@ void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse--;
 }
 
+core.List<core.String> buildUnnamed19() => ['foo', 'foo'];
+
+void checkUnnamed19(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.List<core.String> buildUnnamed20() => ['foo', 'foo'];
+
+void checkUnnamed20(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterUpgradeEditionRequest = 0;
+api.UpgradeEditionRequest buildUpgradeEditionRequest() {
+  final o = api.UpgradeEditionRequest();
+  buildCounterUpgradeEditionRequest++;
+  if (buildCounterUpgradeEditionRequest < 3) {
+    o.capacityCommitments = buildUnnamed19();
+    o.reservations = buildUnnamed20();
+    o.targetEdition = 'foo';
+  }
+  buildCounterUpgradeEditionRequest--;
+  return o;
+}
+
+void checkUpgradeEditionRequest(api.UpgradeEditionRequest o) {
+  buildCounterUpgradeEditionRequest++;
+  if (buildCounterUpgradeEditionRequest < 3) {
+    checkUnnamed19(o.capacityCommitments!);
+    checkUnnamed20(o.reservations!);
+    unittest.expect(o.targetEdition!, unittest.equals('foo'));
+  }
+  buildCounterUpgradeEditionRequest--;
+}
+
+core.List<api.CapacityCommitment> buildUnnamed21() => [
+  buildCapacityCommitment(),
+  buildCapacityCommitment(),
+];
+
+void checkUnnamed21(core.List<api.CapacityCommitment> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkCapacityCommitment(o[0]);
+  checkCapacityCommitment(o[1]);
+}
+
+core.List<api.Reservation> buildUnnamed22() => [
+  buildReservation(),
+  buildReservation(),
+];
+
+void checkUnnamed22(core.List<api.Reservation> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkReservation(o[0]);
+  checkReservation(o[1]);
+}
+
+core.int buildCounterUpgradeEditionResponse = 0;
+api.UpgradeEditionResponse buildUpgradeEditionResponse() {
+  final o = api.UpgradeEditionResponse();
+  buildCounterUpgradeEditionResponse++;
+  if (buildCounterUpgradeEditionResponse < 3) {
+    o.capacityCommitments = buildUnnamed21();
+    o.reservations = buildUnnamed22();
+  }
+  buildCounterUpgradeEditionResponse--;
+  return o;
+}
+
+void checkUpgradeEditionResponse(api.UpgradeEditionResponse o) {
+  buildCounterUpgradeEditionResponse++;
+  if (buildCounterUpgradeEditionResponse < 3) {
+    checkUnnamed21(o.capacityCommitments!);
+    checkUnnamed22(o.reservations!);
+  }
+  buildCounterUpgradeEditionResponse--;
+}
+
 void main() {
   unittest.group('obj-schema-Assignment', () {
     unittest.test('to-json--from-json', () async {
@@ -1278,6 +1360,28 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-UpgradeEditionRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildUpgradeEditionRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UpgradeEditionRequest.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkUpgradeEditionRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-UpgradeEditionResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildUpgradeEditionResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UpgradeEditionResponse.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkUpgradeEditionResponse(od);
+    });
+  });
+
   unittest.group('resource-ProjectsLocationsResource', () {
     unittest.test('method--getBiReservation', () async {
       final mock = HttpServerMock();
@@ -1546,6 +1650,69 @@ void main() {
         $fields: arg_$fields,
       );
       checkBiReservation(response as api.BiReservation);
+    });
+
+    unittest.test('method--upgradeEdition', () async {
+      final mock = HttpServerMock();
+      final res = api.BigQueryReservationApi(mock).projects.locations;
+      final arg_request = buildUpgradeEditionRequest();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.UpgradeEditionRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkUpgradeEditionRequest(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildUpgradeEditionResponse());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.upgradeEdition(
+        arg_request,
+        arg_parent,
+        $fields: arg_$fields,
+      );
+      checkUpgradeEditionResponse(response as api.UpgradeEditionResponse);
     });
   });
 

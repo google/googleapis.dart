@@ -94,6 +94,10 @@ class ProjectsMessagesResource {
   /// (FID)\](/docs/cloud-messaging/android/get-started#access-firebase-installation-id),
   /// registration token, topic, or condition).
   ///
+  /// If duplicate fields or parameters are provided in a request (such as
+  /// repeated JSON keys in the request body or duplicate query parameters), the
+  /// last occurrence takes precedence.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -397,6 +401,9 @@ class ProjectsRegistrationsTopicSubscriptionsResource {
   }
 }
 
+/// A Background Sync message that is sent to Android devices.
+typedef AndroidBackgroundSyncMessage = $Empty;
+
 /// Android specific options for messages sent through
 /// [FCM connection server](https://goo.gl/4GLdUl).
 class AndroidConfig {
@@ -432,7 +439,7 @@ class AndroidConfig {
   /// Options for features provided by the FCM SDK for Android.
   AndroidFcmOptions? fcmOptions;
 
-  /// Notification to send to android devices.
+  /// Notification to send to Android devices.
   AndroidNotification? notification;
 
   /// Message priority.
@@ -542,6 +549,160 @@ class AndroidConfig {
       'fcmOptions': ?fcmOptions,
       'notification': ?notification,
       'priority': ?priority,
+      'restrictedPackageName': ?restrictedPackageName,
+      'restrictedSatelliteOk': ?restrictedSatelliteOk,
+      'ttl': ?ttl,
+    };
+  }
+}
+
+/// Android specific V2 options for messages sent through
+/// [FCM connection server](https://goo.gl/4GLdUl).
+///
+/// This is a v2 version of the AndroidConfig message and will replace it in the
+/// v2 API.
+class AndroidConfigV2 {
+  /// Non-urgent background sync message to send to Android devices.
+  ///
+  /// Delivery of these messages may be delayed or batched to optimize for
+  /// battery.
+  ///
+  /// Optional.
+  AndroidBackgroundSyncMessage? backgroundSync;
+
+  /// If set to true, messages will be allowed to be delivered to the app while
+  /// the device is in bandwidth constrained mode.
+  ///
+  /// This should only be enabled when the app has been tested to properly
+  /// handle messages in bandwidth constrained mode.
+  ///
+  /// Optional.
+  core.bool? bandwidthConstrainedOk;
+
+  /// An identifier of a group of messages that can be collapsed, so that only
+  /// the last message gets sent when delivery can be resumed.
+  ///
+  /// A maximum of 4 different collapse keys is allowed at any given time.
+  core.String? collapseKey;
+
+  /// Arbitrary key/value payload.
+  ///
+  /// If present, it will override google.firebase.fcm.v1.Message.data.
+  core.Map<core.String, core.String>? data;
+
+  /// If set to true, messages will be allowed to be delivered to the app while
+  /// the device is in direct boot mode.
+  ///
+  /// See
+  /// [Support Direct Boot mode](https://developer.android.com/training/articles/direct-boot).
+  ///
+  /// Optional.
+  core.bool? directBootOk;
+
+  /// Options for features provided by the FCM SDK for Android.
+  ///
+  /// If present, it will override google.firebase.fcm.v1.Message.fcm_options.
+  AndroidFcmOptions? fcmOptions;
+
+  /// User-facing notification to send to Android devices.
+  ///
+  /// These messages are delivered immediately and are not delayed by battery
+  /// optimizations.
+  ///
+  /// Optional.
+  AndroidRemoteNotification? remoteNotification;
+
+  /// Package name of the application where the registration token must match in
+  /// order to receive the message.
+  core.String? restrictedPackageName;
+
+  /// If set to true, messages will be allowed to be delivered to the app while
+  /// the device is connected over a restricted satellite network.
+  ///
+  /// This should only be enabled for messages that can be handled over a
+  /// restricted satellite network and only for apps that are enabled to work
+  /// over a restricted satellite network. Note that the ability of the app to
+  /// connect to a restricted satellite network is dependent on the carrier's
+  /// settings and the device model.
+  ///
+  /// Optional.
+  core.bool? restrictedSatelliteOk;
+
+  /// How long (in seconds) the message should be kept in FCM storage if the
+  /// device is offline.
+  ///
+  /// The maximum time to live supported is 4 weeks, and the default value is 4
+  /// weeks if not set. Set it to 0 if want to send the message immediately. In
+  /// JSON format, the Duration type is encoded as a string rather than an
+  /// object, where the string ends in the suffix "s" (indicating seconds) and
+  /// is preceded by the number of seconds, with nanoseconds expressed as
+  /// fractional seconds. For example, 3 seconds with 0 nanoseconds should be
+  /// encoded in JSON format as "3s", while 3 seconds and 1 nanosecond should be
+  /// expressed in JSON format as "3.000000001s". The ttl will be rounded down
+  /// to the nearest second.
+  core.String? ttl;
+
+  AndroidConfigV2({
+    this.backgroundSync,
+    this.bandwidthConstrainedOk,
+    this.collapseKey,
+    this.data,
+    this.directBootOk,
+    this.fcmOptions,
+    this.remoteNotification,
+    this.restrictedPackageName,
+    this.restrictedSatelliteOk,
+    this.ttl,
+  });
+
+  AndroidConfigV2.fromJson(core.Map json_)
+    : this(
+        backgroundSync: json_.containsKey('backgroundSync')
+            ? AndroidBackgroundSyncMessage.fromJson(
+                json_['backgroundSync'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        bandwidthConstrainedOk: json_['bandwidthConstrainedOk'] as core.bool?,
+        collapseKey: json_['collapseKey'] as core.String?,
+        data: (json_['data'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        directBootOk: json_['directBootOk'] as core.bool?,
+        fcmOptions: json_.containsKey('fcmOptions')
+            ? AndroidFcmOptions.fromJson(
+                json_['fcmOptions'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        remoteNotification: json_.containsKey('remoteNotification')
+            ? AndroidRemoteNotification.fromJson(
+                json_['remoteNotification']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        restrictedPackageName: json_['restrictedPackageName'] as core.String?,
+        restrictedSatelliteOk: json_['restrictedSatelliteOk'] as core.bool?,
+        ttl: json_['ttl'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final backgroundSync = this.backgroundSync;
+    final bandwidthConstrainedOk = this.bandwidthConstrainedOk;
+    final collapseKey = this.collapseKey;
+    final data = this.data;
+    final directBootOk = this.directBootOk;
+    final fcmOptions = this.fcmOptions;
+    final remoteNotification = this.remoteNotification;
+    final restrictedPackageName = this.restrictedPackageName;
+    final restrictedSatelliteOk = this.restrictedSatelliteOk;
+    final ttl = this.ttl;
+    return {
+      'backgroundSync': ?backgroundSync,
+      'bandwidthConstrainedOk': ?bandwidthConstrainedOk,
+      'collapseKey': ?collapseKey,
+      'data': ?data,
+      'directBootOk': ?directBootOk,
+      'fcmOptions': ?fcmOptions,
+      'remoteNotification': ?remoteNotification,
       'restrictedPackageName': ?restrictedPackageName,
       'restrictedSatelliteOk': ?restrictedSatelliteOk,
       'ttl': ?ttl,
@@ -664,7 +825,7 @@ class AndroidNotification {
 
   /// Sets the number of items this notification represents.
   ///
-  /// May be displayed as a badge count for launchers that support badging.See
+  /// May be displayed as a badge count for launchers that support badging. See
   /// [Notification Badge](https://developer.android.com/training/notify-user/badges).
   /// For example, this might be useful if you're using just one notification to
   /// represent multiple new messages but you want the count here to represent
@@ -919,6 +1080,418 @@ class AndroidNotification {
   }
 }
 
+/// Notification v2 to send to Android devices.
+///
+/// This is a v2 version of the AndroidNotification message and will replace it
+/// in the v2 API.
+class AndroidNotificationV2 {
+  /// The notification's body text.
+  ///
+  /// If present, it will override google.firebase.fcm.v1.Notification.body.
+  core.String? body;
+
+  /// Variable string values to be used in place of the format specifiers in
+  /// body_loc_key to use to localize the body text to the user's current
+  /// localization.
+  ///
+  /// See [Formatting and Styling](https://goo.gl/MalYE3) for more information.
+  core.List<core.String>? bodyLocArgs;
+
+  /// The key to the body string in the app's string resources to use to
+  /// localize the body text to the user's current localization.
+  ///
+  /// See [String Resources](https://goo.gl/NdFZGI) for more information.
+  core.String? bodyLocKey;
+
+  /// The
+  /// [notification's channel id](https://developer.android.com/guide/topics/ui/notifiers/notifications#ManageChannels)
+  /// (new in Android O).
+  ///
+  /// The app must create a channel with this channel ID before any notification
+  /// with this channel ID is received. If you don't send this channel ID in the
+  /// request, or if the channel ID provided has not yet been created by the
+  /// app, FCM uses the channel ID specified in the app manifest.
+  core.String? channelId;
+
+  /// The action associated with a user click on the notification.
+  ///
+  /// If specified, an activity with a matching intent filter is launched when a
+  /// user clicks on the notification.
+  core.String? clickAction;
+
+  /// The notification's icon color, expressed in #rrggbb format.
+  core.String? color;
+
+  /// If set to true, use the Android framework's default LED light settings for
+  /// the notification.
+  ///
+  /// Default values are specified in
+  /// [config.xml](https://android.googlesource.com/platform/frameworks/base/+/master/core/res/res/values/config.xml).
+  /// If `default_light_settings` is set to true and `light_settings` is also
+  /// set, the user-specified `light_settings` is used instead of the default
+  /// value.
+  core.bool? defaultLightSettings;
+
+  /// If set to true, use the Android framework's default sound for the
+  /// notification.
+  ///
+  /// Default values are specified in
+  /// [config.xml](https://android.googlesource.com/platform/frameworks/base/+/master/core/res/res/values/config.xml).
+  core.bool? defaultSound;
+
+  /// If set to true, use the Android framework's default vibrate pattern for
+  /// the notification.
+  ///
+  /// Default values are specified in
+  /// [config.xml](https://android.googlesource.com/platform/frameworks/base/+/master/core/res/res/values/config.xml).
+  /// If `default_vibrate_timings` is set to true and `vibrate_timings` is also
+  /// set, the default value is used instead of the user-specified
+  /// `vibrate_timings`.
+  core.bool? defaultVibrateTimings;
+
+  /// Set the time that the event in the notification occurred.
+  ///
+  /// Notifications in the panel are sorted by this time. A point in time is
+  /// represented using
+  /// [protobuf.Timestamp](https://developers.google.com/protocol-buffers/docs/reference/java/com/google/protobuf/Timestamp).
+  core.String? eventTime;
+
+  /// The notification's icon.
+  ///
+  /// Sets the notification icon to myicon for drawable resource myicon. If you
+  /// don't send this key in the request, FCM displays the launcher icon
+  /// specified in your app manifest.
+  core.String? icon;
+
+  /// Identifier used to replace existing notifications in the notification
+  /// drawer.
+  ///
+  /// It is used in conjunction with `tag` to form a unique identifier `(tag,
+  /// id)` within the app. If not specified, each request creates a new
+  /// notification. If specified and a notification with the same `(tag, id)` is
+  /// already being shown, the new notification replaces the existing one in the
+  /// notification drawer.
+  ///
+  /// Optional.
+  core.int? id;
+
+  /// An HTTPS URL of an image to display in the notification.
+  ///
+  /// If present, it overrides google.firebase.fcm.v1.Notification.image.
+  core.String? image;
+
+  /// Settings to control the notification's LED blinking rate and color if LED
+  /// is available on the device.
+  ///
+  /// The total blinking time is controlled by the OS.
+  GoogleFirebaseFcmV1AndroidNotificationV2LightSettings? lightSettings;
+
+  /// Set whether or not this notification is relevant only to the current
+  /// device.
+  ///
+  /// Some notifications can be bridged to other devices for remote display,
+  /// such as a Wear OS watch. This hint can be set to recommend this
+  /// notification not be bridged. See
+  /// [Wear OS guides](https://developer.android.com/training/wearables/notifications/bridger#existing-method-of-preventing-bridging)
+  core.bool? localOnly;
+
+  /// Sets the number of items this notification represents.
+  ///
+  /// May be displayed as a badge count for launchers that support badging. See
+  /// [Notification Badge](https://developer.android.com/training/notify-user/badges).
+  /// For example, this might be useful if you're using just one notification to
+  /// represent multiple new messages but you want the count here to represent
+  /// the number of total new messages. If non-positive or unspecified, systems
+  /// that support badging use the default, which is to increment a number
+  /// displayed on the long-press menu each time a new notification arrives.
+  core.int? notificationCount;
+
+  /// Set the relative priority for this notification.
+  ///
+  /// Priority is an indication of how much of the user's attention should be
+  /// consumed by this notification. Low-priority notifications may be hidden
+  /// from the user in certain situations, while the user might be interrupted
+  /// for a higher-priority notification. This parameter affects notification
+  /// priority only on devices running Android 7.1 (API level 25) and lower. On
+  /// Android 8.0 (API level 26) and higher, priority is ignored in favor of
+  /// channel
+  /// [importance](https://developer.android.com/develop/ui/views/notifications/channels#importance).
+  /// Note this priority differs from `AndroidMessagePriority`. This priority is
+  /// processed by the client after the message has been delivered, whereas
+  /// [AndroidMessagePriority](https://firebase.google.com/docs/reference/fcm/rest/v1/projects.messages#androidmessagepriority)
+  /// is an FCM concept that controls when the message is delivered.
+  /// Possible string values are:
+  /// - "PRIORITY_UNSPECIFIED" : If priority is unspecified, notification
+  /// priority is set to `PRIORITY_DEFAULT`.
+  /// - "PRIORITY_MIN" : Lowest notification priority. Notifications with this
+  /// `PRIORITY_MIN` might not be shown to the user except under special
+  /// circumstances, such as detailed notification logs.
+  /// - "PRIORITY_LOW" : Lower notification priority. The UI may choose to show
+  /// the notifications smaller, or at a different position in the list,
+  /// compared with notifications with `PRIORITY_DEFAULT`.
+  /// - "PRIORITY_DEFAULT" : Default notification priority. If the application
+  /// does not prioritize its own notifications, use this value for all
+  /// notifications.
+  /// - "PRIORITY_HIGH" : Higher notification priority. Use this for more
+  /// important notifications or alerts. The UI may choose to show these
+  /// notifications larger, or at a different position in the notification
+  /// lists, compared with notifications with `PRIORITY_DEFAULT`.
+  /// - "PRIORITY_MAX" : Highest notification priority. Use this for the
+  /// application's most important items that require the user's prompt
+  /// attention or input.
+  core.String? notificationPriority;
+
+  /// The sound to play when the device receives the notification.
+  ///
+  /// Supports "default" or the filename of a sound resource bundled in the app.
+  /// Sound files must reside in /res/raw/.
+  core.String? sound;
+
+  /// When set to false or unset, the notification is automatically dismissed
+  /// when the user clicks it in the panel.
+  ///
+  /// When set to true, the notification persists even when the user clicks it.
+  core.bool? sticky;
+
+  /// Identifier used to replace existing notifications in the notification
+  /// drawer.
+  ///
+  /// It is used in conjunction with `id` to form a unique identifier `(tag,
+  /// id)` within the app. If not specified, each request creates a new
+  /// notification. If specified and a notification with the same `(tag, id)` is
+  /// already being shown, the new notification replaces the existing one in the
+  /// notification drawer.
+  core.String? tag;
+
+  /// Sets the "ticker" text, which is sent to accessibility services.
+  ///
+  /// Prior to API level 21 (`Lollipop`), sets the text that is displayed in the
+  /// status bar when the notification first arrives.
+  core.String? ticker;
+
+  /// The notification's title.
+  ///
+  /// If present, it will override google.firebase.fcm.v1.Notification.title.
+  core.String? title;
+
+  /// Variable string values to be used in place of the format specifiers in
+  /// title_loc_key to use to localize the title text to the user's current
+  /// localization.
+  ///
+  /// See [Formatting and Styling](https://goo.gl/MalYE3) for more information.
+  core.List<core.String>? titleLocArgs;
+
+  /// The key to the title string in the app's string resources to use to
+  /// localize the title text to the user's current localization.
+  ///
+  /// See [String Resources](https://goo.gl/NdFZGI) for more information.
+  core.String? titleLocKey;
+
+  /// Set the vibration pattern to use.
+  ///
+  /// Pass in an array of
+  /// [protobuf.Duration](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)
+  /// to turn on or off the vibrator. The first value indicates the `Duration`
+  /// to wait before turning the vibrator on. The next value indicates the
+  /// `Duration` to keep the vibrator on. Subsequent values alternate between
+  /// `Duration` to turn the vibrator off and to turn the vibrator on. If
+  /// `vibrate_timings` is set and `default_vibrate_timings` is set to `true`,
+  /// the default value is used instead of the user-specified `vibrate_timings`.
+  core.List<core.String>? vibrateTimings;
+
+  /// Set the
+  /// [Notification.visibility](https://developer.android.com/reference/android/app/Notification.html#visibility)
+  /// of the notification.
+  /// Possible string values are:
+  /// - "VISIBILITY_UNSPECIFIED" : If unspecified, default to
+  /// `Visibility.PRIVATE`.
+  /// - "PRIVATE" : Show this notification on all lockscreens, but conceal
+  /// sensitive or private information on secure lockscreens.
+  /// - "PUBLIC" : Show this notification in its entirety on all lockscreens.
+  /// - "SECRET" : Do not reveal any part of this notification on a secure
+  /// lockscreen.
+  core.String? visibility;
+
+  AndroidNotificationV2({
+    this.body,
+    this.bodyLocArgs,
+    this.bodyLocKey,
+    this.channelId,
+    this.clickAction,
+    this.color,
+    this.defaultLightSettings,
+    this.defaultSound,
+    this.defaultVibrateTimings,
+    this.eventTime,
+    this.icon,
+    this.id,
+    this.image,
+    this.lightSettings,
+    this.localOnly,
+    this.notificationCount,
+    this.notificationPriority,
+    this.sound,
+    this.sticky,
+    this.tag,
+    this.ticker,
+    this.title,
+    this.titleLocArgs,
+    this.titleLocKey,
+    this.vibrateTimings,
+    this.visibility,
+  });
+
+  AndroidNotificationV2.fromJson(core.Map json_)
+    : this(
+        body: json_['body'] as core.String?,
+        bodyLocArgs: (json_['bodyLocArgs'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        bodyLocKey: json_['bodyLocKey'] as core.String?,
+        channelId: json_['channelId'] as core.String?,
+        clickAction: json_['clickAction'] as core.String?,
+        color: json_['color'] as core.String?,
+        defaultLightSettings: json_['defaultLightSettings'] as core.bool?,
+        defaultSound: json_['defaultSound'] as core.bool?,
+        defaultVibrateTimings: json_['defaultVibrateTimings'] as core.bool?,
+        eventTime: json_['eventTime'] as core.String?,
+        icon: json_['icon'] as core.String?,
+        id: json_['id'] as core.int?,
+        image: json_['image'] as core.String?,
+        lightSettings: json_.containsKey('lightSettings')
+            ? GoogleFirebaseFcmV1AndroidNotificationV2LightSettings.fromJson(
+                json_['lightSettings'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        localOnly: json_['localOnly'] as core.bool?,
+        notificationCount: json_['notificationCount'] as core.int?,
+        notificationPriority: json_['notificationPriority'] as core.String?,
+        sound: json_['sound'] as core.String?,
+        sticky: json_['sticky'] as core.bool?,
+        tag: json_['tag'] as core.String?,
+        ticker: json_['ticker'] as core.String?,
+        title: json_['title'] as core.String?,
+        titleLocArgs: (json_['titleLocArgs'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        titleLocKey: json_['titleLocKey'] as core.String?,
+        vibrateTimings: (json_['vibrateTimings'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        visibility: json_['visibility'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final body = this.body;
+    final bodyLocArgs = this.bodyLocArgs;
+    final bodyLocKey = this.bodyLocKey;
+    final channelId = this.channelId;
+    final clickAction = this.clickAction;
+    final color = this.color;
+    final defaultLightSettings = this.defaultLightSettings;
+    final defaultSound = this.defaultSound;
+    final defaultVibrateTimings = this.defaultVibrateTimings;
+    final eventTime = this.eventTime;
+    final icon = this.icon;
+    final id = this.id;
+    final image = this.image;
+    final lightSettings = this.lightSettings;
+    final localOnly = this.localOnly;
+    final notificationCount = this.notificationCount;
+    final notificationPriority = this.notificationPriority;
+    final sound = this.sound;
+    final sticky = this.sticky;
+    final tag = this.tag;
+    final ticker = this.ticker;
+    final title = this.title;
+    final titleLocArgs = this.titleLocArgs;
+    final titleLocKey = this.titleLocKey;
+    final vibrateTimings = this.vibrateTimings;
+    final visibility = this.visibility;
+    return {
+      'body': ?body,
+      'bodyLocArgs': ?bodyLocArgs,
+      'bodyLocKey': ?bodyLocKey,
+      'channelId': ?channelId,
+      'clickAction': ?clickAction,
+      'color': ?color,
+      'defaultLightSettings': ?defaultLightSettings,
+      'defaultSound': ?defaultSound,
+      'defaultVibrateTimings': ?defaultVibrateTimings,
+      'eventTime': ?eventTime,
+      'icon': ?icon,
+      'id': ?id,
+      'image': ?image,
+      'lightSettings': ?lightSettings,
+      'localOnly': ?localOnly,
+      'notificationCount': ?notificationCount,
+      'notificationPriority': ?notificationPriority,
+      'sound': ?sound,
+      'sticky': ?sticky,
+      'tag': ?tag,
+      'ticker': ?ticker,
+      'title': ?title,
+      'titleLocArgs': ?titleLocArgs,
+      'titleLocKey': ?titleLocKey,
+      'vibrateTimings': ?vibrateTimings,
+      'visibility': ?visibility,
+    };
+  }
+}
+
+/// A Remote Notification message that is sent to Android devices.
+class AndroidRemoteNotification {
+  /// If set to true, the notification content can be updated by the app after
+  /// the notification is received on the device.
+  ///
+  /// Optional.
+  core.bool? mutableContent;
+
+  /// Notification to send to Android devices.
+  ///
+  /// Optional.
+  AndroidNotificationV2? notification;
+
+  /// If set to `true`, this RemoteNotification message will be delivered to
+  /// legacy V1 clients as a data message by omitting the
+  /// google.firebase.fcm.v1.AndroidRemoteNotification.notification.
+  ///
+  /// This should only be enabled when migrating from legacy V1 data messages.
+  /// Note that by default (when set to false), RemoteNotification messages are
+  /// automatically translated to V1 notification messages for legacy clients.
+  ///
+  /// Optional.
+  core.bool? useAsV1DataMessage;
+
+  AndroidRemoteNotification({
+    this.mutableContent,
+    this.notification,
+    this.useAsV1DataMessage,
+  });
+
+  AndroidRemoteNotification.fromJson(core.Map json_)
+    : this(
+        mutableContent: json_['mutableContent'] as core.bool?,
+        notification: json_.containsKey('notification')
+            ? AndroidNotificationV2.fromJson(
+                json_['notification'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        useAsV1DataMessage: json_['useAsV1DataMessage'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final mutableContent = this.mutableContent;
+    final notification = this.notification;
+    final useAsV1DataMessage = this.useAsV1DataMessage;
+    return {
+      'mutableContent': ?mutableContent,
+      'notification': ?notification,
+      'useAsV1DataMessage': ?useAsV1DataMessage,
+    };
+  }
+}
+
 /// [Apple Push Notification Service](https://goo.gl/MXRTPa) specific options.
 class ApnsConfig {
   /// Options for features provided by the FCM SDK for iOS.
@@ -1085,6 +1658,59 @@ typedef Empty = $Empty;
 typedef FcmOptions = $FcmOptions;
 
 /// Settings to control notification LED.
+class GoogleFirebaseFcmV1AndroidNotificationV2LightSettings {
+  /// Set `color` of the LED with
+  /// [google.type.Color](https://github.com/googleapis/googleapis/blob/master/google/type/color.proto).
+  ///
+  /// Required.
+  Color? color;
+
+  /// Along with `light_on_duration`, define the blink rate of LED flashes.
+  ///
+  /// Resolution defined by
+  /// [proto.Duration](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)
+  ///
+  /// Required.
+  core.String? lightOffDuration;
+
+  /// Along with `light_off_duration`, define the blink rate of LED flashes.
+  ///
+  /// Resolution defined by
+  /// [proto.Duration](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)
+  ///
+  /// Required.
+  core.String? lightOnDuration;
+
+  GoogleFirebaseFcmV1AndroidNotificationV2LightSettings({
+    this.color,
+    this.lightOffDuration,
+    this.lightOnDuration,
+  });
+
+  GoogleFirebaseFcmV1AndroidNotificationV2LightSettings.fromJson(core.Map json_)
+    : this(
+        color: json_.containsKey('color')
+            ? Color.fromJson(
+                json_['color'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        lightOffDuration: json_['lightOffDuration'] as core.String?,
+        lightOnDuration: json_['lightOnDuration'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final color = this.color;
+    final lightOffDuration = this.lightOffDuration;
+    final lightOnDuration = this.lightOnDuration;
+    return {
+      'color': ?color,
+      'lightOffDuration': ?lightOffDuration,
+      'lightOnDuration': ?lightOnDuration,
+    };
+  }
+}
+
+/// Settings to control notification LED.
 class LightSettings {
   /// Set `color` of the LED with
   /// [google.type.Color](https://github.com/googleapis/googleapis/blob/master/google/type/color.proto).
@@ -1177,6 +1803,15 @@ class Message {
 
   /// Input only.
   ///
+  /// Android specific V2 options for messages sent through FCM connection
+  /// server. Mutually exclusive with `android`. Requests with both
+  /// `AndroidConfig` and `AndroidConfigV2` will be rejected.
+  ///
+  /// Optional.
+  AndroidConfigV2? androidV2;
+
+  /// Input only.
+  ///
   /// [Apple Push Notification Service](https://goo.gl/MXRTPa) specific options.
   ApnsConfig? apns;
 
@@ -1235,6 +1870,7 @@ class Message {
 
   Message({
     this.android,
+    this.androidV2,
     this.apns,
     this.condition,
     this.data,
@@ -1252,6 +1888,11 @@ class Message {
         android: json_.containsKey('android')
             ? AndroidConfig.fromJson(
                 json_['android'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        androidV2: json_.containsKey('androidV2')
+            ? AndroidConfigV2.fromJson(
+                json_['androidV2'] as core.Map<core.String, core.dynamic>,
               )
             : null,
         apns: json_.containsKey('apns')
@@ -1286,6 +1927,7 @@ class Message {
 
   core.Map<core.String, core.dynamic> toJson() {
     final android = this.android;
+    final androidV2 = this.androidV2;
     final apns = this.apns;
     final condition = this.condition;
     final data = this.data;
@@ -1298,6 +1940,7 @@ class Message {
     final webpush = this.webpush;
     return {
       'android': ?android,
+      'androidV2': ?androidV2,
       'apns': ?apns,
       'condition': ?condition,
       'data': ?data,

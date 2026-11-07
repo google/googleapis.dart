@@ -2228,6 +2228,17 @@ class ProjectsLocationsServiceProjectAttachmentsResource {
 /// App Hub supports application level IAM permission to align with governance
 /// requirements.
 class Application {
+  /// Properties of an underlying cloud resource that can comprise an
+  /// Application.
+  ///
+  /// Output only.
+  ApplicationProperties? applicationProperties;
+
+  /// Application type.
+  ///
+  /// Output only.
+  ApplicationType? applicationType;
+
   /// Consumer provided attributes.
   ///
   /// Optional.
@@ -2286,6 +2297,8 @@ class Application {
   core.String? updateTime;
 
   Application({
+    this.applicationProperties,
+    this.applicationType,
     this.attributes,
     this.createTime,
     this.description,
@@ -2299,6 +2312,17 @@ class Application {
 
   Application.fromJson(core.Map json_)
     : this(
+        applicationProperties: json_.containsKey('applicationProperties')
+            ? ApplicationProperties.fromJson(
+                json_['applicationProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        applicationType: json_.containsKey('applicationType')
+            ? ApplicationType.fromJson(
+                json_['applicationType'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         attributes: json_.containsKey('attributes')
             ? Attributes.fromJson(
                 json_['attributes'] as core.Map<core.String, core.dynamic>,
@@ -2319,6 +2343,8 @@ class Application {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final applicationProperties = this.applicationProperties;
+    final applicationType = this.applicationType;
     final attributes = this.attributes;
     final createTime = this.createTime;
     final description = this.description;
@@ -2329,6 +2355,8 @@ class Application {
     final uid = this.uid;
     final updateTime = this.updateTime;
     return {
+      'applicationProperties': ?applicationProperties,
+      'applicationType': ?applicationType,
       'attributes': ?attributes,
       'createTime': ?createTime,
       'description': ?description,
@@ -2339,6 +2367,58 @@ class Application {
       'uid': ?uid,
       'updateTime': ?updateTime,
     };
+  }
+}
+
+/// Additional system properties of an Application.
+class ApplicationProperties {
+  /// Additional metadata specific to the App Hub application.
+  ///
+  /// The key is a string that identifies the type of metadata and the value is
+  /// the metadata contents specific to that type. Key format:
+  /// `apphub.googleapis.com/{metadataType}`
+  ///
+  /// Output only.
+  core.Map<core.String, ExtendedMetadata>? extendedMetadata;
+
+  ApplicationProperties({this.extendedMetadata});
+
+  ApplicationProperties.fromJson(core.Map json_)
+    : this(
+        extendedMetadata:
+            (json_['extendedMetadata'] as core.Map<core.String, core.dynamic>?)
+                ?.map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    ExtendedMetadata.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  ),
+                ),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final extendedMetadata = this.extendedMetadata;
+    return {'extendedMetadata': ?extendedMetadata};
+  }
+}
+
+/// Application type.
+class ApplicationType {
+  /// The type of the application.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Unspecified type.
+  /// - "AI_APPLICATION" : AI Application type.
+  core.String? type;
+
+  ApplicationType({this.type});
+
+  ApplicationType.fromJson(core.Map json_)
+    : this(type: json_['type'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final type = this.type;
+    return {'type': ?type};
   }
 }
 
@@ -2663,57 +2743,10 @@ class Boundary {
 typedef CancelOperationRequest = $Empty;
 
 /// Contact information of stakeholders.
-class ContactInfo {
-  /// Contact's name.
-  ///
-  /// Can have a maximum length of 63 characters.
-  ///
-  /// Optional.
-  core.String? displayName;
-
-  /// Email address of the contacts.
-  ///
-  /// Required.
-  core.String? email;
-
-  ContactInfo({this.displayName, this.email});
-
-  ContactInfo.fromJson(core.Map json_)
-    : this(
-        displayName: json_['displayName'] as core.String?,
-        email: json_['email'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final displayName = this.displayName;
-    final email = this.email;
-    return {'displayName': ?displayName, 'email': ?email};
-  }
-}
+typedef ContactInfo = $ContactInfo;
 
 /// Criticality of the Application, Service, or Workload
-class Criticality {
-  /// Criticality Type.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "TYPE_UNSPECIFIED" : Unspecified type.
-  /// - "MISSION_CRITICAL" : Mission critical service, application or workload.
-  /// - "HIGH" : High impact.
-  /// - "MEDIUM" : Medium impact.
-  /// - "LOW" : Low impact.
-  core.String? type;
-
-  Criticality({this.type});
-
-  Criticality.fromJson(core.Map json_)
-    : this(type: json_['type'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final type = this.type;
-    return {'type': ?type};
-  }
-}
+typedef Criticality = $Criticality;
 
 /// Request for DetachServiceProjectAttachment.
 typedef DetachServiceProjectAttachmentRequest = $Empty;
@@ -2848,28 +2881,7 @@ class DiscoveredWorkload {
 typedef Empty = $Empty;
 
 /// Environment of the Application, Service, or Workload
-class Environment {
-  /// Environment Type.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "TYPE_UNSPECIFIED" : Unspecified type.
-  /// - "PRODUCTION" : Production environment.
-  /// - "STAGING" : Staging environment.
-  /// - "TEST" : Test environment.
-  /// - "DEVELOPMENT" : Development environment.
-  core.String? type;
-
-  Environment({this.type});
-
-  Environment.fromJson(core.Map json_)
-    : this(type: json_['type'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final type = this.type;
-    return {'type': ?type};
-  }
-}
+typedef Environment = $Environment;
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
@@ -2892,29 +2904,7 @@ class Environment {
 typedef Expr = $Expr;
 
 /// Additional metadata for a Service or Workload.
-class ExtendedMetadata {
-  /// The metadata contents.
-  ///
-  /// Output only.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object?>? metadataStruct;
-
-  ExtendedMetadata({this.metadataStruct});
-
-  ExtendedMetadata.fromJson(core.Map json_)
-    : this(
-        metadataStruct: json_.containsKey('metadataStruct')
-            ? json_['metadataStruct'] as core.Map<core.String, core.dynamic>
-            : null,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final metadataStruct = this.metadataStruct;
-    return {'metadataStruct': ?metadataStruct};
-  }
-}
+typedef ExtendedMetadata = $ExtendedMetadata;
 
 /// ExtendedMetadataSchema represents a schema for extended metadata of a
 /// service or workload.

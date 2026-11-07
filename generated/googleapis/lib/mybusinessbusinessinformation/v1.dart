@@ -21,8 +21,9 @@
 /// My Business Business Information API - v1
 ///
 /// The My Business Business Information API provides an interface for managing
-/// business information. Note - If you have a quota of 0 after enabling the
-/// API, please request for GBP API access.
+/// business information on Google. Note: If you have a quota of 0 after
+/// enabling the API, please request GBP API access at
+/// https://developers.google.com/my-business/content/prereqs#request-access.
 ///
 /// For more information, see <https://developers.google.com/my-business/>
 ///
@@ -53,10 +54,11 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 /// The My Business Business Information API provides an interface for managing
-/// business information.
+/// business information on Google.
 ///
-/// Note - If you have a quota of 0 after enabling the API, please request for
-/// GBP API access.
+/// Note: If you have a quota of 0 after enabling the API, please request GBP
+/// API access at
+/// https://developers.google.com/my-business/content/prereqs#request-access.
 class MyBusinessBusinessInformationApi {
   final commons.ApiRequester _requester;
 
@@ -759,7 +761,7 @@ class LocationsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Google identifier for this location in the form:
+  /// [name] - Identifier. Google identifier for this location in the form:
   /// `locations/{location_id}`.
   /// Value must have pattern `^locations/\[^/\]+$`.
   ///
@@ -1817,6 +1819,8 @@ class Location {
   /// Optional.
   core.List<MoreHours>? moreHours;
 
+  /// Identifier.
+  ///
   /// Google identifier for this location in the form:
   /// `locations/{location_id}`.
   core.String? name;
@@ -2106,8 +2110,6 @@ class Metadata {
   /// Output only.
   core.bool? canOperateHealthData;
 
-  /// Indicates if the listing can manage local posts.
-  ///
   /// Deprecated: This field is no longer populated and will be removed in a
   /// future version.
   ///
@@ -2151,6 +2153,13 @@ class Metadata {
   /// Output only.
   core.bool? hasVoiceOfMerchant;
 
+  /// Indicates whether the location is classified as a particularly personal
+  /// place.
+  ///
+  /// This means there are restrictions on Location History features. If you
+  /// believe this was a mistake, see the
+  /// [help center article](https://support.google.com/business/answer/3480441).
+  ///
   /// Output only.
   core.bool? isParticularlyPersonalPlace;
 
@@ -2467,6 +2476,8 @@ class Places {
   /// The areas represented by place IDs.
   ///
   /// Limited to a maximum of 20 places.
+  ///
+  /// Optional.
   core.List<PlaceInfo>? placeInfos;
 
   Places({this.placeInfos});
@@ -2525,14 +2536,20 @@ class Profile {
 /// Information of all parent and children locations related to this one.
 class RelationshipData {
   /// The list of children locations that this location has relations with.
+  ///
+  /// Optional.
   core.List<RelevantLocation>? childrenLocations;
 
   /// The resource name of the Chain that this location is member of.
   ///
   /// How to find Chain ID
+  ///
+  /// Optional.
   core.String? parentChain;
 
   /// The parent location that this location has relations with.
+  ///
+  /// Optional.
   RelevantLocation? parentLocation;
 
   RelationshipData({
@@ -2752,6 +2769,8 @@ class ServiceAreaBusiness {
   core.String? businessType;
 
   /// The area that this business serves defined through a set of places.
+  ///
+  /// Optional.
   Places? places;
 
   /// CLDR region code of the country/region that this service area business is

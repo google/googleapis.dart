@@ -3219,6 +3219,35 @@ class ProjectsLocationsWorkerPoolsRevisionsResource {
   }
 }
 
+/// Configuration for Ambient Networking.
+class GoogleCloudRunV2AmbientNetworking {
+  /// The ambient networking scope of the instance.
+  /// Possible string values are:
+  /// - "AMBIENT_SCOPE_UNSPECIFIED" : Unspecified.
+  /// - "AMBIENT_SCOPE_REGIONAL" : Regional ambient networking.
+  /// - "AMBIENT_SCOPE_GLOBAL" : Global ambient networking.
+  core.String? ambientScope;
+
+  /// Whether ambient networking is enabled.
+  ///
+  /// Optional.
+  core.bool? enabled;
+
+  GoogleCloudRunV2AmbientNetworking({this.ambientScope, this.enabled});
+
+  GoogleCloudRunV2AmbientNetworking.fromJson(core.Map json_)
+    : this(
+        ambientScope: json_['ambientScope'] as core.String?,
+        enabled: json_['enabled'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final ambientScope = this.ambientScope;
+    final enabled = this.enabled;
+    return {'ambientScope': ?ambientScope, 'enabled': ?enabled};
+  }
+}
+
 /// Settings for Binary Authorization feature.
 class GoogleCloudRunV2BinaryAuthorization {
   /// If present, indicates to use Breakglass using this justification.
@@ -3320,8 +3349,8 @@ class GoogleCloudRunV2BuildConfig {
   /// The Cloud Storage bucket URI where the function source code is located.
   core.String? sourceLocation;
 
-  /// Name of the Cloud Build Custom Worker Pool that should be used to build
-  /// the Cloud Run function.
+  /// Name of the Cloud Build private pool that should be used to build the
+  /// Cloud Run function.
   ///
   /// The format of this field is
   /// `projects/{project}/locations/{region}/workerPools/{workerPool}` where
@@ -3384,6 +3413,141 @@ class GoogleCloudRunV2BuildConfig {
   }
 }
 
+/// Build configuration for a container.
+class GoogleCloudRunV2BuildConfiguration {
+  /// Builds the source using Buildpacks.
+  ///
+  /// Optional.
+  GoogleCloudRunV2BuildConfigurationBuildpacksBuild? buildpacksBuild;
+
+  /// Builds the source using Docker.
+  ///
+  /// Optional.
+  GoogleCloudRunV2BuildConfigurationDockerBuild? dockerBuild;
+
+  /// Artifact Registry URI to store the built image.
+  ///
+  /// Required.
+  core.String? imageRepositoryUri;
+
+  /// The service account to use for the build.
+  ///
+  /// Its resource name in the format
+  /// `projects/{project}/serviceAccounts/{email}`.
+  ///
+  /// Optional.
+  core.String? serviceAccount;
+
+  /// Tags to add to the build.
+  ///
+  /// Optional.
+  core.List<core.String>? tags;
+
+  /// Configuration for the worker.
+  ///
+  /// Optional.
+  GoogleCloudRunV2WorkerConfiguration? workerConfiguration;
+
+  GoogleCloudRunV2BuildConfiguration({
+    this.buildpacksBuild,
+    this.dockerBuild,
+    this.imageRepositoryUri,
+    this.serviceAccount,
+    this.tags,
+    this.workerConfiguration,
+  });
+
+  GoogleCloudRunV2BuildConfiguration.fromJson(core.Map json_)
+    : this(
+        buildpacksBuild: json_.containsKey('buildpacksBuild')
+            ? GoogleCloudRunV2BuildConfigurationBuildpacksBuild.fromJson(
+                json_['buildpacksBuild'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        dockerBuild: json_.containsKey('dockerBuild')
+            ? GoogleCloudRunV2BuildConfigurationDockerBuild.fromJson(
+                json_['dockerBuild'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        imageRepositoryUri: json_['imageRepositoryUri'] as core.String?,
+        serviceAccount: json_['serviceAccount'] as core.String?,
+        tags: (json_['tags'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        workerConfiguration: json_.containsKey('workerConfiguration')
+            ? GoogleCloudRunV2WorkerConfiguration.fromJson(
+                json_['workerConfiguration']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final buildpacksBuild = this.buildpacksBuild;
+    final dockerBuild = this.dockerBuild;
+    final imageRepositoryUri = this.imageRepositoryUri;
+    final serviceAccount = this.serviceAccount;
+    final tags = this.tags;
+    final workerConfiguration = this.workerConfiguration;
+    return {
+      'buildpacksBuild': ?buildpacksBuild,
+      'dockerBuild': ?dockerBuild,
+      'imageRepositoryUri': ?imageRepositoryUri,
+      'serviceAccount': ?serviceAccount,
+      'tags': ?tags,
+      'workerConfiguration': ?workerConfiguration,
+    };
+  }
+}
+
+/// Buildpacks build configuration.
+class GoogleCloudRunV2BuildConfigurationBuildpacksBuild {
+  /// Specify base image other than the default.
+  ///
+  /// Optional.
+  core.String? buildBaseImageUri;
+
+  /// Cache image URI.
+  ///
+  /// Optional.
+  core.String? cacheImageUri;
+
+  /// Environment variables for the build.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? environmentVariables;
+
+  GoogleCloudRunV2BuildConfigurationBuildpacksBuild({
+    this.buildBaseImageUri,
+    this.cacheImageUri,
+    this.environmentVariables,
+  });
+
+  GoogleCloudRunV2BuildConfigurationBuildpacksBuild.fromJson(core.Map json_)
+    : this(
+        buildBaseImageUri: json_['buildBaseImageUri'] as core.String?,
+        cacheImageUri: json_['cacheImageUri'] as core.String?,
+        environmentVariables:
+            (json_['environmentVariables']
+                    as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final buildBaseImageUri = this.buildBaseImageUri;
+    final cacheImageUri = this.cacheImageUri;
+    final environmentVariables = this.environmentVariables;
+    return {
+      'buildBaseImageUri': ?buildBaseImageUri,
+      'cacheImageUri': ?cacheImageUri,
+      'environmentVariables': ?environmentVariables,
+    };
+  }
+}
+
+/// Docker build configuration.
+typedef GoogleCloudRunV2BuildConfigurationDockerBuild = $Empty;
+
 /// Build information of the image.
 class GoogleCloudRunV2BuildInfo {
   /// Entry point of the function when the image is a Cloud Run function.
@@ -3413,6 +3577,9 @@ class GoogleCloudRunV2BuildInfo {
     };
   }
 }
+
+/// BuildStatus holds the status of a build.
+typedef GoogleCloudRunV2BuildStatus = $BuildStatus;
 
 /// Build the source using Buildpacks.
 class GoogleCloudRunV2BuildpacksBuild {
@@ -3535,6 +3702,36 @@ class GoogleCloudRunV2CancelExecutionRequest {
     final etag = this.etag;
     final validateOnly = this.validateOnly;
     return {'etag': ?etag, 'validateOnly': ?validateOnly};
+  }
+}
+
+/// Configuration for Cloud Build worker.
+class GoogleCloudRunV2CloudBuildWorkerConfiguration {
+  /// The machine type for the Cloud Build worker.
+  ///
+  /// Optional.
+  core.String? machineType;
+
+  /// The name of the Cloud Build worker pool.
+  ///
+  /// Optional.
+  core.String? workerPool;
+
+  GoogleCloudRunV2CloudBuildWorkerConfiguration({
+    this.machineType,
+    this.workerPool,
+  });
+
+  GoogleCloudRunV2CloudBuildWorkerConfiguration.fromJson(core.Map json_)
+    : this(
+        machineType: json_['machineType'] as core.String?,
+        workerPool: json_['workerPool'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final machineType = this.machineType;
+    final workerPool = this.workerPool;
+    return {'machineType': ?machineType, 'workerPool': ?workerPool};
   }
 }
 
@@ -3802,6 +3999,11 @@ class GoogleCloudRunV2Container {
   /// enrolled into automatic base image update.
   core.String? baseImageUri;
 
+  /// The build configuration for the container image.
+  ///
+  /// Optional.
+  GoogleCloudRunV2BuildConfiguration? buildConfig;
+
   /// The build info of the container image.
   ///
   /// Output only.
@@ -3881,6 +4083,7 @@ class GoogleCloudRunV2Container {
   GoogleCloudRunV2Container({
     this.args,
     this.baseImageUri,
+    this.buildConfig,
     this.buildInfo,
     this.command,
     this.dependsOn,
@@ -3904,6 +4107,11 @@ class GoogleCloudRunV2Container {
             ?.map((value) => value as core.String)
             .toList(),
         baseImageUri: json_['baseImageUri'] as core.String?,
+        buildConfig: json_.containsKey('buildConfig')
+            ? GoogleCloudRunV2BuildConfiguration.fromJson(
+                json_['buildConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         buildInfo: json_.containsKey('buildInfo')
             ? GoogleCloudRunV2BuildInfo.fromJson(
                 json_['buildInfo'] as core.Map<core.String, core.dynamic>,
@@ -3970,6 +4178,7 @@ class GoogleCloudRunV2Container {
   core.Map<core.String, core.dynamic> toJson() {
     final args = this.args;
     final baseImageUri = this.baseImageUri;
+    final buildConfig = this.buildConfig;
     final buildInfo = this.buildInfo;
     final command = this.command;
     final dependsOn = this.dependsOn;
@@ -3988,6 +4197,7 @@ class GoogleCloudRunV2Container {
     return {
       'args': ?args,
       'baseImageUri': ?baseImageUri,
+      'buildConfig': ?buildConfig,
       'buildInfo': ?buildInfo,
       'command': ?command,
       'dependsOn': ?dependsOn,
@@ -4091,6 +4301,11 @@ class GoogleCloudRunV2ContainerPort {
 /// ContainerStatus holds the information of container name and image digest
 /// value.
 class GoogleCloudRunV2ContainerStatus {
+  /// The build status of the container image.
+  ///
+  /// Output only.
+  GoogleCloudRunV2BuildStatus? buildStatus;
+
   /// ImageDigest holds the resolved digest for the image specified and resolved
   /// during the creation of Revision.
   ///
@@ -4101,18 +4316,32 @@ class GoogleCloudRunV2ContainerStatus {
   /// The name of the container, if specified.
   core.String? name;
 
-  GoogleCloudRunV2ContainerStatus({this.imageDigest, this.name});
+  GoogleCloudRunV2ContainerStatus({
+    this.buildStatus,
+    this.imageDigest,
+    this.name,
+  });
 
   GoogleCloudRunV2ContainerStatus.fromJson(core.Map json_)
     : this(
+        buildStatus: json_.containsKey('buildStatus')
+            ? GoogleCloudRunV2BuildStatus.fromJson(
+                json_['buildStatus'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         imageDigest: json_['imageDigest'] as core.String?,
         name: json_['name'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final buildStatus = this.buildStatus;
     final imageDigest = this.imageDigest;
     final name = this.name;
-    return {'imageDigest': ?imageDigest, 'name': ?name};
+    return {
+      'buildStatus': ?buildStatus,
+      'imageDigest': ?imageDigest,
+      'name': ?name,
+    };
   }
 }
 
@@ -4881,8 +5110,11 @@ class GoogleCloudRunV2ExportStatusResponse {
   }
 }
 
-/// Represents a volume backed by a Cloud Storage bucket using Cloud Storage
-/// FUSE.
+/// Represents a volume backed by a Filestore instance.
+typedef GoogleCloudRunV2FilestoreVolumeSource = $FilestoreVolumeSource;
+
+/// Represents a volume backed by a Cloud Storage bucket (mounted via Cloud
+/// Storage FUSE or as a block device disk).
 class GoogleCloudRunV2GCSVolumeSource {
   /// Cloud Storage Bucket name.
   core.String? bucket;
@@ -5353,6 +5585,11 @@ class GoogleCloudRunV2Instance {
   /// - "NEVER" : Never restart the instance.
   core.String? restartPolicy;
 
+  /// Configuration for sandboxes.
+  ///
+  /// Optional.
+  GoogleCloudRunV2SandboxConfiguration? sandboxes;
+
   /// Reserved for future use.
   ///
   /// Output only.
@@ -5434,6 +5671,7 @@ class GoogleCloudRunV2Instance {
     this.observedGeneration,
     this.reconciling,
     this.restartPolicy,
+    this.sandboxes,
     this.satisfiesPzs,
     this.serviceAccount,
     this.sshEnabled,
@@ -5513,6 +5751,11 @@ class GoogleCloudRunV2Instance {
         observedGeneration: json_['observedGeneration'] as core.String?,
         reconciling: json_['reconciling'] as core.bool?,
         restartPolicy: json_['restartPolicy'] as core.String?,
+        sandboxes: json_.containsKey('sandboxes')
+            ? GoogleCloudRunV2SandboxConfiguration.fromJson(
+                json_['sandboxes'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
         serviceAccount: json_['serviceAccount'] as core.String?,
         sshEnabled: json_['sshEnabled'] as core.bool?,
@@ -5573,6 +5816,7 @@ class GoogleCloudRunV2Instance {
     final observedGeneration = this.observedGeneration;
     final reconciling = this.reconciling;
     final restartPolicy = this.restartPolicy;
+    final sandboxes = this.sandboxes;
     final satisfiesPzs = this.satisfiesPzs;
     final serviceAccount = this.serviceAccount;
     final sshEnabled = this.sshEnabled;
@@ -5614,6 +5858,7 @@ class GoogleCloudRunV2Instance {
       'observedGeneration': ?observedGeneration,
       'reconciling': ?reconciling,
       'restartPolicy': ?restartPolicy,
+      'sandboxes': ?sandboxes,
       'satisfiesPzs': ?satisfiesPzs,
       'serviceAccount': ?serviceAccount,
       'sshEnabled': ?sshEnabled,
@@ -6684,6 +6929,11 @@ class GoogleCloudRunV2ResourceRequirements {
 /// A Revision references a container image. Revisions are only created by
 /// updates to its parent Service.
 class GoogleCloudRunV2Revision {
+  /// The ambient networking configuration for this revision.
+  ///
+  /// Output only.
+  GoogleCloudRunV2AmbientNetworking? ambientNetworking;
+
   /// Unstructured key value map that may be set by external tools to store and
   /// arbitrary metadata.
   ///
@@ -6707,6 +6957,13 @@ class GoogleCloudRunV2Revision {
   ///
   /// Output only.
   core.List<GoogleCloudRunV2Condition>? conditions;
+
+  /// Status information for each of the specified containers.
+  ///
+  /// The status includes the resolved digest for specified images.
+  ///
+  /// Output only.
+  core.List<GoogleCloudRunV2ContainerStatus>? containerStatuses;
 
   /// Holds the list which define the units of execution for this Revision.
   core.List<GoogleCloudRunV2Container>? containers;
@@ -6869,6 +7126,11 @@ class GoogleCloudRunV2Revision {
   /// Output only.
   core.bool? reconciling;
 
+  /// Configuration for sandboxes.
+  ///
+  /// Output only.
+  GoogleCloudRunV2SandboxConfiguration? sandboxes;
+
   /// Reserved for future use.
   ///
   /// Output only.
@@ -6931,10 +7193,12 @@ class GoogleCloudRunV2Revision {
   GoogleCloudRunV2WorkloadIdentityConfig? workloadIdentityConfig;
 
   GoogleCloudRunV2Revision({
+    this.ambientNetworking,
     this.annotations,
     this.client,
     this.clientVersion,
     this.conditions,
+    this.containerStatuses,
     this.containers,
     this.createTime,
     this.creator,
@@ -6955,6 +7219,7 @@ class GoogleCloudRunV2Revision {
     this.nodeSelector,
     this.observedGeneration,
     this.reconciling,
+    this.sandboxes,
     this.satisfiesPzs,
     this.scaling,
     this.scalingStatus,
@@ -6972,6 +7237,12 @@ class GoogleCloudRunV2Revision {
 
   GoogleCloudRunV2Revision.fromJson(core.Map json_)
     : this(
+        ambientNetworking: json_.containsKey('ambientNetworking')
+            ? GoogleCloudRunV2AmbientNetworking.fromJson(
+                json_['ambientNetworking']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         annotations:
             (json_['annotations'] as core.Map<core.String, core.dynamic>?)?.map(
               (key, value) => core.MapEntry(key, value as core.String),
@@ -6981,6 +7252,13 @@ class GoogleCloudRunV2Revision {
         conditions: (json_['conditions'] as core.List?)
             ?.map(
               (value) => GoogleCloudRunV2Condition.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        containerStatuses: (json_['containerStatuses'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudRunV2ContainerStatus.fromJson(
                 value as core.Map<core.String, core.dynamic>,
               ),
             )
@@ -7021,6 +7299,11 @@ class GoogleCloudRunV2Revision {
             : null,
         observedGeneration: json_['observedGeneration'] as core.String?,
         reconciling: json_['reconciling'] as core.bool?,
+        sandboxes: json_.containsKey('sandboxes')
+            ? GoogleCloudRunV2SandboxConfiguration.fromJson(
+                json_['sandboxes'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
         scaling: json_.containsKey('scaling')
             ? GoogleCloudRunV2RevisionScaling.fromJson(
@@ -7064,10 +7347,12 @@ class GoogleCloudRunV2Revision {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final ambientNetworking = this.ambientNetworking;
     final annotations = this.annotations;
     final client = this.client;
     final clientVersion = this.clientVersion;
     final conditions = this.conditions;
+    final containerStatuses = this.containerStatuses;
     final containers = this.containers;
     final createTime = this.createTime;
     final creator = this.creator;
@@ -7088,6 +7373,7 @@ class GoogleCloudRunV2Revision {
     final nodeSelector = this.nodeSelector;
     final observedGeneration = this.observedGeneration;
     final reconciling = this.reconciling;
+    final sandboxes = this.sandboxes;
     final satisfiesPzs = this.satisfiesPzs;
     final scaling = this.scaling;
     final scalingStatus = this.scalingStatus;
@@ -7102,10 +7388,12 @@ class GoogleCloudRunV2Revision {
     final vpcAccess = this.vpcAccess;
     final workloadIdentityConfig = this.workloadIdentityConfig;
     return {
+      'ambientNetworking': ?ambientNetworking,
       'annotations': ?annotations,
       'client': ?client,
       'clientVersion': ?clientVersion,
       'conditions': ?conditions,
+      'containerStatuses': ?containerStatuses,
       'containers': ?containers,
       'createTime': ?createTime,
       'creator': ?creator,
@@ -7126,6 +7414,7 @@ class GoogleCloudRunV2Revision {
       'nodeSelector': ?nodeSelector,
       'observedGeneration': ?observedGeneration,
       'reconciling': ?reconciling,
+      'sandboxes': ?sandboxes,
       'satisfiesPzs': ?satisfiesPzs,
       'scaling': ?scaling,
       'scalingStatus': ?scalingStatus,
@@ -7228,6 +7517,11 @@ class GoogleCloudRunV2RevisionScalingStatus {
 /// RevisionTemplate describes the data a revision should have when created from
 /// a template.
 class GoogleCloudRunV2RevisionTemplate {
+  /// The ambient networking configuration for this revision.
+  ///
+  /// Optional.
+  GoogleCloudRunV2AmbientNetworking? ambientNetworking;
+
   /// Unstructured key value map that may be set by external tools to store and
   /// arbitrary metadata.
   ///
@@ -7337,6 +7631,11 @@ class GoogleCloudRunV2RevisionTemplate {
   /// Optional.
   core.String? revision;
 
+  /// Configuration for sandboxes.
+  ///
+  /// Optional.
+  GoogleCloudRunV2SandboxConfiguration? sandboxes;
+
   /// Scaling settings for this Revision.
   ///
   /// Optional.
@@ -7386,6 +7685,7 @@ class GoogleCloudRunV2RevisionTemplate {
   GoogleCloudRunV2WorkloadIdentityConfig? workloadIdentityConfig;
 
   GoogleCloudRunV2RevisionTemplate({
+    this.ambientNetworking,
     this.annotations,
     this.client,
     this.clientVersion,
@@ -7400,6 +7700,7 @@ class GoogleCloudRunV2RevisionTemplate {
     this.maxInstanceRequestConcurrency,
     this.nodeSelector,
     this.revision,
+    this.sandboxes,
     this.scaling,
     this.serviceAccount,
     this.serviceMesh,
@@ -7412,6 +7713,12 @@ class GoogleCloudRunV2RevisionTemplate {
 
   GoogleCloudRunV2RevisionTemplate.fromJson(core.Map json_)
     : this(
+        ambientNetworking: json_.containsKey('ambientNetworking')
+            ? GoogleCloudRunV2AmbientNetworking.fromJson(
+                json_['ambientNetworking']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         annotations:
             (json_['annotations'] as core.Map<core.String, core.dynamic>?)?.map(
               (key, value) => core.MapEntry(key, value as core.String),
@@ -7445,6 +7752,11 @@ class GoogleCloudRunV2RevisionTemplate {
               )
             : null,
         revision: json_['revision'] as core.String?,
+        sandboxes: json_.containsKey('sandboxes')
+            ? GoogleCloudRunV2SandboxConfiguration.fromJson(
+                json_['sandboxes'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         scaling: json_.containsKey('scaling')
             ? GoogleCloudRunV2RevisionScaling.fromJson(
                 json_['scaling'] as core.Map<core.String, core.dynamic>,
@@ -7479,6 +7791,7 @@ class GoogleCloudRunV2RevisionTemplate {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final ambientNetworking = this.ambientNetworking;
     final annotations = this.annotations;
     final client = this.client;
     final clientVersion = this.clientVersion;
@@ -7493,6 +7806,7 @@ class GoogleCloudRunV2RevisionTemplate {
     final maxInstanceRequestConcurrency = this.maxInstanceRequestConcurrency;
     final nodeSelector = this.nodeSelector;
     final revision = this.revision;
+    final sandboxes = this.sandboxes;
     final scaling = this.scaling;
     final serviceAccount = this.serviceAccount;
     final serviceMesh = this.serviceMesh;
@@ -7502,6 +7816,7 @@ class GoogleCloudRunV2RevisionTemplate {
     final vpcAccess = this.vpcAccess;
     final workloadIdentityConfig = this.workloadIdentityConfig;
     return {
+      'ambientNetworking': ?ambientNetworking,
       'annotations': ?annotations,
       'client': ?client,
       'clientVersion': ?clientVersion,
@@ -7516,6 +7831,7 @@ class GoogleCloudRunV2RevisionTemplate {
       'maxInstanceRequestConcurrency': ?maxInstanceRequestConcurrency,
       'nodeSelector': ?nodeSelector,
       'revision': ?revision,
+      'sandboxes': ?sandboxes,
       'scaling': ?scaling,
       'serviceAccount': ?serviceAccount,
       'serviceMesh': ?serviceMesh,
@@ -7566,6 +7882,136 @@ class GoogleCloudRunV2RunJobRequest {
       'etag': ?etag,
       'overrides': ?overrides,
       'validateOnly': ?validateOnly,
+    };
+  }
+}
+
+/// Configuration for sandboxes.
+class GoogleCloudRunV2SandboxConfiguration {
+  /// Sandbox templates that can be launched through the `sandbox` CLI.
+  ///
+  /// Required.
+  core.List<GoogleCloudRunV2SandboxTemplate>? templates;
+
+  GoogleCloudRunV2SandboxConfiguration({this.templates});
+
+  GoogleCloudRunV2SandboxConfiguration.fromJson(core.Map json_)
+    : this(
+        templates: (json_['templates'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudRunV2SandboxTemplate.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final templates = this.templates;
+    return {'templates': ?templates};
+  }
+}
+
+/// Template for a single sandbox.
+class GoogleCloudRunV2SandboxTemplate {
+  /// Arguments to the entrypoint.
+  ///
+  /// The docker image's CMD is used if this is not provided.
+  ///
+  /// Optional.
+  core.List<core.String>? args;
+
+  /// Entrypoint array.
+  ///
+  /// Not executed within a shell. The docker image's ENTRYPOINT is used if this
+  /// is not provided.
+  ///
+  /// Optional.
+  core.List<core.String>? command;
+
+  /// List of environment variables to set in the sandbox.
+  ///
+  /// Optional.
+  core.List<GoogleCloudRunV2EnvVar>? env;
+
+  /// Name of the container image in Dockerhub or Artifact Registry.
+  ///
+  /// If the host is not provided, Dockerhub is assumed.
+  ///
+  /// Required.
+  core.String? image;
+
+  /// Name of the sandbox specified as a DNS_LABEL (RFC 1123).
+  ///
+  /// Required.
+  core.String? name;
+
+  /// Volume to mount into the container's filesystem.
+  ///
+  /// Optional.
+  core.List<GoogleCloudRunV2VolumeMount>? volumeMounts;
+
+  /// Container's working directory.
+  ///
+  /// If not specified, the container runtime's default will be used, which
+  /// might be configured in the container image.
+  ///
+  /// Optional.
+  core.String? workingDir;
+
+  GoogleCloudRunV2SandboxTemplate({
+    this.args,
+    this.command,
+    this.env,
+    this.image,
+    this.name,
+    this.volumeMounts,
+    this.workingDir,
+  });
+
+  GoogleCloudRunV2SandboxTemplate.fromJson(core.Map json_)
+    : this(
+        args: (json_['args'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        command: (json_['command'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        env: (json_['env'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudRunV2EnvVar.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        image: json_['image'] as core.String?,
+        name: json_['name'] as core.String?,
+        volumeMounts: (json_['volumeMounts'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudRunV2VolumeMount.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        workingDir: json_['workingDir'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final args = this.args;
+    final command = this.command;
+    final env = this.env;
+    final image = this.image;
+    final name = this.name;
+    final volumeMounts = this.volumeMounts;
+    final workingDir = this.workingDir;
+    return {
+      'args': ?args,
+      'command': ?command,
+      'env': ?env,
+      'image': ?image,
+      'name': ?name,
+      'volumeMounts': ?volumeMounts,
+      'workingDir': ?workingDir,
     };
   }
 }
@@ -8535,8 +8981,8 @@ class GoogleCloudRunV2SubmitBuildRequest {
   /// Optional.
   core.List<core.String>? tags;
 
-  /// Name of the Cloud Build Custom Worker Pool that should be used to build
-  /// the function.
+  /// Name of the Cloud Build private pool that should be used to build the
+  /// function.
   ///
   /// The format of this field is
   /// `projects/{project}/locations/{region}/workerPools/{workerPool}` where
@@ -8837,6 +9283,9 @@ class GoogleCloudRunV2Task {
   /// Output only.
   core.int? retried;
 
+  /// Configuration for sandboxes.
+  GoogleCloudRunV2SandboxConfiguration? sandboxes;
+
   /// Reserved for future use.
   ///
   /// Output only.
@@ -8927,6 +9376,7 @@ class GoogleCloudRunV2Task {
     this.observedGeneration,
     this.reconciling,
     this.retried,
+    this.sandboxes,
     this.satisfiesPzs,
     this.scheduledTime,
     this.serviceAccount,
@@ -8992,6 +9442,11 @@ class GoogleCloudRunV2Task {
         observedGeneration: json_['observedGeneration'] as core.String?,
         reconciling: json_['reconciling'] as core.bool?,
         retried: json_['retried'] as core.int?,
+        sandboxes: json_.containsKey('sandboxes')
+            ? GoogleCloudRunV2SandboxConfiguration.fromJson(
+                json_['sandboxes'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
         scheduledTime: json_['scheduledTime'] as core.String?,
         serviceAccount: json_['serviceAccount'] as core.String?,
@@ -9044,6 +9499,7 @@ class GoogleCloudRunV2Task {
     final observedGeneration = this.observedGeneration;
     final reconciling = this.reconciling;
     final retried = this.retried;
+    final sandboxes = this.sandboxes;
     final satisfiesPzs = this.satisfiesPzs;
     final scheduledTime = this.scheduledTime;
     final serviceAccount = this.serviceAccount;
@@ -9079,6 +9535,7 @@ class GoogleCloudRunV2Task {
       'observedGeneration': ?observedGeneration,
       'reconciling': ?reconciling,
       'retried': ?retried,
+      'sandboxes': ?sandboxes,
       'satisfiesPzs': ?satisfiesPzs,
       'scheduledTime': ?scheduledTime,
       'serviceAccount': ?serviceAccount,
@@ -9186,6 +9643,11 @@ class GoogleCloudRunV2TaskTemplate {
   /// Optional.
   GoogleCloudRunV2NodeSelector? nodeSelector;
 
+  /// Configuration for sandboxes.
+  ///
+  /// Optional.
+  GoogleCloudRunV2SandboxConfiguration? sandboxes;
+
   /// Email address of the IAM service account associated with the Task of a
   /// Job.
   ///
@@ -9230,6 +9692,7 @@ class GoogleCloudRunV2TaskTemplate {
     this.gpuZonalRedundancyDisabled,
     this.maxRetries,
     this.nodeSelector,
+    this.sandboxes,
     this.serviceAccount,
     this.timeout,
     this.volumes,
@@ -9254,6 +9717,11 @@ class GoogleCloudRunV2TaskTemplate {
         nodeSelector: json_.containsKey('nodeSelector')
             ? GoogleCloudRunV2NodeSelector.fromJson(
                 json_['nodeSelector'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        sandboxes: json_.containsKey('sandboxes')
+            ? GoogleCloudRunV2SandboxConfiguration.fromJson(
+                json_['sandboxes'] as core.Map<core.String, core.dynamic>,
               )
             : null,
         serviceAccount: json_['serviceAccount'] as core.String?,
@@ -9285,6 +9753,7 @@ class GoogleCloudRunV2TaskTemplate {
     final gpuZonalRedundancyDisabled = this.gpuZonalRedundancyDisabled;
     final maxRetries = this.maxRetries;
     final nodeSelector = this.nodeSelector;
+    final sandboxes = this.sandboxes;
     final serviceAccount = this.serviceAccount;
     final timeout = this.timeout;
     final volumes = this.volumes;
@@ -9297,6 +9766,7 @@ class GoogleCloudRunV2TaskTemplate {
       'gpuZonalRedundancyDisabled': ?gpuZonalRedundancyDisabled,
       'maxRetries': ?maxRetries,
       'nodeSelector': ?nodeSelector,
+      'sandboxes': ?sandboxes,
       'serviceAccount': ?serviceAccount,
       'timeout': ?timeout,
       'volumes': ?volumes,
@@ -9515,6 +9985,11 @@ class GoogleCloudRunV2Volume {
   /// Ephemeral storage used as a shared volume.
   GoogleCloudRunV2EmptyDirVolumeSource? emptyDir;
 
+  /// Represents a volume backed by a Filestore instance.
+  ///
+  /// Optional.
+  GoogleCloudRunV2FilestoreVolumeSource? filestore;
+
   /// Persistent storage backed by a Google Cloud Storage bucket.
   GoogleCloudRunV2GCSVolumeSource? gcs;
 
@@ -9532,6 +10007,7 @@ class GoogleCloudRunV2Volume {
   GoogleCloudRunV2Volume({
     this.cloudSqlInstance,
     this.emptyDir,
+    this.filestore,
     this.gcs,
     this.name,
     this.nfs,
@@ -9549,6 +10025,11 @@ class GoogleCloudRunV2Volume {
         emptyDir: json_.containsKey('emptyDir')
             ? GoogleCloudRunV2EmptyDirVolumeSource.fromJson(
                 json_['emptyDir'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        filestore: json_.containsKey('filestore')
+            ? GoogleCloudRunV2FilestoreVolumeSource.fromJson(
+                json_['filestore'] as core.Map<core.String, core.dynamic>,
               )
             : null,
         gcs: json_.containsKey('gcs')
@@ -9572,6 +10053,7 @@ class GoogleCloudRunV2Volume {
   core.Map<core.String, core.dynamic> toJson() {
     final cloudSqlInstance = this.cloudSqlInstance;
     final emptyDir = this.emptyDir;
+    final filestore = this.filestore;
     final gcs = this.gcs;
     final name = this.name;
     final nfs = this.nfs;
@@ -9579,6 +10061,7 @@ class GoogleCloudRunV2Volume {
     return {
       'cloudSqlInstance': ?cloudSqlInstance,
       'emptyDir': ?emptyDir,
+      'filestore': ?filestore,
       'gcs': ?gcs,
       'name': ?name,
       'nfs': ?nfs,
@@ -9691,6 +10174,32 @@ class GoogleCloudRunV2VpcAccess {
       'egress': ?egress,
       'networkInterfaces': ?networkInterfaces,
     };
+  }
+}
+
+/// Configuration for the worker.
+class GoogleCloudRunV2WorkerConfiguration {
+  /// Cloud Build worker configuration.
+  ///
+  /// Optional.
+  GoogleCloudRunV2CloudBuildWorkerConfiguration? cloudBuildWorkerConfiguration;
+
+  GoogleCloudRunV2WorkerConfiguration({this.cloudBuildWorkerConfiguration});
+
+  GoogleCloudRunV2WorkerConfiguration.fromJson(core.Map json_)
+    : this(
+        cloudBuildWorkerConfiguration:
+            json_.containsKey('cloudBuildWorkerConfiguration')
+            ? GoogleCloudRunV2CloudBuildWorkerConfiguration.fromJson(
+                json_['cloudBuildWorkerConfiguration']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final cloudBuildWorkerConfiguration = this.cloudBuildWorkerConfiguration;
+    return {'cloudBuildWorkerConfiguration': ?cloudBuildWorkerConfiguration};
   }
 }
 
@@ -10234,6 +10743,11 @@ class GoogleCloudRunV2WorkerPoolRevisionTemplate {
   /// Optional.
   core.String? revision;
 
+  /// Configuration for sandboxes.
+  ///
+  /// Optional.
+  GoogleCloudRunV2SandboxConfiguration? sandboxes;
+
   /// Email address of the IAM service account associated with the revision of
   /// the service.
   ///
@@ -10274,6 +10788,7 @@ class GoogleCloudRunV2WorkerPoolRevisionTemplate {
     this.labels,
     this.nodeSelector,
     this.revision,
+    this.sandboxes,
     this.serviceAccount,
     this.serviceMesh,
     this.volumes,
@@ -10311,6 +10826,11 @@ class GoogleCloudRunV2WorkerPoolRevisionTemplate {
               )
             : null,
         revision: json_['revision'] as core.String?,
+        sandboxes: json_.containsKey('sandboxes')
+            ? GoogleCloudRunV2SandboxConfiguration.fromJson(
+                json_['sandboxes'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         serviceAccount: json_['serviceAccount'] as core.String?,
         serviceMesh: json_.containsKey('serviceMesh')
             ? GoogleCloudRunV2ServiceMesh.fromJson(
@@ -10343,6 +10863,7 @@ class GoogleCloudRunV2WorkerPoolRevisionTemplate {
     final labels = this.labels;
     final nodeSelector = this.nodeSelector;
     final revision = this.revision;
+    final sandboxes = this.sandboxes;
     final serviceAccount = this.serviceAccount;
     final serviceMesh = this.serviceMesh;
     final volumes = this.volumes;
@@ -10359,6 +10880,7 @@ class GoogleCloudRunV2WorkerPoolRevisionTemplate {
       'labels': ?labels,
       'nodeSelector': ?nodeSelector,
       'revision': ?revision,
+      'sandboxes': ?sandboxes,
       'serviceAccount': ?serviceAccount,
       'serviceMesh': ?serviceMesh,
       'volumes': ?volumes,

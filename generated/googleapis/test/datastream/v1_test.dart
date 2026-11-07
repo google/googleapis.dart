@@ -3580,14 +3580,18 @@ core.int buildCounterSqlServerChangeTables = 0;
 api.SqlServerChangeTables buildSqlServerChangeTables() {
   final o = api.SqlServerChangeTables();
   buildCounterSqlServerChangeTables++;
-  if (buildCounterSqlServerChangeTables < 3) {}
+  if (buildCounterSqlServerChangeTables < 3) {
+    o.ddlConfig = buildSqlServerDdlConfig();
+  }
   buildCounterSqlServerChangeTables--;
   return o;
 }
 
 void checkSqlServerChangeTables(api.SqlServerChangeTables o) {
   buildCounterSqlServerChangeTables++;
-  if (buildCounterSqlServerChangeTables < 3) {}
+  if (buildCounterSqlServerChangeTables < 3) {
+    checkSqlServerDdlConfig(o.ddlConfig!);
+  }
   buildCounterSqlServerChangeTables--;
 }
 
@@ -3622,6 +3626,27 @@ void checkSqlServerColumn(api.SqlServerColumn o) {
     unittest.expect(o.scale!, unittest.equals(42));
   }
   buildCounterSqlServerColumn--;
+}
+
+core.int buildCounterSqlServerDdlConfig = 0;
+api.SqlServerDdlConfig buildSqlServerDdlConfig() {
+  final o = api.SqlServerDdlConfig();
+  buildCounterSqlServerDdlConfig++;
+  if (buildCounterSqlServerDdlConfig < 3) {
+    o.autoCreateNewCaptureInstanceOnDdl = true;
+    o.autoDeleteOldCaptureInstance = true;
+  }
+  buildCounterSqlServerDdlConfig--;
+  return o;
+}
+
+void checkSqlServerDdlConfig(api.SqlServerDdlConfig o) {
+  buildCounterSqlServerDdlConfig++;
+  if (buildCounterSqlServerDdlConfig < 3) {
+    unittest.expect(o.autoCreateNewCaptureInstanceOnDdl!, unittest.isTrue);
+    unittest.expect(o.autoDeleteOldCaptureInstance!, unittest.isTrue);
+  }
+  buildCounterSqlServerDdlConfig--;
 }
 
 core.int buildCounterSqlServerLsnPosition = 0;
@@ -5775,6 +5800,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkSqlServerColumn(od);
+    });
+  });
+
+  unittest.group('obj-schema-SqlServerDdlConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSqlServerDdlConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SqlServerDdlConfig.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkSqlServerDdlConfig(od);
     });
   });
 

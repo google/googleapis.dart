@@ -1418,7 +1418,10 @@ class AcceleratorConfig {
   /// Optional.
   /// Possible string values are:
   /// - "ACCELERATOR_TYPE_UNSPECIFIED" : Accelerator type is not specified.
-  /// - "NVIDIA_TESLA_P100" : Accelerator type is Nvidia Tesla P100.
+  /// - "NVIDIA_TESLA_P100" : Deprecated: Use `NVIDIA_TESLA_T4` (N1) or
+  /// `NVIDIA_L4` (G2) instead. The NVIDIA Tesla P100 GPU is being
+  /// decommissioned fleet-wide by Compute Engine and is no longer available for
+  /// new instances.
   /// - "NVIDIA_TESLA_V100" : Accelerator type is Nvidia Tesla V100.
   /// - "NVIDIA_TESLA_P4" : Accelerator type is Nvidia Tesla P4.
   /// - "NVIDIA_TESLA_T4" : Accelerator type is Nvidia Tesla T4.
@@ -1431,8 +1434,9 @@ class AcceleratorConfig {
   /// - "NVIDIA_H200_141GB" : Accelerator type is Nvidia Tesla H200 - 141GB.
   /// - "NVIDIA_TESLA_T4_VWS" : Accelerator type is NVIDIA Tesla T4 Virtual
   /// Workstations.
-  /// - "NVIDIA_TESLA_P100_VWS" : Accelerator type is NVIDIA Tesla P100 Virtual
-  /// Workstations.
+  /// - "NVIDIA_TESLA_P100_VWS" : Deprecated: Use `NVIDIA_TESLA_T4_VWS` instead.
+  /// The NVIDIA Tesla P100 GPU (Virtual Workstations) is being decommissioned
+  /// fleet-wide by Compute Engine and is no longer available for new instances.
   /// - "NVIDIA_TESLA_P4_VWS" : Accelerator type is NVIDIA Tesla P4 Virtual
   /// Workstations.
   /// - "NVIDIA_B200" : Accelerator type is NVIDIA B200.
@@ -1723,7 +1727,7 @@ class CheckAuthorizationResponse {
 }
 
 /// Response for checking if a notebook instance is upgradeable.
-typedef CheckInstanceUpgradabilityResponse = $Response03;
+typedef CheckInstanceUpgradabilityResponse = $Response04;
 
 /// A set of Confidential Instance options.
 class ConfidentialInstanceConfig {
@@ -2281,6 +2285,12 @@ class GceSetup {
   /// Optional.
   ShieldedInstanceConfig? shieldedInstanceConfig;
 
+  /// Represents system-managed metadata for this instance: the subset of
+  /// `metadata` whose keys are recognized Workbench system keys.
+  ///
+  /// Output only.
+  core.Map<core.String, core.String>? systemMetadata;
+
   /// The Compute Engine network tags to add to runtime (see
   /// [Add network tags](https://cloud.google.com/vpc/docs/add-remove-network-tags)).
   ///
@@ -2309,6 +2319,7 @@ class GceSetup {
     this.reservationAffinity,
     this.serviceAccounts,
     this.shieldedInstanceConfig,
+    this.systemMetadata,
     this.tags,
     this.vmImage,
   });
@@ -2384,6 +2395,9 @@ class GceSetup {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        systemMetadata:
+            (json_['systemMetadata'] as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
         tags: (json_['tags'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
@@ -2411,6 +2425,7 @@ class GceSetup {
     final reservationAffinity = this.reservationAffinity;
     final serviceAccounts = this.serviceAccounts;
     final shieldedInstanceConfig = this.shieldedInstanceConfig;
+    final systemMetadata = this.systemMetadata;
     final tags = this.tags;
     final vmImage = this.vmImage;
     return {
@@ -2430,6 +2445,7 @@ class GceSetup {
       'reservationAffinity': ?reservationAffinity,
       'serviceAccounts': ?serviceAccounts,
       'shieldedInstanceConfig': ?shieldedInstanceConfig,
+      'systemMetadata': ?systemMetadata,
       'tags': ?tags,
       'vmImage': ?vmImage,
     };
@@ -2686,6 +2702,10 @@ class Instance {
   /// - "INITIALIZING" : The instance is being created.
   /// - "SUSPENDING" : The instance is suspending.
   /// - "SUSPENDED" : The instance is suspended.
+  /// - "ORPHANED" : The instance has no VM. An upgrade removed the original and
+  /// could not create its replacement; the data disk and any snapshots are
+  /// intact. Retry the upgrade to finish it, or roll the instance back to the
+  /// snapshot taken before it started.
   core.String? state;
 
   /// The workforce pools proxy endpoint that is used to access the Jupyter
@@ -2954,6 +2974,15 @@ class NetworkInterface {
   /// Optional.
   core.List<AccessConfig>? accessConfigs;
 
+  /// An internal IP address associated with this instance.
+  ///
+  /// Specify an unused static internal IP address available to the subnet this
+  /// instance is in, or leave this field undefined to use an IP from the
+  /// subnet's ephemeral range.
+  ///
+  /// Optional.
+  core.String? internalIp;
+
   /// The name of the VPC that this VM instance is in.
   ///
   /// Format: `projects/{project_id}/global/networks/{network_id}`
@@ -2982,6 +3011,7 @@ class NetworkInterface {
 
   NetworkInterface({
     this.accessConfigs,
+    this.internalIp,
     this.network,
     this.nicType,
     this.subnet,
@@ -2996,6 +3026,7 @@ class NetworkInterface {
               ),
             )
             .toList(),
+        internalIp: json_['internalIp'] as core.String?,
         network: json_['network'] as core.String?,
         nicType: json_['nicType'] as core.String?,
         subnet: json_['subnet'] as core.String?,
@@ -3003,11 +3034,13 @@ class NetworkInterface {
 
   core.Map<core.String, core.dynamic> toJson() {
     final accessConfigs = this.accessConfigs;
+    final internalIp = this.internalIp;
     final network = this.network;
     final nicType = this.nicType;
     final subnet = this.subnet;
     return {
       'accessConfigs': ?accessConfigs,
+      'internalIp': ?internalIp,
       'network': ?network,
       'nicType': ?nicType,
       'subnet': ?subnet,
@@ -3715,7 +3748,7 @@ class UpgradeInstanceRequest {
 }
 
 /// Request for upgrading a notebook instance from within the VM
-typedef UpgradeInstanceSystemRequest = $Request12;
+typedef UpgradeInstanceSystemRequest = $Request13;
 
 /// Definition of a custom Compute Engine virtual machine image for starting a
 /// notebook instance with the environment installed directly on the VM.
@@ -3735,6 +3768,12 @@ class VmImage {
   /// Output only.
   core.String? imageDescription;
 
+  /// The ID of the specific Compute Engine VM image the instance is currently
+  /// running (for example, "workbench-instances-2603-20260918-2130-rc0").
+  ///
+  /// Output only.
+  core.String? imageId;
+
   /// Use VM image name to find the image.
   ///
   /// Optional.
@@ -3747,12 +3786,19 @@ class VmImage {
   /// Required.
   core.String? project;
 
-  VmImage({this.family, this.imageDescription, this.name, this.project});
+  VmImage({
+    this.family,
+    this.imageDescription,
+    this.imageId,
+    this.name,
+    this.project,
+  });
 
   VmImage.fromJson(core.Map json_)
     : this(
         family: json_['family'] as core.String?,
         imageDescription: json_['imageDescription'] as core.String?,
+        imageId: json_['imageId'] as core.String?,
         name: json_['name'] as core.String?,
         project: json_['project'] as core.String?,
       );
@@ -3760,11 +3806,13 @@ class VmImage {
   core.Map<core.String, core.dynamic> toJson() {
     final family = this.family;
     final imageDescription = this.imageDescription;
+    final imageId = this.imageId;
     final name = this.name;
     final project = this.project;
     return {
       'family': ?family,
       'imageDescription': ?imageDescription,
+      'imageId': ?imageId,
       'name': ?name,
       'project': ?project,
     };

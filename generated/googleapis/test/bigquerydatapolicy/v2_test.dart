@@ -233,6 +233,7 @@ api.DataPolicy buildDataPolicy() {
     o.dataPolicyType = 'foo';
     o.etag = 'foo';
     o.grantees = buildUnnamed4();
+    o.matchingCondition = 'foo';
     o.name = 'foo';
     o.policyTag = 'foo';
     o.version = 'foo';
@@ -250,6 +251,7 @@ void checkDataPolicy(api.DataPolicy o) {
     unittest.expect(o.dataPolicyType!, unittest.equals('foo'));
     unittest.expect(o.etag!, unittest.equals('foo'));
     checkUnnamed4(o.grantees!);
+    unittest.expect(o.matchingCondition!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.policyTag!, unittest.equals('foo'));
     unittest.expect(o.version!, unittest.equals('foo'));

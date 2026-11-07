@@ -2409,6 +2409,41 @@ class AuthorizedNetwork {
   }
 }
 
+/// Configuration for autoscaling.
+class AutoScalingConfig {
+  /// Policy for the MIG autoscaler.
+  Policy? policy;
+
+  /// Optional list of schedules for the MIG autoscaler.
+  ///
+  /// If not set, no schedules are created.
+  core.List<Schedule>? schedules;
+
+  AutoScalingConfig({this.policy, this.schedules});
+
+  AutoScalingConfig.fromJson(core.Map json_)
+    : this(
+        policy: json_.containsKey('policy')
+            ? Policy.fromJson(
+                json_['policy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        schedules: (json_['schedules'] as core.List?)
+            ?.map(
+              (value) => Schedule.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final policy = this.policy;
+    final schedules = this.schedules;
+    return {'policy': ?policy, 'schedules': ?schedules};
+  }
+}
+
 /// Message describing the user-specified automated backup policy.
 ///
 /// All fields in the automated backup policy are optional. Defaults for each
@@ -3800,6 +3835,25 @@ class ConnectionPoolConfig {
   }
 }
 
+/// Connections count policy for the autoscaler.
+class ConnectionsCount {
+  /// The target number of connections for the autoscaler to scale the instance
+  /// to.
+  ///
+  /// Optional.
+  core.String? targetCount;
+
+  ConnectionsCount({this.targetCount});
+
+  ConnectionsCount.fromJson(core.Map json_)
+    : this(targetCount: json_['targetCount'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final targetCount = this.targetCount;
+    return {'targetCount': ?targetCount};
+  }
+}
+
 /// ContinuousBackupConfig describes the continuous backups recovery
 /// configurations of a cluster.
 class ContinuousBackupConfig {
@@ -3948,6 +4002,25 @@ class ContinuousBackupSource {
     final cluster = this.cluster;
     final pointInTime = this.pointInTime;
     return {'cluster': ?cluster, 'pointInTime': ?pointInTime};
+  }
+}
+
+/// CPU utilization policy for the autoscaler.
+class CpuUtilization {
+  /// Target CPU utilization as a float between 0 and 1.
+  core.double? utilizationTarget;
+
+  CpuUtilization({this.utilizationTarget});
+
+  CpuUtilization.fromJson(core.Map json_)
+    : this(
+        utilizationTarget: (json_['utilizationTarget'] as core.num?)
+            ?.toDouble(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final utilizationTarget = this.utilizationTarget;
+    return {'utilizationTarget': ?utilizationTarget};
   }
 }
 
@@ -4327,7 +4400,7 @@ class ExportClusterRequest {
 }
 
 /// Message for triggering failover on an Instance
-typedef FailoverInstanceRequest = $Request06;
+typedef FailoverInstanceRequest = $Request07;
 
 /// Destination for Export.
 ///
@@ -4711,6 +4784,13 @@ class Instance {
   /// Configuration for observability.
   ObservabilityInstanceConfig? observabilityConfig;
 
+  /// Instance level observability information, contains the effective values of
+  /// observability settings for this instance, by merging customer's provided
+  /// `ObservabilityInstanceConfig` with the Observability defaults.
+  ///
+  /// Output only.
+  ObservabilityInstanceInfo? observabilityInstanceInfo;
+
   /// All outbound public IP addresses configured for the instance.
   ///
   /// Output only.
@@ -4726,16 +4806,28 @@ class Instance {
   /// Output only.
   PscInstanceInfo? pscInstanceInfo;
 
-  /// The public IP addresses for the Instance.
+  /// The public IP address for the Instance.
   ///
-  /// This is available ONLY when enable_public_ip is set. This is the
-  /// connection endpoint for an end-user application.
+  /// This is available ONLY when `enable_public_ip` is set or when you have
+  /// upgraded from an Express Instance that has public DNS enabled. This field
+  /// is not available for Express Instances. This is the connection endpoint
+  /// for an end-user application.
   ///
   /// Output only.
   core.String? publicIpAddress;
 
   /// Configuration for query insights.
   QueryInsightsInstanceConfig? queryInsightsConfig;
+
+  /// Instance level Query Insights information, which is read-only and
+  /// available in the output only.
+  ///
+  /// Contains the effective query insights settings for this instance, by
+  /// merging customer's provided `QueryInsightsInstanceConfig` with the Query
+  /// Insights defaults.
+  ///
+  /// Output only.
+  QueryInsightsInstanceInfo? queryInsightsInfo;
 
   /// Read pool instance configuration.
   ///
@@ -4821,11 +4913,13 @@ class Instance {
     this.networkConfig,
     this.nodes,
     this.observabilityConfig,
+    this.observabilityInstanceInfo,
     this.outboundPublicIpAddresses,
     this.pscInstanceConfig,
     this.pscInstanceInfo,
     this.publicIpAddress,
     this.queryInsightsConfig,
+    this.queryInsightsInfo,
     this.readPoolConfig,
     this.reconciling,
     this.satisfiesPzs,
@@ -4893,6 +4987,13 @@ class Instance {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        observabilityInstanceInfo:
+            json_.containsKey('observabilityInstanceInfo')
+            ? ObservabilityInstanceInfo.fromJson(
+                json_['observabilityInstanceInfo']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         outboundPublicIpAddresses:
             (json_['outboundPublicIpAddresses'] as core.List?)
                 ?.map((value) => value as core.String)
@@ -4912,6 +5013,12 @@ class Instance {
         queryInsightsConfig: json_.containsKey('queryInsightsConfig')
             ? QueryInsightsInstanceConfig.fromJson(
                 json_['queryInsightsConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        queryInsightsInfo: json_.containsKey('queryInsightsInfo')
+            ? QueryInsightsInstanceInfo.fromJson(
+                json_['queryInsightsInfo']
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
@@ -4954,11 +5061,13 @@ class Instance {
     final networkConfig = this.networkConfig;
     final nodes = this.nodes;
     final observabilityConfig = this.observabilityConfig;
+    final observabilityInstanceInfo = this.observabilityInstanceInfo;
     final outboundPublicIpAddresses = this.outboundPublicIpAddresses;
     final pscInstanceConfig = this.pscInstanceConfig;
     final pscInstanceInfo = this.pscInstanceInfo;
     final publicIpAddress = this.publicIpAddress;
     final queryInsightsConfig = this.queryInsightsConfig;
+    final queryInsightsInfo = this.queryInsightsInfo;
     final readPoolConfig = this.readPoolConfig;
     final reconciling = this.reconciling;
     final satisfiesPzs = this.satisfiesPzs;
@@ -4988,11 +5097,13 @@ class Instance {
       'networkConfig': ?networkConfig,
       'nodes': ?nodes,
       'observabilityConfig': ?observabilityConfig,
+      'observabilityInstanceInfo': ?observabilityInstanceInfo,
       'outboundPublicIpAddresses': ?outboundPublicIpAddresses,
       'pscInstanceConfig': ?pscInstanceConfig,
       'pscInstanceInfo': ?pscInstanceInfo,
       'publicIpAddress': ?publicIpAddress,
       'queryInsightsConfig': ?queryInsightsConfig,
+      'queryInsightsInfo': ?queryInsightsInfo,
       'readPoolConfig': ?readPoolConfig,
       'reconciling': ?reconciling,
       'satisfiesPzs': ?satisfiesPzs,
@@ -5720,6 +5831,95 @@ class ObservabilityInstanceConfig {
   }
 }
 
+class ObservabilityInstanceInfo {
+  /// Observability feature status for an instance.
+  ///
+  /// Output only.
+  core.bool? enabled;
+
+  /// Query string length.
+  ///
+  /// The default value is 10k.
+  ///
+  /// Output only.
+  core.int? maxQueryStringLength;
+
+  /// Preserve comments in query string for an instance.
+  ///
+  /// Output only.
+  core.bool? preserveComments;
+
+  /// Number of query execution plans captured by Insights per minute for all
+  /// queries combined.
+  ///
+  /// Output only.
+  core.int? queryPlansPerMinute;
+
+  /// Record application tags for an instance.
+  ///
+  /// Output only.
+  core.bool? recordApplicationTags;
+
+  /// Track actively running queries on the instance.
+  ///
+  /// Output only.
+  core.bool? trackActiveQueries;
+
+  /// Track wait event types during query execution for an instance.
+  ///
+  /// Output only.
+  core.bool? trackWaitEventTypes;
+
+  /// Track wait events during query execution for an instance.
+  ///
+  /// Output only.
+  core.bool? trackWaitEvents;
+
+  ObservabilityInstanceInfo({
+    this.enabled,
+    this.maxQueryStringLength,
+    this.preserveComments,
+    this.queryPlansPerMinute,
+    this.recordApplicationTags,
+    this.trackActiveQueries,
+    this.trackWaitEventTypes,
+    this.trackWaitEvents,
+  });
+
+  ObservabilityInstanceInfo.fromJson(core.Map json_)
+    : this(
+        enabled: json_['enabled'] as core.bool?,
+        maxQueryStringLength: json_['maxQueryStringLength'] as core.int?,
+        preserveComments: json_['preserveComments'] as core.bool?,
+        queryPlansPerMinute: json_['queryPlansPerMinute'] as core.int?,
+        recordApplicationTags: json_['recordApplicationTags'] as core.bool?,
+        trackActiveQueries: json_['trackActiveQueries'] as core.bool?,
+        trackWaitEventTypes: json_['trackWaitEventTypes'] as core.bool?,
+        trackWaitEvents: json_['trackWaitEvents'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final enabled = this.enabled;
+    final maxQueryStringLength = this.maxQueryStringLength;
+    final preserveComments = this.preserveComments;
+    final queryPlansPerMinute = this.queryPlansPerMinute;
+    final recordApplicationTags = this.recordApplicationTags;
+    final trackActiveQueries = this.trackActiveQueries;
+    final trackWaitEventTypes = this.trackWaitEventTypes;
+    final trackWaitEvents = this.trackWaitEvents;
+    return {
+      'enabled': ?enabled,
+      'maxQueryStringLength': ?maxQueryStringLength,
+      'preserveComments': ?preserveComments,
+      'queryPlansPerMinute': ?queryPlansPerMinute,
+      'recordApplicationTags': ?recordApplicationTags,
+      'trackActiveQueries': ?trackActiveQueries,
+      'trackWaitEventTypes': ?trackWaitEventTypes,
+      'trackWaitEvents': ?trackWaitEvents,
+    };
+  }
+}
+
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
@@ -5794,6 +5994,73 @@ class Operation {
       'metadata': ?metadata,
       'name': ?name,
       'response': ?response,
+    };
+  }
+}
+
+/// Policy for the autoscaler.
+class Policy {
+  /// Connections count policy for the autoscaler.
+  ///
+  /// If not set, the autoscaler will not use connection count for scaling.
+  ///
+  /// Optional.
+  ConnectionsCount? connectionsCount;
+
+  /// The period of time in seconds after a new node is created before the
+  /// autoscaler will incorporate its resource usage (e.g. CPU utilization) into
+  /// the autoscaling recommendation algorithm.
+  core.String? coolDownPeriodSec;
+
+  /// CPU utilization policy for the autoscaler.
+  CpuUtilization? cpuUtilization;
+
+  /// If true, autoscaling is enabled for the instance.
+  ///
+  /// If not set, the default value is false.
+  core.bool? enabled;
+
+  /// Maximum number of nodes for the autoscaler.
+  core.String? maxNodeCount;
+
+  Policy({
+    this.connectionsCount,
+    this.coolDownPeriodSec,
+    this.cpuUtilization,
+    this.enabled,
+    this.maxNodeCount,
+  });
+
+  Policy.fromJson(core.Map json_)
+    : this(
+        connectionsCount: json_.containsKey('connectionsCount')
+            ? ConnectionsCount.fromJson(
+                json_['connectionsCount']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        coolDownPeriodSec: json_['coolDownPeriodSec'] as core.String?,
+        cpuUtilization: json_.containsKey('cpuUtilization')
+            ? CpuUtilization.fromJson(
+                json_['cpuUtilization'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        enabled: json_['enabled'] as core.bool?,
+        maxNodeCount: json_['maxNodeCount'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final connectionsCount = this.connectionsCount;
+    final coolDownPeriodSec = this.coolDownPeriodSec;
+    final cpuUtilization = this.cpuUtilization;
+    final enabled = this.enabled;
+    final maxNodeCount = this.maxNodeCount;
+    return {
+      'connectionsCount': ?connectionsCount,
+      'coolDownPeriodSec': ?coolDownPeriodSec,
+      'cpuUtilization': ?cpuUtilization,
+      'enabled': ?enabled,
+      'maxNodeCount': ?maxNodeCount,
     };
   }
 }
@@ -6356,19 +6623,96 @@ class QueryInsightsInstanceConfig {
   }
 }
 
+/// Instance level Query Insights information, which is read-only and available
+/// in the output only.
+class QueryInsightsInstanceInfo {
+  /// Whether Query Insights is enabled.
+  ///
+  /// Output only.
+  core.bool? enabled;
+
+  /// Number of query execution plans captured per minute.
+  ///
+  /// Output only.
+  core.int? queryPlansPerMinute;
+
+  /// Maximum query string length.
+  ///
+  /// Output only.
+  core.int? queryStringLength;
+
+  /// Whether to record application tags.
+  ///
+  /// Output only.
+  core.bool? recordApplicationTags;
+
+  /// Whether to record client address.
+  ///
+  /// Output only.
+  core.bool? recordClientAddress;
+
+  QueryInsightsInstanceInfo({
+    this.enabled,
+    this.queryPlansPerMinute,
+    this.queryStringLength,
+    this.recordApplicationTags,
+    this.recordClientAddress,
+  });
+
+  QueryInsightsInstanceInfo.fromJson(core.Map json_)
+    : this(
+        enabled: json_['enabled'] as core.bool?,
+        queryPlansPerMinute: json_['queryPlansPerMinute'] as core.int?,
+        queryStringLength: json_['queryStringLength'] as core.int?,
+        recordApplicationTags: json_['recordApplicationTags'] as core.bool?,
+        recordClientAddress: json_['recordClientAddress'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final enabled = this.enabled;
+    final queryPlansPerMinute = this.queryPlansPerMinute;
+    final queryStringLength = this.queryStringLength;
+    final recordApplicationTags = this.recordApplicationTags;
+    final recordClientAddress = this.recordClientAddress;
+    return {
+      'enabled': ?enabled,
+      'queryPlansPerMinute': ?queryPlansPerMinute,
+      'queryStringLength': ?queryStringLength,
+      'recordApplicationTags': ?recordApplicationTags,
+      'recordClientAddress': ?recordClientAddress,
+    };
+  }
+}
+
 /// Configuration for a read pool instance.
 class ReadPoolConfig {
+  /// Autoscaling configuration for the read pool instance.
+  ///
+  /// If not set, the read pool instance will not be autoscaled.
+  ///
+  /// Optional.
+  AutoScalingConfig? autoScalingConfig;
+
   /// Read capacity, i.e. number of nodes in a read pool instance.
   core.int? nodeCount;
 
-  ReadPoolConfig({this.nodeCount});
+  ReadPoolConfig({this.autoScalingConfig, this.nodeCount});
 
   ReadPoolConfig.fromJson(core.Map json_)
-    : this(nodeCount: json_['nodeCount'] as core.int?);
+    : this(
+        autoScalingConfig: json_.containsKey('autoScalingConfig')
+            ? AutoScalingConfig.fromJson(
+                json_['autoScalingConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        nodeCount: json_['nodeCount'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final autoScalingConfig = this.autoScalingConfig;
     final nodeCount = this.nodeCount;
-    return {'nodeCount': ?nodeCount};
+    return {'autoScalingConfig': ?autoScalingConfig, 'nodeCount': ?nodeCount};
   }
 }
 
@@ -6593,6 +6937,77 @@ class RestoreFromCloudSQLRequest {
       'cloudsqlBackupRunSource': ?cloudsqlBackupRunSource,
       'cluster': ?cluster,
       'clusterId': ?clusterId,
+    };
+  }
+}
+
+/// A schedule for the autoscaler.
+class Schedule {
+  /// Cron expression for the triggering the schedule.
+  ///
+  /// See
+  /// https://cloud.google.com/compute/docs/autoscaler/scaling-schedules#cron_expressions
+  /// for the syntax.
+  core.String? cronExpression;
+
+  /// Description of the schedule.
+  core.String? description;
+
+  /// If true, the schedule is disabled.
+  core.bool? disabled;
+
+  /// Duration of the schedule.
+  core.String? durationSec;
+
+  /// Minimum number of nodes in while the schedule is active.
+  core.String? minNodeCount;
+
+  /// Name of the schedule.
+  core.String? name;
+
+  /// The location-based IANA time zone for interpreting the schedule's start
+  /// time.
+  ///
+  /// If no time zone is provided, UTC is used by default.
+  core.String? timeZone;
+
+  Schedule({
+    this.cronExpression,
+    this.description,
+    this.disabled,
+    this.durationSec,
+    this.minNodeCount,
+    this.name,
+    this.timeZone,
+  });
+
+  Schedule.fromJson(core.Map json_)
+    : this(
+        cronExpression: json_['cronExpression'] as core.String?,
+        description: json_['description'] as core.String?,
+        disabled: json_['disabled'] as core.bool?,
+        durationSec: json_['durationSec'] as core.String?,
+        minNodeCount: json_['minNodeCount'] as core.String?,
+        name: json_['name'] as core.String?,
+        timeZone: json_['timeZone'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final cronExpression = this.cronExpression;
+    final description = this.description;
+    final disabled = this.disabled;
+    final durationSec = this.durationSec;
+    final minNodeCount = this.minNodeCount;
+    final name = this.name;
+    final timeZone = this.timeZone;
+    return {
+      'cronExpression': ?cronExpression,
+      'description': ?description,
+      'disabled': ?disabled,
+      'durationSec': ?durationSec,
+      'minNodeCount': ?minNodeCount,
+      'name': ?name,
+      'timeZone': ?timeZone,
     };
   }
 }
@@ -6898,7 +7313,7 @@ class SupportedDatabaseFlag {
 }
 
 /// Message for switching over to a cluster
-typedef SwitchoverClusterRequest = $Request06;
+typedef SwitchoverClusterRequest = $Request07;
 
 /// A time based retention policy specifies that all backups within a certain
 /// time period should be retained.
@@ -7070,6 +7485,12 @@ class User {
   /// password-based authentication.
   /// - "ALLOYDB_IAM_USER" : Database user that can authenticate via IAM-Based
   /// authentication.
+  /// - "ALLOYDB_IAM_GROUP" : Database user that represents an IAM group whose
+  /// members can authenticate via IAM group-based authentication.
+  /// - "ALLOYDB_IAM_GROUP_USER" : Represents a user that belongs to an IAM
+  /// group.
+  /// - "ALLOYDB_IAM_GROUP_SERVICE_ACCOUNT" : Represents a service account that
+  /// belongs to an IAM group.
   core.String? userType;
 
   User({

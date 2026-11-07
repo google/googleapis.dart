@@ -240,8 +240,9 @@ class ProjectsLocationsInstancesInventoriesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+/inventory$`.
   ///
-  /// [view] - Inventory view indicating what information should be included in
-  /// the inventory resource. If unspecified, the default view is BASIC.
+  /// [view] - Optional. Inventory view indicating what information should be
+  /// included in the inventory resource. If unspecified, the default view is
+  /// BASIC.
   /// Possible string values are:
   /// - "INVENTORY_VIEW_UNSPECIFIED" : The default value. The API defaults to
   /// the BASIC view.
@@ -289,16 +290,18 @@ class ProjectsLocationsInstancesInventoriesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
   ///
-  /// [filter] - If provided, this field specifies the criteria that must be met
-  /// by a `Inventory` API resource to be included in the response.
+  /// [filter] - Optional. If provided, this field specifies the criteria that
+  /// must be met by a `Inventory` API resource to be included in the response.
   ///
-  /// [pageSize] - The maximum number of results to return.
+  /// [pageSize] - Optional. The maximum number of results to return.
   ///
-  /// [pageToken] - A pagination token returned from a previous call to
-  /// `ListInventories` that indicates where this listing should continue from.
+  /// [pageToken] - Optional. A pagination token returned from a previous call
+  /// to `ListInventories` that indicates where this listing should continue
+  /// from.
   ///
-  /// [view] - Inventory view indicating what information should be included in
-  /// the inventory resource. If unspecified, the default view is BASIC.
+  /// [view] - Optional. Inventory view indicating what information should be
+  /// included in the inventory resource. If unspecified, the default view is
+  /// BASIC.
   /// Possible string values are:
   /// - "INVENTORY_VIEW_UNSPECIFIED" : The default value. The API defaults to
   /// the BASIC view.
@@ -3195,7 +3198,7 @@ class OSPolicyAssignmentInstanceFilter {
 }
 
 /// VM inventory details.
-typedef OSPolicyAssignmentInstanceFilterInventory = $Shared07;
+typedef OSPolicyAssignmentInstanceFilterInventory = $Shared08;
 
 /// Message representing label set.
 ///
@@ -3565,7 +3568,7 @@ class OSPolicyAssignmentRollout {
 }
 
 /// Filtering criteria to select VMs based on inventory details.
-typedef OSPolicyInventoryFilter = $Shared07;
+typedef OSPolicyInventoryFilter = $Shared08;
 
 /// An OS policy resource is used to define the desired state configuration and
 /// provides a specific functionality like installing/removing packages,
@@ -4068,7 +4071,7 @@ class OSPolicyResourcePackageResource {
 ///
 /// - install: `apt-get update && apt-get -y install [name]` - remove: `apt-get
 /// -y remove [name]`
-typedef OSPolicyResourcePackageResourceAPT = $Shared03;
+typedef OSPolicyResourcePackageResourceAPT = $Shared04;
 
 /// A deb package file.
 ///
@@ -4108,7 +4111,7 @@ class OSPolicyResourcePackageResourceDeb {
 ///
 /// - install: `googet -noconfirm install package` - remove: `googet -noconfirm
 /// remove package`
-typedef OSPolicyResourcePackageResourceGooGet = $Shared03;
+typedef OSPolicyResourcePackageResourceGooGet = $Shared04;
 
 /// An MSI package.
 ///
@@ -4183,12 +4186,12 @@ class OSPolicyResourcePackageResourceRPM {
 /// A package managed by YUM.
 ///
 /// - install: `yum -y install package` - remove: `yum -y remove package`
-typedef OSPolicyResourcePackageResourceYUM = $Shared03;
+typedef OSPolicyResourcePackageResourceYUM = $Shared04;
 
 /// A package managed by Zypper.
 ///
 /// - install: `zypper -y install package` - remove: `zypper -y rm package`
-typedef OSPolicyResourcePackageResourceZypper = $Shared03;
+typedef OSPolicyResourcePackageResourceZypper = $Shared04;
 
 /// A resource that manages a package repository.
 class OSPolicyResourceRepositoryResource {

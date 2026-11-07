@@ -34,6 +34,8 @@
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsServicesResource]
 ///       - [ProjectsLocationsServicesConnectorsResource]
+///       - [ProjectsLocationsServicesPostgrestResource]
+///         - [ProjectsLocationsServicesPostgrestRpcResource]
 ///       - [ProjectsLocationsServicesSchemasResource]
 library;
 
@@ -397,6 +399,8 @@ class ProjectsLocationsServicesResource {
 
   ProjectsLocationsServicesConnectorsResource get connectors =>
       ProjectsLocationsServicesConnectorsResource(_requester);
+  ProjectsLocationsServicesPostgrestResource get postgrest =>
+      ProjectsLocationsServicesPostgrestResource(_requester);
   ProjectsLocationsServicesSchemasResource get schemas =>
       ProjectsLocationsServicesSchemasResource(_requester);
 
@@ -1474,6 +1478,376 @@ class ProjectsLocationsServicesConnectorsResource {
   }
 }
 
+class ProjectsLocationsServicesPostgrestResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsServicesPostgrestRpcResource get rpc =>
+      ProjectsLocationsServicesPostgrestRpcResource(_requester);
+
+  ProjectsLocationsServicesPostgrestResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Executes a dynamic DELETE mutation on rows matching the URL filters.
+  ///
+  /// Request parameters:
+  ///
+  /// [firebasedataconnectService] - Required. The resource name of the service,
+  /// in the format:
+  /// `projects/{project}/locations/{location}/services/{service}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
+  ///
+  /// [firebasedataconnectTable] - Required. The name of the table to delete
+  /// from.
+  /// Value must have pattern `^.*$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [HttpBody].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<HttpBody> postgrestDelete(
+    core.String firebasedataconnectService,
+    core.String firebasedataconnectTable, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$firebasedataconnectService') +
+        '/postgrest/' +
+        core.Uri.encodeFull('$firebasedataconnectTable');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return HttpBody.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Executes a dynamic INSERT (create) or UPSERT mutation on a target table.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [firebasedataconnectService] - Required. The resource name of the service,
+  /// in the format:
+  /// `projects/{project}/locations/{location}/services/{service}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
+  ///
+  /// [firebasedataconnectTable] - Required. The name of the table to insert
+  /// into.
+  /// Value must have pattern `^.*$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [HttpBody].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<HttpBody> postgrestInsert(
+    HttpBody request,
+    core.String firebasedataconnectService,
+    core.String firebasedataconnectTable, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$firebasedataconnectService') +
+        '/postgrest/' +
+        core.Uri.encodeFull('$firebasedataconnectTable');
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return HttpBody.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Executes a dynamic SELECT (read) query on a target PostgreSQL table.
+  ///
+  /// Projections, filters, sorting, and embeddings are mapped from the HTTP URL
+  /// query parameters.
+  ///
+  /// Request parameters:
+  ///
+  /// [firebasedataconnectService] - Required. The resource name of the service,
+  /// in the format:
+  /// `projects/{project}/locations/{location}/services/{service}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
+  ///
+  /// [firebasedataconnectTable] - Required. The name of the table to select
+  /// from.
+  /// Value must have pattern `^.*$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [HttpBody].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<HttpBody> postgrestSelect(
+    core.String firebasedataconnectService,
+    core.String firebasedataconnectTable, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$firebasedataconnectService') +
+        '/postgrest/' +
+        core.Uri.encodeFull('$firebasedataconnectTable');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return HttpBody.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Executes a dynamic UPDATE (modify) mutation on rows matching the URL
+  /// filters.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [firebasedataconnectService] - Required. The resource name of the service,
+  /// in the format:
+  /// `projects/{project}/locations/{location}/services/{service}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
+  ///
+  /// [firebasedataconnectTable] - Required. The name of the table to update.
+  /// Value must have pattern `^.*$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [HttpBody].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<HttpBody> postgrestUpdate(
+    HttpBody request,
+    core.String firebasedataconnectService,
+    core.String firebasedataconnectTable, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$firebasedataconnectService') +
+        '/postgrest/' +
+        core.Uri.encodeFull('$firebasedataconnectTable');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return HttpBody.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Executes a dynamic UPSERT (replace or create) mutation on a target table
+  /// identified by primary key filters.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [firebasedataconnectService] - Required. The resource name of the service,
+  /// in the format:
+  /// `projects/{project}/locations/{location}/services/{service}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
+  ///
+  /// [firebasedataconnectTable] - Required. The name of the table to upsert
+  /// into.
+  /// Value must have pattern `^.*$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [HttpBody].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<HttpBody> postgrestUpsert(
+    HttpBody request,
+    core.String firebasedataconnectService,
+    core.String firebasedataconnectTable, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$firebasedataconnectService') +
+        '/postgrest/' +
+        core.Uri.encodeFull('$firebasedataconnectTable');
+
+    final response_ = await _requester.request(
+      url_,
+      'PUT',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return HttpBody.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsServicesPostgrestRpcResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsServicesPostgrestRpcResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Executes a PostgreSQL database function.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [firebasedataconnectService] - Required. The resource name of the service,
+  /// in the format:
+  /// `projects/{project}/locations/{location}/services/{service}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
+  ///
+  /// [firebasedataconnectFunction] - Required. The name of the database
+  /// function.
+  /// Value must have pattern `^.*$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [HttpBody].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<HttpBody> postgrestCallFunction(
+    HttpBody request,
+    core.String firebasedataconnectService,
+    core.String firebasedataconnectFunction, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$firebasedataconnectService') +
+        '/postgrest/rpc/' +
+        core.Uri.encodeFull('$firebasedataconnectFunction');
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return HttpBody.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Executes a read-only PostgreSQL database function.
+  ///
+  /// Request parameters:
+  ///
+  /// [firebasedataconnectService] - Required. The resource name of the service,
+  /// in the format:
+  /// `projects/{project}/locations/{location}/services/{service}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
+  ///
+  /// [firebasedataconnectFunction] - Required. The name of the database
+  /// function.
+  /// Value must have pattern `^.*$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [HttpBody].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<HttpBody> postgrestQueryFunction(
+    core.String firebasedataconnectService,
+    core.String firebasedataconnectFunction, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$firebasedataconnectService') +
+        '/postgrest/rpc/' +
+        core.Uri.encodeFull('$firebasedataconnectFunction');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return HttpBody.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsServicesSchemasResource {
   final commons.ApiRequester _requester;
 
@@ -1715,6 +2089,54 @@ class ProjectsLocationsServicesSchemasResource {
     return ListSchemasResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
+  }
+
+  /// Executes SQL migration steps against the active database schema.
+  ///
+  /// This operation compares submitted migration steps against the schema
+  /// migration ledger (`firebasesql.schema_migrations`), executes unapplied
+  /// DDL, and records applied steps. It does NOT persist the GraphQL schema to
+  /// the control plane.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the target schema:
+  /// projects/{project}/locations/{location}/services/{service}/schemas/{schema}
+  /// Note: Only `schemas/main` is supported (singleton schema per service).
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+/schemas/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> migrate(
+    MigrateSchemaRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':migrate';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the parameters of a single Schema, and creates a new
@@ -2136,7 +2558,7 @@ class Datasource {
 typedef Empty = $Empty;
 
 /// The ExecuteMutation request to Firebase SQL Connect.
-typedef ExecuteMutationRequest = $Request10;
+typedef ExecuteMutationRequest = $Request11;
 
 /// The ExecuteMutation response from Firebase SQL Connect.
 class ExecuteMutationResponse {
@@ -2182,7 +2604,7 @@ class ExecuteMutationResponse {
 }
 
 /// The ExecuteQuery request to Firebase SQL Connect.
-typedef ExecuteQueryRequest = $Request10;
+typedef ExecuteQueryRequest = $Request11;
 
 /// The ExecuteQuery response from Firebase SQL Connect.
 class ExecuteQueryResponse {
@@ -2824,6 +3246,26 @@ class GraphqlResponseExtensions {
   }
 }
 
+/// Message that represents an arbitrary HTTP body.
+///
+/// It should only be used for payload formats that can't be represented as
+/// JSON, such as raw binary or an HTML page. This message can be used both in
+/// streaming and non-streaming API methods in the request as well as the
+/// response. It can be used as a top-level request field, which is convenient
+/// if one wants to extract parameters from either the URL or HTTP template into
+/// the request fields and also want access to the raw HTTP body. Example:
+/// message GetResourceRequest { // A unique request id. string request_id = 1;
+/// // The raw HTTP body is bound to this field. google.api.HttpBody http_body =
+/// 2; } service ResourceService { rpc GetResource(GetResourceRequest) returns
+/// (google.api.HttpBody); rpc UpdateResource(google.api.HttpBody) returns
+/// (google.protobuf.Empty); } Example with streaming methods: service
+/// CaldavService { rpc GetCalendar(stream google.api.HttpBody) returns (stream
+/// google.api.HttpBody); rpc UpdateCalendar(stream google.api.HttpBody) returns
+/// (stream google.api.HttpBody); } Use of this type only changes how the
+/// request and response bodies are handled, all other features will continue to
+/// work unchanged.
+typedef HttpBody = $HttpBody;
+
 /// Settings for HTTP GraphQL server webhook.
 class HttpGraphql {
   /// Timeout duration for the HTTP request.
@@ -3169,6 +3611,136 @@ class ListServicesResponse {
 
 /// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
+
+/// Request message for `MigrateSchema`.
+///
+/// Next tag: 7
+class MigrateSchemaRequest {
+  /// Execution mode controlling DDL execution and ledger recording.
+  ///
+  /// Defaults to EXECUTE_AND_RECORD.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "EXECUTION_MODE_UNSPECIFIED" : Default behavior. Evaluates to
+  /// EXECUTE_AND_RECORD.
+  /// - "EXECUTE_AND_RECORD" : Standard execution: executes DDL statements
+  /// against the database catalog and records completed steps in
+  /// `firebasesql.schema_migrations`.
+  /// - "EXECUTE_ONLY" : Applies DDL statements against the database catalog
+  /// without writing to the ledger. Used for maintenance scripts, temporary
+  /// schema objects, and the internal declarative flow.
+  /// - "RECORD_ONLY" : Records steps into `firebasesql.schema_migrations`
+  /// without executing their DDL statements. Used for baselining pre-existing
+  /// schemas or manual out-of-band changes (e.g. ledger-only).
+  core.String? executionMode;
+
+  /// Ordered migration steps from `./sql/migrations/` (or a single ad-hoc
+  /// step).
+  ///
+  /// Backend compares submitted versions against
+  /// `firebasesql.schema_migrations`: already-applied steps are verified for
+  /// SQL immutability and skipped, while unapplied steps (`version >
+  /// MAX(applied_version)`) are executed. All unapplied transactional steps in
+  /// a single request execute atomically within one database transaction (BEGIN
+  /// ... COMMIT): either every unapplied step commits and is recorded in the
+  /// ledger, or the entire request rolls back. An unapplied step containing
+  /// CREATE INDEX CONCURRENTLY or DROP INDEX CONCURRENTLY cannot be mixed with
+  /// other unapplied steps and must be the sole unapplied step executed in the
+  /// request.
+  ///
+  /// Required.
+  core.List<MigrationStep>? migrationSteps;
+
+  /// When true, runs preflight validation (syntax, applied-step immutability,
+  /// sequence ordering, CONCURRENTLY isolation, and SAVEPOINT catalog checks)
+  /// without committing mutations to the database.
+  ///
+  /// Optional.
+  core.bool? validateOnly;
+
+  MigrateSchemaRequest({
+    this.executionMode,
+    this.migrationSteps,
+    this.validateOnly,
+  });
+
+  MigrateSchemaRequest.fromJson(core.Map json_)
+    : this(
+        executionMode: json_['executionMode'] as core.String?,
+        migrationSteps: (json_['migrationSteps'] as core.List?)
+            ?.map(
+              (value) => MigrationStep.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        validateOnly: json_['validateOnly'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final executionMode = this.executionMode;
+    final migrationSteps = this.migrationSteps;
+    final validateOnly = this.validateOnly;
+    return {
+      'executionMode': ?executionMode,
+      'migrationSteps': ?migrationSteps,
+      'validateOnly': ?validateOnly,
+    };
+  }
+}
+
+/// An individual unit of migration work.
+///
+/// Next tag: 4
+class MigrationStep {
+  /// Descriptive migration label (e.g. "create_accounts_table").
+  ///
+  /// If omitted, defaults to "adhoc".
+  ///
+  /// Optional.
+  core.String? name;
+
+  /// Raw multi-statement SQL script.
+  ///
+  /// The backend splits it into individual statements before execution; callers
+  /// do not pre-split. Required whenever the request executes or records DDL,
+  /// which is every publicly available execution mode; omitting it returns
+  /// INVALID_ARGUMENT.
+  ///
+  /// Required.
+  core.String? sql;
+
+  /// Monotonic 14-digit UTC timestamp (YYYYMMDDHHMMSS), matching the timestamp
+  /// prefix of the developer's migration filename.
+  ///
+  /// Constrained to `^[0-9]{14}$`. - When specified (file migrations): If
+  /// `version` is already recorded in `firebasesql.schema_migrations`, the
+  /// backend verifies that `sql` matches the recorded statements and skips
+  /// execution. If `version` is unapplied, the backend validates `version >
+  /// MAX(applied_version)` and records the value unchanged, so the ledger row
+  /// and the on-disk filename stay identical. - When omitted (Console/ad-hoc):
+  /// Backend auto-generates a 14-digit UTC timestamp.
+  ///
+  /// Optional.
+  core.String? version;
+
+  MigrationStep({this.name, this.sql, this.version});
+
+  MigrationStep.fromJson(core.Map json_)
+    : this(
+        name: json_['name'] as core.String?,
+        sql: json_['sql'] as core.String?,
+        version: json_['version'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final sql = this.sql;
+    final version = this.version;
+    return {'name': ?name, 'sql': ?sql, 'version': ?version};
+  }
+}
 
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
@@ -3555,6 +4127,10 @@ class Service {
 
   /// The list of connectors in this service.
   ///
+  /// Connectors returned in this collection are a summary view. Authoritative
+  /// lifecycle metadata and entity tags are omitted from embedded
+  /// representations. Call `GetConnector` to retrieve the complete resource.
+  ///
   /// Output only.
   core.List<Connector>? connectors;
 
@@ -3579,6 +4155,13 @@ class Service {
   /// Output only.
   core.String? etag;
 
+  /// Input only.
+  ///
+  /// The GraphQL source files like `dataconnect.yaml` and `*.gql`.
+  ///
+  /// Optional.
+  Source? graphqlSource;
+
   /// Labels as key value pairs.
   ///
   /// Optional.
@@ -3601,15 +4184,30 @@ class Service {
 
   /// The list of schemas in this service.
   ///
-  /// Output only.
+  /// Schemas returned in this collection are a summary view. Authoritative
+  /// lifecycle metadata and entity tags are omitted from embedded
+  /// representations. Call `GetSchema` to retrieve the complete resource.
+  ///
+  /// Optional.
   core.List<Schema>? schemas;
 
   /// Input only.
   ///
-  /// The source files for service, schemas, and connectors.
+  /// Deprecated: Use `sql_source` or `graphql_source` instead. The source files
+  /// for service, schemas, and connectors.
   ///
   /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Source? source;
+
+  /// Input only.
+  ///
+  /// The SQL source files like `*.sql` for deploying a PostgREST service.
+  ///
+  /// Optional.
+  Source? sqlSource;
 
   /// System-assigned, unique identifier.
   ///
@@ -3627,11 +4225,13 @@ class Service {
     this.createTime,
     this.displayName,
     this.etag,
+    this.graphqlSource,
     this.labels,
     this.name,
     this.reconciling,
     this.schemas,
     this.source,
+    this.sqlSource,
     this.uid,
     this.updateTime,
   });
@@ -3652,6 +4252,11 @@ class Service {
         createTime: json_['createTime'] as core.String?,
         displayName: json_['displayName'] as core.String?,
         etag: json_['etag'] as core.String?,
+        graphqlSource: json_.containsKey('graphqlSource')
+            ? Source.fromJson(
+                json_['graphqlSource'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
@@ -3668,6 +4273,11 @@ class Service {
                 json_['source'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        sqlSource: json_.containsKey('sqlSource')
+            ? Source.fromJson(
+                json_['sqlSource'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         uid: json_['uid'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
       );
@@ -3678,11 +4288,13 @@ class Service {
     final createTime = this.createTime;
     final displayName = this.displayName;
     final etag = this.etag;
+    final graphqlSource = this.graphqlSource;
     final labels = this.labels;
     final name = this.name;
     final reconciling = this.reconciling;
     final schemas = this.schemas;
     final source = this.source;
+    final sqlSource = this.sqlSource;
     final uid = this.uid;
     final updateTime = this.updateTime;
     return {
@@ -3691,11 +4303,13 @@ class Service {
       'createTime': ?createTime,
       'displayName': ?displayName,
       'etag': ?etag,
+      'graphqlSource': ?graphqlSource,
       'labels': ?labels,
       'name': ?name,
       'reconciling': ?reconciling,
       'schemas': ?schemas,
       'source': ?source,
+      'sqlSource': ?sqlSource,
       'uid': ?uid,
       'updateTime': ?updateTime,
     };

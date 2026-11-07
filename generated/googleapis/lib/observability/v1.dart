@@ -1271,6 +1271,52 @@ class ProjectsLocationsBucketsResource {
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
+
+  /// Initiates reprovisioning of a bucket.
+  ///
+  /// This is allowed only a single time for a bucket and results in data loss.
+  /// Subsequent calls to this method for the same bucket will result in a
+  /// FAILED_PRECONDITION (400 Bad Request) error.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the bucket to reprovision. The format is:
+  /// projects/\[PROJECT_ID\]/locations/\[LOCATION\]/buckets/\[BUCKET_ID\]
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> reprovision(
+    ReprovisionBucketRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':reprovision';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsBucketsDatasetsResource {
@@ -2808,9 +2854,13 @@ class Operation {
   }
 }
 
+/// Request for reprovisioning a bucket, replaces configuration with that of the
+/// configured Observability settings.
+typedef ReprovisionBucketRequest = $Empty;
+
 /// Message describing Scope object
 class Scope {
-  /// The full resource name of the `LogScope`.
+  /// The full resource name of the `logging.googleapis.com/LogScope`.
   ///
   /// For example:
   /// //logging.googleapis.com/projects/myproject/locations/global/logScopes/my-log-scope
@@ -2826,7 +2876,8 @@ class Scope {
   /// `_Default`.
   core.String? name;
 
-  /// The resource name of the `TraceScope`.
+  /// The unqualified resource name of the
+  /// `cloudtrace.googleapis.com/TraceScope`.
   ///
   /// For example:
   /// projects/myproject/locations/global/traceScopes/my-trace-scope

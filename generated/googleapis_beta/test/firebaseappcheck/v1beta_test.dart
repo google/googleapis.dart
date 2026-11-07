@@ -106,6 +106,40 @@ void checkGoogleFirebaseAppcheckV1betaAttestationTokenResponse(
   buildCounterGoogleFirebaseAppcheckV1betaAttestationTokenResponse--;
 }
 
+core.int buildCounterGoogleFirebaseAppcheckV1betaAutomation = 0;
+api.GoogleFirebaseAppcheckV1betaAutomation
+buildGoogleFirebaseAppcheckV1betaAutomation() {
+  final o = api.GoogleFirebaseAppcheckV1betaAutomation();
+  buildCounterGoogleFirebaseAppcheckV1betaAutomation++;
+  if (buildCounterGoogleFirebaseAppcheckV1betaAutomation < 3) {
+    o.createTime = 'foo';
+    o.etag = 'foo';
+    o.name = 'foo';
+    o.origin = 'foo';
+    o.state = 'foo';
+    o.triggerTime = 'foo';
+    o.updateTime = 'foo';
+  }
+  buildCounterGoogleFirebaseAppcheckV1betaAutomation--;
+  return o;
+}
+
+void checkGoogleFirebaseAppcheckV1betaAutomation(
+  api.GoogleFirebaseAppcheckV1betaAutomation o,
+) {
+  buildCounterGoogleFirebaseAppcheckV1betaAutomation++;
+  if (buildCounterGoogleFirebaseAppcheckV1betaAutomation < 3) {
+    unittest.expect(o.createTime!, unittest.equals('foo'));
+    unittest.expect(o.etag!, unittest.equals('foo'));
+    unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(o.origin!, unittest.equals('foo'));
+    unittest.expect(o.state!, unittest.equals('foo'));
+    unittest.expect(o.triggerTime!, unittest.equals('foo'));
+    unittest.expect(o.updateTime!, unittest.equals('foo'));
+  }
+  buildCounterGoogleFirebaseAppcheckV1betaAutomation--;
+}
+
 core.List<api.GoogleFirebaseAppcheckV1betaAppAttestConfig> buildUnnamed0() => [
   buildGoogleFirebaseAppcheckV1betaAppAttestConfig(),
   buildGoogleFirebaseAppcheckV1betaAppAttestConfig(),
@@ -963,12 +997,47 @@ void checkGoogleFirebaseAppcheckV1betaLimitedUseConfig(
   buildCounterGoogleFirebaseAppcheckV1betaLimitedUseConfig--;
 }
 
-core.List<api.GoogleFirebaseAppcheckV1betaDebugToken> buildUnnamed10() => [
+core.List<api.GoogleFirebaseAppcheckV1betaAutomation> buildUnnamed10() => [
+  buildGoogleFirebaseAppcheckV1betaAutomation(),
+  buildGoogleFirebaseAppcheckV1betaAutomation(),
+];
+
+void checkUnnamed10(core.List<api.GoogleFirebaseAppcheckV1betaAutomation> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleFirebaseAppcheckV1betaAutomation(o[0]);
+  checkGoogleFirebaseAppcheckV1betaAutomation(o[1]);
+}
+
+core.int buildCounterGoogleFirebaseAppcheckV1betaListAutomationsResponse = 0;
+api.GoogleFirebaseAppcheckV1betaListAutomationsResponse
+buildGoogleFirebaseAppcheckV1betaListAutomationsResponse() {
+  final o = api.GoogleFirebaseAppcheckV1betaListAutomationsResponse();
+  buildCounterGoogleFirebaseAppcheckV1betaListAutomationsResponse++;
+  if (buildCounterGoogleFirebaseAppcheckV1betaListAutomationsResponse < 3) {
+    o.automations = buildUnnamed10();
+    o.nextPageToken = 'foo';
+  }
+  buildCounterGoogleFirebaseAppcheckV1betaListAutomationsResponse--;
+  return o;
+}
+
+void checkGoogleFirebaseAppcheckV1betaListAutomationsResponse(
+  api.GoogleFirebaseAppcheckV1betaListAutomationsResponse o,
+) {
+  buildCounterGoogleFirebaseAppcheckV1betaListAutomationsResponse++;
+  if (buildCounterGoogleFirebaseAppcheckV1betaListAutomationsResponse < 3) {
+    checkUnnamed10(o.automations!);
+    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
+  }
+  buildCounterGoogleFirebaseAppcheckV1betaListAutomationsResponse--;
+}
+
+core.List<api.GoogleFirebaseAppcheckV1betaDebugToken> buildUnnamed11() => [
   buildGoogleFirebaseAppcheckV1betaDebugToken(),
   buildGoogleFirebaseAppcheckV1betaDebugToken(),
 ];
 
-void checkUnnamed10(core.List<api.GoogleFirebaseAppcheckV1betaDebugToken> o) {
+void checkUnnamed11(core.List<api.GoogleFirebaseAppcheckV1betaDebugToken> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleFirebaseAppcheckV1betaDebugToken(o[0]);
   checkGoogleFirebaseAppcheckV1betaDebugToken(o[1]);
@@ -980,7 +1049,7 @@ buildGoogleFirebaseAppcheckV1betaListDebugTokensResponse() {
   final o = api.GoogleFirebaseAppcheckV1betaListDebugTokensResponse();
   buildCounterGoogleFirebaseAppcheckV1betaListDebugTokensResponse++;
   if (buildCounterGoogleFirebaseAppcheckV1betaListDebugTokensResponse < 3) {
-    o.debugTokens = buildUnnamed10();
+    o.debugTokens = buildUnnamed11();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleFirebaseAppcheckV1betaListDebugTokensResponse--;
@@ -992,18 +1061,18 @@ void checkGoogleFirebaseAppcheckV1betaListDebugTokensResponse(
 ) {
   buildCounterGoogleFirebaseAppcheckV1betaListDebugTokensResponse++;
   if (buildCounterGoogleFirebaseAppcheckV1betaListDebugTokensResponse < 3) {
-    checkUnnamed10(o.debugTokens!);
+    checkUnnamed11(o.debugTokens!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterGoogleFirebaseAppcheckV1betaListDebugTokensResponse--;
 }
 
-core.List<api.GoogleFirebaseAppcheckV1betaResourcePolicy> buildUnnamed11() => [
+core.List<api.GoogleFirebaseAppcheckV1betaResourcePolicy> buildUnnamed12() => [
   buildGoogleFirebaseAppcheckV1betaResourcePolicy(),
   buildGoogleFirebaseAppcheckV1betaResourcePolicy(),
 ];
 
-void checkUnnamed11(
+void checkUnnamed12(
   core.List<api.GoogleFirebaseAppcheckV1betaResourcePolicy> o,
 ) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1020,7 +1089,7 @@ buildGoogleFirebaseAppcheckV1betaListResourcePoliciesResponse() {
   if (buildCounterGoogleFirebaseAppcheckV1betaListResourcePoliciesResponse <
       3) {
     o.nextPageToken = 'foo';
-    o.resourcePolicies = buildUnnamed11();
+    o.resourcePolicies = buildUnnamed12();
   }
   buildCounterGoogleFirebaseAppcheckV1betaListResourcePoliciesResponse--;
   return o;
@@ -1033,17 +1102,17 @@ void checkGoogleFirebaseAppcheckV1betaListResourcePoliciesResponse(
   if (buildCounterGoogleFirebaseAppcheckV1betaListResourcePoliciesResponse <
       3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed11(o.resourcePolicies!);
+    checkUnnamed12(o.resourcePolicies!);
   }
   buildCounterGoogleFirebaseAppcheckV1betaListResourcePoliciesResponse--;
 }
 
-core.List<api.GoogleFirebaseAppcheckV1betaService> buildUnnamed12() => [
+core.List<api.GoogleFirebaseAppcheckV1betaService> buildUnnamed13() => [
   buildGoogleFirebaseAppcheckV1betaService(),
   buildGoogleFirebaseAppcheckV1betaService(),
 ];
 
-void checkUnnamed12(core.List<api.GoogleFirebaseAppcheckV1betaService> o) {
+void checkUnnamed13(core.List<api.GoogleFirebaseAppcheckV1betaService> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleFirebaseAppcheckV1betaService(o[0]);
   checkGoogleFirebaseAppcheckV1betaService(o[1]);
@@ -1056,7 +1125,7 @@ buildGoogleFirebaseAppcheckV1betaListServicesResponse() {
   buildCounterGoogleFirebaseAppcheckV1betaListServicesResponse++;
   if (buildCounterGoogleFirebaseAppcheckV1betaListServicesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.services = buildUnnamed12();
+    o.services = buildUnnamed13();
   }
   buildCounterGoogleFirebaseAppcheckV1betaListServicesResponse--;
   return o;
@@ -1068,7 +1137,7 @@ void checkGoogleFirebaseAppcheckV1betaListServicesResponse(
   buildCounterGoogleFirebaseAppcheckV1betaListServicesResponse++;
   if (buildCounterGoogleFirebaseAppcheckV1betaListServicesResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed12(o.services!);
+    checkUnnamed13(o.services!);
   }
   buildCounterGoogleFirebaseAppcheckV1betaListServicesResponse--;
 }
@@ -1268,12 +1337,12 @@ void checkGoogleFirebaseAppcheckV1betaPublicJwk(
   buildCounterGoogleFirebaseAppcheckV1betaPublicJwk--;
 }
 
-core.List<api.GoogleFirebaseAppcheckV1betaPublicJwk> buildUnnamed13() => [
+core.List<api.GoogleFirebaseAppcheckV1betaPublicJwk> buildUnnamed14() => [
   buildGoogleFirebaseAppcheckV1betaPublicJwk(),
   buildGoogleFirebaseAppcheckV1betaPublicJwk(),
 ];
 
-void checkUnnamed13(core.List<api.GoogleFirebaseAppcheckV1betaPublicJwk> o) {
+void checkUnnamed14(core.List<api.GoogleFirebaseAppcheckV1betaPublicJwk> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleFirebaseAppcheckV1betaPublicJwk(o[0]);
   checkGoogleFirebaseAppcheckV1betaPublicJwk(o[1]);
@@ -1285,7 +1354,7 @@ buildGoogleFirebaseAppcheckV1betaPublicJwkSet() {
   final o = api.GoogleFirebaseAppcheckV1betaPublicJwkSet();
   buildCounterGoogleFirebaseAppcheckV1betaPublicJwkSet++;
   if (buildCounterGoogleFirebaseAppcheckV1betaPublicJwkSet < 3) {
-    o.keys = buildUnnamed13();
+    o.keys = buildUnnamed14();
   }
   buildCounterGoogleFirebaseAppcheckV1betaPublicJwkSet--;
   return o;
@@ -1296,7 +1365,7 @@ void checkGoogleFirebaseAppcheckV1betaPublicJwkSet(
 ) {
   buildCounterGoogleFirebaseAppcheckV1betaPublicJwkSet++;
   if (buildCounterGoogleFirebaseAppcheckV1betaPublicJwkSet < 3) {
-    checkUnnamed13(o.keys!);
+    checkUnnamed14(o.keys!);
   }
   buildCounterGoogleFirebaseAppcheckV1betaPublicJwkSet--;
 }
@@ -1588,14 +1657,6 @@ void checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
   buildCounterGoogleProtobufEmpty--;
 }
 
-core.List<core.String> buildUnnamed14() => ['foo', 'foo'];
-
-void checkUnnamed14(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
-}
-
 core.List<core.String> buildUnnamed15() => ['foo', 'foo'];
 
 void checkUnnamed15(core.List<core.String> o) {
@@ -1631,6 +1692,14 @@ void checkUnnamed18(core.List<core.String> o) {
 core.List<core.String> buildUnnamed19() => ['foo', 'foo'];
 
 void checkUnnamed19(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.List<core.String> buildUnnamed20() => ['foo', 'foo'];
+
+void checkUnnamed20(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1673,6 +1742,17 @@ void main() {
       });
     },
   );
+
+  unittest.group('obj-schema-GoogleFirebaseAppcheckV1betaAutomation', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleFirebaseAppcheckV1betaAutomation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleFirebaseAppcheckV1betaAutomation.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkGoogleFirebaseAppcheckV1betaAutomation(od);
+    });
+  });
 
   unittest.group(
     'obj-schema-GoogleFirebaseAppcheckV1betaBatchGetAppAttestConfigsResponse',
@@ -2106,6 +2186,21 @@ void main() {
       checkGoogleFirebaseAppcheckV1betaLimitedUseConfig(od);
     });
   });
+
+  unittest.group(
+    'obj-schema-GoogleFirebaseAppcheckV1betaListAutomationsResponse',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildGoogleFirebaseAppcheckV1betaListAutomationsResponse();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od =
+            api.GoogleFirebaseAppcheckV1betaListAutomationsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
+        checkGoogleFirebaseAppcheckV1betaListAutomationsResponse(od);
+      });
+    },
+  );
 
   unittest.group(
     'obj-schema-GoogleFirebaseAppcheckV1betaListDebugTokensResponse',
@@ -3686,7 +3781,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.FirebaseappcheckApi(mock).projects.apps.appAttestConfig;
       final arg_parent = 'foo';
-      final arg_names = buildUnnamed14();
+      final arg_names = buildUnnamed15();
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4212,7 +4307,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.FirebaseappcheckApi(mock).projects.apps.deviceCheckConfig;
       final arg_parent = 'foo';
-      final arg_names = buildUnnamed15();
+      final arg_names = buildUnnamed16();
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4411,7 +4506,7 @@ void main() {
         mock,
       ).projects.apps.playIntegrityConfig;
       final arg_parent = 'foo';
-      final arg_names = buildUnnamed16();
+      final arg_names = buildUnnamed17();
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4613,7 +4708,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.FirebaseappcheckApi(mock).projects.apps.recaptchaConfig;
       final arg_parent = 'foo';
-      final arg_names = buildUnnamed17();
+      final arg_names = buildUnnamed18();
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4811,7 +4906,7 @@ void main() {
         mock,
       ).projects.apps.recaptchaEnterpriseConfig;
       final arg_parent = 'foo';
-      final arg_names = buildUnnamed18();
+      final arg_names = buildUnnamed19();
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5013,7 +5108,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.FirebaseappcheckApi(mock).projects.apps.recaptchaV3Config;
       final arg_parent = 'foo';
-      final arg_names = buildUnnamed19();
+      final arg_names = buildUnnamed20();
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5478,6 +5573,210 @@ void main() {
     });
   });
 
+  unittest.group('resource-ProjectsServicesAutomationsResource', () {
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.FirebaseappcheckApi(mock).projects.services.automations;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 7),
+            unittest.equals('v1beta/'),
+          );
+          pathOffset += 7;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildGoogleFirebaseAppcheckV1betaAutomation(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleFirebaseAppcheckV1betaAutomation(
+        response as api.GoogleFirebaseAppcheckV1betaAutomation,
+      );
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.FirebaseappcheckApi(mock).projects.services.automations;
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 7),
+            unittest.equals('v1beta/'),
+          );
+          pathOffset += 7;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildGoogleFirebaseAppcheckV1betaListAutomationsResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.list(
+        arg_parent,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        $fields: arg_$fields,
+      );
+      checkGoogleFirebaseAppcheckV1betaListAutomationsResponse(
+        response as api.GoogleFirebaseAppcheckV1betaListAutomationsResponse,
+      );
+    });
+
+    unittest.test('method--patch', () async {
+      final mock = HttpServerMock();
+      final res = api.FirebaseappcheckApi(mock).projects.services.automations;
+      final arg_request = buildGoogleFirebaseAppcheckV1betaAutomation();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.GoogleFirebaseAppcheckV1betaAutomation.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkGoogleFirebaseAppcheckV1betaAutomation(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 7),
+            unittest.equals('v1beta/'),
+          );
+          pathOffset += 7;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['updateMask']!.first,
+            unittest.equals(arg_updateMask),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildGoogleFirebaseAppcheckV1betaAutomation(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.patch(
+        arg_request,
+        arg_name,
+        updateMask: arg_updateMask,
+        $fields: arg_$fields,
+      );
+      checkGoogleFirebaseAppcheckV1betaAutomation(
+        response as api.GoogleFirebaseAppcheckV1betaAutomation,
+      );
+    });
+  });
+
   unittest.group('resource-ProjectsServicesResourcePoliciesResource', () {
     unittest.test('method--batchUpdate', () async {
       final mock = HttpServerMock();
@@ -5895,6 +6194,216 @@ void main() {
       );
       checkGoogleFirebaseAppcheckV1betaResourcePolicy(
         response as api.GoogleFirebaseAppcheckV1betaResourcePolicy,
+      );
+    });
+  });
+
+  unittest.group('resource-ProjectsServicesResourcePoliciesAutomationsResource', () {
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.FirebaseappcheckApi(
+        mock,
+      ).projects.services.resourcePolicies.automations;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 7),
+            unittest.equals('v1beta/'),
+          );
+          pathOffset += 7;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildGoogleFirebaseAppcheckV1betaAutomation(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleFirebaseAppcheckV1betaAutomation(
+        response as api.GoogleFirebaseAppcheckV1betaAutomation,
+      );
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.FirebaseappcheckApi(
+        mock,
+      ).projects.services.resourcePolicies.automations;
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 7),
+            unittest.equals('v1beta/'),
+          );
+          pathOffset += 7;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildGoogleFirebaseAppcheckV1betaListAutomationsResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.list(
+        arg_parent,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        $fields: arg_$fields,
+      );
+      checkGoogleFirebaseAppcheckV1betaListAutomationsResponse(
+        response as api.GoogleFirebaseAppcheckV1betaListAutomationsResponse,
+      );
+    });
+
+    unittest.test('method--patch', () async {
+      final mock = HttpServerMock();
+      final res = api.FirebaseappcheckApi(
+        mock,
+      ).projects.services.resourcePolicies.automations;
+      final arg_request = buildGoogleFirebaseAppcheckV1betaAutomation();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.GoogleFirebaseAppcheckV1betaAutomation.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkGoogleFirebaseAppcheckV1betaAutomation(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 7),
+            unittest.equals('v1beta/'),
+          );
+          pathOffset += 7;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['updateMask']!.first,
+            unittest.equals(arg_updateMask),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildGoogleFirebaseAppcheckV1betaAutomation(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.patch(
+        arg_request,
+        arg_name,
+        updateMask: arg_updateMask,
+        $fields: arg_$fields,
+      );
+      checkGoogleFirebaseAppcheckV1betaAutomation(
+        response as api.GoogleFirebaseAppcheckV1betaAutomation,
       );
     });
   });

@@ -73,6 +73,7 @@
 ///         - [ProjectsLocationsAgentSessionsEntityTypesResource]
 ///       - [ProjectsLocationsAgentVersionsResource]
 ///     - [ProjectsLocationsAnswerRecordsResource]
+///     - [ProjectsLocationsCompanionAgentsResource]
 ///     - [ProjectsLocationsConversationDatasetsResource]
 ///     - [ProjectsLocationsConversationModelsResource]
 ///       - [ProjectsLocationsConversationModelsEvaluationsResource]
@@ -5668,6 +5669,8 @@ class ProjectsLocationsResource {
       ProjectsLocationsAgentResource(_requester);
   ProjectsLocationsAnswerRecordsResource get answerRecords =>
       ProjectsLocationsAnswerRecordsResource(_requester);
+  ProjectsLocationsCompanionAgentsResource get companionAgents =>
+      ProjectsLocationsCompanionAgentsResource(_requester);
   ProjectsLocationsConversationDatasetsResource get conversationDatasets =>
       ProjectsLocationsConversationDatasetsResource(_requester);
   ProjectsLocationsConversationModelsResource get conversationModels =>
@@ -8711,6 +8714,217 @@ class ProjectsLocationsAnswerRecordsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2AnswerRecord.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsCompanionAgentsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsCompanionAgentsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - null
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [companionAgentId] - null
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2CompanionAgent].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2CompanionAgent> create(
+    GoogleCloudDialogflowV2CompanionAgent request,
+    core.String parent, {
+    core.String? companionAgentId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'companionAgentId': ?companionAgentId == null ? null : [companionAgentId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/companionAgents';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDialogflowV2CompanionAgent.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Request parameters:
+  ///
+  /// [name] - null
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/companionAgents/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Request parameters:
+  ///
+  /// [name] - null
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/companionAgents/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2CompanionAgent].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2CompanionAgent> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDialogflowV2CompanionAgent.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Request parameters:
+  ///
+  /// [parent] - null
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - null
+  ///
+  /// [pageToken] - null
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2ListCompanionAgentsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2ListCompanionAgentsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/companionAgents';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDialogflowV2ListCompanionAgentsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - null
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/companionAgents/\[^/\]+$`.
+  ///
+  /// [updateMask] - null
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2CompanionAgent].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2CompanionAgent> patch(
+    GoogleCloudDialogflowV2CompanionAgent request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDialogflowV2CompanionAgent.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -12430,6 +12644,8 @@ class GoogleCloudDialogflowV2AgentAssistantFeedback {
   /// - "IRRELEVANT"
   /// - "RELEVANT"
   core.String? answerRelevance;
+  GoogleCloudDialogflowV2AgentAssistantFeedbackCompanionFeedback?
+  companionFeedback;
 
   ///
   /// Possible string values are:
@@ -12453,6 +12669,7 @@ class GoogleCloudDialogflowV2AgentAssistantFeedback {
 
   GoogleCloudDialogflowV2AgentAssistantFeedback({
     this.answerRelevance,
+    this.companionFeedback,
     this.documentCorrectness,
     this.documentEfficiency,
     this.knowledgeAssistFeedback,
@@ -12463,6 +12680,12 @@ class GoogleCloudDialogflowV2AgentAssistantFeedback {
   GoogleCloudDialogflowV2AgentAssistantFeedback.fromJson(core.Map json_)
     : this(
         answerRelevance: json_['answerRelevance'] as core.String?,
+        companionFeedback: json_.containsKey('companionFeedback')
+            ? GoogleCloudDialogflowV2AgentAssistantFeedbackCompanionFeedback.fromJson(
+                json_['companionFeedback']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         documentCorrectness: json_['documentCorrectness'] as core.String?,
         documentEfficiency: json_['documentEfficiency'] as core.String?,
         knowledgeAssistFeedback: json_.containsKey('knowledgeAssistFeedback')
@@ -12487,6 +12710,7 @@ class GoogleCloudDialogflowV2AgentAssistantFeedback {
 
   core.Map<core.String, core.dynamic> toJson() {
     final answerRelevance = this.answerRelevance;
+    final companionFeedback = this.companionFeedback;
     final documentCorrectness = this.documentCorrectness;
     final documentEfficiency = this.documentEfficiency;
     final knowledgeAssistFeedback = this.knowledgeAssistFeedback;
@@ -12494,6 +12718,7 @@ class GoogleCloudDialogflowV2AgentAssistantFeedback {
     final summarizationFeedback = this.summarizationFeedback;
     return {
       'answerRelevance': ?answerRelevance,
+      'companionFeedback': ?companionFeedback,
       'documentCorrectness': ?documentCorrectness,
       'documentEfficiency': ?documentEfficiency,
       'knowledgeAssistFeedback': ?knowledgeAssistFeedback,
@@ -12503,6 +12728,7 @@ class GoogleCloudDialogflowV2AgentAssistantFeedback {
   }
 }
 
+typedef GoogleCloudDialogflowV2AgentAssistantFeedbackCompanionFeedback = $Empty;
 typedef GoogleCloudDialogflowV2AgentAssistantFeedbackKnowledgeAssistFeedback =
     $Feedback;
 typedef GoogleCloudDialogflowV2AgentAssistantFeedbackKnowledgeSearchFeedback =
@@ -12548,15 +12774,20 @@ class GoogleCloudDialogflowV2AgentAssistantFeedbackSummarizationFeedback {
 
 class GoogleCloudDialogflowV2AgentAssistantRecord {
   GoogleCloudDialogflowV2ArticleAnswer? articleSuggestionAnswer;
+  GoogleCloudDialogflowV2CompanionSuggestion? companionSuggestion;
   GoogleCloudDialogflowV2DialogflowAssistAnswer? dialogflowAssistAnswer;
   GoogleCloudDialogflowV2FaqAnswer? faqAnswer;
   GoogleCloudDialogflowV2GeneratorSuggestion? generatorSuggestion;
+  GoogleCloudDialogflowV2StreamingReactiveCompanionSuggestionsResponseReactiveModeResponse?
+  reactiveCompanionSuggestion;
 
   GoogleCloudDialogflowV2AgentAssistantRecord({
     this.articleSuggestionAnswer,
+    this.companionSuggestion,
     this.dialogflowAssistAnswer,
     this.faqAnswer,
     this.generatorSuggestion,
+    this.reactiveCompanionSuggestion,
   });
 
   GoogleCloudDialogflowV2AgentAssistantRecord.fromJson(core.Map json_)
@@ -12564,6 +12795,12 @@ class GoogleCloudDialogflowV2AgentAssistantRecord {
         articleSuggestionAnswer: json_.containsKey('articleSuggestionAnswer')
             ? GoogleCloudDialogflowV2ArticleAnswer.fromJson(
                 json_['articleSuggestionAnswer']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        companionSuggestion: json_.containsKey('companionSuggestion')
+            ? GoogleCloudDialogflowV2CompanionSuggestion.fromJson(
+                json_['companionSuggestion']
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
@@ -12584,18 +12821,29 @@ class GoogleCloudDialogflowV2AgentAssistantRecord {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        reactiveCompanionSuggestion:
+            json_.containsKey('reactiveCompanionSuggestion')
+            ? GoogleCloudDialogflowV2StreamingReactiveCompanionSuggestionsResponseReactiveModeResponse.fromJson(
+                json_['reactiveCompanionSuggestion']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final articleSuggestionAnswer = this.articleSuggestionAnswer;
+    final companionSuggestion = this.companionSuggestion;
     final dialogflowAssistAnswer = this.dialogflowAssistAnswer;
     final faqAnswer = this.faqAnswer;
     final generatorSuggestion = this.generatorSuggestion;
+    final reactiveCompanionSuggestion = this.reactiveCompanionSuggestion;
     return {
       'articleSuggestionAnswer': ?articleSuggestionAnswer,
+      'companionSuggestion': ?companionSuggestion,
       'dialogflowAssistAnswer': ?dialogflowAssistAnswer,
       'faqAnswer': ?faqAnswer,
       'generatorSuggestion': ?generatorSuggestion,
+      'reactiveCompanionSuggestion': ?reactiveCompanionSuggestion,
     };
   }
 }
@@ -13434,14 +13682,41 @@ class GoogleCloudDialogflowV2AutomatedAgentReply {
   /// - "PARTIAL"
   /// - "FINAL"
   core.String? automatedAgentReplyType;
+  core.String? callCompanionAuthCode;
+  core.List<core.int> get callCompanionAuthCodeAsBytes =>
+      convert.base64.decode(callCompanionAuthCode!);
+
+  set callCompanionAuthCodeAsBytes(core.List<core.int> bytes_) {
+    callCompanionAuthCode = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
   core.String? cxCurrentPage;
   GoogleCloudDialogflowV2DetectIntentResponse? detectIntentResponse;
+  core.String? event;
+  core.String? intent;
+  core.double? matchConfidence;
+
+  ///
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? parameters;
+  core.List<GoogleCloudDialogflowV2ResponseMessage>? responseMessages;
 
   GoogleCloudDialogflowV2AutomatedAgentReply({
     this.allowCancellation,
     this.automatedAgentReplyType,
+    this.callCompanionAuthCode,
     this.cxCurrentPage,
     this.detectIntentResponse,
+    this.event,
+    this.intent,
+    this.matchConfidence,
+    this.parameters,
+    this.responseMessages,
   });
 
   GoogleCloudDialogflowV2AutomatedAgentReply.fromJson(core.Map json_)
@@ -13449,6 +13724,7 @@ class GoogleCloudDialogflowV2AutomatedAgentReply {
         allowCancellation: json_['allowCancellation'] as core.bool?,
         automatedAgentReplyType:
             json_['automatedAgentReplyType'] as core.String?,
+        callCompanionAuthCode: json_['callCompanionAuthCode'] as core.String?,
         cxCurrentPage: json_['cxCurrentPage'] as core.String?,
         detectIntentResponse: json_.containsKey('detectIntentResponse')
             ? GoogleCloudDialogflowV2DetectIntentResponse.fromJson(
@@ -13456,18 +13732,43 @@ class GoogleCloudDialogflowV2AutomatedAgentReply {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        event: json_['event'] as core.String?,
+        intent: json_['intent'] as core.String?,
+        matchConfidence: (json_['matchConfidence'] as core.num?)?.toDouble(),
+        parameters: json_.containsKey('parameters')
+            ? json_['parameters'] as core.Map<core.String, core.dynamic>
+            : null,
+        responseMessages: (json_['responseMessages'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2ResponseMessage.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final allowCancellation = this.allowCancellation;
     final automatedAgentReplyType = this.automatedAgentReplyType;
+    final callCompanionAuthCode = this.callCompanionAuthCode;
     final cxCurrentPage = this.cxCurrentPage;
     final detectIntentResponse = this.detectIntentResponse;
+    final event = this.event;
+    final intent = this.intent;
+    final matchConfidence = this.matchConfidence;
+    final parameters = this.parameters;
+    final responseMessages = this.responseMessages;
     return {
       'allowCancellation': ?allowCancellation,
       'automatedAgentReplyType': ?automatedAgentReplyType,
+      'callCompanionAuthCode': ?callCompanionAuthCode,
       'cxCurrentPage': ?cxCurrentPage,
       'detectIntentResponse': ?detectIntentResponse,
+      'event': ?event,
+      'intent': ?intent,
+      'matchConfidence': ?matchConfidence,
+      'parameters': ?parameters,
+      'responseMessages': ?responseMessages,
     };
   }
 }
@@ -13741,10 +14042,16 @@ class GoogleCloudDialogflowV2CesToolSpec {
   /// - "REQUIRED"
   /// - "NOT_REQUIRED"
   core.String? confirmationRequirement;
+  core.List<GoogleCloudDialogflowV2ParameterOverride>? parameterOverrides;
+  core.bool? proactiveEnabled;
+  core.bool? reactiveEnabled;
 
   GoogleCloudDialogflowV2CesToolSpec({
     this.cesTool,
     this.confirmationRequirement,
+    this.parameterOverrides,
+    this.proactiveEnabled,
+    this.reactiveEnabled,
   });
 
   GoogleCloudDialogflowV2CesToolSpec.fromJson(core.Map json_)
@@ -13752,14 +14059,29 @@ class GoogleCloudDialogflowV2CesToolSpec {
         cesTool: json_['cesTool'] as core.String?,
         confirmationRequirement:
             json_['confirmationRequirement'] as core.String?,
+        parameterOverrides: (json_['parameterOverrides'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2ParameterOverride.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        proactiveEnabled: json_['proactiveEnabled'] as core.bool?,
+        reactiveEnabled: json_['reactiveEnabled'] as core.bool?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final cesTool = this.cesTool;
     final confirmationRequirement = this.confirmationRequirement;
+    final parameterOverrides = this.parameterOverrides;
+    final proactiveEnabled = this.proactiveEnabled;
+    final reactiveEnabled = this.reactiveEnabled;
     return {
       'cesTool': ?cesTool,
       'confirmationRequirement': ?confirmationRequirement,
+      'parameterOverrides': ?parameterOverrides,
+      'proactiveEnabled': ?proactiveEnabled,
+      'reactiveEnabled': ?reactiveEnabled,
     };
   }
 }
@@ -13802,6 +14124,334 @@ class GoogleCloudDialogflowV2ClearSuggestionFeatureConfigRequest {
     return {
       'participantRole': ?participantRole,
       'suggestionFeatureType': ?suggestionFeatureType,
+    };
+  }
+}
+
+class GoogleCloudDialogflowV2CompanionAgent {
+  core.List<GoogleCloudDialogflowV2CesToolSpec>? cesToolSpecs;
+  core.String? createTime;
+  core.String? description;
+  core.String? displayName;
+  core.String? name;
+  core.List<GoogleCloudDialogflowV2CompanionAgentSkillConfig>? skillConfigs;
+  core.List<GoogleCloudDialogflowV2ToolsetTool>? toolsetTools;
+  core.String? updateTime;
+
+  GoogleCloudDialogflowV2CompanionAgent({
+    this.cesToolSpecs,
+    this.createTime,
+    this.description,
+    this.displayName,
+    this.name,
+    this.skillConfigs,
+    this.toolsetTools,
+    this.updateTime,
+  });
+
+  GoogleCloudDialogflowV2CompanionAgent.fromJson(core.Map json_)
+    : this(
+        cesToolSpecs: (json_['cesToolSpecs'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2CesToolSpec.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        name: json_['name'] as core.String?,
+        skillConfigs: (json_['skillConfigs'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDialogflowV2CompanionAgentSkillConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        toolsetTools: (json_['toolsetTools'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2ToolsetTool.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final cesToolSpecs = this.cesToolSpecs;
+    final createTime = this.createTime;
+    final description = this.description;
+    final displayName = this.displayName;
+    final name = this.name;
+    final skillConfigs = this.skillConfigs;
+    final toolsetTools = this.toolsetTools;
+    final updateTime = this.updateTime;
+    return {
+      'cesToolSpecs': ?cesToolSpecs,
+      'createTime': ?createTime,
+      'description': ?description,
+      'displayName': ?displayName,
+      'name': ?name,
+      'skillConfigs': ?skillConfigs,
+      'toolsetTools': ?toolsetTools,
+      'updateTime': ?updateTime,
+    };
+  }
+}
+
+class GoogleCloudDialogflowV2CompanionAgentGuidanceSkillConfig {
+  core.List<GoogleCloudDialogflowV2GuidanceInstruction>? guidanceInstructions;
+  GoogleCloudDialogflowV2CompanionAgentKnowledgeSource? knowledgeSource;
+  core.String? overarchingGuidance;
+
+  GoogleCloudDialogflowV2CompanionAgentGuidanceSkillConfig({
+    this.guidanceInstructions,
+    this.knowledgeSource,
+    this.overarchingGuidance,
+  });
+
+  GoogleCloudDialogflowV2CompanionAgentGuidanceSkillConfig.fromJson(
+    core.Map json_,
+  ) : this(
+        guidanceInstructions: (json_['guidanceInstructions'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2GuidanceInstruction.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        knowledgeSource: json_.containsKey('knowledgeSource')
+            ? GoogleCloudDialogflowV2CompanionAgentKnowledgeSource.fromJson(
+                json_['knowledgeSource'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        overarchingGuidance: json_['overarchingGuidance'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final guidanceInstructions = this.guidanceInstructions;
+    final knowledgeSource = this.knowledgeSource;
+    final overarchingGuidance = this.overarchingGuidance;
+    return {
+      'guidanceInstructions': ?guidanceInstructions,
+      'knowledgeSource': ?knowledgeSource,
+      'overarchingGuidance': ?overarchingGuidance,
+    };
+  }
+}
+
+typedef GoogleCloudDialogflowV2CompanionAgentKnowledgeSource = $Empty;
+
+class GoogleCloudDialogflowV2CompanionAgentSkillConfig {
+  GoogleCloudDialogflowV2CompanionAgentGuidanceSkillConfig? guidanceSkillConfig;
+
+  ///
+  /// Possible string values are:
+  /// - "SKILL_TRIGGER_EVENT_UNSPECIFIED"
+  /// - "END_OF_UTTERANCE"
+  /// - "CUSTOMER_MESSAGE"
+  /// - "AGENT_MESSAGE"
+  core.String? skillTriggeringEvent;
+  GoogleCloudDialogflowV2CompanionAgentTranslationSkillConfig?
+  translationSkillConfig;
+
+  GoogleCloudDialogflowV2CompanionAgentSkillConfig({
+    this.guidanceSkillConfig,
+    this.skillTriggeringEvent,
+    this.translationSkillConfig,
+  });
+
+  GoogleCloudDialogflowV2CompanionAgentSkillConfig.fromJson(core.Map json_)
+    : this(
+        guidanceSkillConfig: json_.containsKey('guidanceSkillConfig')
+            ? GoogleCloudDialogflowV2CompanionAgentGuidanceSkillConfig.fromJson(
+                json_['guidanceSkillConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        skillTriggeringEvent: json_['skillTriggeringEvent'] as core.String?,
+        translationSkillConfig: json_.containsKey('translationSkillConfig')
+            ? GoogleCloudDialogflowV2CompanionAgentTranslationSkillConfig.fromJson(
+                json_['translationSkillConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final guidanceSkillConfig = this.guidanceSkillConfig;
+    final skillTriggeringEvent = this.skillTriggeringEvent;
+    final translationSkillConfig = this.translationSkillConfig;
+    return {
+      'guidanceSkillConfig': ?guidanceSkillConfig,
+      'skillTriggeringEvent': ?skillTriggeringEvent,
+      'translationSkillConfig': ?translationSkillConfig,
+    };
+  }
+}
+
+class GoogleCloudDialogflowV2CompanionAgentTranslationSkillConfig {
+  core.String? agentLanguageCode;
+  core.String? customerLanguageCode;
+
+  GoogleCloudDialogflowV2CompanionAgentTranslationSkillConfig({
+    this.agentLanguageCode,
+    this.customerLanguageCode,
+  });
+
+  GoogleCloudDialogflowV2CompanionAgentTranslationSkillConfig.fromJson(
+    core.Map json_,
+  ) : this(
+        agentLanguageCode: json_['agentLanguageCode'] as core.String?,
+        customerLanguageCode: json_['customerLanguageCode'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final agentLanguageCode = this.agentLanguageCode;
+    final customerLanguageCode = this.customerLanguageCode;
+    return {
+      'agentLanguageCode': ?agentLanguageCode,
+      'customerLanguageCode': ?customerLanguageCode,
+    };
+  }
+}
+
+class GoogleCloudDialogflowV2CompanionSuggestion {
+  core.List<GoogleCloudDialogflowV2CompanionSuggestionGuidance>? guidances;
+
+  GoogleCloudDialogflowV2CompanionSuggestion({this.guidances});
+
+  GoogleCloudDialogflowV2CompanionSuggestion.fromJson(core.Map json_)
+    : this(
+        guidances: (json_['guidances'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDialogflowV2CompanionSuggestionGuidance.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final guidances = this.guidances;
+    return {'guidances': ?guidances};
+  }
+}
+
+class GoogleCloudDialogflowV2CompanionSuggestionGuidance {
+  core.String? explanation;
+  GoogleCloudDialogflowV2GroundingMetadata? groundingMetadata;
+  GoogleCloudDialogflowV2GuidanceInstruction? instructionSource;
+  core.List<GoogleCloudDialogflowV2CompanionSuggestionGuidanceKnowledgeSource>?
+  knowledgeSources;
+  core.String? suggestedAction;
+  core.String? suggestedReply;
+  core.List<GoogleCloudDialogflowV2ToolCallSuggestion>? toolCalls;
+  core.List<core.String>? triggeringToolCallAnswerRecords;
+
+  GoogleCloudDialogflowV2CompanionSuggestionGuidance({
+    this.explanation,
+    this.groundingMetadata,
+    this.instructionSource,
+    this.knowledgeSources,
+    this.suggestedAction,
+    this.suggestedReply,
+    this.toolCalls,
+    this.triggeringToolCallAnswerRecords,
+  });
+
+  GoogleCloudDialogflowV2CompanionSuggestionGuidance.fromJson(core.Map json_)
+    : this(
+        explanation: json_['explanation'] as core.String?,
+        groundingMetadata: json_.containsKey('groundingMetadata')
+            ? GoogleCloudDialogflowV2GroundingMetadata.fromJson(
+                json_['groundingMetadata']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        instructionSource: json_.containsKey('instructionSource')
+            ? GoogleCloudDialogflowV2GuidanceInstruction.fromJson(
+                json_['instructionSource']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        knowledgeSources: (json_['knowledgeSources'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDialogflowV2CompanionSuggestionGuidanceKnowledgeSource.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        suggestedAction: json_['suggestedAction'] as core.String?,
+        suggestedReply: json_['suggestedReply'] as core.String?,
+        toolCalls: (json_['toolCalls'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2ToolCallSuggestion.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        triggeringToolCallAnswerRecords:
+            (json_['triggeringToolCallAnswerRecords'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final explanation = this.explanation;
+    final groundingMetadata = this.groundingMetadata;
+    final instructionSource = this.instructionSource;
+    final knowledgeSources = this.knowledgeSources;
+    final suggestedAction = this.suggestedAction;
+    final suggestedReply = this.suggestedReply;
+    final toolCalls = this.toolCalls;
+    final triggeringToolCallAnswerRecords =
+        this.triggeringToolCallAnswerRecords;
+    return {
+      'explanation': ?explanation,
+      'groundingMetadata': ?groundingMetadata,
+      'instructionSource': ?instructionSource,
+      'knowledgeSources': ?knowledgeSources,
+      'suggestedAction': ?suggestedAction,
+      'suggestedReply': ?suggestedReply,
+      'toolCalls': ?toolCalls,
+      'triggeringToolCallAnswerRecords': ?triggeringToolCallAnswerRecords,
+    };
+  }
+}
+
+class GoogleCloudDialogflowV2CompanionSuggestionGuidanceKnowledgeSource {
+  core.String? knowledgeArticleTitle;
+  core.String? knowledgeArticleUrl;
+  core.String? knowledgeSnippet;
+
+  GoogleCloudDialogflowV2CompanionSuggestionGuidanceKnowledgeSource({
+    this.knowledgeArticleTitle,
+    this.knowledgeArticleUrl,
+    this.knowledgeSnippet,
+  });
+
+  GoogleCloudDialogflowV2CompanionSuggestionGuidanceKnowledgeSource.fromJson(
+    core.Map json_,
+  ) : this(
+        knowledgeArticleTitle: json_['knowledgeArticleTitle'] as core.String?,
+        knowledgeArticleUrl: json_['knowledgeArticleUrl'] as core.String?,
+        knowledgeSnippet: json_['knowledgeSnippet'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final knowledgeArticleTitle = this.knowledgeArticleTitle;
+    final knowledgeArticleUrl = this.knowledgeArticleUrl;
+    final knowledgeSnippet = this.knowledgeSnippet;
+    return {
+      'knowledgeArticleTitle': ?knowledgeArticleTitle,
+      'knowledgeArticleUrl': ?knowledgeArticleUrl,
+      'knowledgeSnippet': ?knowledgeSnippet,
     };
   }
 }
@@ -14670,7 +15320,7 @@ class GoogleCloudDialogflowV2ConversationTelephonyConnectionInfoMimeContent {
 }
 
 typedef GoogleCloudDialogflowV2ConversationTelephonyConnectionInfoSipHeader =
-    $Shared09;
+    $Shared05;
 
 class GoogleCloudDialogflowV2CreateConversationModelEvaluationRequest {
   GoogleCloudDialogflowV2ConversationModelEvaluation?
@@ -15312,8 +15962,8 @@ class GoogleCloudDialogflowV2EvaluationConfig {
   }
 }
 
-typedef GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfig = $Config;
-typedef GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfig = $Config;
+typedef GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfig = $Config01;
+typedef GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfig = $Config01;
 
 class GoogleCloudDialogflowV2EvaluationStatus {
   core.bool? done;
@@ -15520,7 +16170,7 @@ class GoogleCloudDialogflowV2FewShotExample {
   }
 }
 
-typedef GoogleCloudDialogflowV2FreeFormContext = $Shared04;
+typedef GoogleCloudDialogflowV2FreeFormContext = $Shared02;
 
 class GoogleCloudDialogflowV2FreeFormSuggestion {
   core.String? response;
@@ -15667,6 +16317,47 @@ class GoogleCloudDialogflowV2GcsSources {
   core.Map<core.String, core.dynamic> toJson() {
     final uris = this.uris;
     return {'uris': ?uris};
+  }
+}
+
+class GoogleCloudDialogflowV2GenerateCompanionSuggestionsResponse {
+  core.String? answerRecord;
+  GoogleCloudDialogflowV2CompanionSuggestion? companionSuggestion;
+  core.String? latestMessage;
+  core.int? suggestionIndex;
+
+  GoogleCloudDialogflowV2GenerateCompanionSuggestionsResponse({
+    this.answerRecord,
+    this.companionSuggestion,
+    this.latestMessage,
+    this.suggestionIndex,
+  });
+
+  GoogleCloudDialogflowV2GenerateCompanionSuggestionsResponse.fromJson(
+    core.Map json_,
+  ) : this(
+        answerRecord: json_['answerRecord'] as core.String?,
+        companionSuggestion: json_.containsKey('companionSuggestion')
+            ? GoogleCloudDialogflowV2CompanionSuggestion.fromJson(
+                json_['companionSuggestion']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        latestMessage: json_['latestMessage'] as core.String?,
+        suggestionIndex: json_['suggestionIndex'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final answerRecord = this.answerRecord;
+    final companionSuggestion = this.companionSuggestion;
+    final latestMessage = this.latestMessage;
+    final suggestionIndex = this.suggestionIndex;
+    return {
+      'answerRecord': ?answerRecord,
+      'companionSuggestion': ?companionSuggestion,
+      'latestMessage': ?latestMessage,
+      'suggestionIndex': ?suggestionIndex,
+    };
   }
 }
 
@@ -16293,7 +16984,7 @@ class GoogleCloudDialogflowV2GeneratorEvaluationConfigAgentAssistInputDataConfig
 }
 
 typedef GoogleCloudDialogflowV2GeneratorEvaluationConfigDatasetInputDataConfig =
-    $Shared16;
+    $Shared20;
 
 class GoogleCloudDialogflowV2GeneratorEvaluationConfigInputDataConfig {
   GoogleCloudDialogflowV2GeneratorEvaluationConfigAgentAssistInputDataConfig?
@@ -16537,6 +17228,240 @@ class GoogleCloudDialogflowV2GeneratorSuggestionToolCallInfo {
   }
 }
 
+class GoogleCloudDialogflowV2GroundingChunk {
+  GoogleCloudDialogflowV2GroundingChunkRetrievedContext? retrievedContext;
+  GoogleCloudDialogflowV2GroundingChunkWeb? web;
+
+  GoogleCloudDialogflowV2GroundingChunk({this.retrievedContext, this.web});
+
+  GoogleCloudDialogflowV2GroundingChunk.fromJson(core.Map json_)
+    : this(
+        retrievedContext: json_.containsKey('retrievedContext')
+            ? GoogleCloudDialogflowV2GroundingChunkRetrievedContext.fromJson(
+                json_['retrievedContext']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        web: json_.containsKey('web')
+            ? GoogleCloudDialogflowV2GroundingChunkWeb.fromJson(
+                json_['web'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final retrievedContext = this.retrievedContext;
+    final web = this.web;
+    return {'retrievedContext': ?retrievedContext, 'web': ?web};
+  }
+}
+
+class GoogleCloudDialogflowV2GroundingChunkRetrievedContext {
+  core.String? text;
+  core.String? title;
+  core.String? uri;
+
+  GoogleCloudDialogflowV2GroundingChunkRetrievedContext({
+    this.text,
+    this.title,
+    this.uri,
+  });
+
+  GoogleCloudDialogflowV2GroundingChunkRetrievedContext.fromJson(core.Map json_)
+    : this(
+        text: json_['text'] as core.String?,
+        title: json_['title'] as core.String?,
+        uri: json_['uri'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final text = this.text;
+    final title = this.title;
+    final uri = this.uri;
+    return {'text': ?text, 'title': ?title, 'uri': ?uri};
+  }
+}
+
+class GoogleCloudDialogflowV2GroundingChunkWeb {
+  core.String? domain;
+  core.String? title;
+  core.String? uri;
+
+  GoogleCloudDialogflowV2GroundingChunkWeb({this.domain, this.title, this.uri});
+
+  GoogleCloudDialogflowV2GroundingChunkWeb.fromJson(core.Map json_)
+    : this(
+        domain: json_['domain'] as core.String?,
+        title: json_['title'] as core.String?,
+        uri: json_['uri'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final domain = this.domain;
+    final title = this.title;
+    final uri = this.uri;
+    return {'domain': ?domain, 'title': ?title, 'uri': ?uri};
+  }
+}
+
+class GoogleCloudDialogflowV2GroundingMetadata {
+  core.List<GoogleCloudDialogflowV2GroundingChunk>? groundingChunks;
+  core.List<GoogleCloudDialogflowV2GroundingSupport>? groundingSupports;
+  GoogleCloudDialogflowV2SearchEntryPoint? searchEntryPoint;
+  core.List<core.String>? webSearchQueries;
+
+  GoogleCloudDialogflowV2GroundingMetadata({
+    this.groundingChunks,
+    this.groundingSupports,
+    this.searchEntryPoint,
+    this.webSearchQueries,
+  });
+
+  GoogleCloudDialogflowV2GroundingMetadata.fromJson(core.Map json_)
+    : this(
+        groundingChunks: (json_['groundingChunks'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2GroundingChunk.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        groundingSupports: (json_['groundingSupports'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2GroundingSupport.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        searchEntryPoint: json_.containsKey('searchEntryPoint')
+            ? GoogleCloudDialogflowV2SearchEntryPoint.fromJson(
+                json_['searchEntryPoint']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        webSearchQueries: (json_['webSearchQueries'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final groundingChunks = this.groundingChunks;
+    final groundingSupports = this.groundingSupports;
+    final searchEntryPoint = this.searchEntryPoint;
+    final webSearchQueries = this.webSearchQueries;
+    return {
+      'groundingChunks': ?groundingChunks,
+      'groundingSupports': ?groundingSupports,
+      'searchEntryPoint': ?searchEntryPoint,
+      'webSearchQueries': ?webSearchQueries,
+    };
+  }
+}
+
+class GoogleCloudDialogflowV2GroundingSupport {
+  core.List<core.int>? groundingChunkIndices;
+  GoogleCloudDialogflowV2Segment? segment;
+
+  GoogleCloudDialogflowV2GroundingSupport({
+    this.groundingChunkIndices,
+    this.segment,
+  });
+
+  GoogleCloudDialogflowV2GroundingSupport.fromJson(core.Map json_)
+    : this(
+        groundingChunkIndices: (json_['groundingChunkIndices'] as core.List?)
+            ?.map((value) => value as core.int)
+            .toList(),
+        segment: json_.containsKey('segment')
+            ? GoogleCloudDialogflowV2Segment.fromJson(
+                json_['segment'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final groundingChunkIndices = this.groundingChunkIndices;
+    final segment = this.segment;
+    return {
+      'groundingChunkIndices': ?groundingChunkIndices,
+      'segment': ?segment,
+    };
+  }
+}
+
+class GoogleCloudDialogflowV2GuidanceInstruction {
+  core.List<GoogleCloudDialogflowV2GuidanceInstructionAction>? actions;
+  core.String? condition;
+  core.bool? disableSuggestedReply;
+  core.String? displayDetails;
+  core.String? displayName;
+
+  ///
+  /// Possible string values are:
+  /// - "TRIGGER_EVENT_UNSPECIFIED"
+  /// - "END_OF_UTTERANCE"
+  /// - "CUSTOMER_MESSAGE"
+  /// - "AGENT_MESSAGE"
+  core.String? triggerEvent;
+
+  GoogleCloudDialogflowV2GuidanceInstruction({
+    this.actions,
+    this.condition,
+    this.disableSuggestedReply,
+    this.displayDetails,
+    this.displayName,
+    this.triggerEvent,
+  });
+
+  GoogleCloudDialogflowV2GuidanceInstruction.fromJson(core.Map json_)
+    : this(
+        actions: (json_['actions'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDialogflowV2GuidanceInstructionAction.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        condition: json_['condition'] as core.String?,
+        disableSuggestedReply: json_['disableSuggestedReply'] as core.bool?,
+        displayDetails: json_['displayDetails'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        triggerEvent: json_['triggerEvent'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final actions = this.actions;
+    final condition = this.condition;
+    final disableSuggestedReply = this.disableSuggestedReply;
+    final displayDetails = this.displayDetails;
+    final displayName = this.displayName;
+    final triggerEvent = this.triggerEvent;
+    return {
+      'actions': ?actions,
+      'condition': ?condition,
+      'disableSuggestedReply': ?disableSuggestedReply,
+      'displayDetails': ?displayDetails,
+      'displayName': ?displayName,
+      'triggerEvent': ?triggerEvent,
+    };
+  }
+}
+
+class GoogleCloudDialogflowV2GuidanceInstructionAction {
+  core.String? description;
+
+  GoogleCloudDialogflowV2GuidanceInstructionAction({this.description});
+
+  GoogleCloudDialogflowV2GuidanceInstructionAction.fromJson(core.Map json_)
+    : this(description: json_['description'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    return {'description': ?description};
+  }
+}
+
 class GoogleCloudDialogflowV2HumanAgentAssistantConfig {
   GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig?
   endUserSuggestionConfig;
@@ -16669,7 +17594,11 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfig {
 }
 
 class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig {
+  core.String? companionAgent;
   core.bool? disableHighLatencyFeaturesSyncDelivery;
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? enableAsyncToolCall;
   core.List<
     GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig
@@ -16681,6 +17610,7 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig {
   core.bool? useUnredactedConversationData;
 
   GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig({
+    this.companionAgent,
     this.disableHighLatencyFeaturesSyncDelivery,
     this.enableAsyncToolCall,
     this.featureConfigs,
@@ -16693,6 +17623,7 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig {
   GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig.fromJson(
     core.Map json_,
   ) : this(
+        companionAgent: json_['companionAgent'] as core.String?,
         disableHighLatencyFeaturesSyncDelivery:
             json_['disableHighLatencyFeaturesSyncDelivery'] as core.bool?,
         enableAsyncToolCall: json_['enableAsyncToolCall'] as core.bool?,
@@ -16716,6 +17647,7 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final companionAgent = this.companionAgent;
     final disableHighLatencyFeaturesSyncDelivery =
         this.disableHighLatencyFeaturesSyncDelivery;
     final enableAsyncToolCall = this.enableAsyncToolCall;
@@ -16725,6 +17657,7 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig {
     final skipEmptyEventBasedSuggestion = this.skipEmptyEventBasedSuggestion;
     final useUnredactedConversationData = this.useUnredactedConversationData;
     return {
+      'companionAgent': ?companionAgent,
       'disableHighLatencyFeaturesSyncDelivery':
           ?disableHighLatencyFeaturesSyncDelivery,
       'enableAsyncToolCall': ?enableAsyncToolCall,
@@ -17498,6 +18431,8 @@ class GoogleCloudDialogflowV2InitializeEncryptionSpecRequest {
 }
 
 class GoogleCloudDialogflowV2InputAudioConfig {
+  core.List<core.String>? alternativeLanguageCodes;
+
   ///
   /// Possible string values are:
   /// - "AUDIO_ENCODING_UNSPECIFIED"
@@ -17510,6 +18445,7 @@ class GoogleCloudDialogflowV2InputAudioConfig {
   /// - "AUDIO_ENCODING_SPEEX_WITH_HEADER_BYTE"
   /// - "AUDIO_ENCODING_ALAW"
   core.String? audioEncoding;
+  core.bool? disableInterimInputTranscripts;
   core.bool? disableNoSpeechRecognizedEvent;
   core.bool? enableAutomaticPunctuation;
   core.bool? enableVoiceActivityEvents;
@@ -17537,7 +18473,9 @@ class GoogleCloudDialogflowV2InputAudioConfig {
   core.bool? useGeminiAsr;
 
   GoogleCloudDialogflowV2InputAudioConfig({
+    this.alternativeLanguageCodes,
     this.audioEncoding,
+    this.disableInterimInputTranscripts,
     this.disableNoSpeechRecognizedEvent,
     this.enableAutomaticPunctuation,
     this.enableVoiceActivityEvents,
@@ -17557,7 +18495,13 @@ class GoogleCloudDialogflowV2InputAudioConfig {
 
   GoogleCloudDialogflowV2InputAudioConfig.fromJson(core.Map json_)
     : this(
+        alternativeLanguageCodes:
+            (json_['alternativeLanguageCodes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
         audioEncoding: json_['audioEncoding'] as core.String?,
+        disableInterimInputTranscripts:
+            json_['disableInterimInputTranscripts'] as core.bool?,
         disableNoSpeechRecognizedEvent:
             json_['disableNoSpeechRecognizedEvent'] as core.bool?,
         enableAutomaticPunctuation:
@@ -17594,7 +18538,9 @@ class GoogleCloudDialogflowV2InputAudioConfig {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final alternativeLanguageCodes = this.alternativeLanguageCodes;
     final audioEncoding = this.audioEncoding;
+    final disableInterimInputTranscripts = this.disableInterimInputTranscripts;
     final disableNoSpeechRecognizedEvent = this.disableNoSpeechRecognizedEvent;
     final enableAutomaticPunctuation = this.enableAutomaticPunctuation;
     final enableVoiceActivityEvents = this.enableVoiceActivityEvents;
@@ -17611,7 +18557,9 @@ class GoogleCloudDialogflowV2InputAudioConfig {
     final speechContexts = this.speechContexts;
     final useGeminiAsr = this.useGeminiAsr;
     return {
+      'alternativeLanguageCodes': ?alternativeLanguageCodes,
       'audioEncoding': ?audioEncoding,
+      'disableInterimInputTranscripts': ?disableInterimInputTranscripts,
       'disableNoSpeechRecognizedEvent': ?disableNoSpeechRecognizedEvent,
       'enableAutomaticPunctuation': ?enableAutomaticPunctuation,
       'enableVoiceActivityEvents': ?enableVoiceActivityEvents,
@@ -17651,7 +18599,7 @@ class GoogleCloudDialogflowV2InputConfig {
   }
 }
 
-typedef GoogleCloudDialogflowV2InputDataset = $Shared16;
+typedef GoogleCloudDialogflowV2InputDataset = $Shared20;
 
 class GoogleCloudDialogflowV2Intent {
   core.String? action;
@@ -18796,7 +19744,7 @@ class GoogleCloudDialogflowV2IntentMessageTableCard {
   }
 }
 
-typedef GoogleCloudDialogflowV2IntentMessageTableCardCell = $Shared04;
+typedef GoogleCloudDialogflowV2IntentMessageTableCardCell = $Shared02;
 
 class GoogleCloudDialogflowV2IntentMessageTableCardRow {
   core.List<GoogleCloudDialogflowV2IntentMessageTableCardCell>? cells;
@@ -18827,23 +19775,7 @@ class GoogleCloudDialogflowV2IntentMessageTableCardRow {
   }
 }
 
-class GoogleCloudDialogflowV2IntentMessageText {
-  core.List<core.String>? text;
-
-  GoogleCloudDialogflowV2IntentMessageText({this.text});
-
-  GoogleCloudDialogflowV2IntentMessageText.fromJson(core.Map json_)
-    : this(
-        text: (json_['text'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final text = this.text;
-    return {'text': ?text};
-  }
-}
+typedef GoogleCloudDialogflowV2IntentMessageText = $MessageText;
 
 class GoogleCloudDialogflowV2IntentParameter {
   core.String? defaultValue;
@@ -19675,6 +20607,37 @@ class GoogleCloudDialogflowV2ListAnswerRecordsResponse {
   }
 }
 
+class GoogleCloudDialogflowV2ListCompanionAgentsResponse {
+  core.List<GoogleCloudDialogflowV2CompanionAgent>? companionAgents;
+  core.String? nextPageToken;
+
+  GoogleCloudDialogflowV2ListCompanionAgentsResponse({
+    this.companionAgents,
+    this.nextPageToken,
+  });
+
+  GoogleCloudDialogflowV2ListCompanionAgentsResponse.fromJson(core.Map json_)
+    : this(
+        companionAgents: (json_['companionAgents'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2CompanionAgent.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final companionAgents = this.companionAgents;
+    final nextPageToken = this.nextPageToken;
+    return {
+      'companionAgents': ?companionAgents,
+      'nextPageToken': ?nextPageToken,
+    };
+  }
+}
+
 class GoogleCloudDialogflowV2ListContextsResponse {
   core.List<GoogleCloudDialogflowV2Context>? contexts;
   core.String? nextPageToken;
@@ -20261,6 +21224,7 @@ class GoogleCloudDialogflowV2Message {
   /// - "AUTOMATED_AGENT"
   /// - "END_USER"
   core.String? participantRole;
+  core.List<GoogleCloudDialogflowV2ResponseMessage>? responseMessages;
   core.String? sendTime;
   GoogleCloudDialogflowV2SentimentAnalysisResult? sentimentAnalysis;
 
@@ -20272,6 +21236,7 @@ class GoogleCloudDialogflowV2Message {
     this.name,
     this.participant,
     this.participantRole,
+    this.responseMessages,
     this.sendTime,
     this.sentimentAnalysis,
   });
@@ -20290,6 +21255,13 @@ class GoogleCloudDialogflowV2Message {
         name: json_['name'] as core.String?,
         participant: json_['participant'] as core.String?,
         participantRole: json_['participantRole'] as core.String?,
+        responseMessages: (json_['responseMessages'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2ResponseMessage.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         sendTime: json_['sendTime'] as core.String?,
         sentimentAnalysis: json_.containsKey('sentimentAnalysis')
             ? GoogleCloudDialogflowV2SentimentAnalysisResult.fromJson(
@@ -20307,6 +21279,7 @@ class GoogleCloudDialogflowV2Message {
     final name = this.name;
     final participant = this.participant;
     final participantRole = this.participantRole;
+    final responseMessages = this.responseMessages;
     final sendTime = this.sendTime;
     final sentimentAnalysis = this.sentimentAnalysis;
     return {
@@ -20317,6 +21290,7 @@ class GoogleCloudDialogflowV2Message {
       'name': ?name,
       'participant': ?participant,
       'participantRole': ?participantRole,
+      'responseMessages': ?responseMessages,
       'sendTime': ?sendTime,
       'sentimentAnalysis': ?sentimentAnalysis,
     };
@@ -20486,6 +21460,36 @@ class GoogleCloudDialogflowV2OutputAudioConfig {
       'audioEncoding': ?audioEncoding,
       'sampleRateHertz': ?sampleRateHertz,
       'synthesizeSpeechConfig': ?synthesizeSpeechConfig,
+    };
+  }
+}
+
+class GoogleCloudDialogflowV2ParameterOverride {
+  core.String? contextReferenceKey;
+  core.String? fieldPath;
+  core.String? parameterName;
+
+  GoogleCloudDialogflowV2ParameterOverride({
+    this.contextReferenceKey,
+    this.fieldPath,
+    this.parameterName,
+  });
+
+  GoogleCloudDialogflowV2ParameterOverride.fromJson(core.Map json_)
+    : this(
+        contextReferenceKey: json_['contextReferenceKey'] as core.String?,
+        fieldPath: json_['fieldPath'] as core.String?,
+        parameterName: json_['parameterName'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final contextReferenceKey = this.contextReferenceKey;
+    final fieldPath = this.fieldPath;
+    final parameterName = this.parameterName;
+    return {
+      'contextReferenceKey': ?contextReferenceKey,
+      'fieldPath': ?fieldPath,
+      'parameterName': ?parameterName,
     };
   }
 }
@@ -20948,6 +21952,172 @@ class GoogleCloudDialogflowV2ReloadDocumentRequest {
   }
 }
 
+class GoogleCloudDialogflowV2ResponseMessage {
+  GoogleCloudDialogflowV2ResponseMessageEndInteraction? endInteraction;
+  GoogleCloudDialogflowV2ResponseMessageLiveAgentHandoff? liveAgentHandoff;
+  GoogleCloudDialogflowV2ResponseMessageMixedAudio? mixedAudio;
+
+  ///
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? payload;
+  GoogleCloudDialogflowV2ResponseMessageTelephonyTransferCall?
+  telephonyTransferCall;
+  GoogleCloudDialogflowV2ResponseMessageText? text;
+
+  GoogleCloudDialogflowV2ResponseMessage({
+    this.endInteraction,
+    this.liveAgentHandoff,
+    this.mixedAudio,
+    this.payload,
+    this.telephonyTransferCall,
+    this.text,
+  });
+
+  GoogleCloudDialogflowV2ResponseMessage.fromJson(core.Map json_)
+    : this(
+        endInteraction: json_.containsKey('endInteraction')
+            ? GoogleCloudDialogflowV2ResponseMessageEndInteraction.fromJson(
+                json_['endInteraction'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        liveAgentHandoff: json_.containsKey('liveAgentHandoff')
+            ? GoogleCloudDialogflowV2ResponseMessageLiveAgentHandoff.fromJson(
+                json_['liveAgentHandoff']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        mixedAudio: json_.containsKey('mixedAudio')
+            ? GoogleCloudDialogflowV2ResponseMessageMixedAudio.fromJson(
+                json_['mixedAudio'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        payload: json_.containsKey('payload')
+            ? json_['payload'] as core.Map<core.String, core.dynamic>
+            : null,
+        telephonyTransferCall: json_.containsKey('telephonyTransferCall')
+            ? GoogleCloudDialogflowV2ResponseMessageTelephonyTransferCall.fromJson(
+                json_['telephonyTransferCall']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        text: json_.containsKey('text')
+            ? GoogleCloudDialogflowV2ResponseMessageText.fromJson(
+                json_['text'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final endInteraction = this.endInteraction;
+    final liveAgentHandoff = this.liveAgentHandoff;
+    final mixedAudio = this.mixedAudio;
+    final payload = this.payload;
+    final telephonyTransferCall = this.telephonyTransferCall;
+    final text = this.text;
+    return {
+      'endInteraction': ?endInteraction,
+      'liveAgentHandoff': ?liveAgentHandoff,
+      'mixedAudio': ?mixedAudio,
+      'payload': ?payload,
+      'telephonyTransferCall': ?telephonyTransferCall,
+      'text': ?text,
+    };
+  }
+}
+
+typedef GoogleCloudDialogflowV2ResponseMessageEndInteraction = $Empty;
+typedef GoogleCloudDialogflowV2ResponseMessageLiveAgentHandoff = $Shared12;
+
+class GoogleCloudDialogflowV2ResponseMessageMixedAudio {
+  core.List<GoogleCloudDialogflowV2ResponseMessageMixedAudioSegment>? segments;
+
+  GoogleCloudDialogflowV2ResponseMessageMixedAudio({this.segments});
+
+  GoogleCloudDialogflowV2ResponseMessageMixedAudio.fromJson(core.Map json_)
+    : this(
+        segments: (json_['segments'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDialogflowV2ResponseMessageMixedAudioSegment.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final segments = this.segments;
+    return {'segments': ?segments};
+  }
+}
+
+class GoogleCloudDialogflowV2ResponseMessageMixedAudioSegment {
+  core.bool? allowPlaybackInterruption;
+  core.String? audio;
+  core.List<core.int> get audioAsBytes => convert.base64.decode(audio!);
+
+  set audioAsBytes(core.List<core.int> bytes_) {
+    audio = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  core.String? uri;
+
+  GoogleCloudDialogflowV2ResponseMessageMixedAudioSegment({
+    this.allowPlaybackInterruption,
+    this.audio,
+    this.uri,
+  });
+
+  GoogleCloudDialogflowV2ResponseMessageMixedAudioSegment.fromJson(
+    core.Map json_,
+  ) : this(
+        allowPlaybackInterruption:
+            json_['allowPlaybackInterruption'] as core.bool?,
+        audio: json_['audio'] as core.String?,
+        uri: json_['uri'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowPlaybackInterruption = this.allowPlaybackInterruption;
+    final audio = this.audio;
+    final uri = this.uri;
+    return {
+      'allowPlaybackInterruption': ?allowPlaybackInterruption,
+      'audio': ?audio,
+      'uri': ?uri,
+    };
+  }
+}
+
+class GoogleCloudDialogflowV2ResponseMessageTelephonyTransferCall {
+  core.String? phoneNumber;
+  core.String? sipUri;
+
+  GoogleCloudDialogflowV2ResponseMessageTelephonyTransferCall({
+    this.phoneNumber,
+    this.sipUri,
+  });
+
+  GoogleCloudDialogflowV2ResponseMessageTelephonyTransferCall.fromJson(
+    core.Map json_,
+  ) : this(
+        phoneNumber: json_['phoneNumber'] as core.String?,
+        sipUri: json_['sipUri'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final phoneNumber = this.phoneNumber;
+    final sipUri = this.sipUri;
+    return {'phoneNumber': ?phoneNumber, 'sipUri': ?sipUri};
+  }
+}
+
+typedef GoogleCloudDialogflowV2ResponseMessageText = $MessageText;
 typedef GoogleCloudDialogflowV2RestoreAgentRequest = $AgentRequest;
 
 class GoogleCloudDialogflowV2SearchAgentsResponse {
@@ -20975,6 +22145,20 @@ class GoogleCloudDialogflowV2SearchAgentsResponse {
     final agents = this.agents;
     final nextPageToken = this.nextPageToken;
     return {'agents': ?agents, 'nextPageToken': ?nextPageToken};
+  }
+}
+
+class GoogleCloudDialogflowV2SearchEntryPoint {
+  core.String? renderedContent;
+
+  GoogleCloudDialogflowV2SearchEntryPoint({this.renderedContent});
+
+  GoogleCloudDialogflowV2SearchEntryPoint.fromJson(core.Map json_)
+    : this(renderedContent: json_['renderedContent'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final renderedContent = this.renderedContent;
+    return {'renderedContent': ?renderedContent};
   }
 }
 
@@ -21515,7 +22699,29 @@ class GoogleCloudDialogflowV2SearchKnowledgeResponse {
   }
 }
 
-typedef GoogleCloudDialogflowV2Sentiment = $Shared17;
+class GoogleCloudDialogflowV2Segment {
+  core.int? endIndex;
+  core.int? startIndex;
+  core.String? text;
+
+  GoogleCloudDialogflowV2Segment({this.endIndex, this.startIndex, this.text});
+
+  GoogleCloudDialogflowV2Segment.fromJson(core.Map json_)
+    : this(
+        endIndex: json_['endIndex'] as core.int?,
+        startIndex: json_['startIndex'] as core.int?,
+        text: json_['text'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final endIndex = this.endIndex;
+    final startIndex = this.startIndex;
+    final text = this.text;
+    return {'endIndex': ?endIndex, 'startIndex': ?startIndex, 'text': ?text};
+  }
+}
+
+typedef GoogleCloudDialogflowV2Sentiment = $Shared21;
 
 class GoogleCloudDialogflowV2SentimentAnalysisRequestConfig {
   core.bool? analyzeQueryTextSentiment;
@@ -21538,8 +22744,12 @@ class GoogleCloudDialogflowV2SentimentAnalysisRequestConfig {
 
 class GoogleCloudDialogflowV2SentimentAnalysisResult {
   GoogleCloudDialogflowV2Sentiment? queryTextSentiment;
+  GoogleRpcStatus? status;
 
-  GoogleCloudDialogflowV2SentimentAnalysisResult({this.queryTextSentiment});
+  GoogleCloudDialogflowV2SentimentAnalysisResult({
+    this.queryTextSentiment,
+    this.status,
+  });
 
   GoogleCloudDialogflowV2SentimentAnalysisResult.fromJson(core.Map json_)
     : this(
@@ -21549,11 +22759,17 @@ class GoogleCloudDialogflowV2SentimentAnalysisResult {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        status: json_.containsKey('status')
+            ? GoogleRpcStatus.fromJson(
+                json_['status'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final queryTextSentiment = this.queryTextSentiment;
-    return {'queryTextSentiment': ?queryTextSentiment};
+    final status = this.status;
+    return {'queryTextSentiment': ?queryTextSentiment, 'status': ?status};
   }
 }
 
@@ -22031,6 +23247,8 @@ class GoogleCloudDialogflowV2SpeechContext {
 }
 
 class GoogleCloudDialogflowV2SpeechToTextConfig {
+  core.List<core.String>? alternativeLanguageCodes;
+
   ///
   /// Possible string values are:
   /// - "AUDIO_ENCODING_UNSPECIFIED"
@@ -22043,6 +23261,7 @@ class GoogleCloudDialogflowV2SpeechToTextConfig {
   /// - "AUDIO_ENCODING_SPEEX_WITH_HEADER_BYTE"
   /// - "AUDIO_ENCODING_ALAW"
   core.String? audioEncoding;
+  core.bool? disableInterimInputTranscripts;
   core.bool? enableWordInfo;
   GoogleCloudDialogflowV2SpeechToTextConfigGeminiAsrConfig? geminiAsrConfig;
   core.String? languageCode;
@@ -22061,7 +23280,9 @@ class GoogleCloudDialogflowV2SpeechToTextConfig {
   core.bool? useTimeoutBasedEndpointing;
 
   GoogleCloudDialogflowV2SpeechToTextConfig({
+    this.alternativeLanguageCodes,
     this.audioEncoding,
+    this.disableInterimInputTranscripts,
     this.enableWordInfo,
     this.geminiAsrConfig,
     this.languageCode,
@@ -22075,7 +23296,13 @@ class GoogleCloudDialogflowV2SpeechToTextConfig {
 
   GoogleCloudDialogflowV2SpeechToTextConfig.fromJson(core.Map json_)
     : this(
+        alternativeLanguageCodes:
+            (json_['alternativeLanguageCodes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
         audioEncoding: json_['audioEncoding'] as core.String?,
+        disableInterimInputTranscripts:
+            json_['disableInterimInputTranscripts'] as core.bool?,
         enableWordInfo: json_['enableWordInfo'] as core.bool?,
         geminiAsrConfig: json_.containsKey('geminiAsrConfig')
             ? GoogleCloudDialogflowV2SpeechToTextConfigGeminiAsrConfig.fromJson(
@@ -22095,7 +23322,9 @@ class GoogleCloudDialogflowV2SpeechToTextConfig {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final alternativeLanguageCodes = this.alternativeLanguageCodes;
     final audioEncoding = this.audioEncoding;
+    final disableInterimInputTranscripts = this.disableInterimInputTranscripts;
     final enableWordInfo = this.enableWordInfo;
     final geminiAsrConfig = this.geminiAsrConfig;
     final languageCode = this.languageCode;
@@ -22106,7 +23335,9 @@ class GoogleCloudDialogflowV2SpeechToTextConfig {
     final useGeminiAsr = this.useGeminiAsr;
     final useTimeoutBasedEndpointing = this.useTimeoutBasedEndpointing;
     return {
+      'alternativeLanguageCodes': ?alternativeLanguageCodes,
       'audioEncoding': ?audioEncoding,
+      'disableInterimInputTranscripts': ?disableInterimInputTranscripts,
       'enableWordInfo': ?enableWordInfo,
       'geminiAsrConfig': ?geminiAsrConfig,
       'languageCode': ?languageCode,
@@ -22127,7 +23358,6 @@ class GoogleCloudDialogflowV2SpeechToTextConfigGeminiAsrConfig {
   /// - "END_SENSITIVITY_HIGH"
   /// - "END_SENSITIVITY_LOW"
   core.String? endOfSpeechSensitivity;
-  core.String? modelId;
   core.int? prefixPaddingMs;
   core.int? silenceDurationMs;
 
@@ -22140,7 +23370,6 @@ class GoogleCloudDialogflowV2SpeechToTextConfigGeminiAsrConfig {
 
   GoogleCloudDialogflowV2SpeechToTextConfigGeminiAsrConfig({
     this.endOfSpeechSensitivity,
-    this.modelId,
     this.prefixPaddingMs,
     this.silenceDurationMs,
     this.startOfSpeechSensitivity,
@@ -22150,7 +23379,6 @@ class GoogleCloudDialogflowV2SpeechToTextConfigGeminiAsrConfig {
     core.Map json_,
   ) : this(
         endOfSpeechSensitivity: json_['endOfSpeechSensitivity'] as core.String?,
-        modelId: json_['modelId'] as core.String?,
         prefixPaddingMs: json_['prefixPaddingMs'] as core.int?,
         silenceDurationMs: json_['silenceDurationMs'] as core.int?,
         startOfSpeechSensitivity:
@@ -22159,16 +23387,56 @@ class GoogleCloudDialogflowV2SpeechToTextConfigGeminiAsrConfig {
 
   core.Map<core.String, core.dynamic> toJson() {
     final endOfSpeechSensitivity = this.endOfSpeechSensitivity;
-    final modelId = this.modelId;
     final prefixPaddingMs = this.prefixPaddingMs;
     final silenceDurationMs = this.silenceDurationMs;
     final startOfSpeechSensitivity = this.startOfSpeechSensitivity;
     return {
       'endOfSpeechSensitivity': ?endOfSpeechSensitivity,
-      'modelId': ?modelId,
       'prefixPaddingMs': ?prefixPaddingMs,
       'silenceDurationMs': ?silenceDurationMs,
       'startOfSpeechSensitivity': ?startOfSpeechSensitivity,
+    };
+  }
+}
+
+class GoogleCloudDialogflowV2StreamingReactiveCompanionSuggestionsResponseReactiveModeResponse {
+  GoogleCloudDialogflowV2GroundingMetadata? groundingMetadata;
+  core.String? response;
+  core.List<GoogleCloudDialogflowV2ToolCallSuggestion>? toolCalls;
+
+  GoogleCloudDialogflowV2StreamingReactiveCompanionSuggestionsResponseReactiveModeResponse({
+    this.groundingMetadata,
+    this.response,
+    this.toolCalls,
+  });
+
+  GoogleCloudDialogflowV2StreamingReactiveCompanionSuggestionsResponseReactiveModeResponse.fromJson(
+    core.Map json_,
+  ) : this(
+        groundingMetadata: json_.containsKey('groundingMetadata')
+            ? GoogleCloudDialogflowV2GroundingMetadata.fromJson(
+                json_['groundingMetadata']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        response: json_['response'] as core.String?,
+        toolCalls: (json_['toolCalls'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2ToolCallSuggestion.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final groundingMetadata = this.groundingMetadata;
+    final response = this.response;
+    final toolCalls = this.toolCalls;
+    return {
+      'groundingMetadata': ?groundingMetadata,
+      'response': ?response,
+      'toolCalls': ?toolCalls,
     };
   }
 }
@@ -22714,6 +23982,8 @@ class GoogleCloudDialogflowV2SuggestionInput {
 
 class GoogleCloudDialogflowV2SuggestionResult {
   GoogleRpcStatus? error;
+  GoogleCloudDialogflowV2GenerateCompanionSuggestionsResponse?
+  generateCompanionSuggestionsResponse;
   GoogleCloudDialogflowV2GenerateSuggestionsResponse?
   generateSuggestionsResponse;
   GoogleCloudDialogflowV2SuggestArticlesResponse? suggestArticlesResponse;
@@ -22725,6 +23995,7 @@ class GoogleCloudDialogflowV2SuggestionResult {
 
   GoogleCloudDialogflowV2SuggestionResult({
     this.error,
+    this.generateCompanionSuggestionsResponse,
     this.generateSuggestionsResponse,
     this.suggestArticlesResponse,
     this.suggestFaqAnswersResponse,
@@ -22737,6 +24008,13 @@ class GoogleCloudDialogflowV2SuggestionResult {
         error: json_.containsKey('error')
             ? GoogleRpcStatus.fromJson(
                 json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        generateCompanionSuggestionsResponse:
+            json_.containsKey('generateCompanionSuggestionsResponse')
+            ? GoogleCloudDialogflowV2GenerateCompanionSuggestionsResponse.fromJson(
+                json_['generateCompanionSuggestionsResponse']
+                    as core.Map<core.String, core.dynamic>,
               )
             : null,
         generateSuggestionsResponse:
@@ -22777,6 +24055,8 @@ class GoogleCloudDialogflowV2SuggestionResult {
 
   core.Map<core.String, core.dynamic> toJson() {
     final error = this.error;
+    final generateCompanionSuggestionsResponse =
+        this.generateCompanionSuggestionsResponse;
     final generateSuggestionsResponse = this.generateSuggestionsResponse;
     final suggestArticlesResponse = this.suggestArticlesResponse;
     final suggestFaqAnswersResponse = this.suggestFaqAnswersResponse;
@@ -22784,6 +24064,8 @@ class GoogleCloudDialogflowV2SuggestionResult {
     final suggestSmartRepliesResponse = this.suggestSmartRepliesResponse;
     return {
       'error': ?error,
+      'generateCompanionSuggestionsResponse':
+          ?generateCompanionSuggestionsResponse,
       'generateSuggestionsResponse': ?generateSuggestionsResponse,
       'suggestArticlesResponse': ?suggestArticlesResponse,
       'suggestFaqAnswersResponse': ?suggestFaqAnswersResponse,
@@ -23560,7 +24842,7 @@ class GoogleCloudDialogflowV2SynthesizeSpeechConfig {
   }
 }
 
-typedef GoogleCloudDialogflowV2TextInput = $Shared18;
+typedef GoogleCloudDialogflowV2TextInput = $Shared22;
 
 class GoogleCloudDialogflowV2TextToSpeechSettings {
   core.bool? enableTextToSpeech;
@@ -23964,6 +25246,32 @@ class GoogleCloudDialogflowV2ToolCallResultError {
   }
 }
 
+class GoogleCloudDialogflowV2ToolCallSuggestion {
+  core.String? textUpdate;
+  GoogleCloudDialogflowV2GeneratorSuggestionToolCallInfo? toolCallInfo;
+
+  GoogleCloudDialogflowV2ToolCallSuggestion({
+    this.textUpdate,
+    this.toolCallInfo,
+  });
+
+  GoogleCloudDialogflowV2ToolCallSuggestion.fromJson(core.Map json_)
+    : this(
+        textUpdate: json_['textUpdate'] as core.String?,
+        toolCallInfo: json_.containsKey('toolCallInfo')
+            ? GoogleCloudDialogflowV2GeneratorSuggestionToolCallInfo.fromJson(
+                json_['toolCallInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final textUpdate = this.textUpdate;
+    final toolCallInfo = this.toolCallInfo;
+    return {'textUpdate': ?textUpdate, 'toolCallInfo': ?toolCallInfo};
+  }
+}
+
 class GoogleCloudDialogflowV2ToolConnectorTool {
   core.List<GoogleCloudDialogflowV2ToolConnectorToolAction>? actions;
   core.String? name;
@@ -24203,11 +25511,17 @@ class GoogleCloudDialogflowV2ToolsetTool {
   /// - "NOT_REQUIRED"
   core.String? confirmationRequirement;
   core.String? operationId;
+  core.List<GoogleCloudDialogflowV2ParameterOverride>? parameterOverrides;
+  core.bool? proactiveEnabled;
+  core.bool? reactiveEnabled;
   core.String? toolset;
 
   GoogleCloudDialogflowV2ToolsetTool({
     this.confirmationRequirement,
     this.operationId,
+    this.parameterOverrides,
+    this.proactiveEnabled,
+    this.reactiveEnabled,
     this.toolset,
   });
 
@@ -24216,16 +25530,31 @@ class GoogleCloudDialogflowV2ToolsetTool {
         confirmationRequirement:
             json_['confirmationRequirement'] as core.String?,
         operationId: json_['operationId'] as core.String?,
+        parameterOverrides: (json_['parameterOverrides'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2ParameterOverride.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        proactiveEnabled: json_['proactiveEnabled'] as core.bool?,
+        reactiveEnabled: json_['reactiveEnabled'] as core.bool?,
         toolset: json_['toolset'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final confirmationRequirement = this.confirmationRequirement;
     final operationId = this.operationId;
+    final parameterOverrides = this.parameterOverrides;
+    final proactiveEnabled = this.proactiveEnabled;
+    final reactiveEnabled = this.reactiveEnabled;
     final toolset = this.toolset;
     return {
       'confirmationRequirement': ?confirmationRequirement,
       'operationId': ?operationId,
+      'parameterOverrides': ?parameterOverrides,
+      'proactiveEnabled': ?proactiveEnabled,
+      'reactiveEnabled': ?reactiveEnabled,
       'toolset': ?toolset,
     };
   }

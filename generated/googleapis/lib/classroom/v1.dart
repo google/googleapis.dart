@@ -2502,6 +2502,75 @@ class CoursesCourseWorkAddOnAttachmentsStudentSubmissionsResource {
     );
   }
 
+  /// Returns a list of student submissions that the requester is permitted to
+  /// view.
+  ///
+  /// This method returns the following error codes: * `PERMISSION_DENIED` for
+  /// access errors. * `INVALID_ARGUMENT` if the request is malformed. *
+  /// `NOT_FOUND` if one of the identified resources does not exist.
+  ///
+  /// Request parameters:
+  ///
+  /// [courseId] - Required. Identifier of the course.
+  ///
+  /// [itemId] - Required. Identifier of the `CourseWork` under which the
+  /// attachment is attached.
+  ///
+  /// [attachmentId] - Required. Identifier of the add-on attachment.
+  ///
+  /// [pageSize] - Optional. Maximum number of submissions to return. Zero or
+  /// unspecified indicates that the server may assign a maximum. The server may
+  /// return fewer than the specified number of results.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListAddOnAttachmentStudentSubmissions` call. Provide this to retrieve the
+  /// subsequent page. When paginating, all other parameters provided to
+  /// `ListAddOnAttachmentStudentSubmissions` must match the call that provided
+  /// the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAddOnAttachmentStudentSubmissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAddOnAttachmentStudentSubmissionsResponse> list(
+    core.String courseId,
+    core.String itemId,
+    core.String attachmentId, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/courses/' +
+        commons.escapeVariable('$courseId') +
+        '/courseWork/' +
+        commons.escapeVariable('$itemId') +
+        '/addOnAttachments/' +
+        commons.escapeVariable('$attachmentId') +
+        '/studentSubmissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListAddOnAttachmentStudentSubmissionsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Updates data associated with an add-on attachment submission.
   ///
   /// Requires the add-on to have been the original creator of the attachment
@@ -6721,6 +6790,16 @@ class AddOnAttachment {
   /// This must be specified if `due_date` is specified.
   TimeOfDay? dueTime;
 
+  /// Whether changes to `pointsEarned` values on this attachment's student
+  /// submissions will be copied to the `pointsEarned` field on the students'
+  /// CourseWork submissions.
+  ///
+  /// This field can be `true` for at most one add-on attachment per stream
+  /// item.
+  ///
+  /// Output only.
+  core.bool? gradeSyncEnabled;
+
   /// Classroom-assigned identifier for this attachment, unique per post.
   ///
   /// Immutable.
@@ -6788,6 +6867,7 @@ class AddOnAttachment {
     this.courseId,
     this.dueDate,
     this.dueTime,
+    this.gradeSyncEnabled,
     this.id,
     this.itemId,
     this.maxPoints,
@@ -6818,6 +6898,7 @@ class AddOnAttachment {
                 json_['dueTime'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        gradeSyncEnabled: json_['gradeSyncEnabled'] as core.bool?,
         id: json_['id'] as core.String?,
         itemId: json_['itemId'] as core.String?,
         maxPoints: (json_['maxPoints'] as core.num?)?.toDouble(),
@@ -6846,6 +6927,7 @@ class AddOnAttachment {
     final courseId = this.courseId;
     final dueDate = this.dueDate;
     final dueTime = this.dueTime;
+    final gradeSyncEnabled = this.gradeSyncEnabled;
     final id = this.id;
     final itemId = this.itemId;
     final maxPoints = this.maxPoints;
@@ -6859,6 +6941,7 @@ class AddOnAttachment {
       'courseId': ?courseId,
       'dueDate': ?dueDate,
       'dueTime': ?dueTime,
+      'gradeSyncEnabled': ?gradeSyncEnabled,
       'id': ?id,
       'itemId': ?itemId,
       'maxPoints': ?maxPoints,
@@ -9140,6 +9223,46 @@ class Link {
     final title = this.title;
     final url = this.url;
     return {'thumbnailUrl': ?thumbnailUrl, 'title': ?title, 'url': ?url};
+  }
+}
+
+/// Response when listing student submissions for an add-on attachment.
+class ListAddOnAttachmentStudentSubmissionsResponse {
+  /// Add-on attachment student submissions that match the request.
+  core.List<AddOnAttachmentStudentSubmission>?
+  addOnAttachmentStudentSubmissions;
+
+  /// A token, which can be sent as `pageToken` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  ListAddOnAttachmentStudentSubmissionsResponse({
+    this.addOnAttachmentStudentSubmissions,
+    this.nextPageToken,
+  });
+
+  ListAddOnAttachmentStudentSubmissionsResponse.fromJson(core.Map json_)
+    : this(
+        addOnAttachmentStudentSubmissions:
+            (json_['addOnAttachmentStudentSubmissions'] as core.List?)
+                ?.map(
+                  (value) => AddOnAttachmentStudentSubmission.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final addOnAttachmentStudentSubmissions =
+        this.addOnAttachmentStudentSubmissions;
+    final nextPageToken = this.nextPageToken;
+    return {
+      'addOnAttachmentStudentSubmissions': ?addOnAttachmentStudentSubmissions,
+      'nextPageToken': ?nextPageToken,
+    };
   }
 }
 

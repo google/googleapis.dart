@@ -3012,7 +3012,7 @@ class BuildProvenance {
   }
 }
 
-typedef BuilderConfig = $Shared02;
+typedef BuilderConfig = $Shared03;
 typedef CISAKnownExploitedVulnerabilities = $CISAKnownExploitedVulnerabilities;
 
 /// Common Vulnerability Scoring System.
@@ -4313,7 +4313,7 @@ class GrafeasV1FileLocation {
 
 /// Identifies the entity that executed the recipe, which is trusted to have
 /// correctly performed the operation and populated this provenance.
-typedef GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder = $Shared02;
+typedef GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder = $Shared03;
 
 /// Indicates that the builder claims certain fields in this message to be
 /// complete.
@@ -6757,7 +6757,7 @@ class SetIamPolicyRequest {
 /// that holds this Signature, or the canonical serialization of the proto
 /// message that holds this signature).
 typedef Signature = $Signature;
-typedef SlsaBuilder = $Shared02;
+typedef SlsaBuilder = $Shared03;
 
 /// Indicates that the builder claims certain fields in this message to be
 /// complete.

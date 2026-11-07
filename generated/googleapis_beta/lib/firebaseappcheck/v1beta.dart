@@ -39,7 +39,9 @@
 ///     - [ProjectsAppsRecaptchaEnterpriseConfigResource]
 ///     - [ProjectsAppsRecaptchaV3ConfigResource]
 ///   - [ProjectsServicesResource]
+///     - [ProjectsServicesAutomationsResource]
 ///     - [ProjectsServicesResourcePoliciesResource]
+///       - [ProjectsServicesResourcePoliciesAutomationsResource]
 library;
 
 import 'dart:async' as async;
@@ -2368,6 +2370,8 @@ class ProjectsAppsRecaptchaV3ConfigResource {
 class ProjectsServicesResource {
   final commons.ApiRequester _requester;
 
+  ProjectsServicesAutomationsResource get automations =>
+      ProjectsServicesAutomationsResource(_requester);
   ProjectsServicesResourcePoliciesResource get resourcePolicies =>
       ProjectsServicesResourcePoliciesResource(_requester);
 
@@ -2584,8 +2588,169 @@ class ProjectsServicesResource {
   }
 }
 
+class ProjectsServicesAutomationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsServicesAutomationsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Gets the specified Automation configuration.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The relative resource name of the Automation to
+  /// retrieve, in one of the following supported formats: ```
+  /// projects/{project_number}/services/{service_id}/automations/{automation_id}
+  /// projects/{project_number}/services/{service_id}/resourcePolicies/{resource_policy_id}/automations/{automation_id}
+  /// ```
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/services/\[^/\]+/automations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleFirebaseAppcheckV1betaAutomation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirebaseAppcheckV1betaAutomation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleFirebaseAppcheckV1betaAutomation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists all Automations for the specified service or resource policy.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The relative resource name of the parent service or
+  /// resource policy for which to list each associated Automation, in one of
+  /// the following formats: ``` projects/{project_number}/services/{service_id}
+  /// projects/{project_number}/services/{service_id}/resourcePolicies/{resource_policy_id}
+  /// ```
+  /// Value must have pattern `^projects/\[^/\]+/services/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of Automations to return in the response.
+  /// Note that a service or resource policy can have at most 10 automations.
+  /// The server may return fewer than this at its own discretion. If no value
+  /// is specified (or too large a value is specified), the server will impose
+  /// its own limit.
+  ///
+  /// [pageToken] - Token returned from a previous call to ListAutomations
+  /// indicating where in the set of Automations to resume listing. Provide this
+  /// to retrieve the subsequent page. When paginating, all other parameters
+  /// provided to ListAutomations must match the call that provided the page
+  /// token; if they do not match, the result is undefined.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleFirebaseAppcheckV1betaListAutomationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirebaseAppcheckV1betaListAutomationsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$parent') + '/automations';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleFirebaseAppcheckV1betaListAutomationsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates the specified Automation.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The relative resource name of the automation object,
+  /// in one of the following supported formats: ```
+  /// projects/{project_number}/services/{service_id}/automations/{automation_id}
+  /// projects/{project_number}/services/{service_id}/resourcePolicies/{resource_policy_id}/automations/{automation_id}
+  /// ```
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/services/\[^/\]+/automations/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. A comma-separated list of names of fields in the
+  /// Automation to update. Example: `timestamp_condition.enforce_time`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleFirebaseAppcheckV1betaAutomation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirebaseAppcheckV1betaAutomation> patch(
+    GoogleFirebaseAppcheckV1betaAutomation request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleFirebaseAppcheckV1betaAutomation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 class ProjectsServicesResourcePoliciesResource {
   final commons.ApiRequester _requester;
+
+  ProjectsServicesResourcePoliciesAutomationsResource get automations =>
+      ProjectsServicesResourcePoliciesAutomationsResource(_requester);
 
   ProjectsServicesResourcePoliciesResource(commons.ApiRequester client)
     : _requester = client;
@@ -2907,6 +3072,166 @@ class ProjectsServicesResourcePoliciesResource {
   }
 }
 
+class ProjectsServicesResourcePoliciesAutomationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsServicesResourcePoliciesAutomationsResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Gets the specified Automation configuration.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The relative resource name of the Automation to
+  /// retrieve, in one of the following supported formats: ```
+  /// projects/{project_number}/services/{service_id}/automations/{automation_id}
+  /// projects/{project_number}/services/{service_id}/resourcePolicies/{resource_policy_id}/automations/{automation_id}
+  /// ```
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/services/\[^/\]+/resourcePolicies/\[^/\]+/automations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleFirebaseAppcheckV1betaAutomation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirebaseAppcheckV1betaAutomation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleFirebaseAppcheckV1betaAutomation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists all Automations for the specified service or resource policy.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The relative resource name of the parent service or
+  /// resource policy for which to list each associated Automation, in one of
+  /// the following formats: ``` projects/{project_number}/services/{service_id}
+  /// projects/{project_number}/services/{service_id}/resourcePolicies/{resource_policy_id}
+  /// ```
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/services/\[^/\]+/resourcePolicies/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of Automations to return in the response.
+  /// Note that a service or resource policy can have at most 10 automations.
+  /// The server may return fewer than this at its own discretion. If no value
+  /// is specified (or too large a value is specified), the server will impose
+  /// its own limit.
+  ///
+  /// [pageToken] - Token returned from a previous call to ListAutomations
+  /// indicating where in the set of Automations to resume listing. Provide this
+  /// to retrieve the subsequent page. When paginating, all other parameters
+  /// provided to ListAutomations must match the call that provided the page
+  /// token; if they do not match, the result is undefined.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleFirebaseAppcheckV1betaListAutomationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirebaseAppcheckV1betaListAutomationsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$parent') + '/automations';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleFirebaseAppcheckV1betaListAutomationsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates the specified Automation.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The relative resource name of the automation object,
+  /// in one of the following supported formats: ```
+  /// projects/{project_number}/services/{service_id}/automations/{automation_id}
+  /// projects/{project_number}/services/{service_id}/resourcePolicies/{resource_policy_id}/automations/{automation_id}
+  /// ```
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/services/\[^/\]+/resourcePolicies/\[^/\]+/automations/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. A comma-separated list of names of fields in the
+  /// Automation to update. Example: `timestamp_condition.enforce_time`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleFirebaseAppcheckV1betaAutomation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirebaseAppcheckV1betaAutomation> patch(
+    GoogleFirebaseAppcheckV1betaAutomation request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleFirebaseAppcheckV1betaAutomation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 /// An app's App Attest configuration object.
 ///
 /// This configuration controls certain properties of the `AppCheckToken`
@@ -3034,6 +3359,146 @@ class GoogleFirebaseAppcheckV1betaAttestationTokenResponse {
     final attestationToken = this.attestationToken;
     final ttl = this.ttl;
     return {'attestationToken': ?attestationToken, 'ttl': ?ttl};
+  }
+}
+
+/// An **enforcement automation** is useful for automatically enforcing a
+/// service or a resource policy within a service when a certain condition is
+/// met.
+///
+/// For example, you may create an automation that automatically turns on
+/// enforcement for your Cloud Firestore service at a specified timestamp in the
+/// future. For your security, an automation object may be created by the system
+/// in order to protect sensitive services by default. These *system-created*
+/// automations can be opted out, if you so choose, by calling the
+/// SuspendAutomation method on them. Suspending a system-created automation is
+/// not recommended, but is supported for advanced use cases. The system will
+/// not execute nor modify any suspended automations. Also, system-created
+/// automations **cannot** be deleted, but can be freely modified, which is also
+/// not recommended, as the system may later overwrite your changes with its own
+/// default settings without notice (assuming it has not been suspended). An
+/// automation's condition is evaluated periodically; the frequency of this
+/// periodic evaluation depends on the exact condition. While the details are
+/// unspecified, evaluations will be conducted reasonably frequently so that a
+/// satisfied condition will be detected in a timely fashion. Once a condition
+/// has been detected to be satisfied, the enforcement action will be executed
+/// immediately. Currently, the only enforcement action supported is to
+/// **enforce** App Check protections on the associated parent service or parent
+/// resource policy. Once executed, the automation becomes immutable, and serves
+/// as a historical record of that execution. Its `update_time` field will be
+/// populated with the timestamp at which the execution occurred, and its
+/// `state` field will be set to `SUCCEEDED`. Successful automations not created
+/// by the system can still be deleted. If, during the evaluation or execution
+/// of an automation, App Check discovers that it is no longer possible for the
+/// service or resource to receive App Check protection, App Check may suspend
+/// your automation without warning. For example, if you have disabled a
+/// service, or have deleted all resources within a service, and that service
+/// does not support storing your App Check preferences while it is in such a
+/// state, then an automation created for this service may be suspended. Please
+/// ensure that the service or resource is correctly configured and operating
+/// normally throughout the lifetime of the automation to avoid suspension.
+class GoogleFirebaseAppcheckV1betaAutomation {
+  /// Timestamp at which this automation object was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// This checksum is computed by the server based on the value of other
+  /// fields, and may be sent on update and delete requests to ensure the client
+  /// has an up-to-date value before proceeding.
+  ///
+  /// This etag is strongly validated as defined by RFC 7232.
+  core.String? etag;
+
+  /// Identifier.
+  ///
+  /// The relative resource name of the automation object, in one of the
+  /// following supported formats: ```
+  /// projects/{project_number}/services/{service_id}/automations/{automation_id}
+  /// projects/{project_number}/services/{service_id}/resourcePolicies/{resource_policy_id}/automations/{automation_id}
+  /// ```
+  core.String? name;
+
+  /// The original creator of this automation object.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "ORIGIN_UNSPECIFIED" : A placeholder default value. This value should
+  /// never appear in actual responses.
+  /// - "SYSTEM" : Indicates that the automation object was created by the
+  /// service being protected by App Check. These automations cannot be deleted,
+  /// but can be suspended in order to opt out.
+  /// - "USER" : Indicates that a user created the automation object.
+  core.String? origin;
+
+  /// The state that this automation object is currently in.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : A placeholder default value. This value should
+  /// never appear in actual responses.
+  /// - "EVALUATING" : An automation in this state is being actively evaluated.
+  /// When its condition is met, its enforcement action will be executed.
+  /// - "SUCCEEDED" : An automation in this state has already been successfully
+  /// executed. It serves as a historical record of the execution, and it can no
+  /// longer be modified in any way except be deleted.
+  /// - "SUSPENDED" : An Automation in this state has been paused. Its
+  /// enforcement action will not be executed, and its conditions will no longer
+  /// be actively evaluated until it is resumed. System-created automations in
+  /// this state will no longer be modified by the system.
+  core.String? state;
+
+  /// A condition that is satisfied if the current time is greater than or equal
+  /// to the specified timestamp.
+  core.String? triggerTime;
+
+  /// Timestamp at which this automation object was most recently updated,
+  /// either by the system or by the user.
+  ///
+  /// If this automation has already been executed, this field indicates the
+  /// exact timestamp at which it was executed.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleFirebaseAppcheckV1betaAutomation({
+    this.createTime,
+    this.etag,
+    this.name,
+    this.origin,
+    this.state,
+    this.triggerTime,
+    this.updateTime,
+  });
+
+  GoogleFirebaseAppcheckV1betaAutomation.fromJson(core.Map json_)
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        name: json_['name'] as core.String?,
+        origin: json_['origin'] as core.String?,
+        state: json_['state'] as core.String?,
+        triggerTime: json_['triggerTime'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final etag = this.etag;
+    final name = this.name;
+    final origin = this.origin;
+    final state = this.state;
+    final triggerTime = this.triggerTime;
+    final updateTime = this.updateTime;
+    return {
+      'createTime': ?createTime,
+      'etag': ?etag,
+      'name': ?name,
+      'origin': ?origin,
+      'state': ?state,
+      'triggerTime': ?triggerTime,
+      'updateTime': ?updateTime,
+    };
   }
 }
 
@@ -3725,10 +4190,10 @@ class GoogleFirebaseAppcheckV1betaExchangeCustomTokenRequest {
   /// *Limited use* App Check tokens with the same `jti` will be counted as the
   /// same token for the purposes of replay protection. An error is returned if
   /// this field is specified without setting `limited_use` to `true`. The size
-  /// of this field is limited to 500 bytes. If specified, its length must be at
+  /// of this field is limited to 250 bytes. If specified, its length must be at
   /// least 16 bytes. If this field is omitted or is empty and `limited_use` is
   /// set to `true`, a randomly generated `jti` claim with length between 16 and
-  /// 500 bytes (inclusive) will be used in the returned App Check token.
+  /// 250 bytes (inclusive) will be used in the returned App Check token.
   /// Leaving this field empty is only recommended if your custom attestation
   /// provider itself is not vulnerable to replay attacks. When `limited_use` is
   /// set to `false`, the presence and the contents of the `jti` claim in the
@@ -4061,9 +4526,9 @@ class GoogleFirebaseAppcheckV1betaLimitedUseConfig {
   ///
   /// Limited-use App Check tokens with the same `jti` will be counted as the
   /// same token for the purposes of replay protection. The size of this field
-  /// is limited to 500 bytes. If specified, its length must be at least 16
+  /// is limited to 250 bytes. If specified, its length must be at least 16
   /// bytes. If this field is omitted or is empty, a randomly generated `jti`
-  /// claim with length between 16 and 500 bytes (inclusive) will be used in the
+  /// claim with length between 16 and 250 bytes (inclusive) will be used in the
   /// returned App Check token. Leaving this field empty is only recommended if
   /// your custom attestation provider itself is not vulnerable to replay
   /// attacks.
@@ -4079,6 +4544,44 @@ class GoogleFirebaseAppcheckV1betaLimitedUseConfig {
   core.Map<core.String, core.dynamic> toJson() {
     final jti = this.jti;
     return {'jti': ?jti};
+  }
+}
+
+/// Response message for the ListAutomations method.
+class GoogleFirebaseAppcheckV1betaListAutomationsResponse {
+  /// The Automations retrieved.
+  core.List<GoogleFirebaseAppcheckV1betaAutomation>? automations;
+
+  /// If the result list is too large to fit in a single response, then a token
+  /// is returned.
+  ///
+  /// If the string is empty or omitted, then this response is the last page of
+  /// results. This token can be used in a subsequent call to ListAutomations to
+  /// find the next group of Automations. Page tokens are short-lived and should
+  /// not be persisted.
+  core.String? nextPageToken;
+
+  GoogleFirebaseAppcheckV1betaListAutomationsResponse({
+    this.automations,
+    this.nextPageToken,
+  });
+
+  GoogleFirebaseAppcheckV1betaListAutomationsResponse.fromJson(core.Map json_)
+    : this(
+        automations: (json_['automations'] as core.List?)
+            ?.map(
+              (value) => GoogleFirebaseAppcheckV1betaAutomation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final automations = this.automations;
+    final nextPageToken = this.nextPageToken;
+    return {'automations': ?automations, 'nextPageToken': ?nextPageToken};
   }
 }
 

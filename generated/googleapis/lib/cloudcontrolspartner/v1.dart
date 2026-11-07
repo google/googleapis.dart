@@ -867,7 +867,42 @@ class ConnectionError {
 }
 
 /// Remediation instructions to resolve violation via cloud console
-typedef Console = $Console;
+class Console {
+  /// Additional urls for more information about steps
+  core.List<core.String>? additionalLinks;
+
+  /// Link to console page where violations can be resolved
+  core.List<core.String>? consoleUris;
+
+  /// Steps to resolve violation via cloud console
+  core.List<core.String>? steps;
+
+  Console({this.additionalLinks, this.consoleUris, this.steps});
+
+  Console.fromJson(core.Map json_)
+    : this(
+        additionalLinks: (json_['additionalLinks'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        consoleUris: (json_['consoleUris'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        steps: (json_['steps'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final additionalLinks = this.additionalLinks;
+    final consoleUris = this.consoleUris;
+    final steps = this.steps;
+    return {
+      'additionalLinks': ?additionalLinks,
+      'consoleUris': ?consoleUris,
+      'steps': ?steps,
+    };
+  }
+}
 
 /// Contains metadata around a Cloud Controls Partner Customer
 class Customer {
@@ -1137,7 +1172,42 @@ class EkmMetadata {
 typedef Empty = $Empty;
 
 /// Remediation instructions to resolve violation via gcloud cli
-typedef Gcloud = $Gcloud;
+class Gcloud {
+  /// Additional urls for more information about steps
+  core.List<core.String>? additionalLinks;
+
+  /// Gcloud command to resolve violation
+  core.List<core.String>? gcloudCommands;
+
+  /// Steps to resolve violation via gcloud cli
+  core.List<core.String>? steps;
+
+  Gcloud({this.additionalLinks, this.gcloudCommands, this.steps});
+
+  Gcloud.fromJson(core.Map json_)
+    : this(
+        additionalLinks: (json_['additionalLinks'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        gcloudCommands: (json_['gcloudCommands'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        steps: (json_['steps'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final additionalLinks = this.additionalLinks;
+    final gcloudCommands = this.gcloudCommands;
+    final steps = this.steps;
+    return {
+      'additionalLinks': ?additionalLinks,
+      'gcloudCommands': ?gcloudCommands,
+      'steps': ?steps,
+    };
+  }
+}
 
 /// Instructions to remediate violation
 class Instructions {

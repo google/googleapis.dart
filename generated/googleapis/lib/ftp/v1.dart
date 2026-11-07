@@ -417,7 +417,9 @@ class ProjectsLocationsServersResource {
   ///
   /// [serverId] - Required. A unique ID for the server. Must start with a
   /// lowercase letter, and end with a lowercase letter or number. Can contain
-  /// lowercase letters, numbers, and hyphens. Maximum length is 30 characters.
+  /// lowercase letters, numbers, and hyphens. Can't begin with the prefix
+  /// `goog` or contain the string `google`, including close misspellings such
+  /// as `g00gle`. Maximum length is 30 characters.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -824,8 +826,8 @@ class ProjectsLocationsServersUsersResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/servers/\[^/\]+/users/\[^/\]+$`.
   ///
-  /// [force] - Optional. If set to true, the request will force the deletion of
-  /// the User.
+  /// [force] - Optional. If set to `true`, the request will `force` the
+  /// deletion of the User.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1357,6 +1359,47 @@ class ListUsersResponse {
 /// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
+/// Configuration for Cloud Logging on the Server.
+class LoggingConfig {
+  /// Whether platform logging (`ftp.googleapis.com/ftp_events`) is enabled for
+  /// this server.
+  ///
+  /// Defaults to `false`.
+  ///
+  /// Optional.
+  core.bool? enabled;
+
+  /// The verbosity level of logs emitted when `enabled` is `true`.
+  ///
+  /// Defaults to `ALL_EVENTS` if unspecified when `enabled` is `true`.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "LOG_VERBOSITY_UNSPECIFIED" : Default value. Defaults to `ALL_EVENTS`
+  /// when logging is `enabled`.
+  /// - "ALL_EVENTS" : Logs all SFTP events, including authentication, session
+  /// lifecycle, file transfers, and directory/metadata commands.
+  /// - "TRANSFERS_AND_AUTH_ONLY" : Logs authentication, session lifecycle, file
+  /// transfers, and failed commands. Suppresses successful non-transfer
+  /// commands (such as LIST or STAT).
+  /// - "ERRORS_ONLY" : Logs only failed operations and errors.
+  core.String? verbosity;
+
+  LoggingConfig({this.enabled, this.verbosity});
+
+  LoggingConfig.fromJson(core.Map json_)
+    : this(
+        enabled: json_['enabled'] as core.bool?,
+        verbosity: json_['verbosity'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final enabled = this.enabled;
+    final verbosity = this.verbosity;
+    return {'enabled': ?enabled, 'verbosity': ?verbosity};
+  }
+}
+
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
@@ -1511,6 +1554,11 @@ class Server {
   /// Optional.
   core.Map<core.String, core.String>? labels;
 
+  /// Configuration for Cloud Logging on the Server.
+  ///
+  /// Optional.
+  LoggingConfig? loggingConfig;
+
   /// Identifier.
   ///
   /// name of resource
@@ -1559,6 +1607,7 @@ class Server {
     this.googleManagedServerCredential,
     this.internalConfig,
     this.labels,
+    this.loggingConfig,
     this.name,
     this.satisfiesPzi,
     this.satisfiesPzs,
@@ -1592,6 +1641,11 @@ class Server {
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
+        loggingConfig: json_.containsKey('loggingConfig')
+            ? LoggingConfig.fromJson(
+                json_['loggingConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
         satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
         satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
@@ -1608,6 +1662,7 @@ class Server {
     final googleManagedServerCredential = this.googleManagedServerCredential;
     final internalConfig = this.internalConfig;
     final labels = this.labels;
+    final loggingConfig = this.loggingConfig;
     final name = this.name;
     final satisfiesPzi = this.satisfiesPzi;
     final satisfiesPzs = this.satisfiesPzs;
@@ -1622,6 +1677,7 @@ class Server {
       'googleManagedServerCredential': ?googleManagedServerCredential,
       'internalConfig': ?internalConfig,
       'labels': ?labels,
+      'loggingConfig': ?loggingConfig,
       'name': ?name,
       'satisfiesPzi': ?satisfiesPzi,
       'satisfiesPzs': ?satisfiesPzs,

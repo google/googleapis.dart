@@ -30,6 +30,7 @@
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsAppsResource]
 ///       - [ProjectsLocationsAppsAgentsResource]
+///       - [ProjectsLocationsAppsAssistantSessionsResource]
 ///       - [ProjectsLocationsAppsChangelogsResource]
 ///       - [ProjectsLocationsAppsConversationsResource]
 ///       - [ProjectsLocationsAppsDeploymentsResource]
@@ -209,6 +210,8 @@ class ProjectsLocationsAppsResource {
 
   ProjectsLocationsAppsAgentsResource get agents =>
       ProjectsLocationsAppsAgentsResource(_requester);
+  ProjectsLocationsAppsAssistantSessionsResource get assistantSessions =>
+      ProjectsLocationsAppsAssistantSessionsResource(_requester);
   ProjectsLocationsAppsChangelogsResource get changelogs =>
       ProjectsLocationsAppsChangelogsResource(_requester);
   ProjectsLocationsAppsConversationsResource get conversations =>
@@ -406,6 +409,56 @@ class ProjectsLocationsAppsResource {
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Generates personalized onboarding suggestions for the Arc zero state:
+  /// classifies the requesting user (new / exploring / returning) from their
+  /// assistant-session history in the app and returns suggestion chips (resume
+  /// a session, continue work, or start something new) to render before any
+  /// message is sent.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The app whose zero state is being rendered. Format:
+  /// `projects/{project}/locations/{location}/apps/{app}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/apps/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GenerateOnboardingSuggestionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GenerateOnboardingSuggestionsResponse>
+  generateOnboardingSuggestions(
+    GenerateOnboardingSuggestionsRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$name') + ':generateOnboardingSuggestions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GenerateOnboardingSuggestionsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets details of the specified app.
@@ -913,6 +966,107 @@ class ProjectsLocationsAppsAgentsResource {
       queryParams: queryParams_,
     );
     return Agent.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsAppsAssistantSessionsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAppsAssistantSessionsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Cancels the assistant session's in-flight turn, if any: the explicit user
+  /// stop for a turn running detached from any stream.
+  ///
+  /// A cancel landing on a task that does not host the turn preempts it through
+  /// the session turn epoch instead, ending it within one lease renewal.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The assistant session whose in-flight turn to cancel.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/apps/\[^/\]+/assistantSessions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CancelAssistantTurnResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CancelAssistantTurnResponse> cancelAssistantTurn(
+    CancelAssistantTurnRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancelAssistantTurn';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return CancelAssistantTurnResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Runs Arc, the AI assistant, for the specified assistant session in a
+  /// streaming fashion.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The assistant session to be used to run the assistant.
+  /// Format:
+  /// `projects/{project}/locations/{location}/apps/{app}/assistantSessions/{assistant_session}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/apps/\[^/\]+/assistantSessions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [StreamChatAiAssistantResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<StreamChatAiAssistantResponse> streamChatAiAssistant(
+    StreamChatAiAssistantRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$name') + ':streamChatAiAssistant';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return StreamChatAiAssistantResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -5278,6 +5432,343 @@ class AppVersion {
   }
 }
 
+/// A streamed fragment of a document artifact (e.g. a markdown TDD) that the
+/// assistant is generating.
+///
+/// Content deltas stream while the document is being written so clients can
+/// render a live preview; the FINALIZED chunk carries the GCS URI once the file
+/// has been persisted.
+class ArtifactChunk {
+  /// Identifier of the artifact, stable across all chunks of one artifact
+  /// within the stream.
+  core.String? artifactId;
+
+  /// Incremental artifact content.
+  ///
+  /// Set on DELTA chunks.
+  core.String? contentDelta;
+
+  /// The file name shown to the user, e.g. "hotel_booking_tdd.md".
+  ///
+  /// Set on STARTED (and repeated on FINALIZED).
+  core.String? displayName;
+
+  /// The GCS object the artifact was persisted to.
+  ///
+  /// Set on FINALIZED chunks.
+  core.String? gcsUri;
+
+  /// The IANA media type of the artifact content, e.g. "text/markdown".
+  core.String? mimeType;
+
+  /// Lifecycle position of this chunk.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Unused default.
+  /// - "STARTED" : The assistant started generating the artifact.
+  /// - "DELTA" : A content increment; content_delta is set.
+  /// - "FINALIZED" : The artifact was persisted; gcs_uri is set.
+  /// - "FAILED" : Generation or persistence failed; the artifact was not saved.
+  /// - "CLOSED" : The document finished streaming: its content was fully
+  /// delivered via content_delta chunks. Persistence may still follow; a
+  /// FINALIZED chunk with a gcs_uri is sent if and when the artifact is saved.
+  core.String? state;
+
+  ArtifactChunk({
+    this.artifactId,
+    this.contentDelta,
+    this.displayName,
+    this.gcsUri,
+    this.mimeType,
+    this.state,
+  });
+
+  ArtifactChunk.fromJson(core.Map json_)
+    : this(
+        artifactId: json_['artifactId'] as core.String?,
+        contentDelta: json_['contentDelta'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        gcsUri: json_['gcsUri'] as core.String?,
+        mimeType: json_['mimeType'] as core.String?,
+        state: json_['state'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final artifactId = this.artifactId;
+    final contentDelta = this.contentDelta;
+    final displayName = this.displayName;
+    final gcsUri = this.gcsUri;
+    final mimeType = this.mimeType;
+    final state = this.state;
+    return {
+      'artifactId': ?artifactId,
+      'contentDelta': ?contentDelta,
+      'displayName': ?displayName,
+      'gcsUri': ?gcsUri,
+      'mimeType': ?mimeType,
+      'state': ?state,
+    };
+  }
+}
+
+/// A blocking question or confirmation the assistant needs answered before an
+/// agent action can proceed.
+///
+/// The requesting agent is paused and resumes only when the answer arrives on a
+/// later StreamChatAiAssistantRequest.confirmation_response.
+class AssistantConfirmationRequest {
+  /// Display label of the agent that raised the confirmation (e.g. `"Contract
+  /// Architect"`), for the card header.
+  core.String? agentName;
+
+  /// Identifier correlating this request with its response.
+  ///
+  /// Opaque to clients; must be echoed verbatim on the answering request.
+  core.String? confirmationId;
+
+  /// Context describing what is being confirmed (e.g. the action the agent
+  /// wants to take, or the question it needs answered).
+  ///
+  /// Rendered as plain text, not Markdown.
+  core.String? context;
+
+  /// Time after which this confirmation can no longer be answered.
+  ///
+  /// An expired card renders as inactive, and the server declines the
+  /// confirmation on the next turn so the paused agent does not wait
+  /// indefinitely.
+  core.String? expireTime;
+
+  /// Label for the declining action of a binary confirmation (e.g. "Not yet").
+  ///
+  /// Unset when `questions` is populated.
+  core.String? negativeLabel;
+
+  /// Label for the approving action of a binary confirmation (e.g. "Publish").
+  ///
+  /// Unset when `questions` is populated.
+  core.String? positiveLabel;
+
+  /// Multi-choice form of the confirmation.
+  ///
+  /// When populated, the card renders a selectable option list and the chosen
+  /// option's submit_text (or free-form user text) is returned as
+  /// AssistantConfirmationResponse.answer_text.
+  core.List<OptionQuestionsChunkQuestion>? questions;
+
+  /// Name of the tool call the agent paused on (e.g. "update_app"), for the
+  /// card header.
+  ///
+  /// Unset for pure questions.
+  core.String? tool;
+
+  AssistantConfirmationRequest({
+    this.agentName,
+    this.confirmationId,
+    this.context,
+    this.expireTime,
+    this.negativeLabel,
+    this.positiveLabel,
+    this.questions,
+    this.tool,
+  });
+
+  AssistantConfirmationRequest.fromJson(core.Map json_)
+    : this(
+        agentName: json_['agentName'] as core.String?,
+        confirmationId: json_['confirmationId'] as core.String?,
+        context: json_['context'] as core.String?,
+        expireTime: json_['expireTime'] as core.String?,
+        negativeLabel: json_['negativeLabel'] as core.String?,
+        positiveLabel: json_['positiveLabel'] as core.String?,
+        questions: (json_['questions'] as core.List?)
+            ?.map(
+              (value) => OptionQuestionsChunkQuestion.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        tool: json_['tool'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final agentName = this.agentName;
+    final confirmationId = this.confirmationId;
+    final context = this.context;
+    final expireTime = this.expireTime;
+    final negativeLabel = this.negativeLabel;
+    final positiveLabel = this.positiveLabel;
+    final questions = this.questions;
+    final tool = this.tool;
+    return {
+      'agentName': ?agentName,
+      'confirmationId': ?confirmationId,
+      'context': ?context,
+      'expireTime': ?expireTime,
+      'negativeLabel': ?negativeLabel,
+      'positiveLabel': ?positiveLabel,
+      'questions': ?questions,
+      'tool': ?tool,
+    };
+  }
+}
+
+/// The user's answer to an AssistantConfirmationRequest, sent on the next
+/// SessionService.StreamChatAiAssistant call to resume the paused agent.
+class AssistantConfirmationResponse {
+  /// The chosen option's submit_text, or free-form user text.
+  ///
+  /// The paused action is cancelled and the text is handed to the agent to act
+  /// on.
+  core.String? answerText;
+
+  /// The AssistantConfirmationRequest.confirmation_id being answered.
+  core.String? confirmationId;
+
+  /// Binary answer: true approves the paused action, false declines it.
+  core.bool? confirmed;
+
+  AssistantConfirmationResponse({
+    this.answerText,
+    this.confirmationId,
+    this.confirmed,
+  });
+
+  AssistantConfirmationResponse.fromJson(core.Map json_)
+    : this(
+        answerText: json_['answerText'] as core.String?,
+        confirmationId: json_['confirmationId'] as core.String?,
+        confirmed: json_['confirmed'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final answerText = this.answerText;
+    final confirmationId = this.confirmationId;
+    final confirmed = this.confirmed;
+    return {
+      'answerText': ?answerText,
+      'confirmationId': ?confirmationId,
+      'confirmed': ?confirmed,
+    };
+  }
+}
+
+/// A single personalized onboarding suggestion chip for Arc's zero state.
+class AssistantSuggestion {
+  /// Rule-table candidate type in kebab-case (e.g. "resume-pending-review"),
+  /// for metrics.
+  core.String? candidateType;
+
+  /// Icon hint for the chip.
+  /// Possible string values are:
+  /// - "ICON_UNSPECIFIED" : Unspecified icon.
+  /// - "RESUME" : Resume a previous session.
+  /// - "BUILD" : Build something new.
+  /// - "EVALUATE" : Evaluation-related suggestion.
+  /// - "DEPLOY" : Deployment-related suggestion.
+  /// - "EXPLORE" : Exploration / discovery suggestion.
+  /// - "FIX" : Fix an error or failing state.
+  core.String? icon;
+
+  /// Chip label shown to the user (at most 60 characters).
+  core.String? label;
+
+  /// Open an existing assistant session.
+  AssistantSuggestionLoadSession? loadSession;
+
+  /// Optional short explanation of why this suggestion is shown (tooltip /
+  /// rationale popover).
+  core.String? rationale;
+
+  /// Prefill the composer with this text; the user reviews and sends.
+  core.String? seedPrompt;
+
+  /// Prefill the composer with this text and submit immediately.
+  ///
+  /// Only used for quick-reply chips inside an active onboarding conversation.
+  core.String? sendMessage;
+
+  /// How this suggestion was produced.
+  /// Possible string values are:
+  /// - "SOURCE_UNSPECIFIED" : Unspecified source.
+  /// - "RULE" : Deterministic rule-table candidate with template phrasing.
+  /// - "LLM_RANKED" : Rule-table candidate re-ranked and phrased by the LLM
+  /// phrasing step.
+  core.String? source;
+
+  /// Stable identifier for this suggestion, round-tripped by clients in
+  /// interaction logging.
+  core.String? suggestionId;
+
+  AssistantSuggestion({
+    this.candidateType,
+    this.icon,
+    this.label,
+    this.loadSession,
+    this.rationale,
+    this.seedPrompt,
+    this.sendMessage,
+    this.source,
+    this.suggestionId,
+  });
+
+  AssistantSuggestion.fromJson(core.Map json_)
+    : this(
+        candidateType: json_['candidateType'] as core.String?,
+        icon: json_['icon'] as core.String?,
+        label: json_['label'] as core.String?,
+        loadSession: json_.containsKey('loadSession')
+            ? AssistantSuggestionLoadSession.fromJson(
+                json_['loadSession'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        rationale: json_['rationale'] as core.String?,
+        seedPrompt: json_['seedPrompt'] as core.String?,
+        sendMessage: json_['sendMessage'] as core.String?,
+        source: json_['source'] as core.String?,
+        suggestionId: json_['suggestionId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final candidateType = this.candidateType;
+    final icon = this.icon;
+    final label = this.label;
+    final loadSession = this.loadSession;
+    final rationale = this.rationale;
+    final seedPrompt = this.seedPrompt;
+    final sendMessage = this.sendMessage;
+    final source = this.source;
+    final suggestionId = this.suggestionId;
+    return {
+      'candidateType': ?candidateType,
+      'icon': ?icon,
+      'label': ?label,
+      'loadSession': ?loadSession,
+      'rationale': ?rationale,
+      'seedPrompt': ?seedPrompt,
+      'sendMessage': ?sendMessage,
+      'source': ?source,
+      'suggestionId': ?suggestionId,
+    };
+  }
+}
+
+/// Parameters for the load_session action.
+class AssistantSuggestionLoadSession {
+  /// Identifier of the assistant session to open (the final segment of the
+  /// AssistantSession resource name).
+  core.String? assistantSessionId;
+
+  AssistantSuggestionLoadSession({this.assistantSessionId});
+
+  AssistantSuggestionLoadSession.fromJson(core.Map json_)
+    : this(assistantSessionId: json_['assistantSessionId'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final assistantSessionId = this.assistantSessionId;
+    return {'assistantSessionId': ?assistantSessionId};
+  }
+}
+
 /// Configuration for how the input and output audio should be processed and
 /// delivered.
 class AudioProcessingConfig {
@@ -5598,6 +6089,43 @@ class Callback {
       'proactiveExecutionEnabled': ?proactiveExecutionEnabled,
       'pythonCode': ?pythonCode,
     };
+  }
+}
+
+/// Request to cancel an assistant session's in-flight turn.
+class CancelAssistantTurnRequest {
+  /// The turn to cancel; empty cancels whichever turn is running.
+  ///
+  /// A cancel naming a turn that is no longer the running one is a no-op.
+  ///
+  /// Optional.
+  core.String? turnId;
+
+  CancelAssistantTurnRequest({this.turnId});
+
+  CancelAssistantTurnRequest.fromJson(core.Map json_)
+    : this(turnId: json_['turnId'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final turnId = this.turnId;
+    return {'turnId': ?turnId};
+  }
+}
+
+/// Response for CancelAssistantTurn.
+class CancelAssistantTurnResponse {
+  /// Whether an in-flight turn was found and asked to stop (directly on this
+  /// task, or through an epoch preemption for a turn hosted elsewhere).
+  core.bool? cancelled;
+
+  CancelAssistantTurnResponse({this.cancelled});
+
+  CancelAssistantTurnResponse.fromJson(core.Map json_)
+    : this(cancelled: json_['cancelled'] as core.bool?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final cancelled = this.cancelled;
+    return {'cancelled': ?cancelled};
   }
 }
 
@@ -7009,6 +7537,20 @@ class CustomVoiceSample {
   /// Optional.
   core.String? voiceInstruction;
 
+  /// Instruction mode for the voice sample.
+  ///
+  /// If unspecified, defaults to NO_INSTRUCTION.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "VOICE_INSTRUCTION_MODE_UNSPECIFIED" : Unspecified instruction mode.
+  /// Defaults to NO_INSTRUCTION.
+  /// - "NO_INSTRUCTION" : No voice instruction will be used.
+  /// - "GENERATE_INSTRUCTION" : Voice instruction will be automatically
+  /// generated by AI from the audio sample.
+  /// - "CUSTOM_INSTRUCTION" : Custom voice instruction provided by the user.
+  core.String? voiceInstructionMode;
+
   /// The Cloud Storage URI to the audio sample for voice cloning.
   ///
   /// The audio sample should be a mono-channel, 24kHz WAV file.
@@ -7016,13 +7558,21 @@ class CustomVoiceSample {
   /// Optional.
   core.String? voiceSampleGcsUri;
 
+  /// Warning messages encountered during voice clone processing (e.g. low audio
+  /// level).
+  ///
+  /// Output only.
+  core.List<CustomVoiceSampleWarning>? warnings;
+
   CustomVoiceSample({
     this.consentAudioGcsUri,
     this.name,
     this.previewAudioContent,
     this.previewText,
     this.voiceInstruction,
+    this.voiceInstructionMode,
     this.voiceSampleGcsUri,
+    this.warnings,
   });
 
   CustomVoiceSample.fromJson(core.Map json_)
@@ -7032,7 +7582,15 @@ class CustomVoiceSample {
         previewAudioContent: json_['previewAudioContent'] as core.String?,
         previewText: json_['previewText'] as core.String?,
         voiceInstruction: json_['voiceInstruction'] as core.String?,
+        voiceInstructionMode: json_['voiceInstructionMode'] as core.String?,
         voiceSampleGcsUri: json_['voiceSampleGcsUri'] as core.String?,
+        warnings: (json_['warnings'] as core.List?)
+            ?.map(
+              (value) => CustomVoiceSampleWarning.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -7041,15 +7599,50 @@ class CustomVoiceSample {
     final previewAudioContent = this.previewAudioContent;
     final previewText = this.previewText;
     final voiceInstruction = this.voiceInstruction;
+    final voiceInstructionMode = this.voiceInstructionMode;
     final voiceSampleGcsUri = this.voiceSampleGcsUri;
+    final warnings = this.warnings;
     return {
       'consentAudioGcsUri': ?consentAudioGcsUri,
       'name': ?name,
       'previewAudioContent': ?previewAudioContent,
       'previewText': ?previewText,
       'voiceInstruction': ?voiceInstruction,
+      'voiceInstructionMode': ?voiceInstructionMode,
       'voiceSampleGcsUri': ?voiceSampleGcsUri,
+      'warnings': ?warnings,
     };
+  }
+}
+
+/// A warning message encountered during voice sample processing.
+class CustomVoiceSampleWarning {
+  /// A human-readable description of the warning.
+  ///
+  /// Output only.
+  core.String? message;
+
+  /// The type of the warning.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "WARNING_TYPE_UNSPECIFIED" : Unspecified warning type.
+  /// - "LOW_AUDIO_LEVEL" : The audio level of the voice sample is too low (e.g.
+  /// low RMS amplitude).
+  core.String? type;
+
+  CustomVoiceSampleWarning({this.message, this.type});
+
+  CustomVoiceSampleWarning.fromJson(core.Map json_)
+    : this(
+        message: json_['message'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final message = this.message;
+    final type = this.type;
+    return {'message': ?message, 'type': ?type};
   }
 }
 
@@ -9311,6 +9904,77 @@ class GenerateChatTokenResponse {
   }
 }
 
+/// Request message for SessionService.GenerateOnboardingSuggestions.
+class GenerateOnboardingSuggestionsRequest {
+  /// Maximum number of suggestions to return.
+  ///
+  /// Defaults to 4 when unset.
+  ///
+  /// Optional.
+  core.int? maxSuggestions;
+
+  GenerateOnboardingSuggestionsRequest({this.maxSuggestions});
+
+  GenerateOnboardingSuggestionsRequest.fromJson(core.Map json_)
+    : this(maxSuggestions: json_['maxSuggestions'] as core.int?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final maxSuggestions = this.maxSuggestions;
+    return {'maxSuggestions': ?maxSuggestions};
+  }
+}
+
+/// Response message for SessionService.GenerateOnboardingSuggestions.
+class GenerateOnboardingSuggestionsResponse {
+  /// Opaque token capturing the onboarding snapshot used to generate these
+  /// suggestions.
+  ///
+  /// Clients echo it on the first StreamChatAiAssistantRequest so the server
+  /// can reuse the snapshot.
+  core.String? contextToken;
+
+  /// Personalized suggestions, ranked most relevant first.
+  core.List<AssistantSuggestion>? suggestions;
+
+  /// Classification of the requesting user's history.
+  /// Possible string values are:
+  /// - "USER_PROFILE_UNSPECIFIED" : Unspecified profile.
+  /// - "NEW" : No assistant sessions containing messages.
+  /// - "EXPLORING" : One or two assistant sessions containing messages.
+  /// - "RETURNING" : More than two assistant sessions containing messages.
+  core.String? userProfile;
+
+  GenerateOnboardingSuggestionsResponse({
+    this.contextToken,
+    this.suggestions,
+    this.userProfile,
+  });
+
+  GenerateOnboardingSuggestionsResponse.fromJson(core.Map json_)
+    : this(
+        contextToken: json_['contextToken'] as core.String?,
+        suggestions: (json_['suggestions'] as core.List?)
+            ?.map(
+              (value) => AssistantSuggestion.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        userProfile: json_['userProfile'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final contextToken = this.contextToken;
+    final suggestions = this.suggestions;
+    final userProfile = this.userProfile;
+    return {
+      'contextToken': ?contextToken,
+      'suggestions': ?suggestions,
+      'userProfile': ?userProfile,
+    };
+  }
+}
+
 /// Search suggestions from Google Search Tool.
 class GoogleSearchSuggestions {
   /// Compliant HTML and CSS styling for search suggestions.
@@ -9782,7 +10446,21 @@ class GuardrailContentFilter {
   /// in the text is surrounded by word delimiters. Banned phrases can also
   /// contain word delimiters.
   /// - "REGEXP_MATCH" : Content is matched using regular expression syntax.
+  /// - "SENSITIVE_WORDS" : Content is matched against a system-managed list of
+  /// sensitive words and phrases. Attaching a guardrail with this match type to
+  /// an app or agent replaces the default sensitive words filter for the
+  /// affected agents; disable the guardrail to opt out of the default filter.
   core.String? matchType;
+
+  /// Entries of the sensitive words list that this guardrail allows.
+  ///
+  /// Only valid when match_type is SENSITIVE_WORDS. Each value must equal a
+  /// list entry (case-insensitive, surrounding whitespace ignored); other
+  /// values have no effect. Applies to this guardrail only. At most 1000
+  /// entries of up to 256 characters each.
+  ///
+  /// Optional.
+  core.List<core.String>? sensitiveWordsExemptions;
 
   GuardrailContentFilter({
     this.bannedContents,
@@ -9790,6 +10468,7 @@ class GuardrailContentFilter {
     this.bannedContentsInUserInput,
     this.disregardDiacritics,
     this.matchType,
+    this.sensitiveWordsExemptions,
   });
 
   GuardrailContentFilter.fromJson(core.Map json_)
@@ -9807,6 +10486,10 @@ class GuardrailContentFilter {
                 .toList(),
         disregardDiacritics: json_['disregardDiacritics'] as core.bool?,
         matchType: json_['matchType'] as core.String?,
+        sensitiveWordsExemptions:
+            (json_['sensitiveWordsExemptions'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -9815,12 +10498,14 @@ class GuardrailContentFilter {
     final bannedContentsInUserInput = this.bannedContentsInUserInput;
     final disregardDiacritics = this.disregardDiacritics;
     final matchType = this.matchType;
+    final sensitiveWordsExemptions = this.sensitiveWordsExemptions;
     return {
       'bannedContents': ?bannedContents,
       'bannedContentsInAgentResponse': ?bannedContentsInAgentResponse,
       'bannedContentsInUserInput': ?bannedContentsInUserInput,
       'disregardDiacritics': ?disregardDiacritics,
       'matchType': ?matchType,
+      'sensitiveWordsExemptions': ?sensitiveWordsExemptions,
     };
   }
 }
@@ -9874,6 +10559,10 @@ class GuardrailLlmPolicy {
   core.String? policyScope;
 
   /// Policy prompt.
+  ///
+  /// Supports session variable placeholders (`{var}`) as well as
+  /// `{agent_system_instruction}` to inject the agent's resolved system
+  /// instructions.
   ///
   /// Required.
   core.String? prompt;
@@ -10102,6 +10791,7 @@ class GuardrailSupervisor {
   /// - "MISSING_TOOL_CALL" : Missing tool call issue type.
   /// - "CUSTOM" : Custom issue type.
   /// - "CHOPPY_AUDIO" : Choppy audio issue type.
+  /// - "PROFANITY" : Agent profanity issue type.
   core.String? type;
 
   GuardrailSupervisor({this.detectionMode, this.type});
@@ -10383,7 +11073,7 @@ class LanguageSettings {
 
   /// Enables multilingual support.
   ///
-  /// If true, agents in the app will use pre-built instructions to improve
+  /// If `true`, agents in the app will use pre-built instructions to improve
   /// handling of multilingual input.
   ///
   /// Optional.
@@ -12851,6 +13541,18 @@ class LoggingSettings {
   /// Optional.
   RedactionConfig? redactionConfig;
 
+  /// Whether the app has to say what may be recorded before anything is kept.
+  ///
+  /// When true, a session starts with recording off and stays off until the
+  /// client sends SessionInput.recording_control, which then decides every turn
+  /// from that point on. This covers audio recording as well as conversation
+  /// history, BigQuery export and Cloud Logging. When `false`, the default, the
+  /// settings above decide on their own and the client does not have to send
+  /// anything.
+  ///
+  /// Optional.
+  core.bool? requiredRecordingConsent;
+
   /// Configures an additional recording of unredacted audio.
   ///
   /// This can be used to maintain a raw audio copy when audio redaction is
@@ -12875,6 +13577,7 @@ class LoggingSettings {
     this.evaluationAudioRecordingConfig,
     this.metricAnalysisSettings,
     this.redactionConfig,
+    this.requiredRecordingConsent,
     this.unredactedAudioRecordingConfig,
     this.unredactedBigqueryExportSettings,
   });
@@ -12924,6 +13627,8 @@ class LoggingSettings {
                 json_['redactionConfig'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        requiredRecordingConsent:
+            json_['requiredRecordingConsent'] as core.bool?,
         unredactedAudioRecordingConfig:
             json_.containsKey('unredactedAudioRecordingConfig')
             ? AudioRecordingConfig.fromJson(
@@ -12948,6 +13653,7 @@ class LoggingSettings {
     final evaluationAudioRecordingConfig = this.evaluationAudioRecordingConfig;
     final metricAnalysisSettings = this.metricAnalysisSettings;
     final redactionConfig = this.redactionConfig;
+    final requiredRecordingConsent = this.requiredRecordingConsent;
     final unredactedAudioRecordingConfig = this.unredactedAudioRecordingConfig;
     final unredactedBigqueryExportSettings =
         this.unredactedBigqueryExportSettings;
@@ -12959,6 +13665,7 @@ class LoggingSettings {
       'evaluationAudioRecordingConfig': ?evaluationAudioRecordingConfig,
       'metricAnalysisSettings': ?metricAnalysisSettings,
       'redactionConfig': ?redactionConfig,
+      'requiredRecordingConsent': ?requiredRecordingConsent,
       'unredactedAudioRecordingConfig': ?unredactedAudioRecordingConfig,
       'unredactedBigqueryExportSettings': ?unredactedBigqueryExportSettings,
     };
@@ -13574,18 +14281,35 @@ class ModelSettings {
   /// Optional.
   core.double? temperature;
 
-  ModelSettings({this.model, this.temperature});
+  /// The thinking level of the model.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "THINKING_LEVEL_UNSPECIFIED" : Thinking level is unspecified.
+  /// - "DEFAULT" : Default thinking level.
+  /// - "LOW" : Low thinking level.
+  /// - "MEDIUM" : Medium thinking level.
+  /// - "HIGH" : High thinking level.
+  core.String? thinkingLevel;
+
+  ModelSettings({this.model, this.temperature, this.thinkingLevel});
 
   ModelSettings.fromJson(core.Map json_)
     : this(
         model: json_['model'] as core.String?,
         temperature: (json_['temperature'] as core.num?)?.toDouble(),
+        thinkingLevel: json_['thinkingLevel'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final model = this.model;
     final temperature = this.temperature;
-    return {'model': ?model, 'temperature': ?temperature};
+    final thinkingLevel = this.thinkingLevel;
+    return {
+      'model': ?model,
+      'temperature': ?temperature,
+      'thinkingLevel': ?thinkingLevel,
+    };
   }
 }
 
@@ -13947,6 +14671,173 @@ class Operation {
   }
 }
 
+/// Event sent by the client or background worker to resume an assistant session
+/// after an asynchronous Long-Running Operation (LRO) completes.
+class OperationCompletedEvent {
+  /// Optional deduplication token (e.g. UUID) to prevent duplicate turn
+  /// execution from concurrent browser tabs.
+  core.String? deduplicationToken;
+
+  /// Optional canonical error status if the operation failed.
+  Status? error;
+
+  /// Optional structured result metadata (e.g. pass_rate, total_examples,
+  /// export_uri).
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? metadata;
+
+  /// The operation resource name (e.g. `operations/{op}`).
+  core.String? operationName;
+
+  /// The operation type or tool name (e.g. "run_evaluation", "copy_app",
+  /// "export_app").
+  core.String? operationType;
+
+  /// Status of the operation run (e.g. "SUCCEEDED", "FAILED", "CANCELLED").
+  core.String? status;
+
+  /// The primary resource targeted or produced by the operation (e.g.
+  /// evaluation run ID, app ID, dataset ID).
+  core.String? targetResourceName;
+
+  OperationCompletedEvent({
+    this.deduplicationToken,
+    this.error,
+    this.metadata,
+    this.operationName,
+    this.operationType,
+    this.status,
+    this.targetResourceName,
+  });
+
+  OperationCompletedEvent.fromJson(core.Map json_)
+    : this(
+        deduplicationToken: json_['deduplicationToken'] as core.String?,
+        error: json_.containsKey('error')
+            ? Status.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
+        operationName: json_['operationName'] as core.String?,
+        operationType: json_['operationType'] as core.String?,
+        status: json_['status'] as core.String?,
+        targetResourceName: json_['targetResourceName'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final deduplicationToken = this.deduplicationToken;
+    final error = this.error;
+    final metadata = this.metadata;
+    final operationName = this.operationName;
+    final operationType = this.operationType;
+    final status = this.status;
+    final targetResourceName = this.targetResourceName;
+    return {
+      'deduplicationToken': ?deduplicationToken,
+      'error': ?error,
+      'metadata': ?metadata,
+      'operationName': ?operationName,
+      'operationType': ?operationType,
+      'status': ?status,
+      'targetResourceName': ?targetResourceName,
+    };
+  }
+}
+
+/// Structured clarification options the assistant asks the user to choose
+/// among, transduced server-side out of the model's turn (the option block is
+/// stripped from the streamed and persisted text).
+///
+/// The console renders a keyboard-navigable option list docked above the
+/// composer.
+class OptionQuestionsChunk {
+  /// The questions asked this turn.
+  ///
+  /// More than one entry drives the console's "1 of N" pager.
+  core.List<OptionQuestionsChunkQuestion>? questions;
+
+  OptionQuestionsChunk({this.questions});
+
+  OptionQuestionsChunk.fromJson(core.Map json_)
+    : this(
+        questions: (json_['questions'] as core.List?)
+            ?.map(
+              (value) => OptionQuestionsChunkQuestion.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final questions = this.questions;
+    return {'questions': ?questions};
+  }
+}
+
+/// A single selectable option.
+class OptionQuestionsChunkOption {
+  /// Optional trade-off details shown as secondary text.
+  core.String? details;
+
+  /// Optional message text to send when the option is chosen; defaults to
+  /// `title` when empty.
+  core.String? submitText;
+
+  /// Short plain-text option title (no markdown, no numbering).
+  core.String? title;
+
+  OptionQuestionsChunkOption({this.details, this.submitText, this.title});
+
+  OptionQuestionsChunkOption.fromJson(core.Map json_)
+    : this(
+        details: json_['details'] as core.String?,
+        submitText: json_['submitText'] as core.String?,
+        title: json_['title'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final details = this.details;
+    final submitText = this.submitText;
+    final title = this.title;
+    return {'details': ?details, 'submitText': ?submitText, 'title': ?title};
+  }
+}
+
+/// One question with its options.
+class OptionQuestionsChunkQuestion {
+  /// The selectable options, in presentation order.
+  core.List<OptionQuestionsChunkOption>? options;
+
+  /// The question header text.
+  core.String? question;
+
+  OptionQuestionsChunkQuestion({this.options, this.question});
+
+  OptionQuestionsChunkQuestion.fromJson(core.Map json_)
+    : this(
+        options: (json_['options'] as core.List?)
+            ?.map(
+              (value) => OptionQuestionsChunkOption.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        question: json_['question'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final options = this.options;
+    final question = this.question;
+    return {'options': ?options, 'question': ?question};
+  }
+}
+
 /// OutputAudioConfig configures how the CES agent should synthesize outgoing
 /// audio responses.
 class OutputAudioConfig {
@@ -14075,8 +14966,8 @@ class RedactionConfig {
   /// Optional.
   core.String? deidentifyTemplate;
 
-  /// If true, redaction will be applied in various logging scenarios, including
-  /// conversation history, Cloud Logging and audio recording.
+  /// If `true`, redaction will be applied in various logging scenarios,
+  /// including conversation history, Cloud Logging and audio recording.
   ///
   /// Optional.
   core.bool? enableRedaction;
@@ -14845,6 +15736,23 @@ class ServiceDirectoryConfig {
   }
 }
 
+/// Session checkpoint containing inferred user intent for session title and UI.
+class SessionCheckpoint {
+  /// Inferred user goal or topic for the session (e.g. "Building E-Commerce
+  /// Support Agent").
+  core.String? userIntent;
+
+  SessionCheckpoint({this.userIntent});
+
+  SessionCheckpoint.fromJson(core.Map json_)
+    : this(userIntent: json_['userIntent'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final userIntent = this.userIntent;
+    return {'userIntent': ?userIntent};
+  }
+}
+
 /// The configuration for the session.
 class SessionConfig {
   /// The deployment of the app to use for the session.
@@ -14855,11 +15763,16 @@ class SessionConfig {
   /// Optional.
   core.String? deployment;
 
-  /// Whether to enable streaming text outputs from the model.
+  /// Whether to stream text output from the model to the client incrementally
+  /// as it is generated.
   ///
-  /// By default, text outputs from the model are collected before sending to
-  /// the client. NOTE: This is only supported for text (non-voice) sessions via
-  /// StreamRunSession or BidiRunSession.
+  /// Defaults to `false`. * When disabled, the model's text output is buffered,
+  /// and each text output sent to the client is a complete sentence. Clients
+  /// can render each text output on a new line. * When enabled, each text
+  /// output may contain only part of a sentence. Clients should concatenate
+  /// consecutive text outputs to render the complete response. NOTE: This is
+  /// only supported for text (non-voice) sessions using StreamRunSession or
+  /// BidiRunSession.
   ///
   /// Optional.
   core.bool? enableTextStreaming;
@@ -14888,6 +15801,18 @@ class SessionConfig {
   ///
   /// Optional.
   core.List<Message>? historicalContexts;
+
+  /// Whether to include LLM thought summaries in the session outputs.
+  ///
+  /// Optional.
+  core.bool? includeLlmThoughtSummary;
+
+  /// Whether to include intermediate processing update to the client.
+  ///
+  /// If enabled, the update will be sent back in SessionOutput.progress.
+  ///
+  /// Optional.
+  core.bool? includeProgressUpdate;
 
   /// Configuration for processing the input audio.
   ///
@@ -14931,6 +15856,8 @@ class SessionConfig {
     this.entryAgent,
     this.excludeDiagnosticInfo,
     this.historicalContexts,
+    this.includeLlmThoughtSummary,
+    this.includeProgressUpdate,
     this.inputAudioConfig,
     this.outputAudioConfig,
     this.remoteDialogflowQueryParameters,
@@ -14951,6 +15878,9 @@ class SessionConfig {
               ),
             )
             .toList(),
+        includeLlmThoughtSummary:
+            json_['includeLlmThoughtSummary'] as core.bool?,
+        includeProgressUpdate: json_['includeProgressUpdate'] as core.bool?,
         inputAudioConfig: json_.containsKey('inputAudioConfig')
             ? InputAudioConfig.fromJson(
                 json_['inputAudioConfig']
@@ -14980,6 +15910,8 @@ class SessionConfig {
     final entryAgent = this.entryAgent;
     final excludeDiagnosticInfo = this.excludeDiagnosticInfo;
     final historicalContexts = this.historicalContexts;
+    final includeLlmThoughtSummary = this.includeLlmThoughtSummary;
+    final includeProgressUpdate = this.includeProgressUpdate;
     final inputAudioConfig = this.inputAudioConfig;
     final outputAudioConfig = this.outputAudioConfig;
     final remoteDialogflowQueryParameters =
@@ -14992,6 +15924,8 @@ class SessionConfig {
       'entryAgent': ?entryAgent,
       'excludeDiagnosticInfo': ?excludeDiagnosticInfo,
       'historicalContexts': ?historicalContexts,
+      'includeLlmThoughtSummary': ?includeLlmThoughtSummary,
+      'includeProgressUpdate': ?includeProgressUpdate,
       'inputAudioConfig': ?inputAudioConfig,
       'outputAudioConfig': ?outputAudioConfig,
       'remoteDialogflowQueryParameters': ?remoteDialogflowQueryParameters,
@@ -15096,6 +16030,31 @@ class SessionInput {
   /// Optional.
   Image? image;
 
+  /// Whether the conversation may be recorded and logged from here on.
+  ///
+  /// Use this when the app, rather than the agent, decides what may be kept:
+  /// for example when the end user has to consent to being recorded before
+  /// anything about the call can be stored. The value stays in effect until the
+  /// client sends a different one, so it only needs to be sent when the answer
+  /// changes. Whatever is in effect when a turn completes decides that turn,
+  /// both whether its audio reaches the recording bucket and whether its
+  /// transcript reaches conversation history, BigQuery and Cloud Logging. It
+  /// covers the agent's side of the turn as well as the end user's. Turns that
+  /// complete before the client first sends this are recorded according to the
+  /// app's logging settings, as though the field did not exist. If more than
+  /// one input in the same request sets it, the last one wins.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "RECORDING_CONTROL_UNSPECIFIED" : The app is not controlling recording.
+  /// The app's logging settings decide, as they do for every session that never
+  /// sets this field.
+  /// - "RECORDING_ENABLED" : The conversation may be recorded and logged from
+  /// here on.
+  /// - "RECORDING_DISABLED" : The conversation may not be recorded or logged
+  /// from here on.
+  core.String? recordingControl;
+
   /// Text data from the end user.
   ///
   /// Optional.
@@ -15136,6 +16095,7 @@ class SessionInput {
     this.dtmf,
     this.event,
     this.image,
+    this.recordingControl,
     this.text,
     this.toolResponses,
     this.variables,
@@ -15161,6 +16121,7 @@ class SessionInput {
                 json_['image'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        recordingControl: json_['recordingControl'] as core.String?,
         text: json_['text'] as core.String?,
         toolResponses: json_.containsKey('toolResponses')
             ? ToolResponses.fromJson(
@@ -15179,6 +16140,7 @@ class SessionInput {
     final dtmf = this.dtmf;
     final event = this.event;
     final image = this.image;
+    final recordingControl = this.recordingControl;
     final text = this.text;
     final toolResponses = this.toolResponses;
     final variables = this.variables;
@@ -15189,6 +16151,7 @@ class SessionInput {
       'dtmf': ?dtmf,
       'event': ?event,
       'image': ?image,
+      'recordingControl': ?recordingControl,
       'text': ?text,
       'toolResponses': ?toolResponses,
       'variables': ?variables,
@@ -15213,12 +16176,6 @@ class SessionOutput {
   /// Citations that provide the source information for the agent's generated
   /// text.
   Citations? citations;
-
-  /// Context messages for external supervision guardrails.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object?>>? context;
 
   /// Diagnostic information contains execution details during the processing of
   /// the input.
@@ -15265,7 +16222,6 @@ class SessionOutput {
   SessionOutput({
     this.audio,
     this.citations,
-    this.context,
     this.diagnosticInfo,
     this.endSession,
     this.googleSearchSuggestions,
@@ -15286,9 +16242,6 @@ class SessionOutput {
                 json_['citations'] as core.Map<core.String, core.dynamic>,
               )
             : null,
-        context: (json_['context'] as core.List?)
-            ?.map((value) => value as core.Map<core.String, core.dynamic>)
-            .toList(),
         diagnosticInfo: json_.containsKey('diagnosticInfo')
             ? SessionOutputDiagnosticInfo.fromJson(
                 json_['diagnosticInfo'] as core.Map<core.String, core.dynamic>,
@@ -15327,7 +16280,6 @@ class SessionOutput {
   core.Map<core.String, core.dynamic> toJson() {
     final audio = this.audio;
     final citations = this.citations;
-    final context = this.context;
     final diagnosticInfo = this.diagnosticInfo;
     final endSession = this.endSession;
     final googleSearchSuggestions = this.googleSearchSuggestions;
@@ -15341,7 +16293,6 @@ class SessionOutput {
     return {
       'audio': ?audio,
       'citations': ?citations,
-      'context': ?context,
       'diagnosticInfo': ?diagnosticInfo,
       'endSession': ?endSession,
       'googleSearchSuggestions': ?googleSearchSuggestions,
@@ -15480,18 +16431,351 @@ class Span {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status00;
 
-/// Configuration for how the agent response should be synthesized.
-class SynthesizeSpeechConfig {
-  /// Deprecated: Use `custom_voice_samples` in AudioProcessingConfig instead.
-  ///
-  /// The Cloud Storage URI to the consent audio for voice cloning.
+/// Request message for SessionService.StreamChatAiAssistant.
+class StreamChatAiAssistantRequest {
+  /// Optional flag to attach to an existing in-flight turn without submitting a
+  /// new message.
   ///
   /// Optional.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? consentAudioGcsUri;
+  core.bool? attachOnly;
 
+  /// Cloud Storage URIs for files uploaded by the user during this turn.
+  ///
+  /// Example: "gs://cxas-transient-uploads/uuid/prd.pdf"
+  ///
+  /// Optional.
+  core.List<core.String>? attachedGcsUris;
+
+  /// Response features this client can render.
+  ///
+  /// The server only emits events that need a capability (e.g.
+  /// `confirmation_request`) when the capability is declared, so older clients
+  /// never receive events they would silently drop.
+  ///
+  /// Optional.
+  core.List<core.String>? clientCapabilities;
+
+  /// The user's answer to a pending AssistantConfirmationRequest.
+  ///
+  /// When set, the server resumes the paused agent with this answer instead of
+  /// (or in addition to) starting a new prompt turn.
+  ///
+  /// Optional.
+  AssistantConfirmationResponse? confirmationResponse;
+
+  /// Opaque onboarding context token returned by
+  /// SessionService.GenerateOnboardingSuggestions.
+  ///
+  /// When set and still fresh, the server reuses the onboarding snapshot
+  /// computed for the zero state instead of recomputing it for the first
+  /// conversation turn.
+  ///
+  /// Optional.
+  core.String? contextToken;
+
+  /// The message to send to the assistant agent.
+  ///
+  /// May be empty when `confirmation_response` is set (answering a pending
+  /// confirmation without adding a new message); at least one of the two must
+  /// be provided.
+  ///
+  /// Optional.
+  core.String? message;
+
+  /// Resumes an assistant session paused waiting for a client-managed
+  /// long-running operation to complete.
+  ///
+  /// Optional.
+  OperationCompletedEvent? operationCompletedEvent;
+
+  /// Optional cursor to resume and replay events from an in-flight or completed
+  /// turn.
+  ///
+  /// Optional.
+  core.String? resumeFromSequenceNumber;
+
+  StreamChatAiAssistantRequest({
+    this.attachOnly,
+    this.attachedGcsUris,
+    this.clientCapabilities,
+    this.confirmationResponse,
+    this.contextToken,
+    this.message,
+    this.operationCompletedEvent,
+    this.resumeFromSequenceNumber,
+  });
+
+  StreamChatAiAssistantRequest.fromJson(core.Map json_)
+    : this(
+        attachOnly: json_['attachOnly'] as core.bool?,
+        attachedGcsUris: (json_['attachedGcsUris'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        clientCapabilities: (json_['clientCapabilities'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        confirmationResponse: json_.containsKey('confirmationResponse')
+            ? AssistantConfirmationResponse.fromJson(
+                json_['confirmationResponse']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        contextToken: json_['contextToken'] as core.String?,
+        message: json_['message'] as core.String?,
+        operationCompletedEvent: json_.containsKey('operationCompletedEvent')
+            ? OperationCompletedEvent.fromJson(
+                json_['operationCompletedEvent']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        resumeFromSequenceNumber:
+            json_['resumeFromSequenceNumber'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final attachOnly = this.attachOnly;
+    final attachedGcsUris = this.attachedGcsUris;
+    final clientCapabilities = this.clientCapabilities;
+    final confirmationResponse = this.confirmationResponse;
+    final contextToken = this.contextToken;
+    final message = this.message;
+    final operationCompletedEvent = this.operationCompletedEvent;
+    final resumeFromSequenceNumber = this.resumeFromSequenceNumber;
+    return {
+      'attachOnly': ?attachOnly,
+      'attachedGcsUris': ?attachedGcsUris,
+      'clientCapabilities': ?clientCapabilities,
+      'confirmationResponse': ?confirmationResponse,
+      'contextToken': ?contextToken,
+      'message': ?message,
+      'operationCompletedEvent': ?operationCompletedEvent,
+      'resumeFromSequenceNumber': ?resumeFromSequenceNumber,
+    };
+  }
+}
+
+/// Response message for SessionService.StreamChatAiAssistant.
+class StreamChatAiAssistantResponse {
+  /// Generated-document artifact event (live preview deltas + final GCS
+  /// pointer).
+  ArtifactChunk? artifactChunk;
+
+  /// A blocking confirmation the agent paused on.
+  ///
+  /// The agent resumes when the answer arrives on a later request's
+  /// `confirmation_response`. Only sent to clients that declared the
+  /// CONFIRMATION_CARDS capability on the request.
+  AssistantConfirmationRequest? confirmationRequest;
+
+  /// Unique identifier for the event.
+  core.String? eventId;
+
+  /// Timestamp when the event occurred.
+  core.String? eventTime;
+
+  /// Tells the client to silently reconnect with resume_from_sequence_number:
+  /// the task serving this stream is going away and the turn will continue
+  /// elsewhere.
+  ///
+  /// Not an error; the stream completes normally after this event.
+  TurnHandoffEvent? handoff;
+
+  /// Structured clarification options parsed out of the model turn.
+  ///
+  /// The console renders these as a selectable option list instead of raw text.
+  OptionQuestionsChunk? optionQuestionsChunk;
+
+  /// A compacted replay of an in-flight turn, sent as the first event of every
+  /// attach or resume before any live event.
+  ///
+  /// The client replaces any locally rendered state for this turn with the
+  /// snapshot's contents.
+  TurnResumeSnapshot? resumeSnapshot;
+
+  /// Monotonically increasing sequence number for this session turn.
+  ///
+  /// Optional.
+  core.String? sequenceNumber;
+
+  /// Session checkpoint/compaction recap event containing user intent and
+  /// rolling summary.
+  SessionCheckpoint? sessionCheckpoint;
+
+  /// Simple status update.
+  Status? status;
+
+  /// Text Token (for streaming Gemini responses word-by-word).
+  core.String? textChunk;
+
+  /// Thought text chunk (agent's reasoning before generating response).
+  core.String? thoughtChunk;
+
+  /// Tool call execution event.
+  ToolCall? toolCall;
+
+  /// Tool call response event.
+  ToolResponse? toolResponse;
+
+  /// The turn has ended.
+  ///
+  /// Sent as the last event of every turn, on the original stream and on every
+  /// attached or resumed stream, so clients can end the turn on an explicit
+  /// signal instead of inferring it from stream closure.
+  TurnCompletedEvent? turnCompleted;
+
+  /// Indicates whether the turn is still actively running in the background.
+  ///
+  /// Optional.
+  core.bool? turnInProgress;
+
+  /// Turn-level metadata and intent categorization.
+  ///
+  /// Optional.
+  TurnMetadata? turnMetadata;
+
+  /// UI event payload.
+  ///
+  /// Optional.
+  UiEvent? uiEvent;
+
+  StreamChatAiAssistantResponse({
+    this.artifactChunk,
+    this.confirmationRequest,
+    this.eventId,
+    this.eventTime,
+    this.handoff,
+    this.optionQuestionsChunk,
+    this.resumeSnapshot,
+    this.sequenceNumber,
+    this.sessionCheckpoint,
+    this.status,
+    this.textChunk,
+    this.thoughtChunk,
+    this.toolCall,
+    this.toolResponse,
+    this.turnCompleted,
+    this.turnInProgress,
+    this.turnMetadata,
+    this.uiEvent,
+  });
+
+  StreamChatAiAssistantResponse.fromJson(core.Map json_)
+    : this(
+        artifactChunk: json_.containsKey('artifactChunk')
+            ? ArtifactChunk.fromJson(
+                json_['artifactChunk'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        confirmationRequest: json_.containsKey('confirmationRequest')
+            ? AssistantConfirmationRequest.fromJson(
+                json_['confirmationRequest']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        eventId: json_['eventId'] as core.String?,
+        eventTime: json_['eventTime'] as core.String?,
+        handoff: json_.containsKey('handoff')
+            ? TurnHandoffEvent.fromJson(
+                json_['handoff'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        optionQuestionsChunk: json_.containsKey('optionQuestionsChunk')
+            ? OptionQuestionsChunk.fromJson(
+                json_['optionQuestionsChunk']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        resumeSnapshot: json_.containsKey('resumeSnapshot')
+            ? TurnResumeSnapshot.fromJson(
+                json_['resumeSnapshot'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        sequenceNumber: json_['sequenceNumber'] as core.String?,
+        sessionCheckpoint: json_.containsKey('sessionCheckpoint')
+            ? SessionCheckpoint.fromJson(
+                json_['sessionCheckpoint']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        status: json_.containsKey('status')
+            ? Status.fromJson(
+                json_['status'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        textChunk: json_['textChunk'] as core.String?,
+        thoughtChunk: json_['thoughtChunk'] as core.String?,
+        toolCall: json_.containsKey('toolCall')
+            ? ToolCall.fromJson(
+                json_['toolCall'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        toolResponse: json_.containsKey('toolResponse')
+            ? ToolResponse.fromJson(
+                json_['toolResponse'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        turnCompleted: json_.containsKey('turnCompleted')
+            ? TurnCompletedEvent.fromJson(
+                json_['turnCompleted'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        turnInProgress: json_['turnInProgress'] as core.bool?,
+        turnMetadata: json_.containsKey('turnMetadata')
+            ? TurnMetadata.fromJson(
+                json_['turnMetadata'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        uiEvent: json_.containsKey('uiEvent')
+            ? UiEvent.fromJson(
+                json_['uiEvent'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final artifactChunk = this.artifactChunk;
+    final confirmationRequest = this.confirmationRequest;
+    final eventId = this.eventId;
+    final eventTime = this.eventTime;
+    final handoff = this.handoff;
+    final optionQuestionsChunk = this.optionQuestionsChunk;
+    final resumeSnapshot = this.resumeSnapshot;
+    final sequenceNumber = this.sequenceNumber;
+    final sessionCheckpoint = this.sessionCheckpoint;
+    final status = this.status;
+    final textChunk = this.textChunk;
+    final thoughtChunk = this.thoughtChunk;
+    final toolCall = this.toolCall;
+    final toolResponse = this.toolResponse;
+    final turnCompleted = this.turnCompleted;
+    final turnInProgress = this.turnInProgress;
+    final turnMetadata = this.turnMetadata;
+    final uiEvent = this.uiEvent;
+    return {
+      'artifactChunk': ?artifactChunk,
+      'confirmationRequest': ?confirmationRequest,
+      'eventId': ?eventId,
+      'eventTime': ?eventTime,
+      'handoff': ?handoff,
+      'optionQuestionsChunk': ?optionQuestionsChunk,
+      'resumeSnapshot': ?resumeSnapshot,
+      'sequenceNumber': ?sequenceNumber,
+      'sessionCheckpoint': ?sessionCheckpoint,
+      'status': ?status,
+      'textChunk': ?textChunk,
+      'thoughtChunk': ?thoughtChunk,
+      'toolCall': ?toolCall,
+      'toolResponse': ?toolResponse,
+      'turnCompleted': ?turnCompleted,
+      'turnInProgress': ?turnInProgress,
+      'turnMetadata': ?turnMetadata,
+      'uiEvent': ?uiEvent,
+    };
+  }
+}
+
+/// Configuration for how the agent response should be synthesized.
+class SynthesizeSpeechConfig {
   /// The instruction used to synthesize speech when using a generative model.
   ///
   /// Optional.
@@ -15524,52 +16808,31 @@ class SynthesizeSpeechConfig {
   /// Optional.
   core.String? voice;
 
-  /// Deprecated: Use `custom_voice_samples` in AudioProcessingConfig instead.
-  ///
-  /// The Cloud Storage URI to the audio sample for voice cloning. The audio
-  /// sample should be a mono-channel, 24kHz WAV file. Note: Please make sure
-  /// the CES service agent `service-@gcp-sa-ces.iam.gserviceaccount.com` has
-  /// `storage.objects.get` permission to the Cloud Storage object.
-  ///
-  /// Optional.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? voiceSampleGcsUri;
-
   SynthesizeSpeechConfig({
-    this.consentAudioGcsUri,
     this.instruction,
     this.model,
     this.speakingRate,
     this.voice,
-    this.voiceSampleGcsUri,
   });
 
   SynthesizeSpeechConfig.fromJson(core.Map json_)
     : this(
-        consentAudioGcsUri: json_['consentAudioGcsUri'] as core.String?,
         instruction: json_['instruction'] as core.String?,
         model: json_['model'] as core.String?,
         speakingRate: (json_['speakingRate'] as core.num?)?.toDouble(),
         voice: json_['voice'] as core.String?,
-        voiceSampleGcsUri: json_['voiceSampleGcsUri'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
-    final consentAudioGcsUri = this.consentAudioGcsUri;
     final instruction = this.instruction;
     final model = this.model;
     final speakingRate = this.speakingRate;
     final voice = this.voice;
-    final voiceSampleGcsUri = this.voiceSampleGcsUri;
     return {
-      'consentAudioGcsUri': ?consentAudioGcsUri,
       'instruction': ?instruction,
       'model': ?model,
       'speakingRate': ?speakingRate,
       'voice': ?voice,
-      'voiceSampleGcsUri': ?voiceSampleGcsUri,
     };
   }
 }
@@ -15790,6 +17053,13 @@ class Tool {
   /// Optional.
   PythonFunction? pythonFunction;
 
+  /// Indicates whether the tool is read-only.
+  ///
+  /// If true, the tool cannot be modified by the user.
+  ///
+  /// Output only.
+  core.bool? readOnly;
+
   /// The remote agent tool.
   ///
   /// Optional.
@@ -15839,6 +17109,7 @@ class Tool {
     this.name,
     this.openApiTool,
     this.pythonFunction,
+    this.readOnly,
     this.remoteAgentTool,
     this.systemTool,
     this.timeout,
@@ -15901,6 +17172,7 @@ class Tool {
                 json_['pythonFunction'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        readOnly: json_['readOnly'] as core.bool?,
         remoteAgentTool: json_.containsKey('remoteAgentTool')
             ? RemoteAgentTool.fromJson(
                 json_['remoteAgentTool'] as core.Map<core.String, core.dynamic>,
@@ -15941,6 +17213,7 @@ class Tool {
     final name = this.name;
     final openApiTool = this.openApiTool;
     final pythonFunction = this.pythonFunction;
+    final readOnly = this.readOnly;
     final remoteAgentTool = this.remoteAgentTool;
     final systemTool = this.systemTool;
     final timeout = this.timeout;
@@ -15963,6 +17236,7 @@ class Tool {
       'name': ?name,
       'openApiTool': ?openApiTool,
       'pythonFunction': ?pythonFunction,
+      'readOnly': ?readOnly,
       'remoteAgentTool': ?remoteAgentTool,
       'systemTool': ?systemTool,
       'timeout': ?timeout,
@@ -16709,6 +17983,231 @@ class TriggerActionTransferAgent {
   core.Map<core.String, core.dynamic> toJson() {
     final agent = this.agent;
     return {'agent': ?agent};
+  }
+}
+
+/// Terminal event of a turn (see StreamChatAiAssistantResponse.turn_completed).
+class TurnCompletedEvent {
+  /// Sequence number of the last event the turn produced.
+  ///
+  /// A client whose cursor is lower missed content and should reload the
+  /// session to see it.
+  core.String? finalSequenceNumber;
+
+  /// Why the turn ended.
+  /// Possible string values are:
+  /// - "REASON_UNSPECIFIED" : Unspecified.
+  /// - "COMPLETED" : The turn ran to completion; the session holds its
+  /// committed output.
+  /// - "ABANDONED" : No task was driving the turn any more; it was sealed to a
+  /// committed partial and cannot be continued.
+  /// - "RESUME_UNAVAILABLE" : This server does not serve attach or resume for
+  /// the session, so nothing was tailed; the client should reload the session
+  /// instead.
+  core.String? reason;
+
+  /// Identifier of the turn that ended; matches TurnResumeSnapshot.turn_id and
+  /// ActiveTurnInfo.turn_id.
+  core.String? turnId;
+
+  TurnCompletedEvent({this.finalSequenceNumber, this.reason, this.turnId});
+
+  TurnCompletedEvent.fromJson(core.Map json_)
+    : this(
+        finalSequenceNumber: json_['finalSequenceNumber'] as core.String?,
+        reason: json_['reason'] as core.String?,
+        turnId: json_['turnId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final finalSequenceNumber = this.finalSequenceNumber;
+    final reason = this.reason;
+    final turnId = this.turnId;
+    return {
+      'finalSequenceNumber': ?finalSequenceNumber,
+      'reason': ?reason,
+      'turnId': ?turnId,
+    };
+  }
+}
+
+/// Emitted before this task stops serving the stream mid-turn (e.g. a server
+/// restart).
+///
+/// The turn's state is persisted; a reconnect carrying
+/// resume_from_sequence_number continues it on another task.
+class TurnHandoffEvent {
+  /// Why the stream is handing off.
+  /// Possible string values are:
+  /// - "REASON_UNSPECIFIED" : Unspecified.
+  /// - "SERVER_RESTART" : The serving task is shutting down (release push or
+  /// rescheduling).
+  core.String? reason;
+
+  /// Identifies the turn to resume.
+  core.String? turnId;
+
+  TurnHandoffEvent({this.reason, this.turnId});
+
+  TurnHandoffEvent.fromJson(core.Map json_)
+    : this(
+        reason: json_['reason'] as core.String?,
+        turnId: json_['turnId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final reason = this.reason;
+    final turnId = this.turnId;
+    return {'reason': ?reason, 'turnId': ?turnId};
+  }
+}
+
+/// Turn-level metadata and intent categorization.
+class TurnMetadata {
+  /// Set on the terminal event of a contract draft whose every placeholder is
+  /// resolved (contract_progress is 100%), whether or not the draft was
+  /// published.
+  ///
+  /// Clients complete and dismiss the contract progress display on it;
+  /// publication is reported separately by contract_finalized.
+  core.bool? contractDraftComplete;
+
+  /// Set on the final artifact event of a turn whose contract draft was
+  /// published (a revision was activated).
+  ///
+  /// Terminal for the clarification flow of this draft: contract_progress is
+  /// authoritative and complete.
+  core.bool? contractFinalized;
+
+  /// Indicates whether this assistant turn was contract-related (e.g. contract
+  /// drafting, alignment, extraction, or revision).
+  core.bool? contractRelated;
+
+  /// Set only on in-flight progress estimates emitted while a contract artifact
+  /// fence is streaming, and on the revision-turn-start event.
+  ///
+  /// Unset on authoritative payloads.
+  /// Possible string values are:
+  /// - "CONTRACT_STREAMING_PHASE_UNSPECIFIED" : The payload is authoritative
+  /// (computed from a complete contract document, a persisted snapshot, or the
+  /// pre-draft state). Clients must replace any previously received progress
+  /// with it.
+  /// - "DRAFTING" : An initial contract draft is streaming. contract_progress
+  /// is an in-flight estimate: non-decreasing within one artifact fence, capped
+  /// below the authoritative range, with pillar_breakdowns carrying
+  /// total_item_count == 0 to mark estimated pillar states.
+  /// - "REVISING" : A revision of an existing contract is streaming (for
+  /// example after an annotation submission). Same estimate semantics as
+  /// DRAFTING.
+  core.String? contractStreamingPhase;
+
+  TurnMetadata({
+    this.contractDraftComplete,
+    this.contractFinalized,
+    this.contractRelated,
+    this.contractStreamingPhase,
+  });
+
+  TurnMetadata.fromJson(core.Map json_)
+    : this(
+        contractDraftComplete: json_['contractDraftComplete'] as core.bool?,
+        contractFinalized: json_['contractFinalized'] as core.bool?,
+        contractRelated: json_['contractRelated'] as core.bool?,
+        contractStreamingPhase: json_['contractStreamingPhase'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final contractDraftComplete = this.contractDraftComplete;
+    final contractFinalized = this.contractFinalized;
+    final contractRelated = this.contractRelated;
+    final contractStreamingPhase = this.contractStreamingPhase;
+    return {
+      'contractDraftComplete': ?contractDraftComplete,
+      'contractFinalized': ?contractFinalized,
+      'contractRelated': ?contractRelated,
+      'contractStreamingPhase': ?contractStreamingPhase,
+    };
+  }
+}
+
+/// A compacted replay of an in-flight turn: everything needed to render the
+/// turn's visible output so far, plus the position live events continue from.
+class TurnResumeSnapshot {
+  /// Compacted events reconstructing the turn's visible output, in render
+  /// order, using the same event shapes as live streaming.
+  core.List<StreamChatAiAssistantResponse>? events;
+
+  /// When the turn will be wound down if no client remains attached.
+  core.String? orphanDeadlineTime;
+
+  /// The position this snapshot represents.
+  ///
+  /// Live events follow with sequence_number strictly greater than this. When
+  /// lower than the resume_from_sequence_number the client requested, flushed
+  /// progress lags what the client already rendered: the client must discard
+  /// its rendered content of this turn beyond this position before applying the
+  /// snapshot.
+  core.String? resolvedSequenceNumber;
+
+  /// Identifies the turn being attached to.
+  core.String? turnId;
+
+  TurnResumeSnapshot({
+    this.events,
+    this.orphanDeadlineTime,
+    this.resolvedSequenceNumber,
+    this.turnId,
+  });
+
+  TurnResumeSnapshot.fromJson(core.Map json_)
+    : this(
+        events: (json_['events'] as core.List?)
+            ?.map(
+              (value) => StreamChatAiAssistantResponse.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        orphanDeadlineTime: json_['orphanDeadlineTime'] as core.String?,
+        resolvedSequenceNumber: json_['resolvedSequenceNumber'] as core.String?,
+        turnId: json_['turnId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final events = this.events;
+    final orphanDeadlineTime = this.orphanDeadlineTime;
+    final resolvedSequenceNumber = this.resolvedSequenceNumber;
+    final turnId = this.turnId;
+    return {
+      'events': ?events,
+      'orphanDeadlineTime': ?orphanDeadlineTime,
+      'resolvedSequenceNumber': ?resolvedSequenceNumber,
+      'turnId': ?turnId,
+    };
+  }
+}
+
+/// Represents a UI event payload.
+class UiEvent {
+  /// The JSON payload representing the A2UI surface.
+  core.String? jsonPayload;
+
+  /// The media type (MIME type) indicating the format of the UI event payload
+  /// (e.g., "application/json+a2ui").
+  core.String? mimeType;
+
+  UiEvent({this.jsonPayload, this.mimeType});
+
+  UiEvent.fromJson(core.Map json_)
+    : this(
+        jsonPayload: json_['jsonPayload'] as core.String?,
+        mimeType: json_['mimeType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final jsonPayload = this.jsonPayload;
+    final mimeType = this.mimeType;
+    return {'jsonPayload': ?jsonPayload, 'mimeType': ?mimeType};
   }
 }
 

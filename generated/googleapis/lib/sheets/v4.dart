@@ -212,6 +212,22 @@ class SpreadsheetsResource {
   ///
   /// [spreadsheetId] - The spreadsheet to request.
   ///
+  /// [commentsViewMode] - The comments view mode to apply to the spreadsheet.
+  /// This allows viewing the spreadsheet with comments omitted or included. If
+  /// one is not specified, COMMENTS_VIEW_MODE_OMITTED is used.
+  /// Possible string values are:
+  /// - "COMMENTS_VIEW_MODE_UNSPECIFIED" : The CommentsViewMode is unspecified;
+  /// COMMENTS_VIEW_MODE_OMITTED is applied.
+  /// - "COMMENTS_VIEW_MODE_DEFAULT_FOR_CURRENT_ACCESS" : The CommentsViewMode
+  /// applied to the returned spreadsheet depends on the user's current access
+  /// level. If the user only has view access, COMMENTS_VIEW_MODE_OMITTED is
+  /// applied. Otherwise, COMMENTS_VIEW_MODE_INCLUDED is applied.
+  /// - "COMMENTS_VIEW_MODE_OMITTED" : The returned spreadsheet has comments
+  /// omitted.
+  /// - "COMMENTS_VIEW_MODE_INCLUDED" : The returned spreadsheet has comments
+  /// included. Requests to retrieve a spreadsheet using this mode will return a
+  /// 403 error if the user does not have permission to view comments.
+  ///
   /// [excludeTablesInBandedRanges] - True if tables should be excluded in the
   /// banded ranges. False if not set.
   ///
@@ -232,12 +248,14 @@ class SpreadsheetsResource {
   /// this method will complete with the same error.
   async.Future<Spreadsheet> get(
     core.String spreadsheetId, {
+    core.String? commentsViewMode,
     core.bool? excludeTablesInBandedRanges,
     core.bool? includeGridData,
     core.List<core.String>? ranges,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      'commentsViewMode': ?commentsViewMode == null ? null : [commentsViewMode],
       'excludeTablesInBandedRanges': ?excludeTablesInBandedRanges == null
           ? null
           : ['${excludeTablesInBandedRanges}'],
@@ -1342,6 +1360,55 @@ class AddChartResponse {
   core.Map<core.String, core.dynamic> toJson() {
     final chart = this.chart;
     return {'chart': ?chart};
+  }
+}
+
+/// Inserts a reply Post into a CommentThread.
+class AddCommentReplyRequest {
+  /// The ID of the CommentThread to add the reply to.
+  core.String? commentId;
+
+  /// The Post representing the reply.
+  Post? post;
+
+  AddCommentReplyRequest({this.commentId, this.post});
+
+  AddCommentReplyRequest.fromJson(core.Map json_)
+    : this(
+        commentId: json_['commentId'] as core.String?,
+        post: json_.containsKey('post')
+            ? Post.fromJson(
+                json_['post'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final commentId = this.commentId;
+    final post = this.post;
+    return {'commentId': ?commentId, 'post': ?post};
+  }
+}
+
+/// The result of creating a reply.
+class AddCommentReplyResponse {
+  /// The newly-inserted reply Post.
+  Post? post;
+
+  AddCommentReplyResponse({this.post});
+
+  AddCommentReplyResponse.fromJson(core.Map json_)
+    : this(
+        post: json_.containsKey('post')
+            ? Post.fromJson(
+                json_['post'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final post = this.post;
+    return {'post': ?post};
   }
 }
 
@@ -2718,7 +2785,8 @@ class BasicChartSpec {
 
   /// True to make the chart 3D.
   ///
-  /// Applies to Bar and Column charts.
+  /// Applies to Bar and Column charts. Setting it on a Combo chart is allowed
+  /// but has no effect; setting it on any other chart type returns an error.
   core.bool? threeDimensional;
 
   /// Controls whether to display additional data labels on stacked charts which
@@ -3245,6 +3313,25 @@ class BatchGetValuesResponse {
 
 /// The request for updating any aspect of a spreadsheet.
 class BatchUpdateSpreadsheetRequest {
+  /// The comments view mode to apply to the spreadsheet.
+  ///
+  /// This allows viewing the spreadsheet with comments omitted or included. If
+  /// one is not specified, COMMENTS_VIEW_MODE_OMITTED is used. Meaningful only
+  /// if include_spreadsheet_in_response is 'true'.
+  /// Possible string values are:
+  /// - "COMMENTS_VIEW_MODE_UNSPECIFIED" : The CommentsViewMode is unspecified;
+  /// COMMENTS_VIEW_MODE_OMITTED is applied.
+  /// - "COMMENTS_VIEW_MODE_DEFAULT_FOR_CURRENT_ACCESS" : The CommentsViewMode
+  /// applied to the returned spreadsheet depends on the user's current access
+  /// level. If the user only has view access, COMMENTS_VIEW_MODE_OMITTED is
+  /// applied. Otherwise, COMMENTS_VIEW_MODE_INCLUDED is applied.
+  /// - "COMMENTS_VIEW_MODE_OMITTED" : The returned spreadsheet has comments
+  /// omitted.
+  /// - "COMMENTS_VIEW_MODE_INCLUDED" : The returned spreadsheet has comments
+  /// included. Requests to retrieve a spreadsheet using this mode will return a
+  /// 403 error if the user does not have permission to view comments.
+  core.String? commentsViewMode;
+
   /// Determines if the update response should include the spreadsheet resource.
   core.bool? includeSpreadsheetInResponse;
 
@@ -3266,6 +3353,7 @@ class BatchUpdateSpreadsheetRequest {
   core.List<core.String>? responseRanges;
 
   BatchUpdateSpreadsheetRequest({
+    this.commentsViewMode,
     this.includeSpreadsheetInResponse,
     this.requests,
     this.responseIncludeGridData,
@@ -3274,6 +3362,7 @@ class BatchUpdateSpreadsheetRequest {
 
   BatchUpdateSpreadsheetRequest.fromJson(core.Map json_)
     : this(
+        commentsViewMode: json_['commentsViewMode'] as core.String?,
         includeSpreadsheetInResponse:
             json_['includeSpreadsheetInResponse'] as core.bool?,
         requests: (json_['requests'] as core.List?)
@@ -3290,11 +3379,13 @@ class BatchUpdateSpreadsheetRequest {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final commentsViewMode = this.commentsViewMode;
     final includeSpreadsheetInResponse = this.includeSpreadsheetInResponse;
     final requests = this.requests;
     final responseIncludeGridData = this.responseIncludeGridData;
     final responseRanges = this.responseRanges;
     return {
+      'commentsViewMode': ?commentsViewMode,
       'includeSpreadsheetInResponse': ?includeSpreadsheetInResponse,
       'requests': ?requests,
       'responseIncludeGridData': ?responseIncludeGridData,
@@ -3305,6 +3396,17 @@ class BatchUpdateSpreadsheetRequest {
 
 /// The reply for batch updating a spreadsheet.
 class BatchUpdateSpreadsheetResponse {
+  /// Whether comment updates were applied in the batch request.
+  /// Possible string values are:
+  /// - "COMMENT_UPDATE_STATE_UNSPECIFIED" : The status of comment updates is
+  /// unspecified.
+  /// - "NO_UPDATES_REQUESTED" : No comment updates were requested in the batch
+  /// request.
+  /// - "ALL_SAVED" : All requested comment updates were applied in the batch
+  /// request.
+  /// - "ALL_FAILED_UNKNOWN_REASON" : All requested comment updates failed.
+  core.String? commentUpdateState;
+
   /// The reply of the updates.
   ///
   /// This maps 1:1 with the updates, although replies to some requests may be
@@ -3321,6 +3423,7 @@ class BatchUpdateSpreadsheetResponse {
   Spreadsheet? updatedSpreadsheet;
 
   BatchUpdateSpreadsheetResponse({
+    this.commentUpdateState,
     this.replies,
     this.spreadsheetId,
     this.updatedSpreadsheet,
@@ -3328,6 +3431,7 @@ class BatchUpdateSpreadsheetResponse {
 
   BatchUpdateSpreadsheetResponse.fromJson(core.Map json_)
     : this(
+        commentUpdateState: json_['commentUpdateState'] as core.String?,
         replies: (json_['replies'] as core.List?)
             ?.map(
               (value) => Response.fromJson(
@@ -3345,10 +3449,12 @@ class BatchUpdateSpreadsheetResponse {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final commentUpdateState = this.commentUpdateState;
     final replies = this.replies;
     final spreadsheetId = this.spreadsheetId;
     final updatedSpreadsheet = this.updatedSpreadsheet;
     return {
+      'commentUpdateState': ?commentUpdateState,
       'replies': ?replies,
       'spreadsheetId': ?spreadsheetId,
       'updatedSpreadsheet': ?updatedSpreadsheet,
@@ -5759,6 +5865,109 @@ class ColorStyle {
   }
 }
 
+/// A location in the spreadsheet that is tied to a CommentThread with the same
+/// anchorId.
+///
+/// Note: Multiple anchors may refer to the same location.
+class CommentAnchor {
+  /// The unique ID of the comment anchor.
+  ///
+  /// Output only.
+  core.String? anchorId;
+
+  /// The coordinate range inside the sheet where this comment is anchored.
+  GridRange? range;
+
+  CommentAnchor({this.anchorId, this.range});
+
+  CommentAnchor.fromJson(core.Map json_)
+    : this(
+        anchorId: json_['anchorId'] as core.String?,
+        range: json_.containsKey('range')
+            ? GridRange.fromJson(
+                json_['range'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final anchorId = this.anchorId;
+    final range = this.range;
+    return {'anchorId': ?anchorId, 'range': ?range};
+  }
+}
+
+/// Represents a single comment thread inside a spreadsheet.
+class CommentThread {
+  /// The ID of the CommentAnchor in the sheet that this thread is tied to.
+  core.String? anchorId;
+
+  /// The unique ID of the comment thread.
+  core.String? commentId;
+
+  /// The first post in the thread.
+  Post? headPost;
+
+  /// The quoted text from the spreadsheet when the comment was created,
+  /// formatted as plain-text.
+  core.String? plainTextQuote;
+
+  /// Replies to the head post.
+  core.List<Post>? replies;
+
+  /// Whether the thread is open or resolved.
+  /// Possible string values are:
+  /// - "STATUS_UNSPECIFIED" : Default value. This value is unused.
+  /// - "OPEN" : The comment thread is open.
+  /// - "RESOLVED" : The comment thread is resolved.
+  core.String? status;
+
+  CommentThread({
+    this.anchorId,
+    this.commentId,
+    this.headPost,
+    this.plainTextQuote,
+    this.replies,
+    this.status,
+  });
+
+  CommentThread.fromJson(core.Map json_)
+    : this(
+        anchorId: json_['anchorId'] as core.String?,
+        commentId: json_['commentId'] as core.String?,
+        headPost: json_.containsKey('headPost')
+            ? Post.fromJson(
+                json_['headPost'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        plainTextQuote: json_['plainTextQuote'] as core.String?,
+        replies: (json_['replies'] as core.List?)
+            ?.map(
+              (value) =>
+                  Post.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+        status: json_['status'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final anchorId = this.anchorId;
+    final commentId = this.commentId;
+    final headPost = this.headPost;
+    final plainTextQuote = this.plainTextQuote;
+    final replies = this.replies;
+    final status = this.status;
+    return {
+      'anchorId': ?anchorId,
+      'commentId': ?commentId,
+      'headPost': ?headPost,
+      'plainTextQuote': ?plainTextQuote,
+      'replies': ?replies,
+      'status': ?status,
+    };
+  }
+}
+
 /// The value of the condition.
 class ConditionValue {
   /// A relative date (based on the current date).
@@ -7146,6 +7355,19 @@ class DeleteBandingRequest {
     return {'bandedRangeId': ?bandedRangeId};
   }
 }
+
+/// Deletes a reply Post from a CommentThread.
+///
+/// Returns a 400 bad request error if: - The requesting user is not the author
+/// of the post. - The reply post contains a comment action. - The reply post
+/// contains an assignee.
+typedef DeleteCommentReplyRequest = $DeleteCommentReplyRequest;
+
+/// Deletes a CommentThread.
+///
+/// Returns a 400 bad request error if the requesting user is not the author of
+/// the headPost.
+typedef DeleteCommentRequest = $DeleteCommentRequest;
 
 /// Deletes a conditional format rule at the given index.
 ///
@@ -8761,6 +8983,24 @@ class FindReplaceResponse {
 
 /// The request for retrieving a Spreadsheet.
 class GetSpreadsheetByDataFilterRequest {
+  /// The comments view mode to apply to the spreadsheet.
+  ///
+  /// This allows viewing the spreadsheet with comments omitted or included. If
+  /// one is not specified, COMMENTS_VIEW_MODE_OMITTED is used.
+  /// Possible string values are:
+  /// - "COMMENTS_VIEW_MODE_UNSPECIFIED" : The CommentsViewMode is unspecified;
+  /// COMMENTS_VIEW_MODE_OMITTED is applied.
+  /// - "COMMENTS_VIEW_MODE_DEFAULT_FOR_CURRENT_ACCESS" : The CommentsViewMode
+  /// applied to the returned spreadsheet depends on the user's current access
+  /// level. If the user only has view access, COMMENTS_VIEW_MODE_OMITTED is
+  /// applied. Otherwise, COMMENTS_VIEW_MODE_INCLUDED is applied.
+  /// - "COMMENTS_VIEW_MODE_OMITTED" : The returned spreadsheet has comments
+  /// omitted.
+  /// - "COMMENTS_VIEW_MODE_INCLUDED" : The returned spreadsheet has comments
+  /// included. Requests to retrieve a spreadsheet using this mode will return a
+  /// 403 error if the user does not have permission to view comments.
+  core.String? commentsViewMode;
+
   /// The DataFilters used to select which ranges to retrieve from the
   /// spreadsheet.
   core.List<DataFilter>? dataFilters;
@@ -8776,6 +9016,7 @@ class GetSpreadsheetByDataFilterRequest {
   core.bool? includeGridData;
 
   GetSpreadsheetByDataFilterRequest({
+    this.commentsViewMode,
     this.dataFilters,
     this.excludeTablesInBandedRanges,
     this.includeGridData,
@@ -8783,6 +9024,7 @@ class GetSpreadsheetByDataFilterRequest {
 
   GetSpreadsheetByDataFilterRequest.fromJson(core.Map json_)
     : this(
+        commentsViewMode: json_['commentsViewMode'] as core.String?,
         dataFilters: (json_['dataFilters'] as core.List?)
             ?.map(
               (value) => DataFilter.fromJson(
@@ -8796,10 +9038,12 @@ class GetSpreadsheetByDataFilterRequest {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final commentsViewMode = this.commentsViewMode;
     final dataFilters = this.dataFilters;
     final excludeTablesInBandedRanges = this.excludeTablesInBandedRanges;
     final includeGridData = this.includeGridData;
     return {
+      'commentsViewMode': ?commentsViewMode,
       'dataFilters': ?dataFilters,
       'excludeTablesInBandedRanges': ?excludeTablesInBandedRanges,
       'includeGridData': ?includeGridData,
@@ -9278,6 +9522,78 @@ class HistogramSeries {
       'barColorStyle': ?barColorStyle,
       'data': ?data,
     };
+  }
+}
+
+/// Inserts a CommentThread into the spreadsheet.
+class InsertCommentRequest {
+  /// The email address of the assignee of the comment.
+  ///
+  /// Leave empty for a non-assigned comment. May not exceed 2048 UTF-8 code
+  /// units.
+  ///
+  /// Optional.
+  core.String? assigneeEmailAddress;
+
+  /// The text of the comment, as plain text.
+  ///
+  /// This text content will be handled similarly to comments created in the
+  /// Sheets editor. It will have similar behaviors for formatting,
+  /// notifications, etc. This field cannot be empty, and must not exceed 2048
+  /// UTF-8 code units.
+  core.String? content;
+
+  /// The GridCoordinate in the sheet that is tied to this comment.
+  GridCoordinate? coordinate;
+
+  InsertCommentRequest({
+    this.assigneeEmailAddress,
+    this.content,
+    this.coordinate,
+  });
+
+  InsertCommentRequest.fromJson(core.Map json_)
+    : this(
+        assigneeEmailAddress: json_['assigneeEmailAddress'] as core.String?,
+        content: json_['content'] as core.String?,
+        coordinate: json_.containsKey('coordinate')
+            ? GridCoordinate.fromJson(
+                json_['coordinate'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final assigneeEmailAddress = this.assigneeEmailAddress;
+    final content = this.content;
+    final coordinate = this.coordinate;
+    return {
+      'assigneeEmailAddress': ?assigneeEmailAddress,
+      'content': ?content,
+      'coordinate': ?coordinate,
+    };
+  }
+}
+
+/// The result of creating a comment.
+class InsertCommentResponse {
+  /// The newly-inserted comment thread.
+  CommentThread? commentThread;
+
+  InsertCommentResponse({this.commentThread});
+
+  InsertCommentResponse.fromJson(core.Map json_)
+    : this(
+        commentThread: json_.containsKey('commentThread')
+            ? CommentThread.fromJson(
+                json_['commentThread'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final commentThread = this.commentThread;
+    return {'commentThread': ?commentThread};
   }
 }
 
@@ -10945,6 +11261,186 @@ class PointStyle {
   }
 }
 
+/// Represents a single post in a comment thread.
+class Post {
+  /// The email of the user who is being newly assigned to the thread as part of
+  /// this post.
+  ///
+  /// Returns a 400 bad request error if: - The parent thread is a CommentThread
+  /// whose headPost does not have an assignee. - commentAction is specified as
+  /// `RESOLVE` or `REOPEN`. - `assignee_email` exceeds 2048 UTF-8 code units.
+  ///
+  /// Optional.
+  core.String? assigneeEmail;
+
+  /// The user who created the post.
+  ///
+  /// Output only.
+  PostAuthor? author;
+
+  /// Action taken as part of creating the post.
+  /// Possible string values are:
+  /// - "COMMENT_ACTION_TYPE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "NO_COMMENT_ACTION_CHANGE" : No action change in this post.
+  /// - "RESOLVE" : This post resolves the thread.
+  /// - "REOPEN" : This post reopens the thread.
+  core.String? commentAction;
+
+  /// The content of the post.
+  ///
+  /// Required to be non-empty if comment_action is not `RESOLVE` or `REOPEN`.
+  /// This text content will be handled similarly to comments created in the
+  /// Sheets editor. It will have similar behaviors for formatting,
+  /// notifications, etc. May not exceed 2048 UTF-8 code units.
+  core.String? content;
+
+  /// The content of the post as HTML.
+  ///
+  /// Output only.
+  core.String? contentHtml;
+
+  /// The time the post was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Whether the post is deleted.
+  ///
+  /// If `true`, content and author fields will be empty.
+  ///
+  /// Output only.
+  core.bool? deleted;
+
+  /// Whether the post is from a copied spreadsheet.
+  ///
+  /// This field cannot be set directly by callers.
+  ///
+  /// Output only.
+  core.bool? fromCopiedSpreadsheet;
+
+  /// Whether the post is from an imported spreadsheet.
+  ///
+  /// This field cannot be set directly by callers.
+  ///
+  /// Output only.
+  core.bool? fromImportedSpreadsheet;
+
+  /// The unique ID of the post.
+  ///
+  /// Output only.
+  core.String? postId;
+
+  /// The time the post was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  Post({
+    this.assigneeEmail,
+    this.author,
+    this.commentAction,
+    this.content,
+    this.contentHtml,
+    this.createTime,
+    this.deleted,
+    this.fromCopiedSpreadsheet,
+    this.fromImportedSpreadsheet,
+    this.postId,
+    this.updateTime,
+  });
+
+  Post.fromJson(core.Map json_)
+    : this(
+        assigneeEmail: json_['assigneeEmail'] as core.String?,
+        author: json_.containsKey('author')
+            ? PostAuthor.fromJson(
+                json_['author'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        commentAction: json_['commentAction'] as core.String?,
+        content: json_['content'] as core.String?,
+        contentHtml: json_['contentHtml'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        deleted: json_['deleted'] as core.bool?,
+        fromCopiedSpreadsheet: json_['fromCopiedSpreadsheet'] as core.bool?,
+        fromImportedSpreadsheet: json_['fromImportedSpreadsheet'] as core.bool?,
+        postId: json_['postId'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final assigneeEmail = this.assigneeEmail;
+    final author = this.author;
+    final commentAction = this.commentAction;
+    final content = this.content;
+    final contentHtml = this.contentHtml;
+    final createTime = this.createTime;
+    final deleted = this.deleted;
+    final fromCopiedSpreadsheet = this.fromCopiedSpreadsheet;
+    final fromImportedSpreadsheet = this.fromImportedSpreadsheet;
+    final postId = this.postId;
+    final updateTime = this.updateTime;
+    return {
+      'assigneeEmail': ?assigneeEmail,
+      'author': ?author,
+      'commentAction': ?commentAction,
+      'content': ?content,
+      'contentHtml': ?contentHtml,
+      'createTime': ?createTime,
+      'deleted': ?deleted,
+      'fromCopiedSpreadsheet': ?fromCopiedSpreadsheet,
+      'fromImportedSpreadsheet': ?fromImportedSpreadsheet,
+      'postId': ?postId,
+      'updateTime': ?updateTime,
+    };
+  }
+}
+
+/// Represents a user who authored a comment post.
+class PostAuthor {
+  /// Whether the user is anonymous.
+  core.bool? anonymous;
+
+  /// The display name of the user.
+  ///
+  /// May be absent if the author is anonymous.
+  core.String? displayName;
+
+  /// Whether the user is the authenticated user making the request.
+  core.bool? me;
+
+  /// The resource name of the post author user, which can also be used to
+  /// identify the user in the
+  /// [Google People API](https://developers.google.com/people/api/rest/v1/people).
+  ///
+  /// Format: `users/{user}`. Will not be populated if the anonymous field is
+  /// `true` or if the post is from an imported spreadsheet.
+  core.String? user;
+
+  PostAuthor({this.anonymous, this.displayName, this.me, this.user});
+
+  PostAuthor.fromJson(core.Map json_)
+    : this(
+        anonymous: json_['anonymous'] as core.bool?,
+        displayName: json_['displayName'] as core.String?,
+        me: json_['me'] as core.bool?,
+        user: json_['user'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final anonymous = this.anonymous;
+    final displayName = this.displayName;
+    final me = this.me;
+    final user = this.user;
+    return {
+      'anonymous': ?anonymous,
+      'displayName': ?displayName,
+      'me': ?me,
+      'user': ?user,
+    };
+  }
+}
+
 /// A protected range.
 class ProtectedRange {
   /// The description of this protected range.
@@ -11311,6 +11807,9 @@ class Request {
   /// Adds a chart.
   AddChartRequest? addChart;
 
+  /// Adds a reply to a CommentThread.
+  AddCommentReplyRequest? addCommentReply;
+
   /// Adds a new conditional format rule.
   AddConditionalFormatRuleRequest? addConditionalFormatRule;
 
@@ -11370,6 +11869,12 @@ class Request {
   /// Removes a banded range
   DeleteBandingRequest? deleteBanding;
 
+  /// Deletes a CommentThread.
+  DeleteCommentRequest? deleteComment;
+
+  /// Deletes a reply Post from a CommentThread
+  DeleteCommentReplyRequest? deleteCommentReply;
+
   /// Deletes an existing conditional format rule.
   DeleteConditionalFormatRuleRequest? deleteConditionalFormatRule;
 
@@ -11418,6 +11923,9 @@ class Request {
 
   /// Finds and replaces occurrences of some text with other text.
   FindReplaceRequest? findReplace;
+
+  /// Inserts a CommentThread into the spreadsheet.
+  InsertCommentRequest? insertComment;
 
   /// Inserts new rows or columns in a sheet.
   InsertDimensionRequest? insertDimension;
@@ -11473,6 +11981,9 @@ class Request {
   /// Updates a chart's specifications.
   UpdateChartSpecRequest? updateChartSpec;
 
+  /// Updates an existing post (head post or reply) of a CommentThread.
+  UpdateCommentPostRequest? updateCommentPost;
+
   /// Updates an existing conditional format rule.
   UpdateConditionalFormatRuleRequest? updateConditionalFormatRule;
 
@@ -11518,6 +12029,7 @@ class Request {
   Request({
     this.addBanding,
     this.addChart,
+    this.addCommentReply,
     this.addConditionalFormatRule,
     this.addDataSource,
     this.addDimensionGroup,
@@ -11537,6 +12049,8 @@ class Request {
     this.createDeveloperMetadata,
     this.cutPaste,
     this.deleteBanding,
+    this.deleteComment,
+    this.deleteCommentReply,
     this.deleteConditionalFormatRule,
     this.deleteDataSource,
     this.deleteDeveloperMetadata,
@@ -11553,6 +12067,7 @@ class Request {
     this.duplicateFilterView,
     this.duplicateSheet,
     this.findReplace,
+    this.insertComment,
     this.insertDimension,
     this.insertRange,
     this.mergeCells,
@@ -11571,6 +12086,7 @@ class Request {
     this.updateBorders,
     this.updateCells,
     this.updateChartSpec,
+    this.updateCommentPost,
     this.updateConditionalFormatRule,
     this.updateDataSource,
     this.updateDeveloperMetadata,
@@ -11597,6 +12113,11 @@ class Request {
         addChart: json_.containsKey('addChart')
             ? AddChartRequest.fromJson(
                 json_['addChart'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        addCommentReply: json_.containsKey('addCommentReply')
+            ? AddCommentReplyRequest.fromJson(
+                json_['addCommentReply'] as core.Map<core.String, core.dynamic>,
               )
             : null,
         addConditionalFormatRule: json_.containsKey('addConditionalFormatRule')
@@ -11701,6 +12222,17 @@ class Request {
                 json_['deleteBanding'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        deleteComment: json_.containsKey('deleteComment')
+            ? DeleteCommentRequest.fromJson(
+                json_['deleteComment'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        deleteCommentReply: json_.containsKey('deleteCommentReply')
+            ? DeleteCommentReplyRequest.fromJson(
+                json_['deleteCommentReply']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         deleteConditionalFormatRule:
             json_.containsKey('deleteConditionalFormatRule')
             ? DeleteConditionalFormatRuleRequest.fromJson(
@@ -11790,6 +12322,11 @@ class Request {
         findReplace: json_.containsKey('findReplace')
             ? FindReplaceRequest.fromJson(
                 json_['findReplace'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        insertComment: json_.containsKey('insertComment')
+            ? InsertCommentRequest.fromJson(
+                json_['insertComment'] as core.Map<core.String, core.dynamic>,
               )
             : null,
         insertDimension: json_.containsKey('insertDimension')
@@ -11882,6 +12419,12 @@ class Request {
         updateChartSpec: json_.containsKey('updateChartSpec')
             ? UpdateChartSpecRequest.fromJson(
                 json_['updateChartSpec'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        updateCommentPost: json_.containsKey('updateCommentPost')
+            ? UpdateCommentPostRequest.fromJson(
+                json_['updateCommentPost']
+                    as core.Map<core.String, core.dynamic>,
               )
             : null,
         updateConditionalFormatRule:
@@ -11977,6 +12520,7 @@ class Request {
   core.Map<core.String, core.dynamic> toJson() {
     final addBanding = this.addBanding;
     final addChart = this.addChart;
+    final addCommentReply = this.addCommentReply;
     final addConditionalFormatRule = this.addConditionalFormatRule;
     final addDataSource = this.addDataSource;
     final addDimensionGroup = this.addDimensionGroup;
@@ -11996,6 +12540,8 @@ class Request {
     final createDeveloperMetadata = this.createDeveloperMetadata;
     final cutPaste = this.cutPaste;
     final deleteBanding = this.deleteBanding;
+    final deleteComment = this.deleteComment;
+    final deleteCommentReply = this.deleteCommentReply;
     final deleteConditionalFormatRule = this.deleteConditionalFormatRule;
     final deleteDataSource = this.deleteDataSource;
     final deleteDeveloperMetadata = this.deleteDeveloperMetadata;
@@ -12012,6 +12558,7 @@ class Request {
     final duplicateFilterView = this.duplicateFilterView;
     final duplicateSheet = this.duplicateSheet;
     final findReplace = this.findReplace;
+    final insertComment = this.insertComment;
     final insertDimension = this.insertDimension;
     final insertRange = this.insertRange;
     final mergeCells = this.mergeCells;
@@ -12030,6 +12577,7 @@ class Request {
     final updateBorders = this.updateBorders;
     final updateCells = this.updateCells;
     final updateChartSpec = this.updateChartSpec;
+    final updateCommentPost = this.updateCommentPost;
     final updateConditionalFormatRule = this.updateConditionalFormatRule;
     final updateDataSource = this.updateDataSource;
     final updateDeveloperMetadata = this.updateDeveloperMetadata;
@@ -12047,6 +12595,7 @@ class Request {
     return {
       'addBanding': ?addBanding,
       'addChart': ?addChart,
+      'addCommentReply': ?addCommentReply,
       'addConditionalFormatRule': ?addConditionalFormatRule,
       'addDataSource': ?addDataSource,
       'addDimensionGroup': ?addDimensionGroup,
@@ -12066,6 +12615,8 @@ class Request {
       'createDeveloperMetadata': ?createDeveloperMetadata,
       'cutPaste': ?cutPaste,
       'deleteBanding': ?deleteBanding,
+      'deleteComment': ?deleteComment,
+      'deleteCommentReply': ?deleteCommentReply,
       'deleteConditionalFormatRule': ?deleteConditionalFormatRule,
       'deleteDataSource': ?deleteDataSource,
       'deleteDeveloperMetadata': ?deleteDeveloperMetadata,
@@ -12082,6 +12633,7 @@ class Request {
       'duplicateFilterView': ?duplicateFilterView,
       'duplicateSheet': ?duplicateSheet,
       'findReplace': ?findReplace,
+      'insertComment': ?insertComment,
       'insertDimension': ?insertDimension,
       'insertRange': ?insertRange,
       'mergeCells': ?mergeCells,
@@ -12100,6 +12652,7 @@ class Request {
       'updateBorders': ?updateBorders,
       'updateCells': ?updateCells,
       'updateChartSpec': ?updateChartSpec,
+      'updateCommentPost': ?updateCommentPost,
       'updateConditionalFormatRule': ?updateConditionalFormatRule,
       'updateDataSource': ?updateDataSource,
       'updateDeveloperMetadata': ?updateDeveloperMetadata,
@@ -12125,6 +12678,9 @@ class Response {
 
   /// A reply from adding a chart.
   AddChartResponse? addChart;
+
+  /// The result of creating a reply.
+  AddCommentReplyResponse? addCommentReply;
 
   /// A reply from adding a data source.
   AddDataSourceResponse? addDataSource;
@@ -12177,6 +12733,9 @@ class Response {
   /// A reply from doing a find/replace.
   FindReplaceResponse? findReplace;
 
+  /// The result of creating a comment.
+  InsertCommentResponse? insertComment;
+
   /// A reply from refreshing data source objects.
   RefreshDataSourceResponse? refreshDataSource;
 
@@ -12198,6 +12757,7 @@ class Response {
   Response({
     this.addBanding,
     this.addChart,
+    this.addCommentReply,
     this.addDataSource,
     this.addDimensionGroup,
     this.addFilterView,
@@ -12215,6 +12775,7 @@ class Response {
     this.duplicateFilterView,
     this.duplicateSheet,
     this.findReplace,
+    this.insertComment,
     this.refreshDataSource,
     this.trimWhitespace,
     this.updateConditionalFormatRule,
@@ -12233,6 +12794,11 @@ class Response {
         addChart: json_.containsKey('addChart')
             ? AddChartResponse.fromJson(
                 json_['addChart'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        addCommentReply: json_.containsKey('addCommentReply')
+            ? AddCommentReplyResponse.fromJson(
+                json_['addCommentReply'] as core.Map<core.String, core.dynamic>,
               )
             : null,
         addDataSource: json_.containsKey('addDataSource')
@@ -12330,6 +12896,11 @@ class Response {
                 json_['findReplace'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        insertComment: json_.containsKey('insertComment')
+            ? InsertCommentResponse.fromJson(
+                json_['insertComment'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         refreshDataSource: json_.containsKey('refreshDataSource')
             ? RefreshDataSourceResponse.fromJson(
                 json_['refreshDataSource']
@@ -12372,6 +12943,7 @@ class Response {
   core.Map<core.String, core.dynamic> toJson() {
     final addBanding = this.addBanding;
     final addChart = this.addChart;
+    final addCommentReply = this.addCommentReply;
     final addDataSource = this.addDataSource;
     final addDimensionGroup = this.addDimensionGroup;
     final addFilterView = this.addFilterView;
@@ -12389,6 +12961,7 @@ class Response {
     final duplicateFilterView = this.duplicateFilterView;
     final duplicateSheet = this.duplicateSheet;
     final findReplace = this.findReplace;
+    final insertComment = this.insertComment;
     final refreshDataSource = this.refreshDataSource;
     final trimWhitespace = this.trimWhitespace;
     final updateConditionalFormatRule = this.updateConditionalFormatRule;
@@ -12398,6 +12971,7 @@ class Response {
     return {
       'addBanding': ?addBanding,
       'addChart': ?addChart,
+      'addCommentReply': ?addCommentReply,
       'addDataSource': ?addDataSource,
       'addDimensionGroup': ?addDimensionGroup,
       'addFilterView': ?addFilterView,
@@ -12415,6 +12989,7 @@ class Response {
       'duplicateFilterView': ?duplicateFilterView,
       'duplicateSheet': ?duplicateSheet,
       'findReplace': ?findReplace,
+      'insertComment': ?insertComment,
       'refreshDataSource': ?refreshDataSource,
       'trimWhitespace': ?trimWhitespace,
       'updateConditionalFormatRule': ?updateConditionalFormatRule,
@@ -12752,6 +13327,9 @@ class Sheet {
   /// then by group depth.
   core.List<DimensionGroup>? columnGroups;
 
+  /// The comment anchors on this sheet.
+  core.List<CommentAnchor>? commentAnchors;
+
   /// The conditional format rules in this sheet.
   core.List<ConditionalFormatRule>? conditionalFormats;
 
@@ -12797,6 +13375,7 @@ class Sheet {
     this.basicFilter,
     this.charts,
     this.columnGroups,
+    this.commentAnchors,
     this.conditionalFormats,
     this.data,
     this.developerMetadata,
@@ -12833,6 +13412,13 @@ class Sheet {
         columnGroups: (json_['columnGroups'] as core.List?)
             ?.map(
               (value) => DimensionGroup.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        commentAnchors: (json_['commentAnchors'] as core.List?)
+            ?.map(
+              (value) => CommentAnchor.fromJson(
                 value as core.Map<core.String, core.dynamic>,
               ),
             )
@@ -12910,6 +13496,7 @@ class Sheet {
     final basicFilter = this.basicFilter;
     final charts = this.charts;
     final columnGroups = this.columnGroups;
+    final commentAnchors = this.commentAnchors;
     final conditionalFormats = this.conditionalFormats;
     final data = this.data;
     final developerMetadata = this.developerMetadata;
@@ -12925,6 +13512,7 @@ class Sheet {
       'basicFilter': ?basicFilter,
       'charts': ?charts,
       'columnGroups': ?columnGroups,
+      'commentAnchors': ?commentAnchors,
       'conditionalFormats': ?conditionalFormats,
       'data': ?data,
       'developerMetadata': ?developerMetadata,
@@ -13432,6 +14020,26 @@ class SourceAndDestination {
 
 /// Resource that represents a spreadsheet.
 class Spreadsheet {
+  /// The comment threads associated with the spreadsheet.
+  core.List<CommentThread>? comments;
+
+  /// The comments view mode applied to the spreadsheet.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "COMMENTS_VIEW_MODE_UNSPECIFIED" : The CommentsViewMode is unspecified;
+  /// COMMENTS_VIEW_MODE_OMITTED is applied.
+  /// - "COMMENTS_VIEW_MODE_DEFAULT_FOR_CURRENT_ACCESS" : The CommentsViewMode
+  /// applied to the returned spreadsheet depends on the user's current access
+  /// level. If the user only has view access, COMMENTS_VIEW_MODE_OMITTED is
+  /// applied. Otherwise, COMMENTS_VIEW_MODE_INCLUDED is applied.
+  /// - "COMMENTS_VIEW_MODE_OMITTED" : The returned spreadsheet has comments
+  /// omitted.
+  /// - "COMMENTS_VIEW_MODE_INCLUDED" : The returned spreadsheet has comments
+  /// included. Requests to retrieve a spreadsheet using this mode will return a
+  /// 403 error if the user does not have permission to view comments.
+  core.String? commentsViewMode;
+
   /// A list of data source refresh schedules.
   ///
   /// Output only.
@@ -13463,6 +14071,8 @@ class Spreadsheet {
   core.String? spreadsheetUrl;
 
   Spreadsheet({
+    this.comments,
+    this.commentsViewMode,
     this.dataSourceSchedules,
     this.dataSources,
     this.developerMetadata,
@@ -13475,6 +14085,14 @@ class Spreadsheet {
 
   Spreadsheet.fromJson(core.Map json_)
     : this(
+        comments: (json_['comments'] as core.List?)
+            ?.map(
+              (value) => CommentThread.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        commentsViewMode: json_['commentsViewMode'] as core.String?,
         dataSourceSchedules: (json_['dataSourceSchedules'] as core.List?)
             ?.map(
               (value) => DataSourceRefreshSchedule.fromJson(
@@ -13519,6 +14137,8 @@ class Spreadsheet {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final comments = this.comments;
+    final commentsViewMode = this.commentsViewMode;
     final dataSourceSchedules = this.dataSourceSchedules;
     final dataSources = this.dataSources;
     final developerMetadata = this.developerMetadata;
@@ -13528,6 +14148,8 @@ class Spreadsheet {
     final spreadsheetId = this.spreadsheetId;
     final spreadsheetUrl = this.spreadsheetUrl;
     return {
+      'comments': ?comments,
+      'commentsViewMode': ?commentsViewMode,
       'dataSourceSchedules': ?dataSourceSchedules,
       'dataSources': ?dataSources,
       'developerMetadata': ?developerMetadata,
@@ -14834,6 +15456,42 @@ class UpdateChartSpecRequest {
     final chartId = this.chartId;
     final spec = this.spec;
     return {'chartId': ?chartId, 'spec': ?spec};
+  }
+}
+
+/// Updates a Post in a CommentThread.
+///
+/// Returns a 400 bad request error if: - The requesting user is not the author
+/// of the post.
+class UpdateCommentPostRequest {
+  /// The ID of the CommentThread which the post belongs to.
+  core.String? commentId;
+
+  /// The new text of the comment, as plain text.
+  ///
+  /// This text content will be handled similarly to comments created in the
+  /// Sheets editor. It will have similar behaviors for formatting,
+  /// notifications, etc. This field cannot be empty, and must not exceed 2048
+  /// UTF-8 code units.
+  core.String? content;
+
+  /// The ID of the post being updated.
+  core.String? postId;
+
+  UpdateCommentPostRequest({this.commentId, this.content, this.postId});
+
+  UpdateCommentPostRequest.fromJson(core.Map json_)
+    : this(
+        commentId: json_['commentId'] as core.String?,
+        content: json_['content'] as core.String?,
+        postId: json_['postId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final commentId = this.commentId;
+    final content = this.content;
+    final postId = this.postId;
+    return {'commentId': ?commentId, 'content': ?content, 'postId': ?postId};
   }
 }
 

@@ -928,7 +928,7 @@ class UsersResource {
   /// `users/me/profile` The {user} ID is a system-generated Google Health API
   /// user ID, a string of 1-63 characters consisting of lowercase and uppercase
   /// letters, numbers, and hyphens. The literal `me` can also be used to refer
-  /// to the authenticated user.
+  /// to the authenticated user. This field is read-only.
   /// Value must have pattern `^users/\[^/\]+/profile$`.
   ///
   /// [updateMask] - Optional. The list of fields to be updated.
@@ -977,7 +977,7 @@ class UsersResource {
   /// `users/me/settings` The {user} ID is a system-generated Google Health API
   /// user ID, a string of 1-63 characters consisting of lowercase and uppercase
   /// letters, numbers, and hyphens. The literal `me` can also be used to refer
-  /// to the authenticated user.
+  /// to the authenticated user. This field is read-only.
   /// Value must have pattern `^users/\[^/\]+/settings$`.
   ///
   /// [updateMask] - Optional. The list of fields to be updated.
@@ -1038,12 +1038,15 @@ class UsersDataTypesDataPointsResource {
   /// Request parameters:
   ///
   /// [parent] - Optional. Parent (data type) for the Data Point collection
-  /// Format: `users/me/dataTypes/{data_type}`, e.g.: -
-  /// `users/me/dataTypes/steps` - `users/me/dataTypes/-` For a list of the
-  /// supported data types see the DataPoint data union field. Deleting data
-  /// points across multiple data type collections is supported following
-  /// https://aip.dev/159. If this is set, the parent of all of the data points
-  /// specified in `names` must match this field.
+  /// Format: `users/{user}/dataTypes/{data_type}`, e.g.: -
+  /// `users/me/dataTypes/steps` - `users/1234567890/dataTypes/steps` -
+  /// `users/me/dataTypes/-` - `users/1234567890/dataTypes/-` The `{user}` can
+  /// be either the alias `me` or the authenticated user's numeric Health User
+  /// ID (retrieved via GetIdentity). For a list of the supported data types see
+  /// the DataPoint data union field. Deleting data points across multiple data
+  /// type collections is supported following https://aip.dev/159. If this is
+  /// set, the parent of all of the data points specified in `names` must match
+  /// this field.
   /// Value must have pattern `^users/\[^/\]+/dataTypes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1085,7 +1088,10 @@ class UsersDataTypesDataPointsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource name where the data point will be
-  /// created. Format: `users/{user}/dataTypes/{data_type}`
+  /// created. Format: `users/{user}/dataTypes/{data_type}`, e.g.: -
+  /// `users/me/dataTypes/steps` - `users/1234567890/dataTypes/steps` The
+  /// `{user}` can be either the alias `me` or the authenticated user's numeric
+  /// Health User ID (retrieved via GetIdentity).
   /// Value must have pattern `^users/\[^/\]+/dataTypes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1127,8 +1133,11 @@ class UsersDataTypesDataPointsResource {
   ///
   /// [parent] - Required. Parent data type of the Data Point collection.
   /// Format: `users/{user}/dataTypes/{data_type}`, e.g.: -
-  /// `users/me/dataTypes/steps` - `users/me/dataTypes/distance` For a list of
-  /// the supported data types see the DailyRollupDataPoint value union field.
+  /// `users/me/dataTypes/steps` - `users/1234567890/dataTypes/steps` -
+  /// `users/me/dataTypes/distance` - `users/1234567890/dataTypes/distance` The
+  /// `{user}` can be either the alias `me` or the authenticated user's numeric
+  /// Health User ID (retrieved via GetIdentity). For a list of the supported
+  /// data types see the DailyRollupDataPoint value union field.
   /// Value must have pattern `^users/\[^/\]+/dataTypes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1168,8 +1177,9 @@ class UsersDataTypesDataPointsResource {
   /// Exports exercise data in TCX format.
   ///
   /// **IMPORTANT:** HTTP clients must append `?alt=media` to the request URL to
-  /// download the raw TCX file. Example:
+  /// download the raw TCX file. ## Examples: ##
   /// `https://health.googleapis.com/v4/users/me/dataTypes/exercise/dataPoints/EXERCISE_ID:exportExerciseTcx?alt=media`
+  /// `https://health.googleapis.com/v4/users/1234567890/dataTypes/exercise/dataPoints/EXERCISE_ID:exportExerciseTcx?alt=media`
   /// Without `alt=media`, the server returns a JSON response
   /// (`ExportExerciseTcxResponse`) which is intended primarily for gRPC
   /// clients. **Note:** While the Authorization section below states that any
@@ -1181,10 +1191,12 @@ class UsersDataTypesDataPointsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the exercise data point to export.
-  /// Format: `users/{user}/dataTypes/exercise/dataPoints/{data_point}` Example:
-  /// `users/me/dataTypes/exercise/dataPoints/2026443605080188808` The `{user}`
-  /// is the alias `"me"` currently. Future versions may support user IDs. The
-  /// `{data_point}` ID maps to the exercise ID, which is a long integer.
+  /// Format: `users/{user}/dataTypes/exercise/dataPoints/{data_point}`
+  /// Examples: - `users/me/dataTypes/exercise/dataPoints/2026443605080188808` -
+  /// `users/1234567890/dataTypes/exercise/dataPoints/2026443605080188808` The
+  /// `{user}` can be either the alias `me` or the authenticated user's numeric
+  /// Health User ID (retrieved via GetIdentity). The `{data_point}` ID maps to
+  /// the exercise ID, which is a long integer.
   /// Value must have pattern
   /// `^users/\[^/\]+/dataTypes/\[^/\]+/dataPoints/\[^/\]+$`.
   ///
@@ -1244,8 +1256,13 @@ class UsersDataTypesDataPointsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the data point to retrieve. Format:
-  /// `users/{user}/dataTypes/{data_type}/dataPoints/{data_point}` See
-  /// DataPoint.name for examples and possible values.
+  /// `users/{user}/dataTypes/{data_type}/dataPoints/{data_point}` ## Examples:
+  /// ##
+  /// `users/me/dataTypes/sleep/dataPoints/a1b2c3d4-e5f6-7890-1234-567890abcdef`
+  /// `users/1234567890/dataTypes/sleep/dataPoints/a1b2c3d4-e5f6-7890-1234-567890abcdef`
+  /// The `{user}` can be either the alias `me` or the authenticated user's
+  /// numeric Health User ID (retrieved via GetIdentity). See DataPoint.name for
+  /// examples and possible values.
   /// Value must have pattern
   /// `^users/\[^/\]+/dataTypes/\[^/\]+/dataPoints/\[^/\]+$`.
   ///
@@ -1279,10 +1296,43 @@ class UsersDataTypesDataPointsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Parent data type of the Data Point collection.
-  /// Format: `users/me/dataTypes/{data_type}`, e.g.: -
-  /// `users/me/dataTypes/steps` - `users/me/dataTypes/weight` For a list of the
-  /// supported data types see the DataPoint data union field.
+  /// Format: `users/{user}/dataTypes/{data_type}`, e.g.: -
+  /// `users/me/dataTypes/steps` - `users/1234567890/dataTypes/steps` -
+  /// `users/me/dataTypes/weight` - `users/1234567890/dataTypes/weight` The
+  /// `{user}` can be either the alias `me` or the authenticated user's numeric
+  /// Health User ID (retrieved via GetIdentity). For a list of the supported
+  /// data types see the DataPoint data union field.
   /// Value must have pattern `^users/\[^/\]+/dataTypes/\[^/\]+$`.
+  ///
+  /// [dataSourceFamily] - Optional. The data source family name to filter by.
+  /// If empty, data points from all available data sources will be returned.
+  /// Format: `users/{user}/dataSourceFamilies/{data_source_family}` The
+  /// `{user}` can be either the alias `me` or the authenticated user's numeric
+  /// Health User ID, retrieved via GetIdentity (e.g.
+  /// `users/me/dataSourceFamilies/...` or
+  /// `users/1234567890/dataSourceFamilies/...`). The supported values are: -
+  /// `users/{user}/dataSourceFamilies/all-sources` - Default value. Includes
+  /// data from all available data sources. -
+  /// `users/{user}/dataSourceFamilies/google-wearables` - Includes data from
+  /// Google and Fitbit tracker devices (such as Fitbit trackers and Pixel
+  /// Watch). Excludes manually logged data. -
+  /// `users/{user}/dataSourceFamilies/google-sources` - Includes first-party
+  /// Google data, such as data from tracker devices, manually logged data, and
+  /// Health Connect. - `users/{user}/dataSourceFamilies/self-sources` -
+  /// Includes only the data the calling client wrote through this API, that is,
+  /// data points whose data source was registered through this API with the
+  /// same OAuth client ID as the caller. Callers that were only granted write
+  /// scopes for the requested data types may only read the data they wrote
+  /// themselves: their requests are implicitly restricted to `self-sources`,
+  /// and requesting any other data source family fails with
+  /// `PERMISSION_DENIED`. If no data point matches the requested data source
+  /// family, the response is an empty list rather than an error. Filtering by
+  /// data source family is not supported for the `sleep`, `food` and
+  /// `food-measurement-unit` data types, because the underlying listing
+  /// implementation cannot restrict results by data source. Such requests fail
+  /// with `INVALID_ARGUMENT` when the data source family is set explicitly, and
+  /// with `PERMISSION_DENIED` when the restriction is only implied by the
+  /// caller's scopes. For `sleep`, use ReconcileDataPoints instead.
   ///
   /// [filter] - Optional. Filter expression following
   /// https://google.aip.dev/160. A time range (either physical or civil) can be
@@ -1364,12 +1414,14 @@ class UsersDataTypesDataPointsResource {
   /// this method will complete with the same error.
   async.Future<ListDataPointsResponse> list(
     core.String parent, {
+    core.String? dataSourceFamily,
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      'dataSourceFamily': ?dataSourceFamily == null ? null : [dataSourceFamily],
       'filter': ?filter == null ? null : [filter],
       'pageSize': ?pageSize == null ? null : ['${pageSize}'],
       'pageToken': ?pageToken == null ? null : [pageToken],
@@ -1400,11 +1452,13 @@ class UsersDataTypesDataPointsResource {
   /// [name] - Identifier. Data point name, only supported for the subset of
   /// identifiable data types. For the majority of the data types, individual
   /// data points do not need to be identified and this field would be empty.
-  /// Format: `users/{user}/dataTypes/{data_type}/dataPoints/{data_point}`
-  /// Example:
-  /// `users/abcd1234/dataTypes/sleep/dataPoints/a1b2c3d4-e5f6-7890-1234-567890abcdef`
-  /// The `{user}` ID is a system-generated identifier, as described in
-  /// Identity.health_user_id. The `{data_type}` ID corresponds to the
+  /// Format: `users/{user}/dataTypes/{data_type}/dataPoints/{data_point}` ##
+  /// Examples: ##
+  /// `users/me/dataTypes/sleep/dataPoints/a1b2c3d4-e5f6-7890-1234-567890abcdef`
+  /// `users/1234567890/dataTypes/sleep/dataPoints/a1b2c3d4-e5f6-7890-1234-567890abcdef`
+  /// The `{user}` can be either the alias `me` or the authenticated user's
+  /// numeric Health User ID, which can be retrieved by calling GetIdentity (see
+  /// Identity.health_user_id). The `{data_type}` ID corresponds to the
   /// kebab-case version of the field names in the DataPoint data union field,
   /// e.g. `heart-rate` for the `heart_rate` field. The `{data_point}` ID can be
   /// client-provided or system-generated. If client-provided, it must be a
@@ -1450,22 +1504,36 @@ class UsersDataTypesDataPointsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Parent data type of the Data Point collection.
-  /// Format: `users/me/dataTypes/{data_type}`, e.g.: -
-  /// `users/me/dataTypes/steps` - `users/me/dataTypes/heart-rate` For a list of
-  /// the supported data types see the DataPoint data union field.
+  /// Format: `users/{user}/dataTypes/{data_type}`, e.g.: -
+  /// `users/me/dataTypes/steps` - `users/1234567890/dataTypes/steps` -
+  /// `users/me/dataTypes/heart-rate` - `users/1234567890/dataTypes/heart-rate`
+  /// The `{user}` can be either the alias `me` or the authenticated user's
+  /// numeric Health User ID (retrieved via GetIdentity). For a list of the
+  /// supported data types see the DataPoint data union field.
   /// Value must have pattern `^users/\[^/\]+/dataTypes/\[^/\]+$`.
   ///
   /// [dataSourceFamily] - Optional. The data source family name to reconcile.
   /// If empty, data points from all data sources will be reconciled. Format:
-  /// `users/me/dataSourceFamilies/{data_source_family}` -
-  /// `users/me/dataSourceFamilies/all-sources` - Default value. Includes data
-  /// from all available data sources. -
-  /// `users/me/dataSourceFamilies/google-wearables` - Includes data from Google
-  /// and Fitbit tracker devices (such as Fitbit trackers and Pixel Watch).
-  /// Excludes manually logged data. -
-  /// `users/me/dataSourceFamilies/google-sources` - Includes first-party Google
-  /// data, such as data from tracker devices, manually logged data, and Health
-  /// Connect.
+  /// `users/{user}/dataSourceFamilies/{data_source_family}` The `{user}` can be
+  /// either the alias `me` or the authenticated user's numeric Health User ID,
+  /// retrieved via GetIdentity (e.g. `users/me/dataSourceFamilies/...` or
+  /// `users/1234567890/dataSourceFamilies/...`). The supported values are: -
+  /// `users/{user}/dataSourceFamilies/all-sources` - Default value. Includes
+  /// data from all available data sources. -
+  /// `users/{user}/dataSourceFamilies/google-wearables` - Includes data from
+  /// Google and Fitbit tracker devices (such as Fitbit trackers and Pixel
+  /// Watch). Excludes manually logged data. -
+  /// `users/{user}/dataSourceFamilies/google-sources` - Includes first-party
+  /// Google data, such as data from tracker devices, manually logged data, and
+  /// Health Connect. - `users/{user}/dataSourceFamilies/self-sources` -
+  /// Includes only the data the calling client wrote through this API, that is,
+  /// data points whose data source was registered through this API with the
+  /// same OAuth client ID as the caller. Callers that were only granted write
+  /// scopes for the requested data type may only read the data they wrote
+  /// themselves: their requests are implicitly restricted to `self-sources`,
+  /// and requesting any other data source family fails with
+  /// `PERMISSION_DENIED`. If no data point matches the requested data source
+  /// family, the response is an empty list rather than an error.
   ///
   /// [filter] - Optional. Filter expression based on https://aip.dev/160. A
   /// time range, either physical or civil, can be specified. See the
@@ -1527,8 +1595,11 @@ class UsersDataTypesDataPointsResource {
   ///
   /// [parent] - Required. Parent data type of the Data Point collection.
   /// Format: `users/{user}/dataTypes/{data_type}`, e.g.: -
-  /// `users/me/dataTypes/steps` - `users/me/dataTypes/distance` For a list of
-  /// the supported data types see the RollupDataPoint value union field.
+  /// `users/me/dataTypes/steps` - `users/1234567890/dataTypes/steps` -
+  /// `users/me/dataTypes/distance` - `users/1234567890/dataTypes/distance` The
+  /// `{user}` can be either the alias `me` or the authenticated user's numeric
+  /// Health User ID (retrieved via GetIdentity). For a list of the supported
+  /// data types see the RollupDataPoint value union field.
   /// Value must have pattern `^users/\[^/\]+/dataTypes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1669,6 +1740,8 @@ class ActiveEnergyBurned {
   ObservationTimeInterval? interval;
 
   /// Energy burned during an activity, measured in kilocalories.
+  ///
+  /// Must be in the range `[0, 1000000]`.
   ///
   /// Required.
   core.double? kcal;
@@ -2162,6 +2235,8 @@ class AlertWindow {
 class Altitude {
   /// Altitude gain in millimeters over the observed interval.
   ///
+  /// Must be in the range `[-1000000000, 1000000000]`.
+  ///
   /// Required.
   core.String? gainMillimeters;
 
@@ -2324,6 +2399,8 @@ class BatchDeleteDataPointsRequest {
 class BloodGlucose {
   /// Blood glucose level concentration in mg/dL.
   ///
+  /// Must be in the range `[0, 900]`.
+  ///
   /// Required.
   core.double? bloodGlucoseMilligramsPerDeciliter;
 
@@ -2462,7 +2539,9 @@ class BloodGlucoseRollupValue {
 
 /// Body fat measurement.
 class BodyFat {
-  /// Body fat percentage, in range \[0, 100\].
+  /// Body fat percentage.
+  ///
+  /// Must be in the range `[0, 100]`.
   ///
   /// Required.
   core.double? percentage;
@@ -2678,6 +2757,8 @@ class CoreBodyTemperature {
   ObservationSampleTime? sampleTime;
 
   /// The core body temperature in Celsius.
+  ///
+  /// Must be in the range `[0, 100]`.
   ///
   /// Required.
   core.double? temperatureCelsius;
@@ -2978,6 +3059,8 @@ class DailyHeartRateZones {
 class DailyOxygenSaturation {
   /// The average value of the oxygen saturation samples during the sleep.
   ///
+  /// Must be in the range `[0, 100]`.
+  ///
   /// Required.
   core.double? averagePercentage;
 
@@ -2988,6 +3071,8 @@ class DailyOxygenSaturation {
 
   /// The lower bound of the confidence interval of oxygen saturation samples
   /// during sleep.
+  ///
+  /// Must be in the range `[0, 100]`.
   ///
   /// Required.
   core.double? lowerBoundPercentage;
@@ -3000,6 +3085,8 @@ class DailyOxygenSaturation {
 
   /// The upper bound of the confidence interval of oxygen saturation samples
   /// during sleep.
+  ///
+  /// Must be in the range `[0, 100]`.
   ///
   /// Required.
   core.double? upperBoundPercentage;
@@ -3161,28 +3248,42 @@ class DailyRollUpDataPointsRequest {
   /// The data source family name to roll up.
   ///
   /// If empty, data points from all available data sources will be rolled up.
-  /// Format: `users/me/dataSourceFamilies/{data_source_family}` The supported
-  /// values are: - `users/me/dataSourceFamilies/all-sources` - Default value.
-  /// Includes data from all available data sources. -
-  /// `users/me/dataSourceFamilies/google-wearables` - Includes data from Google
-  /// and Fitbit tracker devices (such as Fitbit trackers and Pixel Watch).
-  /// Excludes manually logged data. -
-  /// `users/me/dataSourceFamilies/google-sources` - Includes first-party Google
-  /// data, such as data from tracker devices, manually logged data, and Health
-  /// Connect.
+  /// Format: `users/{user}/dataSourceFamilies/{data_source_family}` The
+  /// `{user}` can be either the alias `me` or the authenticated user's numeric
+  /// Health User ID, retrieved via GetIdentity (e.g.
+  /// `users/me/dataSourceFamilies/...` or
+  /// `users/1234567890/dataSourceFamilies/...`). The supported values are: -
+  /// `users/{user}/dataSourceFamilies/all-sources` - Default value. Includes
+  /// data from all available data sources. -
+  /// `users/{user}/dataSourceFamilies/google-wearables` - Includes data from
+  /// Google and Fitbit tracker devices (such as Fitbit trackers and Pixel
+  /// Watch). Excludes manually logged data. -
+  /// `users/{user}/dataSourceFamilies/google-sources` - Includes first-party
+  /// Google data, such as data from tracker devices, manually logged data, and
+  /// Health Connect. - `users/{user}/dataSourceFamilies/self-sources` -
+  /// Includes only the data the calling client wrote through this API, that is,
+  /// data points whose data source was registered through this API with the
+  /// same OAuth client ID as the caller. Callers that were only granted write
+  /// scopes for the requested data type may only read the data they wrote
+  /// themselves: their requests are implicitly restricted to `self-sources`,
+  /// and requesting any other data source family fails with
+  /// `PERMISSION_DENIED`. If no data point matches the requested data source
+  /// family, the response is an empty list rather than an error.
   ///
   /// Optional.
   core.String? dataSourceFamily;
 
   /// The maximum number of data points to return.
   ///
-  /// If unspecified, at most 1440 data points will be returned. The maximum
-  /// page size is 10000; values above that will be truncated accordingly.
+  /// If unspecified, at most `90` data points will be returned. The maximum
+  /// page size is `90`. For `calories-in-heart-rate-zone`, `heart-rate`,
+  /// `active-minutes`, and `total-calories`, the default and maximum page size
+  /// is `14`.
   ///
   /// Optional.
   core.int? pageSize;
 
-  /// The `next_page_token` from a previous request, if any.
+  /// The next_page_token from a previous request, if any.
   ///
   /// All other request fields need to be the same as in the initial request
   /// when the page token is specified.
@@ -3249,13 +3350,19 @@ class DailyRollUpDataPointsRequest {
 
 /// Response containing the list of rolled up data points.
 class DailyRollUpDataPointsResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
   /// Values for each aggregation time window.
   core.List<DailyRollupDataPoint>? rollupDataPoints;
 
-  DailyRollUpDataPointsResponse({this.rollupDataPoints});
+  DailyRollUpDataPointsResponse({this.nextPageToken, this.rollupDataPoints});
 
   DailyRollUpDataPointsResponse.fromJson(core.Map json_)
     : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
         rollupDataPoints: (json_['rollupDataPoints'] as core.List?)
             ?.map(
               (value) => DailyRollupDataPoint.fromJson(
@@ -3266,8 +3373,12 @@ class DailyRollUpDataPointsResponse {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
     final rollupDataPoints = this.rollupDataPoints;
-    return {'rollupDataPoints': ?rollupDataPoints};
+    return {
+      'nextPageToken': ?nextPageToken,
+      'rollupDataPoints': ?rollupDataPoints,
+    };
   }
 }
 
@@ -3715,6 +3826,8 @@ class DailyVO2Max {
   /// Daily VO2 max value measured as in ml consumed oxygen / kg of body weight
   /// / min.
   ///
+  /// Must be in the range `[0, 100]`.
+  ///
   /// Required.
   core.double? vo2Max;
 
@@ -3929,10 +4042,13 @@ class DataPoint {
   /// Data point name, only supported for the subset of identifiable data types.
   /// For the majority of the data types, individual data points do not need to
   /// be identified and this field would be empty. Format:
-  /// `users/{user}/dataTypes/{data_type}/dataPoints/{data_point}` Example:
-  /// `users/abcd1234/dataTypes/sleep/dataPoints/a1b2c3d4-e5f6-7890-1234-567890abcdef`
-  /// The `{user}` ID is a system-generated identifier, as described in
-  /// Identity.health_user_id. The `{data_type}` ID corresponds to the
+  /// `users/{user}/dataTypes/{data_type}/dataPoints/{data_point}` ## Examples:
+  /// ##
+  /// `users/me/dataTypes/sleep/dataPoints/a1b2c3d4-e5f6-7890-1234-567890abcdef`
+  /// `users/1234567890/dataTypes/sleep/dataPoints/a1b2c3d4-e5f6-7890-1234-567890abcdef`
+  /// The `{user}` can be either the alias `me` or the authenticated user's
+  /// numeric Health User ID, which can be retrieved by calling GetIdentity (see
+  /// Identity.health_user_id). The `{data_type}` ID corresponds to the
   /// kebab-case version of the field names in the DataPoint data union field,
   /// e.g. `heart-rate` for the `heart_rate` field. The `{data_point}` ID can be
   /// client-provided or system-generated. If client-provided, it must be a
@@ -4546,6 +4662,8 @@ class Distance {
 
   /// Distance in millimeters over the observed interval.
   ///
+  /// Must be in the range `[0, 1000000000]`.
+  ///
   /// Required.
   core.String? millimeters;
 
@@ -4769,6 +4887,8 @@ class EndpointAuthorization {
 /// Represents the energy quantity.
 class EnergyQuantity {
   /// The energy value in kilocalories.
+  ///
+  /// Must be in the range `[0, 100000]`.
   ///
   /// Required.
   core.double? kcal;
@@ -5281,7 +5401,9 @@ class ExportExerciseTcxResponse {
 
 /// Gained elevation measured in floors over the time interval
 class Floors {
-  /// Number of floors in the recorded interval
+  /// Number of floors in the recorded interval.
+  ///
+  /// Must be in the range `[0, 1000000]`.
   ///
   /// Required.
   core.String? count;
@@ -5701,6 +5823,8 @@ class HeartBeat {
 class HeartRate {
   /// The heart rate value in beats per minute.
   ///
+  /// Must be in the range `[1, 300]`.
+  ///
   /// Required.
   core.String? beatsPerMinute;
 
@@ -5828,14 +5952,15 @@ class HeartRateRollupValue {
 /// square of successive differences (RMSSD) between normal heartbeats or by
 /// standard deviation of the inter-beat intervals (SDNN).
 class HeartRateVariability {
-  /// Metadata used in 1P surfaces.
+  /// Additional information about the heart rate variability measurement.
   ///
   /// Optional.
   HeartRateVariabilityMetadata? metadata;
 
   /// The root mean square of successive differences between normal heartbeats.
   ///
-  /// This is a measure of heart rate variability used by Google Health.
+  /// This is a measure of heart rate variability used by Google Health. Must be
+  /// in the range `[1, 200]`.
   ///
   /// Optional.
   core.double? rootMeanSquareOfSuccessiveDifferencesMilliseconds;
@@ -6021,6 +6146,8 @@ class HeartRateZone {
 /// Body height measurement.
 class Height {
   /// Height of the user in millimeters.
+  ///
+  /// Must be in the range `[0, 3000]`.
   ///
   /// Required.
   core.String? heightMillimeters;
@@ -7523,7 +7650,7 @@ class OvulationTest {
 class OxygenSaturation {
   /// The oxygen saturation percentage.
   ///
-  /// Valid values are from 0 to 100.
+  /// Must be in the range `[0, 100]`.
   ///
   /// Required.
   core.double? percentage;
@@ -7746,7 +7873,8 @@ class Profile {
   /// Example: `users/1234567890/profile` or `users/me/profile` The {user} ID is
   /// a system-generated Google Health API user ID, a string of 1-63 characters
   /// consisting of lowercase and uppercase letters, numbers, and hyphens. The
-  /// literal `me` can also be used to refer to the authenticated user.
+  /// literal `me` can also be used to refer to the authenticated user. This
+  /// field is read-only.
   core.String? name;
 
   /// The user's user configured running stride length, in millimeters.
@@ -7915,10 +8043,13 @@ class ReconciledDataPoint {
   /// Data point name, only supported for the subset of identifiable data types.
   /// For the majority of the data types, individual data points do not need to
   /// be identified and this field would be empty. Format:
-  /// `users/{user}/dataTypes/{data_type}/dataPoints/{data_point}` Example:
-  /// `users/abcd1234/dataTypes/sleep/dataPoints/a1b2c3d4-e5f6-7890-1234-567890abcdef`
-  /// The `{user}` ID is a system-generated identifier, as described in
-  /// Identity.health_user_id. The `{data_type}` ID corresponds to the
+  /// `users/{user}/dataTypes/{data_type}/dataPoints/{data_point}` ## Examples:
+  /// ##
+  /// `users/me/dataTypes/sleep/dataPoints/a1b2c3d4-e5f6-7890-1234-567890abcdef`
+  /// `users/1234567890/dataTypes/sleep/dataPoints/a1b2c3d4-e5f6-7890-1234-567890abcdef`
+  /// The `{user}` can be either the alias `me` or the authenticated user's
+  /// numeric Health User ID, which can be retrieved by calling GetIdentity (see
+  /// Identity.health_user_id). The `{data_type}` ID corresponds to the
   /// kebab-case version of the field names in the DataPoint data union field,
   /// e.g. `heart-rate` for the `heart_rate` field. The `{data_point}` ID can be
   /// client-provided or system-generated. If client-provided, it must be a
@@ -8451,15 +8582,27 @@ class RollUpDataPointsRequest {
   /// The data source family name to roll up.
   ///
   /// If empty, data points from all available data sources will be rolled up.
-  /// Format: `users/me/dataSourceFamilies/{data_source_family}` The supported
-  /// values are: - `users/me/dataSourceFamilies/all-sources` - Default value.
-  /// Includes data from all available data sources. -
-  /// `users/me/dataSourceFamilies/google-wearables` - Includes data from Google
-  /// and Fitbit tracker devices (such as Fitbit trackers and Pixel Watch).
-  /// Excludes manually logged data. -
-  /// `users/me/dataSourceFamilies/google-sources` - Includes first-party Google
-  /// data, such as data from tracker devices, manually logged data, and Health
-  /// Connect.
+  /// Format: `users/{user}/dataSourceFamilies/{data_source_family}` The
+  /// `{user}` can be either the alias `me` or the authenticated user's numeric
+  /// Health User ID, retrieved via GetIdentity (e.g.
+  /// `users/me/dataSourceFamilies/...` or
+  /// `users/1234567890/dataSourceFamilies/...`). The supported values are: -
+  /// `users/{user}/dataSourceFamilies/all-sources` - Default value. Includes
+  /// data from all available data sources. -
+  /// `users/{user}/dataSourceFamilies/google-wearables` - Includes data from
+  /// Google and Fitbit tracker devices (such as Fitbit trackers and Pixel
+  /// Watch). Excludes manually logged data. -
+  /// `users/{user}/dataSourceFamilies/google-sources` - Includes first-party
+  /// Google data, such as data from tracker devices, manually logged data, and
+  /// Health Connect. - `users/{user}/dataSourceFamilies/self-sources` -
+  /// Includes only the data the calling client wrote through this API, that is,
+  /// data points whose data source was registered through this API with the
+  /// same OAuth client ID as the caller. Callers that were only granted write
+  /// scopes for the requested data type may only read the data they wrote
+  /// themselves: their requests are implicitly restricted to `self-sources`,
+  /// and requesting any other data source family fails with
+  /// `PERMISSION_DENIED`. If no data point matches the requested data source
+  /// family, the response is an empty list rather than an error.
   ///
   /// Optional.
   core.String? dataSourceFamily;
@@ -8885,6 +9028,8 @@ class RollupDataPoint {
 class RunVO2Max {
   /// Run VO2 max value in ml/kg/min.
   ///
+  /// Must be in the range `[0, 100]`.
+  ///
   /// Required.
   core.double? runVo2Max;
 
@@ -9169,7 +9314,7 @@ class Settings {
   /// `users/me/settings` The {user} ID is a system-generated Google Health API
   /// user ID, a string of 1-63 characters consisting of lowercase and uppercase
   /// letters, numbers, and hyphens. The literal `me` can also be used to refer
-  /// to the authenticated user.
+  /// to the authenticated user. This field is read-only.
   core.String? name;
 
   /// The stride length type defined in the user's account settings for running.
@@ -9887,6 +10032,8 @@ typedef Status = $Status00;
 class Steps {
   /// Number of steps in the recorded interval.
   ///
+  /// Must be in the range `[0, 1000000]`.
+  ///
   /// Required.
   core.String? count;
 
@@ -10459,6 +10606,8 @@ class VO2Max {
 
   /// VO2 max value measured as in ml consumed oxygen / kg of body weight / min.
   ///
+  /// Must be in the range `[0, 100]`.
+  ///
   /// Required.
   core.double? vo2Max;
 
@@ -10490,6 +10639,8 @@ class VO2Max {
 /// Represents the volume quantity.
 class VolumeQuantity {
   /// Value representing the volume in milliliters.
+  ///
+  /// Must be in the range `[0, 100000]`.
   ///
   /// Required.
   core.double? milliliters;
@@ -10581,6 +10732,8 @@ class Weight {
 
   /// Weight of a user in grams.
   ///
+  /// Must be in the range `[0, 1000000]`.
+  ///
   /// Required.
   core.double? weightGrams;
 
@@ -10612,6 +10765,8 @@ class Weight {
 /// Represents the weight quantity.
 class WeightQuantity {
   /// The weight value in grams.
+  ///
+  /// Must be in the range `[0, 100000]`.
   ///
   /// Required.
   core.double? grams;

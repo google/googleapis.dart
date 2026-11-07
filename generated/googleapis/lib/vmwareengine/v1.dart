@@ -31,6 +31,7 @@
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsAnnouncementsResource]
+///     - [ProjectsLocationsCapacityAllocationsResource]
 ///     - [ProjectsLocationsDatastoresResource]
 ///     - [ProjectsLocationsDnsBindPermissionResource]
 ///     - [ProjectsLocationsNetworkPeeringsResource]
@@ -104,6 +105,8 @@ class ProjectsLocationsResource {
 
   ProjectsLocationsAnnouncementsResource get announcements =>
       ProjectsLocationsAnnouncementsResource(_requester);
+  ProjectsLocationsCapacityAllocationsResource get capacityAllocations =>
+      ProjectsLocationsCapacityAllocationsResource(_requester);
   ProjectsLocationsDatastoresResource get datastores =>
       ProjectsLocationsDatastoresResource(_requester);
   ProjectsLocationsDnsBindPermissionResource get dnsBindPermission =>
@@ -393,6 +396,98 @@ class ProjectsLocationsAnnouncementsResource {
       queryParams: queryParams_,
     );
     return ListAnnouncementsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsCapacityAllocationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsCapacityAllocationsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Lists `CapacityAllocation` resources in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the location to query for
+  /// capacity allocations. Resource names are schemeless URIs that follow the
+  /// conventions in https://cloud.google.com/apis/design/resource_names. For
+  /// example: `projects/my-project/locations/us-central1-a`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. A filter expression that matches resources returned
+  /// in the response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string or a number. The comparison operator must be `=`, `!=`, `>`,
+  /// `>=`, `<`, or `<=`. The has operator `:` is also supported. Supported
+  /// fields include `name`, `display_name` (or `placement_group`),
+  /// `machine_family`, `allocated_capacity_count`, `consumed_capacity_count`,
+  /// and `connected_placement_group` (using `=`). For example, if you are
+  /// filtering a list of capacity allocations, you can exclude the ones named
+  /// `example-capacity-allocation` by specifying `name !=
+  /// "example-capacity-allocation"`. You can also filter on other fields, such
+  /// as machine family (`"ve1"`, `"ve2"`, or `"ve3"`) or connected placement
+  /// group: ``` machine_family = "ve1" connected_placement_group =
+  /// "example-placement-group" ``` To filter on multiple expressions, provide
+  /// each separate expression within parentheses. For example: ```
+  /// (machine_family = "ve1") (allocated_capacity_count > 10) ``` By default,
+  /// each expression is an `AND` expression. However, you can include `AND`,
+  /// `OR`, and `NOT` expressions explicitly. For example: ``` ((machine_family
+  /// = "ve1") AND (allocated_capacity_count > 10)) OR (consumed_capacity_count
+  /// > 0) ```
+  ///
+  /// [orderBy] - Optional. Sorts list results by a certain order. By default,
+  /// returned results are ordered by `name` in ascending order. You can also
+  /// sort results in descending order based on the `name` value using
+  /// `orderBy="name desc"`. Currently, only ordering by `name` is supported.
+  ///
+  /// [pageSize] - Optional. The maximum number of capacity allocations to
+  /// return in one page. The service may return fewer than this value. The
+  /// maximum value is coerced to 1000. The default value of this field is 500.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListCapacityAllocations` call. Provide this to retrieve the subsequent
+  /// page. When paginating, all other parameters provided to
+  /// `ListCapacityAllocations` must match the call that provided the page
+  /// token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListCapacityAllocationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListCapacityAllocationsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/capacityAllocations';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListCapacityAllocationsResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -2677,11 +2772,14 @@ class ProjectsLocationsPrivateCloudsResource {
 
   /// Modifies a `PrivateCloud` resource.
   ///
-  /// Only the following fields can be updated: `description`. Only fields
-  /// specified in `updateMask` are applied. During operation processing, the
-  /// resource is temporarily in the `ACTIVE` state before the operation fully
-  /// completes. For that period of time, you can't update the resource. Use the
-  /// operation status to determine when the processing fully completes.
+  /// Only the following fields can be updated: `description`,
+  /// `encryption_config`. If `updateMask` is provided, only fields specified in
+  /// it are applied. If `updateMask` is not provided, the default behavior is
+  /// to update the `description`. It is advised to provide an `updateMask` to
+  /// avoid confusion. During operation processing, the resource is temporarily
+  /// in the `ACTIVE` state before the operation fully completes. For that
+  /// period of time, you can't update the resource. Use the operation status to
+  /// determine when the processing fully completes.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2702,7 +2800,8 @@ class ProjectsLocationsPrivateCloudsResource {
   /// overwritten in the `PrivateCloud` resource by the update. The fields
   /// specified in `updateMask` are relative to the resource, not the full
   /// request. A field will be overwritten if it is in the mask. If the user
-  /// does not provide a mask then all fields will be overwritten.
+  /// does not provide a mask then only the description field will be
+  /// overwritten.
   ///
   /// [validateOnly] - Optional. If set to `true`, only validates the request
   /// but doesn’t execute the request. If set to `false`, validates and executes
@@ -6839,6 +6938,74 @@ class Binding {
   }
 }
 
+/// Represents a capacity allocation.
+///
+/// Capacity allocation is zonal.
+class CapacityAllocation {
+  /// The allocated capacity for the capacity allocation.
+  ///
+  /// Output only.
+  core.int? allocatedCapacityCount;
+
+  /// The consumed capacity for the capacity allocation.
+  ///
+  /// Output only.
+  core.int? consumedCapacityCount;
+
+  /// The machine family of the capacity allocation.
+  ///
+  /// Output only.
+  core.String? machineFamily;
+
+  /// Identifier.
+  ///
+  /// The resource name of the capacity allocation. The last segment of the name
+  /// is the placement group name. For example:
+  /// `projects/my-project/locations/us-central1-a/capacityAllocations/pg-123`
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The private cloud names using the capacity allocation.
+  ///
+  /// Output only.
+  core.List<core.String>? privateClouds;
+
+  CapacityAllocation({
+    this.allocatedCapacityCount,
+    this.consumedCapacityCount,
+    this.machineFamily,
+    this.name,
+    this.privateClouds,
+  });
+
+  CapacityAllocation.fromJson(core.Map json_)
+    : this(
+        allocatedCapacityCount: json_['allocatedCapacityCount'] as core.int?,
+        consumedCapacityCount: json_['consumedCapacityCount'] as core.int?,
+        machineFamily: json_['machineFamily'] as core.String?,
+        name: json_['name'] as core.String?,
+        privateClouds: (json_['privateClouds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final allocatedCapacityCount = this.allocatedCapacityCount;
+    final consumedCapacityCount = this.consumedCapacityCount;
+    final machineFamily = this.machineFamily;
+    final name = this.name;
+    final privateClouds = this.privateClouds;
+    return {
+      'allocatedCapacityCount': ?allocatedCapacityCount,
+      'consumedCapacityCount': ?consumedCapacityCount,
+      'machineFamily': ?machineFamily,
+      'name': ?name,
+      'privateClouds': ?privateClouds,
+    };
+  }
+}
+
 /// A cluster in a private cloud.
 class Cluster {
   /// Configuration of the autoscaling applied to this cluster.
@@ -6880,6 +7047,17 @@ class Cluster {
   /// Required.
   core.Map<core.String, NodeTypeConfig>? nodeTypeConfigs;
 
+  /// The identifier of the placement group for cluster nodes.
+  ///
+  /// A placement group is an internal Google identifier for a group of
+  /// resources that are physically located within the same fault domain. If
+  /// provided, nodes for this cluster are placed within the specified placement
+  /// group. If this field is omitted, the system selects an appropriate
+  /// placement group.
+  ///
+  /// Optional.
+  core.String? placementGroup;
+
   /// State of the resource.
   ///
   /// Output only.
@@ -6919,6 +7097,7 @@ class Cluster {
     this.management,
     this.name,
     this.nodeTypeConfigs,
+    this.placementGroup,
     this.state,
     this.stretchedClusterConfig,
     this.uid,
@@ -6953,6 +7132,7 @@ class Cluster {
                     ),
                   ),
                 ),
+        placementGroup: json_['placementGroup'] as core.String?,
         state: json_['state'] as core.String?,
         stretchedClusterConfig: json_.containsKey('stretchedClusterConfig')
             ? StretchedClusterConfig.fromJson(
@@ -6971,6 +7151,7 @@ class Cluster {
     final management = this.management;
     final name = this.name;
     final nodeTypeConfigs = this.nodeTypeConfigs;
+    final placementGroup = this.placementGroup;
     final state = this.state;
     final stretchedClusterConfig = this.stretchedClusterConfig;
     final uid = this.uid;
@@ -6982,6 +7163,7 @@ class Cluster {
       'management': ?management,
       'name': ?name,
       'nodeTypeConfigs': ?nodeTypeConfigs,
+      'placementGroup': ?placementGroup,
       'state': ?state,
       'stretchedClusterConfig': ?stretchedClusterConfig,
       'uid': ?uid,
@@ -7933,6 +8115,12 @@ class GrantDnsBindPermissionRequest {
   /// permission to bind with the intranet VPC corresponding to the consumer
   /// project.
   ///
+  /// Principal can be a user or a service account. For example, to specify the
+  /// user `user@example.com`, use `"principal": {"user": "user@example.com"}`
+  /// and to specify the service account `service-account@gserviceaccount.com`,
+  /// use `"principal": {"serviceAccount":
+  /// "service-account@gserviceaccount.com"}`.
+  ///
   /// Required.
   Principal? principal;
 
@@ -8184,6 +8372,55 @@ class ListAnnouncementsResponse {
     final unreachable = this.unreachable;
     return {
       'announcements': ?announcements,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
+  }
+}
+
+/// Response message for VmwareEngine.ListCapacityAllocations
+class ListCapacityAllocationsResponse {
+  /// A list of capacity allocations.
+  core.List<CapacityAllocation>? capacityAllocations;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// Unordered list.
+  ///
+  /// Locations that could not be reached when making an aggregated query using
+  /// wildcards.
+  core.List<core.String>? unreachable;
+
+  ListCapacityAllocationsResponse({
+    this.capacityAllocations,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListCapacityAllocationsResponse.fromJson(core.Map json_)
+    : this(
+        capacityAllocations: (json_['capacityAllocations'] as core.List?)
+            ?.map(
+              (value) => CapacityAllocation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final capacityAllocations = this.capacityAllocations;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'capacityAllocations': ?capacityAllocations,
       'nextPageToken': ?nextPageToken,
       'unreachable': ?unreachable,
     };
@@ -9174,6 +9411,17 @@ class ManagementCluster {
   /// Required.
   core.Map<core.String, NodeTypeConfig>? nodeTypeConfigs;
 
+  /// The identifier of the placement group for management cluster nodes.
+  ///
+  /// A placement group is an internal Google identifier for a group of
+  /// resources that are physically located within the same fault domain. If
+  /// provided, nodes for this cluster are placed within the specified placement
+  /// group. If this field is omitted, the system selects an appropriate
+  /// placement group.
+  ///
+  /// Optional.
+  core.String? placementGroup;
+
   /// Configuration of a stretched cluster.
   ///
   /// Required for STRETCHED private clouds.
@@ -9184,6 +9432,7 @@ class ManagementCluster {
   ManagementCluster({
     this.clusterId,
     this.nodeTypeConfigs,
+    this.placementGroup,
     this.stretchedClusterConfig,
   });
 
@@ -9200,6 +9449,7 @@ class ManagementCluster {
                     ),
                   ),
                 ),
+        placementGroup: json_['placementGroup'] as core.String?,
         stretchedClusterConfig: json_.containsKey('stretchedClusterConfig')
             ? StretchedClusterConfig.fromJson(
                 json_['stretchedClusterConfig']
@@ -9211,10 +9461,12 @@ class ManagementCluster {
   core.Map<core.String, core.dynamic> toJson() {
     final clusterId = this.clusterId;
     final nodeTypeConfigs = this.nodeTypeConfigs;
+    final placementGroup = this.placementGroup;
     final stretchedClusterConfig = this.stretchedClusterConfig;
     return {
       'clusterId': ?clusterId,
       'nodeTypeConfigs': ?nodeTypeConfigs,
+      'placementGroup': ?placementGroup,
       'stretchedClusterConfig': ?stretchedClusterConfig,
     };
   }
@@ -10248,7 +10500,7 @@ class NodeTypeConfig {
 }
 
 /// Details about a NSX Manager appliance.
-typedef Nsx = $Shared31;
+typedef Nsx = $Shared34;
 
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
@@ -10548,6 +10800,11 @@ class Policy {
 
 /// Users/Service accounts which have access for DNS binding on the intranet VPC
 /// corresponding to the consumer project.
+///
+/// Principal can be a user or a service account. For example: For specifying
+/// user `user@example.com` use `{"user": "user@example.com"}` and for
+/// specifying service account `service-account@gserviceaccount.com` use
+/// `{"serviceAccount": "service-account@gserviceaccount.com"}`.
 class Principal {
   /// The service account which needs to be granted the permission.
   core.String? serviceAccount;
@@ -11081,6 +11338,12 @@ class RevokeDnsBindPermissionRequest {
   /// permission to bind with the intranet VPC corresponding to the consumer
   /// project.
   ///
+  /// Principal can be a user or a service account. For example, to specify the
+  /// user `user@example.com`, use `"principal": {"user": "user@example.com"}`
+  /// and to specify the service account `service-account@gserviceaccount.com`,
+  /// use `"principal": {"serviceAccount":
+  /// "service-account@gserviceaccount.com"}`.
+  ///
   /// Required.
   Principal? principal;
 
@@ -11254,36 +11517,77 @@ class StretchedClusterConfig {
   /// Zone that will remain operational when connection between the two zones is
   /// lost.
   ///
-  /// Specify the resource name of a zone that belongs to the region of the
-  /// private cloud. For example: `projects/{project}/locations/europe-west3-a`
-  /// where `{project}` can either be a project number or a project ID.
+  /// Specify the resource name or ID of a zone that belongs to the region of
+  /// the private cloud. For example:
+  /// `projects/{project}/locations/europe-west3-a` or `europe-west3-a`, where
+  /// `{project}` can either be a project number or a project ID.
   ///
   /// Required.
   core.String? preferredLocation;
 
+  /// The identifier of the placement group for preferred location cluster
+  /// nodes.
+  ///
+  /// A placement group is an internal Google identifier for a group of
+  /// resources that are physically located within the same fault domain. If
+  /// provided, nodes for this cluster are placed within the specified placement
+  /// group. If this field is omitted, the system selects an appropriate
+  /// placement group.
+  ///
+  /// Optional.
+  core.String? preferredLocationPlacementGroup;
+
   /// Additional zone for a higher level of availability and load balancing.
   ///
-  /// Specify the resource name of a zone that belongs to the region of the
-  /// private cloud. For example: `projects/{project}/locations/europe-west3-b`
-  /// where `{project}` can either be a project number or a project ID.
+  /// Specify the resource name or ID of a zone that belongs to the region of
+  /// the private cloud. For example:
+  /// `projects/{project}/locations/europe-west3-b` or `europe-west3-b`, where
+  /// `{project}` can either be a project number or a project ID.
   ///
   /// Required.
   core.String? secondaryLocation;
 
-  StretchedClusterConfig({this.preferredLocation, this.secondaryLocation});
+  /// The identifier of the placement group for secondary location cluster
+  /// nodes.
+  ///
+  /// A placement group is an internal Google identifier for a group of
+  /// resources that are physically located within the same fault domain. If
+  /// provided, nodes for this cluster are placed within the specified placement
+  /// group. If this field is omitted, the system selects an appropriate
+  /// placement group.
+  ///
+  /// Optional.
+  core.String? secondaryLocationPlacementGroup;
+
+  StretchedClusterConfig({
+    this.preferredLocation,
+    this.preferredLocationPlacementGroup,
+    this.secondaryLocation,
+    this.secondaryLocationPlacementGroup,
+  });
 
   StretchedClusterConfig.fromJson(core.Map json_)
     : this(
         preferredLocation: json_['preferredLocation'] as core.String?,
+        preferredLocationPlacementGroup:
+            json_['preferredLocationPlacementGroup'] as core.String?,
         secondaryLocation: json_['secondaryLocation'] as core.String?,
+        secondaryLocationPlacementGroup:
+            json_['secondaryLocationPlacementGroup'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final preferredLocation = this.preferredLocation;
+    final preferredLocationPlacementGroup =
+        this.preferredLocationPlacementGroup;
     final secondaryLocation = this.secondaryLocation;
+    final secondaryLocationPlacementGroup =
+        this.secondaryLocationPlacementGroup;
     return {
       'preferredLocation': ?preferredLocation,
+      'preferredLocationPlacementGroup': ?preferredLocationPlacementGroup,
       'secondaryLocation': ?secondaryLocation,
+      'secondaryLocationPlacementGroup': ?secondaryLocationPlacementGroup,
     };
   }
 }
@@ -11774,7 +12078,7 @@ class Upgrade {
 }
 
 /// Details about a vCenter Server management appliance.
-typedef Vcenter = $Shared31;
+typedef Vcenter = $Shared34;
 
 /// VMware Engine network resource that provides connectivity for VMware Engine
 /// private clouds.

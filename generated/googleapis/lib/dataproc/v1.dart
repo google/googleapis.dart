@@ -8113,6 +8113,11 @@ class ApplicationAttemptInfo {
   core.bool? completed;
   core.String? durationMillis;
   core.String? endTime;
+
+  /// The event log path for the application attempt.
+  ///
+  /// Output only.
+  core.String? eventLogPath;
   core.String? lastUpdated;
   core.String? sparkUser;
   core.String? startTime;
@@ -8123,6 +8128,7 @@ class ApplicationAttemptInfo {
     this.completed,
     this.durationMillis,
     this.endTime,
+    this.eventLogPath,
     this.lastUpdated,
     this.sparkUser,
     this.startTime,
@@ -8135,6 +8141,7 @@ class ApplicationAttemptInfo {
         completed: json_['completed'] as core.bool?,
         durationMillis: json_['durationMillis'] as core.String?,
         endTime: json_['endTime'] as core.String?,
+        eventLogPath: json_['eventLogPath'] as core.String?,
         lastUpdated: json_['lastUpdated'] as core.String?,
         sparkUser: json_['sparkUser'] as core.String?,
         startTime: json_['startTime'] as core.String?,
@@ -8146,6 +8153,7 @@ class ApplicationAttemptInfo {
     final completed = this.completed;
     final durationMillis = this.durationMillis;
     final endTime = this.endTime;
+    final eventLogPath = this.eventLogPath;
     final lastUpdated = this.lastUpdated;
     final sparkUser = this.sparkUser;
     final startTime = this.startTime;
@@ -8155,6 +8163,7 @@ class ApplicationAttemptInfo {
       'completed': ?completed,
       'durationMillis': ?durationMillis,
       'endTime': ?endTime,
+      'eventLogPath': ?eventLogPath,
       'lastUpdated': ?lastUpdated,
       'sparkUser': ?sparkUser,
       'startTime': ?startTime,
@@ -9456,16 +9465,49 @@ class ClusterConfig {
   /// Optional.
   InstanceGroupConfig? masterConfig;
 
+  /// The High Obtainability (HO) config settings for the cluster's master
+  /// instances.In High Obtainability (HO) mode, flexible configs are the single
+  /// source of truth for desired cluster configuration across node groups: *
+  /// For single-node clusters: master_flexible_config must be specified, and no
+  /// worker configs should be set.
+  ///
+  /// * For multi-node (standard) clusters: both master_flexible_config and
+  /// worker_flexible_config must be specified. Mixing standard and flexible
+  /// configs across node groups is not allowed.Only one of master_config or
+  /// master_flexible_config can be set.
+  ///
+  /// Optional.
+  FlexibleInstanceGroupConfig? masterFlexibleConfig;
+
   /// Metastore configuration.
   ///
   /// Optional.
   MetastoreConfig? metastoreConfig;
+
+  /// Config for scheduling the resources to be allocated when available.
+  ///
+  /// Optional.
+  SchedulingConfig? schedulingConfig;
 
   /// The Compute Engine config settings for a cluster's secondary worker
   /// instances
   ///
   /// Optional.
   InstanceGroupConfig? secondaryWorkerConfig;
+
+  /// The High Obtainability (HO) config settings for a cluster's secondary
+  /// worker instances.In High Obtainability (HO) mode, flexible configs are the
+  /// single source of truth for desired cluster configuration.
+  ///
+  /// num_instances represents the desired capacity of the secondary worker
+  /// group and is mutable via cluster updates and autoscaling.Only one of
+  /// secondary_worker_config or secondary_worker_flexible_config can be set.In
+  /// High Obtainability (HO) mode, secondary workers are optional. If secondary
+  /// workers are used in an HO cluster, they must be configured using
+  /// secondary_worker_flexible_config (not secondary_worker_config).
+  ///
+  /// Optional.
+  FlexibleInstanceGroupConfig? secondaryWorkerFlexibleConfig;
 
   /// Security settings for the cluster.
   ///
@@ -9498,6 +9540,21 @@ class ClusterConfig {
   /// Optional.
   InstanceGroupConfig? workerConfig;
 
+  /// The High Obtainability (HO) config settings for the cluster's worker
+  /// instances.In High Obtainability (HO) mode, flexible configs are the single
+  /// source of truth for desired cluster configuration.
+  ///
+  /// num_instances represents the desired capacity of the worker group and is
+  /// mutable via cluster updates and autoscaling.Only one of worker_config or
+  /// worker_flexible_config can be set.In High Obtainability (HO) mode, for
+  /// multi-node (standard) clusters, both master_flexible_config and
+  /// worker_flexible_config must be specified. Mixing standard and flexible
+  /// configs across node groups is not allowed. Single-node clusters do not
+  /// specify worker configs.
+  ///
+  /// Optional.
+  FlexibleInstanceGroupConfig? workerFlexibleConfig;
+
   ClusterConfig({
     this.autoscalingConfig,
     this.auxiliaryNodeGroups,
@@ -9514,12 +9571,16 @@ class ClusterConfig {
     this.initializationActions,
     this.lifecycleConfig,
     this.masterConfig,
+    this.masterFlexibleConfig,
     this.metastoreConfig,
+    this.schedulingConfig,
     this.secondaryWorkerConfig,
+    this.secondaryWorkerFlexibleConfig,
     this.securityConfig,
     this.softwareConfig,
     this.tempBucket,
     this.workerConfig,
+    this.workerFlexibleConfig,
   });
 
   ClusterConfig.fromJson(core.Map json_)
@@ -9588,14 +9649,33 @@ class ClusterConfig {
                 json_['masterConfig'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        masterFlexibleConfig: json_.containsKey('masterFlexibleConfig')
+            ? FlexibleInstanceGroupConfig.fromJson(
+                json_['masterFlexibleConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         metastoreConfig: json_.containsKey('metastoreConfig')
             ? MetastoreConfig.fromJson(
                 json_['metastoreConfig'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        schedulingConfig: json_.containsKey('schedulingConfig')
+            ? SchedulingConfig.fromJson(
+                json_['schedulingConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         secondaryWorkerConfig: json_.containsKey('secondaryWorkerConfig')
             ? InstanceGroupConfig.fromJson(
                 json_['secondaryWorkerConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        secondaryWorkerFlexibleConfig:
+            json_.containsKey('secondaryWorkerFlexibleConfig')
+            ? FlexibleInstanceGroupConfig.fromJson(
+                json_['secondaryWorkerFlexibleConfig']
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
@@ -9613,6 +9693,12 @@ class ClusterConfig {
         workerConfig: json_.containsKey('workerConfig')
             ? InstanceGroupConfig.fromJson(
                 json_['workerConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        workerFlexibleConfig: json_.containsKey('workerFlexibleConfig')
+            ? FlexibleInstanceGroupConfig.fromJson(
+                json_['workerFlexibleConfig']
+                    as core.Map<core.String, core.dynamic>,
               )
             : null,
       );
@@ -9633,12 +9719,16 @@ class ClusterConfig {
     final initializationActions = this.initializationActions;
     final lifecycleConfig = this.lifecycleConfig;
     final masterConfig = this.masterConfig;
+    final masterFlexibleConfig = this.masterFlexibleConfig;
     final metastoreConfig = this.metastoreConfig;
+    final schedulingConfig = this.schedulingConfig;
     final secondaryWorkerConfig = this.secondaryWorkerConfig;
+    final secondaryWorkerFlexibleConfig = this.secondaryWorkerFlexibleConfig;
     final securityConfig = this.securityConfig;
     final softwareConfig = this.softwareConfig;
     final tempBucket = this.tempBucket;
     final workerConfig = this.workerConfig;
+    final workerFlexibleConfig = this.workerFlexibleConfig;
     return {
       'autoscalingConfig': ?autoscalingConfig,
       'auxiliaryNodeGroups': ?auxiliaryNodeGroups,
@@ -9655,12 +9745,16 @@ class ClusterConfig {
       'initializationActions': ?initializationActions,
       'lifecycleConfig': ?lifecycleConfig,
       'masterConfig': ?masterConfig,
+      'masterFlexibleConfig': ?masterFlexibleConfig,
       'metastoreConfig': ?metastoreConfig,
+      'schedulingConfig': ?schedulingConfig,
       'secondaryWorkerConfig': ?secondaryWorkerConfig,
+      'secondaryWorkerFlexibleConfig': ?secondaryWorkerFlexibleConfig,
       'securityConfig': ?securityConfig,
       'softwareConfig': ?softwareConfig,
       'tempBucket': ?tempBucket,
       'workerConfig': ?workerConfig,
+      'workerFlexibleConfig': ?workerFlexibleConfig,
     };
   }
 }
@@ -11166,6 +11260,93 @@ class FallbackReason {
   }
 }
 
+/// The configuration for High Obtainability (HO) flexible instance groups.
+///
+/// Flexible instance group configs serve as the single source of truth for
+/// desired state.
+class FlexibleInstanceGroupConfig {
+  /// The boot disk size in GB.
+  ///
+  /// This is a create-time specification and is not currently mutable via
+  /// update masks.
+  ///
+  /// Optional.
+  core.int? bootDiskSizeGb;
+
+  /// The number of vCPUs per instance.
+  ///
+  /// Must be a power of 2 (2, 4, 8, 16, 32). This is a create-time
+  /// specification and is not currently mutable via update masks.
+  ///
+  /// Optional.
+  core.int? coreCount;
+
+  /// The hardware class of the instances.
+  ///
+  /// This is a create-time specification and is not currently mutable via
+  /// update masks.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "HARDWARE_CLASS_UNSPECIFIED" : Unspecified hardware class.
+  /// - "STANDARD" : Standard hardware class. Provides a balanced compute
+  /// configuration with approximately 4GB of memory per vCPU and standard disk
+  /// storage tiers.Candidate machine types include n4-standard, n4d-standard,
+  /// n2-standard, and n2d-standard (Rank 0), and c4-standard and c4d-standard
+  /// (Rank 1) (for requested core counts 2, 4, 8, 16, 32).Warning: The specific
+  /// machine families and types selected for this hardware class are subject to
+  /// change. Users should not take a dependency on the underlying machine type
+  /// selection.
+  /// - "PERFORMANCE" : Performance hardware class. Provides a high-performance
+  /// configuration with approximately 8GB of memory per vCPU (e.g. high-memory
+  /// machine types) and higher-tier disk configurations (e.g. higher IOPS and
+  /// throughput).Candidate machine types include n4-highmem, n4d-highmem,
+  /// n2-highmem, and n2d-highmem (Rank 0), and c4-highmem and c4d-highmem (Rank
+  /// 1) (for requested core counts 2, 4, 8, 16, 32). n4, n4d, c4, and c4d use
+  /// Hyperdisk Balanced with provisioned storage, whereas n2 and n2d use SSD
+  /// persistent disks.Warning: The specific machine families and types selected
+  /// for this hardware class are subject to change. Users should not take a
+  /// dependency on the underlying machine type selection.
+  core.String? hardwareClass;
+
+  /// The number of VM instances requested.For master instances, this must be 1.
+  ///
+  /// For worker and secondary worker instances, this represents the desired
+  /// capacity of the group and is mutable via cluster update operations and
+  /// autoscaling.
+  ///
+  /// Optional.
+  core.int? numInstances;
+
+  FlexibleInstanceGroupConfig({
+    this.bootDiskSizeGb,
+    this.coreCount,
+    this.hardwareClass,
+    this.numInstances,
+  });
+
+  FlexibleInstanceGroupConfig.fromJson(core.Map json_)
+    : this(
+        bootDiskSizeGb: json_['bootDiskSizeGb'] as core.int?,
+        coreCount: json_['coreCount'] as core.int?,
+        hardwareClass: json_['hardwareClass'] as core.String?,
+        numInstances: json_['numInstances'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final bootDiskSizeGb = this.bootDiskSizeGb;
+    final coreCount = this.coreCount;
+    final hardwareClass = this.hardwareClass;
+    final numInstances = this.numInstances;
+    return {
+      'bootDiskSizeGb': ?bootDiskSizeGb,
+      'coreCount': ?coreCount,
+      'hardwareClass': ?hardwareClass,
+      'numInstances': ?numInstances,
+    };
+  }
+}
+
 /// A Dataproc job for running Apache Flink applications on YARN.
 class FlinkJob {
   /// The arguments to pass to the driver.
@@ -11309,6 +11490,14 @@ class GceClusterConfig {
   /// Optional.
   core.Map<core.String, core.String>? metadata;
 
+  /// Controls how instances within this Cluster are allowed to exist in
+  /// multiple Zones within the Region.
+  ///
+  /// Only one of zone_uri or multi_zone_config must be set.
+  ///
+  /// Optional.
+  MultiZoneConfig? multiZoneConfig;
+
   /// The Compute Engine network to be used for machine communications.
   ///
   /// Cannot be specified with subnetwork_uri. If neither network_uri nor
@@ -11420,6 +11609,7 @@ class GceClusterConfig {
     this.confidentialInstanceConfig,
     this.internalIpOnly,
     this.metadata,
+    this.multiZoneConfig,
     this.networkUri,
     this.nodeGroupAffinity,
     this.privateIpv6GoogleAccess,
@@ -11449,6 +11639,11 @@ class GceClusterConfig {
         internalIpOnly: json_['internalIpOnly'] as core.bool?,
         metadata: (json_['metadata'] as core.Map<core.String, core.dynamic>?)
             ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        multiZoneConfig: json_.containsKey('multiZoneConfig')
+            ? MultiZoneConfig.fromJson(
+                json_['multiZoneConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         networkUri: json_['networkUri'] as core.String?,
         nodeGroupAffinity: json_.containsKey('nodeGroupAffinity')
             ? NodeGroupAffinity.fromJson(
@@ -11490,6 +11685,7 @@ class GceClusterConfig {
     final confidentialInstanceConfig = this.confidentialInstanceConfig;
     final internalIpOnly = this.internalIpOnly;
     final metadata = this.metadata;
+    final multiZoneConfig = this.multiZoneConfig;
     final networkUri = this.networkUri;
     final nodeGroupAffinity = this.nodeGroupAffinity;
     final privateIpv6GoogleAccess = this.privateIpv6GoogleAccess;
@@ -11506,6 +11702,7 @@ class GceClusterConfig {
       'confidentialInstanceConfig': ?confidentialInstanceConfig,
       'internalIpOnly': ?internalIpOnly,
       'metadata': ?metadata,
+      'multiZoneConfig': ?multiZoneConfig,
       'networkUri': ?networkUri,
       'nodeGroupAffinity': ?nodeGroupAffinity,
       'privateIpv6GoogleAccess': ?privateIpv6GoogleAccess,
@@ -14580,6 +14777,29 @@ class Metric {
   }
 }
 
+/// Configuration for multi-zonal clusters that can create instances across
+/// multiple Zones within the Region.
+class MultiZoneConfig {
+  /// The distribution shape of the nodes in the multi-zonal cluster.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "TARGET_SHAPE_UNSPECIFIED" : Target shape is unspecified. Setting this
+  /// will cause error.
+  /// - "ANY" : Instances may exist in any Zones within the Region.
+  core.String? targetShape;
+
+  MultiZoneConfig({this.targetShape});
+
+  MultiZoneConfig.fromJson(core.Map json_)
+    : this(targetShape: json_['targetShape'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final targetShape = this.targetShape;
+    return {'targetShape': ?targetShape};
+  }
+}
+
 /// Used only for the deprecated beta.
 ///
 /// A full, namespace-isolated deployment target for an existing GKE cluster.
@@ -17105,6 +17325,45 @@ class RuntimeInfo {
   }
 }
 
+/// Config for scheduling the request to create Compute Engine resources for the
+/// cluster, when available.
+class SchedulingConfig {
+  /// Required lifetime of the resources, once provisioned.
+  ///
+  /// Min 10 mins, Max/Default 7 days . Note that the cluster can still be
+  /// deleted before reaching this time. This time is a maximum amount of time
+  /// before the cluster is forcibly deleted. Lower times are more likely to
+  /// start running sooner.
+  ///
+  /// Optional.
+  core.String? requestedRunDuration;
+
+  /// How long to wait for worker resources to be allocated before failing the
+  /// cluster creation request.
+  ///
+  /// Max/Default value: 13 days
+  ///
+  /// Optional.
+  core.String? schedulingTimeout;
+
+  SchedulingConfig({this.requestedRunDuration, this.schedulingTimeout});
+
+  SchedulingConfig.fromJson(core.Map json_)
+    : this(
+        requestedRunDuration: json_['requestedRunDuration'] as core.String?,
+        schedulingTimeout: json_['schedulingTimeout'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final requestedRunDuration = this.requestedRunDuration;
+    final schedulingTimeout = this.schedulingTimeout;
+    return {
+      'requestedRunDuration': ?requestedRunDuration,
+      'schedulingTimeout': ?schedulingTimeout,
+    };
+  }
+}
+
 /// List of Executors associated with a Spark Application Stage.
 class SearchSessionSparkApplicationExecutorStageSummaryResponse {
   /// This token is included in the response if there are more results to fetch.
@@ -17919,12 +18178,13 @@ class Session {
   /// Output only.
   RuntimeInfo? runtimeInfo;
 
-  /// The session template used by the session.Only resource names, including
-  /// project ID and location, are valid.Example: *
-  /// https://www.googleapis.com/compute/v1/projects/\[project_id\]/locations/\[dataproc_region\]/sessionTemplates/\[template_id\]
-  /// *
-  /// projects/\[project_id\]/locations/\[dataproc_region\]/sessionTemplates/\[template_id\]The
-  /// template must be in the same project and Dataproc region as the session.
+  /// The session template used by the session.Resource names and short template
+  /// IDs are valid.
+  ///
+  /// Examples: *
+  /// projects/\[project_id\]/locations/\[dataproc_region\]/sessionTemplates/\[template_id\]
+  /// * \[template_id\]The template must be in the same project and Dataproc
+  /// region as the session.
   ///
   /// Optional.
   core.String? sessionTemplate;
@@ -18143,6 +18403,13 @@ class SessionTemplate {
   /// Optional.
   core.String? description;
 
+  /// User-friendly display name for the session template.
+  ///
+  /// Can be up to 63 characters.
+  ///
+  /// Optional.
+  core.String? displayName;
+
   /// Environment configuration for session execution.
   ///
   /// Optional.
@@ -18197,6 +18464,7 @@ class SessionTemplate {
     this.createTime,
     this.creator,
     this.description,
+    this.displayName,
     this.environmentConfig,
     this.jupyterSession,
     this.labels,
@@ -18212,6 +18480,7 @@ class SessionTemplate {
         createTime: json_['createTime'] as core.String?,
         creator: json_['creator'] as core.String?,
         description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
         environmentConfig: json_.containsKey('environmentConfig')
             ? EnvironmentConfig.fromJson(
                 json_['environmentConfig']
@@ -18246,6 +18515,7 @@ class SessionTemplate {
     final createTime = this.createTime;
     final creator = this.creator;
     final description = this.description;
+    final displayName = this.displayName;
     final environmentConfig = this.environmentConfig;
     final jupyterSession = this.jupyterSession;
     final labels = this.labels;
@@ -18258,6 +18528,7 @@ class SessionTemplate {
       'createTime': ?createTime,
       'creator': ?creator,
       'description': ?description,
+      'displayName': ?displayName,
       'environmentConfig': ?environmentConfig,
       'jupyterSession': ?jupyterSession,
       'labels': ?labels,

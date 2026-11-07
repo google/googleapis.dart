@@ -72,6 +72,7 @@ api.AccessPermissionSettings buildAccessPermissionSettings() {
   if (buildCounterAccessPermissionSettings < 3) {
     o.discoverSpaceSetting = buildAccessPermissionSetting();
     o.joinSpaceSetting = buildAccessPermissionSetting();
+    o.viewSpaceMembershipSetting = buildAccessPermissionSetting();
   }
   buildCounterAccessPermissionSettings--;
   return o;
@@ -82,6 +83,7 @@ void checkAccessPermissionSettings(api.AccessPermissionSettings o) {
   if (buildCounterAccessPermissionSettings < 3) {
     checkAccessPermissionSetting(o.discoverSpaceSetting!);
     checkAccessPermissionSetting(o.joinSpaceSetting!);
+    checkAccessPermissionSetting(o.viewSpaceMembershipSetting!);
   }
   buildCounterAccessPermissionSettings--;
 }
@@ -482,6 +484,7 @@ api.CardWithId buildCardWithId() {
   if (buildCounterCardWithId < 3) {
     o.card = buildGoogleAppsCardV1Card();
     o.cardId = 'foo';
+    o.ownerUser = buildUser();
   }
   buildCounterCardWithId--;
   return o;
@@ -492,6 +495,7 @@ void checkCardWithId(api.CardWithId o) {
   if (buildCounterCardWithId < 3) {
     checkGoogleAppsCardV1Card(o.card!);
     unittest.expect(o.cardId!, unittest.equals('foo'));
+    checkUser(o.ownerUser!);
   }
   buildCounterCardWithId--;
 }
@@ -536,6 +540,63 @@ void checkChatSpaceLinkData(api.ChatSpaceLinkData o) {
     unittest.expect(o.thread!, unittest.equals('foo'));
   }
   buildCounterChatSpaceLinkData--;
+}
+
+core.List<api.CitedSource> buildUnnamed3() => [
+  buildCitedSource(),
+  buildCitedSource(),
+];
+
+void checkUnnamed3(core.List<api.CitedSource> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkCitedSource(o[0]);
+  checkCitedSource(o[1]);
+}
+
+core.int buildCounterCitation = 0;
+api.Citation buildCitation() {
+  final o = api.Citation();
+  buildCounterCitation++;
+  if (buildCounterCitation < 3) {
+    o.citedSources = buildUnnamed3();
+    o.id = 'foo';
+  }
+  buildCounterCitation--;
+  return o;
+}
+
+void checkCitation(api.Citation o) {
+  buildCounterCitation++;
+  if (buildCounterCitation < 3) {
+    checkUnnamed3(o.citedSources!);
+    unittest.expect(o.id!, unittest.equals('foo'));
+  }
+  buildCounterCitation--;
+}
+
+core.int buildCounterCitedSource = 0;
+api.CitedSource buildCitedSource() {
+  final o = api.CitedSource();
+  buildCounterCitedSource++;
+  if (buildCounterCitedSource < 3) {
+    o.footer = buildFooter();
+    o.snippet = buildSnippet();
+    o.title = 'foo';
+    o.uri = 'foo';
+  }
+  buildCounterCitedSource--;
+  return o;
+}
+
+void checkCitedSource(api.CitedSource o) {
+  buildCounterCitedSource++;
+  if (buildCounterCitedSource < 3) {
+    checkFooter(o.footer!);
+    checkSnippet(o.snippet!);
+    unittest.expect(o.title!, unittest.equals('foo'));
+    unittest.expect(o.uri!, unittest.equals('foo'));
+  }
+  buildCounterCitedSource--;
 }
 
 core.int buildCounterColor = 0;
@@ -807,6 +868,65 @@ void checkDriveLinkData(api.DriveLinkData o) {
   buildCounterDriveLinkData--;
 }
 
+core.List<api.Citation> buildUnnamed4() => [buildCitation(), buildCitation()];
+
+void checkUnnamed4(core.List<api.Citation> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkCitation(o[0]);
+  checkCitation(o[1]);
+}
+
+core.List<api.CitedSource> buildUnnamed5() => [
+  buildCitedSource(),
+  buildCitedSource(),
+];
+
+void checkUnnamed5(core.List<api.CitedSource> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkCitedSource(o[0]);
+  checkCitedSource(o[1]);
+}
+
+core.int buildCounterElements = 0;
+api.Elements buildElements() {
+  final o = api.Elements();
+  buildCounterElements++;
+  if (buildCounterElements < 3) {
+    o.citations = buildUnnamed4();
+    o.citedSources = buildUnnamed5();
+  }
+  buildCounterElements--;
+  return o;
+}
+
+void checkElements(api.Elements o) {
+  buildCounterElements++;
+  if (buildCounterElements < 3) {
+    checkUnnamed4(o.citations!);
+    checkUnnamed5(o.citedSources!);
+  }
+  buildCounterElements--;
+}
+
+core.int buildCounterElementsImage = 0;
+api.ElementsImage buildElementsImage() {
+  final o = api.ElementsImage();
+  buildCounterElementsImage++;
+  if (buildCounterElementsImage < 3) {
+    o.imageUri = 'foo';
+  }
+  buildCounterElementsImage--;
+  return o;
+}
+
+void checkElementsImage(api.ElementsImage o) {
+  buildCounterElementsImage++;
+  if (buildCounterElementsImage < 3) {
+    unittest.expect(o.imageUri!, unittest.equals('foo'));
+  }
+  buildCounterElementsImage--;
+}
+
 core.int buildCounterEmoji = 0;
 api.Emoji buildEmoji() {
   final o = api.Emoji();
@@ -864,9 +984,9 @@ void checkEmpty(api.Empty o) {
   buildCounterEmpty--;
 }
 
-core.List<api.Space> buildUnnamed3() => [buildSpace(), buildSpace()];
+core.List<api.Space> buildUnnamed6() => [buildSpace(), buildSpace()];
 
-void checkUnnamed3(core.List<api.Space> o) {
+void checkUnnamed6(core.List<api.Space> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSpace(o[0]);
   checkSpace(o[1]);
@@ -878,7 +998,7 @@ api.FindGroupChatsResponse buildFindGroupChatsResponse() {
   buildCounterFindGroupChatsResponse++;
   if (buildCounterFindGroupChatsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.spaces = buildUnnamed3();
+    o.spaces = buildUnnamed6();
   }
   buildCounterFindGroupChatsResponse--;
   return o;
@@ -888,17 +1008,36 @@ void checkFindGroupChatsResponse(api.FindGroupChatsResponse o) {
   buildCounterFindGroupChatsResponse++;
   if (buildCounterFindGroupChatsResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed3(o.spaces!);
+    checkUnnamed6(o.spaces!);
   }
   buildCounterFindGroupChatsResponse--;
 }
 
-core.List<api.ActionParameter> buildUnnamed4() => [
+core.int buildCounterFooter = 0;
+api.Footer buildFooter() {
+  final o = api.Footer();
+  buildCounterFooter++;
+  if (buildCounterFooter < 3) {
+    o.text = 'foo';
+  }
+  buildCounterFooter--;
+  return o;
+}
+
+void checkFooter(api.Footer o) {
+  buildCounterFooter++;
+  if (buildCounterFooter < 3) {
+    unittest.expect(o.text!, unittest.equals('foo'));
+  }
+  buildCounterFooter--;
+}
+
+core.List<api.ActionParameter> buildUnnamed7() => [
   buildActionParameter(),
   buildActionParameter(),
 ];
 
-void checkUnnamed4(core.List<api.ActionParameter> o) {
+void checkUnnamed7(core.List<api.ActionParameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkActionParameter(o[0]);
   checkActionParameter(o[1]);
@@ -910,7 +1049,7 @@ api.FormAction buildFormAction() {
   buildCounterFormAction++;
   if (buildCounterFormAction < 3) {
     o.actionMethodName = 'foo';
-    o.parameters = buildUnnamed4();
+    o.parameters = buildUnnamed7();
   }
   buildCounterFormAction--;
   return o;
@@ -920,7 +1059,7 @@ void checkFormAction(api.FormAction o) {
   buildCounterFormAction++;
   if (buildCounterFormAction < 3) {
     unittest.expect(o.actionMethodName!, unittest.equals('foo'));
-    checkUnnamed4(o.parameters!);
+    checkUnnamed7(o.parameters!);
   }
   buildCounterFormAction--;
 }
@@ -946,20 +1085,20 @@ void checkForwardedMetadata(api.ForwardedMetadata o) {
   buildCounterForwardedMetadata--;
 }
 
-core.List<api.GoogleAppsCardV1ActionParameter> buildUnnamed5() => [
+core.List<api.GoogleAppsCardV1ActionParameter> buildUnnamed8() => [
   buildGoogleAppsCardV1ActionParameter(),
   buildGoogleAppsCardV1ActionParameter(),
 ];
 
-void checkUnnamed5(core.List<api.GoogleAppsCardV1ActionParameter> o) {
+void checkUnnamed8(core.List<api.GoogleAppsCardV1ActionParameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAppsCardV1ActionParameter(o[0]);
   checkGoogleAppsCardV1ActionParameter(o[1]);
 }
 
-core.List<core.String> buildUnnamed6() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed9() => ['foo', 'foo'];
 
-void checkUnnamed6(core.List<core.String> o) {
+void checkUnnamed9(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -974,9 +1113,9 @@ api.GoogleAppsCardV1Action buildGoogleAppsCardV1Action() {
     o.function = 'foo';
     o.interaction = 'foo';
     o.loadIndicator = 'foo';
-    o.parameters = buildUnnamed5();
+    o.parameters = buildUnnamed8();
     o.persistValues = true;
-    o.requiredWidgets = buildUnnamed6();
+    o.requiredWidgets = buildUnnamed9();
   }
   buildCounterGoogleAppsCardV1Action--;
   return o;
@@ -989,9 +1128,9 @@ void checkGoogleAppsCardV1Action(api.GoogleAppsCardV1Action o) {
     unittest.expect(o.function!, unittest.equals('foo'));
     unittest.expect(o.interaction!, unittest.equals('foo'));
     unittest.expect(o.loadIndicator!, unittest.equals('foo'));
-    checkUnnamed5(o.parameters!);
+    checkUnnamed8(o.parameters!);
     unittest.expect(o.persistValues!, unittest.isTrue);
-    checkUnnamed6(o.requiredWidgets!);
+    checkUnnamed9(o.requiredWidgets!);
   }
   buildCounterGoogleAppsCardV1Action--;
 }
@@ -1073,12 +1212,12 @@ void checkGoogleAppsCardV1Button(api.GoogleAppsCardV1Button o) {
   buildCounterGoogleAppsCardV1Button--;
 }
 
-core.List<api.GoogleAppsCardV1Button> buildUnnamed7() => [
+core.List<api.GoogleAppsCardV1Button> buildUnnamed10() => [
   buildGoogleAppsCardV1Button(),
   buildGoogleAppsCardV1Button(),
 ];
 
-void checkUnnamed7(core.List<api.GoogleAppsCardV1Button> o) {
+void checkUnnamed10(core.List<api.GoogleAppsCardV1Button> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAppsCardV1Button(o[0]);
   checkGoogleAppsCardV1Button(o[1]);
@@ -1089,7 +1228,7 @@ api.GoogleAppsCardV1ButtonList buildGoogleAppsCardV1ButtonList() {
   final o = api.GoogleAppsCardV1ButtonList();
   buildCounterGoogleAppsCardV1ButtonList++;
   if (buildCounterGoogleAppsCardV1ButtonList < 3) {
-    o.buttons = buildUnnamed7();
+    o.buttons = buildUnnamed10();
   }
   buildCounterGoogleAppsCardV1ButtonList--;
   return o;
@@ -1098,39 +1237,39 @@ api.GoogleAppsCardV1ButtonList buildGoogleAppsCardV1ButtonList() {
 void checkGoogleAppsCardV1ButtonList(api.GoogleAppsCardV1ButtonList o) {
   buildCounterGoogleAppsCardV1ButtonList++;
   if (buildCounterGoogleAppsCardV1ButtonList < 3) {
-    checkUnnamed7(o.buttons!);
+    checkUnnamed10(o.buttons!);
   }
   buildCounterGoogleAppsCardV1ButtonList--;
 }
 
-core.List<api.GoogleAppsCardV1CardAction> buildUnnamed8() => [
+core.List<api.GoogleAppsCardV1CardAction> buildUnnamed11() => [
   buildGoogleAppsCardV1CardAction(),
   buildGoogleAppsCardV1CardAction(),
 ];
 
-void checkUnnamed8(core.List<api.GoogleAppsCardV1CardAction> o) {
+void checkUnnamed11(core.List<api.GoogleAppsCardV1CardAction> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAppsCardV1CardAction(o[0]);
   checkGoogleAppsCardV1CardAction(o[1]);
 }
 
-core.List<api.GoogleAppsCardV1ExpressionData> buildUnnamed9() => [
+core.List<api.GoogleAppsCardV1ExpressionData> buildUnnamed12() => [
   buildGoogleAppsCardV1ExpressionData(),
   buildGoogleAppsCardV1ExpressionData(),
 ];
 
-void checkUnnamed9(core.List<api.GoogleAppsCardV1ExpressionData> o) {
+void checkUnnamed12(core.List<api.GoogleAppsCardV1ExpressionData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAppsCardV1ExpressionData(o[0]);
   checkGoogleAppsCardV1ExpressionData(o[1]);
 }
 
-core.List<api.GoogleAppsCardV1Section> buildUnnamed10() => [
+core.List<api.GoogleAppsCardV1Section> buildUnnamed13() => [
   buildGoogleAppsCardV1Section(),
   buildGoogleAppsCardV1Section(),
 ];
 
-void checkUnnamed10(core.List<api.GoogleAppsCardV1Section> o) {
+void checkUnnamed13(core.List<api.GoogleAppsCardV1Section> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAppsCardV1Section(o[0]);
   checkGoogleAppsCardV1Section(o[1]);
@@ -1141,15 +1280,15 @@ api.GoogleAppsCardV1Card buildGoogleAppsCardV1Card() {
   final o = api.GoogleAppsCardV1Card();
   buildCounterGoogleAppsCardV1Card++;
   if (buildCounterGoogleAppsCardV1Card < 3) {
-    o.cardActions = buildUnnamed8();
+    o.cardActions = buildUnnamed11();
     o.displayStyle = 'foo';
-    o.expressionData = buildUnnamed9();
+    o.expressionData = buildUnnamed12();
     o.fixedFooter = buildGoogleAppsCardV1CardFixedFooter();
     o.header = buildGoogleAppsCardV1CardHeader();
     o.name = 'foo';
     o.peekCardHeader = buildGoogleAppsCardV1CardHeader();
     o.sectionDividerStyle = 'foo';
-    o.sections = buildUnnamed10();
+    o.sections = buildUnnamed13();
   }
   buildCounterGoogleAppsCardV1Card--;
   return o;
@@ -1158,15 +1297,15 @@ api.GoogleAppsCardV1Card buildGoogleAppsCardV1Card() {
 void checkGoogleAppsCardV1Card(api.GoogleAppsCardV1Card o) {
   buildCounterGoogleAppsCardV1Card++;
   if (buildCounterGoogleAppsCardV1Card < 3) {
-    checkUnnamed8(o.cardActions!);
+    checkUnnamed11(o.cardActions!);
     unittest.expect(o.displayStyle!, unittest.equals('foo'));
-    checkUnnamed9(o.expressionData!);
+    checkUnnamed12(o.expressionData!);
     checkGoogleAppsCardV1CardFixedFooter(o.fixedFooter!);
     checkGoogleAppsCardV1CardHeader(o.header!);
     unittest.expect(o.name!, unittest.equals('foo'));
     checkGoogleAppsCardV1CardHeader(o.peekCardHeader!);
     unittest.expect(o.sectionDividerStyle!, unittest.equals('foo'));
-    checkUnnamed10(o.sections!);
+    checkUnnamed13(o.sections!);
   }
   buildCounterGoogleAppsCardV1Card--;
 }
@@ -1242,12 +1381,12 @@ void checkGoogleAppsCardV1CardHeader(api.GoogleAppsCardV1CardHeader o) {
   buildCounterGoogleAppsCardV1CardHeader--;
 }
 
-core.List<api.GoogleAppsCardV1CarouselCard> buildUnnamed11() => [
+core.List<api.GoogleAppsCardV1CarouselCard> buildUnnamed14() => [
   buildGoogleAppsCardV1CarouselCard(),
   buildGoogleAppsCardV1CarouselCard(),
 ];
 
-void checkUnnamed11(core.List<api.GoogleAppsCardV1CarouselCard> o) {
+void checkUnnamed14(core.List<api.GoogleAppsCardV1CarouselCard> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAppsCardV1CarouselCard(o[0]);
   checkGoogleAppsCardV1CarouselCard(o[1]);
@@ -1258,7 +1397,7 @@ api.GoogleAppsCardV1Carousel buildGoogleAppsCardV1Carousel() {
   final o = api.GoogleAppsCardV1Carousel();
   buildCounterGoogleAppsCardV1Carousel++;
   if (buildCounterGoogleAppsCardV1Carousel < 3) {
-    o.carouselCards = buildUnnamed11();
+    o.carouselCards = buildUnnamed14();
   }
   buildCounterGoogleAppsCardV1Carousel--;
   return o;
@@ -1267,28 +1406,28 @@ api.GoogleAppsCardV1Carousel buildGoogleAppsCardV1Carousel() {
 void checkGoogleAppsCardV1Carousel(api.GoogleAppsCardV1Carousel o) {
   buildCounterGoogleAppsCardV1Carousel++;
   if (buildCounterGoogleAppsCardV1Carousel < 3) {
-    checkUnnamed11(o.carouselCards!);
+    checkUnnamed14(o.carouselCards!);
   }
   buildCounterGoogleAppsCardV1Carousel--;
 }
 
-core.List<api.GoogleAppsCardV1NestedWidget> buildUnnamed12() => [
+core.List<api.GoogleAppsCardV1NestedWidget> buildUnnamed15() => [
   buildGoogleAppsCardV1NestedWidget(),
   buildGoogleAppsCardV1NestedWidget(),
 ];
 
-void checkUnnamed12(core.List<api.GoogleAppsCardV1NestedWidget> o) {
+void checkUnnamed15(core.List<api.GoogleAppsCardV1NestedWidget> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAppsCardV1NestedWidget(o[0]);
   checkGoogleAppsCardV1NestedWidget(o[1]);
 }
 
-core.List<api.GoogleAppsCardV1NestedWidget> buildUnnamed13() => [
+core.List<api.GoogleAppsCardV1NestedWidget> buildUnnamed16() => [
   buildGoogleAppsCardV1NestedWidget(),
   buildGoogleAppsCardV1NestedWidget(),
 ];
 
-void checkUnnamed13(core.List<api.GoogleAppsCardV1NestedWidget> o) {
+void checkUnnamed16(core.List<api.GoogleAppsCardV1NestedWidget> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAppsCardV1NestedWidget(o[0]);
   checkGoogleAppsCardV1NestedWidget(o[1]);
@@ -1299,8 +1438,8 @@ api.GoogleAppsCardV1CarouselCard buildGoogleAppsCardV1CarouselCard() {
   final o = api.GoogleAppsCardV1CarouselCard();
   buildCounterGoogleAppsCardV1CarouselCard++;
   if (buildCounterGoogleAppsCardV1CarouselCard < 3) {
-    o.footerWidgets = buildUnnamed12();
-    o.widgets = buildUnnamed13();
+    o.footerWidgets = buildUnnamed15();
+    o.widgets = buildUnnamed16();
   }
   buildCounterGoogleAppsCardV1CarouselCard--;
   return o;
@@ -1309,8 +1448,8 @@ api.GoogleAppsCardV1CarouselCard buildGoogleAppsCardV1CarouselCard() {
 void checkGoogleAppsCardV1CarouselCard(api.GoogleAppsCardV1CarouselCard o) {
   buildCounterGoogleAppsCardV1CarouselCard++;
   if (buildCounterGoogleAppsCardV1CarouselCard < 3) {
-    checkUnnamed12(o.footerWidgets!);
-    checkUnnamed13(o.widgets!);
+    checkUnnamed15(o.footerWidgets!);
+    checkUnnamed16(o.widgets!);
   }
   buildCounterGoogleAppsCardV1CarouselCard--;
 }
@@ -1344,12 +1483,12 @@ void checkGoogleAppsCardV1Chip(api.GoogleAppsCardV1Chip o) {
   buildCounterGoogleAppsCardV1Chip--;
 }
 
-core.List<api.GoogleAppsCardV1Chip> buildUnnamed14() => [
+core.List<api.GoogleAppsCardV1Chip> buildUnnamed17() => [
   buildGoogleAppsCardV1Chip(),
   buildGoogleAppsCardV1Chip(),
 ];
 
-void checkUnnamed14(core.List<api.GoogleAppsCardV1Chip> o) {
+void checkUnnamed17(core.List<api.GoogleAppsCardV1Chip> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAppsCardV1Chip(o[0]);
   checkGoogleAppsCardV1Chip(o[1]);
@@ -1360,7 +1499,7 @@ api.GoogleAppsCardV1ChipList buildGoogleAppsCardV1ChipList() {
   final o = api.GoogleAppsCardV1ChipList();
   buildCounterGoogleAppsCardV1ChipList++;
   if (buildCounterGoogleAppsCardV1ChipList < 3) {
-    o.chips = buildUnnamed14();
+    o.chips = buildUnnamed17();
     o.layout = 'foo';
   }
   buildCounterGoogleAppsCardV1ChipList--;
@@ -1370,7 +1509,7 @@ api.GoogleAppsCardV1ChipList buildGoogleAppsCardV1ChipList() {
 void checkGoogleAppsCardV1ChipList(api.GoogleAppsCardV1ChipList o) {
   buildCounterGoogleAppsCardV1ChipList++;
   if (buildCounterGoogleAppsCardV1ChipList < 3) {
-    checkUnnamed14(o.chips!);
+    checkUnnamed17(o.chips!);
     unittest.expect(o.layout!, unittest.equals('foo'));
   }
   buildCounterGoogleAppsCardV1ChipList--;
@@ -1401,12 +1540,12 @@ void checkGoogleAppsCardV1CollapseControl(
   buildCounterGoogleAppsCardV1CollapseControl--;
 }
 
-core.List<api.GoogleAppsCardV1Widgets> buildUnnamed15() => [
+core.List<api.GoogleAppsCardV1Widgets> buildUnnamed18() => [
   buildGoogleAppsCardV1Widgets(),
   buildGoogleAppsCardV1Widgets(),
 ];
 
-void checkUnnamed15(core.List<api.GoogleAppsCardV1Widgets> o) {
+void checkUnnamed18(core.List<api.GoogleAppsCardV1Widgets> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAppsCardV1Widgets(o[0]);
   checkGoogleAppsCardV1Widgets(o[1]);
@@ -1420,7 +1559,7 @@ api.GoogleAppsCardV1Column buildGoogleAppsCardV1Column() {
     o.horizontalAlignment = 'foo';
     o.horizontalSizeStyle = 'foo';
     o.verticalAlignment = 'foo';
-    o.widgets = buildUnnamed15();
+    o.widgets = buildUnnamed18();
   }
   buildCounterGoogleAppsCardV1Column--;
   return o;
@@ -1432,17 +1571,17 @@ void checkGoogleAppsCardV1Column(api.GoogleAppsCardV1Column o) {
     unittest.expect(o.horizontalAlignment!, unittest.equals('foo'));
     unittest.expect(o.horizontalSizeStyle!, unittest.equals('foo'));
     unittest.expect(o.verticalAlignment!, unittest.equals('foo'));
-    checkUnnamed15(o.widgets!);
+    checkUnnamed18(o.widgets!);
   }
   buildCounterGoogleAppsCardV1Column--;
 }
 
-core.List<api.GoogleAppsCardV1Column> buildUnnamed16() => [
+core.List<api.GoogleAppsCardV1Column> buildUnnamed19() => [
   buildGoogleAppsCardV1Column(),
   buildGoogleAppsCardV1Column(),
 ];
 
-void checkUnnamed16(core.List<api.GoogleAppsCardV1Column> o) {
+void checkUnnamed19(core.List<api.GoogleAppsCardV1Column> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAppsCardV1Column(o[0]);
   checkGoogleAppsCardV1Column(o[1]);
@@ -1453,7 +1592,7 @@ api.GoogleAppsCardV1Columns buildGoogleAppsCardV1Columns() {
   final o = api.GoogleAppsCardV1Columns();
   buildCounterGoogleAppsCardV1Columns++;
   if (buildCounterGoogleAppsCardV1Columns < 3) {
-    o.columnItems = buildUnnamed16();
+    o.columnItems = buildUnnamed19();
   }
   buildCounterGoogleAppsCardV1Columns--;
   return o;
@@ -1462,7 +1601,7 @@ api.GoogleAppsCardV1Columns buildGoogleAppsCardV1Columns() {
 void checkGoogleAppsCardV1Columns(api.GoogleAppsCardV1Columns o) {
   buildCounterGoogleAppsCardV1Columns++;
   if (buildCounterGoogleAppsCardV1Columns < 3) {
-    checkUnnamed16(o.columnItems!);
+    checkUnnamed19(o.columnItems!);
   }
   buildCounterGoogleAppsCardV1Columns--;
 }
@@ -1626,12 +1765,12 @@ void checkGoogleAppsCardV1Divider(api.GoogleAppsCardV1Divider o) {
   buildCounterGoogleAppsCardV1Divider--;
 }
 
-core.List<api.GoogleAppsCardV1Trigger> buildUnnamed17() => [
+core.List<api.GoogleAppsCardV1Trigger> buildUnnamed20() => [
   buildGoogleAppsCardV1Trigger(),
   buildGoogleAppsCardV1Trigger(),
 ];
 
-void checkUnnamed17(core.List<api.GoogleAppsCardV1Trigger> o) {
+void checkUnnamed20(core.List<api.GoogleAppsCardV1Trigger> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAppsCardV1Trigger(o[0]);
   checkGoogleAppsCardV1Trigger(o[1]);
@@ -1644,7 +1783,7 @@ api.GoogleAppsCardV1EventAction buildGoogleAppsCardV1EventAction() {
   if (buildCounterGoogleAppsCardV1EventAction < 3) {
     o.actionRuleId = 'foo';
     o.commonWidgetAction = buildGoogleAppsCardV1CommonWidgetAction();
-    o.postEventTriggers = buildUnnamed17();
+    o.postEventTriggers = buildUnnamed20();
   }
   buildCounterGoogleAppsCardV1EventAction--;
   return o;
@@ -1655,28 +1794,28 @@ void checkGoogleAppsCardV1EventAction(api.GoogleAppsCardV1EventAction o) {
   if (buildCounterGoogleAppsCardV1EventAction < 3) {
     unittest.expect(o.actionRuleId!, unittest.equals('foo'));
     checkGoogleAppsCardV1CommonWidgetAction(o.commonWidgetAction!);
-    checkUnnamed17(o.postEventTriggers!);
+    checkUnnamed20(o.postEventTriggers!);
   }
   buildCounterGoogleAppsCardV1EventAction--;
 }
 
-core.List<api.GoogleAppsCardV1Condition> buildUnnamed18() => [
+core.List<api.GoogleAppsCardV1Condition> buildUnnamed21() => [
   buildGoogleAppsCardV1Condition(),
   buildGoogleAppsCardV1Condition(),
 ];
 
-void checkUnnamed18(core.List<api.GoogleAppsCardV1Condition> o) {
+void checkUnnamed21(core.List<api.GoogleAppsCardV1Condition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAppsCardV1Condition(o[0]);
   checkGoogleAppsCardV1Condition(o[1]);
 }
 
-core.List<api.GoogleAppsCardV1EventAction> buildUnnamed19() => [
+core.List<api.GoogleAppsCardV1EventAction> buildUnnamed22() => [
   buildGoogleAppsCardV1EventAction(),
   buildGoogleAppsCardV1EventAction(),
 ];
 
-void checkUnnamed19(core.List<api.GoogleAppsCardV1EventAction> o) {
+void checkUnnamed22(core.List<api.GoogleAppsCardV1EventAction> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAppsCardV1EventAction(o[0]);
   checkGoogleAppsCardV1EventAction(o[1]);
@@ -1687,8 +1826,8 @@ api.GoogleAppsCardV1ExpressionData buildGoogleAppsCardV1ExpressionData() {
   final o = api.GoogleAppsCardV1ExpressionData();
   buildCounterGoogleAppsCardV1ExpressionData++;
   if (buildCounterGoogleAppsCardV1ExpressionData < 3) {
-    o.conditions = buildUnnamed18();
-    o.eventActions = buildUnnamed19();
+    o.conditions = buildUnnamed21();
+    o.eventActions = buildUnnamed22();
     o.expression = 'foo';
     o.id = 'foo';
   }
@@ -1699,8 +1838,8 @@ api.GoogleAppsCardV1ExpressionData buildGoogleAppsCardV1ExpressionData() {
 void checkGoogleAppsCardV1ExpressionData(api.GoogleAppsCardV1ExpressionData o) {
   buildCounterGoogleAppsCardV1ExpressionData++;
   if (buildCounterGoogleAppsCardV1ExpressionData < 3) {
-    checkUnnamed18(o.conditions!);
-    checkUnnamed19(o.eventActions!);
+    checkUnnamed21(o.conditions!);
+    checkUnnamed22(o.eventActions!);
     unittest.expect(o.expression!, unittest.equals('foo'));
     unittest.expect(o.id!, unittest.equals('foo'));
   }
@@ -1729,12 +1868,12 @@ void checkGoogleAppsCardV1ExpressionDataCondition(
   buildCounterGoogleAppsCardV1ExpressionDataCondition--;
 }
 
-core.List<api.GoogleAppsCardV1GridItem> buildUnnamed20() => [
+core.List<api.GoogleAppsCardV1GridItem> buildUnnamed23() => [
   buildGoogleAppsCardV1GridItem(),
   buildGoogleAppsCardV1GridItem(),
 ];
 
-void checkUnnamed20(core.List<api.GoogleAppsCardV1GridItem> o) {
+void checkUnnamed23(core.List<api.GoogleAppsCardV1GridItem> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAppsCardV1GridItem(o[0]);
   checkGoogleAppsCardV1GridItem(o[1]);
@@ -1747,7 +1886,7 @@ api.GoogleAppsCardV1Grid buildGoogleAppsCardV1Grid() {
   if (buildCounterGoogleAppsCardV1Grid < 3) {
     o.borderStyle = buildGoogleAppsCardV1BorderStyle();
     o.columnCount = 42;
-    o.items = buildUnnamed20();
+    o.items = buildUnnamed23();
     o.onClick = buildGoogleAppsCardV1OnClick();
     o.title = 'foo';
   }
@@ -1760,7 +1899,7 @@ void checkGoogleAppsCardV1Grid(api.GoogleAppsCardV1Grid o) {
   if (buildCounterGoogleAppsCardV1Grid < 3) {
     checkGoogleAppsCardV1BorderStyle(o.borderStyle!);
     unittest.expect(o.columnCount!, unittest.equals(42));
-    checkUnnamed20(o.items!);
+    checkUnnamed23(o.items!);
     checkGoogleAppsCardV1OnClick(o.onClick!);
     unittest.expect(o.title!, unittest.equals('foo'));
   }
@@ -1988,12 +2127,12 @@ void checkGoogleAppsCardV1OpenLink(api.GoogleAppsCardV1OpenLink o) {
   buildCounterGoogleAppsCardV1OpenLink--;
 }
 
-core.List<api.GoogleAppsCardV1OverflowMenuItem> buildUnnamed21() => [
+core.List<api.GoogleAppsCardV1OverflowMenuItem> buildUnnamed24() => [
   buildGoogleAppsCardV1OverflowMenuItem(),
   buildGoogleAppsCardV1OverflowMenuItem(),
 ];
 
-void checkUnnamed21(core.List<api.GoogleAppsCardV1OverflowMenuItem> o) {
+void checkUnnamed24(core.List<api.GoogleAppsCardV1OverflowMenuItem> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAppsCardV1OverflowMenuItem(o[0]);
   checkGoogleAppsCardV1OverflowMenuItem(o[1]);
@@ -2004,7 +2143,7 @@ api.GoogleAppsCardV1OverflowMenu buildGoogleAppsCardV1OverflowMenu() {
   final o = api.GoogleAppsCardV1OverflowMenu();
   buildCounterGoogleAppsCardV1OverflowMenu++;
   if (buildCounterGoogleAppsCardV1OverflowMenu < 3) {
-    o.items = buildUnnamed21();
+    o.items = buildUnnamed24();
   }
   buildCounterGoogleAppsCardV1OverflowMenu--;
   return o;
@@ -2013,7 +2152,7 @@ api.GoogleAppsCardV1OverflowMenu buildGoogleAppsCardV1OverflowMenu() {
 void checkGoogleAppsCardV1OverflowMenu(api.GoogleAppsCardV1OverflowMenu o) {
   buildCounterGoogleAppsCardV1OverflowMenu++;
   if (buildCounterGoogleAppsCardV1OverflowMenu < 3) {
-    checkUnnamed21(o.items!);
+    checkUnnamed24(o.items!);
   }
   buildCounterGoogleAppsCardV1OverflowMenu--;
 }
@@ -2069,12 +2208,12 @@ void checkGoogleAppsCardV1PlatformDataSource(
   buildCounterGoogleAppsCardV1PlatformDataSource--;
 }
 
-core.List<api.GoogleAppsCardV1Widget> buildUnnamed22() => [
+core.List<api.GoogleAppsCardV1Widget> buildUnnamed25() => [
   buildGoogleAppsCardV1Widget(),
   buildGoogleAppsCardV1Widget(),
 ];
 
-void checkUnnamed22(core.List<api.GoogleAppsCardV1Widget> o) {
+void checkUnnamed25(core.List<api.GoogleAppsCardV1Widget> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAppsCardV1Widget(o[0]);
   checkGoogleAppsCardV1Widget(o[1]);
@@ -2090,7 +2229,7 @@ api.GoogleAppsCardV1Section buildGoogleAppsCardV1Section() {
     o.header = 'foo';
     o.id = 'foo';
     o.uncollapsibleWidgetsCount = 42;
-    o.widgets = buildUnnamed22();
+    o.widgets = buildUnnamed25();
   }
   buildCounterGoogleAppsCardV1Section--;
   return o;
@@ -2104,28 +2243,28 @@ void checkGoogleAppsCardV1Section(api.GoogleAppsCardV1Section o) {
     unittest.expect(o.header!, unittest.equals('foo'));
     unittest.expect(o.id!, unittest.equals('foo'));
     unittest.expect(o.uncollapsibleWidgetsCount!, unittest.equals(42));
-    checkUnnamed22(o.widgets!);
+    checkUnnamed25(o.widgets!);
   }
   buildCounterGoogleAppsCardV1Section--;
 }
 
-core.List<api.GoogleAppsCardV1DataSourceConfig> buildUnnamed23() => [
+core.List<api.GoogleAppsCardV1DataSourceConfig> buildUnnamed26() => [
   buildGoogleAppsCardV1DataSourceConfig(),
   buildGoogleAppsCardV1DataSourceConfig(),
 ];
 
-void checkUnnamed23(core.List<api.GoogleAppsCardV1DataSourceConfig> o) {
+void checkUnnamed26(core.List<api.GoogleAppsCardV1DataSourceConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAppsCardV1DataSourceConfig(o[0]);
   checkGoogleAppsCardV1DataSourceConfig(o[1]);
 }
 
-core.List<api.GoogleAppsCardV1SelectionItem> buildUnnamed24() => [
+core.List<api.GoogleAppsCardV1SelectionItem> buildUnnamed27() => [
   buildGoogleAppsCardV1SelectionItem(),
   buildGoogleAppsCardV1SelectionItem(),
 ];
 
-void checkUnnamed24(core.List<api.GoogleAppsCardV1SelectionItem> o) {
+void checkUnnamed27(core.List<api.GoogleAppsCardV1SelectionItem> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAppsCardV1SelectionItem(o[0]);
   checkGoogleAppsCardV1SelectionItem(o[1]);
@@ -2136,10 +2275,10 @@ api.GoogleAppsCardV1SelectionInput buildGoogleAppsCardV1SelectionInput() {
   final o = api.GoogleAppsCardV1SelectionInput();
   buildCounterGoogleAppsCardV1SelectionInput++;
   if (buildCounterGoogleAppsCardV1SelectionInput < 3) {
-    o.dataSourceConfigs = buildUnnamed23();
+    o.dataSourceConfigs = buildUnnamed26();
     o.externalDataSource = buildGoogleAppsCardV1Action();
     o.hintText = 'foo';
-    o.items = buildUnnamed24();
+    o.items = buildUnnamed27();
     o.label = 'foo';
     o.multiSelectMaxSelectedItems = 42;
     o.multiSelectMinQueryLength = 42;
@@ -2155,10 +2294,10 @@ api.GoogleAppsCardV1SelectionInput buildGoogleAppsCardV1SelectionInput() {
 void checkGoogleAppsCardV1SelectionInput(api.GoogleAppsCardV1SelectionInput o) {
   buildCounterGoogleAppsCardV1SelectionInput++;
   if (buildCounterGoogleAppsCardV1SelectionInput < 3) {
-    checkUnnamed23(o.dataSourceConfigs!);
+    checkUnnamed26(o.dataSourceConfigs!);
     checkGoogleAppsCardV1Action(o.externalDataSource!);
     unittest.expect(o.hintText!, unittest.equals('foo'));
-    checkUnnamed24(o.items!);
+    checkUnnamed27(o.items!);
     unittest.expect(o.label!, unittest.equals('foo'));
     unittest.expect(o.multiSelectMaxSelectedItems!, unittest.equals(42));
     unittest.expect(o.multiSelectMinQueryLength!, unittest.equals(42));
@@ -2216,12 +2355,12 @@ void checkGoogleAppsCardV1SuggestionItem(api.GoogleAppsCardV1SuggestionItem o) {
   buildCounterGoogleAppsCardV1SuggestionItem--;
 }
 
-core.List<api.GoogleAppsCardV1SuggestionItem> buildUnnamed25() => [
+core.List<api.GoogleAppsCardV1SuggestionItem> buildUnnamed28() => [
   buildGoogleAppsCardV1SuggestionItem(),
   buildGoogleAppsCardV1SuggestionItem(),
 ];
 
-void checkUnnamed25(core.List<api.GoogleAppsCardV1SuggestionItem> o) {
+void checkUnnamed28(core.List<api.GoogleAppsCardV1SuggestionItem> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAppsCardV1SuggestionItem(o[0]);
   checkGoogleAppsCardV1SuggestionItem(o[1]);
@@ -2232,7 +2371,7 @@ api.GoogleAppsCardV1Suggestions buildGoogleAppsCardV1Suggestions() {
   final o = api.GoogleAppsCardV1Suggestions();
   buildCounterGoogleAppsCardV1Suggestions++;
   if (buildCounterGoogleAppsCardV1Suggestions < 3) {
-    o.items = buildUnnamed25();
+    o.items = buildUnnamed28();
   }
   buildCounterGoogleAppsCardV1Suggestions--;
   return o;
@@ -2241,7 +2380,7 @@ api.GoogleAppsCardV1Suggestions buildGoogleAppsCardV1Suggestions() {
 void checkGoogleAppsCardV1Suggestions(api.GoogleAppsCardV1Suggestions o) {
   buildCounterGoogleAppsCardV1Suggestions++;
   if (buildCounterGoogleAppsCardV1Suggestions < 3) {
-    checkUnnamed25(o.items!);
+    checkUnnamed28(o.items!);
   }
   buildCounterGoogleAppsCardV1Suggestions--;
 }
@@ -2397,12 +2536,12 @@ void checkGoogleAppsCardV1Validation(api.GoogleAppsCardV1Validation o) {
   buildCounterGoogleAppsCardV1Validation--;
 }
 
-core.List<api.GoogleAppsCardV1EventAction> buildUnnamed26() => [
+core.List<api.GoogleAppsCardV1EventAction> buildUnnamed29() => [
   buildGoogleAppsCardV1EventAction(),
   buildGoogleAppsCardV1EventAction(),
 ];
 
-void checkUnnamed26(core.List<api.GoogleAppsCardV1EventAction> o) {
+void checkUnnamed29(core.List<api.GoogleAppsCardV1EventAction> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAppsCardV1EventAction(o[0]);
   checkGoogleAppsCardV1EventAction(o[1]);
@@ -2420,7 +2559,7 @@ api.GoogleAppsCardV1Widget buildGoogleAppsCardV1Widget() {
     o.dateTimePicker = buildGoogleAppsCardV1DateTimePicker();
     o.decoratedText = buildGoogleAppsCardV1DecoratedText();
     o.divider = buildGoogleAppsCardV1Divider();
-    o.eventActions = buildUnnamed26();
+    o.eventActions = buildUnnamed29();
     o.grid = buildGoogleAppsCardV1Grid();
     o.horizontalAlignment = 'foo';
     o.id = 'foo';
@@ -2444,7 +2583,7 @@ void checkGoogleAppsCardV1Widget(api.GoogleAppsCardV1Widget o) {
     checkGoogleAppsCardV1DateTimePicker(o.dateTimePicker!);
     checkGoogleAppsCardV1DecoratedText(o.decoratedText!);
     checkGoogleAppsCardV1Divider(o.divider!);
-    checkUnnamed26(o.eventActions!);
+    checkUnnamed29(o.eventActions!);
     checkGoogleAppsCardV1Grid(o.grid!);
     unittest.expect(o.horizontalAlignment!, unittest.equals('foo'));
     unittest.expect(o.id!, unittest.equals('foo'));
@@ -2636,12 +2775,12 @@ void checkKeyValue(api.KeyValue o) {
   buildCounterKeyValue--;
 }
 
-core.List<api.CustomEmoji> buildUnnamed27() => [
+core.List<api.CustomEmoji> buildUnnamed30() => [
   buildCustomEmoji(),
   buildCustomEmoji(),
 ];
 
-void checkUnnamed27(core.List<api.CustomEmoji> o) {
+void checkUnnamed30(core.List<api.CustomEmoji> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCustomEmoji(o[0]);
   checkCustomEmoji(o[1]);
@@ -2652,7 +2791,7 @@ api.ListCustomEmojisResponse buildListCustomEmojisResponse() {
   final o = api.ListCustomEmojisResponse();
   buildCounterListCustomEmojisResponse++;
   if (buildCounterListCustomEmojisResponse < 3) {
-    o.customEmojis = buildUnnamed27();
+    o.customEmojis = buildUnnamed30();
     o.nextPageToken = 'foo';
   }
   buildCounterListCustomEmojisResponse--;
@@ -2662,18 +2801,18 @@ api.ListCustomEmojisResponse buildListCustomEmojisResponse() {
 void checkListCustomEmojisResponse(api.ListCustomEmojisResponse o) {
   buildCounterListCustomEmojisResponse++;
   if (buildCounterListCustomEmojisResponse < 3) {
-    checkUnnamed27(o.customEmojis!);
+    checkUnnamed30(o.customEmojis!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterListCustomEmojisResponse--;
 }
 
-core.List<api.Membership> buildUnnamed28() => [
+core.List<api.Membership> buildUnnamed31() => [
   buildMembership(),
   buildMembership(),
 ];
 
-void checkUnnamed28(core.List<api.Membership> o) {
+void checkUnnamed31(core.List<api.Membership> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMembership(o[0]);
   checkMembership(o[1]);
@@ -2684,7 +2823,7 @@ api.ListMembershipsResponse buildListMembershipsResponse() {
   final o = api.ListMembershipsResponse();
   buildCounterListMembershipsResponse++;
   if (buildCounterListMembershipsResponse < 3) {
-    o.memberships = buildUnnamed28();
+    o.memberships = buildUnnamed31();
     o.nextPageToken = 'foo';
   }
   buildCounterListMembershipsResponse--;
@@ -2694,18 +2833,18 @@ api.ListMembershipsResponse buildListMembershipsResponse() {
 void checkListMembershipsResponse(api.ListMembershipsResponse o) {
   buildCounterListMembershipsResponse++;
   if (buildCounterListMembershipsResponse < 3) {
-    checkUnnamed28(o.memberships!);
+    checkUnnamed31(o.memberships!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterListMembershipsResponse--;
 }
 
-core.List<api.MessagePin> buildUnnamed29() => [
+core.List<api.MessagePin> buildUnnamed32() => [
   buildMessagePin(),
   buildMessagePin(),
 ];
 
-void checkUnnamed29(core.List<api.MessagePin> o) {
+void checkUnnamed32(core.List<api.MessagePin> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMessagePin(o[0]);
   checkMessagePin(o[1]);
@@ -2716,7 +2855,7 @@ api.ListMessagePinsResponse buildListMessagePinsResponse() {
   final o = api.ListMessagePinsResponse();
   buildCounterListMessagePinsResponse++;
   if (buildCounterListMessagePinsResponse < 3) {
-    o.messagePins = buildUnnamed29();
+    o.messagePins = buildUnnamed32();
     o.nextPageToken = 'foo';
   }
   buildCounterListMessagePinsResponse--;
@@ -2726,15 +2865,15 @@ api.ListMessagePinsResponse buildListMessagePinsResponse() {
 void checkListMessagePinsResponse(api.ListMessagePinsResponse o) {
   buildCounterListMessagePinsResponse++;
   if (buildCounterListMessagePinsResponse < 3) {
-    checkUnnamed29(o.messagePins!);
+    checkUnnamed32(o.messagePins!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterListMessagePinsResponse--;
 }
 
-core.List<api.Message> buildUnnamed30() => [buildMessage(), buildMessage()];
+core.List<api.Message> buildUnnamed33() => [buildMessage(), buildMessage()];
 
-void checkUnnamed30(core.List<api.Message> o) {
+void checkUnnamed33(core.List<api.Message> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMessage(o[0]);
   checkMessage(o[1]);
@@ -2745,7 +2884,7 @@ api.ListMessagesResponse buildListMessagesResponse() {
   final o = api.ListMessagesResponse();
   buildCounterListMessagesResponse++;
   if (buildCounterListMessagesResponse < 3) {
-    o.messages = buildUnnamed30();
+    o.messages = buildUnnamed33();
     o.nextPageToken = 'foo';
   }
   buildCounterListMessagesResponse--;
@@ -2755,15 +2894,15 @@ api.ListMessagesResponse buildListMessagesResponse() {
 void checkListMessagesResponse(api.ListMessagesResponse o) {
   buildCounterListMessagesResponse++;
   if (buildCounterListMessagesResponse < 3) {
-    checkUnnamed30(o.messages!);
+    checkUnnamed33(o.messages!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterListMessagesResponse--;
 }
 
-core.List<api.Reaction> buildUnnamed31() => [buildReaction(), buildReaction()];
+core.List<api.Reaction> buildUnnamed34() => [buildReaction(), buildReaction()];
 
-void checkUnnamed31(core.List<api.Reaction> o) {
+void checkUnnamed34(core.List<api.Reaction> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReaction(o[0]);
   checkReaction(o[1]);
@@ -2775,7 +2914,7 @@ api.ListReactionsResponse buildListReactionsResponse() {
   buildCounterListReactionsResponse++;
   if (buildCounterListReactionsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.reactions = buildUnnamed31();
+    o.reactions = buildUnnamed34();
   }
   buildCounterListReactionsResponse--;
   return o;
@@ -2785,17 +2924,17 @@ void checkListReactionsResponse(api.ListReactionsResponse o) {
   buildCounterListReactionsResponse++;
   if (buildCounterListReactionsResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed31(o.reactions!);
+    checkUnnamed34(o.reactions!);
   }
   buildCounterListReactionsResponse--;
 }
 
-core.List<api.SectionItem> buildUnnamed32() => [
+core.List<api.SectionItem> buildUnnamed35() => [
   buildSectionItem(),
   buildSectionItem(),
 ];
 
-void checkUnnamed32(core.List<api.SectionItem> o) {
+void checkUnnamed35(core.List<api.SectionItem> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSectionItem(o[0]);
   checkSectionItem(o[1]);
@@ -2807,7 +2946,7 @@ api.ListSectionItemsResponse buildListSectionItemsResponse() {
   buildCounterListSectionItemsResponse++;
   if (buildCounterListSectionItemsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.sectionItems = buildUnnamed32();
+    o.sectionItems = buildUnnamed35();
   }
   buildCounterListSectionItemsResponse--;
   return o;
@@ -2817,17 +2956,17 @@ void checkListSectionItemsResponse(api.ListSectionItemsResponse o) {
   buildCounterListSectionItemsResponse++;
   if (buildCounterListSectionItemsResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed32(o.sectionItems!);
+    checkUnnamed35(o.sectionItems!);
   }
   buildCounterListSectionItemsResponse--;
 }
 
-core.List<api.GoogleChatV1Section> buildUnnamed33() => [
+core.List<api.GoogleChatV1Section> buildUnnamed36() => [
   buildGoogleChatV1Section(),
   buildGoogleChatV1Section(),
 ];
 
-void checkUnnamed33(core.List<api.GoogleChatV1Section> o) {
+void checkUnnamed36(core.List<api.GoogleChatV1Section> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleChatV1Section(o[0]);
   checkGoogleChatV1Section(o[1]);
@@ -2839,7 +2978,7 @@ api.ListSectionsResponse buildListSectionsResponse() {
   buildCounterListSectionsResponse++;
   if (buildCounterListSectionsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.sections = buildUnnamed33();
+    o.sections = buildUnnamed36();
   }
   buildCounterListSectionsResponse--;
   return o;
@@ -2849,17 +2988,17 @@ void checkListSectionsResponse(api.ListSectionsResponse o) {
   buildCounterListSectionsResponse++;
   if (buildCounterListSectionsResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed33(o.sections!);
+    checkUnnamed36(o.sections!);
   }
   buildCounterListSectionsResponse--;
 }
 
-core.List<api.SpaceEvent> buildUnnamed34() => [
+core.List<api.SpaceEvent> buildUnnamed37() => [
   buildSpaceEvent(),
   buildSpaceEvent(),
 ];
 
-void checkUnnamed34(core.List<api.SpaceEvent> o) {
+void checkUnnamed37(core.List<api.SpaceEvent> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSpaceEvent(o[0]);
   checkSpaceEvent(o[1]);
@@ -2871,7 +3010,7 @@ api.ListSpaceEventsResponse buildListSpaceEventsResponse() {
   buildCounterListSpaceEventsResponse++;
   if (buildCounterListSpaceEventsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.spaceEvents = buildUnnamed34();
+    o.spaceEvents = buildUnnamed37();
   }
   buildCounterListSpaceEventsResponse--;
   return o;
@@ -2881,14 +3020,14 @@ void checkListSpaceEventsResponse(api.ListSpaceEventsResponse o) {
   buildCounterListSpaceEventsResponse++;
   if (buildCounterListSpaceEventsResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed34(o.spaceEvents!);
+    checkUnnamed37(o.spaceEvents!);
   }
   buildCounterListSpaceEventsResponse--;
 }
 
-core.List<api.Space> buildUnnamed35() => [buildSpace(), buildSpace()];
+core.List<api.Space> buildUnnamed38() => [buildSpace(), buildSpace()];
 
-void checkUnnamed35(core.List<api.Space> o) {
+void checkUnnamed38(core.List<api.Space> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSpace(o[0]);
   checkSpace(o[1]);
@@ -2900,7 +3039,7 @@ api.ListSpacesResponse buildListSpacesResponse() {
   buildCounterListSpacesResponse++;
   if (buildCounterListSpacesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.spaces = buildUnnamed35();
+    o.spaces = buildUnnamed38();
   }
   buildCounterListSpacesResponse--;
   return o;
@@ -2910,7 +3049,7 @@ void checkListSpacesResponse(api.ListSpacesResponse o) {
   buildCounterListSpacesResponse++;
   if (buildCounterListSpacesResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed35(o.spaces!);
+    checkUnnamed38(o.spaces!);
   }
   buildCounterListSpacesResponse--;
 }
@@ -3066,12 +3205,12 @@ void checkMembership(api.Membership o) {
   buildCounterMembership--;
 }
 
-core.List<api.MembershipCreatedEventData> buildUnnamed36() => [
+core.List<api.MembershipCreatedEventData> buildUnnamed39() => [
   buildMembershipCreatedEventData(),
   buildMembershipCreatedEventData(),
 ];
 
-void checkUnnamed36(core.List<api.MembershipCreatedEventData> o) {
+void checkUnnamed39(core.List<api.MembershipCreatedEventData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMembershipCreatedEventData(o[0]);
   checkMembershipCreatedEventData(o[1]);
@@ -3082,7 +3221,7 @@ api.MembershipBatchCreatedEventData buildMembershipBatchCreatedEventData() {
   final o = api.MembershipBatchCreatedEventData();
   buildCounterMembershipBatchCreatedEventData++;
   if (buildCounterMembershipBatchCreatedEventData < 3) {
-    o.memberships = buildUnnamed36();
+    o.memberships = buildUnnamed39();
   }
   buildCounterMembershipBatchCreatedEventData--;
   return o;
@@ -3093,17 +3232,17 @@ void checkMembershipBatchCreatedEventData(
 ) {
   buildCounterMembershipBatchCreatedEventData++;
   if (buildCounterMembershipBatchCreatedEventData < 3) {
-    checkUnnamed36(o.memberships!);
+    checkUnnamed39(o.memberships!);
   }
   buildCounterMembershipBatchCreatedEventData--;
 }
 
-core.List<api.MembershipDeletedEventData> buildUnnamed37() => [
+core.List<api.MembershipDeletedEventData> buildUnnamed40() => [
   buildMembershipDeletedEventData(),
   buildMembershipDeletedEventData(),
 ];
 
-void checkUnnamed37(core.List<api.MembershipDeletedEventData> o) {
+void checkUnnamed40(core.List<api.MembershipDeletedEventData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMembershipDeletedEventData(o[0]);
   checkMembershipDeletedEventData(o[1]);
@@ -3114,7 +3253,7 @@ api.MembershipBatchDeletedEventData buildMembershipBatchDeletedEventData() {
   final o = api.MembershipBatchDeletedEventData();
   buildCounterMembershipBatchDeletedEventData++;
   if (buildCounterMembershipBatchDeletedEventData < 3) {
-    o.memberships = buildUnnamed37();
+    o.memberships = buildUnnamed40();
   }
   buildCounterMembershipBatchDeletedEventData--;
   return o;
@@ -3125,17 +3264,17 @@ void checkMembershipBatchDeletedEventData(
 ) {
   buildCounterMembershipBatchDeletedEventData++;
   if (buildCounterMembershipBatchDeletedEventData < 3) {
-    checkUnnamed37(o.memberships!);
+    checkUnnamed40(o.memberships!);
   }
   buildCounterMembershipBatchDeletedEventData--;
 }
 
-core.List<api.MembershipUpdatedEventData> buildUnnamed38() => [
+core.List<api.MembershipUpdatedEventData> buildUnnamed41() => [
   buildMembershipUpdatedEventData(),
   buildMembershipUpdatedEventData(),
 ];
 
-void checkUnnamed38(core.List<api.MembershipUpdatedEventData> o) {
+void checkUnnamed41(core.List<api.MembershipUpdatedEventData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMembershipUpdatedEventData(o[0]);
   checkMembershipUpdatedEventData(o[1]);
@@ -3146,7 +3285,7 @@ api.MembershipBatchUpdatedEventData buildMembershipBatchUpdatedEventData() {
   final o = api.MembershipBatchUpdatedEventData();
   buildCounterMembershipBatchUpdatedEventData++;
   if (buildCounterMembershipBatchUpdatedEventData < 3) {
-    o.memberships = buildUnnamed38();
+    o.memberships = buildUnnamed41();
   }
   buildCounterMembershipBatchUpdatedEventData--;
   return o;
@@ -3157,7 +3296,7 @@ void checkMembershipBatchUpdatedEventData(
 ) {
   buildCounterMembershipBatchUpdatedEventData++;
   if (buildCounterMembershipBatchUpdatedEventData < 3) {
-    checkUnnamed38(o.memberships!);
+    checkUnnamed41(o.memberships!);
   }
   buildCounterMembershipBatchUpdatedEventData--;
 }
@@ -3240,75 +3379,75 @@ void checkMembershipUpdatedEventData(api.MembershipUpdatedEventData o) {
   buildCounterMembershipUpdatedEventData--;
 }
 
-core.List<api.AccessoryWidget> buildUnnamed39() => [
+core.List<api.AccessoryWidget> buildUnnamed42() => [
   buildAccessoryWidget(),
   buildAccessoryWidget(),
 ];
 
-void checkUnnamed39(core.List<api.AccessoryWidget> o) {
+void checkUnnamed42(core.List<api.AccessoryWidget> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAccessoryWidget(o[0]);
   checkAccessoryWidget(o[1]);
 }
 
-core.List<api.Annotation> buildUnnamed40() => [
+core.List<api.Annotation> buildUnnamed43() => [
   buildAnnotation(),
   buildAnnotation(),
 ];
 
-void checkUnnamed40(core.List<api.Annotation> o) {
+void checkUnnamed43(core.List<api.Annotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAnnotation(o[0]);
   checkAnnotation(o[1]);
 }
 
-core.List<api.AttachedGif> buildUnnamed41() => [
+core.List<api.AttachedGif> buildUnnamed44() => [
   buildAttachedGif(),
   buildAttachedGif(),
 ];
 
-void checkUnnamed41(core.List<api.AttachedGif> o) {
+void checkUnnamed44(core.List<api.AttachedGif> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAttachedGif(o[0]);
   checkAttachedGif(o[1]);
 }
 
-core.List<api.Attachment> buildUnnamed42() => [
+core.List<api.Attachment> buildUnnamed45() => [
   buildAttachment(),
   buildAttachment(),
 ];
 
-void checkUnnamed42(core.List<api.Attachment> o) {
+void checkUnnamed45(core.List<api.Attachment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAttachment(o[0]);
   checkAttachment(o[1]);
 }
 
-core.List<api.Card> buildUnnamed43() => [buildCard(), buildCard()];
+core.List<api.Card> buildUnnamed46() => [buildCard(), buildCard()];
 
-void checkUnnamed43(core.List<api.Card> o) {
+void checkUnnamed46(core.List<api.Card> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCard(o[0]);
   checkCard(o[1]);
 }
 
-core.List<api.CardWithId> buildUnnamed44() => [
+core.List<api.CardWithId> buildUnnamed47() => [
   buildCardWithId(),
   buildCardWithId(),
 ];
 
-void checkUnnamed44(core.List<api.CardWithId> o) {
+void checkUnnamed47(core.List<api.CardWithId> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCardWithId(o[0]);
   checkCardWithId(o[1]);
 }
 
-core.List<api.EmojiReactionSummary> buildUnnamed45() => [
+core.List<api.EmojiReactionSummary> buildUnnamed48() => [
   buildEmojiReactionSummary(),
   buildEmojiReactionSummary(),
 ];
 
-void checkUnnamed45(core.List<api.EmojiReactionSummary> o) {
+void checkUnnamed48(core.List<api.EmojiReactionSummary> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEmojiReactionSummary(o[0]);
   checkEmojiReactionSummary(o[1]);
@@ -3319,19 +3458,20 @@ api.Message buildMessage() {
   final o = api.Message();
   buildCounterMessage++;
   if (buildCounterMessage < 3) {
-    o.accessoryWidgets = buildUnnamed39();
+    o.accessoryWidgets = buildUnnamed42();
     o.actionResponse = buildActionResponse();
-    o.annotations = buildUnnamed40();
+    o.annotations = buildUnnamed43();
     o.argumentText = 'foo';
-    o.attachedGifs = buildUnnamed41();
-    o.attachment = buildUnnamed42();
-    o.cards = buildUnnamed43();
-    o.cardsV2 = buildUnnamed44();
+    o.attachedGifs = buildUnnamed44();
+    o.attachment = buildUnnamed45();
+    o.cards = buildUnnamed46();
+    o.cardsV2 = buildUnnamed47();
     o.clientAssignedMessageId = 'foo';
     o.createTime = 'foo';
     o.deleteTime = 'foo';
     o.deletionMetadata = buildDeletionMetadata();
-    o.emojiReactionSummaries = buildUnnamed45();
+    o.elements = buildElements();
+    o.emojiReactionSummaries = buildUnnamed48();
     o.fallbackText = 'foo';
     o.formattedText = 'foo';
     o.lastUpdateTime = 'foo';
@@ -3355,19 +3495,20 @@ api.Message buildMessage() {
 void checkMessage(api.Message o) {
   buildCounterMessage++;
   if (buildCounterMessage < 3) {
-    checkUnnamed39(o.accessoryWidgets!);
+    checkUnnamed42(o.accessoryWidgets!);
     checkActionResponse(o.actionResponse!);
-    checkUnnamed40(o.annotations!);
+    checkUnnamed43(o.annotations!);
     unittest.expect(o.argumentText!, unittest.equals('foo'));
-    checkUnnamed41(o.attachedGifs!);
-    checkUnnamed42(o.attachment!);
-    checkUnnamed43(o.cards!);
-    checkUnnamed44(o.cardsV2!);
+    checkUnnamed44(o.attachedGifs!);
+    checkUnnamed45(o.attachment!);
+    checkUnnamed46(o.cards!);
+    checkUnnamed47(o.cardsV2!);
     unittest.expect(o.clientAssignedMessageId!, unittest.equals('foo'));
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.deleteTime!, unittest.equals('foo'));
     checkDeletionMetadata(o.deletionMetadata!);
-    checkUnnamed45(o.emojiReactionSummaries!);
+    checkElements(o.elements!);
+    checkUnnamed48(o.emojiReactionSummaries!);
     unittest.expect(o.fallbackText!, unittest.equals('foo'));
     unittest.expect(o.formattedText!, unittest.equals('foo'));
     unittest.expect(o.lastUpdateTime!, unittest.equals('foo'));
@@ -3387,12 +3528,12 @@ void checkMessage(api.Message o) {
   buildCounterMessage--;
 }
 
-core.List<api.MessageCreatedEventData> buildUnnamed46() => [
+core.List<api.MessageCreatedEventData> buildUnnamed49() => [
   buildMessageCreatedEventData(),
   buildMessageCreatedEventData(),
 ];
 
-void checkUnnamed46(core.List<api.MessageCreatedEventData> o) {
+void checkUnnamed49(core.List<api.MessageCreatedEventData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMessageCreatedEventData(o[0]);
   checkMessageCreatedEventData(o[1]);
@@ -3403,7 +3544,7 @@ api.MessageBatchCreatedEventData buildMessageBatchCreatedEventData() {
   final o = api.MessageBatchCreatedEventData();
   buildCounterMessageBatchCreatedEventData++;
   if (buildCounterMessageBatchCreatedEventData < 3) {
-    o.messages = buildUnnamed46();
+    o.messages = buildUnnamed49();
   }
   buildCounterMessageBatchCreatedEventData--;
   return o;
@@ -3412,17 +3553,17 @@ api.MessageBatchCreatedEventData buildMessageBatchCreatedEventData() {
 void checkMessageBatchCreatedEventData(api.MessageBatchCreatedEventData o) {
   buildCounterMessageBatchCreatedEventData++;
   if (buildCounterMessageBatchCreatedEventData < 3) {
-    checkUnnamed46(o.messages!);
+    checkUnnamed49(o.messages!);
   }
   buildCounterMessageBatchCreatedEventData--;
 }
 
-core.List<api.MessageDeletedEventData> buildUnnamed47() => [
+core.List<api.MessageDeletedEventData> buildUnnamed50() => [
   buildMessageDeletedEventData(),
   buildMessageDeletedEventData(),
 ];
 
-void checkUnnamed47(core.List<api.MessageDeletedEventData> o) {
+void checkUnnamed50(core.List<api.MessageDeletedEventData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMessageDeletedEventData(o[0]);
   checkMessageDeletedEventData(o[1]);
@@ -3433,7 +3574,7 @@ api.MessageBatchDeletedEventData buildMessageBatchDeletedEventData() {
   final o = api.MessageBatchDeletedEventData();
   buildCounterMessageBatchDeletedEventData++;
   if (buildCounterMessageBatchDeletedEventData < 3) {
-    o.messages = buildUnnamed47();
+    o.messages = buildUnnamed50();
   }
   buildCounterMessageBatchDeletedEventData--;
   return o;
@@ -3442,17 +3583,17 @@ api.MessageBatchDeletedEventData buildMessageBatchDeletedEventData() {
 void checkMessageBatchDeletedEventData(api.MessageBatchDeletedEventData o) {
   buildCounterMessageBatchDeletedEventData++;
   if (buildCounterMessageBatchDeletedEventData < 3) {
-    checkUnnamed47(o.messages!);
+    checkUnnamed50(o.messages!);
   }
   buildCounterMessageBatchDeletedEventData--;
 }
 
-core.List<api.MessageUpdatedEventData> buildUnnamed48() => [
+core.List<api.MessageUpdatedEventData> buildUnnamed51() => [
   buildMessageUpdatedEventData(),
   buildMessageUpdatedEventData(),
 ];
 
-void checkUnnamed48(core.List<api.MessageUpdatedEventData> o) {
+void checkUnnamed51(core.List<api.MessageUpdatedEventData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMessageUpdatedEventData(o[0]);
   checkMessageUpdatedEventData(o[1]);
@@ -3463,7 +3604,7 @@ api.MessageBatchUpdatedEventData buildMessageBatchUpdatedEventData() {
   final o = api.MessageBatchUpdatedEventData();
   buildCounterMessageBatchUpdatedEventData++;
   if (buildCounterMessageBatchUpdatedEventData < 3) {
-    o.messages = buildUnnamed48();
+    o.messages = buildUnnamed51();
   }
   buildCounterMessageBatchUpdatedEventData--;
   return o;
@@ -3472,7 +3613,7 @@ api.MessageBatchUpdatedEventData buildMessageBatchUpdatedEventData() {
 void checkMessageBatchUpdatedEventData(api.MessageBatchUpdatedEventData o) {
   buildCounterMessageBatchUpdatedEventData++;
   if (buildCounterMessageBatchUpdatedEventData < 3) {
-    checkUnnamed48(o.messages!);
+    checkUnnamed51(o.messages!);
   }
   buildCounterMessageBatchUpdatedEventData--;
 }
@@ -3669,6 +3810,7 @@ api.PermissionSettings buildPermissionSettings() {
     o.replyMessages = buildPermissionSetting();
     o.toggleHistory = buildPermissionSetting();
     o.useAtMentionAll = buildPermissionSetting();
+    o.viewSpaceMembership = buildPermissionSetting();
   }
   buildCounterPermissionSettings--;
   return o;
@@ -3685,6 +3827,7 @@ void checkPermissionSettings(api.PermissionSettings o) {
     checkPermissionSetting(o.replyMessages!);
     checkPermissionSetting(o.toggleHistory!);
     checkPermissionSetting(o.useAtMentionAll!);
+    checkPermissionSetting(o.viewSpaceMembership!);
   }
   buildCounterPermissionSettings--;
 }
@@ -3775,23 +3918,23 @@ void checkQuotedMessageMetadata(api.QuotedMessageMetadata o) {
   buildCounterQuotedMessageMetadata--;
 }
 
-core.List<api.Annotation> buildUnnamed49() => [
+core.List<api.Annotation> buildUnnamed52() => [
   buildAnnotation(),
   buildAnnotation(),
 ];
 
-void checkUnnamed49(core.List<api.Annotation> o) {
+void checkUnnamed52(core.List<api.Annotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAnnotation(o[0]);
   checkAnnotation(o[1]);
 }
 
-core.List<api.Attachment> buildUnnamed50() => [
+core.List<api.Attachment> buildUnnamed53() => [
   buildAttachment(),
   buildAttachment(),
 ];
 
-void checkUnnamed50(core.List<api.Attachment> o) {
+void checkUnnamed53(core.List<api.Attachment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAttachment(o[0]);
   checkAttachment(o[1]);
@@ -3802,8 +3945,8 @@ api.QuotedMessageSnapshot buildQuotedMessageSnapshot() {
   final o = api.QuotedMessageSnapshot();
   buildCounterQuotedMessageSnapshot++;
   if (buildCounterQuotedMessageSnapshot < 3) {
-    o.annotations = buildUnnamed49();
-    o.attachments = buildUnnamed50();
+    o.annotations = buildUnnamed52();
+    o.attachments = buildUnnamed53();
     o.formattedText = 'foo';
     o.sender = 'foo';
     o.text = 'foo';
@@ -3815,8 +3958,8 @@ api.QuotedMessageSnapshot buildQuotedMessageSnapshot() {
 void checkQuotedMessageSnapshot(api.QuotedMessageSnapshot o) {
   buildCounterQuotedMessageSnapshot++;
   if (buildCounterQuotedMessageSnapshot < 3) {
-    checkUnnamed49(o.annotations!);
-    checkUnnamed50(o.attachments!);
+    checkUnnamed52(o.annotations!);
+    checkUnnamed53(o.attachments!);
     unittest.expect(o.formattedText!, unittest.equals('foo'));
     unittest.expect(o.sender!, unittest.equals('foo'));
     unittest.expect(o.text!, unittest.equals('foo'));
@@ -3847,12 +3990,12 @@ void checkReaction(api.Reaction o) {
   buildCounterReaction--;
 }
 
-core.List<api.ReactionCreatedEventData> buildUnnamed51() => [
+core.List<api.ReactionCreatedEventData> buildUnnamed54() => [
   buildReactionCreatedEventData(),
   buildReactionCreatedEventData(),
 ];
 
-void checkUnnamed51(core.List<api.ReactionCreatedEventData> o) {
+void checkUnnamed54(core.List<api.ReactionCreatedEventData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReactionCreatedEventData(o[0]);
   checkReactionCreatedEventData(o[1]);
@@ -3863,7 +4006,7 @@ api.ReactionBatchCreatedEventData buildReactionBatchCreatedEventData() {
   final o = api.ReactionBatchCreatedEventData();
   buildCounterReactionBatchCreatedEventData++;
   if (buildCounterReactionBatchCreatedEventData < 3) {
-    o.reactions = buildUnnamed51();
+    o.reactions = buildUnnamed54();
   }
   buildCounterReactionBatchCreatedEventData--;
   return o;
@@ -3872,17 +4015,17 @@ api.ReactionBatchCreatedEventData buildReactionBatchCreatedEventData() {
 void checkReactionBatchCreatedEventData(api.ReactionBatchCreatedEventData o) {
   buildCounterReactionBatchCreatedEventData++;
   if (buildCounterReactionBatchCreatedEventData < 3) {
-    checkUnnamed51(o.reactions!);
+    checkUnnamed54(o.reactions!);
   }
   buildCounterReactionBatchCreatedEventData--;
 }
 
-core.List<api.ReactionDeletedEventData> buildUnnamed52() => [
+core.List<api.ReactionDeletedEventData> buildUnnamed55() => [
   buildReactionDeletedEventData(),
   buildReactionDeletedEventData(),
 ];
 
-void checkUnnamed52(core.List<api.ReactionDeletedEventData> o) {
+void checkUnnamed55(core.List<api.ReactionDeletedEventData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReactionDeletedEventData(o[0]);
   checkReactionDeletedEventData(o[1]);
@@ -3893,7 +4036,7 @@ api.ReactionBatchDeletedEventData buildReactionBatchDeletedEventData() {
   final o = api.ReactionBatchDeletedEventData();
   buildCounterReactionBatchDeletedEventData++;
   if (buildCounterReactionBatchDeletedEventData < 3) {
-    o.reactions = buildUnnamed52();
+    o.reactions = buildUnnamed55();
   }
   buildCounterReactionBatchDeletedEventData--;
   return o;
@@ -3902,7 +4045,7 @@ api.ReactionBatchDeletedEventData buildReactionBatchDeletedEventData() {
 void checkReactionBatchDeletedEventData(api.ReactionBatchDeletedEventData o) {
   buildCounterReactionBatchDeletedEventData++;
   if (buildCounterReactionBatchDeletedEventData < 3) {
-    checkUnnamed52(o.reactions!);
+    checkUnnamed55(o.reactions!);
   }
   buildCounterReactionBatchDeletedEventData--;
 }
@@ -3943,6 +4086,51 @@ void checkReactionDeletedEventData(api.ReactionDeletedEventData o) {
     checkReaction(o.reaction!);
   }
   buildCounterReactionDeletedEventData--;
+}
+
+core.List<api.CardWithId> buildUnnamed56() => [
+  buildCardWithId(),
+  buildCardWithId(),
+];
+
+void checkUnnamed56(core.List<api.CardWithId> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkCardWithId(o[0]);
+  checkCardWithId(o[1]);
+}
+
+core.int buildCounterReplaceMessageCardsRequest = 0;
+api.ReplaceMessageCardsRequest buildReplaceMessageCardsRequest() {
+  final o = api.ReplaceMessageCardsRequest();
+  buildCounterReplaceMessageCardsRequest++;
+  if (buildCounterReplaceMessageCardsRequest < 3) {
+    o.cardsV2 = buildUnnamed56();
+  }
+  buildCounterReplaceMessageCardsRequest--;
+  return o;
+}
+
+void checkReplaceMessageCardsRequest(api.ReplaceMessageCardsRequest o) {
+  buildCounterReplaceMessageCardsRequest++;
+  if (buildCounterReplaceMessageCardsRequest < 3) {
+    checkUnnamed56(o.cardsV2!);
+  }
+  buildCounterReplaceMessageCardsRequest--;
+}
+
+core.int buildCounterReplaceMessageCardsResponse = 0;
+api.ReplaceMessageCardsResponse buildReplaceMessageCardsResponse() {
+  final o = api.ReplaceMessageCardsResponse();
+  buildCounterReplaceMessageCardsResponse++;
+  if (buildCounterReplaceMessageCardsResponse < 3) {}
+  buildCounterReplaceMessageCardsResponse--;
+  return o;
+}
+
+void checkReplaceMessageCardsResponse(api.ReplaceMessageCardsResponse o) {
+  buildCounterReplaceMessageCardsResponse++;
+  if (buildCounterReplaceMessageCardsResponse < 3) {}
+  buildCounterReplaceMessageCardsResponse--;
 }
 
 core.int buildCounterRichLinkMetadata = 0;
@@ -4026,12 +4214,12 @@ void checkSearchMessagesRequest(api.SearchMessagesRequest o) {
   buildCounterSearchMessagesRequest--;
 }
 
-core.List<api.SearchMessageResult> buildUnnamed53() => [
+core.List<api.SearchMessageResult> buildUnnamed57() => [
   buildSearchMessageResult(),
   buildSearchMessageResult(),
 ];
 
-void checkUnnamed53(core.List<api.SearchMessageResult> o) {
+void checkUnnamed57(core.List<api.SearchMessageResult> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSearchMessageResult(o[0]);
   checkSearchMessageResult(o[1]);
@@ -4043,7 +4231,7 @@ api.SearchMessagesResponse buildSearchMessagesResponse() {
   buildCounterSearchMessagesResponse++;
   if (buildCounterSearchMessagesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.results = buildUnnamed53();
+    o.results = buildUnnamed57();
   }
   buildCounterSearchMessagesResponse--;
   return o;
@@ -4053,7 +4241,7 @@ void checkSearchMessagesResponse(api.SearchMessagesResponse o) {
   buildCounterSearchMessagesResponse++;
   if (buildCounterSearchMessagesResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed53(o.results!);
+    checkUnnamed57(o.results!);
   }
   buildCounterSearchMessagesResponse--;
 }
@@ -4077,20 +4265,20 @@ void checkSearchSpaceResult(api.SearchSpaceResult o) {
   buildCounterSearchSpaceResult--;
 }
 
-core.List<api.SearchSpaceResult> buildUnnamed54() => [
+core.List<api.SearchSpaceResult> buildUnnamed58() => [
   buildSearchSpaceResult(),
   buildSearchSpaceResult(),
 ];
 
-void checkUnnamed54(core.List<api.SearchSpaceResult> o) {
+void checkUnnamed58(core.List<api.SearchSpaceResult> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSearchSpaceResult(o[0]);
   checkSearchSpaceResult(o[1]);
 }
 
-core.List<api.Space> buildUnnamed55() => [buildSpace(), buildSpace()];
+core.List<api.Space> buildUnnamed59() => [buildSpace(), buildSpace()];
 
-void checkUnnamed55(core.List<api.Space> o) {
+void checkUnnamed59(core.List<api.Space> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSpace(o[0]);
   checkSpace(o[1]);
@@ -4102,8 +4290,8 @@ api.SearchSpacesResponse buildSearchSpacesResponse() {
   buildCounterSearchSpacesResponse++;
   if (buildCounterSearchSpacesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.results = buildUnnamed54();
-    o.spaces = buildUnnamed55();
+    o.results = buildUnnamed58();
+    o.spaces = buildUnnamed59();
     o.totalSize = 42;
   }
   buildCounterSearchSpacesResponse--;
@@ -4114,19 +4302,19 @@ void checkSearchSpacesResponse(api.SearchSpacesResponse o) {
   buildCounterSearchSpacesResponse++;
   if (buildCounterSearchSpacesResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed54(o.results!);
-    checkUnnamed55(o.spaces!);
+    checkUnnamed58(o.results!);
+    checkUnnamed59(o.spaces!);
     unittest.expect(o.totalSize!, unittest.equals(42));
   }
   buildCounterSearchSpacesResponse--;
 }
 
-core.List<api.WidgetMarkup> buildUnnamed56() => [
+core.List<api.WidgetMarkup> buildUnnamed60() => [
   buildWidgetMarkup(),
   buildWidgetMarkup(),
 ];
 
-void checkUnnamed56(core.List<api.WidgetMarkup> o) {
+void checkUnnamed60(core.List<api.WidgetMarkup> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWidgetMarkup(o[0]);
   checkWidgetMarkup(o[1]);
@@ -4138,7 +4326,7 @@ api.Section buildSection() {
   buildCounterSection++;
   if (buildCounterSection < 3) {
     o.header = 'foo';
-    o.widgets = buildUnnamed56();
+    o.widgets = buildUnnamed60();
   }
   buildCounterSection--;
   return o;
@@ -4148,7 +4336,7 @@ void checkSection(api.Section o) {
   buildCounterSection++;
   if (buildCounterSection < 3) {
     unittest.expect(o.header!, unittest.equals('foo'));
-    checkUnnamed56(o.widgets!);
+    checkUnnamed60(o.widgets!);
   }
   buildCounterSection--;
 }
@@ -4174,12 +4362,12 @@ void checkSectionItem(api.SectionItem o) {
   buildCounterSectionItem--;
 }
 
-core.List<api.GoogleAppsCardV1SelectionItem> buildUnnamed57() => [
+core.List<api.GoogleAppsCardV1SelectionItem> buildUnnamed61() => [
   buildGoogleAppsCardV1SelectionItem(),
   buildGoogleAppsCardV1SelectionItem(),
 ];
 
-void checkUnnamed57(core.List<api.GoogleAppsCardV1SelectionItem> o) {
+void checkUnnamed61(core.List<api.GoogleAppsCardV1SelectionItem> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAppsCardV1SelectionItem(o[0]);
   checkGoogleAppsCardV1SelectionItem(o[1]);
@@ -4190,7 +4378,7 @@ api.SelectionItems buildSelectionItems() {
   final o = api.SelectionItems();
   buildCounterSelectionItems++;
   if (buildCounterSelectionItems < 3) {
-    o.items = buildUnnamed57();
+    o.items = buildUnnamed61();
   }
   buildCounterSelectionItems--;
   return o;
@@ -4199,17 +4387,17 @@ api.SelectionItems buildSelectionItems() {
 void checkSelectionItems(api.SelectionItems o) {
   buildCounterSelectionItems++;
   if (buildCounterSelectionItems < 3) {
-    checkUnnamed57(o.items!);
+    checkUnnamed61(o.items!);
   }
   buildCounterSelectionItems--;
 }
 
-core.List<api.Membership> buildUnnamed58() => [
+core.List<api.Membership> buildUnnamed62() => [
   buildMembership(),
   buildMembership(),
 ];
 
-void checkUnnamed58(core.List<api.Membership> o) {
+void checkUnnamed62(core.List<api.Membership> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMembership(o[0]);
   checkMembership(o[1]);
@@ -4220,7 +4408,7 @@ api.SetUpSpaceRequest buildSetUpSpaceRequest() {
   final o = api.SetUpSpaceRequest();
   buildCounterSetUpSpaceRequest++;
   if (buildCounterSetUpSpaceRequest < 3) {
-    o.memberships = buildUnnamed58();
+    o.memberships = buildUnnamed62();
     o.requestId = 'foo';
     o.space = buildSpace();
   }
@@ -4231,7 +4419,7 @@ api.SetUpSpaceRequest buildSetUpSpaceRequest() {
 void checkSetUpSpaceRequest(api.SetUpSpaceRequest o) {
   buildCounterSetUpSpaceRequest++;
   if (buildCounterSetUpSpaceRequest < 3) {
-    checkUnnamed58(o.memberships!);
+    checkUnnamed62(o.memberships!);
     unittest.expect(o.requestId!, unittest.equals('foo'));
     checkSpace(o.space!);
   }
@@ -4282,6 +4470,27 @@ void checkSlashCommandMetadata(api.SlashCommandMetadata o) {
     unittest.expect(o.type!, unittest.equals('foo'));
   }
   buildCounterSlashCommandMetadata--;
+}
+
+core.int buildCounterSnippet = 0;
+api.Snippet buildSnippet() {
+  final o = api.Snippet();
+  buildCounterSnippet++;
+  if (buildCounterSnippet < 3) {
+    o.imagePreview = buildElementsImage();
+    o.text = 'foo';
+  }
+  buildCounterSnippet--;
+  return o;
+}
+
+void checkSnippet(api.Snippet o) {
+  buildCounterSnippet++;
+  if (buildCounterSnippet < 3) {
+    checkElementsImage(o.imagePreview!);
+    unittest.expect(o.text!, unittest.equals('foo'));
+  }
+  buildCounterSnippet--;
 }
 
 core.int buildCounterSpace = 0;
@@ -4343,12 +4552,12 @@ void checkSpace(api.Space o) {
   buildCounterSpace--;
 }
 
-core.List<api.SpaceUpdatedEventData> buildUnnamed59() => [
+core.List<api.SpaceUpdatedEventData> buildUnnamed63() => [
   buildSpaceUpdatedEventData(),
   buildSpaceUpdatedEventData(),
 ];
 
-void checkUnnamed59(core.List<api.SpaceUpdatedEventData> o) {
+void checkUnnamed63(core.List<api.SpaceUpdatedEventData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSpaceUpdatedEventData(o[0]);
   checkSpaceUpdatedEventData(o[1]);
@@ -4359,7 +4568,7 @@ api.SpaceBatchUpdatedEventData buildSpaceBatchUpdatedEventData() {
   final o = api.SpaceBatchUpdatedEventData();
   buildCounterSpaceBatchUpdatedEventData++;
   if (buildCounterSpaceBatchUpdatedEventData < 3) {
-    o.spaces = buildUnnamed59();
+    o.spaces = buildUnnamed63();
   }
   buildCounterSpaceBatchUpdatedEventData--;
   return o;
@@ -4368,7 +4577,7 @@ api.SpaceBatchUpdatedEventData buildSpaceBatchUpdatedEventData() {
 void checkSpaceBatchUpdatedEventData(api.SpaceBatchUpdatedEventData o) {
   buildCounterSpaceBatchUpdatedEventData++;
   if (buildCounterSpaceBatchUpdatedEventData < 3) {
-    checkUnnamed59(o.spaces!);
+    checkUnnamed63(o.spaces!);
   }
   buildCounterSpaceBatchUpdatedEventData--;
 }
@@ -4681,8 +4890,10 @@ api.User buildUser() {
   final o = api.User();
   buildCounterUser++;
   if (buildCounterUser < 3) {
+    o.avatarUrl = 'foo';
     o.displayName = 'foo';
     o.domainId = 'foo';
+    o.email = 'foo';
     o.isAnonymous = true;
     o.name = 'foo';
     o.type = 'foo';
@@ -4694,8 +4905,10 @@ api.User buildUser() {
 void checkUser(api.User o) {
   buildCounterUser++;
   if (buildCounterUser < 3) {
+    unittest.expect(o.avatarUrl!, unittest.equals('foo'));
     unittest.expect(o.displayName!, unittest.equals('foo'));
     unittest.expect(o.domainId!, unittest.equals('foo'));
+    unittest.expect(o.email!, unittest.equals('foo'));
     unittest.expect(o.isAnonymous!, unittest.isTrue);
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.type!, unittest.equals('foo'));
@@ -4724,9 +4937,9 @@ void checkUserMentionMetadata(api.UserMentionMetadata o) {
   buildCounterUserMentionMetadata--;
 }
 
-core.List<api.Button> buildUnnamed60() => [buildButton(), buildButton()];
+core.List<api.Button> buildUnnamed64() => [buildButton(), buildButton()];
 
-void checkUnnamed60(core.List<api.Button> o) {
+void checkUnnamed64(core.List<api.Button> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkButton(o[0]);
   checkButton(o[1]);
@@ -4737,7 +4950,7 @@ api.WidgetMarkup buildWidgetMarkup() {
   final o = api.WidgetMarkup();
   buildCounterWidgetMarkup++;
   if (buildCounterWidgetMarkup < 3) {
-    o.buttons = buildUnnamed60();
+    o.buttons = buildUnnamed64();
     o.image = buildImage();
     o.keyValue = buildKeyValue();
     o.textParagraph = buildTextParagraph();
@@ -4749,7 +4962,7 @@ api.WidgetMarkup buildWidgetMarkup() {
 void checkWidgetMarkup(api.WidgetMarkup o) {
   buildCounterWidgetMarkup++;
   if (buildCounterWidgetMarkup < 3) {
-    checkUnnamed60(o.buttons!);
+    checkUnnamed64(o.buttons!);
     checkImage(o.image!);
     checkKeyValue(o.keyValue!);
     checkTextParagraph(o.textParagraph!);
@@ -4778,9 +4991,9 @@ void checkWorkflowDataSourceMarkup(api.WorkflowDataSourceMarkup o) {
   buildCounterWorkflowDataSourceMarkup--;
 }
 
-core.List<core.String> buildUnnamed61() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed65() => ['foo', 'foo'];
 
-void checkUnnamed61(core.List<core.String> o) {
+void checkUnnamed65(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -5018,6 +5231,28 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-Citation', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCitation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Citation.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkCitation(od);
+    });
+  });
+
+  unittest.group('obj-schema-CitedSource', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCitedSource();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CitedSource.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkCitedSource(od);
+    });
+  });
+
   unittest.group('obj-schema-Color', () {
     unittest.test('to-json--from-json', () async {
       final o = buildColor();
@@ -5161,6 +5396,28 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-Elements', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildElements();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Elements.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkElements(od);
+    });
+  });
+
+  unittest.group('obj-schema-ElementsImage', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildElementsImage();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ElementsImage.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkElementsImage(od);
+    });
+  });
+
   unittest.group('obj-schema-Emoji', () {
     unittest.test('to-json--from-json', () async {
       final o = buildEmoji();
@@ -5202,6 +5459,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkFindGroupChatsResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-Footer', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildFooter();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Footer.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkFooter(od);
     });
   });
 
@@ -6371,6 +6639,28 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ReplaceMessageCardsRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildReplaceMessageCardsRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ReplaceMessageCardsRequest.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkReplaceMessageCardsRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-ReplaceMessageCardsResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildReplaceMessageCardsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ReplaceMessageCardsResponse.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkReplaceMessageCardsResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-RichLinkMetadata', () {
     unittest.test('to-json--from-json', () async {
       final o = buildRichLinkMetadata();
@@ -6500,6 +6790,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkSlashCommandMetadata(od);
+    });
+  });
+
+  unittest.group('obj-schema-Snippet', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSnippet();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Snippet.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkSnippet(od);
     });
   });
 
@@ -7331,7 +7632,7 @@ void main() {
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_spaceView = 'foo';
-      final arg_users = buildUnnamed61();
+      final arg_users = buildUnnamed65();
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -8680,6 +8981,71 @@ void main() {
         $fields: arg_$fields,
       );
       checkMessage(response as api.Message);
+    });
+
+    unittest.test('method--replaceCards', () async {
+      final mock = HttpServerMock();
+      final res = api.HangoutsChatApi(mock).spaces.messages;
+      final arg_request = buildReplaceMessageCardsRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.ReplaceMessageCardsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkReplaceMessageCardsRequest(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildReplaceMessageCardsResponse());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.replaceCards(
+        arg_request,
+        arg_name,
+        $fields: arg_$fields,
+      );
+      checkReplaceMessageCardsResponse(
+        response as api.ReplaceMessageCardsResponse,
+      );
     });
 
     unittest.test('method--search', () async {

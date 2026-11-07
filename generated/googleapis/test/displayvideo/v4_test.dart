@@ -12010,6 +12010,7 @@ api.VideoPerformanceAd buildVideoPerformanceAd() {
   buildCounterVideoPerformanceAd++;
   if (buildCounterVideoPerformanceAd < 3) {
     o.actionButtonLabels = buildUnnamed223();
+    o.businessName = 'foo';
     o.companionBanners = buildUnnamed224();
     o.customParameters = buildUnnamed225();
     o.descriptions = buildUnnamed226();
@@ -12018,6 +12019,7 @@ api.VideoPerformanceAd buildVideoPerformanceAd() {
     o.domain = 'foo';
     o.finalUrl = 'foo';
     o.headlines = buildUnnamed227();
+    o.logo = buildImageAsset();
     o.longHeadlines = buildUnnamed228();
     o.trackingUrl = 'foo';
     o.videos = buildUnnamed229();
@@ -12030,6 +12032,7 @@ void checkVideoPerformanceAd(api.VideoPerformanceAd o) {
   buildCounterVideoPerformanceAd++;
   if (buildCounterVideoPerformanceAd < 3) {
     checkUnnamed223(o.actionButtonLabels!);
+    unittest.expect(o.businessName!, unittest.equals('foo'));
     checkUnnamed224(o.companionBanners!);
     checkUnnamed225(o.customParameters!);
     checkUnnamed226(o.descriptions!);
@@ -12038,6 +12041,7 @@ void checkVideoPerformanceAd(api.VideoPerformanceAd o) {
     unittest.expect(o.domain!, unittest.equals('foo'));
     unittest.expect(o.finalUrl!, unittest.equals('foo'));
     checkUnnamed227(o.headlines!);
+    checkImageAsset(o.logo!);
     checkUnnamed228(o.longHeadlines!);
     unittest.expect(o.trackingUrl!, unittest.equals('foo'));
     checkUnnamed229(o.videos!);

@@ -200,6 +200,72 @@ class PublishersItemsResource {
     );
   }
 
+  /// Fetch user reviews for an item.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The item resource name whose reviews are being fetched.
+  /// Format: publishers/{publisher_id}/items/{item_id}
+  /// Value must have pattern `^publishers/\[^/\]+/items/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. A filter to apply to the reviews. Only equality
+  /// comparison on rating is supported, e.g. `rating = 5`.
+  ///
+  /// [orderBy] - Optional. An optional comma-separated list of fields by which
+  /// to sort the results. The default sort order is ascending (`asc`).
+  /// Supported fields are: - `rating`: Supported orders are `asc` (default) and
+  /// `desc`. - `create_time`: Only `desc` (most recent first) is supported;
+  /// `desc` must be explicitly specified since the default is `asc`. Example:
+  /// `rating desc`, `create_time desc`, or `rating desc, create_time desc`.
+  ///
+  /// [pageSize] - Optional. The maximum number of reviews to return. The
+  /// service may return fewer than this value. If unspecified, at most 50
+  /// reviews will be returned. The maximum value is 200; values above 200 will
+  /// be coerced to 200.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `FetchItemReviews` call. Provide this to retrieve the subsequent page.
+  /// When paginating, all other parameters provided to `FetchItemReviews` must
+  /// match the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [FetchItemReviewsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<FetchItemReviewsResponse> fetchReviews(
+    core.String name, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':fetchReviews';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return FetchItemReviewsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Fetch the status of an item.
   ///
   /// Request parameters:
@@ -234,6 +300,45 @@ class PublishersItemsResource {
       queryParams: queryParams_,
     );
     return FetchItemStatusResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Gets the RatingSummary for the publishers item.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the rating summary to retrieve. Format:
+  /// publishers/{publisher}/items/{item}/ratingSummary
+  /// Value must have pattern
+  /// `^publishers/\[^/\]+/items/\[^/\]+/ratingSummary$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RatingSummary].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RatingSummary> getRatingSummary(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return RatingSummary.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -281,6 +386,168 @@ class PublishersItemsResource {
       queryParams: queryParams_,
     );
     return PublishItemResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Query the metrics for an item.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the item to query the metrics for. Format:
+  /// publishers/{publisher}/items/{item}
+  /// Value must have pattern `^publishers/\[^/\]+/items/\[^/\]+$`.
+  ///
+  /// [dimensions] - Optional. Dimensions to slice the metrics by. At most one
+  /// dimension can be specified. **Supported dimensions:** - os: The operating
+  /// system of the user. - app-version: The version of the item. - country: The
+  /// country of the user. - install-source: The source of the install. -
+  /// install-type: The type of install (from webstore, inline, or other). -
+  /// language: The language of the user. - enabled: If the item is enabled or
+  /// disabled. - utm-campaign: The UTM campaign of the user. - utm-content: The
+  /// UTM content of the user. - utm-medium: The UTM medium of the user. -
+  /// utm-source: The UTM source of the user. - utm-term: The UTM term of the
+  /// user.
+  ///
+  /// [metrics] - Required. The metrics to query the metric set for. **Supported
+  /// metrics:** - installs: Count of item installs. - installs-7d: Count of
+  /// item installs in the last 7 days. - uninstalls: Count of item uninstalls.
+  /// - users: Count of daily active users of the item. - users-7d: Count of
+  /// 7-day active users of the item. - impressions: Count of item impressions
+  /// across the entire store front. - page-views: Count of individual views of
+  /// the item's detail page.
+  ///
+  /// [pageSize] - Optional. The maximum number of rows to return. If
+  /// unspecified, at most 100 rows will be returned. The maximum value is 1000;
+  /// Values above 1000 will be coerced to 1000.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous call.
+  /// Provide this to retrieve the subsequent page. When paginating, all other
+  /// parameters provided to the request must match the call that provided the
+  /// page token.
+  ///
+  /// [timeSpec_firstDate_day] - Day of a month. Must be from 1 to 31 and valid
+  /// for the year and month, or 0 to specify a year by itself or a year and
+  /// month where the day isn't significant.
+  ///
+  /// [timeSpec_firstDate_month] - Month of a year. Must be from 1 to 12, or 0
+  /// to specify a year without a month and day.
+  ///
+  /// [timeSpec_firstDate_year] - Year of the date. Must be from 1 to 9999, or 0
+  /// to specify a date without a year.
+  ///
+  /// [timeSpec_lastDate_day] - Day of a month. Must be from 1 to 31 and valid
+  /// for the year and month, or 0 to specify a year by itself or a year and
+  /// month where the day isn't significant.
+  ///
+  /// [timeSpec_lastDate_month] - Month of a year. Must be from 1 to 12, or 0 to
+  /// specify a year without a month and day.
+  ///
+  /// [timeSpec_lastDate_year] - Year of the date. Must be from 1 to 9999, or 0
+  /// to specify a date without a year.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [QueryItemMetricsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<QueryItemMetricsResponse> queryMetrics(
+    core.String name, {
+    core.List<core.String>? dimensions,
+    core.List<core.String>? metrics,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.int? timeSpec_firstDate_day,
+    core.int? timeSpec_firstDate_month,
+    core.int? timeSpec_firstDate_year,
+    core.int? timeSpec_lastDate_day,
+    core.int? timeSpec_lastDate_month,
+    core.int? timeSpec_lastDate_year,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'dimensions': ?dimensions,
+      'metrics': ?metrics,
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'timeSpec.firstDate.day': ?timeSpec_firstDate_day == null
+          ? null
+          : ['${timeSpec_firstDate_day}'],
+      'timeSpec.firstDate.month': ?timeSpec_firstDate_month == null
+          ? null
+          : ['${timeSpec_firstDate_month}'],
+      'timeSpec.firstDate.year': ?timeSpec_firstDate_year == null
+          ? null
+          : ['${timeSpec_firstDate_year}'],
+      'timeSpec.lastDate.day': ?timeSpec_lastDate_day == null
+          ? null
+          : ['${timeSpec_lastDate_day}'],
+      'timeSpec.lastDate.month': ?timeSpec_lastDate_month == null
+          ? null
+          : ['${timeSpec_lastDate_month}'],
+      'timeSpec.lastDate.year': ?timeSpec_lastDate_year == null
+          ? null
+          : ['${timeSpec_lastDate_year}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':queryMetrics';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return QueryItemMetricsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Rolls back an item's published CRX package to a specified previously
+  /// published CRX package and publishes it to all users.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the item to rollback in the form
+  /// `publishers/{publisherId}/items/{itemId}`
+  /// Value must have pattern `^publishers/\[^/\]+/items/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RollbackItemResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RollbackItemResponse> rollback(
+    RollbackItemRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':rollback';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return RollbackItemResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -334,11 +601,39 @@ class PublishersItemsResource {
   }
 }
 
+/// Info on the author of the review.
+class AuthorInfo {
+  /// Display name for the author.
+  core.String? displayName;
+
+  AuthorInfo({this.displayName});
+
+  AuthorInfo.fromJson(core.Map json_)
+    : this(displayName: json_['displayName'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    return {'displayName': ?displayName};
+  }
+}
+
 /// Request message for CancelSubmission.
 typedef CancelSubmissionRequest = $Empty;
 
 /// Response message for `CancelSubmission`.
 typedef CancelSubmissionResponse = $Empty;
+
+/// Represents a whole or partial calendar date, such as a birthday.
+///
+/// The time of day and time zone are either specified elsewhere or are
+/// insignificant. The date is relative to the Gregorian Calendar. This can
+/// represent one of the following: * A full date, with non-zero year, month,
+/// and day values. * A month and day, with a zero year (for example, an
+/// anniversary). * A year on its own, with a zero month and a zero day. * A
+/// year and month, with a zero day (for example, a credit card expiration
+/// date). Related types: * google.type.TimeOfDay * google.type.DateTime *
+/// google.protobuf.Timestamp
+typedef Date = $Date;
 
 /// Deployment information for a specific release channel.
 ///
@@ -382,6 +677,36 @@ class DistributionChannel {
     final crxVersion = this.crxVersion;
     final deployPercentage = this.deployPercentage;
     return {'crxVersion': ?crxVersion, 'deployPercentage': ?deployPercentage};
+  }
+}
+
+/// Response message for FetchItemReviews.
+class FetchItemReviewsResponse {
+  /// A token that can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// The list of reviews.
+  core.List<Review>? reviews;
+
+  FetchItemReviewsResponse({this.nextPageToken, this.reviews});
+
+  FetchItemReviewsResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        reviews: (json_['reviews'] as core.List?)
+            ?.map(
+              (value) =>
+                  Review.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final reviews = this.reviews;
+    return {'nextPageToken': ?nextPageToken, 'reviews': ?reviews};
   }
 }
 
@@ -533,6 +858,82 @@ class ItemRevisionStatus {
   }
 }
 
+/// A single row of metrics and dimension values.
+class MetricRow {
+  /// The date of the record.
+  Date? date;
+
+  /// Dimension value columns for the row.
+  core.List<core.String>? dimensionValues;
+
+  /// Metric columns for the row.
+  core.List<MetricValue>? metricValues;
+
+  MetricRow({this.date, this.dimensionValues, this.metricValues});
+
+  MetricRow.fromJson(core.Map json_)
+    : this(
+        date: json_.containsKey('date')
+            ? Date.fromJson(
+                json_['date'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        dimensionValues: (json_['dimensionValues'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        metricValues: (json_['metricValues'] as core.List?)
+            ?.map(
+              (value) => MetricValue.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final date = this.date;
+    final dimensionValues = this.dimensionValues;
+    final metricValues = this.metricValues;
+    return {
+      'date': ?date,
+      'dimensionValues': ?dimensionValues,
+      'metricValues': ?metricValues,
+    };
+  }
+}
+
+/// Represents the value of a single metric
+class MetricValue {
+  /// The name of the metric
+  core.String? metric;
+
+  /// The unique user count associated with the metric (if applicable).
+  core.String? uniqueUserCount;
+
+  /// The value of the metric.
+  core.String? value;
+
+  MetricValue({this.metric, this.uniqueUserCount, this.value});
+
+  MetricValue.fromJson(core.Map json_)
+    : this(
+        metric: json_['metric'] as core.String?,
+        uniqueUserCount: json_['uniqueUserCount'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final metric = this.metric;
+    final uniqueUserCount = this.uniqueUserCount;
+    final value = this.value;
+    return {
+      'metric': ?metric,
+      'uniqueUserCount': ?uniqueUserCount,
+      'value': ?value,
+    };
+  }
+}
+
 /// Request message for PublishItem.
 class PublishItemRequest {
   /// When set to true the request will fail if there are any warnings during
@@ -666,6 +1067,251 @@ class PublishItemResponse {
     };
   }
 }
+
+/// Response message for QueryItemMetrics.
+class QueryItemMetricsResponse {
+  /// The metric rows.
+  core.List<MetricRow>? metricRows;
+
+  /// A token that can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  QueryItemMetricsResponse({this.metricRows, this.nextPageToken});
+
+  QueryItemMetricsResponse.fromJson(core.Map json_)
+    : this(
+        metricRows: (json_['metricRows'] as core.List?)
+            ?.map(
+              (value) => MetricRow.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final metricRows = this.metricRows;
+    final nextPageToken = this.nextPageToken;
+    return {'metricRows': ?metricRows, 'nextPageToken': ?nextPageToken};
+  }
+}
+
+/// Singleton resource for the rating summary of an item.
+class RatingSummary {
+  /// The number of five star ratings.
+  core.String? fiveStarRatingCount;
+
+  /// The number of four star ratings.
+  core.String? fourStarRatingCount;
+
+  /// Identifier.
+  ///
+  /// Item rating summary resource name Format:
+  /// publishers/{publisher}/items/{item}/ratingSummary
+  core.String? name;
+
+  /// The number of ratings with a non-empty review text.
+  core.String? nonEmptyReviewCount;
+
+  /// The number of one star ratings.
+  core.String? oneStarRatingCount;
+
+  /// The rating of the item as shown on the store page, expressed as a double
+  /// between 1 and 5.
+  core.double? rating;
+
+  /// The total number of ratings for the item.
+  core.String? ratingCount;
+
+  /// The number of three star ratings.
+  core.String? threeStarRatingCount;
+
+  /// The number of two star ratings.
+  core.String? twoStarRatingCount;
+
+  RatingSummary({
+    this.fiveStarRatingCount,
+    this.fourStarRatingCount,
+    this.name,
+    this.nonEmptyReviewCount,
+    this.oneStarRatingCount,
+    this.rating,
+    this.ratingCount,
+    this.threeStarRatingCount,
+    this.twoStarRatingCount,
+  });
+
+  RatingSummary.fromJson(core.Map json_)
+    : this(
+        fiveStarRatingCount: json_['fiveStarRatingCount'] as core.String?,
+        fourStarRatingCount: json_['fourStarRatingCount'] as core.String?,
+        name: json_['name'] as core.String?,
+        nonEmptyReviewCount: json_['nonEmptyReviewCount'] as core.String?,
+        oneStarRatingCount: json_['oneStarRatingCount'] as core.String?,
+        rating: (json_['rating'] as core.num?)?.toDouble(),
+        ratingCount: json_['ratingCount'] as core.String?,
+        threeStarRatingCount: json_['threeStarRatingCount'] as core.String?,
+        twoStarRatingCount: json_['twoStarRatingCount'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final fiveStarRatingCount = this.fiveStarRatingCount;
+    final fourStarRatingCount = this.fourStarRatingCount;
+    final name = this.name;
+    final nonEmptyReviewCount = this.nonEmptyReviewCount;
+    final oneStarRatingCount = this.oneStarRatingCount;
+    final rating = this.rating;
+    final ratingCount = this.ratingCount;
+    final threeStarRatingCount = this.threeStarRatingCount;
+    final twoStarRatingCount = this.twoStarRatingCount;
+    return {
+      'fiveStarRatingCount': ?fiveStarRatingCount,
+      'fourStarRatingCount': ?fourStarRatingCount,
+      'name': ?name,
+      'nonEmptyReviewCount': ?nonEmptyReviewCount,
+      'oneStarRatingCount': ?oneStarRatingCount,
+      'rating': ?rating,
+      'ratingCount': ?ratingCount,
+      'threeStarRatingCount': ?threeStarRatingCount,
+      'twoStarRatingCount': ?twoStarRatingCount,
+    };
+  }
+}
+
+/// A review written by a user to rate an item in the Chrome Web Store.
+class Review {
+  /// Info on the author of the review.
+  AuthorInfo? authorInfo;
+
+  /// Content of the review.
+  core.String? comment;
+
+  /// When the review was posted.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The item that this review evaluates.
+  ///
+  /// Format: publishers/{publisher}/items/{item}
+  ///
+  /// Output only.
+  core.String? item;
+
+  /// Identifier.
+  ///
+  /// Review resource name. Format: reviews/{reviewId}
+  core.String? name;
+
+  /// Rating of the item, between 1 and 5.
+  core.int? rating;
+
+  Review({
+    this.authorInfo,
+    this.comment,
+    this.createTime,
+    this.item,
+    this.name,
+    this.rating,
+  });
+
+  Review.fromJson(core.Map json_)
+    : this(
+        authorInfo: json_.containsKey('authorInfo')
+            ? AuthorInfo.fromJson(
+                json_['authorInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        comment: json_['comment'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        item: json_['item'] as core.String?,
+        name: json_['name'] as core.String?,
+        rating: json_['rating'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final authorInfo = this.authorInfo;
+    final comment = this.comment;
+    final createTime = this.createTime;
+    final item = this.item;
+    final name = this.name;
+    final rating = this.rating;
+    return {
+      'authorInfo': ?authorInfo,
+      'comment': ?comment,
+      'createTime': ?createTime,
+      'item': ?item,
+      'name': ?name,
+      'rating': ?rating,
+    };
+  }
+}
+
+/// Request message for RollbackItem.
+class RollbackItemRequest {
+  /// The new version to assign to the package being rolled back to.
+  ///
+  /// This effectively "rolls forward" the previous package by giving it a
+  /// higher version number than the currently-published package. E.g. if the
+  /// current published version is 1.1, the new version could be 1.1.1 or 1.2
+  /// but not 1.0.
+  ///
+  /// Required.
+  core.String? newVersion;
+
+  /// The reason for the rollback that will be used for internal auditing and
+  /// developer dashboard visibility.
+  ///
+  /// Required.
+  core.String? rollbackReason;
+
+  /// The target previously published CRX version to roll back to.
+  ///
+  /// If unset, defaults to the last published CRX version.
+  ///
+  /// Required.
+  core.String? targetCrxVersion;
+
+  /// If set, validate and dry run the request but do not actually initiate the
+  /// rollback
+  ///
+  /// Optional.
+  core.bool? validateOnly;
+
+  RollbackItemRequest({
+    this.newVersion,
+    this.rollbackReason,
+    this.targetCrxVersion,
+    this.validateOnly,
+  });
+
+  RollbackItemRequest.fromJson(core.Map json_)
+    : this(
+        newVersion: json_['newVersion'] as core.String?,
+        rollbackReason: json_['rollbackReason'] as core.String?,
+        targetCrxVersion: json_['targetCrxVersion'] as core.String?,
+        validateOnly: json_['validateOnly'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final newVersion = this.newVersion;
+    final rollbackReason = this.rollbackReason;
+    final targetCrxVersion = this.targetCrxVersion;
+    final validateOnly = this.validateOnly;
+    return {
+      'newVersion': ?newVersion,
+      'rollbackReason': ?rollbackReason,
+      'targetCrxVersion': ?targetCrxVersion,
+      'validateOnly': ?validateOnly,
+    };
+  }
+}
+
+/// Response message for `RollbackItem`.
+typedef RollbackItemResponse = $Empty;
 
 /// Request message for SetPublishedDeployPercentage.
 class SetPublishedDeployPercentageRequest {

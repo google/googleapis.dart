@@ -993,10 +993,10 @@ class ConfigManagementConfigSync {
   /// Optional.
   core.bool? preventDrift;
 
-  /// Specifies whether the Config Sync repo is in `hierarchical` or
-  /// `unstructured` mode.
+  /// Specifies whether the Config Sync repo is in `hierarchy` or `unstructured`
+  /// mode.
   ///
-  /// Defaults to `hierarchical`. See
+  /// Defaults to `hierarchy`. See
   /// https://docs.cloud.google.com/kubernetes-engine/config-sync/docs/concepts/configs#organize-configs
   /// for an explanation.
   ///
@@ -1684,12 +1684,20 @@ class ConfigManagementGitConfig {
   /// The Google Cloud Service Account Email used for auth when secret_type is
   /// `gcpserviceaccount`.
   ///
+  /// Annotates the `RootSync` or `RepoSync` controller's Kubernetes Service
+  /// Account.
+  ///
   /// Optional.
   core.String? gcpServiceAccountEmail;
 
   /// URL for the HTTPS proxy to be used when communicating with the Git repo.
   ///
-  /// Only specify when secret_type is `cookiefile`, `token`, or `none`.
+  /// Defines an HTTPS_PROXY environment variable and only accepts `https` or
+  /// unadorned URLs. For example, `https://proxy.internal.business.co:443` or
+  /// `proxy.internal.business.co:443`. If using an unadorned URL, make sure the
+  /// communication between your proxy server and Git host is secure. Rejects
+  /// `http://` URLs. Only specify when secret_type is `cookiefile`, `token`, or
+  /// `none`.
   ///
   /// Optional.
   core.String? httpsProxy;
@@ -1723,9 +1731,10 @@ class ConfigManagementGitConfig {
   /// Required.
   core.String? syncRepo;
 
-  /// Git revision (tag or hash) to check out.
+  /// Git revision (tag or hash) or branch to sync from.
   ///
-  /// Default HEAD.
+  /// Default `HEAD`. If not `HEAD`, takes precedence over `sync_branch` field.
+  /// When using a hash, must be a full hash, and not an abbreviated form.
   ///
   /// Optional.
   core.String? syncRev;
@@ -1963,6 +1972,9 @@ class ConfigManagementInstallError {
 class ConfigManagementOciConfig {
   /// The Google Cloud Service Account Email used for auth when secret_type is
   /// `gcpserviceaccount`.
+  ///
+  /// Annotates the `RootSync` or `RepoSync` controller's Kubernetes Service
+  /// Account.
   ///
   /// Optional.
   core.String? gcpServiceAccountEmail;
@@ -5135,6 +5147,8 @@ class ServiceMeshCondition {
   /// cluster.
   /// - "MODERNIZATION_INCOMPATIBLE_GATEWAY_POD_SCALE" : Gateway pods per
   /// cluster limit exceeded.
+  /// - "MODERNIZATION_REQUIRES_MANUAL_WORKLOAD_RESTART" : Cluster contains
+  /// workloads that will require manual restart during modernization.
   /// - "MODERNIZATION_SCHEDULED" : Modernization is scheduled for a cluster.
   /// - "MODERNIZATION_IN_PROGRESS" : Modernization is in progress for a
   /// cluster.
@@ -5149,6 +5163,9 @@ class ServiceMeshCondition {
   /// to the new implementation.
   /// - "MODERNIZATION_ROLLING_BACK_CLUSTER" : Rollback is in progress for
   /// modernization of a cluster.
+  /// - "MODERNIZATION_AWAITING_MANUAL_WORKLOAD_RESTART" : Modernization of a
+  /// cluster is awaiting manual restart of workloads. The customer must restart
+  /// these workloads to complete modernization.
   /// - "MODERNIZATION_WILL_BE_SCHEDULED" : Modernization will be scheduled for
   /// a fleet.
   /// - "MODERNIZATION_MANUAL" : Fleet is opted out from automated
@@ -5164,6 +5181,9 @@ class ServiceMeshCondition {
   /// modernization of all clusters in a fleet.
   /// - "MODERNIZATION_MODERNIZED" : Modernization of all the fleet's clusters
   /// is complete. Soaking before finalizing the modernization.
+  /// - "MODERNIZATION_REQUIRES_CUSTOMER_TRIGGER" : Fleet modernization must be
+  /// Customer-Triggered, and cannot be Google-driven. Specific details may be
+  /// reported via another fleet/cluster condition.
   /// - "MODERNIZATION_COMPATIBLE" : Fleet is compatible for modernization.
   /// - "MODERNIZATION_INCOMPATIBLE" : Fleet is not yet compatible for
   /// modernization.

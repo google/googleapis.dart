@@ -5004,10 +5004,10 @@ class ConfigManagementConfigSync {
   /// Optional.
   core.bool? preventDrift;
 
-  /// Specifies whether the Config Sync repo is in `hierarchical` or
-  /// `unstructured` mode.
+  /// Specifies whether the Config Sync repo is in `hierarchy` or `unstructured`
+  /// mode.
   ///
-  /// Defaults to `hierarchical`. See
+  /// Defaults to `hierarchy`. See
   /// https://docs.cloud.google.com/kubernetes-engine/config-sync/docs/concepts/configs#organize-configs
   /// for an explanation.
   ///
@@ -6089,7 +6089,7 @@ typedef ConfigManagementPolicyControllerMigration =
 ///
 /// For example, to specify metrics should be exported to Cloud Monitoring and
 /// Prometheus, specify backends: \["cloudmonitoring", "prometheus"\]
-typedef ConfigManagementPolicyControllerMonitoring = $Shared06;
+typedef ConfigManagementPolicyControllerMonitoring = $Shared07;
 
 /// State for PolicyControllerState.
 class ConfigManagementPolicyControllerState {
@@ -9912,7 +9912,7 @@ class PolicyControllerMembershipState {
 ///
 /// For example, to specify metrics should be exported to Cloud Monitoring and
 /// Prometheus, specify backends: \["cloudmonitoring", "prometheus"\]
-typedef PolicyControllerMonitoringConfig = $Shared06;
+typedef PolicyControllerMonitoringConfig = $Shared07;
 
 /// OnClusterState represents the state of a sub-component of Policy Controller.
 class PolicyControllerOnClusterState {
@@ -10593,6 +10593,15 @@ class Rollout {
   /// `projects/{project}/locations/global/rollouts/{rollout}`.
   core.String? name;
 
+  /// If set to true, conflicting rollouts will be paused, to allow this rollout
+  /// to progress through the sequence.
+  ///
+  /// Conflicting rollouts running on the first stage will be canceled, to allow
+  /// this rollout to be created.
+  ///
+  /// Optional.
+  core.bool? prioritized;
+
   /// The full, unique resource name of the rollout sequence that initiatied
   /// this Rollout.
   ///
@@ -10693,6 +10702,7 @@ class Rollout {
     this.labels,
     this.membershipStates,
     this.name,
+    this.prioritized,
     this.rolloutSequence,
     this.stageSoakDurationOverrides,
     this.stages,
@@ -10731,6 +10741,7 @@ class Rollout {
                   ),
                 ),
         name: json_['name'] as core.String?,
+        prioritized: json_['prioritized'] as core.bool?,
         rolloutSequence: json_['rolloutSequence'] as core.String?,
         stageSoakDurationOverrides:
             (json_['stageSoakDurationOverrides']
@@ -10768,6 +10779,7 @@ class Rollout {
     final labels = this.labels;
     final membershipStates = this.membershipStates;
     final name = this.name;
+    final prioritized = this.prioritized;
     final rolloutSequence = this.rolloutSequence;
     final stageSoakDurationOverrides = this.stageSoakDurationOverrides;
     final stages = this.stages;
@@ -10790,6 +10802,7 @@ class Rollout {
       'labels': ?labels,
       'membershipStates': ?membershipStates,
       'name': ?name,
+      'prioritized': ?prioritized,
       'rolloutSequence': ?rolloutSequence,
       'stageSoakDurationOverrides': ?stageSoakDurationOverrides,
       'stages': ?stages,
@@ -10882,7 +10895,7 @@ class RolloutMembershipState {
 
 /// RolloutSequence defines the desired order of upgrades.
 ///
-/// Next ID: 20
+/// Next ID: 22
 class RolloutSequence {
   /// Configuration for automatic upgrades.
   ///
@@ -11440,7 +11453,45 @@ class ScopeLifecycleState {
 
 /// SecurityPostureConfig defines the flags needed to enable/disable features
 /// for the Security Posture API.
-typedef SecurityPostureConfig = $SecurityPostureConfig;
+class SecurityPostureConfig {
+  /// Sets which mode to use for Security Posture features.
+  /// Possible string values are:
+  /// - "MODE_UNSPECIFIED" : Default value not specified.
+  /// - "DISABLED" : Disables Security Posture features on the cluster.
+  /// - "BASIC" : Applies Security Posture features on the cluster.
+  /// - "ENTERPRISE" : Deprecated: Security Posture Enterprise features are no
+  /// longer supported. For more details, see
+  /// https://cloud.google.com/kubernetes-engine/docs/deprecations/posture-management-deprecation.
+  /// Applies the Security Posture off cluster Enterprise level features.
+  core.String? mode;
+
+  /// Sets which mode to use for vulnerability scanning.
+  /// Possible string values are:
+  /// - "VULNERABILITY_MODE_UNSPECIFIED" : Default value not specified.
+  /// - "VULNERABILITY_DISABLED" : Disables vulnerability scanning on the
+  /// cluster.
+  /// - "VULNERABILITY_BASIC" : Deprecated: Basic vulnerability scanning is no
+  /// longer supported. For more details, see
+  /// https://cloud.google.com/kubernetes-engine/docs/deprecations/posture-management-deprecation.
+  /// Applies basic vulnerability scanning on the cluster.
+  /// - "VULNERABILITY_ENTERPRISE" : Applies the Security Posture's
+  /// vulnerability on cluster Enterprise level features.
+  core.String? vulnerabilityMode;
+
+  SecurityPostureConfig({this.mode, this.vulnerabilityMode});
+
+  SecurityPostureConfig.fromJson(core.Map json_)
+    : this(
+        mode: json_['mode'] as core.String?,
+        vulnerabilityMode: json_['vulnerabilityMode'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final mode = this.mode;
+    final vulnerabilityMode = this.vulnerabilityMode;
+    return {'mode': ?mode, 'vulnerabilityMode': ?vulnerabilityMode};
+  }
+}
 
 /// Condition being reported.
 typedef ServiceMeshCondition = $ServiceMeshCondition;
@@ -11630,6 +11681,8 @@ class ServiceMeshFeatureCondition {
   /// cluster.
   /// - "MODERNIZATION_INCOMPATIBLE_GATEWAY_POD_SCALE" : Gateway pods per
   /// cluster limit exceeded.
+  /// - "MODERNIZATION_REQUIRES_MANUAL_WORKLOAD_RESTART" : Cluster contains
+  /// workloads that will require manual restart during modernization.
   /// - "MODERNIZATION_SCHEDULED" : Modernization is scheduled for a cluster.
   /// - "MODERNIZATION_IN_PROGRESS" : Modernization is in progress for a
   /// cluster.
@@ -11644,6 +11697,9 @@ class ServiceMeshFeatureCondition {
   /// to the new implementation.
   /// - "MODERNIZATION_ROLLING_BACK_CLUSTER" : Rollback is in progress for
   /// modernization of a cluster.
+  /// - "MODERNIZATION_AWAITING_MANUAL_WORKLOAD_RESTART" : Modernization of a
+  /// cluster is awaiting manual restart of workloads. The customer must restart
+  /// these workloads to complete modernization.
   /// - "MODERNIZATION_WILL_BE_SCHEDULED" : Modernization will be scheduled for
   /// a fleet.
   /// - "MODERNIZATION_MANUAL" : Fleet is opted out from automated
@@ -11659,6 +11715,9 @@ class ServiceMeshFeatureCondition {
   /// modernization of all clusters in a fleet.
   /// - "MODERNIZATION_MODERNIZED" : Modernization of all clusters in the fleet
   /// is complete. Soaking before finalizing the modernization.
+  /// - "MODERNIZATION_REQUIRES_CUSTOMER_TRIGGER" : Fleet modernization must be
+  /// Customer-Triggered, and cannot be Google-driven. Specific details may be
+  /// reported via another fleet/cluster condition.
   /// - "MODERNIZATION_COMPATIBLE" : Fleet is compatible for modernization.
   /// - "MODERNIZATION_INCOMPATIBLE" : Fleet is not yet compatible for
   /// modernization.
@@ -12060,6 +12119,15 @@ class UpgradeRolloutSequenceRequest {
   /// Optional.
   core.bool? patchOnly;
 
+  /// If set to true, conflicting rollouts will be paused, to allow this rollout
+  /// to progress through the sequence.
+  ///
+  /// Conflicting rollouts running on the first stage will be canceled, to allow
+  /// this rollout to be created.
+  ///
+  /// Optional.
+  core.bool? prioritized;
+
   /// Overrides the soak duration for all stages of the rollout.
   ///
   /// Optional.
@@ -12101,6 +12169,7 @@ class UpgradeRolloutSequenceRequest {
     this.ignoreClusterDisruptionBudgets,
     this.ignoreMaintenancePolicies,
     this.patchOnly,
+    this.prioritized,
     this.soakDurationOverrideAllStages,
     this.soakDurationOverridePerStage,
     this.upgradeType,
@@ -12115,6 +12184,7 @@ class UpgradeRolloutSequenceRequest {
         ignoreMaintenancePolicies:
             json_['ignoreMaintenancePolicies'] as core.bool?,
         patchOnly: json_['patchOnly'] as core.bool?,
+        prioritized: json_['prioritized'] as core.bool?,
         soakDurationOverrideAllStages:
             json_['soakDurationOverrideAllStages'] as core.String?,
         soakDurationOverridePerStage:
@@ -12133,6 +12203,7 @@ class UpgradeRolloutSequenceRequest {
     final ignoreClusterDisruptionBudgets = this.ignoreClusterDisruptionBudgets;
     final ignoreMaintenancePolicies = this.ignoreMaintenancePolicies;
     final patchOnly = this.patchOnly;
+    final prioritized = this.prioritized;
     final soakDurationOverrideAllStages = this.soakDurationOverrideAllStages;
     final soakDurationOverridePerStage = this.soakDurationOverridePerStage;
     final upgradeType = this.upgradeType;
@@ -12142,6 +12213,7 @@ class UpgradeRolloutSequenceRequest {
       'ignoreClusterDisruptionBudgets': ?ignoreClusterDisruptionBudgets,
       'ignoreMaintenancePolicies': ?ignoreMaintenancePolicies,
       'patchOnly': ?patchOnly,
+      'prioritized': ?prioritized,
       'soakDurationOverrideAllStages': ?soakDurationOverrideAllStages,
       'soakDurationOverridePerStage': ?soakDurationOverridePerStage,
       'upgradeType': ?upgradeType,

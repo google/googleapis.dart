@@ -103,6 +103,7 @@ api.Account buildAccount() {
     o.accountId = 'foo';
     o.accountName = 'foo';
     o.adultContent = true;
+    o.homePageUri = 'foo';
     o.languageCode = 'foo';
     o.name = 'foo';
     o.testAccount = true;
@@ -118,6 +119,7 @@ void checkAccount(api.Account o) {
     unittest.expect(o.accountId!, unittest.equals('foo'));
     unittest.expect(o.accountName!, unittest.equals('foo'));
     unittest.expect(o.adultContent!, unittest.isTrue);
+    unittest.expect(o.homePageUri!, unittest.equals('foo'));
     unittest.expect(o.languageCode!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.testAccount!, unittest.isTrue);

@@ -1883,6 +1883,11 @@ typedef DimensionOrderBy = $DimensionOrderBy;
 typedef DimensionValue = $DimensionValue;
 
 /// Filter for empty values.
+///
+/// Matches dimension values that are `""` or `(not set)` values. Use this
+/// filter to match rows with missing or unpopulated dimension values, or
+/// combine it with `not_expression` to exclude them from a report without
+/// filtering for both `""` and `(not set)` separately.
 typedef EmptyFilter = $Empty;
 
 /// An expression to filter dimension or metric values.
@@ -1890,7 +1895,7 @@ class Filter {
   /// A filter for two values.
   BetweenFilter? betweenFilter;
 
-  /// A filter for empty values such as "(not set)" and "" values.
+  /// A filter for empty values such as `(not set)` and `""` values.
   EmptyFilter? emptyFilter;
 
   /// The dimension name or metric name.

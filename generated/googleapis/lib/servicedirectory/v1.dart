@@ -442,7 +442,7 @@ class ProjectsLocationsNamespacesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Immutable. The resource name for the namespace in the format
+  /// [name] - Identifier. The resource name for the namespace in the format
   /// `projects / * /locations / * /namespaces / * `.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/namespaces/\[^/\]+$`.
@@ -829,7 +829,7 @@ class ProjectsLocationsNamespacesServicesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Immutable. The resource name for the service in the format
+  /// [name] - Identifier. The resource name for the service in the format
   /// `projects / * /locations / * /namespaces / * /services / * `.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/namespaces/\[^/\]+/services/\[^/\]+$`.
@@ -1215,7 +1215,7 @@ class ProjectsLocationsNamespacesServicesEndpointsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Immutable. The resource name for the endpoint in the format
+  /// [name] - Identifier. The resource name for the endpoint in the format
   /// `projects / * /locations / * /namespaces / * /services / * /endpoints / *
   /// `.
   /// Value must have pattern
@@ -1399,10 +1399,10 @@ class Endpoint {
   /// Optional.
   core.Map<core.String, core.String>? annotations;
 
+  /// Identifier.
+  ///
   /// The resource name for the endpoint in the format `projects / * /locations
   /// / * /namespaces / * /services / * /endpoints / * `.
-  ///
-  /// Immutable.
   core.String? name;
 
   /// The Google Compute Engine network (VPC) of the endpoint in the format
@@ -1647,10 +1647,10 @@ class Namespace {
   /// Optional.
   core.Map<core.String, core.String>? labels;
 
+  /// Identifier.
+  ///
   /// The resource name for the namespace in the format `projects / * /locations
   /// / * /namespaces / * `.
-  ///
-  /// Immutable.
   core.String? name;
 
   /// The globally unique identifier of the namespace in the UUID4 format.
@@ -1893,10 +1893,10 @@ class Service {
   /// Output only.
   core.List<Endpoint>? endpoints;
 
+  /// Identifier.
+  ///
   /// The resource name for the service in the format `projects / * /locations /
   /// * /namespaces / * /services / * `.
-  ///
-  /// Immutable.
   core.String? name;
 
   /// The globally unique identifier of the service in the UUID4 format.

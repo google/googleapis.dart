@@ -328,6 +328,7 @@ api.GoogleCloudApihubV1Api buildGoogleCloudApihubV1Api() {
     o.name = 'foo';
     o.owner = buildGoogleCloudApihubV1Owner();
     o.selectedVersion = 'foo';
+    o.serviceType = buildGoogleCloudApihubV1AttributeValues();
     o.sourceMetadata = buildUnnamed3();
     o.targetUser = buildGoogleCloudApihubV1AttributeValues();
     o.team = buildGoogleCloudApihubV1AttributeValues();
@@ -356,6 +357,7 @@ void checkGoogleCloudApihubV1Api(api.GoogleCloudApihubV1Api o) {
     unittest.expect(o.name!, unittest.equals('foo'));
     checkGoogleCloudApihubV1Owner(o.owner!);
     unittest.expect(o.selectedVersion!, unittest.equals('foo'));
+    checkGoogleCloudApihubV1AttributeValues(o.serviceType!);
     checkUnnamed3(o.sourceMetadata!);
     checkGoogleCloudApihubV1AttributeValues(o.targetUser!);
     checkGoogleCloudApihubV1AttributeValues(o.team!);

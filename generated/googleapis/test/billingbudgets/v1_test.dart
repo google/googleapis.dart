@@ -55,6 +55,7 @@ api.GoogleCloudBillingBudgetsV1Budget buildGoogleCloudBillingBudgetsV1Budget() {
     o.name = 'foo';
     o.notificationsRule = buildGoogleCloudBillingBudgetsV1NotificationsRule();
     o.ownershipScope = 'foo';
+    o.spendCap = buildGoogleCloudBillingBudgetsV1SpendCap();
     o.thresholdRules = buildUnnamed0();
   }
   buildCounterGoogleCloudBillingBudgetsV1Budget--;
@@ -73,6 +74,7 @@ void checkGoogleCloudBillingBudgetsV1Budget(
     unittest.expect(o.name!, unittest.equals('foo'));
     checkGoogleCloudBillingBudgetsV1NotificationsRule(o.notificationsRule!);
     unittest.expect(o.ownershipScope!, unittest.equals('foo'));
+    checkGoogleCloudBillingBudgetsV1SpendCap(o.spendCap!);
     checkUnnamed0(o.thresholdRules!);
   }
   buildCounterGoogleCloudBillingBudgetsV1Budget--;
@@ -332,6 +334,32 @@ void checkGoogleCloudBillingBudgetsV1NotificationsRule(
   buildCounterGoogleCloudBillingBudgetsV1NotificationsRule--;
 }
 
+core.int buildCounterGoogleCloudBillingBudgetsV1SpendCap = 0;
+api.GoogleCloudBillingBudgetsV1SpendCap
+buildGoogleCloudBillingBudgetsV1SpendCap() {
+  final o = api.GoogleCloudBillingBudgetsV1SpendCap();
+  buildCounterGoogleCloudBillingBudgetsV1SpendCap++;
+  if (buildCounterGoogleCloudBillingBudgetsV1SpendCap < 3) {
+    o.inputState = 'foo';
+    o.outputState = 'foo';
+    o.reconciling = true;
+  }
+  buildCounterGoogleCloudBillingBudgetsV1SpendCap--;
+  return o;
+}
+
+void checkGoogleCloudBillingBudgetsV1SpendCap(
+  api.GoogleCloudBillingBudgetsV1SpendCap o,
+) {
+  buildCounterGoogleCloudBillingBudgetsV1SpendCap++;
+  if (buildCounterGoogleCloudBillingBudgetsV1SpendCap < 3) {
+    unittest.expect(o.inputState!, unittest.equals('foo'));
+    unittest.expect(o.outputState!, unittest.equals('foo'));
+    unittest.expect(o.reconciling!, unittest.isTrue);
+  }
+  buildCounterGoogleCloudBillingBudgetsV1SpendCap--;
+}
+
 core.int buildCounterGoogleCloudBillingBudgetsV1ThresholdRule = 0;
 api.GoogleCloudBillingBudgetsV1ThresholdRule
 buildGoogleCloudBillingBudgetsV1ThresholdRule() {
@@ -495,6 +523,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkGoogleCloudBillingBudgetsV1NotificationsRule(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleCloudBillingBudgetsV1SpendCap', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudBillingBudgetsV1SpendCap();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudBillingBudgetsV1SpendCap.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkGoogleCloudBillingBudgetsV1SpendCap(od);
     });
   });
 

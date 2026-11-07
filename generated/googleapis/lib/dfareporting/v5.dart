@@ -13512,6 +13512,100 @@ class AdBlockingConfiguration {
   }
 }
 
+/// Additional assets for a creative.
+class AdditionalAsset {
+  /// Call to actions for the creative.
+  ///
+  /// Optional.
+  core.List<core.String>? callToActions;
+
+  /// Cover images for the creative.
+  ///
+  /// Optional.
+  core.List<CreativeAsset>? coverImages;
+
+  /// Descriptions for the creative.
+  ///
+  /// Optional.
+  core.List<core.String>? descriptions;
+
+  /// Display URL for the creative.
+  ///
+  /// Optional.
+  core.String? displayUrl;
+
+  /// Headlines for the creative.
+  ///
+  /// Optional.
+  core.List<core.String>? headlines;
+
+  /// Long descriptions for the creative.
+  ///
+  /// Optional.
+  core.List<core.String>? longDescriptions;
+
+  /// Long headlines for the creative.
+  ///
+  /// Optional.
+  core.List<core.String>? longHeadlines;
+
+  AdditionalAsset({
+    this.callToActions,
+    this.coverImages,
+    this.descriptions,
+    this.displayUrl,
+    this.headlines,
+    this.longDescriptions,
+    this.longHeadlines,
+  });
+
+  AdditionalAsset.fromJson(core.Map json_)
+    : this(
+        callToActions: (json_['callToActions'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        coverImages: (json_['coverImages'] as core.List?)
+            ?.map(
+              (value) => CreativeAsset.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        descriptions: (json_['descriptions'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        displayUrl: json_['displayUrl'] as core.String?,
+        headlines: (json_['headlines'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        longDescriptions: (json_['longDescriptions'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        longHeadlines: (json_['longHeadlines'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final callToActions = this.callToActions;
+    final coverImages = this.coverImages;
+    final descriptions = this.descriptions;
+    final displayUrl = this.displayUrl;
+    final headlines = this.headlines;
+    final longDescriptions = this.longDescriptions;
+    final longHeadlines = this.longHeadlines;
+    return {
+      'callToActions': ?callToActions,
+      'coverImages': ?coverImages,
+      'descriptions': ?descriptions,
+      'displayUrl': ?displayUrl,
+      'headlines': ?headlines,
+      'longDescriptions': ?longDescriptions,
+      'longHeadlines': ?longHeadlines,
+    };
+  }
+}
+
 /// Ad List Response
 class AdsListResponse {
   /// Ad collection.
@@ -16841,6 +16935,15 @@ class Creative {
   /// Applicable to the following creative types: all RICH_MEDIA, and all VPAID.
   core.List<core.String>? adTagKeys;
 
+  /// Additional asset for the creative.
+  ///
+  /// This field captures additional assets that are associated with the
+  /// creative and used in the context of the social/native and YouTube
+  /// platforms.
+  ///
+  /// Optional.
+  AdditionalAsset? additionalAsset;
+
   /// Additional sizes associated with a responsive creative.
   ///
   /// When inserting or updating a creative either the size ID field or size
@@ -17319,6 +17422,7 @@ class Creative {
     this.active,
     this.adParameters,
     this.adTagKeys,
+    this.additionalAsset,
     this.additionalSizes,
     this.advertiserId,
     this.allowScriptAccess,
@@ -17389,6 +17493,11 @@ class Creative {
         adTagKeys: (json_['adTagKeys'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
+        additionalAsset: json_.containsKey('additionalAsset')
+            ? AdditionalAsset.fromJson(
+                json_['additionalAsset'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         additionalSizes: (json_['additionalSizes'] as core.List?)
             ?.map(
               (value) =>
@@ -17570,6 +17679,7 @@ class Creative {
     final active = this.active;
     final adParameters = this.adParameters;
     final adTagKeys = this.adTagKeys;
+    final additionalAsset = this.additionalAsset;
     final additionalSizes = this.additionalSizes;
     final advertiserId = this.advertiserId;
     final allowScriptAccess = this.allowScriptAccess;
@@ -17638,6 +17748,7 @@ class Creative {
       'active': ?active,
       'adParameters': ?adParameters,
       'adTagKeys': ?adTagKeys,
+      'additionalAsset': ?additionalAsset,
       'additionalSizes': ?additionalSizes,
       'advertiserId': ?advertiserId,
       'allowScriptAccess': ?allowScriptAccess,
@@ -18037,6 +18148,12 @@ class CreativeAsset {
   /// - "ALTERNATE_VIDEO"
   /// - "PARENT_AUDIO"
   /// - "TRANSCODED_AUDIO"
+  /// - "COVER_IMAGE" : Cover image.
+  /// - "HEADLINE" : Headline.
+  /// - "LONG_HEADLINE" : Long headline.
+  /// - "DESCRIPTION" : Description.
+  /// - "LONG_DESCRIPTION" : Long description.
+  /// - "CALL_TO_ACTION" : Call to action.
   core.String? role;
 
   /// Size associated with this creative asset.

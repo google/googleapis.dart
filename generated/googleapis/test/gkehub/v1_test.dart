@@ -4694,6 +4694,7 @@ api.Rollout buildRollout() {
     o.labels = buildUnnamed79();
     o.membershipStates = buildUnnamed80();
     o.name = 'foo';
+    o.prioritized = true;
     o.rolloutSequence = 'foo';
     o.stageSoakDurationOverrides = buildUnnamed81();
     o.stages = buildUnnamed82();
@@ -4723,6 +4724,7 @@ void checkRollout(api.Rollout o) {
     checkUnnamed79(o.labels!);
     checkUnnamed80(o.membershipStates!);
     unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(o.prioritized!, unittest.isTrue);
     unittest.expect(o.rolloutSequence!, unittest.equals('foo'));
     checkUnnamed81(o.stageSoakDurationOverrides!);
     checkUnnamed82(o.stages!);
@@ -5463,6 +5465,7 @@ api.UpgradeRolloutSequenceRequest buildUpgradeRolloutSequenceRequest() {
     o.ignoreClusterDisruptionBudgets = true;
     o.ignoreMaintenancePolicies = true;
     o.patchOnly = true;
+    o.prioritized = true;
     o.soakDurationOverrideAllStages = 'foo';
     o.soakDurationOverridePerStage = buildPerStageSoakDurationOverrides();
     o.upgradeType = 'foo';
@@ -5479,6 +5482,7 @@ void checkUpgradeRolloutSequenceRequest(api.UpgradeRolloutSequenceRequest o) {
     unittest.expect(o.ignoreClusterDisruptionBudgets!, unittest.isTrue);
     unittest.expect(o.ignoreMaintenancePolicies!, unittest.isTrue);
     unittest.expect(o.patchOnly!, unittest.isTrue);
+    unittest.expect(o.prioritized!, unittest.isTrue);
     unittest.expect(o.soakDurationOverrideAllStages!, unittest.equals('foo'));
     checkPerStageSoakDurationOverrides(o.soakDurationOverridePerStage!);
     unittest.expect(o.upgradeType!, unittest.equals('foo'));

@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260909",
+    "revision": "20261028",
     "rootUrl": "https://networkmanagement.googleapis.com/",
     "servicePath": "",
     "title": "Network Management API",
@@ -573,7 +573,7 @@
                                 "connectivityTests": {
                                     "methods": {
                                         "create": {
-                                            "description": "Creates a new Connectivity Test. After you create a test, the reachability analysis is performed as part of the long running operation, which completes when the analysis completes. If the endpoint specifications in `ConnectivityTest` are invalid (for example, containing non-existent resources in the network, or you don't have read permissions to the network configurations of listed projects), then the reachability result returns a value of `UNKNOWN`. If the endpoint specifications in `ConnectivityTest` are incomplete, the reachability result returns a value of AMBIGUOUS. For more information, see the Connectivity Test documentation.",
+                                            "description": "Creates a new Connectivity Test. After you create a test, the reachability analysis is performed as part of the long running operation, which completes when the analysis completes. If the endpoint specifications in `ConnectivityTest` are invalid (for example, containing non-existent resources in the network, or you don't have read permissions to the network configurations of listed projects), then the reachability result returns a value of `UNKNOWN`. If the endpoint specifications in `ConnectivityTest` are incomplete, the reachability result returns a value of `AMBIGUOUS`. For more information, see the Connectivity Test documentation.",
                                             "flatPath": "v1/projects/{projectsId}/locations/global/connectivityTests",
                                             "httpMethod": "POST",
                                             "id": "networkmanagement.projects.locations.global.connectivityTests.create",
@@ -696,23 +696,23 @@
                                             ],
                                             "parameters": {
                                                 "filter": {
-                                                    "description": "Lists the `ConnectivityTests` that match the filter expression. A filter expression filters the resources listed in the response. The expression must be of the form ` ` where operators: `<`, `>`, `<=`, `>=`, `!=`, `=`, `:` are supported (colon `:` represents a HAS operator which is roughly synonymous with equality). can refer to a proto or JSON field, or a synthetic field. Field names can be camelCase or snake_case. Examples: - Filter by name: name = \"projects/proj-1/locations/global/connectivityTests/test-1 - Filter by labels: - Resources that have a key called `foo` labels.foo:* - Resources that have a key called `foo` whose value is `bar` labels.foo = bar",
+                                                    "description": "Optional. Lists the `ConnectivityTests` that match the filter expression. A filter expression filters the resources listed in the response. The expression must be of the form ` ` where operators: `<`, `>`, `<=`, `>=`, `!=`, `=`, `:` are supported (colon `:` represents a HAS operator which is roughly synonymous with equality). can refer to a proto or JSON field, or a synthetic field. Field names can be camelCase or snake_case. Examples: - Filter by name: name = \"projects/proj-1/locations/global/connectivityTests/test-1 - Filter by labels: - Resources that have a key called `foo` labels.foo:* - Resources that have a key called `foo` whose value is `bar` labels.foo = bar",
                                                     "location": "query",
                                                     "type": "string"
                                                 },
                                                 "orderBy": {
-                                                    "description": "Field to use to sort the list.",
+                                                    "description": "Optional. Field to use to sort the list.",
                                                     "location": "query",
                                                     "type": "string"
                                                 },
                                                 "pageSize": {
-                                                    "description": "Number of `ConnectivityTests` to return.",
+                                                    "description": "Optional. Number of `ConnectivityTests` to return.",
                                                     "format": "int32",
                                                     "location": "query",
                                                     "type": "integer"
                                                 },
                                                 "pageToken": {
-                                                    "description": "Page token from an earlier query, as returned in `next_page_token`.",
+                                                    "description": "Optional. Page token from an earlier query, as returned in `next_page_token`.",
                                                     "location": "query",
                                                     "type": "string"
                                                 },
@@ -733,7 +733,7 @@
                                             ]
                                         },
                                         "patch": {
-                                            "description": "Updates the configuration of an existing `ConnectivityTest`. After you update a test, the reachability analysis is performed as part of the long running operation, which completes when the analysis completes. The Reachability state in the test resource is updated with the new result. If the endpoint specifications in `ConnectivityTest` are invalid (for example, they contain non-existent resources in the network, or the user does not have read permissions to the network configurations of listed projects), then the reachability result returns a value of UNKNOWN. If the endpoint specifications in `ConnectivityTest` are incomplete, the reachability result returns a value of `AMBIGUOUS`. See the documentation in `ConnectivityTest` for more details.",
+                                            "description": "Updates the configuration of an existing `ConnectivityTest`. After you update a test, the reachability analysis is performed as part of the long running operation, which completes when the analysis completes. The Reachability state in the test resource is updated with the new result. If the endpoint specifications in `ConnectivityTest` are invalid (for example, they contain non-existent resources in the network, or the user does not have read permissions to the network configurations of listed projects), then the reachability result returns a value of `UNKNOWN`. If the endpoint specifications in `ConnectivityTest` are incomplete, the reachability result returns a value of `AMBIGUOUS`. See the documentation in `ConnectivityTest` for more details.",
                                             "flatPath": "v1/projects/{projectsId}/locations/global/connectivityTests/{connectivityTestsId}",
                                             "httpMethod": "PATCH",
                                             "id": "networkmanagement.projects.locations.global.connectivityTests.patch",
@@ -1183,6 +1183,23 @@
                                             "parameters": {
                                                 "_password": {
                                                     "description": "Optional. Password for logging into the MonitoringPoint.",
+                                                    "location": "query",
+                                                    "type": "string"
+                                                },
+                                                "cloudDeploymentType": {
+                                                    "description": "Optional. The deployment type for Cloud Monitoring Points.",
+                                                    "enum": [
+                                                        "CLOUD_DEPLOYMENT_TYPE_UNSPECIFIED",
+                                                        "TERRAFORM",
+                                                        "CLOUD_FORMATION",
+                                                        "BICEP"
+                                                    ],
+                                                    "enumDescriptions": [
+                                                        "Default value. If unspecified, defaults to `TERRAFORM` for `GCE_VM`, `BICEP` for `AZURE_VM`, and `CLOUD_FORMATION` for `AWS_EC2`.",
+                                                        "Deploys using Terraform.",
+                                                        "Deploys using AWS Cloud Formation. Supported only for `AWS_EC2` deployments.",
+                                                        "Deploys using Azure Bicep. Supported only for `AZURE_VM` deployments."
+                                                    ],
                                                     "location": "query",
                                                     "type": "string"
                                                 },
@@ -2154,11 +2171,6 @@
                 "uri": {
                     "description": "A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get) URI. The format is: projects/{project}/locations/{location}/revisions/{revision}",
                     "type": "string"
-                },
-                "workerPoolUri": {
-                    "description": "Output only. The URI of the worker pool that the revision belongs to. The format is: projects/{project}/locations/{location}/workerPools/{workerPool}. Mutually exclusive with service_uri.",
-                    "readOnly": true,
-                    "type": "string"
                 }
             },
             "type": "object"
@@ -2169,6 +2181,10 @@
             "properties": {
                 "displayName": {
                     "description": "Name of a Cloud Run revision.",
+                    "type": "string"
+                },
+                "ipAddress": {
+                    "description": "IP address of a Cloud Run revision. If the Cloud Run revision is in dual-stack subnetwork, this is the IP address relevant to the trace. Populated for `ARRIVE_AT_CLOUD_RUN_REVISION` steps.",
                     "type": "string"
                 },
                 "location": {
@@ -2184,7 +2200,7 @@
                     "type": "string"
                 },
                 "workerPoolUri": {
-                    "description": "URI of Cloud Run worker pool this revision belongs to. Format: `projects/{project_id}/locations/{location}/workerPools/{worker_pool_id}`. Mutually exclusive with `service_uri`.",
+                    "description": "URI of Cloud Run worker pool this revision belongs to. Format: `projects/{project_id}/locations/{location}/workerPools/{worker_pool_id}` Mutually exclusive with `service_uri`.",
                     "type": "string"
                 }
             },
@@ -2419,33 +2435,6 @@
                 },
                 "subnetworkUri": {
                     "description": "URI of the subnetwork for direct egress. Format: `projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}`",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "DirectVpcIngressConnectionInfo": {
-            "description": "For display only. Metadata associated with a serverless direct VPC ingress connection.",
-            "id": "DirectVpcIngressConnectionInfo",
-            "properties": {
-                "networkUri": {
-                    "description": "URI of the VPC network for direct ingress. Format: `projects/{project_id}/global/networks/{network_id}`",
-                    "type": "string"
-                },
-                "region": {
-                    "description": "Region in which the Direct VPC ingress is deployed.",
-                    "type": "string"
-                },
-                "selectedIpAddress": {
-                    "description": "Selected destination IP address, from the selected IP range.",
-                    "type": "string"
-                },
-                "selectedIpRange": {
-                    "description": "Selected IP range.",
-                    "type": "string"
-                },
-                "subnetworkUri": {
-                    "description": "URI of the subnetwork for direct ingress. Format: `projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}`",
                     "type": "string"
                 }
             },
@@ -2751,6 +2740,20 @@
                     ],
                     "type": "string"
                 },
+                "connectionLogging": {
+                    "description": "Optional. Configures whether connection logging is enabled for VPC Flow Logs.",
+                    "enum": [
+                        "CONNECTION_LOGGING_UNSPECIFIED",
+                        "CONNECTION_LOGGING_ENABLED",
+                        "CONNECTION_LOGGING_DISABLED"
+                    ],
+                    "enumDescriptions": [
+                        "If not specified, will default to CONNECTION_LOGGING_DISABLED.",
+                        "Include connection logs.",
+                        "Do not include connection logs."
+                    ],
+                    "type": "string"
+                },
                 "crossProjectMetadata": {
                     "description": "Determines whether to include cross project annotations in the logs. This field is available only for organization configurations. If not specified in org configs will be set to CROSS_PROJECT_METADATA_ENABLED.",
                     "enum": [
@@ -2884,6 +2887,10 @@
                 },
                 "cloudSqlInstance": {
                     "description": "A [Cloud SQL](https://cloud.google.com/sql) instance URI.",
+                    "type": "string"
+                },
+                "datastreamPrivateConnection": {
+                    "description": "A [Datastream Private Connection](https://docs.cloud.google.com/datastream/docs/reference/rest/v1/projects.locations.privateConnections) name format: projects/{project}/locations/{location}/privateConnections/{privateConnection}.",
                     "type": "string"
                 },
                 "dmsPrivateConnection": {
@@ -3417,7 +3424,7 @@
                         "Ingress traffic to a Pod from a source on the same Node is always allowed.",
                         "Egress traffic from a Pod that uses the Node's network namespace is not subject to Network Policy.",
                         "Network Policy is not applied to response traffic. This is because GKE Network Policy evaluation is stateful in both GKE Dataplane V2 (eBPF) and legacy (iptables) implementations.",
-                        "Network Policy evaluation is currently not supported for clusters with FQDN Network Policies enabled."
+                        "Network Policy evaluation is currently not supported for Pods selected by an FQDN Network Policy."
                     ],
                     "type": "string"
                 }
@@ -4352,7 +4359,7 @@
                     "type": "string"
                 },
                 "ruleNumber": {
-                    "description": "The number of the NAT rule that was matched.",
+                    "description": "The number of the NAT rule that was matched. Only valid when `type` is CLOUD_NAT.",
                     "format": "int32",
                     "type": "integer"
                 },
@@ -5442,10 +5449,6 @@
                     "$ref": "DirectVpcEgressConnectionInfo",
                     "description": "Display information of a serverless direct VPC egress connection."
                 },
-                "directVpcIngressConnection": {
-                    "$ref": "DirectVpcIngressConnectionInfo",
-                    "description": "Display information of a serverless direct VPC ingress connection for Cloud Run."
-                },
                 "dmsPrivateConnection": {
                     "$ref": "PrivateConnectionInfo",
                     "description": "Display information of a DMS Private Connection."
@@ -5593,7 +5596,6 @@
                         "ARRIVE_AT_VPC_CONNECTOR",
                         "ARRIVE_AT_GKE_POD",
                         "DIRECT_VPC_EGRESS_CONNECTION",
-                        "ARRIVE_AT_DIRECT_VPC_INGRESS_CONNECTION",
                         "SERVERLESS_EXTERNAL_CONNECTION",
                         "NGFW_PACKET_INSPECTION",
                         "NAT",
@@ -5658,7 +5660,6 @@
                         false,
                         false,
                         false,
-                        false,
                         false
                     ],
                     "enumDescriptions": [
@@ -5697,7 +5698,6 @@
                         "Forwarding state: arriving at a VPC connector.",
                         "Forwarding state: arriving at a GKE Pod.",
                         "Forwarding state: for packets originating from a serverless endpoint forwarded through Direct VPC egress.",
-                        "Forwarding state: arriving at a direct VPC ingress connection.",
                         "Forwarding state: for packets originating from a serverless endpoint forwarded through public (external) connectivity.",
                         "Forwarding state: Layer 7 packet inspection by the firewall endpoint based on the configured security profile group.",
                         "Transition state: packet header translated. The `nat` field is populated with the translation information.",
@@ -5868,6 +5868,20 @@
                         "Aggregate logs in 5m intervals.",
                         "Aggregate logs in 10m intervals.",
                         "Aggregate logs in 15m intervals."
+                    ],
+                    "type": "string"
+                },
+                "connectionLogging": {
+                    "description": "Optional. Configures whether connection logging is enabled for VPC Flow Logs.",
+                    "enum": [
+                        "CONNECTION_LOGGING_UNSPECIFIED",
+                        "CONNECTION_LOGGING_ENABLED",
+                        "CONNECTION_LOGGING_DISABLED"
+                    ],
+                    "enumDescriptions": [
+                        "If not specified, will default to CONNECTION_LOGGING_DISABLED.",
+                        "Include connection logs.",
+                        "Do not include connection logs."
                     ],
                     "type": "string"
                 },

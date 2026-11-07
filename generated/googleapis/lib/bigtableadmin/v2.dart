@@ -4492,11 +4492,28 @@ class AuthorizedView {
 
 /// Defines an automated backup policy for a table
 class AutomatedBackupPolicy {
+  /// If `true`, automated backups are explicitly disabled on this table.
+  ///
+  /// This allows users to opt out of default enablement.
+  ///
+  /// Optional.
+  core.bool? disabled;
+
   /// How frequently automated backups should occur.
   ///
   /// The only supported value at this time is 24 hours. An undefined frequency
   /// is treated as 24 hours.
   core.String? frequency;
+
+  /// The amount of time that the automated backups remain hot.
+  ///
+  /// If specified, the backups created by this policy are `HOT` backups. If not
+  /// specified, the backups are `STANDARD` backups. The value must be at least
+  /// 24 hours and at most 10 days, and can't exceed the policy's
+  /// `retention_period`. Only SSD instances support `HOT` automated backups.
+  ///
+  /// Optional.
+  core.String? keepHotDuration;
 
   /// A list of Cloud Bigtable zones where automated backups are allowed to be
   /// created.
@@ -4515,11 +4532,19 @@ class AutomatedBackupPolicy {
   /// Required.
   core.String? retentionPeriod;
 
-  AutomatedBackupPolicy({this.frequency, this.locations, this.retentionPeriod});
+  AutomatedBackupPolicy({
+    this.disabled,
+    this.frequency,
+    this.keepHotDuration,
+    this.locations,
+    this.retentionPeriod,
+  });
 
   AutomatedBackupPolicy.fromJson(core.Map json_)
     : this(
+        disabled: json_['disabled'] as core.bool?,
         frequency: json_['frequency'] as core.String?,
+        keepHotDuration: json_['keepHotDuration'] as core.String?,
         locations: (json_['locations'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
@@ -4527,11 +4552,15 @@ class AutomatedBackupPolicy {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final disabled = this.disabled;
     final frequency = this.frequency;
+    final keepHotDuration = this.keepHotDuration;
     final locations = this.locations;
     final retentionPeriod = this.retentionPeriod;
     return {
+      'disabled': ?disabled,
       'frequency': ?frequency,
+      'keepHotDuration': ?keepHotDuration,
       'locations': ?locations,
       'retentionPeriod': ?retentionPeriod,
     };
@@ -4604,6 +4633,33 @@ class AutoscalingTargets {
       'cpuUtilizationPercent': ?cpuUtilizationPercent,
       'storageUtilizationGibPerNode': ?storageUtilizationGibPerNode,
     };
+  }
+}
+
+/// Represents a collection of Avro schemas.
+class AvroSchema {
+  /// The Avro schemas in JSON format.
+  ///
+  /// Each element must be the content of a valid, self-contained Avro schema
+  /// file (.avsc), as described in
+  /// https://avro.apache.org/docs/1.8.1/spec.html. Use repeated elements to
+  /// include multiple Avro schema files in a single bundle.
+  ///
+  /// Required.
+  core.List<core.String>? jsonSchemas;
+
+  AvroSchema({this.jsonSchemas});
+
+  AvroSchema.fromJson(core.Map json_)
+    : this(
+        jsonSchemas: (json_['jsonSchemas'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final jsonSchemas = this.jsonSchemas;
+    return {'jsonSchemas': ?jsonSchemas};
   }
 }
 
@@ -8295,6 +8351,11 @@ typedef RowAffinity = $Empty;
 
 /// A named collection of related schemas.
 class SchemaBundle {
+  /// Schema for Avros.
+  ///
+  /// Optional.
+  AvroSchema? avroSchema;
+
   /// The etag for this schema bundle.
   ///
   /// This may be sent on update and delete requests to ensure the client has an
@@ -8313,10 +8374,15 @@ class SchemaBundle {
   /// Schema for Protobufs.
   ProtoSchema? protoSchema;
 
-  SchemaBundle({this.etag, this.name, this.protoSchema});
+  SchemaBundle({this.avroSchema, this.etag, this.name, this.protoSchema});
 
   SchemaBundle.fromJson(core.Map json_)
     : this(
+        avroSchema: json_.containsKey('avroSchema')
+            ? AvroSchema.fromJson(
+                json_['avroSchema'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         etag: json_['etag'] as core.String?,
         name: json_['name'] as core.String?,
         protoSchema: json_.containsKey('protoSchema')
@@ -8327,10 +8393,16 @@ class SchemaBundle {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final avroSchema = this.avroSchema;
     final etag = this.etag;
     final name = this.name;
     final protoSchema = this.protoSchema;
-    return {'etag': ?etag, 'name': ?name, 'protoSchema': ?protoSchema};
+    return {
+      'avroSchema': ?avroSchema,
+      'etag': ?etag,
+      'name': ?name,
+      'protoSchema': ?protoSchema,
+    };
   }
 }
 
@@ -8512,6 +8584,15 @@ class Table {
   /// Data APIs.
   core.bool? deletionProtection;
 
+  /// The effective automated backup policy applied to the table.
+  ///
+  /// This represents the policy actually in effect, which may be a
+  /// system-default policy if the user has not explicitly configured one.
+  /// Views: `SCHEMA_VIEW`, `FULL`.
+  ///
+  /// Output only.
+  AutomatedBackupPolicy? effectiveAutomatedBackupPolicy;
+
   /// The granularity at which timestamps are stored in this table.
   ///
   /// Timestamps not matching the granularity will be rejected. If unspecified
@@ -8601,6 +8682,7 @@ class Table {
     this.clusterStates,
     this.columnFamilies,
     this.deletionProtection,
+    this.effectiveAutomatedBackupPolicy,
     this.granularity,
     this.name,
     this.restoreInfo,
@@ -8644,6 +8726,13 @@ class Table {
                   ),
                 ),
         deletionProtection: json_['deletionProtection'] as core.bool?,
+        effectiveAutomatedBackupPolicy:
+            json_.containsKey('effectiveAutomatedBackupPolicy')
+            ? AutomatedBackupPolicy.fromJson(
+                json_['effectiveAutomatedBackupPolicy']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         granularity: json_['granularity'] as core.String?,
         name: json_['name'] as core.String?,
         restoreInfo: json_.containsKey('restoreInfo')
@@ -8675,6 +8764,7 @@ class Table {
     final clusterStates = this.clusterStates;
     final columnFamilies = this.columnFamilies;
     final deletionProtection = this.deletionProtection;
+    final effectiveAutomatedBackupPolicy = this.effectiveAutomatedBackupPolicy;
     final granularity = this.granularity;
     final name = this.name;
     final restoreInfo = this.restoreInfo;
@@ -8687,6 +8777,7 @@ class Table {
       'clusterStates': ?clusterStates,
       'columnFamilies': ?columnFamilies,
       'deletionProtection': ?deletionProtection,
+      'effectiveAutomatedBackupPolicy': ?effectiveAutomatedBackupPolicy,
       'granularity': ?granularity,
       'name': ?name,
       'restoreInfo': ?restoreInfo,

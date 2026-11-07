@@ -2,7 +2,7 @@
 # should be ignored.
 packages:
   googleapis:
-    version: 18.0.0-wip
+    version: 18.0.0
     repository: https://github.com/google/googleapis.dart/tree/master/generated/googleapis
     readme: resources/README.md
     license: resources/LICENSE
@@ -104,6 +104,7 @@ packages:
       - cloudsupport:v2
       - cloudtasks:v2
       - cloudtrace:v2
+      - colaboratory:v1
       - composer:v1
       - compute:v1
       - config:v1
@@ -112,7 +113,6 @@ packages:
       - contactcenterinsights:v1
       - container:v1
       - containeranalysis:v1
-      - contentwarehouse:v1
       - css:v1
       - curationpartners:v1
       - customsearch:v1
@@ -128,9 +128,11 @@ packages:
       - dataproc:v1
       - datastore:v1
       - datastream:v1
+      - deepreview:v1
       - deploymentmanager:v2
       - developerconnect:v1
       - developerknowledge:v1
+      - devicerun:v1
       - dfareporting:v3.5
       - dfareporting:v5
       - dialogflow:v2
@@ -140,6 +142,7 @@ packages:
       - displayvideo:v2
       - displayvideo:v3
       - displayvideo:v4
+      - displayvideo:v5
       - dlp:v2
       - dns:v1
       - docs:v1
@@ -192,6 +195,8 @@ packages:
       - identitytoolkit:v3
       - ids:v1
       - indexing:v3
+      - integrations:v1
+      - integrations:v2
       - jobs:v3
       - jobs:v4
       - keep:v1
@@ -264,7 +269,6 @@ packages:
       - publicca:v1
       - pubsub:v1
       - pubsublite:v1
-      - rapidmigrationassessment:v1
       - readerrevenuesubscriptionlinking:v1
       - realtimebidding:v1
       - recaptchaenterprise:v1
@@ -436,9 +440,11 @@ skipped_apis:
   - cloudtasks:v2beta3
   - cloudtrace:v1
   - cloudtrace:v2beta1
+  - colaboratory:v1beta
   - composer:v1beta1
   - compute:alpha
   - compute:beta
+  - compute:preview
   - contactcenteraiplatform:v1alpha1
   - container:v1beta1
   - containeranalysis:v1alpha1
@@ -454,6 +460,7 @@ skipped_apis:
   - deploymentmanager:alpha
   - deploymentmanager:v2beta
   - developerknowledge:v1alpha
+  - devicerun:v1alpha
   - dialogflow:v2beta1
   - dialogflow:v3beta1
   - discoveryengine:v1
@@ -492,19 +499,6 @@ skipped_apis:
   - managedidentities:v1beta1
   - marketingplatformadmin:v1alpha
   - memcache:v1beta2
-  - merchantapi:accounts_v1beta
-  - merchantapi:conversions_v1beta
-  - merchantapi:datasources_v1beta
-  - merchantapi:inventories_v1beta
-  - merchantapi:issueresolution_v1beta
-  - merchantapi:lfp_v1beta
-  - merchantapi:notifications_v1beta
-  - merchantapi:ordertracking_v1beta
-  - merchantapi:products_v1beta
-  - merchantapi:promotions_v1beta
-  - merchantapi:quota_v1beta
-  - merchantapi:reports_v1beta
-  - merchantapi:reviews_v1beta
   - metastore:v1alpha
   - metastore:v1beta
   - migrationcenter:v1alpha1

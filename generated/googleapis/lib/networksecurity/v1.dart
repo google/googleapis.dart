@@ -28,6 +28,8 @@
 ///   - [OrganizationsLocationsResource]
 ///     - [OrganizationsLocationsAddressGroupsResource]
 ///     - [OrganizationsLocationsFirewallEndpointsResource]
+/// -
+/// [OrganizationsLocationsFirewallEndpointsWildfireVerdictChangeRequestsResource]
 ///     - [OrganizationsLocationsOperationsResource]
 ///     - [OrganizationsLocationsSecurityProfileGroupsResource]
 ///     - [OrganizationsLocationsSecurityProfilesResource]
@@ -41,6 +43,7 @@
 ///     - [ProjectsLocationsDnsThreatDetectorsResource]
 ///     - [ProjectsLocationsFirewallEndpointAssociationsResource]
 ///     - [ProjectsLocationsFirewallEndpointsResource]
+/// - [ProjectsLocationsFirewallEndpointsWildfireVerdictChangeRequestsResource]
 ///     - [ProjectsLocationsGatewaySecurityPoliciesResource]
 ///       - [ProjectsLocationsGatewaySecurityPoliciesRulesResource]
 ///     - [ProjectsLocationsInterceptDeploymentGroupsResource]
@@ -742,6 +745,12 @@ class OrganizationsLocationsAddressGroupsResource {
 class OrganizationsLocationsFirewallEndpointsResource {
   final commons.ApiRequester _requester;
 
+  OrganizationsLocationsFirewallEndpointsWildfireVerdictChangeRequestsResource
+  get wildfireVerdictChangeRequests =>
+      OrganizationsLocationsFirewallEndpointsWildfireVerdictChangeRequestsResource(
+        _requester,
+      );
+
   OrganizationsLocationsFirewallEndpointsResource(commons.ApiRequester client)
     : _requester = client;
 
@@ -1016,6 +1025,170 @@ class OrganizationsLocationsFirewallEndpointsResource {
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class OrganizationsLocationsFirewallEndpointsWildfireVerdictChangeRequestsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsFirewallEndpointsWildfireVerdictChangeRequestsResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Create WildfireVerdictChangeRequest in a given Firewall Endpoint in an
+  /// organization and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent value for
+  /// CreateWildfireVerdictChangeRequestRequest. The parent is a firewall
+  /// endpoint resource. Format:
+  /// organizations|projects/{project_or_organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/firewallEndpoints/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [WildfireVerdictChangeRequest].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<WildfireVerdictChangeRequest> create(
+    WildfireVerdictChangeRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/wildfireVerdictChangeRequests';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return WildfireVerdictChangeRequest.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Get WildfireVerdictChangeRequest in a given Firewall Endpoint in an
+  /// organization and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the WildfireVerdictChangeRequest to retrieve.
+  /// Format:
+  /// organizations|projects/{project_or_organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}/wildfireVerdictChangeRequests/{wildfire_verdict_change_request_id}
+  /// Where {wildfire_verdict_change_request_id} is the ID in the format:
+  /// ^\[0-9a-fA-F\]{8}-\[0-9a-fA-F\]{4}-\[0-9a-fA-F\]{4}-\[0-9a-fA-F\]{4}-\[0-9a-fA-F\]{12}$
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/firewallEndpoints/\[^/\]+/wildfireVerdictChangeRequests/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [WildfireVerdictChangeRequest].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<WildfireVerdictChangeRequest> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return WildfireVerdictChangeRequest.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists WildfireVerdictChangeRequests in a given Firewall Endpoint in an
+  /// organization and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent value for
+  /// ListWildfireVerdictChangeRequestsRequest. The parent is a firewall
+  /// endpoint resource. Format:
+  /// organizations|projects/{project_or_organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/firewallEndpoints/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filter expression to filter the results. See AIP-160
+  /// for filtering syntax. Supported fields are: - `sha256` (string, equality
+  /// only, e.g. `sha256 = "..."`) - `state` (enum, equality only, e.g. `state =
+  /// "ACTIVE"`) - `create_time` (timestamp, comparisons, e.g. `create_time >
+  /// "2026-01-01T00:00:00Z"`)
+  ///
+  /// [pageSize] - Optional. Requested page size. Server may return fewer items
+  /// than requested. If unspecified, server will pick an appropriate default.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results the server
+  /// should return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListWildfireVerdictChangeRequestsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListWildfireVerdictChangeRequestsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/wildfireVerdictChangeRequests';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListWildfireVerdictChangeRequestsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -4500,6 +4673,12 @@ class ProjectsLocationsFirewallEndpointAssociationsResource {
 class ProjectsLocationsFirewallEndpointsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsFirewallEndpointsWildfireVerdictChangeRequestsResource
+  get wildfireVerdictChangeRequests =>
+      ProjectsLocationsFirewallEndpointsWildfireVerdictChangeRequestsResource(
+        _requester,
+      );
+
   ProjectsLocationsFirewallEndpointsResource(commons.ApiRequester client)
     : _requester = client;
 
@@ -4774,6 +4953,170 @@ class ProjectsLocationsFirewallEndpointsResource {
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsFirewallEndpointsWildfireVerdictChangeRequestsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsFirewallEndpointsWildfireVerdictChangeRequestsResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Create WildfireVerdictChangeRequest in a given Firewall Endpoint in a
+  /// project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent value for
+  /// CreateWildfireVerdictChangeRequestRequest. The parent is a firewall
+  /// endpoint resource. Format:
+  /// organizations|projects/{project_or_organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/firewallEndpoints/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [WildfireVerdictChangeRequest].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<WildfireVerdictChangeRequest> create(
+    WildfireVerdictChangeRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/wildfireVerdictChangeRequests';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return WildfireVerdictChangeRequest.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Get WildfireVerdictChangeRequest in a given Firewall Endpoint in a project
+  /// and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the WildfireVerdictChangeRequest to retrieve.
+  /// Format:
+  /// organizations|projects/{project_or_organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}/wildfireVerdictChangeRequests/{wildfire_verdict_change_request_id}
+  /// Where {wildfire_verdict_change_request_id} is the ID in the format:
+  /// ^\[0-9a-fA-F\]{8}-\[0-9a-fA-F\]{4}-\[0-9a-fA-F\]{4}-\[0-9a-fA-F\]{4}-\[0-9a-fA-F\]{12}$
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/firewallEndpoints/\[^/\]+/wildfireVerdictChangeRequests/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [WildfireVerdictChangeRequest].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<WildfireVerdictChangeRequest> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return WildfireVerdictChangeRequest.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists WildfireVerdictChangeRequests in a given Firewall Endpoint in a
+  /// project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent value for
+  /// ListWildfireVerdictChangeRequestsRequest. The parent is a firewall
+  /// endpoint resource. Format:
+  /// organizations|projects/{project_or_organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/firewallEndpoints/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filter expression to filter the results. See AIP-160
+  /// for filtering syntax. Supported fields are: - `sha256` (string, equality
+  /// only, e.g. `sha256 = "..."`) - `state` (enum, equality only, e.g. `state =
+  /// "ACTIVE"`) - `create_time` (timestamp, comparisons, e.g. `create_time >
+  /// "2026-01-01T00:00:00Z"`)
+  ///
+  /// [pageSize] - Optional. Requested page size. Server may return fewer items
+  /// than requested. If unspecified, server will pick an appropriate default.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results the server
+  /// should return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListWildfireVerdictChangeRequestsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListWildfireVerdictChangeRequestsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/wildfireVerdictChangeRequests';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListWildfireVerdictChangeRequestsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -11467,6 +11810,11 @@ class FirewallEndpoint {
   /// Output only.
   core.String? updateTime;
 
+  /// Settings for WildFire analysis.
+  ///
+  /// Optional.
+  FirewallEndpointWildfireSettings? wildfireSettings;
+
   FirewallEndpoint({
     this.associatedNetworks,
     this.associations,
@@ -11481,6 +11829,7 @@ class FirewallEndpoint {
     this.satisfiesPzs,
     this.state,
     this.updateTime,
+    this.wildfireSettings,
   });
 
   FirewallEndpoint.fromJson(core.Map json_)
@@ -11513,6 +11862,12 @@ class FirewallEndpoint {
         satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
         state: json_['state'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
+        wildfireSettings: json_.containsKey('wildfireSettings')
+            ? FirewallEndpointWildfireSettings.fromJson(
+                json_['wildfireSettings']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -11529,6 +11884,7 @@ class FirewallEndpoint {
     final satisfiesPzs = this.satisfiesPzs;
     final state = this.state;
     final updateTime = this.updateTime;
+    final wildfireSettings = this.wildfireSettings;
     return {
       'associatedNetworks': ?associatedNetworks,
       'associations': ?associations,
@@ -11543,6 +11899,7 @@ class FirewallEndpoint {
       'satisfiesPzs': ?satisfiesPzs,
       'state': ?state,
       'updateTime': ?updateTime,
+      'wildfireSettings': ?wildfireSettings,
     };
   }
 }
@@ -11701,6 +12058,56 @@ class FirewallEndpointAssociationReference {
 
 /// Settings for the endpoint.
 class FirewallEndpointEndpointSettings {
+  /// The content cloud region of the endpoint.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "CONTENT_CLOUD_REGION_UNSPECIFIED" : Palo Alto Networks content cloud
+  /// region not specified.
+  /// - "US_CENTRAL" : us.hawkeye.services-edge.paloaltonetworks.com
+  /// - "APAC" : APAC content cloud portal:
+  /// apac.hawkeye.services-edge.paloaltonetworks.com
+  /// - "INDIA" : India content cloud portal:
+  /// in.hawkeye.services-edge.paloaltonetworks.com
+  /// - "UK" : UK content cloud portal:
+  /// uk.hawkeye.services-edge.paloaltonetworks.com
+  /// - "FRANCE" : France content cloud portal:
+  /// fr.hawkeye.services-edge.paloaltonetworks.com
+  /// - "JAPAN" : Japan content cloud portal:
+  /// jp.hawkeye.services-edge.paloaltonetworks.com
+  /// - "AUSTRALIA" : Australia content cloud portal:
+  /// au.hawkeye.services-edge.paloaltonetworks.com
+  /// - "CANADA" : Canada content cloud portal:
+  /// ca.hawkeye.services-edge.paloaltonetworks.com
+  /// - "SWITZERLAND" : Switzerland content cloud portal:
+  /// ch.hawkeye.services-edge.paloaltonetworks.com
+  /// - "NETHERLANDS" : Netherlands content cloud portal:
+  /// nl.hawkeye.services-edge.paloaltonetworks.com
+  /// - "INDONESIA" : Indonesia content cloud portal:
+  /// id.hawkeye.services-edge.paloaltonetworks.com
+  /// - "QATAR" : Qatar content cloud portal:
+  /// qa.hawkeye.services-edge.paloaltonetworks.com
+  /// - "TAIWAN" : Taiwan content cloud portal:
+  /// tw.hawkeye.services-edge.paloaltonetworks.com
+  /// - "POLAND" : Poland content cloud portal:
+  /// pl.hawkeye.services-edge.paloaltonetworks.com
+  /// - "SOUTH_KOREA" : South Korea content cloud portal:
+  /// kr.hawkeye.services-edge.paloaltonetworks.com
+  /// - "SAUDI_ARABIA" : Saudi Arabia content cloud portal:
+  /// sa.hawkeye.services-edge.paloaltonetworks.com
+  /// - "ITALY" : Italy content cloud portal:
+  /// it.hawkeye.services-edge.paloaltonetworks.com
+  core.String? contentCloudRegion;
+
+  /// Whether to block HTTP partial responses for the endpoint.
+  ///
+  /// When this is true, resumption of blocked malicious HTTP file downloads
+  /// will be blocked by the firewall. False provides maximum availability, true
+  /// provides maximum security.
+  ///
+  /// Optional.
+  core.bool? httpPartialResponseBlocked;
+
   /// Indicates whether Jumbo Frames are enabled.
   ///
   /// Default value is false.
@@ -11708,14 +12115,200 @@ class FirewallEndpointEndpointSettings {
   /// Optional. Immutable.
   core.bool? jumboFramesEnabled;
 
-  FirewallEndpointEndpointSettings({this.jumboFramesEnabled});
+  FirewallEndpointEndpointSettings({
+    this.contentCloudRegion,
+    this.httpPartialResponseBlocked,
+    this.jumboFramesEnabled,
+  });
 
   FirewallEndpointEndpointSettings.fromJson(core.Map json_)
-    : this(jumboFramesEnabled: json_['jumboFramesEnabled'] as core.bool?);
+    : this(
+        contentCloudRegion: json_['contentCloudRegion'] as core.String?,
+        httpPartialResponseBlocked:
+            json_['httpPartialResponseBlocked'] as core.bool?,
+        jumboFramesEnabled: json_['jumboFramesEnabled'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final contentCloudRegion = this.contentCloudRegion;
+    final httpPartialResponseBlocked = this.httpPartialResponseBlocked;
     final jumboFramesEnabled = this.jumboFramesEnabled;
-    return {'jumboFramesEnabled': ?jumboFramesEnabled};
+    return {
+      'contentCloudRegion': ?contentCloudRegion,
+      'httpPartialResponseBlocked': ?httpPartialResponseBlocked,
+      'jumboFramesEnabled': ?jumboFramesEnabled,
+    };
+  }
+}
+
+/// Settings for WildFire analysis.
+class FirewallEndpointWildfireSettings {
+  /// Indicates whether WildFire analysis is enabled.
+  ///
+  /// Default value is false.
+  ///
+  /// Optional.
+  core.bool? enabled;
+
+  /// Settings for WildFire inline cloud analysis.
+  ///
+  /// Optional.
+  FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings?
+  wildfireInlineCloudAnalysisSettings;
+
+  /// Duration in milliseconds on a file being held while the WildFire real time
+  /// signature cloud performs a signature lookup.
+  ///
+  /// Value between 1 to 5000 is valid. Default value is 1000.
+  ///
+  /// Optional.
+  core.String? wildfireRealtimeLookupDuration;
+
+  /// Action to take on WildFire real time signature lookup timeout.
+  ///
+  /// Default value is ALLOW.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "WILDFIRE_REALTIME_SIGNATURE_LOOKUP_TIMEOUT_ACTION_UNSPECIFIED" :
+  /// WildFire real time signature lookup timeout action not specified.
+  /// - "ALLOW" : The files that timed out in the signature lookup will be
+  /// allowed to transmit.
+  /// - "DENY" : The files that timed out in the signature lookup will be denied
+  /// to transmit.
+  core.String? wildfireRealtimeLookupTimeoutAction;
+
+  /// The region where WildFire analysis will be performed.
+  ///
+  /// Palo Alto Networks supports regions:
+  /// https://docs.paloaltonetworks.com/advanced-wildfire/administration/advanced-wildfire-overview/advanced-wildfire-deployments/advanced-wildfire-global-cloud
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "WILDFIRE_REGION_UNSPECIFIED" : WildFire region not specified.
+  /// - "CANADA" : Canada cloud portal: ca.wildfire.paloaltonetworks.com
+  /// - "UNITED_STATES" : United States cloud portal:
+  /// us-native.wildfire.paloaltonetworks.com
+  /// - "JAPAN" : Japan cloud portal: jp.wildfire.paloaltonetworks.com
+  /// - "SINGAPORE" : Singapore cloud portal: sg.wildfire.paloaltonetworks.com
+  /// - "UNITED_KINGDOM" : United Kingdom cloud portal:
+  /// uk.wildfire.paloaltonetworks.com
+  /// - "AUSTRALIA" : Australia cloud portal: au.wildfire.paloaltonetworks.com
+  /// - "GERMANY" : Germany cloud portal: de.wildfire.paloaltonetworks.com
+  /// - "INDIA" : India cloud portal: in.wildfire.paloaltonetworks.com
+  /// - "SWITZERLAND" : Switzerland cloud portal:
+  /// ch.wildfire.paloaltonetworks.com
+  /// - "POLAND" : Poland cloud portal: pl.wildfire.paloaltonetworks.com
+  /// - "INDONESIA" : Indonesia cloud portal: id.wildfire.paloaltonetworks.com
+  /// - "TAIWAN" : Taiwan cloud portal: tw.wildfire.paloaltonetworks.com
+  /// - "FRANCE" : France cloud portal: fr.wildfire.paloaltonetworks.com
+  /// - "QATAR" : Qatar cloud portal: qatar.wildfire.paloaltonetworks.com
+  /// - "SOUTH_KOREA" : South Korea cloud portal:
+  /// kr.wildfire.paloaltonetworks.com
+  /// - "ISRAEL" : Israel cloud portal: il.wildfire.paloaltonetworks.com
+  /// - "SAUDI_ARABIA" : Saudi Arabia cloud portal:
+  /// sa.wildfire.paloaltonetworks.com
+  /// - "SPAIN" : Spain cloud portal: es.wildfire.paloaltonetworks.com
+  core.String? wildfireRegion;
+
+  FirewallEndpointWildfireSettings({
+    this.enabled,
+    this.wildfireInlineCloudAnalysisSettings,
+    this.wildfireRealtimeLookupDuration,
+    this.wildfireRealtimeLookupTimeoutAction,
+    this.wildfireRegion,
+  });
+
+  FirewallEndpointWildfireSettings.fromJson(core.Map json_)
+    : this(
+        enabled: json_['enabled'] as core.bool?,
+        wildfireInlineCloudAnalysisSettings:
+            json_.containsKey('wildfireInlineCloudAnalysisSettings')
+            ? FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings.fromJson(
+                json_['wildfireInlineCloudAnalysisSettings']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        wildfireRealtimeLookupDuration:
+            json_['wildfireRealtimeLookupDuration'] as core.String?,
+        wildfireRealtimeLookupTimeoutAction:
+            json_['wildfireRealtimeLookupTimeoutAction'] as core.String?,
+        wildfireRegion: json_['wildfireRegion'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final enabled = this.enabled;
+    final wildfireInlineCloudAnalysisSettings =
+        this.wildfireInlineCloudAnalysisSettings;
+    final wildfireRealtimeLookupDuration = this.wildfireRealtimeLookupDuration;
+    final wildfireRealtimeLookupTimeoutAction =
+        this.wildfireRealtimeLookupTimeoutAction;
+    final wildfireRegion = this.wildfireRegion;
+    return {
+      'enabled': ?enabled,
+      'wildfireInlineCloudAnalysisSettings':
+          ?wildfireInlineCloudAnalysisSettings,
+      'wildfireRealtimeLookupDuration': ?wildfireRealtimeLookupDuration,
+      'wildfireRealtimeLookupTimeoutAction':
+          ?wildfireRealtimeLookupTimeoutAction,
+      'wildfireRegion': ?wildfireRegion,
+    };
+  }
+}
+
+/// Settings for WildFire inline cloud analysis.
+class FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings {
+  /// Timeout in milliseconds on a file being held while WildFire inline cloud
+  /// analysis is performed.
+  ///
+  /// Value between 1 to 240000 is valid. Default value is 30000.
+  ///
+  /// Optional.
+  core.String? maxAnalysisDuration;
+
+  /// Whether to disable WildFire submission log generation for files that
+  /// timeout during WildFire inline cloud analysis.
+  ///
+  /// Optional.
+  core.bool? submissionTimeoutLoggingDisabled;
+
+  /// Action to take when WildFire inline cloud analysis times out.
+  ///
+  /// Default value is ALLOW.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "WILDFIRE_INLINE_CLOUD_ANALYSIS_TIMEOUT_ACTION_UNSPECIFIED" : WildFire
+  /// inline cloud analysis timeout action not specified.
+  /// - "ALLOW" : The files that timed out will be allowed to transmit.
+  /// - "DENY" : The files that timed out will be denied to transmit.
+  core.String? timeoutAction;
+
+  FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings({
+    this.maxAnalysisDuration,
+    this.submissionTimeoutLoggingDisabled,
+    this.timeoutAction,
+  });
+
+  FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings.fromJson(
+    core.Map json_,
+  ) : this(
+        maxAnalysisDuration: json_['maxAnalysisDuration'] as core.String?,
+        submissionTimeoutLoggingDisabled:
+            json_['submissionTimeoutLoggingDisabled'] as core.bool?,
+        timeoutAction: json_['timeoutAction'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final maxAnalysisDuration = this.maxAnalysisDuration;
+    final submissionTimeoutLoggingDisabled =
+        this.submissionTimeoutLoggingDisabled;
+    final timeoutAction = this.timeoutAction;
+    return {
+      'maxAnalysisDuration': ?maxAnalysisDuration,
+      'submissionTimeoutLoggingDisabled': ?submissionTimeoutLoggingDisabled,
+      'timeoutAction': ?timeoutAction,
+    };
   }
 }
 
@@ -14392,6 +14985,53 @@ class ListUrlListsResponse {
   }
 }
 
+/// Message for response to listing WildfireVerdictChangeRequests.
+class ListWildfireVerdictChangeRequestsResponse {
+  /// A token identifying a page of results the server should return.
+  core.String? nextPageToken;
+
+  /// Unordered list.
+  ///
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  /// The list of WildfireVerdictChangeRequests
+  core.List<WildfireVerdictChangeRequest>? wildfireVerdictChangeRequests;
+
+  ListWildfireVerdictChangeRequestsResponse({
+    this.nextPageToken,
+    this.unreachable,
+    this.wildfireVerdictChangeRequests,
+  });
+
+  ListWildfireVerdictChangeRequestsResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        wildfireVerdictChangeRequests:
+            (json_['wildfireVerdictChangeRequests'] as core.List?)
+                ?.map(
+                  (value) => WildfireVerdictChangeRequest.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    final wildfireVerdictChangeRequests = this.wildfireVerdictChangeRequests;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+      'wildfireVerdictChangeRequests': ?wildfireVerdictChangeRequests,
+    };
+  }
+}
+
 /// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
@@ -14423,7 +15063,15 @@ class MTLSPolicy {
   /// the backend only if validation of the client certificate passed. If set,
   /// requires a reference to non-empty TrustConfig specified in
   /// `client_validation_trust_config`.
+  /// - "ALLOW_VALIDATION_RELAXATIONS" : Require a client certificate, but apply
+  /// the specific validation relaxations requested in
+  /// `client_validation_relaxations`. All selected relaxations are applied
+  /// simultaneously.
   core.String? clientValidationMode;
+
+  /// A list of validation relaxations to apply when `client_validation_mode` is
+  /// set to ALLOW_VALIDATION_RELAXATIONS.
+  core.List<core.String>? clientValidationRelaxations;
 
   /// Reference to the TrustConfig from certificatemanager.googleapis.com
   /// namespace.
@@ -14436,6 +15084,7 @@ class MTLSPolicy {
   MTLSPolicy({
     this.clientValidationCa,
     this.clientValidationMode,
+    this.clientValidationRelaxations,
     this.clientValidationTrustConfig,
   });
 
@@ -14449,6 +15098,10 @@ class MTLSPolicy {
             )
             .toList(),
         clientValidationMode: json_['clientValidationMode'] as core.String?,
+        clientValidationRelaxations:
+            (json_['clientValidationRelaxations'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
         clientValidationTrustConfig:
             json_['clientValidationTrustConfig'] as core.String?,
       );
@@ -14456,10 +15109,12 @@ class MTLSPolicy {
   core.Map<core.String, core.dynamic> toJson() {
     final clientValidationCa = this.clientValidationCa;
     final clientValidationMode = this.clientValidationMode;
+    final clientValidationRelaxations = this.clientValidationRelaxations;
     final clientValidationTrustConfig = this.clientValidationTrustConfig;
     return {
       'clientValidationCa': ?clientValidationCa,
       'clientValidationMode': ?clientValidationMode,
+      'clientValidationRelaxations': ?clientValidationRelaxations,
       'clientValidationTrustConfig': ?clientValidationTrustConfig,
     };
   }
@@ -15748,6 +16403,7 @@ class SecurityProfile {
   /// - "CUSTOM_MIRRORING" : Profile type for packet mirroring v2
   /// - "CUSTOM_INTERCEPT" : Profile type for TPPI.
   /// - "URL_FILTERING" : Profile type for URL filtering.
+  /// - "WILDFIRE_ANALYSIS" : Profile type for WildFire Analysis.
   core.String? type;
 
   /// Last resource update timestamp.
@@ -15757,6 +16413,9 @@ class SecurityProfile {
 
   /// The URL filtering configuration for the SecurityProfile.
   UrlFilteringProfile? urlFilteringProfile;
+
+  /// The WildFire Analysis configurations for SecurityProfile.
+  WildfireAnalysisProfile? wildfireAnalysisProfile;
 
   SecurityProfile({
     this.createTime,
@@ -15770,6 +16429,7 @@ class SecurityProfile {
     this.type,
     this.updateTime,
     this.urlFilteringProfile,
+    this.wildfireAnalysisProfile,
   });
 
   SecurityProfile.fromJson(core.Map json_)
@@ -15807,6 +16467,12 @@ class SecurityProfile {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        wildfireAnalysisProfile: json_.containsKey('wildfireAnalysisProfile')
+            ? WildfireAnalysisProfile.fromJson(
+                json_['wildfireAnalysisProfile']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -15821,6 +16487,7 @@ class SecurityProfile {
     final type = this.type;
     final updateTime = this.updateTime;
     final urlFilteringProfile = this.urlFilteringProfile;
+    final wildfireAnalysisProfile = this.wildfireAnalysisProfile;
     return {
       'createTime': ?createTime,
       'customInterceptProfile': ?customInterceptProfile,
@@ -15833,6 +16500,7 @@ class SecurityProfile {
       'type': ?type,
       'updateTime': ?updateTime,
       'urlFilteringProfile': ?urlFilteringProfile,
+      'wildfireAnalysisProfile': ?wildfireAnalysisProfile,
     };
   }
 }
@@ -15905,6 +16573,11 @@ class SecurityProfileGroup {
   /// Optional.
   core.String? urlFilteringProfile;
 
+  /// Reference to a SecurityProfile with the WildFire configuration.
+  ///
+  /// Optional.
+  core.String? wildfireAnalysisProfile;
+
   SecurityProfileGroup({
     this.createTime,
     this.customInterceptProfile,
@@ -15917,6 +16590,7 @@ class SecurityProfileGroup {
     this.threatPreventionProfile,
     this.updateTime,
     this.urlFilteringProfile,
+    this.wildfireAnalysisProfile,
   });
 
   SecurityProfileGroup.fromJson(core.Map json_)
@@ -15935,6 +16609,8 @@ class SecurityProfileGroup {
             json_['threatPreventionProfile'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
         urlFilteringProfile: json_['urlFilteringProfile'] as core.String?,
+        wildfireAnalysisProfile:
+            json_['wildfireAnalysisProfile'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -15949,6 +16625,7 @@ class SecurityProfileGroup {
     final threatPreventionProfile = this.threatPreventionProfile;
     final updateTime = this.updateTime;
     final urlFilteringProfile = this.urlFilteringProfile;
+    final wildfireAnalysisProfile = this.wildfireAnalysisProfile;
     return {
       'createTime': ?createTime,
       'customInterceptProfile': ?customInterceptProfile,
@@ -15961,6 +16638,7 @@ class SecurityProfileGroup {
       'threatPreventionProfile': ?threatPreventionProfile,
       'updateTime': ?updateTime,
       'urlFilteringProfile': ?urlFilteringProfile,
+      'wildfireAnalysisProfile': ?wildfireAnalysisProfile,
     };
   }
 }
@@ -16684,6 +17362,762 @@ class ValidationCA {
     return {
       'certificateProviderInstance': ?certificateProviderInstance,
       'grpcEndpoint': ?grpcEndpoint,
+    };
+  }
+}
+
+/// WildfireAnalysisProfile defines Palo Alto Networks WildFire behavior.
+class WildfireAnalysisProfile {
+  /// Configuration for WildFire inline cloud analysis.
+  ///
+  /// Optional.
+  core.List<WildfireInlineCloudAnalysisRule>? wildfireInlineCloudAnalysisRules;
+
+  /// Configuration for overriding inline ML WildFire actions per protocol.
+  ///
+  /// Optional.
+  core.List<WildfireInlineMlOverride>? wildfireInlineMlOverrides;
+
+  /// Settings for WildFire Inline ML analysis.
+  ///
+  /// Optional.
+  WildfireInlineMlSettings? wildfireInlineMlSetting;
+
+  /// Settings for WildFire Inline ML analysis.
+  ///
+  /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.List<WildfireInlineMlSettings>? wildfireInlineMlSettings;
+
+  /// Configuration for overriding WildFire actions per protocol.
+  ///
+  /// Optional.
+  core.List<WildfireOverride>? wildfireOverrides;
+
+  /// Whether to hold the transfer of a file while the WildFire real-time
+  /// signature cloud performs a signature lookup.
+  ///
+  /// Default value is false.
+  ///
+  /// Optional.
+  core.bool? wildfireRealtimeLookup;
+
+  /// Configurations for WildFire file submissions.
+  ///
+  /// Optional.
+  core.List<WildfireSubmissionRule>? wildfireSubmissionRules;
+
+  /// Configuration for overriding WildFire threats action by threat_id match.
+  ///
+  /// Optional.
+  core.List<WildfireThreatOverride>? wildfireThreatOverrides;
+
+  WildfireAnalysisProfile({
+    this.wildfireInlineCloudAnalysisRules,
+    this.wildfireInlineMlOverrides,
+    this.wildfireInlineMlSetting,
+    this.wildfireInlineMlSettings,
+    this.wildfireOverrides,
+    this.wildfireRealtimeLookup,
+    this.wildfireSubmissionRules,
+    this.wildfireThreatOverrides,
+  });
+
+  WildfireAnalysisProfile.fromJson(core.Map json_)
+    : this(
+        wildfireInlineCloudAnalysisRules:
+            (json_['wildfireInlineCloudAnalysisRules'] as core.List?)
+                ?.map(
+                  (value) => WildfireInlineCloudAnalysisRule.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        wildfireInlineMlOverrides:
+            (json_['wildfireInlineMlOverrides'] as core.List?)
+                ?.map(
+                  (value) => WildfireInlineMlOverride.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        wildfireInlineMlSetting: json_.containsKey('wildfireInlineMlSetting')
+            ? WildfireInlineMlSettings.fromJson(
+                json_['wildfireInlineMlSetting']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        wildfireInlineMlSettings:
+            (json_['wildfireInlineMlSettings'] as core.List?)
+                ?.map(
+                  (value) => WildfireInlineMlSettings.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        wildfireOverrides: (json_['wildfireOverrides'] as core.List?)
+            ?.map(
+              (value) => WildfireOverride.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        wildfireRealtimeLookup: json_['wildfireRealtimeLookup'] as core.bool?,
+        wildfireSubmissionRules:
+            (json_['wildfireSubmissionRules'] as core.List?)
+                ?.map(
+                  (value) => WildfireSubmissionRule.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        wildfireThreatOverrides:
+            (json_['wildfireThreatOverrides'] as core.List?)
+                ?.map(
+                  (value) => WildfireThreatOverride.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final wildfireInlineCloudAnalysisRules =
+        this.wildfireInlineCloudAnalysisRules;
+    final wildfireInlineMlOverrides = this.wildfireInlineMlOverrides;
+    final wildfireInlineMlSetting = this.wildfireInlineMlSetting;
+    final wildfireInlineMlSettings = this.wildfireInlineMlSettings;
+    final wildfireOverrides = this.wildfireOverrides;
+    final wildfireRealtimeLookup = this.wildfireRealtimeLookup;
+    final wildfireSubmissionRules = this.wildfireSubmissionRules;
+    final wildfireThreatOverrides = this.wildfireThreatOverrides;
+    return {
+      'wildfireInlineCloudAnalysisRules': ?wildfireInlineCloudAnalysisRules,
+      'wildfireInlineMlOverrides': ?wildfireInlineMlOverrides,
+      'wildfireInlineMlSetting': ?wildfireInlineMlSetting,
+      'wildfireInlineMlSettings': ?wildfireInlineMlSettings,
+      'wildfireOverrides': ?wildfireOverrides,
+      'wildfireRealtimeLookup': ?wildfireRealtimeLookup,
+      'wildfireSubmissionRules': ?wildfireSubmissionRules,
+      'wildfireThreatOverrides': ?wildfireThreatOverrides,
+    };
+  }
+}
+
+/// The list of file type configurations to be scanned by WildFire Inline Cloud
+/// Analysis.
+class WildfireInlineCloudAnalysisRule {
+  /// Action to take when a threat is detected using WildFire Inline Cloud
+  /// Analysis.
+  ///
+  /// The default Value is DENY.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "WILDFIRE_INLINE_CLOUD_ANALYSIS_ACTION_UNSPECIFIED" : WildFire Inline
+  /// Cloud Analysis action not specified.
+  /// - "ALLOW" : The files caught by WildFire Inline Cloud Analysis will be
+  /// allowed to transmit.
+  /// - "DENY" : The files caught by WildFire Inline Cloud Analysis will be
+  /// denied to transmit.
+  /// - "ALERT" : The files caught by WildFire Inline Cloud Analysis will be
+  /// allowed to transmit, but a wildfire_submission_log entry will be sent to
+  /// the consumer project.
+  core.String? action;
+
+  /// Submit a custom list of file types for WildFire analysis.
+  WildfireInlineCloudAnalysisRuleCustomFileTypes? customFileTypes;
+
+  /// Direction for the file to be analyzed by WildFire Inline Cloud Analysis.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "DIRECTION_UNSPECIFIED" : Direction not specified.
+  /// - "UPLOAD" : Upload direction.
+  /// - "DOWNLOAD" : Download direction.
+  /// - "BOTH" : Both upload and download directions.
+  core.String? direction;
+
+  /// File selection mode for WildFire inline cloud analysis.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "FILE_SELECTION_MODE_UNSPECIFIED" : File selection mode not specified.
+  /// - "ALL_FILE_TYPES" : Submit all the file types for scan.
+  /// - "CUSTOM_FILE_TYPES" : Submit a custom list of file types for scan.
+  core.String? fileSelectionMode;
+
+  WildfireInlineCloudAnalysisRule({
+    this.action,
+    this.customFileTypes,
+    this.direction,
+    this.fileSelectionMode,
+  });
+
+  WildfireInlineCloudAnalysisRule.fromJson(core.Map json_)
+    : this(
+        action: json_['action'] as core.String?,
+        customFileTypes: json_.containsKey('customFileTypes')
+            ? WildfireInlineCloudAnalysisRuleCustomFileTypes.fromJson(
+                json_['customFileTypes'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        direction: json_['direction'] as core.String?,
+        fileSelectionMode: json_['fileSelectionMode'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final action = this.action;
+    final customFileTypes = this.customFileTypes;
+    final direction = this.direction;
+    final fileSelectionMode = this.fileSelectionMode;
+    return {
+      'action': ?action,
+      'customFileTypes': ?customFileTypes,
+      'direction': ?direction,
+      'fileSelectionMode': ?fileSelectionMode,
+    };
+  }
+}
+
+/// The options to submit a custom list of file types for scan.
+class WildfireInlineCloudAnalysisRuleCustomFileTypes {
+  /// File types to be submitted for WildFire inline cloud analysis.
+  ///
+  /// Required.
+  core.List<core.String>? fileTypes;
+
+  WildfireInlineCloudAnalysisRuleCustomFileTypes({this.fileTypes});
+
+  WildfireInlineCloudAnalysisRuleCustomFileTypes.fromJson(core.Map json_)
+    : this(
+        fileTypes: (json_['fileTypes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final fileTypes = this.fileTypes;
+    return {'fileTypes': ?fileTypes};
+  }
+}
+
+/// Defines the file to exclude from WildFire Inline ML analysis.
+class WildfireInlineMlFileException {
+  /// Name of the file to exclude from WildFire Inline ML analysis.
+  ///
+  /// Optional.
+  core.String? filename;
+
+  /// Machine learning partial hash of the file to exclude from WildFire Inline
+  /// ML analysis.
+  ///
+  /// Required.
+  core.String? partialHash;
+
+  WildfireInlineMlFileException({this.filename, this.partialHash});
+
+  WildfireInlineMlFileException.fromJson(core.Map json_)
+    : this(
+        filename: json_['filename'] as core.String?,
+        partialHash: json_['partialHash'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final filename = this.filename;
+    final partialHash = this.partialHash;
+    return {'filename': ?filename, 'partialHash': ?partialHash};
+  }
+}
+
+/// Defines what action to take for WildFire Inline ML threats per protocol.
+class WildfireInlineMlOverride {
+  /// The action to take for WildFire Inline ML override.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "WILDFIRE_THREAT_ACTION_UNSPECIFIED" : Threat action not specified.
+  /// - "WILDFIRE_DEFAULT_ACTION" : The default action (as specified by the
+  /// vendor) is taken.
+  /// - "WILDFIRE_ALLOW" : The packet matching this rule will be allowed to
+  /// transmit.
+  /// - "WILDFIRE_ALERT" : The packet matching this rule will be allowed to
+  /// transmit, but a threat_log entry will be sent to the consumer project.
+  /// - "WILDFIRE_DENY" : The packet matching this rule will be dropped, and a
+  /// threat_log entry will be sent to the consumer project.
+  core.String? action;
+
+  /// Protocol to match for WildFire Inline ML override.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "WILDFIRE_PROTOCOL_UNSPECIFIED" : Protocol not specified.
+  /// - "WILDFIRE_SMTP" : SMTP protocol
+  /// - "WILDFIRE_SMB" : SMB protocol
+  /// - "WILDFIRE_POP3" : POP3 protocol
+  /// - "WILDFIRE_IMAP" : IMAP protocol
+  /// - "WILDFIRE_HTTP2" : HTTP2 protocol
+  /// - "WILDFIRE_HTTP" : HTTP protocol
+  /// - "WILDFIRE_FTP" : FTP protocol
+  core.String? protocol;
+
+  WildfireInlineMlOverride({this.action, this.protocol});
+
+  WildfireInlineMlOverride.fromJson(core.Map json_)
+    : this(
+        action: json_['action'] as core.String?,
+        protocol: json_['protocol'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final action = this.action;
+    final protocol = this.protocol;
+    return {'action': ?action, 'protocol': ?protocol};
+  }
+}
+
+/// Defines the settings for WildFire Inline ML analysis.
+class WildfireInlineMlSettings {
+  /// List of files to exclude from WildFire Inline ML analysis.
+  ///
+  /// Optional.
+  core.List<WildfireInlineMlFileException>? fileExceptions;
+
+  /// List of Inline ML configs to enable in WildFire Inline ML analysis.
+  ///
+  /// Optional.
+  core.List<WildfireInlineMlSettingsInlineMlConfig>? inlineMlConfigs;
+
+  WildfireInlineMlSettings({this.fileExceptions, this.inlineMlConfigs});
+
+  WildfireInlineMlSettings.fromJson(core.Map json_)
+    : this(
+        fileExceptions: (json_['fileExceptions'] as core.List?)
+            ?.map(
+              (value) => WildfireInlineMlFileException.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        inlineMlConfigs: (json_['inlineMlConfigs'] as core.List?)
+            ?.map(
+              (value) => WildfireInlineMlSettingsInlineMlConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final fileExceptions = this.fileExceptions;
+    final inlineMlConfigs = this.inlineMlConfigs;
+    return {
+      'fileExceptions': ?fileExceptions,
+      'inlineMlConfigs': ?inlineMlConfigs,
+    };
+  }
+}
+
+/// Configuration for WildFire Inline ML analysis per file type.
+class WildfireInlineMlSettingsInlineMlConfig {
+  /// Action to take when a threat is detected using Inline ML.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "INLINE_ML_ACTION_UNSPECIFIED" : Inline ML threat action not specified.
+  /// - "DISABLE" : Disable WildFire Inline ML for the associated file type.
+  /// - "ALERT" : Enable WildFire Inline ML for the associated file type.
+  /// Overrides any protocol level settings with action stricter than ALERT to
+  /// ALERT so that the malicious files detected generate a threat log to the
+  /// consumer project but are not blocked.
+  /// - "ENABLE" : Enable WildFire Inline ML for the associated file type,
+  /// malicious files detected will be blocked.
+  core.String? action;
+
+  /// File type to configure Inline ML for.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "INLINE_ML_CONFIG_UNSPECIFIED" : Inline ML config not specified.
+  /// - "WINDOWS_EXECUTABLE" : Enable machine learning engine to dynamically
+  /// detect malicious PE files.
+  /// - "POWERSHELL_SCRIPT1" : Enable machine learning engine to dynamically
+  /// identify malicious PowerShell scripts with known length.
+  /// - "POWERSHELL_SCRIPT2" : Enable machine learning engine to dynamically
+  /// identify malicious PowerShell script without known length.
+  /// - "ELF" : Enable machine learning engine to dynamically detect malicious
+  /// ELF files.
+  /// - "MS_OFFICE" : Enable machine learning engine to dynamically detect
+  /// malicious MSOffice (97-03) files.
+  /// - "SHELL" : Enable machine learning engine to dynamically detect malicious
+  /// Shell files.
+  /// - "OOXML" : Enable machine learning engine to dynamically detect malicious
+  /// Open Office XML files.
+  /// - "MACHO" : Enable machine learning engine to dynamically detect malicious
+  /// Mach-O files.
+  core.String? fileType;
+
+  WildfireInlineMlSettingsInlineMlConfig({this.action, this.fileType});
+
+  WildfireInlineMlSettingsInlineMlConfig.fromJson(core.Map json_)
+    : this(
+        action: json_['action'] as core.String?,
+        fileType: json_['fileType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final action = this.action;
+    final fileType = this.fileType;
+    return {'action': ?action, 'fileType': ?fileType};
+  }
+}
+
+/// Defines what action to take for WildFire threats per protocol.
+class WildfireOverride {
+  /// Threat action override.
+  ///
+  /// For some threat types, only a subset of actions applies.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "WILDFIRE_THREAT_ACTION_UNSPECIFIED" : Threat action not specified.
+  /// - "WILDFIRE_DEFAULT_ACTION" : The default action (as specified by the
+  /// vendor) is taken.
+  /// - "WILDFIRE_ALLOW" : The packet matching this rule will be allowed to
+  /// transmit.
+  /// - "WILDFIRE_ALERT" : The packet matching this rule will be allowed to
+  /// transmit, but a threat_log entry will be sent to the consumer project.
+  /// - "WILDFIRE_DENY" : The packet matching this rule will be dropped, and a
+  /// threat_log entry will be sent to the consumer project.
+  core.String? action;
+
+  /// Protocol to match.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "WILDFIRE_PROTOCOL_UNSPECIFIED" : Protocol not specified.
+  /// - "WILDFIRE_SMTP" : SMTP protocol
+  /// - "WILDFIRE_SMB" : SMB protocol
+  /// - "WILDFIRE_POP3" : POP3 protocol
+  /// - "WILDFIRE_IMAP" : IMAP protocol
+  /// - "WILDFIRE_HTTP2" : HTTP2 protocol
+  /// - "WILDFIRE_HTTP" : HTTP protocol
+  /// - "WILDFIRE_FTP" : FTP protocol
+  core.String? protocol;
+
+  WildfireOverride({this.action, this.protocol});
+
+  WildfireOverride.fromJson(core.Map json_)
+    : this(
+        action: json_['action'] as core.String?,
+        protocol: json_['protocol'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final action = this.action;
+    final protocol = this.protocol;
+    return {'action': ?action, 'protocol': ?protocol};
+  }
+}
+
+/// Defines the file types to be submitted for WildFire analysis and the
+/// direction of the traffic.
+class WildfireSubmissionRule {
+  /// Submit a custom list of file types for WildFire analysis.
+  WildfireSubmissionRuleCustomFileTypes? customFileTypes;
+
+  /// Direction for the files to be analyzed by WildFire.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "DIRECTION_UNSPECIFIED" : Direction not specified.
+  /// - "UPLOAD" : Upload direction.
+  /// - "DOWNLOAD" : Download direction.
+  /// - "BOTH" : Both upload and download directions.
+  core.String? direction;
+
+  /// File selection mode for WildFire analysis.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "FILE_SELECTION_MODE_UNSPECIFIED" : File selection mode not specified.
+  /// - "ALL_FILE_TYPES" : Submit all the file types for scan.
+  /// - "CUSTOM_FILE_TYPES" : Submit a custom list of file types for scan.
+  core.String? fileSelectionMode;
+
+  WildfireSubmissionRule({
+    this.customFileTypes,
+    this.direction,
+    this.fileSelectionMode,
+  });
+
+  WildfireSubmissionRule.fromJson(core.Map json_)
+    : this(
+        customFileTypes: json_.containsKey('customFileTypes')
+            ? WildfireSubmissionRuleCustomFileTypes.fromJson(
+                json_['customFileTypes'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        direction: json_['direction'] as core.String?,
+        fileSelectionMode: json_['fileSelectionMode'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final customFileTypes = this.customFileTypes;
+    final direction = this.direction;
+    final fileSelectionMode = this.fileSelectionMode;
+    return {
+      'customFileTypes': ?customFileTypes,
+      'direction': ?direction,
+      'fileSelectionMode': ?fileSelectionMode,
+    };
+  }
+}
+
+/// The options to submit a custom list of file types for scan.
+class WildfireSubmissionRuleCustomFileTypes {
+  /// File types to be submitted for WildFire analysis.
+  ///
+  /// Required.
+  core.List<core.String>? fileTypes;
+
+  WildfireSubmissionRuleCustomFileTypes({this.fileTypes});
+
+  WildfireSubmissionRuleCustomFileTypes.fromJson(core.Map json_)
+    : this(
+        fileTypes: (json_['fileTypes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final fileTypes = this.fileTypes;
+    return {'fileTypes': ?fileTypes};
+  }
+}
+
+/// Defines what action to take for a specific WildFire threat_id match.
+class WildfireThreatOverride {
+  /// Threat action override.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "WILDFIRE_THREAT_ACTION_UNSPECIFIED" : Threat action not specified.
+  /// - "WILDFIRE_DEFAULT_ACTION" : The default action (as specified by the
+  /// vendor) is taken.
+  /// - "WILDFIRE_ALLOW" : The packet matching this rule will be allowed to
+  /// transmit.
+  /// - "WILDFIRE_ALERT" : The packet matching this rule will be allowed to
+  /// transmit, but a threat_log entry will be sent to the consumer project.
+  /// - "WILDFIRE_DENY" : The packet matching this rule will be dropped, and a
+  /// threat_log entry will be sent to the consumer project.
+  core.String? action;
+
+  /// Threat ID to match.
+  ///
+  /// Required.
+  core.String? threatId;
+
+  WildfireThreatOverride({this.action, this.threatId});
+
+  WildfireThreatOverride.fromJson(core.Map json_)
+    : this(
+        action: json_['action'] as core.String?,
+        threatId: json_['threatId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final action = this.action;
+    final threatId = this.threatId;
+    return {'action': ?action, 'threatId': ?threatId};
+  }
+}
+
+/// Message for a WildfireVerdictChangeRequest.
+class WildfireVerdictChangeRequest {
+  /// The justification for the verdict change request.
+  ///
+  /// Max length 2048 characters.
+  ///
+  /// Required.
+  core.String? comment;
+
+  /// The timestamp when the WildfireVerdictChangeRequest was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The file name of the Malware Sample.
+  ///
+  /// Output only.
+  core.String? fileName;
+
+  /// The file type of the Malware Sample.
+  ///
+  /// Output only.
+  core.String? fileType;
+
+  /// The final verdict of the Malware Sample.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "WILDFIRE_SAMPLE_VERDICT_UNKNOWN" : Default value. Malware is not yet
+  /// classified.
+  /// - "BENIGN" : Sample is safe and does not exhibit malicious behavior.
+  /// - "MALWARE" : Sample is malware and poses a security threat.
+  /// - "GRAYWARE" : Sample does not pose a direct security threat, but might
+  /// display otherwise obtrusive behavior.
+  /// - "PHISHING" : Link directs users to a phishing site and poses a security
+  /// threat.
+  core.String? finalVerdict;
+
+  /// Identifier.
+  ///
+  /// The relative name of the WildfireVerdictChangeRequest. Output only. This
+  /// is a unique identifier generated by the third party API. Format:
+  /// organizations|projects/{project_or_organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}/wildfireVerdictChangeRequests/{wildfire_verdict_change_request_id}
+  /// Where {wildfire_verdict_change_request_id} is the ID in the format:
+  /// ^\[0-9a-fA-F\]{8}-\[0-9a-fA-F\]{4}-\[0-9a-fA-F\]{4}-\[0-9a-fA-F\]{4}-\[0-9a-fA-F\]{12}$
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The suggested verdict to apply to the Malware Sample.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "WILDFIRE_SAMPLE_VERDICT_UNKNOWN" : Default value. Malware is not yet
+  /// classified.
+  /// - "BENIGN" : Sample is safe and does not exhibit malicious behavior.
+  /// - "MALWARE" : Sample is malware and poses a security threat.
+  /// - "GRAYWARE" : Sample does not pose a direct security threat, but might
+  /// display otherwise obtrusive behavior.
+  /// - "PHISHING" : Link directs users to a phishing site and poses a security
+  /// threat.
+  core.String? newVerdict;
+
+  /// The original verdict of the Malware Sample.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "WILDFIRE_SAMPLE_VERDICT_UNKNOWN" : Default value. Malware is not yet
+  /// classified.
+  /// - "BENIGN" : Sample is safe and does not exhibit malicious behavior.
+  /// - "MALWARE" : Sample is malware and poses a security threat.
+  /// - "GRAYWARE" : Sample does not pose a direct security threat, but might
+  /// display otherwise obtrusive behavior.
+  /// - "PHISHING" : Link directs users to a phishing site and poses a security
+  /// threat.
+  core.String? oldVerdict;
+
+  /// The timestamp when the WildfireVerdictChangeRequest was resolved.
+  ///
+  /// Output only.
+  core.String? resolutionTime;
+
+  /// The SHA256 hash of the Malware Sample to change the verdict of.
+  ///
+  /// Required.
+  core.String? sha256;
+
+  /// The region of the file associated with the Malware Sample.
+  ///
+  /// Output only.
+  core.String? sourceRegion;
+
+  /// The review state of the WildfireVerdictChangeRequest.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "VERDICT_CHANGE_REQUEST_STATE_UNSPECIFIED" : Default value. Request does
+  /// not have a state. This value is unused.
+  /// - "OPEN" : Request has been created and review has not started.
+  /// - "CLOSED" : Malware Sample has been reviewed and the final verdict has
+  /// been updated.
+  /// - "PENDING" : Malware Sample is currently being reviewed.
+  core.String? state;
+
+  /// The timestamp when the WildfireVerdictChangeRequest was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  /// The ID of the WildfireVerdictChangeRequest.
+  ///
+  /// This is a unique identifier generated by the third party API. Format:
+  /// ^\[0-9a-fA-F\]{8}-\[0-9a-fA-F\]{4}-\[0-9a-fA-F\]{4}-\[0-9a-fA-F\]{4}-\[0-9a-fA-F\]{12}$
+  ///
+  /// Output only.
+  core.String? wildfireVerdictChangeRequestId;
+
+  WildfireVerdictChangeRequest({
+    this.comment,
+    this.createTime,
+    this.fileName,
+    this.fileType,
+    this.finalVerdict,
+    this.name,
+    this.newVerdict,
+    this.oldVerdict,
+    this.resolutionTime,
+    this.sha256,
+    this.sourceRegion,
+    this.state,
+    this.updateTime,
+    this.wildfireVerdictChangeRequestId,
+  });
+
+  WildfireVerdictChangeRequest.fromJson(core.Map json_)
+    : this(
+        comment: json_['comment'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        fileName: json_['fileName'] as core.String?,
+        fileType: json_['fileType'] as core.String?,
+        finalVerdict: json_['finalVerdict'] as core.String?,
+        name: json_['name'] as core.String?,
+        newVerdict: json_['newVerdict'] as core.String?,
+        oldVerdict: json_['oldVerdict'] as core.String?,
+        resolutionTime: json_['resolutionTime'] as core.String?,
+        sha256: json_['sha256'] as core.String?,
+        sourceRegion: json_['sourceRegion'] as core.String?,
+        state: json_['state'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+        wildfireVerdictChangeRequestId:
+            json_['wildfireVerdictChangeRequestId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final comment = this.comment;
+    final createTime = this.createTime;
+    final fileName = this.fileName;
+    final fileType = this.fileType;
+    final finalVerdict = this.finalVerdict;
+    final name = this.name;
+    final newVerdict = this.newVerdict;
+    final oldVerdict = this.oldVerdict;
+    final resolutionTime = this.resolutionTime;
+    final sha256 = this.sha256;
+    final sourceRegion = this.sourceRegion;
+    final state = this.state;
+    final updateTime = this.updateTime;
+    final wildfireVerdictChangeRequestId = this.wildfireVerdictChangeRequestId;
+    return {
+      'comment': ?comment,
+      'createTime': ?createTime,
+      'fileName': ?fileName,
+      'fileType': ?fileType,
+      'finalVerdict': ?finalVerdict,
+      'name': ?name,
+      'newVerdict': ?newVerdict,
+      'oldVerdict': ?oldVerdict,
+      'resolutionTime': ?resolutionTime,
+      'sha256': ?sha256,
+      'sourceRegion': ?sourceRegion,
+      'state': ?state,
+      'updateTime': ?updateTime,
+      'wildfireVerdictChangeRequestId': ?wildfireVerdictChangeRequestId,
     };
   }
 }

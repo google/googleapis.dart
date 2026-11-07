@@ -6829,7 +6829,7 @@ class Trigger {
   /// The list of filters that applies to event attributes. Only events that
   /// match all the provided filters are sent to the destination.
   ///
-  /// Required.
+  /// Optional.
   core.List<EventFilter>? eventFilters;
 
   /// User labels attached to the triggers that can be used to group resources.

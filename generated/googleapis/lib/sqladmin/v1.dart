@@ -39,6 +39,7 @@
 /// - [SslCertsResource]
 /// - [TiersResource]
 /// - [UsersResource]
+/// - [WorkloadCapturesResource]
 library;
 
 import 'dart:async' as async;
@@ -80,6 +81,8 @@ class SQLAdminApi {
   SslCertsResource get sslCerts => SslCertsResource(_requester);
   TiersResource get tiers => TiersResource(_requester);
   UsersResource get users => UsersResource(_requester);
+  WorkloadCapturesResource get workloadCaptures =>
+      WorkloadCapturesResource(_requester);
 
   SQLAdminApi(
     http.Client client, {
@@ -4324,6 +4327,270 @@ class UsersResource {
   }
 }
 
+class WorkloadCapturesResource {
+  final commons.ApiRequester _requester;
+
+  WorkloadCapturesResource(commons.ApiRequester client) : _requester = client;
+
+  /// Lists all captured workloads associated with the instance.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Required. Project ID of the project that contains the
+  /// instance.
+  ///
+  /// [instance] - Required. Cloud SQL instance ID. This does not include the
+  /// project ID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [WorkloadCapturesListResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<WorkloadCapturesListResponse> list(
+    core.String project,
+    core.String instance, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/projects/' +
+        commons.escapeVariable('$project') +
+        '/instances/' +
+        commons.escapeVariable('$instance') +
+        '/workloadCaptures';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return WorkloadCapturesListResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Starts capturing the SQL queries, transactions, and other operations
+  /// executed on the primary instance.
+  ///
+  /// This traffic is securely stored and forms a "captured workload". This
+  /// workload can be replayed later on a different instance to safely test
+  /// performance impacts, database upgrades, configuration changes etc. before
+  /// applying them to production.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Required. Project ID of the project that contains the
+  /// instance.
+  ///
+  /// [instance] - Required. Cloud SQL instance ID. This does not include the
+  /// project ID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> start(
+    WorkloadCapturesStartRequest request,
+    core.String project,
+    core.String instance, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/projects/' +
+        commons.escapeVariable('$project') +
+        '/instances/' +
+        commons.escapeVariable('$instance') +
+        '/workloadCaptures:start';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Starts executing a captured workload on a separate Cloud SQL instance
+  /// provisioned for workload replay.
+  ///
+  /// This target instance simulates the production environment without
+  /// affecting the primary instance.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Required. Project ID of the project that contains the
+  /// instance.
+  ///
+  /// [instance] - Required. Cloud SQL instance ID. This does not include the
+  /// project ID.
+  ///
+  /// [workloadId] - Required. The ID of the workload to replay.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> startReplay(
+    WorkloadCapturesStartReplayRequest request,
+    core.String project,
+    core.String instance,
+    core.String workloadId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/projects/' +
+        commons.escapeVariable('$project') +
+        '/instances/' +
+        commons.escapeVariable('$instance') +
+        '/workloadCaptures/' +
+        commons.escapeVariable('$workloadId') +
+        ':startReplay';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Stops capturing the query traffic and related operations executed on the
+  /// primary instance.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Required. Project ID of the project that contains the
+  /// instance.
+  ///
+  /// [instance] - Required. Cloud SQL instance ID. This does not include the
+  /// project ID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> stop(
+    WorkloadCapturesStopRequest request,
+    core.String project,
+    core.String instance, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/projects/' +
+        commons.escapeVariable('$project') +
+        '/instances/' +
+        commons.escapeVariable('$instance') +
+        '/workloadCaptures:stop';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Stops an active workload replay on the target Cloud SQL replay instance.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Required. Project ID of the project that contains the target
+  /// replay instance.
+  ///
+  /// [instance] - Required. Cloud SQL instance ID of the target replay
+  /// instance. This does not include the project ID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> stopReplay(
+    WorkloadCapturesStopReplayRequest request,
+    core.String project,
+    core.String instance, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/projects/' +
+        commons.escapeVariable('$project') +
+        '/instances/' +
+        commons.escapeVariable('$instance') +
+        '/workloadCaptures:stopReplay';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 /// An entry for an Access Control list.
 class AclEntry {
   /// The time when this access control entry expires in
@@ -6531,6 +6798,19 @@ class DatabaseInstance {
   )
   core.String? currentDiskSize;
 
+  /// State of the Database Center integration for this instance.
+  ///
+  /// When unspecified, Database Center integration is enabled by default.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "DATABASE_CENTER_INTEGRATION_UNSPECIFIED" : Default value. The
+  /// integration state is unspecified. When unspecified, Database Center
+  /// integration is enabled by default.
+  /// - "ENABLED" : Database Center integration is enabled.
+  /// - "DISABLED" : Database Center integration is disabled.
+  core.String? databaseCenterIntegration;
+
   /// If true, instance metadata is sent to the Database Center.
   ///
   /// If false, instance metadata is not sent to the Database Center.
@@ -6836,6 +7116,14 @@ class DatabaseInstance {
   /// The user settings.
   Settings? settings;
 
+  /// Input only.
+  ///
+  /// Determines whether the precheck step is skipped during a major version
+  /// upgrade.
+  ///
+  /// Optional.
+  core.bool? skipPrecheck;
+
   ///
   /// Possible string values are:
   /// - "SQL_NETWORK_ARCHITECTURE_UNSPECIFIED"
@@ -6898,6 +7186,7 @@ class DatabaseInstance {
     this.connectionName,
     this.createTime,
     this.currentDiskSize,
+    this.databaseCenterIntegration,
     this.databaseCenterIntegrationEnabled,
     this.databaseInstalledVersion,
     this.databaseVersion,
@@ -6939,6 +7228,7 @@ class DatabaseInstance {
     this.serverCaCert,
     this.serviceAccountEmailAddress,
     this.settings,
+    this.skipPrecheck,
     this.sqlNetworkArchitecture,
     this.state,
     this.suspensionReason,
@@ -6958,6 +7248,8 @@ class DatabaseInstance {
         connectionName: json_['connectionName'] as core.String?,
         createTime: json_['createTime'] as core.String?,
         currentDiskSize: json_['currentDiskSize'] as core.String?,
+        databaseCenterIntegration:
+            json_['databaseCenterIntegration'] as core.String?,
         databaseCenterIntegrationEnabled:
             json_['databaseCenterIntegrationEnabled'] as core.bool?,
         databaseInstalledVersion:
@@ -7079,6 +7371,7 @@ class DatabaseInstance {
                 json_['settings'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        skipPrecheck: json_['skipPrecheck'] as core.bool?,
         sqlNetworkArchitecture: json_['sqlNetworkArchitecture'] as core.String?,
         state: json_['state'] as core.String?,
         suspensionReason: (json_['suspensionReason'] as core.List?)
@@ -7106,6 +7399,7 @@ class DatabaseInstance {
     final connectionName = this.connectionName;
     final createTime = this.createTime;
     final currentDiskSize = this.currentDiskSize;
+    final databaseCenterIntegration = this.databaseCenterIntegration;
     final databaseCenterIntegrationEnabled =
         this.databaseCenterIntegrationEnabled;
     final databaseInstalledVersion = this.databaseInstalledVersion;
@@ -7149,6 +7443,7 @@ class DatabaseInstance {
     final serverCaCert = this.serverCaCert;
     final serviceAccountEmailAddress = this.serviceAccountEmailAddress;
     final settings = this.settings;
+    final skipPrecheck = this.skipPrecheck;
     final sqlNetworkArchitecture = this.sqlNetworkArchitecture;
     final state = this.state;
     final suspensionReason = this.suspensionReason;
@@ -7163,6 +7458,7 @@ class DatabaseInstance {
       'connectionName': ?connectionName,
       'createTime': ?createTime,
       'currentDiskSize': ?currentDiskSize,
+      'databaseCenterIntegration': ?databaseCenterIntegration,
       'databaseCenterIntegrationEnabled': ?databaseCenterIntegrationEnabled,
       'databaseInstalledVersion': ?databaseInstalledVersion,
       'databaseVersion': ?databaseVersion,
@@ -7205,6 +7501,7 @@ class DatabaseInstance {
       'serverCaCert': ?serverCaCert,
       'serviceAccountEmailAddress': ?serviceAccountEmailAddress,
       'settings': ?settings,
+      'skipPrecheck': ?skipPrecheck,
       'sqlNetworkArchitecture': ?sqlNetworkArchitecture,
       'state': ?state,
       'suspensionReason': ?suspensionReason,
@@ -7594,6 +7891,15 @@ class DeploymentTasks {
 
 /// Disk encryption configuration for an instance.
 class DiskEncryptionConfiguration {
+  /// Whether to enforce CMEK log encryption at source.
+  ///
+  /// When enforced, transaction logs are encrypted prior to being uploaded to
+  /// Cloud Storage. If not enforced, then CMEK logs are encrypted by the Cloud
+  /// Storage service.
+  ///
+  /// Optional.
+  core.bool? cmekSourceLogEncryptionEnforced;
+
   /// If true, enables Confidential Mode for the instance's Hyperdisk Balanced
   /// volumes.
   ///
@@ -7605,10 +7911,11 @@ class DiskEncryptionConfiguration {
   /// This is always `sql#diskEncryptionConfiguration`.
   core.String? kind;
 
-  /// Resource name of KMS key for disk encryption
+  /// Resource name of KMS key for disk encryption.
   core.String? kmsKeyName;
 
   DiskEncryptionConfiguration({
+    this.cmekSourceLogEncryptionEnforced,
     this.confidentialMode,
     this.kind,
     this.kmsKeyName,
@@ -7616,16 +7923,21 @@ class DiskEncryptionConfiguration {
 
   DiskEncryptionConfiguration.fromJson(core.Map json_)
     : this(
+        cmekSourceLogEncryptionEnforced:
+            json_['cmekSourceLogEncryptionEnforced'] as core.bool?,
         confidentialMode: json_['confidentialMode'] as core.bool?,
         kind: json_['kind'] as core.String?,
         kmsKeyName: json_['kmsKeyName'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final cmekSourceLogEncryptionEnforced =
+        this.cmekSourceLogEncryptionEnforced;
     final confidentialMode = this.confidentialMode;
     final kind = this.kind;
     final kmsKeyName = this.kmsKeyName;
     return {
+      'cmekSourceLogEncryptionEnforced': ?cmekSourceLogEncryptionEnforced,
       'confidentialMode': ?confidentialMode,
       'kind': ?kind,
       'kmsKeyName': ?kmsKeyName,
@@ -7752,6 +8064,8 @@ class ExecuteSqlPayload {
   core.bool? autoIamAuthn;
 
   /// Name of the database on which the statement will be executed.
+  ///
+  /// For Postgres and SQL Server it's required, for MySQL it's optional.
   ///
   /// Optional.
   core.String? database;
@@ -10885,6 +11199,17 @@ class Operation {
   /// `2012-11-15T16:19:00.094Z`.
   core.String? startTime;
 
+  /// The context for the `StartWorkloadCapture` operation, which contains
+  /// details to start recording the workload (SQL queries) on a Cloud SQL
+  /// instance.
+  StartWorkloadCaptureContext? startWorkloadCaptureContext;
+
+  /// The context for the `StartWorkloadReplay` operation, which contains
+  /// details about starting the execution of a captured workload (recorded read
+  /// and write SQL queries) on a replay instance (the Cloud SQL instance where
+  /// the recorded SQL queries are executed).
+  StartWorkloadReplayContext? startWorkloadReplayContext;
+
   /// The status of an operation.
   /// Possible string values are:
   /// - "SQL_OPERATION_STATUS_UNSPECIFIED" : The state of the operation is
@@ -10893,6 +11218,16 @@ class Operation {
   /// - "RUNNING" : The operation is running.
   /// - "DONE" : The operation completed.
   core.String? status;
+
+  /// The context for the `StopWorkloadCapture` operation, which contains
+  /// details to stop recording the workload (SQL queries) on a Cloud SQL
+  /// instance.
+  StopWorkloadCaptureContext? stopWorkloadCaptureContext;
+
+  /// The context for the `StopWorkloadReplay` operation, which contains details
+  /// about stopping the execution of a captured workload (recorded read and
+  /// write SQL queries) on a replay instance.
+  StopWorkloadReplayContext? stopWorkloadReplayContext;
 
   /// The sub operation based on the operation type.
   ///
@@ -10924,7 +11259,11 @@ class Operation {
     this.preCheckMajorVersionUpgradeContext,
     this.selfLink,
     this.startTime,
+    this.startWorkloadCaptureContext,
+    this.startWorkloadReplayContext,
     this.status,
+    this.stopWorkloadCaptureContext,
+    this.stopWorkloadReplayContext,
     this.subOperationType,
     this.targetId,
     this.targetLink,
@@ -10979,7 +11318,35 @@ class Operation {
             : null,
         selfLink: json_['selfLink'] as core.String?,
         startTime: json_['startTime'] as core.String?,
+        startWorkloadCaptureContext:
+            json_.containsKey('startWorkloadCaptureContext')
+            ? StartWorkloadCaptureContext.fromJson(
+                json_['startWorkloadCaptureContext']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        startWorkloadReplayContext:
+            json_.containsKey('startWorkloadReplayContext')
+            ? StartWorkloadReplayContext.fromJson(
+                json_['startWorkloadReplayContext']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         status: json_['status'] as core.String?,
+        stopWorkloadCaptureContext:
+            json_.containsKey('stopWorkloadCaptureContext')
+            ? StopWorkloadCaptureContext.fromJson(
+                json_['stopWorkloadCaptureContext']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        stopWorkloadReplayContext:
+            json_.containsKey('stopWorkloadReplayContext')
+            ? StopWorkloadReplayContext.fromJson(
+                json_['stopWorkloadReplayContext']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         subOperationType: json_.containsKey('subOperationType')
             ? SqlSubOperationType.fromJson(
                 json_['subOperationType']
@@ -11008,7 +11375,11 @@ class Operation {
         this.preCheckMajorVersionUpgradeContext;
     final selfLink = this.selfLink;
     final startTime = this.startTime;
+    final startWorkloadCaptureContext = this.startWorkloadCaptureContext;
+    final startWorkloadReplayContext = this.startWorkloadReplayContext;
     final status = this.status;
+    final stopWorkloadCaptureContext = this.stopWorkloadCaptureContext;
+    final stopWorkloadReplayContext = this.stopWorkloadReplayContext;
     final subOperationType = this.subOperationType;
     final targetId = this.targetId;
     final targetLink = this.targetLink;
@@ -11029,7 +11400,11 @@ class Operation {
       'preCheckMajorVersionUpgradeContext': ?preCheckMajorVersionUpgradeContext,
       'selfLink': ?selfLink,
       'startTime': ?startTime,
+      'startWorkloadCaptureContext': ?startWorkloadCaptureContext,
+      'startWorkloadReplayContext': ?startWorkloadReplayContext,
       'status': ?status,
+      'stopWorkloadCaptureContext': ?stopWorkloadCaptureContext,
+      'stopWorkloadReplayContext': ?stopWorkloadReplayContext,
       'subOperationType': ?subOperationType,
       'targetId': ?targetId,
       'targetLink': ?targetLink,
@@ -11730,6 +12105,11 @@ class PreCheckMajorVersionUpgradeContext {
   /// Optional.
   core.String? kind;
 
+  /// The maximum allowed runtime for the precheck operation.
+  ///
+  /// Optional.
+  core.String? maxRuntime;
+
   /// The responses from the precheck operation.
   ///
   /// Output only.
@@ -11833,6 +12213,7 @@ class PreCheckMajorVersionUpgradeContext {
 
   PreCheckMajorVersionUpgradeContext({
     this.kind,
+    this.maxRuntime,
     this.preCheckResponse,
     this.targetDatabaseVersion,
   });
@@ -11840,6 +12221,7 @@ class PreCheckMajorVersionUpgradeContext {
   PreCheckMajorVersionUpgradeContext.fromJson(core.Map json_)
     : this(
         kind: json_['kind'] as core.String?,
+        maxRuntime: json_['maxRuntime'] as core.String?,
         preCheckResponse: (json_['preCheckResponse'] as core.List?)
             ?.map(
               (value) => PreCheckResponse.fromJson(
@@ -11852,10 +12234,12 @@ class PreCheckMajorVersionUpgradeContext {
 
   core.Map<core.String, core.dynamic> toJson() {
     final kind = this.kind;
+    final maxRuntime = this.maxRuntime;
     final preCheckResponse = this.preCheckResponse;
     final targetDatabaseVersion = this.targetDatabaseVersion;
     return {
       'kind': ?kind,
+      'maxRuntime': ?maxRuntime,
       'preCheckResponse': ?preCheckResponse,
       'targetDatabaseVersion': ?targetDatabaseVersion,
     };
@@ -13592,7 +13976,6 @@ class SqlExternalSyncSettingError {
 /// Response for the acquire SSRS lease request.
 typedef SqlInstancesAcquireSsrsLeaseResponse = $SsrsLeaseResponse;
 
-/// Execute SQL statements response.
 class SqlInstancesExecuteSqlResponse {
   /// A list of notices and warnings generated during query execution.
   ///
@@ -14539,6 +14922,91 @@ class SslCertsListResponse {
   }
 }
 
+/// The context for the `StartWorkloadCapture` operation, which contains details
+/// to start recording the workload (SQL queries) on a Cloud SQL instance.
+class StartWorkloadCaptureContext {
+  /// If true, the captured workload is simultaneously executed on a separate,
+  /// ephemeral Cloud SQL instance.
+  ///
+  /// This "live replay" instance is automatically provisioned and is cloned
+  /// from the source instance. If false (the default), the workload is only
+  /// stored and no live replay occurs. It can be replayed later using a
+  /// separate `StartWorkloadReplayRequest`. Note: The workload capture runs
+  /// continuously until an explicit `StopWorkloadCaptureRequest` is issued.
+  ///
+  /// Optional.
+  core.bool? enableLiveReplay;
+
+  /// Required if `enable_live_replay` is true.
+  ///
+  /// The name of the Cloud SQL instance where the captured workload (SQL
+  /// queries) is being executed, excluding the project ID (for example,
+  /// `my-replay-instance`). The instance name must start with a lowercase
+  /// letter and contain only lowercase letters, numbers, and hyphens. The
+  /// combined length of `project-ID:instance-name` must be 98 characters or
+  /// less.
+  ///
+  /// Optional.
+  core.String? replayInstance;
+
+  StartWorkloadCaptureContext({this.enableLiveReplay, this.replayInstance});
+
+  StartWorkloadCaptureContext.fromJson(core.Map json_)
+    : this(
+        enableLiveReplay: json_['enableLiveReplay'] as core.bool?,
+        replayInstance: json_['replayInstance'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final enableLiveReplay = this.enableLiveReplay;
+    final replayInstance = this.replayInstance;
+    return {
+      'enableLiveReplay': ?enableLiveReplay,
+      'replayInstance': ?replayInstance,
+    };
+  }
+}
+
+/// The context for the `StartWorkloadReplay` operation, which contains details
+/// about starting the execution of a captured workload (recorded read and write
+/// SQL queries) on a replay instance (the Cloud SQL instance where the recorded
+/// SQL queries are executed).
+class StartWorkloadReplayContext {
+  /// The name of the Cloud SQL instance where the captured workload (SQL
+  /// queries) is being executed, excluding the project ID (for example,
+  /// `my-replay-instance`).
+  ///
+  /// The instance name must start with a lowercase letter and contain only
+  /// lowercase letters, numbers, and hyphens. The combined length of
+  /// `project-ID:instance-name` must be 98 characters or less.
+  ///
+  /// Required.
+  core.String? replayInstance;
+
+  /// The ID of the workload to start executing on the replay instance.
+  ///
+  /// Each workload capture generates a unique ID in the format `workload-` (for
+  /// example, `workload-1786046400`). Use this ID to start executing the
+  /// recorded SQL queries.
+  ///
+  /// Output only.
+  core.String? workloadId;
+
+  StartWorkloadReplayContext({this.replayInstance, this.workloadId});
+
+  StartWorkloadReplayContext.fromJson(core.Map json_)
+    : this(
+        replayInstance: json_['replayInstance'] as core.String?,
+        workloadId: json_['workloadId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final replayInstance = this.replayInstance;
+    final workloadId = this.workloadId;
+    return {'replayInstance': ?replayInstance, 'workloadId': ?workloadId};
+  }
+}
+
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.
 ///
@@ -14547,6 +15015,35 @@ class SslCertsListResponse {
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status00;
+
+/// The context for the `StopWorkloadCapture` operation, which contains details
+/// to stop recording the workload (SQL queries) on a Cloud SQL instance.
+class StopWorkloadCaptureContext {
+  /// If true, immediately aborts the concurrent live replay and discards any
+  /// un-replayed traffic alongside stopping the capture.
+  ///
+  /// If false (the default), the capture stops recording new traffic, but the
+  /// live replay will continue executing until the entire backlog of captured
+  /// traffic has been replayed.
+  ///
+  /// Optional.
+  core.bool? abortLiveReplay;
+
+  StopWorkloadCaptureContext({this.abortLiveReplay});
+
+  StopWorkloadCaptureContext.fromJson(core.Map json_)
+    : this(abortLiveReplay: json_['abortLiveReplay'] as core.bool?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final abortLiveReplay = this.abortLiveReplay;
+    return {'abortLiveReplay': ?abortLiveReplay};
+  }
+}
+
+/// The context for the `StopWorkloadReplay` operation, which represents an
+/// operation that stops an active workload replay on a target Cloud SQL replay
+/// instance.
+typedef StopWorkloadReplayContext = $Empty;
 
 /// Request message for switching over a `BlueGreenDeployment` resource.
 typedef SwitchoverBlueGreenDeploymentRequest = $Empty;
@@ -14824,8 +15321,8 @@ class User {
   /// Cloud IAM group.
   /// - "CLOUD_IAM_GROUP_SERVICE_ACCOUNT" : Read-only. Login for a service
   /// account that belongs to the Cloud IAM group.
-  /// - "CLOUD_IAM_WORKFORCE_IDENTITY" : Cloud IAM workforce identity user
-  /// managed via workforce identity federation.
+  /// - "CLOUD_IAM_WORKFORCE_IDENTITY" : Cloud IAM workforce identity managed by
+  /// Workforce Identity Federation.
   /// - "ENTRAID_USER" : Microsoft Entra ID user.
   core.String? type;
 
@@ -15033,5 +15530,239 @@ class Value {
     final nullValue = this.nullValue;
     final value = this.value;
     return {'nullValue': ?nullValue, 'value': ?value};
+  }
+}
+
+/// Captured workload for an instance.
+class WorkloadCapture {
+  /// The base backup ID associated with the workload capture.
+  ///
+  /// Output only.
+  core.String? backupId;
+
+  /// The end time of the workload capture.
+  ///
+  /// Output only.
+  core.String? endTime;
+
+  /// The name of the replay instance, if live replay was enabled.
+  ///
+  /// Output only.
+  core.String? replayInstance;
+
+  /// The retention period in days for the captured workload.
+  ///
+  /// Output only.
+  core.int? retentionDays;
+
+  /// The name of the source instance.
+  ///
+  /// Output only.
+  core.String? sourceInstance;
+
+  /// The start time of the workload capture.
+  ///
+  /// Output only.
+  core.String? startTime;
+
+  /// The state of the workload capture.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "RUNNING" : Workload capture is currently running.
+  /// - "COMPLETED" : Workload capture completed successfully. This state is set
+  /// when the user explicitly stops the capture.
+  /// - "FAILED" : Workload capture failed.
+  /// - "TERMINATED" : Workload capture was terminated automatically. This state
+  /// is set when Cloud SQL automatically stops the capture due to a conflicting
+  /// operation or when the maximum duration is reached.
+  core.String? workloadCaptureState;
+
+  /// The ID of the captured workload.
+  ///
+  /// Output only.
+  core.String? workloadId;
+
+  WorkloadCapture({
+    this.backupId,
+    this.endTime,
+    this.replayInstance,
+    this.retentionDays,
+    this.sourceInstance,
+    this.startTime,
+    this.workloadCaptureState,
+    this.workloadId,
+  });
+
+  WorkloadCapture.fromJson(core.Map json_)
+    : this(
+        backupId: json_['backupId'] as core.String?,
+        endTime: json_['endTime'] as core.String?,
+        replayInstance: json_['replayInstance'] as core.String?,
+        retentionDays: json_['retentionDays'] as core.int?,
+        sourceInstance: json_['sourceInstance'] as core.String?,
+        startTime: json_['startTime'] as core.String?,
+        workloadCaptureState: json_['workloadCaptureState'] as core.String?,
+        workloadId: json_['workloadId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final backupId = this.backupId;
+    final endTime = this.endTime;
+    final replayInstance = this.replayInstance;
+    final retentionDays = this.retentionDays;
+    final sourceInstance = this.sourceInstance;
+    final startTime = this.startTime;
+    final workloadCaptureState = this.workloadCaptureState;
+    final workloadId = this.workloadId;
+    return {
+      'backupId': ?backupId,
+      'endTime': ?endTime,
+      'replayInstance': ?replayInstance,
+      'retentionDays': ?retentionDays,
+      'sourceInstance': ?sourceInstance,
+      'startTime': ?startTime,
+      'workloadCaptureState': ?workloadCaptureState,
+      'workloadId': ?workloadId,
+    };
+  }
+}
+
+/// Instance list captured workloads response.
+class WorkloadCapturesListResponse {
+  /// This is always `sql#workloadCapturesList`.
+  core.String? kind;
+
+  /// List of captured workloads for the instance.
+  core.List<WorkloadCapture>? workloadCaptures;
+
+  WorkloadCapturesListResponse({this.kind, this.workloadCaptures});
+
+  WorkloadCapturesListResponse.fromJson(core.Map json_)
+    : this(
+        kind: json_['kind'] as core.String?,
+        workloadCaptures: (json_['workloadCaptures'] as core.List?)
+            ?.map(
+              (value) => WorkloadCapture.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final kind = this.kind;
+    final workloadCaptures = this.workloadCaptures;
+    return {'kind': ?kind, 'workloadCaptures': ?workloadCaptures};
+  }
+}
+
+/// Request to start executing a captured workload on a replay instance (the
+/// Cloud SQL instance where the recorded SQL queries are executed).
+class WorkloadCapturesStartReplayRequest {
+  /// Contains details about the start workload replay operation.
+  ///
+  /// Required.
+  StartWorkloadReplayContext? startWorkloadReplayContext;
+
+  WorkloadCapturesStartReplayRequest({this.startWorkloadReplayContext});
+
+  WorkloadCapturesStartReplayRequest.fromJson(core.Map json_)
+    : this(
+        startWorkloadReplayContext:
+            json_.containsKey('startWorkloadReplayContext')
+            ? StartWorkloadReplayContext.fromJson(
+                json_['startWorkloadReplayContext']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final startWorkloadReplayContext = this.startWorkloadReplayContext;
+    return {'startWorkloadReplayContext': ?startWorkloadReplayContext};
+  }
+}
+
+/// Request to start recording traffic from the primary instance (captured
+/// workload).
+class WorkloadCapturesStartRequest {
+  /// Contains details about the start workload capture operation.
+  ///
+  /// Optional.
+  StartWorkloadCaptureContext? startWorkloadCaptureContext;
+
+  WorkloadCapturesStartRequest({this.startWorkloadCaptureContext});
+
+  WorkloadCapturesStartRequest.fromJson(core.Map json_)
+    : this(
+        startWorkloadCaptureContext:
+            json_.containsKey('startWorkloadCaptureContext')
+            ? StartWorkloadCaptureContext.fromJson(
+                json_['startWorkloadCaptureContext']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final startWorkloadCaptureContext = this.startWorkloadCaptureContext;
+    return {'startWorkloadCaptureContext': ?startWorkloadCaptureContext};
+  }
+}
+
+/// Request to stop an active workload replay on a target Cloud SQL replay
+/// instance.
+class WorkloadCapturesStopReplayRequest {
+  /// Contains details about the stop workload replay operation.
+  ///
+  /// If omitted, default values are used.
+  ///
+  /// Optional.
+  StopWorkloadReplayContext? stopWorkloadReplayContext;
+
+  WorkloadCapturesStopReplayRequest({this.stopWorkloadReplayContext});
+
+  WorkloadCapturesStopReplayRequest.fromJson(core.Map json_)
+    : this(
+        stopWorkloadReplayContext:
+            json_.containsKey('stopWorkloadReplayContext')
+            ? StopWorkloadReplayContext.fromJson(
+                json_['stopWorkloadReplayContext']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final stopWorkloadReplayContext = this.stopWorkloadReplayContext;
+    return {'stopWorkloadReplayContext': ?stopWorkloadReplayContext};
+  }
+}
+
+/// Request to stop recording traffic from the primary instance.
+class WorkloadCapturesStopRequest {
+  /// Contains details about the stop workload capture operation.
+  ///
+  /// Optional.
+  StopWorkloadCaptureContext? stopWorkloadCaptureContext;
+
+  WorkloadCapturesStopRequest({this.stopWorkloadCaptureContext});
+
+  WorkloadCapturesStopRequest.fromJson(core.Map json_)
+    : this(
+        stopWorkloadCaptureContext:
+            json_.containsKey('stopWorkloadCaptureContext')
+            ? StopWorkloadCaptureContext.fromJson(
+                json_['stopWorkloadCaptureContext']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final stopWorkloadCaptureContext = this.stopWorkloadCaptureContext;
+    return {'stopWorkloadCaptureContext': ?stopWorkloadCaptureContext};
   }
 }

@@ -38,6 +38,8 @@ buildGoogleIdentityStsV1ExchangeTokenRequest() {
   final o = api.GoogleIdentityStsV1ExchangeTokenRequest();
   buildCounterGoogleIdentityStsV1ExchangeTokenRequest++;
   if (buildCounterGoogleIdentityStsV1ExchangeTokenRequest < 3) {
+    o.actorToken = 'foo';
+    o.actorTokenType = 'foo';
     o.audience = 'foo';
     o.grantType = 'foo';
     o.options = 'foo';
@@ -55,6 +57,8 @@ void checkGoogleIdentityStsV1ExchangeTokenRequest(
 ) {
   buildCounterGoogleIdentityStsV1ExchangeTokenRequest++;
   if (buildCounterGoogleIdentityStsV1ExchangeTokenRequest < 3) {
+    unittest.expect(o.actorToken!, unittest.equals('foo'));
+    unittest.expect(o.actorTokenType!, unittest.equals('foo'));
     unittest.expect(o.audience!, unittest.equals('foo'));
     unittest.expect(o.grantType!, unittest.equals('foo'));
     unittest.expect(o.options!, unittest.equals('foo'));

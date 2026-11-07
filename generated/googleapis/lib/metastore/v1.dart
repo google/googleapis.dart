@@ -4021,6 +4021,46 @@ class KerberosConfig {
   }
 }
 
+/// Configuration for Dataproc Metastore to Lakehouse proxy routing.In a phased
+/// migration, namespaces are migrated from Dataproc Metastore to a Lakehouse
+/// Iceberg REST Catalog in batches.
+///
+/// Between and after migration phases, the metastore service operates in PROXY
+/// state where requests for migrated namespaces are forwarded to the Lakehouse
+/// catalog while unmigrated namespaces continue to be served locally by DPMS.
+class LakehouseProxyConfig {
+  /// The Lakehouse Iceberg REST Catalog where requests are being proxied to.
+  ///
+  /// Format: projects/{project_id_or_number}/catalogs/{catalog_id}.
+  ///
+  /// Output only.
+  core.String? catalog;
+
+  /// The list of namespaces currently proxied to the Lakehouse catalog.
+  ///
+  /// As each migration batch completes, newly migrated namespaces are added to
+  /// this list.
+  ///
+  /// Output only.
+  core.List<core.String>? namespaces;
+
+  LakehouseProxyConfig({this.catalog, this.namespaces});
+
+  LakehouseProxyConfig.fromJson(core.Map json_)
+    : this(
+        catalog: json_['catalog'] as core.String?,
+        namespaces: (json_['namespaces'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final catalog = this.catalog;
+    final namespaces = this.namespaces;
+    return {'catalog': ?catalog, 'namespaces': ?namespaces};
+  }
+}
+
 /// The details of the latest scheduled backup.
 class LatestBackup {
   /// The ID of an in-progress scheduled backup.
@@ -4800,7 +4840,7 @@ class MigrationSummary {
   /// Output only.
   core.List<CatalogSummary>? catalogSummaries;
 
-  /// The UTC time when this report was finalized.
+  /// The UTC time when the source metadata read was initiated.
   ///
   /// Output only.
   core.String? createTime;
@@ -4809,6 +4849,11 @@ class MigrationSummary {
   ///
   /// Output only.
   core.bool? dryRun;
+
+  /// The UTC time when the report was written.
+  ///
+  /// Output only.
+  core.String? endTime;
 
   /// The Dataproc Metastore service name (format: projects / * /locations / *
   /// /services / * ) on which the migration was executed.
@@ -4820,6 +4865,7 @@ class MigrationSummary {
     this.catalogSummaries,
     this.createTime,
     this.dryRun,
+    this.endTime,
     this.service,
   });
 
@@ -4834,6 +4880,7 @@ class MigrationSummary {
             .toList(),
         createTime: json_['createTime'] as core.String?,
         dryRun: json_['dryRun'] as core.bool?,
+        endTime: json_['endTime'] as core.String?,
         service: json_['service'] as core.String?,
       );
 
@@ -4841,11 +4888,13 @@ class MigrationSummary {
     final catalogSummaries = this.catalogSummaries;
     final createTime = this.createTime;
     final dryRun = this.dryRun;
+    final endTime = this.endTime;
     final service = this.service;
     return {
       'catalogSummaries': ?catalogSummaries,
       'createTime': ?createTime,
       'dryRun': ?dryRun,
+      'endTime': ?endTime,
       'service': ?service,
     };
   }
@@ -5515,6 +5564,11 @@ class Service {
   /// User-defined labels for the metastore service.
   core.Map<core.String, core.String>? labels;
 
+  /// The Lakehouse proxy routing configuration for the metastore service.
+  ///
+  /// Output only.
+  LakehouseProxyConfig? lakehouseProxyConfig;
+
   /// The one hour maintenance window of the metastore service.
   ///
   /// This specifies when the service can be restarted for maintenance purposes
@@ -5667,6 +5721,7 @@ class Service {
     this.endpointUri,
     this.hiveMetastoreConfig,
     this.labels,
+    this.lakehouseProxyConfig,
     this.maintenanceWindow,
     this.metadataIntegration,
     this.metadataManagementActivity,
@@ -5708,6 +5763,12 @@ class Service {
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
+        lakehouseProxyConfig: json_.containsKey('lakehouseProxyConfig')
+            ? LakehouseProxyConfig.fromJson(
+                json_['lakehouseProxyConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         maintenanceWindow: json_.containsKey('maintenanceWindow')
             ? MaintenanceWindow.fromJson(
                 json_['maintenanceWindow']
@@ -5770,6 +5831,7 @@ class Service {
     final endpointUri = this.endpointUri;
     final hiveMetastoreConfig = this.hiveMetastoreConfig;
     final labels = this.labels;
+    final lakehouseProxyConfig = this.lakehouseProxyConfig;
     final maintenanceWindow = this.maintenanceWindow;
     final metadataIntegration = this.metadataIntegration;
     final metadataManagementActivity = this.metadataManagementActivity;
@@ -5796,6 +5858,7 @@ class Service {
       'endpointUri': ?endpointUri,
       'hiveMetastoreConfig': ?hiveMetastoreConfig,
       'labels': ?labels,
+      'lakehouseProxyConfig': ?lakehouseProxyConfig,
       'maintenanceWindow': ?maintenanceWindow,
       'metadataIntegration': ?metadataIntegration,
       'metadataManagementActivity': ?metadataManagementActivity,

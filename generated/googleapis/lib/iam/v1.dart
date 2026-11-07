@@ -2102,6 +2102,55 @@ class LocationsWorkforcePoolsSubjectsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Revokes all sessions for the specified WorkforcePoolSubject.
+  ///
+  /// Revoking sessions invalidates all active sessions and previously issued
+  /// credentials for the subject, requiring the user to re-authenticate with
+  /// the identity provider.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the WorkforcePoolSubject. Special
+  /// characters, such as `/` and `:`, must be escaped, because all URLs must
+  /// conform to the "When to Escape and Unescape" section of
+  /// [RFC 3986](https://www.rfc-editor.org/info/rfc3986/). Format:
+  /// `locations/{location}/workforcePools/{workforce_pool_id}/subjects/{subject_id}`
+  /// Value must have pattern
+  /// `^locations/\[^/\]+/workforcePools/\[^/\]+/subjects/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> revokeSessions(
+    RevokeWorkforcePoolSubjectSessionsRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':revokeSessions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Undeletes a WorkforcePoolSubject, as long as it was deleted fewer than 30
   /// days ago.
   ///
@@ -7666,7 +7715,7 @@ class GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client {
   /// - "ATTRIBUTES_TYPE_UNSPECIFIED" : No AttributesType specified.
   /// - "AZURE_AD_GROUPS_MAIL" : Used to get the user's group claims from the
   /// Microsoft Entra ID identity provider using the configuration provided in
-  /// ExtraAttributesOAuth2Client. The `mail` property of the
+  /// `ExtraAttributesOAuth2Client`. The `mail` property of the
   /// `microsoft.graph.group` object is used for claim mapping. See
   /// https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties
   /// for more details on `microsoft.graph.group` properties. The group mail
@@ -7675,7 +7724,7 @@ class GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client {
   /// `assertion.groups` * SAML: `assertion.attributes.groups`
   /// - "AZURE_AD_GROUPS_ID" : Used to get the user's group claims from the
   /// Microsoft Entra ID identity provider using the configuration provided in
-  /// ExtraAttributesOAuth2Client. The `id` property of the
+  /// `ExtraAttributesOAuth2Client`. The `id` property of the
   /// `microsoft.graph.group` object is used for claim mapping. See
   /// https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties
   /// for more details on `microsoft.graph.group` properties. The group IDs of
@@ -7684,8 +7733,8 @@ class GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client {
   /// `assertion.attributes.groups`
   /// - "AZURE_AD_GROUPS_DISPLAY_NAME" : Used to get the user's group claims
   /// from the Microsoft Entra ID identity provider using the configuration
-  /// provided in ExtraAttributesOAuth2Client. The `displayName` property of the
-  /// `microsoft.graph.group` object is used for claim mapping. See
+  /// provided in `ExtraAttributesOAuth2Client`. The `displayName` property of
+  /// the `microsoft.graph.group` object is used for claim mapping. See
   /// https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties
   /// for more details on `microsoft.graph.group` properties. The display names
   /// of the user's groups that are returned from Microsoft Entra ID can be
@@ -8092,8 +8141,8 @@ class InlineCertificateIssuanceConfig {
   /// Optional.
   core.int? rotationWindowPercentage;
 
-  /// If set to true, the trust domain will utilize the GCP-provisioned default
-  /// CA.
+  /// Determines whether the trust domain utilizes the Google Cloud-provisioned
+  /// default CA.
   ///
   /// A default CA in the same region as the workload will be selected to issue
   /// the certificate. Enabling this will clear any existing `ca_pools`
@@ -9242,6 +9291,26 @@ class Oidc {
   /// Optional.
   core.List<core.String>? allowedAudiences;
 
+  /// The URL to fetch the OIDC discovery document from, overriding the default
+  /// URL derived from `issuer_uri`.
+  ///
+  /// If not set, `discovery_uri` defaults to `issuer_uri` with
+  /// `/.well-known/openid-configuration` appended, as per the OpenID Connect
+  /// Discovery 1.0 specification. If set, `discovery_uri` must meet the
+  /// following requirements: - Must start with `https://`. - Must not exceed
+  /// 2000 characters. - The scheme, host, and port must match `issuer_uri`. -
+  /// The path must contain `/.well-known/` (where `` is not empty, such as
+  /// `openid-configuration`) and conform to the `issuer_uri` topology: - The
+  /// well-known path segment is inserted before the issuer path (for example,
+  /// `https://example.com/.well-known/openid-configuration/tenant1` for issuer
+  /// `https://example.com/tenant1`), or - The well-known path segment is
+  /// appended under the issuer path (for example,
+  /// `https://example.com/tenant1/.well-known/openid-configuration` for issuer
+  /// `https://example.com/tenant1`).
+  ///
+  /// Optional.
+  core.String? discoveryUri;
+
   /// The OIDC `issuer_uri`.
   ///
   /// Must be an HTTPS endpoint. Per OpenID Connect Discovery 1.0 spec, the OIDC
@@ -9265,23 +9334,31 @@ class Oidc {
   /// Optional.
   core.String? jwksJson;
 
-  Oidc({this.allowedAudiences, this.issuerUri, this.jwksJson});
+  Oidc({
+    this.allowedAudiences,
+    this.discoveryUri,
+    this.issuerUri,
+    this.jwksJson,
+  });
 
   Oidc.fromJson(core.Map json_)
     : this(
         allowedAudiences: (json_['allowedAudiences'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
+        discoveryUri: json_['discoveryUri'] as core.String?,
         issuerUri: json_['issuerUri'] as core.String?,
         jwksJson: json_['jwksJson'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final allowedAudiences = this.allowedAudiences;
+    final discoveryUri = this.discoveryUri;
     final issuerUri = this.issuerUri;
     final jwksJson = this.jwksJson;
     return {
       'allowedAudiences': ?allowedAudiences,
+      'discoveryUri': ?discoveryUri,
       'issuerUri': ?issuerUri,
       'jwksJson': ?jwksJson,
     };
@@ -9684,7 +9761,7 @@ class QueryGrantableRolesRequest {
 
   /// Optional limit on the number of roles to include in the response.
   ///
-  /// The default is 300, and the maximum is 2,000.
+  /// The default is 300, and the maximum is 3,000.
   core.int? pageSize;
 
   /// Optional pagination token returned in an earlier
@@ -9854,6 +9931,9 @@ class RemoveAttestationRuleRequest {
     return {'attestationRule': ?attestationRule};
   }
 }
+
+/// Request message for RevokeWorkforcePoolSubjectSessions.
+typedef RevokeWorkforcePoolSubjectSessionsRequest = $Empty;
 
 /// A role in the Identity and Access Management API.
 class Role {
@@ -10617,7 +10697,7 @@ class TrustStore {
   /// Required.
   core.List<TrustAnchor>? trustAnchors;
 
-  /// If set to True, the trust bundle will include the private ca managed
+  /// Determines whether the trust bundle includes the private CA managed
   /// identity regional root public certificates.
   ///
   /// Important: `trust_default_shared_ca` is only supported for managed
@@ -11089,6 +11169,23 @@ class WorkforcePoolProvider {
   /// soft-deleted provider using UndeleteWorkforcePoolProvider.
   core.String? state;
 
+  /// The vendor type of the third-party identity provider.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "VENDOR_TYPE_UNSPECIFIED" : Default value, no vendor specified,
+  /// backfilled to existing providers.
+  /// - "ENTRA_ID" : Microsoft Entra ID
+  /// - "OKTA" : Okta
+  /// - "PING_FEDERATE" : Ping Federate
+  /// - "ADFS" : Microsoft Active Directory Federation Services
+  /// - "KEYCLOAK" : Keycloak
+  /// - "FORGE_ROCK" : ForgeRock
+  /// - "JUMP_CLOUD" : JumpCloud
+  /// - "ONE_LOGIN" : OneLogin
+  /// - "GENERIC" : Other Generic Identity Providers
+  core.String? vendorType;
+
   WorkforcePoolProvider({
     this.attributeCondition,
     this.attributeMapping,
@@ -11104,6 +11201,7 @@ class WorkforcePoolProvider {
     this.saml,
     this.scimUsage,
     this.state,
+    this.vendorType,
   });
 
   WorkforcePoolProvider.fromJson(core.Map json_)
@@ -11144,6 +11242,7 @@ class WorkforcePoolProvider {
             : null,
         scimUsage: json_['scimUsage'] as core.String?,
         state: json_['state'] as core.String?,
+        vendorType: json_['vendorType'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -11161,6 +11260,7 @@ class WorkforcePoolProvider {
     final saml = this.saml;
     final scimUsage = this.scimUsage;
     final state = this.state;
+    final vendorType = this.vendorType;
     return {
       'attributeCondition': ?attributeCondition,
       'attributeMapping': ?attributeMapping,
@@ -11176,6 +11276,7 @@ class WorkforcePoolProvider {
       'saml': ?saml,
       'scimUsage': ?scimUsage,
       'state': ?state,
+      'vendorType': ?vendorType,
     };
   }
 }
@@ -11783,6 +11884,15 @@ class WorkloadIdentityPoolNamespace {
 
 /// A configuration for an external identity provider.
 class WorkloadIdentityPoolProvider {
+  /// A list of the resource names of WorkloadIdentityPoolProviders in the same
+  /// pool that are authorized to issue actor tokens for this provider.
+  ///
+  /// An actor token represents the identity of the acting party to whom
+  /// authority is delegated. At most 3 actor providers can be specified.
+  ///
+  /// Optional.
+  core.List<core.String>? actorProviders;
+
   /// [A Common Expression Language](https://opensource.google/projects/cel)
   /// expression, in plain text, to restrict what otherwise valid authentication
   /// credentials issued by the provider should not be accepted.
@@ -11793,9 +11903,12 @@ class WorkloadIdentityPoolProvider {
   /// provider. * `google`: The Google attributes mapped from the assertion in
   /// the `attribute_mappings`. * `attribute`: The custom attributes mapped from
   /// the assertion in the `attribute_mappings`. The maximum length of the
-  /// attribute condition expression is 4096 characters. If unspecified, all
-  /// valid authentication credential are accepted. The following example shows
-  /// how to only allow credentials with a mapped `google.groups` value of
+  /// `attribute_condition` expression is 4,096 characters. Providing a
+  /// condition longer than this will result in an error. If unspecified, all
+  /// valid authentication credentials are accepted. However, multi-tenant
+  /// identity providers (such as GitHub or Terraform Cloud) require an
+  /// `attribute_condition` to prevent token spoofing. The following example
+  /// shows how to only allow credentials with a mapped `google.groups` value of
   /// `admins`: ``` "'admins' in google.groups" ```
   ///
   /// Optional.
@@ -11907,6 +12020,7 @@ class WorkloadIdentityPoolProvider {
   X509? x509;
 
   WorkloadIdentityPoolProvider({
+    this.actorProviders,
     this.attributeCondition,
     this.attributeMapping,
     this.aws,
@@ -11923,6 +12037,9 @@ class WorkloadIdentityPoolProvider {
 
   WorkloadIdentityPoolProvider.fromJson(core.Map json_)
     : this(
+        actorProviders: (json_['actorProviders'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         attributeCondition: json_['attributeCondition'] as core.String?,
         attributeMapping:
             (json_['attributeMapping'] as core.Map<core.String, core.dynamic>?)
@@ -11954,6 +12071,7 @@ class WorkloadIdentityPoolProvider {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final actorProviders = this.actorProviders;
     final attributeCondition = this.attributeCondition;
     final attributeMapping = this.attributeMapping;
     final aws = this.aws;
@@ -11967,6 +12085,7 @@ class WorkloadIdentityPoolProvider {
     final state = this.state;
     final x509 = this.x509;
     return {
+      'actorProviders': ?actorProviders,
       'attributeCondition': ?attributeCondition,
       'attributeMapping': ?attributeMapping,
       'aws': ?aws,

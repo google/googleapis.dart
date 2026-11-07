@@ -45,7 +45,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260724",
+    "revision": "20261023",
     "rootUrl": "https://securitycenter.googleapis.com/",
     "servicePath": "",
     "title": "Security Command Center API",
@@ -6723,6 +6723,18 @@
             },
             "type": "object"
         },
+        "CloudRun": {
+            "id": "CloudRun",
+            "properties": {
+                "revisions": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "Compliance": {
             "id": "Compliance",
             "properties": {
@@ -7824,6 +7836,9 @@
                 "cloudDlpInspection": {
                     "$ref": "CloudDlpInspection"
                 },
+                "cloudRun": {
+                    "$ref": "CloudRun"
+                },
                 "complianceDetails": {
                     "$ref": "ComplianceDetails"
                 },
@@ -8248,6 +8263,9 @@
                 "dataset": {
                     "type": "string"
                 },
+                "deletionNotificationsEnabled": {
+                    "type": "boolean"
+                },
                 "description": {
                     "type": "string"
                 },
@@ -8519,6 +8537,9 @@
         "GoogleCloudSecuritycenterV1NotificationMessage": {
             "id": "GoogleCloudSecuritycenterV1NotificationMessage",
             "properties": {
+                "deletedFinding": {
+                    "type": "boolean"
+                },
                 "finding": {
                     "$ref": "Finding"
                 },
@@ -9677,6 +9698,9 @@
                 "dataset": {
                     "type": "string"
                 },
+                "deletionNotificationsEnabled": {
+                    "type": "boolean"
+                },
                 "description": {
                     "type": "string"
                 },
@@ -9856,6 +9880,18 @@
                 "timestamp": {
                     "format": "google-datetime",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudSecuritycenterV2CloudRun": {
+            "id": "GoogleCloudSecuritycenterV2CloudRun",
+            "properties": {
+                "revisions": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -10797,6 +10833,9 @@
                 },
                 "cloudDlpInspection": {
                     "$ref": "GoogleCloudSecuritycenterV2CloudDlpInspection"
+                },
+                "cloudRun": {
+                    "$ref": "GoogleCloudSecuritycenterV2CloudRun"
                 },
                 "complianceDetails": {
                     "$ref": "GoogleCloudSecuritycenterV2ComplianceDetails"
@@ -12783,6 +12822,9 @@
         "GoogleCloudSecuritycenterV2NotificationMessage": {
             "id": "GoogleCloudSecuritycenterV2NotificationMessage",
             "properties": {
+                "deletedFinding": {
+                    "type": "boolean"
+                },
                 "finding": {
                     "$ref": "GoogleCloudSecuritycenterV2Finding"
                 },
@@ -15235,6 +15277,9 @@
         "NotificationConfig": {
             "id": "NotificationConfig",
             "properties": {
+                "deletionNotificationsEnabled": {
+                    "type": "boolean"
+                },
                 "description": {
                     "type": "string"
                 },

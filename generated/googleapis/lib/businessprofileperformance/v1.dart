@@ -21,8 +21,9 @@
 /// Business Profile Performance API - v1
 ///
 /// The Business Profile Performance API allows merchants to fetch performance
-/// reports about their business profile on Google. Note - If you have a quota
-/// of 0 after enabling the API, please request for GBP API access.
+/// reports about their business profile on Google. Note: If you have a quota of
+/// 0 after enabling the API, please request GBP API access at
+/// https://developers.google.com/my-business/content/prereqs#request-access.
 ///
 /// For more information, see <https://developers.google.com/my-business/>
 ///
@@ -51,8 +52,9 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// The Business Profile Performance API allows merchants to fetch performance
 /// reports about their business profile on Google.
 ///
-/// Note - If you have a quota of 0 after enabling the API, please request for
-/// GBP API access.
+/// Note: If you have a quota of 0 after enabling the API, please request GBP
+/// API access at
+/// https://developers.google.com/my-business/content/prereqs#request-access.
 class BusinessProfilePerformanceApi {
   final commons.ApiRequester _requester;
 
@@ -211,6 +213,8 @@ class LocationsResource {
   /// clicked.
   /// - "WEBSITE_CLICKS" : The number of times the business profile website was
   /// clicked.
+  /// - "MESSAGING_CLICKS" : The number of times the business profile messaging
+  /// (e.g. WhatsApp) button was clicked.
   /// - "BUSINESS_BOOKINGS" : The number of bookings made from the business
   /// profile via Reserve with Google.
   /// - "BUSINESS_FOOD_ORDERS" : The number of food orders received from the
@@ -502,6 +506,8 @@ class DailyMetricTimeSeries {
   /// clicked.
   /// - "WEBSITE_CLICKS" : The number of times the business profile website was
   /// clicked.
+  /// - "MESSAGING_CLICKS" : The number of times the business profile messaging
+  /// (e.g. WhatsApp) button was clicked.
   /// - "BUSINESS_BOOKINGS" : The number of bookings made from the business
   /// profile via Reserve with Google.
   /// - "BUSINESS_FOOD_ORDERS" : The number of food orders received from the

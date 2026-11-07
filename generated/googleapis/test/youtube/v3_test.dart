@@ -162,8 +162,6 @@ api.ActivityContentDetails buildActivityContentDetails() {
     o.bulletin = buildActivityContentDetailsBulletin();
     o.channelItem = buildActivityContentDetailsChannelItem();
     o.comment = buildActivityContentDetailsComment();
-    o.favorite = buildActivityContentDetailsFavorite();
-    o.like = buildActivityContentDetailsLike();
     o.playlistItem = buildActivityContentDetailsPlaylistItem();
     o.promotedItem = buildActivityContentDetailsPromotedItem();
     o.recommendation = buildActivityContentDetailsRecommendation();
@@ -181,8 +179,6 @@ void checkActivityContentDetails(api.ActivityContentDetails o) {
     checkActivityContentDetailsBulletin(o.bulletin!);
     checkActivityContentDetailsChannelItem(o.channelItem!);
     checkActivityContentDetailsComment(o.comment!);
-    checkActivityContentDetailsFavorite(o.favorite!);
-    checkActivityContentDetailsLike(o.like!);
     checkActivityContentDetailsPlaylistItem(o.playlistItem!);
     checkActivityContentDetailsPromotedItem(o.promotedItem!);
     checkActivityContentDetailsRecommendation(o.recommendation!);
@@ -250,44 +246,6 @@ void checkActivityContentDetailsComment(api.ActivityContentDetailsComment o) {
     checkResourceId(o.resourceId!);
   }
   buildCounterActivityContentDetailsComment--;
-}
-
-core.int buildCounterActivityContentDetailsFavorite = 0;
-api.ActivityContentDetailsFavorite buildActivityContentDetailsFavorite() {
-  final o = api.ActivityContentDetailsFavorite();
-  buildCounterActivityContentDetailsFavorite++;
-  if (buildCounterActivityContentDetailsFavorite < 3) {
-    o.resourceId = buildResourceId();
-  }
-  buildCounterActivityContentDetailsFavorite--;
-  return o;
-}
-
-void checkActivityContentDetailsFavorite(api.ActivityContentDetailsFavorite o) {
-  buildCounterActivityContentDetailsFavorite++;
-  if (buildCounterActivityContentDetailsFavorite < 3) {
-    checkResourceId(o.resourceId!);
-  }
-  buildCounterActivityContentDetailsFavorite--;
-}
-
-core.int buildCounterActivityContentDetailsLike = 0;
-api.ActivityContentDetailsLike buildActivityContentDetailsLike() {
-  final o = api.ActivityContentDetailsLike();
-  buildCounterActivityContentDetailsLike++;
-  if (buildCounterActivityContentDetailsLike < 3) {
-    o.resourceId = buildResourceId();
-  }
-  buildCounterActivityContentDetailsLike--;
-  return o;
-}
-
-void checkActivityContentDetailsLike(api.ActivityContentDetailsLike o) {
-  buildCounterActivityContentDetailsLike++;
-  if (buildCounterActivityContentDetailsLike < 3) {
-    checkResourceId(o.resourceId!);
-  }
-  buildCounterActivityContentDetailsLike--;
 }
 
 core.int buildCounterActivityContentDetailsPlaylistItem = 0;
@@ -1769,10 +1727,10 @@ api.CommentSnippet buildCommentSnippet() {
     o.authorProfileImageUrl = 'foo';
     o.canRate = true;
     o.channelId = 'foo';
+    o.imageUrl = 'foo';
     o.likeCount = 42;
     o.moderationStatus = 'foo';
     o.parentId = 'foo';
-    o.postId = 'foo';
     o.publishedAt = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.textDisplay = 'foo';
     o.textOriginal = 'foo';
@@ -1793,10 +1751,10 @@ void checkCommentSnippet(api.CommentSnippet o) {
     unittest.expect(o.authorProfileImageUrl!, unittest.equals('foo'));
     unittest.expect(o.canRate!, unittest.isTrue);
     unittest.expect(o.channelId!, unittest.equals('foo'));
+    unittest.expect(o.imageUrl!, unittest.equals('foo'));
     unittest.expect(o.likeCount!, unittest.equals(42));
     unittest.expect(o.moderationStatus!, unittest.equals('foo'));
     unittest.expect(o.parentId!, unittest.equals('foo'));
-    unittest.expect(o.postId!, unittest.equals('foo'));
     unittest.expect(
       o.publishedAt!,
       unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
@@ -1938,7 +1896,6 @@ api.CommentThreadSnippet buildCommentThreadSnippet() {
     o.canReply = true;
     o.channelId = 'foo';
     o.isPublic = true;
-    o.postId = 'foo';
     o.topLevelComment = buildComment();
     o.totalReplyCount = 42;
     o.videoId = 'foo';
@@ -1953,7 +1910,6 @@ void checkCommentThreadSnippet(api.CommentThreadSnippet o) {
     unittest.expect(o.canReply!, unittest.isTrue);
     unittest.expect(o.channelId!, unittest.equals('foo'));
     unittest.expect(o.isPublic!, unittest.isTrue);
-    unittest.expect(o.postId!, unittest.equals('foo'));
     checkComment(o.topLevelComment!);
     unittest.expect(o.totalReplyCount!, unittest.equals(42));
     unittest.expect(o.videoId!, unittest.equals('foo'));
@@ -5251,6 +5207,7 @@ api.ThumbnailDetails buildThumbnailDetails() {
     o.maxres = buildThumbnail();
     o.medium = buildThumbnail();
     o.qhd = buildThumbnail();
+    o.shortsAspectRatio = buildThumbnail();
     o.standard = buildThumbnail();
     o.uhd = buildThumbnail();
   }
@@ -5267,6 +5224,7 @@ void checkThumbnailDetails(api.ThumbnailDetails o) {
     checkThumbnail(o.maxres!);
     checkThumbnail(o.medium!);
     checkThumbnail(o.qhd!);
+    checkThumbnail(o.shortsAspectRatio!);
     checkThumbnail(o.standard!);
     checkThumbnail(o.uhd!);
   }
@@ -7277,28 +7235,6 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkActivityContentDetailsComment(od);
-    });
-  });
-
-  unittest.group('obj-schema-ActivityContentDetailsFavorite', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildActivityContentDetailsFavorite();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.ActivityContentDetailsFavorite.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
-      checkActivityContentDetailsFavorite(od);
-    });
-  });
-
-  unittest.group('obj-schema-ActivityContentDetailsLike', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildActivityContentDetailsLike();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.ActivityContentDetailsLike.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
-      checkActivityContentDetailsLike(od);
     });
   });
 
@@ -10729,7 +10665,6 @@ void main() {
       final arg_moderationStatus = 'foo';
       final arg_order = 'foo';
       final arg_pageToken = 'foo';
-      final arg_postId = 'foo';
       final arg_searchTerms = 'foo';
       final arg_textFormat = 'foo';
       final arg_videoId = 'foo';
@@ -10790,10 +10725,6 @@ void main() {
             unittest.equals(arg_pageToken),
           );
           unittest.expect(
-            queryMap['postId']!.first,
-            unittest.equals(arg_postId),
-          );
-          unittest.expect(
             queryMap['searchTerms']!.first,
             unittest.equals(arg_searchTerms),
           );
@@ -10825,7 +10756,6 @@ void main() {
         moderationStatus: arg_moderationStatus,
         order: arg_order,
         pageToken: arg_pageToken,
-        postId: arg_postId,
         searchTerms: arg_searchTerms,
         textFormat: arg_textFormat,
         videoId: arg_videoId,

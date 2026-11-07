@@ -534,6 +534,21 @@ void checkOperation(api.Operation o) {
   buildCounterOperation--;
 }
 
+core.int buildCounterReprovisionBucketRequest = 0;
+api.ReprovisionBucketRequest buildReprovisionBucketRequest() {
+  final o = api.ReprovisionBucketRequest();
+  buildCounterReprovisionBucketRequest++;
+  if (buildCounterReprovisionBucketRequest < 3) {}
+  buildCounterReprovisionBucketRequest--;
+  return o;
+}
+
+void checkReprovisionBucketRequest(api.ReprovisionBucketRequest o) {
+  buildCounterReprovisionBucketRequest++;
+  if (buildCounterReprovisionBucketRequest < 3) {}
+  buildCounterReprovisionBucketRequest--;
+}
+
 core.int buildCounterScope = 0;
 api.Scope buildScope() {
   final o = api.Scope();
@@ -894,6 +909,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkOperation(od);
+    });
+  });
+
+  unittest.group('obj-schema-ReprovisionBucketRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildReprovisionBucketRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ReprovisionBucketRequest.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkReprovisionBucketRequest(od);
     });
   });
 
@@ -2494,6 +2520,69 @@ void main() {
         arg_request,
         arg_name,
         updateMask: arg_updateMask,
+        $fields: arg_$fields,
+      );
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--reprovision', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudObservabilityApi(mock).projects.locations.buckets;
+      final arg_request = buildReprovisionBucketRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.ReprovisionBucketRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkReprovisionBucketRequest(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.reprovision(
+        arg_request,
+        arg_name,
         $fields: arg_$fields,
       );
       checkOperation(response as api.Operation);

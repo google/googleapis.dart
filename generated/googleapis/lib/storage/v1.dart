@@ -35,7 +35,6 @@
 /// - [AnywhereCachesResource]
 /// - [BucketAccessControlsResource]
 /// - [BucketsResource]
-/// - [ChannelsResource]
 /// - [DefaultObjectAccessControlsResource]
 /// - [FoldersResource]
 /// - [ManagedFoldersResource]
@@ -99,7 +98,6 @@ class StorageApi {
   BucketAccessControlsResource get bucketAccessControls =>
       BucketAccessControlsResource(_requester);
   BucketsResource get buckets => BucketsResource(_requester);
-  ChannelsResource get channels => ChannelsResource(_requester);
   DefaultObjectAccessControlsResource get defaultObjectAccessControls =>
       DefaultObjectAccessControlsResource(_requester);
   FoldersResource get folders => FoldersResource(_requester);
@@ -1569,43 +1567,6 @@ class BucketsResource {
       queryParams: queryParams_,
     );
     return Bucket.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-}
-
-class ChannelsResource {
-  final commons.ApiRequester _requester;
-
-  ChannelsResource(commons.ApiRequester client) : _requester = client;
-
-  /// Stop watching resources through this channel
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<void> stop(Channel request, {core.String? $fields}) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    const url_ = 'channels/stop';
-
-    await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-      downloadOptions: null,
-    );
   }
 }
 
@@ -4965,6 +4926,67 @@ class ObjectsResource {
     );
     return Object.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
+
+  /// Retrieves a specific object context with its extended data for a given
+  /// object.
+  ///
+  /// Request parameters:
+  ///
+  /// [bucket] - Name of the bucket in which the object resides.
+  ///
+  /// [object] - Name of the object. For information about how to URL encode
+  /// object names to be path safe, see
+  /// [Encoding URI Path Parts](https://cloud.google.com/storage/docs/request-endpoints#encoding).
+  ///
+  /// [contextKey] - Key identifying the object context to retrieve.
+  ///
+  /// [generation] - If present, selects a specific revision of this object (as
+  /// opposed to the latest version, the default).
+  ///
+  /// [userProject] - The project to be billed for this request. Required for
+  /// Requester Pays buckets.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ObjectFullContext].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ObjectFullContext> viewFullContext(
+    core.String bucket,
+    core.String object,
+    core.String contextKey, {
+    core.String? generation,
+    core.String? userProject,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'contextKey': [contextKey],
+      'generation': ?generation == null ? null : [generation],
+      'userProject': ?userProject == null ? null : [userProject],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'b/' +
+        commons.escapeVariable('$bucket') +
+        '/o/' +
+        commons.escapeVariable('$object') +
+        '/viewFullContext';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ObjectFullContext.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
 }
 
 class OperationsResource {
@@ -6917,6 +6939,40 @@ class BucketRetentionPolicy {
   }
 }
 
+/// The bucket's hard delete pause configuration.
+///
+/// If set, soft-deleted objects in the bucket will not be permanently deleted
+/// until the hard delete pause is disabled.
+class BucketSoftDeletePolicyHardDeletePause {
+  /// Server-determined value that indicates the time from which the hard delete
+  /// pause became effective.
+  ///
+  /// This value is in RFC 3339 format.
+  core.DateTime? effectiveTime;
+
+  /// Whether hard deletions are paused.
+  core.bool? enabled;
+
+  BucketSoftDeletePolicyHardDeletePause({this.effectiveTime, this.enabled});
+
+  BucketSoftDeletePolicyHardDeletePause.fromJson(core.Map json_)
+    : this(
+        effectiveTime: json_.containsKey('effectiveTime')
+            ? core.DateTime.parse(json_['effectiveTime'] as core.String)
+            : null,
+        enabled: json_['enabled'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final effectiveTime = this.effectiveTime;
+    final enabled = this.enabled;
+    return {
+      'effectiveTime': ?effectiveTime?.toUtc().toIso8601String(),
+      'enabled': ?enabled,
+    };
+  }
+}
+
 /// The bucket's soft delete policy, which defines the period of time that
 /// soft-deleted objects will be retained, and cannot be permanently deleted.
 class BucketSoftDeletePolicy {
@@ -6926,16 +6982,31 @@ class BucketSoftDeletePolicy {
   /// This value is in RFC 3339 format.
   core.DateTime? effectiveTime;
 
+  /// The bucket's hard delete pause configuration.
+  ///
+  /// If set, soft-deleted objects in the bucket will not be permanently deleted
+  /// until the hard delete pause is disabled.
+  BucketSoftDeletePolicyHardDeletePause? hardDeletePause;
+
   /// The duration in seconds that soft-deleted objects in the bucket will be
   /// retained and cannot be permanently deleted.
   core.String? retentionDurationSeconds;
 
-  BucketSoftDeletePolicy({this.effectiveTime, this.retentionDurationSeconds});
+  BucketSoftDeletePolicy({
+    this.effectiveTime,
+    this.hardDeletePause,
+    this.retentionDurationSeconds,
+  });
 
   BucketSoftDeletePolicy.fromJson(core.Map json_)
     : this(
         effectiveTime: json_.containsKey('effectiveTime')
             ? core.DateTime.parse(json_['effectiveTime'] as core.String)
+            : null,
+        hardDeletePause: json_.containsKey('hardDeletePause')
+            ? BucketSoftDeletePolicyHardDeletePause.fromJson(
+                json_['hardDeletePause'] as core.Map<core.String, core.dynamic>,
+              )
             : null,
         retentionDurationSeconds:
             json_['retentionDurationSeconds'] as core.String?,
@@ -6943,9 +7014,11 @@ class BucketSoftDeletePolicy {
 
   core.Map<core.String, core.dynamic> toJson() {
     final effectiveTime = this.effectiveTime;
+    final hardDeletePause = this.hardDeletePause;
     final retentionDurationSeconds = this.retentionDurationSeconds;
     return {
       'effectiveTime': ?effectiveTime?.toUtc().toIso8601String(),
+      'hardDeletePause': ?hardDeletePause,
       'retentionDurationSeconds': ?retentionDurationSeconds,
     };
   }
@@ -7844,106 +7917,6 @@ class BulkRestoreObjectsRequest {
       'softDeletedBeforeTime': ?softDeletedBeforeTime
           ?.toUtc()
           .toIso8601String(),
-    };
-  }
-}
-
-/// An notification channel used to watch for resource changes.
-class Channel {
-  /// The address where notifications are delivered for this channel.
-  core.String? address;
-
-  /// Date and time of notification channel expiration, expressed as a Unix
-  /// timestamp, in milliseconds.
-  ///
-  /// Optional.
-  core.String? expiration;
-
-  /// A UUID or similar unique string that identifies this channel.
-  core.String? id;
-
-  /// Identifies this as a notification channel used to watch for changes to a
-  /// resource, which is "api#channel".
-  core.String? kind;
-
-  /// Additional parameters controlling delivery channel behavior.
-  ///
-  /// Optional.
-  core.Map<core.String, core.String>? params;
-
-  /// A Boolean value to indicate whether payload is wanted.
-  ///
-  /// Optional.
-  core.bool? payload;
-
-  /// An opaque ID that identifies the resource being watched on this channel.
-  ///
-  /// Stable across different API versions.
-  core.String? resourceId;
-
-  /// A version-specific identifier for the watched resource.
-  core.String? resourceUri;
-
-  /// An arbitrary string delivered to the target address with each notification
-  /// delivered over this channel.
-  ///
-  /// Optional.
-  core.String? token;
-
-  /// The type of delivery mechanism used for this channel.
-  core.String? type;
-
-  Channel({
-    this.address,
-    this.expiration,
-    this.id,
-    this.kind,
-    this.params,
-    this.payload,
-    this.resourceId,
-    this.resourceUri,
-    this.token,
-    this.type,
-  });
-
-  Channel.fromJson(core.Map json_)
-    : this(
-        address: json_['address'] as core.String?,
-        expiration: json_['expiration'] as core.String?,
-        id: json_['id'] as core.String?,
-        kind: json_['kind'] as core.String?,
-        params: (json_['params'] as core.Map<core.String, core.dynamic>?)?.map(
-          (key, value) => core.MapEntry(key, value as core.String),
-        ),
-        payload: json_['payload'] as core.bool?,
-        resourceId: json_['resourceId'] as core.String?,
-        resourceUri: json_['resourceUri'] as core.String?,
-        token: json_['token'] as core.String?,
-        type: json_['type'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final address = this.address;
-    final expiration = this.expiration;
-    final id = this.id;
-    final kind = this.kind;
-    final params = this.params;
-    final payload = this.payload;
-    final resourceId = this.resourceId;
-    final resourceUri = this.resourceUri;
-    final token = this.token;
-    final type = this.type;
-    return {
-      'address': ?address,
-      'expiration': ?expiration,
-      'id': ?id,
-      'kind': ?kind,
-      'params': ?params,
-      'payload': ?payload,
-      'resourceId': ?resourceId,
-      'resourceUri': ?resourceUri,
-      'token': ?token,
-      'type': ?type,
     };
   }
 }
@@ -9623,6 +9596,87 @@ class ObjectCustomContextPayload {
     return {
       'createTime': ?createTime?.toUtc().toIso8601String(),
       'extendedDataTypeUrl': ?extendedDataTypeUrl,
+      'updateTime': ?updateTime?.toUtc().toIso8601String(),
+      'value': ?value,
+    };
+  }
+}
+
+/// A full representation of an object context.
+class ObjectFullContext {
+  /// The time at which the object context was created.
+  ///
+  /// This value is in RFC 3339 format.
+  core.DateTime? createTime;
+
+  /// The extended data of the object context.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? extendedData;
+
+  /// The key of the object context.
+  core.String? key;
+
+  /// The kind of item this is.
+  ///
+  /// For ObjectFullContext, this is always storage#objectFullContext.
+  core.String? kind;
+
+  /// The type of the object context.
+  /// Possible string values are:
+  /// - "CUSTOM" : Custom object context.
+  core.String? type;
+
+  /// The time at which the object context was last updated.
+  ///
+  /// This value is in RFC 3339 format.
+  core.DateTime? updateTime;
+
+  /// The value of the object context.
+  core.String? value;
+
+  ObjectFullContext({
+    this.createTime,
+    this.extendedData,
+    this.key,
+    this.kind,
+    this.type,
+    this.updateTime,
+    this.value,
+  });
+
+  ObjectFullContext.fromJson(core.Map json_)
+    : this(
+        createTime: json_.containsKey('createTime')
+            ? core.DateTime.parse(json_['createTime'] as core.String)
+            : null,
+        extendedData: json_.containsKey('extendedData')
+            ? json_['extendedData'] as core.Map<core.String, core.dynamic>
+            : null,
+        key: json_['key'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        type: json_['type'] as core.String?,
+        updateTime: json_.containsKey('updateTime')
+            ? core.DateTime.parse(json_['updateTime'] as core.String)
+            : null,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final extendedData = this.extendedData;
+    final key = this.key;
+    final kind = this.kind;
+    final type = this.type;
+    final updateTime = this.updateTime;
+    final value = this.value;
+    return {
+      'createTime': ?createTime?.toUtc().toIso8601String(),
+      'extendedData': ?extendedData,
+      'key': ?key,
+      'kind': ?kind,
+      'type': ?type,
       'updateTime': ?updateTime?.toUtc().toIso8601String(),
       'value': ?value,
     };

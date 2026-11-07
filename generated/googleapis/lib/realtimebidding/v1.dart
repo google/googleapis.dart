@@ -4114,9 +4114,7 @@ class PolicyCompliance {
   /// - "DISAPPROVED" : Creative cannot serve.
   /// - "APPROVED" : Creative is approved.
   /// - "CERTIFICATE_REQUIRED" : Certificates are required for the creative to
-  /// be served in some regions. For more information about creative
-  /// certification, refer to:
-  /// https://support.google.com/authorizedbuyers/answer/7450776
+  /// be served in some regions.
   core.String? status;
 
   /// Topics related to the policy compliance for this transaction type (for
@@ -4157,10 +4155,9 @@ class PolicyTopicEntry {
   core.String? helpCenterUrl;
 
   /// Whether or not the policy topic is missing a certificate.
-  ///
-  /// Some policy topics require a certificate to unblock serving in some
-  /// regions. For more information about creative certification, refer to:
-  /// https://support.google.com/authorizedbuyers/answer/7450776
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? missingCertificate;
 
   /// Policy topic this entry refers to.

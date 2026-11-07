@@ -959,7 +959,7 @@ class BuildProvenance {
   }
 }
 
-typedef BuilderConfig = $Shared02;
+typedef BuilderConfig = $Shared03;
 typedef CISAKnownExploitedVulnerabilities = $CISAKnownExploitedVulnerabilities;
 
 /// Common Vulnerability Scoring System.
@@ -1295,6 +1295,147 @@ class Envelope {
 
 typedef EnvelopeSignature = $EnvelopeSignature;
 typedef ExploitPredictionScoringSystem = $ExploitPredictionScoringSystem;
+
+/// Exploitability information for a vulnerability.
+///
+/// This data can be used across multiple sources, including, but not limited to
+/// a top-level vulnerability, a package occurrence, or a package file location.
+class Exploitability {
+  /// Individual exploitability signals from various sources.
+  core.List<ExploitabilitySignal>? signals;
+
+  /// Rollup summary of the exploitability signals.
+  ExploitabilitySummary? summary;
+
+  Exploitability({this.signals, this.summary});
+
+  Exploitability.fromJson(core.Map json_)
+    : this(
+        signals: (json_['signals'] as core.List?)
+            ?.map(
+              (value) => ExploitabilitySignal.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        summary: json_.containsKey('summary')
+            ? ExploitabilitySummary.fromJson(
+                json_['summary'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final signals = this.signals;
+    final summary = this.summary;
+    return {'signals': ?signals, 'summary': ?summary};
+  }
+}
+
+/// A single exploitability signal from a specific source (e.g., an upstream
+/// advisory, a customer VEX document, or an internal build analysis).
+class ExploitabilitySignal {
+  /// Human-readable explanation of this signal.
+  core.String? rationale;
+
+  /// Identifier of the signal source.
+  core.String? source;
+
+  /// Justification for why the vulnerability is not exploitable.
+  /// Possible string values are:
+  /// - "JUSTIFICATION_TYPE_UNSPECIFIED" : JUSTIFICATION_TYPE_UNSPECIFIED.
+  /// - "COMPONENT_NOT_PRESENT" : The vulnerable component is not present in the
+  /// product.
+  /// - "VULNERABLE_CODE_NOT_PRESENT" : The vulnerable code is not present.
+  /// Typically this case occurs when source code is configured or built in a
+  /// way that excludes the vulnerable code.
+  /// - "VULNERABLE_CODE_NOT_IN_EXECUTE_PATH" : The vulnerable code can not be
+  /// executed. Typically this case occurs when the product includes the
+  /// vulnerable code but does not call or use the vulnerable code.
+  /// - "VULNERABLE_CODE_CANNOT_BE_CONTROLLED_BY_ADVERSARY" : The vulnerable
+  /// code cannot be controlled by an attacker to exploit the vulnerability.
+  /// - "INLINE_MITIGATIONS_ALREADY_EXIST" : The product includes built-in
+  /// protections or features that prevent exploitation of the vulnerability.
+  /// These built-in protections cannot be subverted by the attacker and cannot
+  /// be configured or disabled by the user. These mitigations completely
+  /// prevent exploitation based on known attack vectors.
+  core.String? vexJustification;
+
+  /// The VEX status asserted by this signal.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : No state is specified.
+  /// - "AFFECTED" : This product is known to be affected by this vulnerability.
+  /// - "NOT_AFFECTED" : This product is known to be not affected by this
+  /// vulnerability.
+  /// - "FIXED" : This product contains a fix for this vulnerability.
+  /// - "UNDER_INVESTIGATION" : It is not known yet whether these versions are
+  /// or are not affected by the vulnerability. However, it is still under
+  /// investigation.
+  core.String? vexStatus;
+
+  ExploitabilitySignal({
+    this.rationale,
+    this.source,
+    this.vexJustification,
+    this.vexStatus,
+  });
+
+  ExploitabilitySignal.fromJson(core.Map json_)
+    : this(
+        rationale: json_['rationale'] as core.String?,
+        source: json_['source'] as core.String?,
+        vexJustification: json_['vexJustification'] as core.String?,
+        vexStatus: json_['vexStatus'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final rationale = this.rationale;
+    final source = this.source;
+    final vexJustification = this.vexJustification;
+    final vexStatus = this.vexStatus;
+    return {
+      'rationale': ?rationale,
+      'source': ?source,
+      'vexJustification': ?vexJustification,
+      'vexStatus': ?vexStatus,
+    };
+  }
+}
+
+/// Rollup summary of exploitability across signals.
+class ExploitabilitySummary {
+  /// Human-readable explanation of the summary.
+  core.String? rationale;
+
+  /// The rolled-up VEX status.
+  ///
+  /// Usually, this should result in an AFFECTED or NOT_AFFECTED vex status.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : No state is specified.
+  /// - "AFFECTED" : This product is known to be affected by this vulnerability.
+  /// - "NOT_AFFECTED" : This product is known to be not affected by this
+  /// vulnerability.
+  /// - "FIXED" : This product contains a fix for this vulnerability.
+  /// - "UNDER_INVESTIGATION" : It is not known yet whether these versions are
+  /// or are not affected by the vulnerability. However, it is still under
+  /// investigation.
+  core.String? vexStatus;
+
+  ExploitabilitySummary({this.rationale, this.vexStatus});
+
+  ExploitabilitySummary.fromJson(core.Map json_)
+    : this(
+        rationale: json_['rationale'] as core.String?,
+        vexStatus: json_['vexStatus'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final rationale = this.rationale;
+    final vexStatus = this.vexStatus;
+    return {'rationale': ?rationale, 'vexStatus': ?vexStatus};
+  }
+}
+
 typedef File = $File;
 
 /// Container message for hashes of byte content of files, used in source
@@ -1530,8 +1671,15 @@ class GrafeasV1FileLocation {
   }
 }
 
+/// LayerAttribute represents a single attribute (such as a tag) that applies to
+/// a layer, along with the plugin that generated it.
+typedef GrafeasV1LayerAttribute = $LayerAttribute;
+
 /// Details about the layer a package was found in.
 class GrafeasV1LayerDetails {
+  /// Attributes that apply to the layer, such as buildpacks metadata.
+  core.List<GrafeasV1LayerAttribute>? attributes;
+
   /// The base images the layer is found within.
   core.List<GrafeasV1BaseImage>? baseImages;
 
@@ -1553,6 +1701,7 @@ class GrafeasV1LayerDetails {
   core.int? index;
 
   GrafeasV1LayerDetails({
+    this.attributes,
     this.baseImages,
     this.chainId,
     this.command,
@@ -1562,6 +1711,13 @@ class GrafeasV1LayerDetails {
 
   GrafeasV1LayerDetails.fromJson(core.Map json_)
     : this(
+        attributes: (json_['attributes'] as core.List?)
+            ?.map(
+              (value) => GrafeasV1LayerAttribute.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         baseImages: (json_['baseImages'] as core.List?)
             ?.map(
               (value) => GrafeasV1BaseImage.fromJson(
@@ -1576,12 +1732,14 @@ class GrafeasV1LayerDetails {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final attributes = this.attributes;
     final baseImages = this.baseImages;
     final chainId = this.chainId;
     final command = this.command;
     final diffId = this.diffId;
     final index = this.index;
     return {
+      'attributes': ?attributes,
       'baseImages': ?baseImages,
       'chainId': ?chainId,
       'command': ?command,
@@ -1593,7 +1751,7 @@ class GrafeasV1LayerDetails {
 
 /// Identifies the entity that executed the recipe, which is trusted to have
 /// correctly performed the operation and populated this provenance.
-typedef GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder = $Shared02;
+typedef GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder = $Shared03;
 
 /// Indicates that the builder claims certain fields in this message to be
 /// complete.
@@ -2019,8 +2177,14 @@ class LanguagePackageDependency {
 /// Layer holds metadata specific to a layer of a Docker image.
 typedef Layer = $Layer;
 
+/// An attribute attached to a layer by a plugin.
+typedef LayerAttribute = $LayerAttribute;
+
 /// Details about the layer a package was found in.
 class LayerDetails {
+  /// Attributes attached to this layer by plugins.
+  core.List<LayerAttribute>? attributes;
+
   /// The base images the layer is found within.
   core.List<BaseImage>? baseImages;
 
@@ -2042,6 +2206,7 @@ class LayerDetails {
   core.int? index;
 
   LayerDetails({
+    this.attributes,
     this.baseImages,
     this.chainId,
     this.command,
@@ -2051,6 +2216,13 @@ class LayerDetails {
 
   LayerDetails.fromJson(core.Map json_)
     : this(
+        attributes: (json_['attributes'] as core.List?)
+            ?.map(
+              (value) => LayerAttribute.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         baseImages: (json_['baseImages'] as core.List?)
             ?.map(
               (value) => BaseImage.fromJson(
@@ -2065,12 +2237,14 @@ class LayerDetails {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final attributes = this.attributes;
     final baseImages = this.baseImages;
     final chainId = this.chainId;
     final command = this.command;
     final diffId = this.diffId;
     final index = this.index;
     return {
+      'attributes': ?attributes,
       'baseImages': ?baseImages,
       'chainId': ?chainId,
       'command': ?command,
@@ -2734,15 +2908,23 @@ class PackageData {
   ///
   /// This can be a Docker image, an SBOM attachment, or both, for example.
   core.List<IngestionSource>? ingestionSources;
+
+  /// Deprecated: Layer details are captured per file location in
+  /// FileLocation.layer_details.
+  ///
+  /// Top-level layer details is not persisted.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   LayerDetails? layerDetails;
 
-  /// The list of licenses found that are related to a given package.
+  /// Deprecated: Top-level licenses is not persisted in the legacy Packages
+  /// table.
   ///
-  /// Note that licenses may also be stored on the BinarySourceInfo. If there is
-  /// no BinarySourceInfo (because there's no concept of source vs binary), then
-  /// it will be stored here, while if there are BinarySourceInfos, it will be
-  /// stored there, as one source can have multiple binaries with different
-  /// licenses.
+  /// Licenses are captured in BinarySourceInfo or PackagesV2.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.String>? licenses;
 
   /// The maintainer of the package.
@@ -2951,6 +3133,11 @@ class PackageIssue {
   /// - "CRITICAL" : Critical severity.
   core.String? effectiveSeverity;
 
+  /// Exploitability signals and summary for this package issue.
+  ///
+  /// Output only.
+  Exploitability? exploitability;
+
   /// The location at which this package was found.
   core.List<GrafeasV1FileLocation>? fileLocation;
 
@@ -2985,6 +3172,7 @@ class PackageIssue {
     this.affectedPackage,
     this.affectedVersion,
     this.effectiveSeverity,
+    this.exploitability,
     this.fileLocation,
     this.fixAvailable,
     this.fixedCpeUri,
@@ -3003,6 +3191,11 @@ class PackageIssue {
               )
             : null,
         effectiveSeverity: json_['effectiveSeverity'] as core.String?,
+        exploitability: json_.containsKey('exploitability')
+            ? Exploitability.fromJson(
+                json_['exploitability'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         fileLocation: (json_['fileLocation'] as core.List?)
             ?.map(
               (value) => GrafeasV1FileLocation.fromJson(
@@ -3026,6 +3219,7 @@ class PackageIssue {
     final affectedPackage = this.affectedPackage;
     final affectedVersion = this.affectedVersion;
     final effectiveSeverity = this.effectiveSeverity;
+    final exploitability = this.exploitability;
     final fileLocation = this.fileLocation;
     final fixAvailable = this.fixAvailable;
     final fixedCpeUri = this.fixedCpeUri;
@@ -3037,6 +3231,7 @@ class PackageIssue {
       'affectedPackage': ?affectedPackage,
       'affectedVersion': ?affectedVersion,
       'effectiveSeverity': ?effectiveSeverity,
+      'exploitability': ?exploitability,
       'fileLocation': ?fileLocation,
       'fixAvailable': ?fixAvailable,
       'fixedCpeUri': ?fixedCpeUri,
@@ -3673,7 +3868,7 @@ typedef SecretStatus = $SecretStatus;
 /// that holds this Signature, or the canonical serialization of the proto
 /// message that holds this signature).
 typedef Signature = $Signature;
-typedef SlsaBuilder = $Shared02;
+typedef SlsaBuilder = $Shared03;
 
 /// Indicates that the builder claims certain fields in this message to be
 /// complete.
@@ -4288,6 +4483,11 @@ class VulnerabilityOccurrence {
   /// - "CRITICAL" : Critical severity.
   core.String? effectiveSeverity;
 
+  /// Rollup of exploitability across all PackageIssues in this occurrence.
+  ///
+  /// Output only.
+  Exploitability? exploitability;
+
   /// Occurrence-specific extra details about the vulnerability.
   core.String? extraDetails;
 
@@ -4344,6 +4544,7 @@ class VulnerabilityOccurrence {
     this.cvssVersion,
     this.cvssv3,
     this.effectiveSeverity,
+    this.exploitability,
     this.extraDetails,
     this.fixAvailable,
     this.longDescription,
@@ -4376,6 +4577,11 @@ class VulnerabilityOccurrence {
               )
             : null,
         effectiveSeverity: json_['effectiveSeverity'] as core.String?,
+        exploitability: json_.containsKey('exploitability')
+            ? Exploitability.fromJson(
+                json_['exploitability'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         extraDetails: json_['extraDetails'] as core.String?,
         fixAvailable: json_['fixAvailable'] as core.bool?,
         longDescription: json_['longDescription'] as core.String?,
@@ -4415,6 +4621,7 @@ class VulnerabilityOccurrence {
     final cvssVersion = this.cvssVersion;
     final cvssv3 = this.cvssv3;
     final effectiveSeverity = this.effectiveSeverity;
+    final exploitability = this.exploitability;
     final extraDetails = this.extraDetails;
     final fixAvailable = this.fixAvailable;
     final longDescription = this.longDescription;
@@ -4432,6 +4639,7 @@ class VulnerabilityOccurrence {
       'cvssVersion': ?cvssVersion,
       'cvssv3': ?cvssv3,
       'effectiveSeverity': ?effectiveSeverity,
+      'exploitability': ?exploitability,
       'extraDetails': ?extraDetails,
       'fixAvailable': ?fixAvailable,
       'longDescription': ?longDescription,

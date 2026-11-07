@@ -60,8 +60,17 @@ class FirebaseHostingApi {
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
+  /// View your data across Google Cloud services and see the email address of
+  /// your Google Account
+  static const cloudPlatformReadOnlyScope =
+      'https://www.googleapis.com/auth/cloud-platform.read-only';
+
   /// View and administer all your Firebase data and settings
   static const firebaseScope = 'https://www.googleapis.com/auth/firebase';
+
+  /// View all your Firebase data and settings
+  static const firebaseReadonlyScope =
+      'https://www.googleapis.com/auth/firebase.readonly';
 
   final commons.ApiRequester _requester;
 

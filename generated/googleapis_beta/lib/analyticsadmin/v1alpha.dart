@@ -13956,8 +13956,6 @@ class GoogleAnalyticsAdminV1alphaProvisionAccountTicketRequest {
   GoogleAnalyticsAdminV1alphaAccount? account;
 
   /// Redirect URI where the user will be sent after accepting Terms of Service.
-  ///
-  /// Must be configured in Cloud Console as a Redirect URI.
   core.String? redirectUri;
 
   GoogleAnalyticsAdminV1alphaProvisionAccountTicketRequest({

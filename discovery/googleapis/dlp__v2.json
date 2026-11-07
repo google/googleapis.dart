@@ -267,7 +267,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260829",
+    "revision": "20261031",
     "rootUrl": "https://dlp.googleapis.com/",
     "servicePath": "",
     "title": "Sensitive Data Protection (DLP)",
@@ -5396,10 +5396,10 @@
                     ],
                     "enumDescriptions": [
                         "Invalid.",
-                        "Full match. - Dictionary: join of Dictionary results matched the complete finding quote - Regex: all regex matches fill a finding quote from start to end - Exclude infoType: completely inside affecting infoTypes findings",
-                        "Partial match. - Dictionary: at least one of the tokens in the finding matches - Regex: substring of the finding matches - Exclude infoType: intersects with affecting infoTypes findings",
-                        "Inverse match. - Dictionary: no tokens in the finding match the dictionary - Regex: finding doesn't match the regex - Exclude infoType: no intersection with affecting infoTypes findings",
-                        "Rule-specific match. The matching logic is based on the specific rule being used. This is required for rules where the matching behavior is not a simple string comparison (e.g., image containment). This matching type can only be used with the `ExcludeByImageFindings` rule. - Exclude by image findings: The matching logic is defined within `ExcludeByImageFindings` based on spatial relationships between bounding boxes."
+                        "Full match. - Dictionary: join of Dictionary results matched the complete finding quote - Regex: all regex matches fill a finding quote from start to end - Exclude infoType: completely inside affecting infoTypes findings - Exclude by prompt: finding matches the prompt definition",
+                        "Partial match. - Dictionary: at least one of the tokens in the finding matches - Regex: substring of the finding matches - Exclude infoType: intersects with affecting infoTypes findings - Exclude by prompt: not supported",
+                        "Inverse match. - Dictionary: no tokens in the finding match the dictionary - Regex: finding doesn't match the regex - Exclude infoType: no intersection with affecting infoTypes findings - Exclude by prompt: finding does not match the prompt definition",
+                        "Rule-specific match. The matching logic is based on the specific rule being used. This is required for rules where the matching behavior is not a simple string comparison (e.g., image containment). This matching type can only be used with the `ExcludeByImageFindings` rule. - Exclude by image findings: The matching logic is defined within `ExcludeByImageFindings` based on spatial relationships between bounding boxes. - Exclude by prompt: not supported"
                     ],
                     "type": "string"
                 },
@@ -5977,7 +5977,8 @@
                         "AUDIO",
                         "VIDEO",
                         "EXECUTABLE",
-                        "AI_MODEL"
+                        "AI_MODEL",
+                        "IMAGE_TIFF"
                     ],
                     "enumDescriptions": [
                         "Unused",
@@ -5995,9 +5996,10 @@
                         "csv",
                         "tsv",
                         "Audio file types. Only used for profiling.",
-                        "Video file types. Only used for profiling.",
+                        "Video file types.",
                         "Executable file types. Only used for profiling.",
-                        "AI model file types. Only used for profiling."
+                        "AI model file types. Only used for profiling.",
+                        "TIFF image format."
                     ],
                     "type": "string"
                 }
@@ -6266,7 +6268,7 @@
                             "Includes all files.",
                             "Includes all file extensions not covered by another entry. Binary scanning attempts to convert the content of the file to utf_8 to scan the file. If you wish to avoid this fall back, specify one or more of the other file types in your storage scan.",
                             "Included file extensions: asc,asp, aspx, brf, c, cc,cfm, cgi, cpp, csv, cxx, c++, cs, css, dart, dat, dot, eml,, epbub, ged, go, h, hh, hpp, hxx, h++, hs, html, htm, mkd, markdown, m, ml, mli, perl, pl, plist, pm, php, phtml, pht, properties, py, pyw, rb, rbw, rs, rss, rc, scala, sh, sql, swift, tex, shtml, shtm, xhtml, lhs, ics, ini, java, js, json, jsonl, kix, kml, ocaml, md, txt, text, tsv, vb, vcard, vcs, wml, xcodeproj, xml, xsl, xsd, yml, yaml.",
-                            "Included file extensions: bmp, gif, jpg, jpeg, jpe, png. Setting bytes_limit_per_file or bytes_limit_per_file_percent has no effect on image files. Image inspection is restricted to the `global`, `us`, `asia`, and `europe` regions.",
+                            "Included file extensions: bmp, gif, jpg, jpeg, jpe, png, tif, tiff. Setting bytes_limit_per_file or bytes_limit_per_file_percent has no effect on image files. Image inspection is restricted to the `global`, `us`, `asia`, and `europe` regions.",
                             "Microsoft Word files larger than 30 MB will be scanned as binary files. Included file extensions: docx, dotx, docm, dotm. Setting `bytes_limit_per_file` or `bytes_limit_per_file_percent` has no effect on Word files.",
                             "PDF files larger than 30 MB will be scanned as binary files. Included file extensions: pdf. Setting `bytes_limit_per_file` or `bytes_limit_per_file_percent` has no effect on PDF files.",
                             "Included file extensions: avro",
@@ -7730,7 +7732,7 @@
                             "Includes all files.",
                             "Includes all file extensions not covered by another entry. Binary scanning attempts to convert the content of the file to utf_8 to scan the file. If you wish to avoid this fall back, specify one or more of the other file types in your storage scan.",
                             "Included file extensions: asc,asp, aspx, brf, c, cc,cfm, cgi, cpp, csv, cxx, c++, cs, css, dart, dat, dot, eml,, epbub, ged, go, h, hh, hpp, hxx, h++, hs, html, htm, mkd, markdown, m, ml, mli, perl, pl, plist, pm, php, phtml, pht, properties, py, pyw, rb, rbw, rs, rss, rc, scala, sh, sql, swift, tex, shtml, shtm, xhtml, lhs, ics, ini, java, js, json, jsonl, kix, kml, ocaml, md, txt, text, tsv, vb, vcard, vcs, wml, xcodeproj, xml, xsl, xsd, yml, yaml.",
-                            "Included file extensions: bmp, gif, jpg, jpeg, jpe, png. Setting bytes_limit_per_file or bytes_limit_per_file_percent has no effect on image files. Image inspection is restricted to the `global`, `us`, `asia`, and `europe` regions.",
+                            "Included file extensions: bmp, gif, jpg, jpeg, jpe, png, tif, tiff. Setting bytes_limit_per_file or bytes_limit_per_file_percent has no effect on image files. Image inspection is restricted to the `global`, `us`, `asia`, and `europe` regions.",
                             "Microsoft Word files larger than 30 MB will be scanned as binary files. Included file extensions: docx, dotx, docm, dotm. Setting `bytes_limit_per_file` or `bytes_limit_per_file_percent` has no effect on Word files.",
                             "PDF files larger than 30 MB will be scanned as binary files. Included file extensions: pdf. Setting `bytes_limit_per_file` or `bytes_limit_per_file_percent` has no effect on PDF files.",
                             "Included file extensions: avro",
@@ -8991,10 +8993,10 @@
                     ],
                     "enumDescriptions": [
                         "Invalid.",
-                        "Full match. - Dictionary: join of Dictionary results matched the complete finding quote - Regex: all regex matches fill a finding quote from start to end - Exclude infoType: completely inside affecting infoTypes findings",
-                        "Partial match. - Dictionary: at least one of the tokens in the finding matches - Regex: substring of the finding matches - Exclude infoType: intersects with affecting infoTypes findings",
-                        "Inverse match. - Dictionary: no tokens in the finding match the dictionary - Regex: finding doesn't match the regex - Exclude infoType: no intersection with affecting infoTypes findings",
-                        "Rule-specific match. The matching logic is based on the specific rule being used. This is required for rules where the matching behavior is not a simple string comparison (e.g., image containment). This matching type can only be used with the `ExcludeByImageFindings` rule. - Exclude by image findings: The matching logic is defined within `ExcludeByImageFindings` based on spatial relationships between bounding boxes."
+                        "Full match. - Dictionary: join of Dictionary results matched the complete finding quote - Regex: all regex matches fill a finding quote from start to end - Exclude infoType: completely inside affecting infoTypes findings - Exclude by prompt: finding matches the prompt definition",
+                        "Partial match. - Dictionary: at least one of the tokens in the finding matches - Regex: substring of the finding matches - Exclude infoType: intersects with affecting infoTypes findings - Exclude by prompt: not supported",
+                        "Inverse match. - Dictionary: no tokens in the finding match the dictionary - Regex: finding doesn't match the regex - Exclude infoType: no intersection with affecting infoTypes findings - Exclude by prompt: finding does not match the prompt definition",
+                        "Rule-specific match. The matching logic is based on the specific rule being used. This is required for rules where the matching behavior is not a simple string comparison (e.g., image containment). This matching type can only be used with the `ExcludeByImageFindings` rule. - Exclude by image findings: The matching logic is defined within `ExcludeByImageFindings` based on spatial relationships between bounding boxes. - Exclude by prompt: not supported"
                     ],
                     "type": "string"
                 },
@@ -9806,6 +9808,11 @@
                         "$ref": "GooglePrivacyDlpV2BoundingBox"
                     },
                     "type": "array"
+                },
+                "pageNumber": {
+                    "description": "The 0-indexed page number or frame index for multi-page image formats.",
+                    "format": "int32",
+                    "type": "integer"
                 }
             },
             "type": "object"

@@ -925,6 +925,7 @@ api.Node buildNode() {
     o.networkConfig = buildNetworkConfig();
     o.networkConfigs = buildUnnamed20();
     o.networkEndpoints = buildUnnamed21();
+    o.protectionTier = 'foo';
     o.queuedResource = 'foo';
     o.runtimeVersion = 'foo';
     o.schedulingConfig = buildSchedulingConfig();
@@ -960,6 +961,7 @@ void checkNode(api.Node o) {
     checkNetworkConfig(o.networkConfig!);
     checkUnnamed20(o.networkConfigs!);
     checkUnnamed21(o.networkEndpoints!);
+    unittest.expect(o.protectionTier!, unittest.equals('foo'));
     unittest.expect(o.queuedResource!, unittest.equals('foo'));
     unittest.expect(o.runtimeVersion!, unittest.equals('foo'));
     checkSchedulingConfig(o.schedulingConfig!);

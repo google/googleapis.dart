@@ -1001,6 +1001,8 @@ class ProjectsLocationsOperationsResource {
 /// Looker instance Admin settings fields.
 class AdminSettings {
   /// Email domain allowlist for the instance.
+  ///
+  /// Optional.
   core.List<core.String>? allowedEmailDomains;
 
   AdminSettings({this.allowedEmailDomains});
@@ -1015,6 +1017,36 @@ class AdminSettings {
   core.Map<core.String, core.dynamic> toJson() {
     final allowedEmailDomains = this.allowedEmailDomains;
     return {'allowedEmailDomains': ?allowedEmailDomains};
+  }
+}
+
+/// Auth type for the Looker instance.
+class AuthType {
+  /// Whether google auth is enabled on the Looker instance.
+  ///
+  /// Optional.
+  core.bool? googleAuthEnabled;
+
+  /// Whether Workforce auth is enabled on the Looker instance.
+  ///
+  /// Optional.
+  core.bool? workforceAuthEnabled;
+
+  AuthType({this.googleAuthEnabled, this.workforceAuthEnabled});
+
+  AuthType.fromJson(core.Map json_)
+    : this(
+        googleAuthEnabled: json_['googleAuthEnabled'] as core.bool?,
+        workforceAuthEnabled: json_['workforceAuthEnabled'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final googleAuthEnabled = this.googleAuthEnabled;
+    final workforceAuthEnabled = this.workforceAuthEnabled;
+    return {
+      'googleAuthEnabled': ?googleAuthEnabled,
+      'workforceAuthEnabled': ?workforceAuthEnabled,
+    };
   }
 }
 
@@ -1071,9 +1103,13 @@ class ControlledEgressConfig {
 /// Custom domain information.
 class CustomDomain {
   /// Domain name.
+  ///
+  /// Optional.
   core.String? domain;
 
   /// Domain state.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "CUSTOM_DOMAIN_STATE_UNSPECIFIED" : Unspecified state.
   /// - "UNVERIFIED" : DNS record is not created.
@@ -1168,6 +1204,8 @@ typedef Empty = $Empty;
 /// Encryption configuration (i.e. CMEK).
 class EncryptionConfig {
   /// Name of the CMEK key in KMS (input parameter).
+  ///
+  /// Optional. Immutable.
   core.String? kmsKeyName;
 
   /// Full name and version of the CMEK key currently in use to encrypt Looker
@@ -1365,7 +1403,14 @@ class Instance {
   core.bool? acceleratedSecurityPatchEnabled;
 
   /// Looker Instance Admin settings.
+  ///
+  /// Optional.
   AdminSettings? adminSettings;
+
+  /// Auth type for the Looker instance.
+  ///
+  /// Optional.
+  AuthType? authType;
 
   /// Indicates whether catalog integration is disabled for the Looker instance.
   ///
@@ -1386,6 +1431,8 @@ class Instance {
   /// Format: `projects/{project}/global/networks/{network}`. Note that the
   /// consumer network may be in a different GCP project than the consumer
   /// project that is hosting the Looker Instance.
+  ///
+  /// Optional.
   core.String? consumerNetwork;
 
   /// Controlled egress configuration.
@@ -1404,9 +1451,13 @@ class Instance {
   core.String? createTime;
 
   /// Custom domain configuration for the instance.
+  ///
+  /// Optional.
   CustomDomain? customDomain;
 
   /// Maintenance denial period for this instance.
+  ///
+  /// Optional.
   DenyMaintenancePeriod? denyMaintenancePeriod;
 
   /// Public Egress IP (IPv4).
@@ -1417,6 +1468,8 @@ class Instance {
   /// Encryption configuration (CMEK).
   ///
   /// Only set if CMEK has been enabled on the instance.
+  ///
+  /// Optional.
   EncryptionConfig? encryptionConfig;
 
   /// Whether FIPS is enabled on the Looker instance.
@@ -1465,9 +1518,13 @@ class Instance {
   core.String? lookerVersion;
 
   /// Maintenance schedule for this instance.
+  ///
+  /// Output only.
   MaintenanceSchedule? maintenanceSchedule;
 
   /// Maintenance window for this instance.
+  ///
+  /// Optional.
   MaintenanceWindow? maintenanceWindow;
 
   /// Format: `projects/{project}/locations/{location}/instances/{instance}`.
@@ -1476,6 +1533,8 @@ class Instance {
   core.String? name;
 
   /// Looker instance OAuth login settings.
+  ///
+  /// Optional.
   OAuthConfig? oauthConfig;
 
   /// Configuration for periodic export.
@@ -1484,6 +1543,11 @@ class Instance {
   PeriodicExportConfig? periodicExportConfig;
 
   /// Platform edition.
+  ///
+  /// Marked as OPTIONAL for backward compatibility, though it is required
+  /// during instance creation.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "PLATFORM_EDITION_UNSPECIFIED" : Represents an unspecified platform
   /// edition.
@@ -1510,6 +1574,8 @@ class Instance {
   core.String? platformEdition;
 
   /// Whether private IP is enabled on the Looker instance.
+  ///
+  /// Optional.
   core.bool? privateIpEnabled;
 
   /// PSC configuration.
@@ -1527,6 +1593,8 @@ class Instance {
   core.bool? pscEnabled;
 
   /// Whether public IP is enabled on the Looker instance.
+  ///
+  /// Optional.
   core.bool? publicIpEnabled;
 
   /// The selected release channel for the instance.
@@ -1543,6 +1611,8 @@ class Instance {
   /// to be used for private services access connection.
   ///
   /// May or may not be specified in a create request.
+  ///
+  /// Optional.
   core.String? reservedRange;
 
   /// Reserved for future use.
@@ -1600,6 +1670,7 @@ class Instance {
   Instance({
     this.acceleratedSecurityPatchEnabled,
     this.adminSettings,
+    this.authType,
     this.catalogIntegrationOptOut,
     this.classType,
     this.consumerNetwork,
@@ -1647,6 +1718,11 @@ class Instance {
         adminSettings: json_.containsKey('adminSettings')
             ? AdminSettings.fromJson(
                 json_['adminSettings'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        authType: json_.containsKey('authType')
+            ? AuthType.fromJson(
+                json_['authType'] as core.Map<core.String, core.dynamic>,
               )
             : null,
         catalogIntegrationOptOut:
@@ -1751,6 +1827,7 @@ class Instance {
     final acceleratedSecurityPatchEnabled =
         this.acceleratedSecurityPatchEnabled;
     final adminSettings = this.adminSettings;
+    final authType = this.authType;
     final catalogIntegrationOptOut = this.catalogIntegrationOptOut;
     final classType = this.classType;
     final consumerNetwork = this.consumerNetwork;
@@ -1792,6 +1869,7 @@ class Instance {
     return {
       'acceleratedSecurityPatchEnabled': ?acceleratedSecurityPatchEnabled,
       'adminSettings': ?adminSettings,
+      'authType': ?authType,
       'catalogIntegrationOptOut': ?catalogIntegrationOptOut,
       'classType': ?classType,
       'consumerNetwork': ?consumerNetwork,

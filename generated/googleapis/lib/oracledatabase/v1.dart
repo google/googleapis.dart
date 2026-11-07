@@ -38,7 +38,9 @@
 ///     - [ProjectsLocationsCloudVmClustersResource]
 ///       - [ProjectsLocationsCloudVmClustersDbNodesResource]
 ///     - [ProjectsLocationsDatabaseCharacterSetsResource]
+///     - [ProjectsLocationsDatabaseConnectionsResource]
 ///     - [ProjectsLocationsDatabasesResource]
+///     - [ProjectsLocationsDbSystemComputePerformancesResource]
 ///     - [ProjectsLocationsDbSystemInitialStorageSizesResource]
 ///     - [ProjectsLocationsDbSystemShapesResource]
 ///     - [ProjectsLocationsDbSystemsResource]
@@ -47,6 +49,7 @@
 ///     - [ProjectsLocationsExadbVmClustersResource]
 ///       - [ProjectsLocationsExadbVmClustersDbNodesResource]
 ///     - [ProjectsLocationsExascaleDbStorageVaultsResource]
+///     - [ProjectsLocationsFlexComponentsResource]
 ///     - [ProjectsLocationsGiVersionsResource]
 ///       - [ProjectsLocationsGiVersionsMinorVersionsResource]
 ///     - [ProjectsLocationsGoldengateConnectionAssignmentsResource]
@@ -57,6 +60,7 @@
 ///     - [ProjectsLocationsGoldengateDeploymentVersionsResource]
 ///     - [ProjectsLocationsGoldengateDeploymentsResource]
 ///     - [ProjectsLocationsOdbNetworksResource]
+///       - [ProjectsLocationsOdbNetworksOdbDnsZonesResource]
 ///       - [ProjectsLocationsOdbNetworksOdbSubnetsResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsPluggableDatabasesResource]
@@ -128,8 +132,13 @@ class ProjectsLocationsResource {
       ProjectsLocationsCloudVmClustersResource(_requester);
   ProjectsLocationsDatabaseCharacterSetsResource get databaseCharacterSets =>
       ProjectsLocationsDatabaseCharacterSetsResource(_requester);
+  ProjectsLocationsDatabaseConnectionsResource get databaseConnections =>
+      ProjectsLocationsDatabaseConnectionsResource(_requester);
   ProjectsLocationsDatabasesResource get databases =>
       ProjectsLocationsDatabasesResource(_requester);
+  ProjectsLocationsDbSystemComputePerformancesResource
+  get dbSystemComputePerformances =>
+      ProjectsLocationsDbSystemComputePerformancesResource(_requester);
   ProjectsLocationsDbSystemInitialStorageSizesResource
   get dbSystemInitialStorageSizes =>
       ProjectsLocationsDbSystemInitialStorageSizesResource(_requester);
@@ -146,6 +155,8 @@ class ProjectsLocationsResource {
   ProjectsLocationsExascaleDbStorageVaultsResource
   get exascaleDbStorageVaults =>
       ProjectsLocationsExascaleDbStorageVaultsResource(_requester);
+  ProjectsLocationsFlexComponentsResource get flexComponents =>
+      ProjectsLocationsFlexComponentsResource(_requester);
   ProjectsLocationsGiVersionsResource get giVersions =>
       ProjectsLocationsGiVersionsResource(_requester);
   ProjectsLocationsGoldengateConnectionAssignmentsResource
@@ -1406,6 +1417,70 @@ class ProjectsLocationsCloudExadataInfrastructuresResource {
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
+
+  /// Updates the parameters of a single Exadata Infrastructure.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The name of the Exadata Infrastructure resource with
+  /// the format:
+  /// projects/{project}/locations/{region}/cloudExadataInfrastructures/{cloud_exadata_infrastructure}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/cloudExadataInfrastructures/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional ID to identify the request. This value
+  /// is used to identify duplicate requests. If you make a request with the
+  /// same request ID and the original request is still in progress or
+  /// completed, the server ignores the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Optional. Field mask is used to specify the fields to be
+  /// overwritten in the Exadata resource by the update. The fields specified in
+  /// the `update_mask` are relative to the resource, not the full request. A
+  /// field will be overwritten if it is in the mask. If the user does not
+  /// provide a mask then the service treats this as an implied field mask
+  /// equivalent to all fields that are populated (have a non-empty value). To
+  /// clear or unset a field, the field must be explicitly specified in the
+  /// `update_mask`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    CloudExadataInfrastructure request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsCloudExadataInfrastructuresDbServersResource {
@@ -1588,6 +1663,94 @@ class ProjectsLocationsCloudVmClustersResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Disables the Workload Identity Connector for a Cloud VM Cluster.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the Cloud VM Cluster in the following
+  /// format:
+  /// projects/{project}/locations/{location}/cloudVmClusters/{cloud_vm_cluster}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/cloudVmClusters/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> disableIdentityConnector(
+    DisableCloudVmClusterIdentityConnectorRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$name') + ':disableIdentityConnector';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Enables the Workload Identity Connector for a Cloud VM Cluster.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the Cloud VM Cluster in the following
+  /// format:
+  /// projects/{project}/locations/{location}/cloudVmClusters/{cloud_vm_cluster}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/cloudVmClusters/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> enableIdentityConnector(
+    EnableCloudVmClusterIdentityConnectorRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$name') + ':enableIdentityConnector';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets details of a single VM Cluster.
   ///
   /// Request parameters:
@@ -1680,6 +1843,67 @@ class ProjectsLocationsCloudVmClustersResource {
     return ListCloudVmClustersResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
+  }
+
+  /// Updates the parameters of a single Vm Cluster.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The name of the VM Cluster resource with the format:
+  /// projects/{project}/locations/{region}/cloudVmClusters/{cloud_vm_cluster}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/cloudVmClusters/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional ID to identify the request. This value
+  /// is used to identify duplicate requests. If you make a request with the
+  /// same request ID and the original request is still in progress or
+  /// completed, the server ignores the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Optional. A mask specifying which fields in the VM Cluster
+  /// should be updated. A field specified in the mask is overwritten. If a mask
+  /// isn't provided, the service treats this as an implied field mask
+  /// equivalent to all fields that are populated (have a non-empty value). To
+  /// clear or unset a field, the field must be explicitly specified in the
+  /// `update_mask`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    CloudVmCluster request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1810,6 +2034,370 @@ class ProjectsLocationsDatabaseCharacterSetsResource {
   }
 }
 
+class ProjectsLocationsDatabaseConnectionsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsDatabaseConnectionsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates a new DatabaseConnection in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent value for the DatabaseConnection in the
+  /// following format: projects/{project}/locations/{location}.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [databaseConnectionId] - Required. The ID of the DatabaseConnection to
+  /// create. This value is restricted to
+  /// (^\[a-z\](\[a-z0-9-\]{0,61}\[a-z0-9\])?$) and must be a maximum of 63
+  /// characters in length. The value must start with a letter and end with a
+  /// letter or a number.
+  ///
+  /// [requestId] - Optional. An optional ID to identify the request. This value
+  /// is used to identify duplicate requests. If you make a request with the
+  /// same request ID and the original request is still in progress or
+  /// completed, the server ignores the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    DatabaseConnection request,
+    core.String parent, {
+    core.String? databaseConnectionId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'databaseConnectionId': ?databaseConnectionId == null
+          ? null
+          : [databaseConnectionId],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/databaseConnections';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single DatabaseConnection.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the resource in the following format:
+  /// projects/{project}/locations/{location}/databaseConnections/{database_connection}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/databaseConnections/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional ID to identify the request. This value
+  /// is used to identify duplicate requests. If you make a request with the
+  /// same request ID and the original request is still in progress or
+  /// completed, the server ignores the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Executes a SQL statement on a DatabaseConnection.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the DatabaseConnection in the following
+  /// format:
+  /// projects/{project}/locations/{location}/databaseConnections/{database_connection}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/databaseConnections/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ExecuteSqlResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ExecuteSqlResponse> executeSql(
+    ExecuteSqlRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':executeSql';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return ExecuteSqlResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Gets details of a single DatabaseConnection.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the DatabaseConnection in the following
+  /// format:
+  /// projects/{project}/locations/{location}/databaseConnections/{database_connection}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/databaseConnections/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DatabaseConnection].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DatabaseConnection> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return DatabaseConnection.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists DatabaseConnections in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent value for the DatabaseConnection in the
+  /// following format: projects/{project}/locations/{location}.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. An expression for filtering the results of the
+  /// request.
+  ///
+  /// [orderBy] - Optional. An expression for ordering the results of the
+  /// request.
+  ///
+  /// [pageSize] - Optional. The maximum number of items to return. If
+  /// unspecified, at most 50 DatabaseConnections will be returned. The maximum
+  /// value is 1000; values above 1000 will be coerced to 1000.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results the server
+  /// should return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListDatabaseConnectionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListDatabaseConnectionsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/databaseConnections';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListDatabaseConnectionsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates the parameters of a single DatabaseConnection.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The resource name of the DatabaseConnection. Format:
+  /// projects/{project}/locations/{location}/databaseConnections/{database_connection}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/databaseConnections/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional ID to identify the request. This value
+  /// is used to identify duplicate requests. If you make a request with the
+  /// same request ID and the original request is still in progress or
+  /// completed, the server ignores the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Optional. A mask specifying which fields in the
+  /// DatabaseConnection should be updated. A field specified in the mask is
+  /// overwritten. If a mask isn't provided then all the fields in the
+  /// DatabaseConnection are overwritten.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    DatabaseConnection request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Tests connectivity of a DatabaseConnection.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the DatabaseConnection to test. Format:
+  /// projects/{project}/locations/{location}/databaseConnections/{database_connection}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/databaseConnections/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestDatabaseConnectionResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestDatabaseConnectionResponse> test(
+    TestDatabaseConnectionRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':test';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return TestDatabaseConnectionResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 class ProjectsLocationsDatabasesResource {
   final commons.ApiRequester _requester;
 
@@ -1903,6 +2491,71 @@ class ProjectsLocationsDatabasesResource {
       queryParams: queryParams_,
     );
     return ListDatabasesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsDbSystemComputePerformancesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsDbSystemComputePerformancesResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Lists all the DbSystemComputePerformances for the given project and
+  /// location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent value for
+  /// ListDbSystemComputePerformancesRequest Format:
+  /// projects/{project}/locations/{location}
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. An expression for filtering the results of the
+  /// request. Only the `db_system_shape` field is supported in the following
+  /// format: `db_system_shape="{db_system_shape}"`.
+  ///
+  /// [pageSize] - Optional. Requested page size. Server may return fewer items
+  /// than requested. If unspecified, server will pick an appropriate default.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results the server
+  /// should return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListDbSystemComputePerformancesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListDbSystemComputePerformancesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/dbSystemComputePerformances';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListDbSystemComputePerformancesResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -2239,6 +2892,65 @@ class ProjectsLocationsDbSystemsResource {
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
+
+  /// Updates the `labels` of a single DbSystem.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The name of the DbSystem resource in the following
+  /// format: projects/{project}/locations/{region}/dbSystems/{db_system}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dbSystems/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional ID to identify the request. This value
+  /// is used to identify duplicate requests. If you make a request with the
+  /// same request ID and the original request is still in progress or
+  /// completed, the server ignores the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Optional. A mask specifying which fields in the DbSystem
+  /// should be updated. A field specified in the mask is updated. If a mask
+  /// isn't provided, the service treats this as an implied field mask
+  /// equivalent to all fields that are populated (have a non-empty value).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    DbSystem request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsDbVersionsResource {
@@ -2475,6 +3187,94 @@ class ProjectsLocationsExadbVmClustersResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Disables the Workload Identity Connector for an Exadb VM Cluster.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the Exadb VM Cluster in the following
+  /// format:
+  /// projects/{project}/locations/{location}/exadbVmClusters/{exadb_vm_cluster}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/exadbVmClusters/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> disableIdentityConnector(
+    DisableExadbVmClusterIdentityConnectorRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$name') + ':disableIdentityConnector';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Enables the Workload Identity Connector for an Exadb VM Cluster.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the Exadb VM Cluster in the following
+  /// format:
+  /// projects/{project}/locations/{location}/exadbVmClusters/{exadb_vm_cluster}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/exadbVmClusters/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> enableIdentityConnector(
+    EnableExadbVmClusterIdentityConnectorRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$name') + ':enableIdentityConnector';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -2966,6 +3766,129 @@ class ProjectsLocationsExascaleDbStorageVaultsResource {
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
+
+  /// Updates the `labels` of a single ExascaleDbStorageVault.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The resource name of the ExascaleDbStorageVault.
+  /// Format:
+  /// projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/exascaleDbStorageVaults/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional ID to identify the request. This value
+  /// is used to identify duplicate requests. If you make a request with the
+  /// same request ID and the original request is still in progress or
+  /// completed, the server ignores the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Optional. A mask specifying which fields in the
+  /// ExascaleDbStorageVault should be updated. A field specified in the mask is
+  /// updated. If a mask isn't provided, the service treats this as an implied
+  /// field mask equivalent to all fields that are populated (have a non-empty
+  /// value). To clear or unset a field, the field must be explicitly specified
+  /// in the `update_mask`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    ExascaleDbStorageVault request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsFlexComponentsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsFlexComponentsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Lists Flex Components in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent value for ListFlexComponentsRequest Format:
+  /// projects/{project}/locations/{location}
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. An expression for filtering the results of the
+  /// request. Only the `shape` field is supported in the following format:
+  /// `shape="{shape}"`.
+  ///
+  /// [pageSize] - Optional. Requested page size. Server may return fewer items
+  /// than requested. If unspecified, server will pick an appropriate default.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results the server
+  /// should return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListFlexComponentsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListFlexComponentsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/flexComponents';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListFlexComponentsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
 }
 
 class ProjectsLocationsGiVersionsResource {
@@ -3338,6 +4261,68 @@ class ProjectsLocationsGoldengateConnectionAssignmentsResource {
     );
   }
 
+  /// Updates the `labels` of a single GoldengateConnectionAssignment.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The name of the GoldengateConnectionAssignment
+  /// resource in the following format:
+  /// projects/{project}/locations/{region}/goldengateConnectionAssignments/{goldengate_connection_assignment}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/goldengateConnectionAssignments/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional ID to identify the request. This value
+  /// is used to identify duplicate requests. If you make a request with the
+  /// same request ID and the original request is still in progress or
+  /// completed, the server ignores the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Optional. A mask specifying which fields in the
+  /// GoldengateConnectionAssignment should be updated. A field specified in the
+  /// mask is updated. If a mask isn't provided, the service treats this as an
+  /// implied field mask equivalent to all fields that are populated (have a
+  /// non-empty value). To clear or unset a field, the field must be explicitly
+  /// specified in the `update_mask`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    GoldengateConnectionAssignment request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Tests a single GoldengateConnectionAssignment.
   ///
   /// [request] - The metadata request object.
@@ -3666,6 +4651,68 @@ class ProjectsLocationsGoldengateConnectionsResource {
     return ListGoldengateConnectionsResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
+  }
+
+  /// Updates the `labels` of a single GoldengateConnection.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The name of the GoldengateConnection resource in the
+  /// following format:
+  /// projects/{project}/locations/{region}/goldengateConnections/{goldengate_connection}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/goldengateConnections/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional ID to identify the request. This value
+  /// is used to identify duplicate requests. If you make a request with the
+  /// same request ID and the original request is still in progress or
+  /// completed, the server ignores the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Optional. A mask specifying which fields in the
+  /// GoldengateConnection should be updated. A field specified in the mask is
+  /// updated. If a mask isn't provided, the service treats this as an implied
+  /// field mask equivalent to all fields that are populated (have a non-empty
+  /// value). To clear or unset a field, the field must be explicitly specified
+  /// in the `update_mask`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    GoldengateConnection request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4090,6 +5137,68 @@ class ProjectsLocationsGoldengateDeploymentsResource {
     );
   }
 
+  /// Updates the `labels` of a single GoldengateDeployment.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The name of the GoldengateDeployment resource in the
+  /// following format:
+  /// projects/{project}/locations/{region}/goldengateDeployments/{goldengate_deployment}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/goldengateDeployments/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional ID to identify the request. This value
+  /// is used to identify duplicate requests. If you make a request with the
+  /// same request ID and the original request is still in progress or
+  /// completed, the server ignores the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Optional. A mask specifying which fields in the
+  /// GoldengateDeployment should be updated. A field specified in the mask is
+  /// updated. If a mask isn't provided, the service treats this as an implied
+  /// field mask equivalent to all fields that are populated (have a non-empty
+  /// value). To clear or unset a field, the field must be explicitly specified
+  /// in the `update_mask`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    GoldengateDeployment request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Starts a single GoldengateDeployment.
   ///
   /// [request] - The metadata request object.
@@ -4180,6 +5289,8 @@ class ProjectsLocationsGoldengateDeploymentsResource {
 class ProjectsLocationsOdbNetworksResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsOdbNetworksOdbDnsZonesResource get odbDnsZones =>
+      ProjectsLocationsOdbNetworksOdbDnsZonesResource(_requester);
   ProjectsLocationsOdbNetworksOdbSubnetsResource get odbSubnets =>
       ProjectsLocationsOdbNetworksOdbSubnetsResource(_requester);
 
@@ -4382,6 +5493,277 @@ class ProjectsLocationsOdbNetworksResource {
       queryParams: queryParams_,
     );
     return ListOdbNetworksResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates the `labels` and `service_connectivity_config` of a single
+  /// OdbNetwork.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The name of the OdbNetwork resource in the following
+  /// format: projects/{project}/locations/{region}/odbNetworks/{odb_network}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/odbNetworks/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional ID to identify the request. This value
+  /// is used to identify duplicate requests. If you make a request with the
+  /// same request ID and the original request is still in progress or
+  /// completed, the server ignores the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Optional. A mask specifying which fields in the OdbNetwork
+  /// should be updated. A field specified in the mask is updated. If a mask
+  /// isn't provided, the service treats this as an implied field mask
+  /// equivalent to all fields that are populated (have a non-empty value). To
+  /// clear or unset a field, the field must be explicitly specified in the
+  /// `update_mask`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    OdbNetwork request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsOdbNetworksOdbDnsZonesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsOdbNetworksOdbDnsZonesResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates a new ODB DNS Zone in a given ODB Network.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent value for the OdbDnsZone in the following
+  /// format: projects/{project}/locations/{location}/odbNetworks/{odb_network}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/odbNetworks/\[^/\]+$`.
+  ///
+  /// [odbDnsZoneId] - Required. The ID of the OdbDnsZone to create. This value
+  /// is restricted to (^\[a-z\](\[a-z0-9-\]{0,61}\[a-z0-9\])?$) and must be a
+  /// maximum of 63 characters in length. The value must start with a letter and
+  /// end with a letter or a number.
+  ///
+  /// [requestId] - Optional. An optional ID to identify the request. This value
+  /// is used to identify duplicate requests. If you make a request with the
+  /// same request ID and the original request is still in progress or
+  /// completed, the server ignores the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    OdbDnsZone request,
+    core.String parent, {
+    core.String? odbDnsZoneId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'odbDnsZoneId': ?odbDnsZoneId == null ? null : [odbDnsZoneId],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/odbDnsZones';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single ODB DNS Zone.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the resource in the following format:
+  /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbDnsZones/{odb_dns_zone}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/odbNetworks/\[^/\]+/odbDnsZones/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional ID to identify the request. This value
+  /// is used to identify duplicate requests. If you make a request with the
+  /// same request ID and the original request is still in progress or
+  /// completed, the server ignores the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single ODB DNS Zone.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the OdbDnsZone in the following format:
+  /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbDnsZones/{odb_dns_zone}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/odbNetworks/\[^/\]+/odbDnsZones/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [OdbDnsZone].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<OdbDnsZone> get(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return OdbDnsZone.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists all the ODB DNS Zones in a given ODB Network.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent value for the OdbDnsZone in the following
+  /// format: projects/{project}/locations/{location}/odbNetworks/{odb_network}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/odbNetworks/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. An expression for filtering the results of the
+  /// request.
+  ///
+  /// [orderBy] - Optional. An expression for ordering the results of the
+  /// request.
+  ///
+  /// [pageSize] - Optional. The maximum number of items to return. If
+  /// unspecified, at most 50 OdbDnsZones will be returned. The maximum value is
+  /// 1000; values above 1000 will be coerced to 1000.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results the server
+  /// should return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListOdbDnsZonesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListOdbDnsZonesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/odbDnsZones';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListOdbDnsZonesResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -4591,6 +5973,68 @@ class ProjectsLocationsOdbNetworksOdbSubnetsResource {
     return ListOdbSubnetsResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
+  }
+
+  /// Updates the `labels` of a single ODB Subnet.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The name of the OdbSubnet resource in the following
+  /// format:
+  /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/odbNetworks/\[^/\]+/odbSubnets/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional ID to identify the request. This value
+  /// is used to identify duplicate requests. If you make a request with the
+  /// same request ID and the original request is still in progress or
+  /// completed, the server ignores the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Optional. A mask specifying which fields in the OdbSubnet
+  /// should be updated. A field specified in the mask is updated. If a mask
+  /// isn't provided, the service treats this as an implied field mask
+  /// equivalent to all fields that are populated (have a non-empty value). To
+  /// clear or unset a field, the field must be explicitly specified in the
+  /// `update_mask`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    OdbSubnet request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -5007,22 +6451,22 @@ class AmazonS3IcebergStorage {
 ///
 /// https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/AutonomousDatabase/
 class AutonomousDatabase {
-  /// The password for the default ADMIN user.
+  /// Input only.
   ///
-  /// Note: Only one of `admin_password_secret_version` or `admin_password` can
-  /// be populated.
+  /// Immutable. The password for the default ADMIN user. Note: Only one of
+  /// `admin_password_secret_version` or `admin_password` can be populated.
   ///
-  /// Optional. Immutable.
+  /// Optional.
   core.String? adminPassword;
 
-  /// The resource name of a secret version in Secret Manager which contains the
-  /// database admin user's password.
+  /// Input only.
   ///
-  /// Format: projects/{project}/secrets/{secret}/versions/{version}. Note: Only
-  /// one of `admin_password_secret_version` or `admin_password` can be
-  /// populated.
+  /// Immutable. The resource name of a secret version in Secret Manager which
+  /// contains the database admin user's password. Format:
+  /// projects/{project}/secrets/{secret}/versions/{version}. Note: Only one of
+  /// `admin_password_secret_version` or `admin_password` can be populated.
   ///
-  /// Optional. Immutable.
+  /// Optional.
   core.String? adminPasswordSecretVersion;
 
   /// The subnet CIDR range for the Autonomous Database.
@@ -5921,6 +7365,7 @@ class AutonomousDatabaseProperties {
   /// - "AJD" : Autonomous JSON Database.
   /// - "APEX" : Autonomous Database with the Oracle APEX Application
   /// Development workload type.
+  /// - "LH" : Autonomous Database with the Lakehouse workload type.
   core.String? dbWorkload;
 
   /// The date and time the Disaster Recovery role was changed for the standby
@@ -6806,6 +8251,7 @@ class AutonomousDbVersion {
   /// - "AJD" : Autonomous JSON Database.
   /// - "APEX" : Autonomous Database with the Oracle APEX Application
   /// Development workload type.
+  /// - "LH" : Autonomous Database with the Lakehouse workload type.
   core.String? dbWorkload;
 
   /// Identifier.
@@ -6995,7 +8441,7 @@ class CloudExadataInfrastructure {
 
   /// User friendly name for this resource.
   ///
-  /// Optional.
+  /// Optional. Immutable.
   core.String? displayName;
 
   /// Entitlement ID of the private offer against which this infrastructure
@@ -7009,7 +8455,7 @@ class CloudExadataInfrastructure {
   /// Example: us-east4-b-r2. If not specified, the system will pick a zone
   /// based on availability.
   ///
-  /// Optional.
+  /// Optional. Immutable.
   core.String? gcpOracleZone;
 
   /// Labels or tags associated with the resource.
@@ -7025,7 +8471,7 @@ class CloudExadataInfrastructure {
 
   /// Various properties of the infra.
   ///
-  /// Optional.
+  /// Optional. Immutable.
   CloudExadataInfrastructureProperties? properties;
 
   CloudExadataInfrastructure({
@@ -7431,19 +8877,19 @@ class CloudVmCluster {
   /// Format:
   /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
   ///
-  /// Optional.
+  /// Optional. Immutable.
   core.String? backupOdbSubnet;
 
   /// CIDR range of the backup subnet.
   ///
-  /// Optional.
+  /// Optional. Immutable.
   core.String? backupSubnetCidr;
 
   /// Network settings.
   ///
   /// CIDR to use for cluster IP allocation.
   ///
-  /// Optional.
+  /// Optional. Immutable.
   core.String? cidr;
 
   /// The date and time that the VM cluster was created.
@@ -7453,14 +8899,14 @@ class CloudVmCluster {
 
   /// User friendly name for this resource.
   ///
-  /// Optional.
+  /// Optional. Immutable.
   core.String? displayName;
 
   /// The name of the Exadata Infrastructure resource on which VM cluster
   /// resource is created, in the following format:
   /// projects/{project}/locations/{region}/cloudExadataInfrastuctures/{cloud_extradata_infrastructure}
   ///
-  /// Required.
+  /// Required. Immutable.
   core.String? exadataInfrastructure;
 
   /// The name of ExascaleDbStorageVault associated with the VM Cluster.
@@ -7468,7 +8914,7 @@ class CloudVmCluster {
   /// Format:
   /// projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
   ///
-  /// Optional.
+  /// Optional. Immutable.
   core.String? exascaleDbStorageVault;
 
   /// The GCP Oracle zone where Oracle CloudVmCluster is hosted.
@@ -7485,6 +8931,17 @@ class CloudVmCluster {
   /// Output only.
   IdentityConnector? identityConnector;
 
+  /// Input only.
+  ///
+  /// Immutable. If set to true, disables the automatic provisioning of the
+  /// Workload Identity Connector during creation. If set to false or omitted,
+  /// the Workload Identity Connector will be automatically provisioned by
+  /// default. Note: Provisioning the Workload Identity Connector is a
+  /// prerequisite for enabling Google Cloud CMEK.
+  ///
+  /// Optional.
+  core.bool? identityConnectorDisabled;
+
   /// Labels or tags associated with the VM Cluster.
   ///
   /// Optional.
@@ -7500,8 +8957,17 @@ class CloudVmCluster {
   ///
   /// Format: projects/{project}/global/networks/{network}
   ///
-  /// Optional.
+  /// Optional. Immutable.
   core.String? network;
+
+  /// The name of the OdbDnsZone for using custom domain name for the VM
+  /// Cluster.
+  ///
+  /// Format:
+  /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbDnsZones/{odb_dns_zone}
+  ///
+  /// Optional. Immutable.
+  core.String? odbDnsZone;
 
   /// The name of the OdbNetwork associated with the VM Cluster.
   ///
@@ -7509,7 +8975,7 @@ class CloudVmCluster {
   /// It is optional but if specified, this should match the parent ODBNetwork
   /// of the odb_subnet and backup_odb_subnet.
   ///
-  /// Optional.
+  /// Optional. Immutable.
   core.String? odbNetwork;
 
   /// The name of the OdbSubnet associated with the VM Cluster for IP
@@ -7518,12 +8984,12 @@ class CloudVmCluster {
   /// Format:
   /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
   ///
-  /// Optional.
+  /// Optional. Immutable.
   core.String? odbSubnet;
 
   /// Various properties of the VM Cluster.
   ///
-  /// Optional.
+  /// Optional. Immutable.
   CloudVmClusterProperties? properties;
 
   CloudVmCluster({
@@ -7536,9 +9002,11 @@ class CloudVmCluster {
     this.exascaleDbStorageVault,
     this.gcpOracleZone,
     this.identityConnector,
+    this.identityConnectorDisabled,
     this.labels,
     this.name,
     this.network,
+    this.odbDnsZone,
     this.odbNetwork,
     this.odbSubnet,
     this.properties,
@@ -7560,11 +9028,14 @@ class CloudVmCluster {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        identityConnectorDisabled:
+            json_['identityConnectorDisabled'] as core.bool?,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
         name: json_['name'] as core.String?,
         network: json_['network'] as core.String?,
+        odbDnsZone: json_['odbDnsZone'] as core.String?,
         odbNetwork: json_['odbNetwork'] as core.String?,
         odbSubnet: json_['odbSubnet'] as core.String?,
         properties: json_.containsKey('properties')
@@ -7584,9 +9055,11 @@ class CloudVmCluster {
     final exascaleDbStorageVault = this.exascaleDbStorageVault;
     final gcpOracleZone = this.gcpOracleZone;
     final identityConnector = this.identityConnector;
+    final identityConnectorDisabled = this.identityConnectorDisabled;
     final labels = this.labels;
     final name = this.name;
     final network = this.network;
+    final odbDnsZone = this.odbDnsZone;
     final odbNetwork = this.odbNetwork;
     final odbSubnet = this.odbSubnet;
     final properties = this.properties;
@@ -7600,9 +9073,11 @@ class CloudVmCluster {
       'exascaleDbStorageVault': ?exascaleDbStorageVault,
       'gcpOracleZone': ?gcpOracleZone,
       'identityConnector': ?identityConnector,
+      'identityConnectorDisabled': ?identityConnectorDisabled,
       'labels': ?labels,
       'name': ?name,
       'network': ?network,
+      'odbDnsZone': ?odbDnsZone,
       'odbNetwork': ?odbNetwork,
       'odbSubnet': ?odbSubnet,
       'properties': ?properties,
@@ -8019,6 +9494,93 @@ class CloudVmClusterProperties {
   }
 }
 
+/// Contains the name and datatype of a column in a SQL Result.
+class Column {
+  /// Name of the column.
+  ///
+  /// Required.
+  core.String? name;
+
+  /// Database-specific type name (e.g., "VARCHAR2(255)", "NUMBER", "DATE",
+  /// "CLOB")
+  ///
+  /// Required.
+  core.String? type;
+
+  Column({this.name, this.type});
+
+  Column.fromJson(core.Map json_)
+    : this(
+        name: json_['name'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final type = this.type;
+    return {'name': ?name, 'type': ?type};
+  }
+}
+
+/// Parameters detailing the compute performance for a specified DB system
+/// shape.
+class ComputePerformance {
+  /// The number of compute servers for the DB system.
+  ///
+  /// Output only.
+  core.int? computeCount;
+
+  /// The compute model for Base Database Service.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "COMPUTE_MODEL_UNSPECIFIED" : Unspecified compute model.
+  /// - "COMPUTE_MODEL_ECPU" : Abstract measure of compute resources. ECPUs are
+  /// based on the number of cores elastically allocated from a pool of compute
+  /// and storage servers.
+  /// - "COMPUTE_MODEL_OCPU" : Physical measure of compute resources. OCPUs are
+  /// based on the physical core of a processor.
+  core.String? computeModel;
+
+  /// The number of CPU cores available.
+  ///
+  /// Output only.
+  core.int? cpuCoreCount;
+
+  /// The amount of memory allocated for the VMDB System in GBs.
+  ///
+  /// Output only.
+  core.double? memoryInGbs;
+
+  ComputePerformance({
+    this.computeCount,
+    this.computeModel,
+    this.cpuCoreCount,
+    this.memoryInGbs,
+  });
+
+  ComputePerformance.fromJson(core.Map json_)
+    : this(
+        computeCount: json_['computeCount'] as core.int?,
+        computeModel: json_['computeModel'] as core.String?,
+        cpuCoreCount: json_['cpuCoreCount'] as core.int?,
+        memoryInGbs: (json_['memoryInGbs'] as core.num?)?.toDouble(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final computeCount = this.computeCount;
+    final computeModel = this.computeModel;
+    final cpuCoreCount = this.cpuCoreCount;
+    final memoryInGbs = this.memoryInGbs;
+    return {
+      'computeCount': ?computeCount,
+      'computeModel': ?computeModel,
+      'cpuCoreCount': ?cpuCoreCount,
+      'memoryInGbs': ?memoryInGbs,
+    };
+  }
+}
+
 /// The request for `CloudExadataInfrastructure.ConfigureExascale`.
 class ConfigureExascaleCloudExadataInfrastructureRequest {
   /// An optional ID to identify the request.
@@ -8210,20 +9772,20 @@ class DataCollectionOptionsDbSystem {
 ///
 /// https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/Database/
 class Database {
-  /// The password for the default ADMIN user.
+  /// Input only.
   ///
-  /// Note: Only one of `admin_password_secret_version` or `admin_password` can
-  /// be populated.
+  /// The password for the default ADMIN user. Note: Only one of
+  /// `admin_password_secret_version` or `admin_password` can be populated.
   ///
   /// Optional.
   core.String? adminPassword;
 
-  /// The resource name of a secret version in Secret Manager which contains the
-  /// database admin user's password.
+  /// Input only.
   ///
-  /// Format: projects/{project}/secrets/{secret}/versions/{version}. Note: Only
-  /// one of `admin_password_secret_version` or `admin_password` can be
-  /// populated.
+  /// The resource name of a secret version in Secret Manager which contains the
+  /// database admin user's password. Format:
+  /// projects/{project}/secrets/{secret}/versions/{version}. Note: Only one of
+  /// `admin_password_secret_version` or `admin_password` can be populated.
   ///
   /// Optional.
   core.String? adminPasswordSecretVersion;
@@ -8321,20 +9883,22 @@ class Database {
   /// Optional.
   DatabaseProperties? properties;
 
-  /// The TDE wallet password for the database.
+  /// Input only.
   ///
-  /// Note: Only one of `tde_wallet_password_secret_version` or
-  /// `tde_wallet_password` can be populated.
+  /// The TDE wallet password for the database. Note: Only one of
+  /// `tde_wallet_password_secret_version` or `tde_wallet_password` can be
+  /// populated.
   ///
   /// Optional.
   core.String? tdeWalletPassword;
 
-  /// The resource name of a secret version in Secret Manager which contains the
-  /// TDE wallet password for the database.
+  /// Input only.
   ///
-  /// Format: projects/{project}/secrets/{secret}/versions/{version}. Note: Only
-  /// one of `tde_wallet_password_secret_version` or `tde_wallet_password` can
-  /// be populated.
+  /// The resource name of a secret version in Secret Manager which contains the
+  /// TDE wallet password for the database. Format:
+  /// projects/{project}/secrets/{secret}/versions/{version}. Note: Only one of
+  /// `tde_wallet_password_secret_version` or `tde_wallet_password` can be
+  /// populated.
   ///
   /// Optional.
   core.String? tdeWalletPasswordSecretVersion;
@@ -8470,6 +10034,153 @@ class DatabaseCharacterSet {
       'characterSet': ?characterSet,
       'characterSetType': ?characterSetType,
       'name': ?name,
+    };
+  }
+}
+
+/// Represents DatabaseConnection resource.
+class DatabaseConnection {
+  /// Oracle Easy Connect or TNS connection string.
+  ///
+  /// Example: "your-db-host.example.com:1521/YOUR_SERVICE_NAME"
+  ///
+  /// Required. Immutable.
+  core.String? connectionString;
+
+  /// The create time of the resource.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// User-friendly display name for the connection.
+  ///
+  /// Optional. Immutable.
+  core.String? displayName;
+
+  /// Optional: Labels as key-value pairs to organize the resource.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Additional information about the current state of the connection.
+  ///
+  /// Output only.
+  core.String? lifecycleDetails;
+
+  /// Identifier.
+  ///
+  /// The resource name of the DatabaseConnection. Format:
+  /// projects/{project}/locations/{location}/databaseConnections/{database_connection}
+  core.String? name;
+
+  /// For Oracle Database@Google cloud resources.
+  ///
+  /// Format: projects/{project}/locations/{location}/odbNetworks/{odbNetwork}
+  ///
+  /// Optional. Immutable.
+  core.String? odbNetwork;
+
+  /// The resource name of the GCP Secret Manager secret version containing the
+  /// password for the specified username.
+  ///
+  /// Format: projects/{project}/secrets/{secret_id}/versions/{version_id} The
+  /// service's Per-Product Per-Project Service Account (P4SA) must have the
+  /// 'secretmanager.secretAccessor' permission on this secret.
+  ///
+  /// Optional.
+  core.String? passwordSecretVersion;
+
+  /// The current state of the connection.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default unspecified value.
+  /// - "CREATING" : Indicates that the resource is in a creating state.
+  /// - "ACTIVE" : Indicates that the resource is in an active state.
+  /// - "FAILED" : Indicates that the resource is in a failed state.
+  /// - "DELETING" : Indicates that the resource is in a deleting state.
+  core.String? state;
+
+  /// The update time of the resource.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  /// The default database username to use for connections.
+  ///
+  /// Optional. Immutable.
+  core.String? username;
+
+  /// Optional: The resource name of the GCP Secret Manager secret version
+  /// containing base64 encoded content of the Oracle Wallet ZIP file required
+  /// for mTLS/TLS connections.
+  ///
+  /// Format: projects/{project}/secrets/{secret_id}/versions/{version_id} The
+  /// service's Per-Product Per-Project Service Account (P4SA) must have the
+  /// 'secretmanager.secretAccessor' permission on this secret.
+  ///
+  /// Optional.
+  core.String? walletSecretVersion;
+
+  DatabaseConnection({
+    this.connectionString,
+    this.createTime,
+    this.displayName,
+    this.labels,
+    this.lifecycleDetails,
+    this.name,
+    this.odbNetwork,
+    this.passwordSecretVersion,
+    this.state,
+    this.updateTime,
+    this.username,
+    this.walletSecretVersion,
+  });
+
+  DatabaseConnection.fromJson(core.Map json_)
+    : this(
+        connectionString: json_['connectionString'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        lifecycleDetails: json_['lifecycleDetails'] as core.String?,
+        name: json_['name'] as core.String?,
+        odbNetwork: json_['odbNetwork'] as core.String?,
+        passwordSecretVersion: json_['passwordSecretVersion'] as core.String?,
+        state: json_['state'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+        username: json_['username'] as core.String?,
+        walletSecretVersion: json_['walletSecretVersion'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final connectionString = this.connectionString;
+    final createTime = this.createTime;
+    final displayName = this.displayName;
+    final labels = this.labels;
+    final lifecycleDetails = this.lifecycleDetails;
+    final name = this.name;
+    final odbNetwork = this.odbNetwork;
+    final passwordSecretVersion = this.passwordSecretVersion;
+    final state = this.state;
+    final updateTime = this.updateTime;
+    final username = this.username;
+    final walletSecretVersion = this.walletSecretVersion;
+    return {
+      'connectionString': ?connectionString,
+      'createTime': ?createTime,
+      'displayName': ?displayName,
+      'labels': ?labels,
+      'lifecycleDetails': ?lifecycleDetails,
+      'name': ?name,
+      'odbNetwork': ?odbNetwork,
+      'passwordSecretVersion': ?passwordSecretVersion,
+      'state': ?state,
+      'updateTime': ?updateTime,
+      'username': ?username,
+      'walletSecretVersion': ?walletSecretVersion,
     };
   }
 }
@@ -9230,7 +10941,7 @@ class DbSystem {
   ///
   /// The name does not have to be unique within your project.
   ///
-  /// Required.
+  /// Required. Immutable.
   core.String? displayName;
 
   /// The ID of the subscription entitlement associated with the DbSystem
@@ -9243,7 +10954,7 @@ class DbSystem {
   /// Example: us-east4-b-r2. If not specified, the system will pick a zone
   /// based on availability.
   ///
-  /// Optional.
+  /// Optional. Immutable.
   core.String? gcpOracleZone;
 
   /// The labels or tags associated with the DbSystem.
@@ -9268,7 +10979,7 @@ class DbSystem {
   /// It is optional but if specified, this should match the parent ODBNetwork
   /// of the OdbSubnet.
   ///
-  /// Optional.
+  /// Optional. Immutable.
   core.String? odbNetwork;
 
   /// The name of the OdbSubnet associated with the DbSystem for IP allocation.
@@ -9276,12 +10987,12 @@ class DbSystem {
   /// Format:
   /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
   ///
-  /// Required.
+  /// Required. Immutable.
   core.String? odbSubnet;
 
   /// The properties of the DbSystem.
   ///
-  /// Optional.
+  /// Optional. Immutable.
   DbSystemProperties? properties;
 
   DbSystem({
@@ -9339,6 +11050,51 @@ class DbSystem {
       'odbNetwork': ?odbNetwork,
       'odbSubnet': ?odbSubnet,
       'properties': ?properties,
+    };
+  }
+}
+
+/// Details of the DbSystem compute performance resource.
+class DbSystemComputePerformance {
+  /// List of Compute performance details for the specified DB system shape.
+  ///
+  /// Output only.
+  core.List<ComputePerformance>? computePerformances;
+
+  /// Identifier.
+  ///
+  /// The name of the DbSystemComputePerformance resource with the format:
+  /// projects/{project}/locations/{location}/dbSystemComputePerformances/{db_system_compute_performance}
+  core.String? name;
+
+  /// The shape of the DB system.
+  ///
+  /// Output only.
+  core.String? shape;
+
+  DbSystemComputePerformance({this.computePerformances, this.name, this.shape});
+
+  DbSystemComputePerformance.fromJson(core.Map json_)
+    : this(
+        computePerformances: (json_['computePerformances'] as core.List?)
+            ?.map(
+              (value) => ComputePerformance.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        name: json_['name'] as core.String?,
+        shape: json_['shape'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final computePerformances = this.computePerformances;
+    final name = this.name;
+    final shape = this.shape;
+    return {
+      'computePerformances': ?computePerformances,
+      'name': ?name,
+      'shape': ?shape,
     };
   }
 }
@@ -10080,6 +11836,12 @@ class DeploymentDiagnosticData {
   }
 }
 
+/// The request for `CloudVmCluster.DisableCloudVmClusterIdentityConnector`.
+typedef DisableCloudVmClusterIdentityConnectorRequest = $Empty;
+
+/// The request for `ExadbVmCluster.DisableExadbVmClusterIdentityConnector`.
+typedef DisableExadbVmClusterIdentityConnectorRequest = $Empty;
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -10087,6 +11849,12 @@ class DeploymentDiagnosticData {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
+
+/// The request for `CloudVmCluster.EnableCloudVmClusterIdentityConnector`.
+typedef EnableCloudVmClusterIdentityConnectorRequest = $Empty;
+
+/// The request for `ExadbVmCluster.EnableExadbVmClusterIdentityConnector`.
+typedef EnableExadbVmClusterIdentityConnectorRequest = $Empty;
 
 /// The encryption key used to encrypt the Autonomous Database.
 class EncryptionKey {
@@ -10264,6 +12032,17 @@ class ExadbVmCluster {
   /// Output only.
   IdentityConnector? identityConnector;
 
+  /// Input only.
+  ///
+  /// Immutable. If set to true, disables the automatic provisioning of the
+  /// Workload Identity Connector during creation. If set to false or omitted,
+  /// the Workload Identity Connector will be automatically provisioned by
+  /// default. Note: Provisioning the Workload Identity Connector is a
+  /// prerequisite for enabling Google Cloud CMEK.
+  ///
+  /// Optional.
+  core.bool? identityConnectorDisabled;
+
   /// The labels or tags associated with the ExadbVmCluster.
   ///
   /// Optional.
@@ -10305,6 +12084,7 @@ class ExadbVmCluster {
     this.entitlementId,
     this.gcpOracleZone,
     this.identityConnector,
+    this.identityConnectorDisabled,
     this.labels,
     this.name,
     this.odbNetwork,
@@ -10325,6 +12105,8 @@ class ExadbVmCluster {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        identityConnectorDisabled:
+            json_['identityConnectorDisabled'] as core.bool?,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
@@ -10345,6 +12127,7 @@ class ExadbVmCluster {
     final entitlementId = this.entitlementId;
     final gcpOracleZone = this.gcpOracleZone;
     final identityConnector = this.identityConnector;
+    final identityConnectorDisabled = this.identityConnectorDisabled;
     final labels = this.labels;
     final name = this.name;
     final odbNetwork = this.odbNetwork;
@@ -10357,6 +12140,7 @@ class ExadbVmCluster {
       'entitlementId': ?entitlementId,
       'gcpOracleZone': ?gcpOracleZone,
       'identityConnector': ?identityConnector,
+      'identityConnectorDisabled': ?identityConnectorDisabled,
       'labels': ?labels,
       'name': ?name,
       'odbNetwork': ?odbNetwork,
@@ -10724,7 +12508,7 @@ class ExascaleDbStorageVault {
   /// The name does not have to be unique within your project. The name must be
   /// 1-255 characters long and can only contain alphanumeric characters.
   ///
-  /// Required.
+  /// Required. Immutable.
   core.String? displayName;
 
   /// The ID of the subscription entitlement associated with the
@@ -10737,7 +12521,7 @@ class ExascaleDbStorageVault {
   /// resource is created, in the following format:
   /// projects/{project}/locations/{region}/cloudExadataInfrastuctures/{cloud_extradata_infrastructure}
   ///
-  /// Optional.
+  /// Optional. Immutable.
   core.String? exadataInfrastructure;
 
   /// The GCP Oracle zone where Oracle ExascaleDbStorageVault is hosted.
@@ -10745,7 +12529,7 @@ class ExascaleDbStorageVault {
   /// Example: us-east4-b-r2. If not specified, the system will pick a zone
   /// based on availability.
   ///
-  /// Optional.
+  /// Optional. Immutable.
   core.String? gcpOracleZone;
 
   /// The labels or tags associated with the ExascaleDbStorageVault.
@@ -10761,7 +12545,7 @@ class ExascaleDbStorageVault {
 
   /// The properties of the ExascaleDbStorageVault.
   ///
-  /// Required.
+  /// Required. Immutable.
   ExascaleDbStorageVaultProperties? properties;
 
   ExascaleDbStorageVault({
@@ -10961,6 +12745,137 @@ class ExascaleDbStorageVaultProperties {
   }
 }
 
+/// Any additional metadata information regarding the execution of the SQL
+class ExecuteSqlMetadata {
+  /// The time duration taken to execute the sql statement.
+  core.String? executionDuration;
+
+  /// Message related to SQL execution.
+  ///
+  /// This field can be used to convey size limit related message.
+  core.String? message;
+
+  /// Set to true if SQL returned a result set larger than the acceptable
+  /// response size limits and the result was truncated.
+  core.bool? partialResult;
+
+  /// Status of SQL execution.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATUS_UNSPECIFIED" : Default value. Not returned by the service.
+  /// - "OK" : No error during SQL execution i.e. All SQL statements ran to
+  /// completion. The "message" will be empty.
+  /// - "PARTIAL" : Same as OK, except indicates that only partial results were
+  /// returned. The "message" field will contain details on why results were
+  /// truncated. `partial_result` is true if and only if `status` is `PARTIAL`.
+  /// - "ERROR" : The database returned an error while executing the SQL
+  /// statement. `message` contains the error text returned by Oracle.
+  /// `sql_results` is empty. The statement runs in autocommit mode; which
+  /// changes are committed or rolled back follows Oracle Database behavior.
+  /// Authentication failures, database availability errors, network errors, and
+  /// timeouts are returned as API errors (AIP-193), not as ERROR.
+  core.String? status;
+
+  ExecuteSqlMetadata({
+    this.executionDuration,
+    this.message,
+    this.partialResult,
+    this.status,
+  });
+
+  ExecuteSqlMetadata.fromJson(core.Map json_)
+    : this(
+        executionDuration: json_['executionDuration'] as core.String?,
+        message: json_['message'] as core.String?,
+        partialResult: json_['partialResult'] as core.bool?,
+        status: json_['status'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final executionDuration = this.executionDuration;
+    final message = this.message;
+    final partialResult = this.partialResult;
+    final status = this.status;
+    return {
+      'executionDuration': ?executionDuration,
+      'message': ?message,
+      'partialResult': ?partialResult,
+      'status': ?status,
+    };
+  }
+}
+
+/// The request for `DatabaseConnection.ExecuteSql`.
+class ExecuteSqlRequest {
+  /// Optional: Bind variables (parameters) to be used with the SQL statement.
+  ///
+  /// Supports named bind variables (e.g., :dept_id, :status in Oracle SQL) or
+  /// positional parameters (:1, :2).
+  ///
+  /// Optional.
+  core.List<SqlParameter>? params;
+
+  /// The SQL statement to execute.
+  ///
+  /// Required.
+  core.String? sqlStatement;
+
+  ExecuteSqlRequest({this.params, this.sqlStatement});
+
+  ExecuteSqlRequest.fromJson(core.Map json_)
+    : this(
+        params: (json_['params'] as core.List?)
+            ?.map(
+              (value) => SqlParameter.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        sqlStatement: json_['sqlStatement'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final params = this.params;
+    final sqlStatement = this.sqlStatement;
+    return {'params': ?params, 'sqlStatement': ?sqlStatement};
+  }
+}
+
+/// Execute a SQL statement response.
+class ExecuteSqlResponse {
+  /// Any additional metadata information regarding the execution of the sql
+  /// statement.
+  ExecuteSqlMetadata? metadata;
+
+  /// SqlResult represents the results for the execution of sql statements.
+  core.List<SqlResult>? sqlResults;
+
+  ExecuteSqlResponse({this.metadata, this.sqlResults});
+
+  ExecuteSqlResponse.fromJson(core.Map json_)
+    : this(
+        metadata: json_.containsKey('metadata')
+            ? ExecuteSqlMetadata.fromJson(
+                json_['metadata'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        sqlResults: (json_['sqlResults'] as core.List?)
+            ?.map(
+              (value) => SqlResult.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final metadata = this.metadata;
+    final sqlResults = this.sqlResults;
+    return {'metadata': ?metadata, 'sqlResults': ?sqlResults};
+  }
+}
+
 /// The request for `OracleDatabase.FailoverAutonomousDatabase`.
 class FailoverAutonomousDatabaseRequest {
   /// The peer database name to fail over to.
@@ -10981,6 +12896,172 @@ class FailoverAutonomousDatabaseRequest {
   core.Map<core.String, core.dynamic> toJson() {
     final peerAutonomousDatabase = this.peerAutonomousDatabase;
     return {'peerAutonomousDatabase': ?peerAutonomousDatabase};
+  }
+}
+
+/// Details of the Flex Component resource.
+class FlexComponent {
+  /// Identifier.
+  ///
+  /// Specifies the name of the Flex Component resource with the format:
+  /// projects/{project}/locations/{region}/flexComponents/{flex_component}
+  core.String? name;
+
+  /// The properties of the Flex Component.
+  ///
+  /// Output only.
+  FlexComponentProperties? properties;
+
+  FlexComponent({this.name, this.properties});
+
+  FlexComponent.fromJson(core.Map json_)
+    : this(
+        name: json_['name'] as core.String?,
+        properties: json_.containsKey('properties')
+            ? FlexComponentProperties.fromJson(
+                json_['properties'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final properties = this.properties;
+    return {'name': ?name, 'properties': ?properties};
+  }
+}
+
+/// The properties of the Flex Component.
+class FlexComponentProperties {
+  /// The maximum number of CPU cores that can be enabled on the DB system for
+  /// this shape.
+  ///
+  /// Output only.
+  core.int? availableCoreCount;
+
+  /// The maximum storage that can be enabled on the Storage Server for this
+  /// Flex Component.
+  ///
+  /// Output only.
+  core.int? availableDbNodeStoragePerNodeGb;
+
+  /// The maximum local storage that can be enabled on the DB Server for this
+  /// Flex Component.
+  ///
+  /// Output only.
+  core.int? availableLocalStorageGb;
+
+  /// The maximum memory size that can be enabled on the DB Server for this Flex
+  /// Component.
+  ///
+  /// Output only.
+  core.int? availableMemoryGb;
+
+  /// The compute model of the DB Server for this Flex Component.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "COMPUTE_MODEL_UNSPECIFIED" : Unspecified compute model.
+  /// - "COMPUTE_MODEL_ECPU" : Abstract measure of compute resources. ECPUs are
+  /// based on the number of cores elastically allocated from a pool of compute
+  /// and storage servers.
+  /// - "COMPUTE_MODEL_OCPU" : Physical measure of compute resources. OCPUs are
+  /// based on the physical core of a processor.
+  core.String? computeModel;
+
+  /// The description summary for this Flex Component.
+  ///
+  /// Output only.
+  core.String? descriptionSummary;
+
+  /// The hardware type of the DB (Compute) or Storage (Cell) Server for this
+  /// Flex Component.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "HARDWARE_TYPE_UNSPECIFIED" : Unspecified default
+  /// - "COMPUTE" : COMPUTE
+  /// - "CELL" : CELL
+  core.String? hardwareType;
+
+  /// The minimum number of CPU cores that can be enabled on the DB Server for
+  /// this Flex Component.
+  ///
+  /// Output only.
+  core.int? minimumCoreCount;
+
+  /// The name of the Flex Component used for the DB system.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The runtime minimum number of CPU cores that can be enabled for this Flex
+  /// Component.
+  ///
+  /// Output only.
+  core.int? runtimeMinimumCoreCount;
+
+  /// The name of the DB system shape for this Flex Component.
+  ///
+  /// Output only.
+  core.String? shape;
+
+  FlexComponentProperties({
+    this.availableCoreCount,
+    this.availableDbNodeStoragePerNodeGb,
+    this.availableLocalStorageGb,
+    this.availableMemoryGb,
+    this.computeModel,
+    this.descriptionSummary,
+    this.hardwareType,
+    this.minimumCoreCount,
+    this.name,
+    this.runtimeMinimumCoreCount,
+    this.shape,
+  });
+
+  FlexComponentProperties.fromJson(core.Map json_)
+    : this(
+        availableCoreCount: json_['availableCoreCount'] as core.int?,
+        availableDbNodeStoragePerNodeGb:
+            json_['availableDbNodeStoragePerNodeGb'] as core.int?,
+        availableLocalStorageGb: json_['availableLocalStorageGb'] as core.int?,
+        availableMemoryGb: json_['availableMemoryGb'] as core.int?,
+        computeModel: json_['computeModel'] as core.String?,
+        descriptionSummary: json_['descriptionSummary'] as core.String?,
+        hardwareType: json_['hardwareType'] as core.String?,
+        minimumCoreCount: json_['minimumCoreCount'] as core.int?,
+        name: json_['name'] as core.String?,
+        runtimeMinimumCoreCount: json_['runtimeMinimumCoreCount'] as core.int?,
+        shape: json_['shape'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final availableCoreCount = this.availableCoreCount;
+    final availableDbNodeStoragePerNodeGb =
+        this.availableDbNodeStoragePerNodeGb;
+    final availableLocalStorageGb = this.availableLocalStorageGb;
+    final availableMemoryGb = this.availableMemoryGb;
+    final computeModel = this.computeModel;
+    final descriptionSummary = this.descriptionSummary;
+    final hardwareType = this.hardwareType;
+    final minimumCoreCount = this.minimumCoreCount;
+    final name = this.name;
+    final runtimeMinimumCoreCount = this.runtimeMinimumCoreCount;
+    final shape = this.shape;
+    return {
+      'availableCoreCount': ?availableCoreCount,
+      'availableDbNodeStoragePerNodeGb': ?availableDbNodeStoragePerNodeGb,
+      'availableLocalStorageGb': ?availableLocalStorageGb,
+      'availableMemoryGb': ?availableMemoryGb,
+      'computeModel': ?computeModel,
+      'descriptionSummary': ?descriptionSummary,
+      'hardwareType': ?hardwareType,
+      'minimumCoreCount': ?minimumCoreCount,
+      'name': ?name,
+      'runtimeMinimumCoreCount': ?runtimeMinimumCoreCount,
+      'shape': ?shape,
+    };
   }
 }
 
@@ -11592,7 +13673,7 @@ class GoldengateConnection {
   /// Example: us-east4-b-r2. If not specified, the system will pick a zone
   /// based on availability.
   ///
-  /// Optional.
+  /// Optional. Immutable.
   core.String? gcpOracleZone;
 
   /// The labels or tags associated with the GoldengateConnection.
@@ -11618,7 +13699,7 @@ class GoldengateConnection {
   /// optional but if specified, this should match the parent ODBNetwork of the
   /// OdbSubnet.
   ///
-  /// Optional.
+  /// Optional. Immutable.
   core.String? odbNetwork;
 
   /// The name of the OdbSubnet associated with the GoldengateConnection for IP
@@ -11627,12 +13708,12 @@ class GoldengateConnection {
   /// Format:
   /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
   ///
-  /// Optional.
+  /// Optional. Immutable.
   core.String? odbSubnet;
 
   /// The properties of the GoldengateConnection.
   ///
-  /// Required.
+  /// Required. Immutable.
   GoldengateConnectionProperties? properties;
 
   GoldengateConnection({
@@ -11699,7 +13780,7 @@ class GoldengateConnectionAssignment {
 
   /// The display name for the GoldengateConnectionAssignment.
   ///
-  /// Optional.
+  /// Optional. Immutable.
   core.String? displayName;
 
   /// The OCID of the entitlement linked to this resource.
@@ -11721,7 +13802,7 @@ class GoldengateConnectionAssignment {
 
   /// The properties of the GoldengateConnectionAssignment.
   ///
-  /// Required.
+  /// Required. Immutable.
   GoldengateConnectionAssignmentProperties? properties;
 
   GoldengateConnectionAssignment({
@@ -12751,7 +14832,7 @@ class GoldengateDeployment {
 
   /// The display name for the GoldengateDeployment.
   ///
-  /// Required.
+  /// Required. Immutable.
   core.String? displayName;
 
   /// The ID of the subscription entitlement associated with the
@@ -12765,7 +14846,7 @@ class GoldengateDeployment {
   /// Example: us-east4-b-r2. If not specified, the system will pick a zone
   /// based on availability.
   ///
-  /// Optional.
+  /// Optional. Immutable.
   core.String? gcpOracleZone;
 
   /// The labels or tags associated with the GoldengateDeployment.
@@ -12786,18 +14867,18 @@ class GoldengateDeployment {
 
   /// The name of the OdbNetwork associated with the GoldengateDeployment.
   ///
-  /// Optional.
+  /// Optional. Immutable.
   core.String? odbNetwork;
 
   /// The name of the OdbSubnet associated with the GoldengateDeployment for IP
   /// allocation.
   ///
-  /// Required.
+  /// Required. Immutable.
   core.String? odbSubnet;
 
   /// The properties of the GoldengateDeployment.
   ///
-  /// Required.
+  /// Required. Immutable.
   GoldengateDeploymentProperties? properties;
 
   GoldengateDeployment({
@@ -15706,6 +17787,8 @@ class GoldengateOciObjectStorageConnectionProperties {
 
 /// The Ogg data of the GoldengateDeployment.
 class GoldengateOggDeployment {
+  /// Input only.
+  ///
   /// The Goldengate deployment console password in plain text.
   ///
   /// Optional.
@@ -16834,6 +18917,20 @@ class IdentityConnector {
   /// - "UNKNOWN" : The identity pool connection is in an unknown state.
   core.String? connectionState;
 
+  /// The unique partner identifier for the Identity Connector, used to
+  /// establish secure cross-cloud access between Google Cloud and OCI.
+  ///
+  /// This corresponds directly to the ID of the OracleDbGcpIdentityConnector
+  /// resource in Oracle Cloud Infrastructure (OCI).
+  ///
+  /// Output only.
+  core.String? identityConnectorId;
+
+  /// Additional information about the current lifecycle state.
+  ///
+  /// Output only.
+  core.String? lifecycleStateDetails;
+
   /// A google managed service account on which customers can grant roles to
   /// access resources in the customer project.
   ///
@@ -16843,20 +18940,45 @@ class IdentityConnector {
   /// Output only.
   core.String? serviceAgentEmail;
 
-  IdentityConnector({this.connectionState, this.serviceAgentEmail});
+  /// The resource name of the Workload Identity Pool configured for identity
+  /// federation with OCI.
+  ///
+  /// This exact pool name can be used to configure VPC Service Controls
+  /// (VPC-SC) egress rules. Format:
+  /// `projects/{project}/locations/global/workloadIdentityPools/{workload_identity_pool}`
+  ///
+  /// Output only.
+  core.String? workloadIdentityPool;
+
+  IdentityConnector({
+    this.connectionState,
+    this.identityConnectorId,
+    this.lifecycleStateDetails,
+    this.serviceAgentEmail,
+    this.workloadIdentityPool,
+  });
 
   IdentityConnector.fromJson(core.Map json_)
     : this(
         connectionState: json_['connectionState'] as core.String?,
+        identityConnectorId: json_['identityConnectorId'] as core.String?,
+        lifecycleStateDetails: json_['lifecycleStateDetails'] as core.String?,
         serviceAgentEmail: json_['serviceAgentEmail'] as core.String?,
+        workloadIdentityPool: json_['workloadIdentityPool'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final connectionState = this.connectionState;
+    final identityConnectorId = this.identityConnectorId;
+    final lifecycleStateDetails = this.lifecycleStateDetails;
     final serviceAgentEmail = this.serviceAgentEmail;
+    final workloadIdentityPool = this.workloadIdentityPool;
     return {
       'connectionState': ?connectionState,
+      'identityConnectorId': ?identityConnectorId,
+      'lifecycleStateDetails': ?lifecycleStateDetails,
       'serviceAgentEmail': ?serviceAgentEmail,
+      'workloadIdentityPool': ?workloadIdentityPool,
     };
   }
 }
@@ -17205,6 +19327,51 @@ class ListDatabaseCharacterSetsResponse {
   }
 }
 
+/// The response for `DatabaseConnection.List`.
+class ListDatabaseConnectionsResponse {
+  /// The list of DatabaseConnections.
+  core.List<DatabaseConnection>? databaseConnections;
+
+  /// A token identifying a page of results the server should return.
+  core.String? nextPageToken;
+
+  /// Unreachable locations when listing resources across all locations using
+  /// wildcard location '-'.
+  core.List<core.String>? unreachable;
+
+  ListDatabaseConnectionsResponse({
+    this.databaseConnections,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListDatabaseConnectionsResponse.fromJson(core.Map json_)
+    : this(
+        databaseConnections: (json_['databaseConnections'] as core.List?)
+            ?.map(
+              (value) => DatabaseConnection.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final databaseConnections = this.databaseConnections;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'databaseConnections': ?databaseConnections,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
+  }
+}
+
 /// The response for `Database.List`.
 class ListDatabasesResponse {
   /// The list of Databases.
@@ -17288,6 +19455,55 @@ class ListDbServersResponse {
     final dbServers = this.dbServers;
     final nextPageToken = this.nextPageToken;
     return {'dbServers': ?dbServers, 'nextPageToken': ?nextPageToken};
+  }
+}
+
+/// Message for response to listing DbSystemComputePerformances
+class ListDbSystemComputePerformancesResponse {
+  /// The list of DbSystemComputePerformance.
+  core.List<DbSystemComputePerformance>? dbSystemComputePerformances;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// Unordered list.
+  ///
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListDbSystemComputePerformancesResponse({
+    this.dbSystemComputePerformances,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListDbSystemComputePerformancesResponse.fromJson(core.Map json_)
+    : this(
+        dbSystemComputePerformances:
+            (json_['dbSystemComputePerformances'] as core.List?)
+                ?.map(
+                  (value) => DbSystemComputePerformance.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final dbSystemComputePerformances = this.dbSystemComputePerformances;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'dbSystemComputePerformances': ?dbSystemComputePerformances,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
   }
 }
 
@@ -17544,6 +19760,54 @@ class ListExascaleDbStorageVaultsResponse {
     final unreachable = this.unreachable;
     return {
       'exascaleDbStorageVaults': ?exascaleDbStorageVaults,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
+  }
+}
+
+/// Message for response to listing FlexComponents
+class ListFlexComponentsResponse {
+  /// The list of FlexComponent
+  core.List<FlexComponent>? flexComponents;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// Unordered list.
+  ///
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListFlexComponentsResponse({
+    this.flexComponents,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListFlexComponentsResponse.fromJson(core.Map json_)
+    : this(
+        flexComponents: (json_['flexComponents'] as core.List?)
+            ?.map(
+              (value) => FlexComponent.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final flexComponents = this.flexComponents;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'flexComponents': ?flexComponents,
       'nextPageToken': ?nextPageToken,
       'unreachable': ?unreachable,
     };
@@ -17975,6 +20239,51 @@ class ListMinorVersionsResponse {
   }
 }
 
+/// The response for `OdbDnsZone.List`.
+class ListOdbDnsZonesResponse {
+  /// A token identifying a page of results the server should return.
+  core.String? nextPageToken;
+
+  /// The list of OdbDnsZones.
+  core.List<OdbDnsZone>? odbDnsZones;
+
+  /// Unreachable locations when listing resources across all locations using
+  /// wildcard location '-'.
+  core.List<core.String>? unreachable;
+
+  ListOdbDnsZonesResponse({
+    this.nextPageToken,
+    this.odbDnsZones,
+    this.unreachable,
+  });
+
+  ListOdbDnsZonesResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        odbDnsZones: (json_['odbDnsZones'] as core.List?)
+            ?.map(
+              (value) => OdbDnsZone.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final odbDnsZones = this.odbDnsZones;
+    final unreachable = this.unreachable;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'odbDnsZones': ?odbDnsZones,
+      'unreachable': ?unreachable,
+    };
+  }
+}
+
 /// The response for `OdbNetwork.List`.
 class ListOdbNetworksResponse {
   /// A token identifying a page of results the server should return.
@@ -18380,6 +20689,78 @@ class NessieIcebergCatalog {
   }
 }
 
+/// Represents OdbDnsZone resource.
+class OdbDnsZone {
+  /// The date and time that the OdbDnsZone was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The DNS suffix for the zone.
+  ///
+  /// Ex: abc.example.com.
+  ///
+  /// Required. Immutable.
+  core.String? domain;
+
+  /// Labels or tags associated with the resource.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Identifier.
+  ///
+  /// The name of the OdbDnsZone resource in the following format:
+  /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbDnsZones/{odb_dns_zone}
+  core.String? name;
+
+  /// State of the OdbDnsZone.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default unspecified value.
+  /// - "PROVISIONING" : Indicates that the resource is in a provisioning state.
+  /// - "AVAILABLE" : Indicates that the resource is in an available state.
+  /// - "INACTIVE" : Indicates that the resource is available but inactive.
+  /// - "TERMINATING" : Indicates that the resource is in a terminating state.
+  /// - "FAILED" : Indicates that the resource is in a failed state.
+  core.String? state;
+
+  OdbDnsZone({
+    this.createTime,
+    this.domain,
+    this.labels,
+    this.name,
+    this.state,
+  });
+
+  OdbDnsZone.fromJson(core.Map json_)
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        domain: json_['domain'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        state: json_['state'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final domain = this.domain;
+    final labels = this.labels;
+    final name = this.name;
+    final state = this.state;
+    return {
+      'createTime': ?createTime,
+      'domain': ?domain,
+      'labels': ?labels,
+      'name': ?name,
+      'state': ?state,
+    };
+  }
+}
+
 /// Represents OdbNetwork resource.
 class OdbNetwork {
   /// The date and time that the OdbNetwork was created.
@@ -18397,7 +20778,7 @@ class OdbNetwork {
   /// Example: us-east4-b-r2. If not specified, the system will pick a zone
   /// based on availability.
   ///
-  /// Optional.
+  /// Optional. Immutable.
   core.String? gcpOracleZone;
 
   /// Labels or tags associated with the resource.
@@ -18414,8 +20795,24 @@ class OdbNetwork {
   /// The name of the VPC network in the following format:
   /// projects/{project}/global/networks/{network}
   ///
-  /// Required.
+  /// Required. Immutable.
   core.String? network;
+
+  /// Indicates whether the OdbNetwork is currently reconciling changes.
+  ///
+  /// Output only.
+  core.bool? reconciling;
+
+  /// Configuration to enable the service (Oracledatabase@Google Cloud) to
+  /// establish connectivity to the database.
+  ///
+  /// This should be specified if you intend to associate this OdbNetwork with a
+  /// DatabaseConnection resource to `ExecuteSQL` on the database, or to create
+  /// a ServiceIntegration with the Database. Please don't specify it otherwise
+  /// to avoid complicating the network setup.
+  ///
+  /// Optional.
+  ServiceConnectivityConfig? serviceConnectivityConfig;
 
   /// State of the ODB Network.
   ///
@@ -18435,6 +20832,8 @@ class OdbNetwork {
     this.labels,
     this.name,
     this.network,
+    this.reconciling,
+    this.serviceConnectivityConfig,
     this.state,
   });
 
@@ -18448,6 +20847,14 @@ class OdbNetwork {
         ),
         name: json_['name'] as core.String?,
         network: json_['network'] as core.String?,
+        reconciling: json_['reconciling'] as core.bool?,
+        serviceConnectivityConfig:
+            json_.containsKey('serviceConnectivityConfig')
+            ? ServiceConnectivityConfig.fromJson(
+                json_['serviceConnectivityConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         state: json_['state'] as core.String?,
       );
 
@@ -18458,6 +20865,8 @@ class OdbNetwork {
     final labels = this.labels;
     final name = this.name;
     final network = this.network;
+    final reconciling = this.reconciling;
+    final serviceConnectivityConfig = this.serviceConnectivityConfig;
     final state = this.state;
     return {
       'createTime': ?createTime,
@@ -18466,6 +20875,8 @@ class OdbNetwork {
       'labels': ?labels,
       'name': ?name,
       'network': ?network,
+      'reconciling': ?reconciling,
+      'serviceConnectivityConfig': ?serviceConnectivityConfig,
       'state': ?state,
     };
   }
@@ -18475,7 +20886,7 @@ class OdbNetwork {
 class OdbSubnet {
   /// The CIDR range of the subnet.
   ///
-  /// Required.
+  /// Required. Immutable.
   core.String? cidrRange;
 
   /// The date and time that the OdbNetwork was created.
@@ -18496,7 +20907,7 @@ class OdbSubnet {
 
   /// Purpose of the subnet.
   ///
-  /// Required.
+  /// Required. Immutable.
   /// Possible string values are:
   /// - "PURPOSE_UNSPECIFIED" : Default unspecified value.
   /// - "CLIENT_SUBNET" : Subnet to be used for client connections.
@@ -19030,6 +21441,31 @@ class PolarisIcebergCatalog {
   }
 }
 
+/// Configuration for a Private Service Connect (PSC) interface used by
+/// Oracledatabase@Google Cloud to establish private connectivity to the
+/// database.
+class PscInterfaceConfig {
+  /// The resource name of the Network Attachment that Oracledatabase@Google
+  /// Cloud will use to establish private connectivity to the database via a
+  /// Private Service Connect Interface (PSC-I).
+  ///
+  /// Format:
+  /// projects/{project}/regions/{region}/networkAttachments/{network_attachment}
+  ///
+  /// Optional.
+  core.String? networkAttachment;
+
+  PscInterfaceConfig({this.networkAttachment});
+
+  PscInterfaceConfig.fromJson(core.Map json_)
+    : this(networkAttachment: json_['networkAttachment'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final networkAttachment = this.networkAttachment;
+    return {'networkAttachment': ?networkAttachment};
+  }
+}
+
 /// Request message for RefreshAutonomousDatabase method.
 class RefreshAutonomousDatabaseRequest {
   /// The timestamp to which the Autonomous Database refreshable clone will be
@@ -19137,6 +21573,29 @@ class RestoreAutonomousDatabaseRequest {
   }
 }
 
+/// A single row from a sql result.
+class Row {
+  /// List of values in a row of sql result.
+  core.List<Value>? values;
+
+  Row({this.values});
+
+  Row.fromJson(core.Map json_)
+    : this(
+        values: (json_['values'] as core.List?)
+            ?.map(
+              (value) =>
+                  Value.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final values = this.values;
+    return {'values': ?values};
+  }
+}
+
 /// Details of scheduled operation.
 ///
 /// https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/ScheduledOperationDetails
@@ -19191,6 +21650,37 @@ class ScheduledOperationDetails {
       'startTime': ?startTime,
       'stopTime': ?stopTime,
     };
+  }
+}
+
+/// Configuration to enable the service (Oracledatabase@Google Cloud) to
+/// establish connectivity to the database.
+///
+/// This should be specified if you intend to associate this OdbNetwork with a
+/// DatabaseConnection resource to `ExecuteSQL` on the database, or to create a
+/// ServiceIntegration with the Database. Please don't specify it otherwise to
+/// avoid complicating the network setup.
+class ServiceConnectivityConfig {
+  /// Configuration for Private Service Connect (PSC) interface.
+  ///
+  /// Optional.
+  PscInterfaceConfig? pscInterfaceConfig;
+
+  ServiceConnectivityConfig({this.pscInterfaceConfig});
+
+  ServiceConnectivityConfig.fromJson(core.Map json_)
+    : this(
+        pscInterfaceConfig: json_.containsKey('pscInterfaceConfig')
+            ? PscInterfaceConfig.fromJson(
+                json_['pscInterfaceConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final pscInterfaceConfig = this.pscInterfaceConfig;
+    return {'pscInterfaceConfig': ?pscInterfaceConfig};
   }
 }
 
@@ -19355,6 +21845,82 @@ class SourceConfig {
   }
 }
 
+/// Represents a bind variable (parameter) for SQL execution.
+class SqlParameter {
+  /// The name of the SQL bind parameter (excluding the leading colon, e.g.
+  /// "id").
+  ///
+  /// If omitted, parameters bind positionally based on their order in the list.
+  ///
+  /// Optional.
+  core.String? name;
+
+  /// Optional: Datatype hint for the parameter (e.g., "VARCHAR2", "NUMBER",
+  /// "DATE", "TIMESTAMP").
+  ///
+  /// If omitted, the Oracle driver will infer the type from the value string.
+  ///
+  /// Optional.
+  core.String? typeName;
+
+  /// Use protobuf.Value so clients can pass ints, bools, and strings natively.
+  ///
+  /// Required.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Object? value;
+
+  SqlParameter({this.name, this.typeName, this.value});
+
+  SqlParameter.fromJson(core.Map json_)
+    : this(
+        name: json_['name'] as core.String?,
+        typeName: json_['typeName'] as core.String?,
+        value: json_['value'],
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final typeName = this.typeName;
+    final value = this.value;
+    return {'name': ?name, 'typeName': ?typeName, 'value': ?value};
+  }
+}
+
+/// SqlResult represents the result for the execution of a sql statement.
+class SqlResult {
+  /// List of columns included in the result, including data type.
+  core.List<Column>? columns;
+
+  /// Rows returned by the SQL statement.
+  core.List<Row>? rows;
+
+  SqlResult({this.columns, this.rows});
+
+  SqlResult.fromJson(core.Map json_)
+    : this(
+        columns: (json_['columns'] as core.List?)
+            ?.map(
+              (value) =>
+                  Column.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+        rows: (json_['rows'] as core.List?)
+            ?.map(
+              (value) =>
+                  Row.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final columns = this.columns;
+    final rows = this.rows;
+    return {'columns': ?columns, 'rows': ?rows};
+  }
+}
+
 /// The request for `AutonomousDatabase.Start`.
 typedef StartAutonomousDatabaseRequest = $Empty;
 
@@ -19475,6 +22041,32 @@ class TestConnectionAssignmentError {
   }
 }
 
+/// Request message for `DatabaseConnection.TestDatabaseConnection`.
+typedef TestDatabaseConnectionRequest = $Empty;
+
+/// Response message for `DatabaseConnection.TestDatabaseConnection`.
+class TestDatabaseConnectionResponse {
+  /// Error message if the test connection failed.
+  core.String? errorMessage;
+
+  /// Whether the test connection was successful.
+  core.bool? success;
+
+  TestDatabaseConnectionResponse({this.errorMessage, this.success});
+
+  TestDatabaseConnectionResponse.fromJson(core.Map json_)
+    : this(
+        errorMessage: json_['errorMessage'] as core.String?,
+        success: json_['success'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final errorMessage = this.errorMessage;
+    final success = this.success;
+    return {'errorMessage': ?errorMessage, 'success': ?success};
+  }
+}
+
 /// Request message for TestGoldengateConnectionAssignment.
 class TestGoldengateConnectionAssignmentRequest {
   /// The type of the test of the assigned connection.
@@ -19556,3 +22148,28 @@ typedef TimeOfDay = $TimeOfDay;
 /// Represents a time zone from the
 /// [IANA Time Zone Database](https://www.iana.org/time-zones).
 typedef TimeZone = $TimeZone;
+
+/// A single value in a row from a sql result.
+class Value {
+  /// Set to true if the cell value is NULL.
+  core.bool? nullValue;
+
+  /// The cell value represented in string format.
+  ///
+  /// Timestamps should be converted using RFC3339Nano format.
+  core.String? value;
+
+  Value({this.nullValue, this.value});
+
+  Value.fromJson(core.Map json_)
+    : this(
+        nullValue: json_['nullValue'] as core.bool?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nullValue = this.nullValue;
+    final value = this.value;
+    return {'nullValue': ?nullValue, 'value': ?value};
+  }
+}

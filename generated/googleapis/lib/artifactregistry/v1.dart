@@ -4543,7 +4543,7 @@ class GoogleDevtoolsArtifactregistryV1File {
 
 /// Customer-specified publicly available remote repository.
 class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository {
-  /// An http/https uri reference to the upstream remote repository, for ex:
+  /// An https uri reference to the upstream remote repository, for ex:
   /// "https://my.apt.registry/".
   core.String? uri;
 
@@ -4599,7 +4599,7 @@ class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicR
 
 /// Customer-specified publicly available remote repository.
 class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository {
-  /// An http/https uri reference to the custom remote repository, for ex:
+  /// An https uri reference to the custom remote repository, for ex:
   /// "https://registry-1.docker.io".
   core.String? uri;
 
@@ -4619,7 +4619,7 @@ class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCust
 
 /// Customer-specified publicly available remote repository.
 class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository {
-  /// An http/https uri reference to the upstream remote repository, for ex:
+  /// An https uri reference to the upstream remote repository, for ex:
   /// "https://my.maven.registry/".
   core.String? uri;
 
@@ -4639,7 +4639,7 @@ class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCusto
 
 /// Customer-specified publicly available remote repository.
 class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository {
-  /// An http/https uri reference to the upstream remote repository, for ex:
+  /// An https uri reference to the upstream remote repository, for ex:
   /// "https://my.npm.registry/".
   core.String? uri;
 
@@ -4659,7 +4659,7 @@ class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomR
 
 /// Customer-specified publicly available remote repository.
 class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository {
-  /// An http/https uri reference to the upstream remote repository, for ex:
+  /// An https uri reference to the upstream remote repository, for ex:
   /// "https://my.python.registry/".
   core.String? uri;
 
@@ -4679,7 +4679,7 @@ class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCust
 
 /// Customer-specified publicly available remote repository.
 class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository {
-  /// An http/https uri reference to the upstream remote repository, for ex:
+  /// An https uri reference to the upstream remote repository, for ex:
   /// "https://my.yum.registry/".
   core.String? uri;
 

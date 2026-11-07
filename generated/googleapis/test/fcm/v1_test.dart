@@ -32,6 +32,21 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
+core.int buildCounterAndroidBackgroundSyncMessage = 0;
+api.AndroidBackgroundSyncMessage buildAndroidBackgroundSyncMessage() {
+  final o = api.AndroidBackgroundSyncMessage();
+  buildCounterAndroidBackgroundSyncMessage++;
+  if (buildCounterAndroidBackgroundSyncMessage < 3) {}
+  buildCounterAndroidBackgroundSyncMessage--;
+  return o;
+}
+
+void checkAndroidBackgroundSyncMessage(api.AndroidBackgroundSyncMessage o) {
+  buildCounterAndroidBackgroundSyncMessage++;
+  if (buildCounterAndroidBackgroundSyncMessage < 3) {}
+  buildCounterAndroidBackgroundSyncMessage--;
+}
+
 core.Map<core.String, core.String> buildUnnamed0() => {'x': 'foo', 'y': 'foo'};
 
 void checkUnnamed0(core.Map<core.String, core.String> o) {
@@ -77,6 +92,51 @@ void checkAndroidConfig(api.AndroidConfig o) {
   buildCounterAndroidConfig--;
 }
 
+core.Map<core.String, core.String> buildUnnamed1() => {'x': 'foo', 'y': 'foo'};
+
+void checkUnnamed1(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o['x']!, unittest.equals('foo'));
+  unittest.expect(o['y']!, unittest.equals('foo'));
+}
+
+core.int buildCounterAndroidConfigV2 = 0;
+api.AndroidConfigV2 buildAndroidConfigV2() {
+  final o = api.AndroidConfigV2();
+  buildCounterAndroidConfigV2++;
+  if (buildCounterAndroidConfigV2 < 3) {
+    o.backgroundSync = buildAndroidBackgroundSyncMessage();
+    o.bandwidthConstrainedOk = true;
+    o.collapseKey = 'foo';
+    o.data = buildUnnamed1();
+    o.directBootOk = true;
+    o.fcmOptions = buildAndroidFcmOptions();
+    o.remoteNotification = buildAndroidRemoteNotification();
+    o.restrictedPackageName = 'foo';
+    o.restrictedSatelliteOk = true;
+    o.ttl = 'foo';
+  }
+  buildCounterAndroidConfigV2--;
+  return o;
+}
+
+void checkAndroidConfigV2(api.AndroidConfigV2 o) {
+  buildCounterAndroidConfigV2++;
+  if (buildCounterAndroidConfigV2 < 3) {
+    checkAndroidBackgroundSyncMessage(o.backgroundSync!);
+    unittest.expect(o.bandwidthConstrainedOk!, unittest.isTrue);
+    unittest.expect(o.collapseKey!, unittest.equals('foo'));
+    checkUnnamed1(o.data!);
+    unittest.expect(o.directBootOk!, unittest.isTrue);
+    checkAndroidFcmOptions(o.fcmOptions!);
+    checkAndroidRemoteNotification(o.remoteNotification!);
+    unittest.expect(o.restrictedPackageName!, unittest.equals('foo'));
+    unittest.expect(o.restrictedSatelliteOk!, unittest.isTrue);
+    unittest.expect(o.ttl!, unittest.equals('foo'));
+  }
+  buildCounterAndroidConfigV2--;
+}
+
 core.int buildCounterAndroidFcmOptions = 0;
 api.AndroidFcmOptions buildAndroidFcmOptions() {
   final o = api.AndroidFcmOptions();
@@ -96,14 +156,6 @@ void checkAndroidFcmOptions(api.AndroidFcmOptions o) {
   buildCounterAndroidFcmOptions--;
 }
 
-core.List<core.String> buildUnnamed1() => ['foo', 'foo'];
-
-void checkUnnamed1(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
-}
-
 core.List<core.String> buildUnnamed2() => ['foo', 'foo'];
 
 void checkUnnamed2(core.List<core.String> o) {
@@ -120,13 +172,21 @@ void checkUnnamed3(core.List<core.String> o) {
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
+core.List<core.String> buildUnnamed4() => ['foo', 'foo'];
+
+void checkUnnamed4(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
 core.int buildCounterAndroidNotification = 0;
 api.AndroidNotification buildAndroidNotification() {
   final o = api.AndroidNotification();
   buildCounterAndroidNotification++;
   if (buildCounterAndroidNotification < 3) {
     o.body = 'foo';
-    o.bodyLocArgs = buildUnnamed1();
+    o.bodyLocArgs = buildUnnamed2();
     o.bodyLocKey = 'foo';
     o.bypassProxyNotification = true;
     o.channelId = 'foo';
@@ -148,9 +208,9 @@ api.AndroidNotification buildAndroidNotification() {
     o.tag = 'foo';
     o.ticker = 'foo';
     o.title = 'foo';
-    o.titleLocArgs = buildUnnamed2();
+    o.titleLocArgs = buildUnnamed3();
     o.titleLocKey = 'foo';
-    o.vibrateTimings = buildUnnamed3();
+    o.vibrateTimings = buildUnnamed4();
     o.visibility = 'foo';
   }
   buildCounterAndroidNotification--;
@@ -161,7 +221,7 @@ void checkAndroidNotification(api.AndroidNotification o) {
   buildCounterAndroidNotification++;
   if (buildCounterAndroidNotification < 3) {
     unittest.expect(o.body!, unittest.equals('foo'));
-    checkUnnamed1(o.bodyLocArgs!);
+    checkUnnamed2(o.bodyLocArgs!);
     unittest.expect(o.bodyLocKey!, unittest.equals('foo'));
     unittest.expect(o.bypassProxyNotification!, unittest.isTrue);
     unittest.expect(o.channelId!, unittest.equals('foo'));
@@ -183,23 +243,142 @@ void checkAndroidNotification(api.AndroidNotification o) {
     unittest.expect(o.tag!, unittest.equals('foo'));
     unittest.expect(o.ticker!, unittest.equals('foo'));
     unittest.expect(o.title!, unittest.equals('foo'));
-    checkUnnamed2(o.titleLocArgs!);
+    checkUnnamed3(o.titleLocArgs!);
     unittest.expect(o.titleLocKey!, unittest.equals('foo'));
-    checkUnnamed3(o.vibrateTimings!);
+    checkUnnamed4(o.vibrateTimings!);
     unittest.expect(o.visibility!, unittest.equals('foo'));
   }
   buildCounterAndroidNotification--;
 }
 
-core.Map<core.String, core.String> buildUnnamed4() => {'x': 'foo', 'y': 'foo'};
+core.List<core.String> buildUnnamed5() => ['foo', 'foo'];
 
-void checkUnnamed4(core.Map<core.String, core.String> o) {
+void checkUnnamed5(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.List<core.String> buildUnnamed6() => ['foo', 'foo'];
+
+void checkUnnamed6(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.List<core.String> buildUnnamed7() => ['foo', 'foo'];
+
+void checkUnnamed7(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterAndroidNotificationV2 = 0;
+api.AndroidNotificationV2 buildAndroidNotificationV2() {
+  final o = api.AndroidNotificationV2();
+  buildCounterAndroidNotificationV2++;
+  if (buildCounterAndroidNotificationV2 < 3) {
+    o.body = 'foo';
+    o.bodyLocArgs = buildUnnamed5();
+    o.bodyLocKey = 'foo';
+    o.channelId = 'foo';
+    o.clickAction = 'foo';
+    o.color = 'foo';
+    o.defaultLightSettings = true;
+    o.defaultSound = true;
+    o.defaultVibrateTimings = true;
+    o.eventTime = 'foo';
+    o.icon = 'foo';
+    o.id = 42;
+    o.image = 'foo';
+    o.lightSettings =
+        buildGoogleFirebaseFcmV1AndroidNotificationV2LightSettings();
+    o.localOnly = true;
+    o.notificationCount = 42;
+    o.notificationPriority = 'foo';
+    o.sound = 'foo';
+    o.sticky = true;
+    o.tag = 'foo';
+    o.ticker = 'foo';
+    o.title = 'foo';
+    o.titleLocArgs = buildUnnamed6();
+    o.titleLocKey = 'foo';
+    o.vibrateTimings = buildUnnamed7();
+    o.visibility = 'foo';
+  }
+  buildCounterAndroidNotificationV2--;
+  return o;
+}
+
+void checkAndroidNotificationV2(api.AndroidNotificationV2 o) {
+  buildCounterAndroidNotificationV2++;
+  if (buildCounterAndroidNotificationV2 < 3) {
+    unittest.expect(o.body!, unittest.equals('foo'));
+    checkUnnamed5(o.bodyLocArgs!);
+    unittest.expect(o.bodyLocKey!, unittest.equals('foo'));
+    unittest.expect(o.channelId!, unittest.equals('foo'));
+    unittest.expect(o.clickAction!, unittest.equals('foo'));
+    unittest.expect(o.color!, unittest.equals('foo'));
+    unittest.expect(o.defaultLightSettings!, unittest.isTrue);
+    unittest.expect(o.defaultSound!, unittest.isTrue);
+    unittest.expect(o.defaultVibrateTimings!, unittest.isTrue);
+    unittest.expect(o.eventTime!, unittest.equals('foo'));
+    unittest.expect(o.icon!, unittest.equals('foo'));
+    unittest.expect(o.id!, unittest.equals(42));
+    unittest.expect(o.image!, unittest.equals('foo'));
+    checkGoogleFirebaseFcmV1AndroidNotificationV2LightSettings(
+      o.lightSettings!,
+    );
+    unittest.expect(o.localOnly!, unittest.isTrue);
+    unittest.expect(o.notificationCount!, unittest.equals(42));
+    unittest.expect(o.notificationPriority!, unittest.equals('foo'));
+    unittest.expect(o.sound!, unittest.equals('foo'));
+    unittest.expect(o.sticky!, unittest.isTrue);
+    unittest.expect(o.tag!, unittest.equals('foo'));
+    unittest.expect(o.ticker!, unittest.equals('foo'));
+    unittest.expect(o.title!, unittest.equals('foo'));
+    checkUnnamed6(o.titleLocArgs!);
+    unittest.expect(o.titleLocKey!, unittest.equals('foo'));
+    checkUnnamed7(o.vibrateTimings!);
+    unittest.expect(o.visibility!, unittest.equals('foo'));
+  }
+  buildCounterAndroidNotificationV2--;
+}
+
+core.int buildCounterAndroidRemoteNotification = 0;
+api.AndroidRemoteNotification buildAndroidRemoteNotification() {
+  final o = api.AndroidRemoteNotification();
+  buildCounterAndroidRemoteNotification++;
+  if (buildCounterAndroidRemoteNotification < 3) {
+    o.mutableContent = true;
+    o.notification = buildAndroidNotificationV2();
+    o.useAsV1DataMessage = true;
+  }
+  buildCounterAndroidRemoteNotification--;
+  return o;
+}
+
+void checkAndroidRemoteNotification(api.AndroidRemoteNotification o) {
+  buildCounterAndroidRemoteNotification++;
+  if (buildCounterAndroidRemoteNotification < 3) {
+    unittest.expect(o.mutableContent!, unittest.isTrue);
+    checkAndroidNotificationV2(o.notification!);
+    unittest.expect(o.useAsV1DataMessage!, unittest.isTrue);
+  }
+  buildCounterAndroidRemoteNotification--;
+}
+
+core.Map<core.String, core.String> buildUnnamed8() => {'x': 'foo', 'y': 'foo'};
+
+void checkUnnamed8(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
-core.Map<core.String, core.Object?> buildUnnamed5() => {
+core.Map<core.String, core.Object?> buildUnnamed9() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -212,7 +391,7 @@ core.Map<core.String, core.Object?> buildUnnamed5() => {
   },
 };
 
-void checkUnnamed5(core.Map<core.String, core.Object?> o) {
+void checkUnnamed9(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -232,9 +411,9 @@ api.ApnsConfig buildApnsConfig() {
   buildCounterApnsConfig++;
   if (buildCounterApnsConfig < 3) {
     o.fcmOptions = buildApnsFcmOptions();
-    o.headers = buildUnnamed4();
+    o.headers = buildUnnamed8();
     o.liveActivityToken = 'foo';
-    o.payload = buildUnnamed5();
+    o.payload = buildUnnamed9();
   }
   buildCounterApnsConfig--;
   return o;
@@ -244,9 +423,9 @@ void checkApnsConfig(api.ApnsConfig o) {
   buildCounterApnsConfig++;
   if (buildCounterApnsConfig < 3) {
     checkApnsFcmOptions(o.fcmOptions!);
-    checkUnnamed4(o.headers!);
+    checkUnnamed8(o.headers!);
     unittest.expect(o.liveActivityToken!, unittest.equals('foo'));
-    checkUnnamed5(o.payload!);
+    checkUnnamed9(o.payload!);
   }
   buildCounterApnsConfig--;
 }
@@ -331,6 +510,32 @@ void checkFcmOptions(api.FcmOptions o) {
   buildCounterFcmOptions--;
 }
 
+core.int buildCounterGoogleFirebaseFcmV1AndroidNotificationV2LightSettings = 0;
+api.GoogleFirebaseFcmV1AndroidNotificationV2LightSettings
+buildGoogleFirebaseFcmV1AndroidNotificationV2LightSettings() {
+  final o = api.GoogleFirebaseFcmV1AndroidNotificationV2LightSettings();
+  buildCounterGoogleFirebaseFcmV1AndroidNotificationV2LightSettings++;
+  if (buildCounterGoogleFirebaseFcmV1AndroidNotificationV2LightSettings < 3) {
+    o.color = buildColor();
+    o.lightOffDuration = 'foo';
+    o.lightOnDuration = 'foo';
+  }
+  buildCounterGoogleFirebaseFcmV1AndroidNotificationV2LightSettings--;
+  return o;
+}
+
+void checkGoogleFirebaseFcmV1AndroidNotificationV2LightSettings(
+  api.GoogleFirebaseFcmV1AndroidNotificationV2LightSettings o,
+) {
+  buildCounterGoogleFirebaseFcmV1AndroidNotificationV2LightSettings++;
+  if (buildCounterGoogleFirebaseFcmV1AndroidNotificationV2LightSettings < 3) {
+    checkColor(o.color!);
+    unittest.expect(o.lightOffDuration!, unittest.equals('foo'));
+    unittest.expect(o.lightOnDuration!, unittest.equals('foo'));
+  }
+  buildCounterGoogleFirebaseFcmV1AndroidNotificationV2LightSettings--;
+}
+
 core.int buildCounterLightSettings = 0;
 api.LightSettings buildLightSettings() {
   final o = api.LightSettings();
@@ -354,12 +559,12 @@ void checkLightSettings(api.LightSettings o) {
   buildCounterLightSettings--;
 }
 
-core.List<api.TopicSubscription> buildUnnamed6() => [
+core.List<api.TopicSubscription> buildUnnamed10() => [
   buildTopicSubscription(),
   buildTopicSubscription(),
 ];
 
-void checkUnnamed6(core.List<api.TopicSubscription> o) {
+void checkUnnamed10(core.List<api.TopicSubscription> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTopicSubscription(o[0]);
   checkTopicSubscription(o[1]);
@@ -371,7 +576,7 @@ api.ListTopicSubscriptionsResponse buildListTopicSubscriptionsResponse() {
   buildCounterListTopicSubscriptionsResponse++;
   if (buildCounterListTopicSubscriptionsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.topicSubscriptions = buildUnnamed6();
+    o.topicSubscriptions = buildUnnamed10();
   }
   buildCounterListTopicSubscriptionsResponse--;
   return o;
@@ -381,14 +586,14 @@ void checkListTopicSubscriptionsResponse(api.ListTopicSubscriptionsResponse o) {
   buildCounterListTopicSubscriptionsResponse++;
   if (buildCounterListTopicSubscriptionsResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed6(o.topicSubscriptions!);
+    checkUnnamed10(o.topicSubscriptions!);
   }
   buildCounterListTopicSubscriptionsResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed7() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed11() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed7(core.Map<core.String, core.String> o) {
+void checkUnnamed11(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -400,9 +605,10 @@ api.Message buildMessage() {
   buildCounterMessage++;
   if (buildCounterMessage < 3) {
     o.android = buildAndroidConfig();
+    o.androidV2 = buildAndroidConfigV2();
     o.apns = buildApnsConfig();
     o.condition = 'foo';
-    o.data = buildUnnamed7();
+    o.data = buildUnnamed11();
     o.fcmOptions = buildFcmOptions();
     o.fid = 'foo';
     o.name = 'foo';
@@ -419,9 +625,10 @@ void checkMessage(api.Message o) {
   buildCounterMessage++;
   if (buildCounterMessage < 3) {
     checkAndroidConfig(o.android!);
+    checkAndroidConfigV2(o.androidV2!);
     checkApnsConfig(o.apns!);
     unittest.expect(o.condition!, unittest.equals('foo'));
-    checkUnnamed7(o.data!);
+    checkUnnamed11(o.data!);
     checkFcmOptions(o.fcmOptions!);
     unittest.expect(o.fid!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
@@ -500,23 +707,23 @@ void checkTopicSubscription(api.TopicSubscription o) {
   buildCounterTopicSubscription--;
 }
 
-core.Map<core.String, core.String> buildUnnamed8() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed12() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed8(core.Map<core.String, core.String> o) {
+void checkUnnamed12(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
-core.Map<core.String, core.String> buildUnnamed9() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed13() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed9(core.Map<core.String, core.String> o) {
+void checkUnnamed13(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
-core.Map<core.String, core.Object?> buildUnnamed10() => {
+core.Map<core.String, core.Object?> buildUnnamed14() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -529,7 +736,7 @@ core.Map<core.String, core.Object?> buildUnnamed10() => {
   },
 };
 
-void checkUnnamed10(core.Map<core.String, core.Object?> o) {
+void checkUnnamed14(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -548,10 +755,10 @@ api.WebpushConfig buildWebpushConfig() {
   final o = api.WebpushConfig();
   buildCounterWebpushConfig++;
   if (buildCounterWebpushConfig < 3) {
-    o.data = buildUnnamed8();
+    o.data = buildUnnamed12();
     o.fcmOptions = buildWebpushFcmOptions();
-    o.headers = buildUnnamed9();
-    o.notification = buildUnnamed10();
+    o.headers = buildUnnamed13();
+    o.notification = buildUnnamed14();
   }
   buildCounterWebpushConfig--;
   return o;
@@ -560,10 +767,10 @@ api.WebpushConfig buildWebpushConfig() {
 void checkWebpushConfig(api.WebpushConfig o) {
   buildCounterWebpushConfig++;
   if (buildCounterWebpushConfig < 3) {
-    checkUnnamed8(o.data!);
+    checkUnnamed12(o.data!);
     checkWebpushFcmOptions(o.fcmOptions!);
-    checkUnnamed9(o.headers!);
-    checkUnnamed10(o.notification!);
+    checkUnnamed13(o.headers!);
+    checkUnnamed14(o.notification!);
   }
   buildCounterWebpushConfig--;
 }
@@ -590,6 +797,17 @@ void checkWebpushFcmOptions(api.WebpushFcmOptions o) {
 }
 
 void main() {
+  unittest.group('obj-schema-AndroidBackgroundSyncMessage', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAndroidBackgroundSyncMessage();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AndroidBackgroundSyncMessage.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkAndroidBackgroundSyncMessage(od);
+    });
+  });
+
   unittest.group('obj-schema-AndroidConfig', () {
     unittest.test('to-json--from-json', () async {
       final o = buildAndroidConfig();
@@ -598,6 +816,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkAndroidConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-AndroidConfigV2', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAndroidConfigV2();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AndroidConfigV2.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkAndroidConfigV2(od);
     });
   });
 
@@ -620,6 +849,28 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkAndroidNotification(od);
+    });
+  });
+
+  unittest.group('obj-schema-AndroidNotificationV2', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAndroidNotificationV2();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AndroidNotificationV2.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkAndroidNotificationV2(od);
+    });
+  });
+
+  unittest.group('obj-schema-AndroidRemoteNotification', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAndroidRemoteNotification();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AndroidRemoteNotification.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkAndroidRemoteNotification(od);
     });
   });
 
@@ -677,6 +928,21 @@ void main() {
       checkFcmOptions(od);
     });
   });
+
+  unittest.group(
+    'obj-schema-GoogleFirebaseFcmV1AndroidNotificationV2LightSettings',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildGoogleFirebaseFcmV1AndroidNotificationV2LightSettings();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od =
+            api.GoogleFirebaseFcmV1AndroidNotificationV2LightSettings.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
+        checkGoogleFirebaseFcmV1AndroidNotificationV2LightSettings(od);
+      });
+    },
+  );
 
   unittest.group('obj-schema-LightSettings', () {
     unittest.test('to-json--from-json', () async {

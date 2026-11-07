@@ -1178,6 +1178,18 @@ typedef MerchantReviewDataSource = $Empty;
 
 /// The primary data source for local and online products.
 class PrimaryProductDataSource {
+  /// Specifies the type of data source channel.
+  ///
+  /// Optional. Immutable.
+  /// Possible string values are:
+  /// - "CHANNEL_UNSPECIFIED" : Not specified.
+  /// - "ONLINE_PRODUCTS" : Online product.
+  /// - "LOCAL_PRODUCTS" : Local product.
+  /// - "PRODUCTS" : Unified data source for both local and online products.
+  /// Note: Products management through the API is not possible for this
+  /// channel.
+  core.String? channel;
+
   /// The two-letter ISO 639-1 language of the items in the data source.
   ///
   /// `feedLabel` and `contentLanguage` must be either both set or unset. The
@@ -1247,6 +1259,7 @@ class PrimaryProductDataSource {
   core.bool? legacyLocal;
 
   PrimaryProductDataSource({
+    this.channel,
     this.contentLanguage,
     this.countries,
     this.defaultRule,
@@ -1257,6 +1270,7 @@ class PrimaryProductDataSource {
 
   PrimaryProductDataSource.fromJson(core.Map json_)
     : this(
+        channel: json_['channel'] as core.String?,
         contentLanguage: json_['contentLanguage'] as core.String?,
         countries: (json_['countries'] as core.List?)
             ?.map((value) => value as core.String)
@@ -1278,6 +1292,7 @@ class PrimaryProductDataSource {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final channel = this.channel;
     final contentLanguage = this.contentLanguage;
     final countries = this.countries;
     final defaultRule = this.defaultRule;
@@ -1285,6 +1300,7 @@ class PrimaryProductDataSource {
     final feedLabel = this.feedLabel;
     final legacyLocal = this.legacyLocal;
     return {
+      'channel': ?channel,
       'contentLanguage': ?contentLanguage,
       'countries': ?countries,
       'defaultRule': ?defaultRule,

@@ -33,6 +33,10 @@
 ///     - [OrganizationsLocationsResourceBackupConfigsResource]
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsAppliedAutoProtectionPoliciesResource]
+///     - [ProjectsLocationsAutoProtectionPoliciesResource]
+///       - [ProjectsLocationsAutoProtectionPoliciesBindingsResource]
+/// - [ProjectsLocationsAutoProtectionPoliciesBindingsMatchingResourcesResource]
 ///     - [ProjectsLocationsBackupPlanAssociationsResource]
 ///     - [ProjectsLocationsBackupPlansResource]
 ///       - [ProjectsLocationsBackupPlansRevisionsResource]
@@ -43,6 +47,10 @@
 ///     - [ProjectsLocationsManagementServersResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsResourceBackupConfigsResource]
+///     - [ProjectsLocationsRestoreTemplatesResource]
+///       - [ProjectsLocationsRestoreTemplatesExecutionsResource]
+///     - [ProjectsLocationsRestoreVerificationPlansResource]
+///       - [ProjectsLocationsRestoreVerificationPlansAssociationsResource]
 ///     - [ProjectsLocationsServiceConfigResource]
 ///     - [ProjectsLocationsTrialResource]
 library;
@@ -276,6 +284,11 @@ class ProjectsResource {
 class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsAppliedAutoProtectionPoliciesResource
+  get appliedAutoProtectionPolicies =>
+      ProjectsLocationsAppliedAutoProtectionPoliciesResource(_requester);
+  ProjectsLocationsAutoProtectionPoliciesResource get autoProtectionPolicies =>
+      ProjectsLocationsAutoProtectionPoliciesResource(_requester);
   ProjectsLocationsBackupPlanAssociationsResource get backupPlanAssociations =>
       ProjectsLocationsBackupPlanAssociationsResource(_requester);
   ProjectsLocationsBackupPlansResource get backupPlans =>
@@ -290,6 +303,11 @@ class ProjectsLocationsResource {
       ProjectsLocationsOperationsResource(_requester);
   ProjectsLocationsResourceBackupConfigsResource get resourceBackupConfigs =>
       ProjectsLocationsResourceBackupConfigsResource(_requester);
+  ProjectsLocationsRestoreTemplatesResource get restoreTemplates =>
+      ProjectsLocationsRestoreTemplatesResource(_requester);
+  ProjectsLocationsRestoreVerificationPlansResource
+  get restoreVerificationPlans =>
+      ProjectsLocationsRestoreVerificationPlansResource(_requester);
   ProjectsLocationsServiceConfigResource get serviceConfig =>
       ProjectsLocationsServiceConfigResource(_requester);
   ProjectsLocationsTrialResource get trial =>
@@ -433,6 +451,688 @@ class ProjectsLocationsResource {
   }
 }
 
+class ProjectsLocationsAppliedAutoProtectionPoliciesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAppliedAutoProtectionPoliciesResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Lists AppliedAutoProtectionPolicies in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project and location for which to retrieve the
+  /// list of applied policies. Format: projects/{project}/locations/{location}
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. A filter expression that filters resources listed in
+  /// the response.
+  ///
+  /// [orderBy] - Optional. An expression that sorts the results in the
+  /// response.
+  ///
+  /// [pageSize] - Optional. The maximum number of applied policies to return in
+  /// a single page. The maximum value is 1000; values above 1000 will be
+  /// coerced to 1000. If unspecified or set to 0, a default page size of 500
+  /// will be used.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListAppliedAutoProtectionPolicies` call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAppliedAutoProtectionPoliciesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAppliedAutoProtectionPoliciesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/appliedAutoProtectionPolicies';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListAppliedAutoProtectionPoliciesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsAutoProtectionPoliciesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAutoProtectionPoliciesBindingsResource get bindings =>
+      ProjectsLocationsAutoProtectionPoliciesBindingsResource(_requester);
+
+  ProjectsLocationsAutoProtectionPoliciesResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates a new AutoProtectionPolicy in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource where this policy will be
+  /// created. Format: projects/{project}/locations/{location}
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [autoProtectionPolicyId] - Required. The ID to use for the policy. This
+  /// will become the final component of the policy's resource name. This value
+  /// must start with a lowercase letter followed by up to 62 lowercase letters,
+  /// numbers, or hyphens, and cannot end with a hyphen.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. The request ID must be a valid UUID with the exception that zero
+  /// UUID is not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    AutoProtectionPolicy request,
+    core.String parent, {
+    core.String? autoProtectionPolicyId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'autoProtectionPolicyId': ?autoProtectionPolicyId == null
+          ? null
+          : [autoProtectionPolicyId],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/autoProtectionPolicies';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single AutoProtectionPolicy.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the policy to delete. Format:
+  /// projects/{project}/locations/{location}/autoProtectionPolicies/{auto_protection_policy}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/autoProtectionPolicies/\[^/\]+$`.
+  ///
+  /// [etag] - The current etag of the autoprotectionpolicy. If an etag is
+  /// provided and does not match the current etag of the connection, deletion
+  /// will be blocked.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. The request ID must be a valid UUID with the exception that zero
+  /// UUID is not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? etag,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'etag': ?etag == null ? null : [etag],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single AutoProtectionPolicy.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the policy to retrieve. Format:
+  /// projects/{project}/locations/{location}/autoProtectionPolicies/{auto_protection_policy}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/autoProtectionPolicies/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AutoProtectionPolicy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AutoProtectionPolicy> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AutoProtectionPolicy.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists AutoProtectionPolicies for a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project and location for which to retrieve the
+  /// list of policies. Format: projects/{project}/locations/{location}
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. A filter expression that filters resources listed in
+  /// the response. The following fields are filterable:
+  ///
+  /// [orderBy] - Optional. An expression that sorts the results in the
+  /// response. The following fields are sortable:
+  ///
+  /// [pageSize] - Optional. The maximum number of policies to return in a
+  /// single page. If unspecified, a server-default value will be used.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListAutoProtectionPolicies` call. Provide this to retrieve the subsequent
+  /// page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAutoProtectionPoliciesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAutoProtectionPoliciesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/autoProtectionPolicies';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListAutoProtectionPoliciesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates the parameters of a single AutoProtectionPolicy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. Identifier. The resource name of the
+  /// AutoProtectionPolicy. Format:
+  /// `projects/{project}/locations/{location}/autoProtectionPolicies/{auto_protection_policy}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/autoProtectionPolicies/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. The request ID must be a valid UUID with the exception that zero
+  /// UUID is not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Optional. Field mask is used to specify the fields to be
+  /// overwritten in the AutoProtectionPolicy resource by the update. The fields
+  /// specified in the update_mask are relative to the resource, not the full
+  /// request. A field will be overwritten if it is in the mask. If the user
+  /// does not provide a mask then all fields will be overwritten.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    AutoProtectionPolicy request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsAutoProtectionPoliciesBindingsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAutoProtectionPoliciesBindingsMatchingResourcesResource
+  get matchingResources =>
+      ProjectsLocationsAutoProtectionPoliciesBindingsMatchingResourcesResource(
+        _requester,
+      );
+
+  ProjectsLocationsAutoProtectionPoliciesBindingsResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Creates a new AutoProtectionPolicyBinding in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource where this binding will be
+  /// created. Format:
+  /// projects/{project}/locations/{location}/autoProtectionPolicies/{auto_protection_policy}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/autoProtectionPolicies/\[^/\]+$`.
+  ///
+  /// [autoProtectionPolicyBindingId] - Required. The ID to use for the binding.
+  /// This will become the final component of the binding's resource name. This
+  /// value must start with a lowercase letter followed by up to 62 lowercase
+  /// letters, numbers, or hyphens, and cannot end with a hyphen.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. The request ID must be a valid UUID with the exception that zero
+  /// UUID is not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    AutoProtectionPolicyBinding request,
+    core.String parent, {
+    core.String? autoProtectionPolicyBindingId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'autoProtectionPolicyBindingId': ?autoProtectionPolicyBindingId == null
+          ? null
+          : [autoProtectionPolicyBindingId],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/bindings';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the auto protection policy binding read from the CCFE tables.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the binding to retrieve. Format:
+  /// projects/{project}/locations/{location}/autoProtectionPolicies/{auto_protection_policy}/bindings/{binding}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/autoProtectionPolicies/\[^/\]+/bindings/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AutoProtectionPolicyBinding].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AutoProtectionPolicyBinding> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AutoProtectionPolicyBinding.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Initiates delete for AutoProtectionPolicy Binding
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the binding to delete. Format:
+  /// projects/{project}/locations/{location}/autoProtectionPolicies/{auto_protection_policy}/bindings/{binding}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/autoProtectionPolicies/\[^/\]+/bindings/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> initiateDelete(
+    InitiateDeleteAutoProtectionPolicyBindingRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':initiateDelete';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the auto protection policy bindings read from the CCFE tables.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project and location for which to retrieve the
+  /// list of policies. Format: projects/{project}/locations/{location}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/autoProtectionPolicies/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. A filter expression that filters resources listed in
+  /// the response. The following fields are filterable:
+  ///
+  /// [orderBy] - Optional. An expression that sorts the results in the
+  /// response. The following fields are sortable:
+  ///
+  /// [pageSize] - Optional. The maximum number of policies to return in a
+  /// single page is 500. If unspecified, a server-default value will be used.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListAutoProtectionPolicies` call. Provide this to retrieve the subsequent
+  /// page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAutoProtectionPolicyBindingsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAutoProtectionPolicyBindingsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/bindings';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListAutoProtectionPolicyBindingsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsAutoProtectionPoliciesBindingsMatchingResourcesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAutoProtectionPoliciesBindingsMatchingResourcesResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Gets details of a single Binding Matching Resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the matching resource to retrieve. Format:
+  /// projects/{project}/locations/{location}/autoProtectionPolicies/{auto_protection_policy}/bindings/{binding}/matchingResources/{matching_resource}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/autoProtectionPolicies/\[^/\]+/bindings/\[^/\]+/matchingResources/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BindingMatchingResource].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BindingMatchingResource> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return BindingMatchingResource.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists Binding Matching Resources for a given AutoProtectionPolicyBinding.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project, location, auto protection policy and
+  /// binding for which to retrieve `BindingMatchingResources` information.
+  /// Format:
+  /// `projects/{project}/locations/{location}/autoProtectionPolicies/{auto_protection_policy}/bindings/{binding}`.
+  /// In Google Cloud Backup and DR, locations map to Google Cloud regions, for
+  /// example **us-central1**.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/autoProtectionPolicies/\[^/\]+/bindings/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Field match expression used to filter the results.
+  ///
+  /// [orderBy] - Optional. Field by which to sort the results.
+  ///
+  /// [pageSize] - Optional. The maximum number of `BindingMatchingResources` to
+  /// return in a single response. The default page size is 100 and maximum page
+  /// size is 200. Note that the response may include a partial list and a
+  /// caller should only rely on the response's next_page_token to determine if
+  /// there are more instances left to be queried.
+  ///
+  /// [pageToken] - Optional. The value of next_page_token received from a
+  /// previous `ListBindingMatchingResources` call. Provide this to retrieve the
+  /// subsequent page in a multi-page list of results. When paginating, all
+  /// other parameters provided to `ListBindingMatchingResources` must match the
+  /// call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListBindingMatchingResourcesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListBindingMatchingResourcesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/matchingResources';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListBindingMatchingResourcesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 class ProjectsLocationsBackupPlanAssociationsResource {
   final commons.ApiRequester _requester;
 
@@ -514,6 +1214,12 @@ class ProjectsLocationsBackupPlanAssociationsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/backupPlanAssociations/\[^/\]+$`.
   ///
+  /// [autoProtectionPolicyBinding] - Optional. This field is exclusively used
+  /// by Backup and DR's auto-protection feature. The resource name of the
+  /// `AutoProtectionPolicyBinding` that triggered the deletion of this
+  /// association. Format:
+  /// `projects/{project}/locations/{location}/autoProtectionPolicies/{policy}/bindings/{binding}`.
+  ///
   /// [requestId] - Optional. An optional request ID to identify requests.
   /// Specify a unique request ID so that if you must retry your request, the
   /// server will know to ignore the request if it has already been completed.
@@ -538,10 +1244,14 @@ class ProjectsLocationsBackupPlanAssociationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
     core.String name, {
+    core.String? autoProtectionPolicyBinding,
     core.String? requestId,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      'autoProtectionPolicyBinding': ?autoProtectionPolicyBinding == null
+          ? null
+          : [autoProtectionPolicyBinding],
       'requestId': ?requestId == null ? null : [requestId],
       'fields': ?$fields == null ? null : [$fields],
     };
@@ -3489,6 +4199,987 @@ class ProjectsLocationsResourceBackupConfigsResource {
   }
 }
 
+class ProjectsLocationsRestoreTemplatesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsRestoreTemplatesExecutionsResource get executions =>
+      ProjectsLocationsRestoreTemplatesExecutionsResource(_requester);
+
+  ProjectsLocationsRestoreTemplatesResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates a new RestoreTemplate in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The restore template project and location in the
+  /// format 'projects/{project_id}/locations/{location}'.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [restoreTemplateId] - Required. The ID of the restore template to create.
+  /// The ID must be unique for the specified project and location.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    RestoreTemplate request,
+    core.String parent, {
+    core.String? requestId,
+    core.String? restoreTemplateId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'restoreTemplateId': ?restoreTemplateId == null
+          ? null
+          : [restoreTemplateId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/restoreTemplates';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a RestoreTemplate.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the restore template to delete. Format:
+  /// 'projects/{project_id}/locations/{location}/restoreTemplates/{restore_template_id}'
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/restoreTemplates/\[^/\]+$`.
+  ///
+  /// [force] - Optional. If set to true, any child RestoreTemplateExecutions
+  /// will also be deleted. If false and the RestoreTemplate has any child
+  /// executions, the request will fail.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.bool? force,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'force': ?force == null ? null : ['${force}'],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a RestoreTemplate.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the restore template to retrieve. Format:
+  /// 'projects/{project_id}/locations/{location}/restoreTemplates/{restore_template_id}'
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/restoreTemplates/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RestoreTemplate].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RestoreTemplate> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return RestoreTemplate.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists RestoreTemplates in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project and location from which to list the
+  /// restore templates. Format: `projects/{project}/locations/{location}`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Field match expression used to filter the results.
+  ///
+  /// [orderBy] - Optional. Field by which to sort the results.
+  ///
+  /// [pageSize] - Optional. The maximum number of items to return.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListRestoreTemplates` call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListRestoreTemplatesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListRestoreTemplatesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/restoreTemplates';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListRestoreTemplatesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates the settings of a RestoreTemplate.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The resource name of the RestoreTemplate.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/restoreTemplates/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Optional. The list of fields to update. Field mask is used
+  /// to specify the fields to be overwritten in the RestoreTemplate resource by
+  /// the update. The fields specified in the update_mask are relative to the
+  /// resource, not the full request. A field will be overwritten if it is in
+  /// the mask.
+  ///
+  /// [validateOnly] - Optional. Only validate the request, but do not perform
+  /// mutations. The default is 'false'.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    RestoreTemplate request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Runs a RestoreTemplate.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the restore template to run. Format:
+  /// 'projects/{project_id}/locations/{location}/restoreTemplates/{restore_template_id}'
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/restoreTemplates/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> run(
+    RunRestoreTemplateRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':run';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsRestoreTemplatesExecutionsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsRestoreTemplatesExecutionsResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Gets details of a RestoreTemplateExecution.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the restore template execution to retrieve.
+  /// Format:
+  /// 'projects/{project_id}/locations/{location}/restoreTemplates/{restore_template_id}/executions/{execution_id}'
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/restoreTemplates/\[^/\]+/executions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RestoreTemplateExecution].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RestoreTemplateExecution> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return RestoreTemplateExecution.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists RestoreTemplateExecutions in a given project, location and restore
+  /// template.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project, location, and restore template for which
+  /// to retrieve executions information. Format:
+  /// `projects/{project}/locations/{location}/restoreTemplates/{restore_template}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/restoreTemplates/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filtering results.
+  ///
+  /// [orderBy] - Optional. Hint for how to order the results.
+  ///
+  /// [pageSize] - Optional. Requested page size.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListRestoreTemplateExecutionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListRestoreTemplateExecutionsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/executions';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListRestoreTemplateExecutionsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Triggers cleanup of restored resources created during execution.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the restore template execution. Format:
+  /// 'projects/{project_id}/locations/{location}/restoreTemplates/{restore_template_id}/executions/{execution_id}'
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/restoreTemplates/\[^/\]+/executions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> triggerRestoreCleanup(
+    TriggerRestoreCleanupRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$name') + ':triggerRestoreCleanup';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsRestoreVerificationPlansResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsRestoreVerificationPlansAssociationsResource
+  get associations =>
+      ProjectsLocationsRestoreVerificationPlansAssociationsResource(_requester);
+
+  ProjectsLocationsRestoreVerificationPlansResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates a new RestoreVerificationPlan in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The `RestoreVerificationPlan` project and location in
+  /// the format `projects/{project}/locations/{location}`. In Google Cloud
+  /// Backup and DR locations map to Google Cloud regions, for example
+  /// **us-central1**.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [restoreVerificationPlanId] - Required. The name of the
+  /// `RestoreVerificationPlan` to create. The name must be unique for the
+  /// specified project and location. The name must start with a lowercase
+  /// letter followed by up to 62 lowercase letters, numbers, or hyphens.
+  /// Pattern, `^[a-z]([-a-z0-9]*[a-z0-9])?$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    RestoreVerificationPlan request,
+    core.String parent, {
+    core.String? requestId,
+    core.String? restoreVerificationPlanId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'restoreVerificationPlanId': ?restoreVerificationPlanId == null
+          ? null
+          : [restoreVerificationPlanId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/restoreVerificationPlans';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single RestoreVerificationPlan.
+  ///
+  /// If the `force` flag is set to `true`, any
+  /// RestoreVerificationPlanAssociations linked to this RestoreVerificationPlan
+  /// will also be deleted.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the `RestoreVerificationPlan` to
+  /// delete. Format:
+  /// `projects/{project}/locations/{location}/restoreVerificationPlans/{restoreVerificationPlan}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/restoreVerificationPlans/\[^/\]+$`.
+  ///
+  /// [force] - Optional. If set to true, any
+  /// RestoreVerificationPlanAssociations linked to this RestoreVerificationPlan
+  /// will also be deleted.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes after the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.bool? force,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'force': ?force == null ? null : ['${force}'],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single RestoreVerificationPlan.
+  ///
+  /// Returns the requested RestoreVerificationPlan.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the `RestoreVerificationPlan` to
+  /// retrieve. Format:
+  /// `projects/{project}/locations/{location}/restoreVerificationPlans/{restoreVerificationPlan}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/restoreVerificationPlans/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RestoreVerificationPlan].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RestoreVerificationPlan> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return RestoreVerificationPlan.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists RestoreVerificationPlans in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project and location for which to retrieve
+  /// `RestoreVerificationPlans` information. Format:
+  /// `projects/{project}/locations/{location}`. In Google Cloud Backup and DR,
+  /// locations map to Google Cloud regions, for example **us-central1**. To
+  /// retrieve restore verification plans for all locations, use "-" for the
+  /// `{location}` value.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Field match expression used to filter the results.
+  ///
+  /// [orderBy] - Optional. Field by which to sort the results.
+  ///
+  /// [pageSize] - Optional. The maximum number of `RestoreVerificationPlans` to
+  /// return in a single response. If not specified, a default value will be
+  /// chosen by the service. Note that the response may include a partial list
+  /// and a caller should only rely on the response's next_page_token to
+  /// determine if there are more instances left to be queried.
+  ///
+  /// [pageToken] - Optional. The value of next_page_token received from a
+  /// previous `ListRestoreVerificationPlans` call. Provide this to retrieve the
+  /// subsequent page in a multi-page list of results. When paginating, all
+  /// other parameters provided to `ListRestoreVerificationPlans` must match the
+  /// call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListRestoreVerificationPlansResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListRestoreVerificationPlansResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/restoreVerificationPlans';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListRestoreVerificationPlansResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsRestoreVerificationPlansAssociationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsRestoreVerificationPlansAssociationsResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Creates a new RestoreVerificationPlanAssociation in a given
+  /// RestoreVerificationPlan.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource where this association will be
+  /// created. Format:
+  /// `projects/{project}/locations/{location}/restoreVerificationPlans/{restore_verification_plan}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/restoreVerificationPlans/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know that the server has already received the duplicate
+  /// request and can avoid responding with an error. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [restoreVerificationPlanAssociationId] - Required. The ID to use for the
+  /// association, which will become the final component of the association's
+  /// resource name. This value should be 1-63 characters, and valid characters
+  /// are /\[a-z0-9_-\]/.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    RestoreVerificationPlanAssociation request,
+    core.String parent, {
+    core.String? requestId,
+    core.String? restoreVerificationPlanAssociationId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'restoreVerificationPlanAssociationId':
+          ?restoreVerificationPlanAssociationId == null
+          ? null
+          : [restoreVerificationPlanAssociationId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/associations';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single RestoreVerificationPlanAssociation in a given
+  /// RestoreVerificationPlan.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the
+  /// RestoreVerificationPlanAssociation to delete. Format:
+  /// `projects/{project}/locations/{location}/restoreVerificationPlans/{restore_verification_plan}/associations/{association}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/restoreVerificationPlans/\[^/\]+/associations/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know that the server has already received the duplicate
+  /// request and can avoid responding with an error. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single RestoreVerificationPlanAssociation in a given
+  /// RestoreVerificationPlan.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the
+  /// RestoreVerificationPlanAssociation to retrieve. Format:
+  /// `projects/{project}/locations/{location}/restoreVerificationPlans/{restore_verification_plan}/associations/{association}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/restoreVerificationPlans/\[^/\]+/associations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RestoreVerificationPlanAssociation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RestoreVerificationPlanAssociation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return RestoreVerificationPlanAssociation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists RestoreVerificationPlanAssociations in a given
+  /// RestoreVerificationPlan.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent RestoreVerificationPlan name. Format:
+  /// `projects/{project}/locations/{location}/restoreVerificationPlans/{restore_verification_plan}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/restoreVerificationPlans/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filtering results.
+  ///
+  /// [orderBy] - Optional. Hint for how to order the results.
+  ///
+  /// [pageSize] - Optional. The maximum number of associations to return. The
+  /// service may return fewer than this value. If unspecified, at most 500
+  /// associations will be returned. The maximum value is 1000; values above
+  /// 1000 will be coerced to 1000.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListRestoreVerificationPlanAssociations` call. Provide this to retrieve
+  /// the subsequent page. When paginating, all other parameters provided to
+  /// `ListRestoreVerificationPlanAssociations` must match the call that
+  /// provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListRestoreVerificationPlanAssociationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListRestoreVerificationPlanAssociationsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/associations';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListRestoreVerificationPlanAssociationsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Triggers a new Restore Verification for the association in a given
+  /// RestoreVerificationPlan.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the
+  /// RestoreVerificationPlanAssociation to trigger. Format:
+  /// `projects/{project}/locations/{location}/restoreVerificationPlans/{restore_verification_plan}/associations/{association}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/restoreVerificationPlans/\[^/\]+/associations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> triggerRestoreVerification(
+    TriggerRestoreVerificationRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$name') + ':triggerRestoreVerification';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsServiceConfigResource {
   final commons.ApiRequester _requester;
 
@@ -4121,6 +5812,125 @@ class AlloyDbPitrWindow {
   }
 }
 
+/// AppliedAutoProtectionPolicy is a read-only view of AutoProtectionPolicy and
+/// AutoProtectionPolicyBinding resources that apply to a given workload
+/// project.
+class AppliedAutoProtectionPolicy {
+  /// The set of backup plan configurations, mirroring the backup_plan_details
+  /// from the source AutoProtectionPolicy.
+  ///
+  /// Each element specifies a backup plan for a given resource type.
+  ///
+  /// Output only.
+  core.List<BackupPlanDetail>? backupPlanDetails;
+
+  /// The summary of the last policy application when the job has run.
+  ///
+  /// Output only.
+  BindingEvaluationSummary? bindingEvaluationSummary;
+
+  /// Timestamp indicating when the binding was last created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The criteria resources must meet for this rule to apply.
+  ///
+  /// From AutoProtectionPolicy.criteria.
+  ///
+  /// Output only.
+  Criteria? criteria;
+
+  /// Identifier.
+  ///
+  /// Canonical resource name. Format:
+  /// projects/{workload-project-number}/locations/{location}/appliedAutoProtectionPolicies/{id}.
+  core.String? name;
+
+  /// The full resource name of the AutoProtectionPolicyBinding that applies the
+  /// source policy to a scope including this workload project.
+  ///
+  /// e.g.,
+  /// projects/{admin-project}/locations/{location}/autoProtectionPolicies/{policy_id}/autoProtectionPolicyBindings/{binding_id}.
+  ///
+  /// Output only.
+  core.String? sourceBinding;
+
+  /// The status of the applied auto protection policy.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : State is not specified.
+  /// - "CREATING" : The policy is in the process of being applied.
+  /// - "ACTIVE" : The policy has been applied and is active.
+  /// - "DELETION_INITIATED" : The policy is in the process of being removed.
+  core.String? status;
+
+  /// Timestamp indicating when the binding was last modified.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  AppliedAutoProtectionPolicy({
+    this.backupPlanDetails,
+    this.bindingEvaluationSummary,
+    this.createTime,
+    this.criteria,
+    this.name,
+    this.sourceBinding,
+    this.status,
+    this.updateTime,
+  });
+
+  AppliedAutoProtectionPolicy.fromJson(core.Map json_)
+    : this(
+        backupPlanDetails: (json_['backupPlanDetails'] as core.List?)
+            ?.map(
+              (value) => BackupPlanDetail.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        bindingEvaluationSummary: json_.containsKey('bindingEvaluationSummary')
+            ? BindingEvaluationSummary.fromJson(
+                json_['bindingEvaluationSummary']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        createTime: json_['createTime'] as core.String?,
+        criteria: json_.containsKey('criteria')
+            ? Criteria.fromJson(
+                json_['criteria'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        name: json_['name'] as core.String?,
+        sourceBinding: json_['sourceBinding'] as core.String?,
+        status: json_['status'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final backupPlanDetails = this.backupPlanDetails;
+    final bindingEvaluationSummary = this.bindingEvaluationSummary;
+    final createTime = this.createTime;
+    final criteria = this.criteria;
+    final name = this.name;
+    final sourceBinding = this.sourceBinding;
+    final status = this.status;
+    final updateTime = this.updateTime;
+    return {
+      'backupPlanDetails': ?backupPlanDetails,
+      'bindingEvaluationSummary': ?bindingEvaluationSummary,
+      'createTime': ?createTime,
+      'criteria': ?criteria,
+      'name': ?name,
+      'sourceBinding': ?sourceBinding,
+      'status': ?status,
+      'updateTime': ?updateTime,
+    };
+  }
+}
+
 /// An instance-attached disk resource.
 class AttachedDisk {
   /// Specifies whether the disk will be auto-deleted when the instance is
@@ -4403,6 +6213,327 @@ class AuditConfig {
 /// exempting jose@example.com from DATA_READ logging.
 typedef AuditLogConfig = $AuditLogConfig;
 
+/// AutoProtectionDetails contains the protection details of a resource from the
+/// current binding's perspective.
+class AutoProtectionDetails {
+  /// Resource name of backup plan association linked to the resource, if any.
+  ///
+  /// Format:
+  /// projects/{project}/locations/{location}/backupPlanAssociations/{backupPlanAssociationId}
+  ///
+  /// Output only.
+  core.String? backupPlanAssociation;
+
+  /// Resource name of the datasource linked to the resource, if any.
+  ///
+  /// Format:
+  /// projects/{project}/locations/{location}/backupVaults/{backupVaultId}/dataSources/{dataSourceId}
+  ///
+  /// Output only.
+  core.String? dataSource;
+
+  /// Error during last sync for protection/unprotection, if any.
+  ///
+  /// Output only.
+  Status? error;
+
+  /// Protection state of the resource from the current binding's perspective.
+  ///
+  /// Output only.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : State unspecified.
+  /// - "PROTECTED" : Resource is protected.
+  /// - "PROTECTION_FAILED" : Resource protection failed.
+  /// - "UNPROTECTING" : Resource is being unprotected.
+  /// - "UNPROTECTION_FAILED" : Resource unprotection failed.
+  core.String? state;
+
+  AutoProtectionDetails({
+    this.backupPlanAssociation,
+    this.dataSource,
+    this.error,
+    this.state,
+  });
+
+  AutoProtectionDetails.fromJson(core.Map json_)
+    : this(
+        backupPlanAssociation: json_['backupPlanAssociation'] as core.String?,
+        dataSource: json_['dataSource'] as core.String?,
+        error: json_.containsKey('error')
+            ? Status.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        state: json_['state'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final backupPlanAssociation = this.backupPlanAssociation;
+    final dataSource = this.dataSource;
+    final error = this.error;
+    final state = this.state;
+    return {
+      'backupPlanAssociation': ?backupPlanAssociation,
+      'dataSource': ?dataSource,
+      'error': ?error,
+      'state': ?state,
+    };
+  }
+}
+
+/// An AutoprotectionPolicy is a policy resource designed to automate backup
+/// management, moving from manual per-resource protection to a bulk approach.
+///
+/// The policy dynamically discovers and applies a specified backup plan to all
+/// eligible resources that match its defined scope and criteria.
+class AutoProtectionPolicy {
+  /// The backup plan details for matching resources.
+  ///
+  /// Required.
+  core.List<BackupPlanDetail>? backupPlanDetails;
+
+  /// Summary of total count of different containers covered through this
+  /// policy.
+  ///
+  /// Output only.
+  BindingSummary? bindingSummary;
+
+  /// The timestamp when the policy was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The criteria for matching resources.
+  ///
+  /// Required.
+  Criteria? criteria;
+
+  /// A description of the policy.
+  ///
+  /// The description must be at most 2048 characters.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// The etag for the policy.
+  ///
+  /// If this is provided on update, it must match the server's etag.
+  ///
+  /// Output only.
+  core.String? etag;
+
+  /// Identifier.
+  ///
+  /// The resource name of the AutoProtectionPolicy. Format:
+  /// `projects/{project}/locations/{location}/autoProtectionPolicies/{auto_protection_policy}`
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Summary of last policy evaluation when job was run per workload type.
+  ///
+  /// Output only.
+  PolicyEvaluationSummary? policyEvaluationSummary;
+
+  /// The current state of the AutoProtectionPolicy.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The state of the policy is unspecified.
+  /// - "CREATING" : The policy is being created.
+  /// - "ACTIVE" : The policy is active and protecting matching resources.
+  /// - "UPDATING" : The policy is being updated.
+  /// - "DELETING" : The policy is being deleted.
+  core.String? state;
+
+  /// The timestamp when the policy was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  AutoProtectionPolicy({
+    this.backupPlanDetails,
+    this.bindingSummary,
+    this.createTime,
+    this.criteria,
+    this.description,
+    this.etag,
+    this.name,
+    this.policyEvaluationSummary,
+    this.state,
+    this.updateTime,
+  });
+
+  AutoProtectionPolicy.fromJson(core.Map json_)
+    : this(
+        backupPlanDetails: (json_['backupPlanDetails'] as core.List?)
+            ?.map(
+              (value) => BackupPlanDetail.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        bindingSummary: json_.containsKey('bindingSummary')
+            ? BindingSummary.fromJson(
+                json_['bindingSummary'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        createTime: json_['createTime'] as core.String?,
+        criteria: json_.containsKey('criteria')
+            ? Criteria.fromJson(
+                json_['criteria'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        description: json_['description'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        name: json_['name'] as core.String?,
+        policyEvaluationSummary: json_.containsKey('policyEvaluationSummary')
+            ? PolicyEvaluationSummary.fromJson(
+                json_['policyEvaluationSummary']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        state: json_['state'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final backupPlanDetails = this.backupPlanDetails;
+    final bindingSummary = this.bindingSummary;
+    final createTime = this.createTime;
+    final criteria = this.criteria;
+    final description = this.description;
+    final etag = this.etag;
+    final name = this.name;
+    final policyEvaluationSummary = this.policyEvaluationSummary;
+    final state = this.state;
+    final updateTime = this.updateTime;
+    return {
+      'backupPlanDetails': ?backupPlanDetails,
+      'bindingSummary': ?bindingSummary,
+      'createTime': ?createTime,
+      'criteria': ?criteria,
+      'description': ?description,
+      'etag': ?etag,
+      'name': ?name,
+      'policyEvaluationSummary': ?policyEvaluationSummary,
+      'state': ?state,
+      'updateTime': ?updateTime,
+    };
+  }
+}
+
+/// An AutoProtectionPolicyBinding (APPA) acts as the bridge between an
+/// AutoProtectionPolicy and the scope (Project) where the policy should be
+/// applied.
+class AutoProtectionPolicyBinding {
+  /// Summaries of the last policy application when the job has run, with one
+  /// entry per resource type specified in the AutoProtectionPolicy.
+  ///
+  /// Output only.
+  BindingEvaluationSummary? bindingEvaluationSummary;
+
+  /// The timestamp when the binding was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// A description of the binding.
+  ///
+  /// The description must be at most 2048 characters.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// The etag for the binding.
+  ///
+  /// If this is provided on update, it must match the server's etag.
+  ///
+  /// Optional. Output only.
+  core.String? etag;
+
+  /// Identifier.
+  ///
+  /// The resource name of the AutoProtectionPolicyBinding. Format:
+  /// `projects/{project}/locations/{location}/autoProtectionPolicies/{auto_protection_policy}/bindings/{binding}`
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Resource Id of target container on which policy will be applied.
+  ///
+  /// Format: projects/{project_id}
+  ///
+  /// Required. Immutable.
+  core.String? scope;
+
+  /// The current state of the AutoProtectionPolicyBinding.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The state of the binding is unspecified.
+  /// - "CREATING" : The binding is being created.
+  /// - "ACTIVE" : The binding is active.
+  /// - "DELETION_INITIATED" : The binding deletion is initiated.
+  core.String? state;
+
+  /// The timestamp when the binding was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  AutoProtectionPolicyBinding({
+    this.bindingEvaluationSummary,
+    this.createTime,
+    this.description,
+    this.etag,
+    this.name,
+    this.scope,
+    this.state,
+    this.updateTime,
+  });
+
+  AutoProtectionPolicyBinding.fromJson(core.Map json_)
+    : this(
+        bindingEvaluationSummary: json_.containsKey('bindingEvaluationSummary')
+            ? BindingEvaluationSummary.fromJson(
+                json_['bindingEvaluationSummary']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        name: json_['name'] as core.String?,
+        scope: json_['scope'] as core.String?,
+        state: json_['state'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final bindingEvaluationSummary = this.bindingEvaluationSummary;
+    final createTime = this.createTime;
+    final description = this.description;
+    final etag = this.etag;
+    final name = this.name;
+    final scope = this.scope;
+    final state = this.state;
+    final updateTime = this.updateTime;
+    return {
+      'bindingEvaluationSummary': ?bindingEvaluationSummary,
+      'createTime': ?createTime,
+      'description': ?description,
+      'etag': ?etag,
+      'name': ?name,
+      'scope': ?scope,
+      'state': ?state,
+      'updateTime': ?updateTime,
+    };
+  }
+}
+
 /// Message describing a Backup object.
 class Backup {
   /// AlloyDB specific backup properties.
@@ -4532,6 +6663,11 @@ class Backup {
   /// Output only.
   core.String? name;
 
+  /// NetApp Volume specific backup properties.
+  ///
+  /// Output only.
+  NetAppVolumeBackupProperties? netappVolumeBackupProperties;
+
   /// source resource size in bytes at the time of the backup.
   ///
   /// Output only.
@@ -4570,6 +6706,11 @@ class Backup {
   /// Output only.
   core.String? updateTime;
 
+  /// The restore verification status of the backup.
+  ///
+  /// Output only.
+  VerificationSummary? verificationSummary;
+
   Backup({
     this.alloyDbBackupProperties,
     this.backupApplianceBackupProperties,
@@ -4591,12 +6732,14 @@ class Backup {
     this.kmsKeyVersions,
     this.labels,
     this.name,
+    this.netappVolumeBackupProperties,
     this.resourceSizeBytes,
     this.satisfiesPzi,
     this.satisfiesPzs,
     this.serviceLocks,
     this.state,
     this.updateTime,
+    this.verificationSummary,
   });
 
   Backup.fromJson(core.Map json_)
@@ -4676,6 +6819,13 @@ class Backup {
           (key, value) => core.MapEntry(key, value as core.String),
         ),
         name: json_['name'] as core.String?,
+        netappVolumeBackupProperties:
+            json_.containsKey('netappVolumeBackupProperties')
+            ? NetAppVolumeBackupProperties.fromJson(
+                json_['netappVolumeBackupProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         resourceSizeBytes: json_['resourceSizeBytes'] as core.String?,
         satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
         satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
@@ -4688,6 +6838,12 @@ class Backup {
             .toList(),
         state: json_['state'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
+        verificationSummary: json_.containsKey('verificationSummary')
+            ? VerificationSummary.fromJson(
+                json_['verificationSummary']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -4715,12 +6871,14 @@ class Backup {
     final kmsKeyVersions = this.kmsKeyVersions;
     final labels = this.labels;
     final name = this.name;
+    final netappVolumeBackupProperties = this.netappVolumeBackupProperties;
     final resourceSizeBytes = this.resourceSizeBytes;
     final satisfiesPzi = this.satisfiesPzi;
     final satisfiesPzs = this.satisfiesPzs;
     final serviceLocks = this.serviceLocks;
     final state = this.state;
     final updateTime = this.updateTime;
+    final verificationSummary = this.verificationSummary;
     return {
       'alloyDbBackupProperties': ?alloyDbBackupProperties,
       'backupApplianceBackupProperties': ?backupApplianceBackupProperties,
@@ -4742,12 +6900,14 @@ class Backup {
       'kmsKeyVersions': ?kmsKeyVersions,
       'labels': ?labels,
       'name': ?name,
+      'netappVolumeBackupProperties': ?netappVolumeBackupProperties,
       'resourceSizeBytes': ?resourceSizeBytes,
       'satisfiesPzi': ?satisfiesPzi,
       'satisfiesPzs': ?satisfiesPzs,
       'serviceLocks': ?serviceLocks,
       'state': ?state,
       'updateTime': ?updateTime,
+      'verificationSummary': ?verificationSummary,
     };
   }
 }
@@ -5665,6 +7825,15 @@ class BackupPlanAssociation {
   AlloyDBClusterBackupPlanAssociationProperties?
   alloydbClusterBackupPlanAssociationProperties;
 
+  /// The resource name of the `AutoProtectionPolicyBinding` that manages this
+  /// association, if any.
+  ///
+  /// Format:
+  /// `projects/{project}/locations/{location}/autoProtectionPolicies/{policy}/bindings/{binding}`.
+  ///
+  /// Output only.
+  core.String? autoProtectionPolicyBinding;
+
   /// Resource name of backup plan which needs to be applied on workload.
   ///
   /// Format: projects/{project}/locations/{location}/backupPlans/{backupPlanId}
@@ -5721,6 +7890,12 @@ class BackupPlanAssociation {
   /// Output only.
   core.String? name;
 
+  /// NetApp volume backup plan association properties.
+  ///
+  /// Output only.
+  NetAppVolumeBackupPlanAssociationProperties?
+  netappVolumeBackupPlanAssociationProperties;
+
   /// Resource name of workload on which the backup plan is applied.
   ///
   /// The format can either be the resource name (e.g.,
@@ -5751,6 +7926,7 @@ class BackupPlanAssociation {
   /// - "DELETING" : The resource is being deleted.
   /// - "INACTIVE" : The resource has been created but is not usable.
   /// - "UPDATING" : The resource is being updated.
+  /// - "PAUSED" : The resource has been created but backups are paused.
   core.String? state;
 
   /// The time when the instance was updated.
@@ -5760,6 +7936,7 @@ class BackupPlanAssociation {
 
   BackupPlanAssociation({
     this.alloydbClusterBackupPlanAssociationProperties,
+    this.autoProtectionPolicyBinding,
     this.backupPlan,
     this.backupPlanRevisionId,
     this.backupPlanRevisionName,
@@ -5768,6 +7945,7 @@ class BackupPlanAssociation {
     this.dataSource,
     this.filestoreInstanceBackupPlanAssociationProperties,
     this.name,
+    this.netappVolumeBackupPlanAssociationProperties,
     this.resource,
     this.resourceType,
     this.rulesConfigInfo,
@@ -5784,6 +7962,8 @@ class BackupPlanAssociation {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        autoProtectionPolicyBinding:
+            json_['autoProtectionPolicyBinding'] as core.String?,
         backupPlan: json_['backupPlan'] as core.String?,
         backupPlanRevisionId: json_['backupPlanRevisionId'] as core.String?,
         backupPlanRevisionName: json_['backupPlanRevisionName'] as core.String?,
@@ -5806,6 +7986,13 @@ class BackupPlanAssociation {
               )
             : null,
         name: json_['name'] as core.String?,
+        netappVolumeBackupPlanAssociationProperties:
+            json_.containsKey('netappVolumeBackupPlanAssociationProperties')
+            ? NetAppVolumeBackupPlanAssociationProperties.fromJson(
+                json_['netappVolumeBackupPlanAssociationProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         resource: json_['resource'] as core.String?,
         resourceType: json_['resourceType'] as core.String?,
         rulesConfigInfo: (json_['rulesConfigInfo'] as core.List?)
@@ -5822,6 +8009,7 @@ class BackupPlanAssociation {
   core.Map<core.String, core.dynamic> toJson() {
     final alloydbClusterBackupPlanAssociationProperties =
         this.alloydbClusterBackupPlanAssociationProperties;
+    final autoProtectionPolicyBinding = this.autoProtectionPolicyBinding;
     final backupPlan = this.backupPlan;
     final backupPlanRevisionId = this.backupPlanRevisionId;
     final backupPlanRevisionName = this.backupPlanRevisionName;
@@ -5832,6 +8020,8 @@ class BackupPlanAssociation {
     final filestoreInstanceBackupPlanAssociationProperties =
         this.filestoreInstanceBackupPlanAssociationProperties;
     final name = this.name;
+    final netappVolumeBackupPlanAssociationProperties =
+        this.netappVolumeBackupPlanAssociationProperties;
     final resource = this.resource;
     final resourceType = this.resourceType;
     final rulesConfigInfo = this.rulesConfigInfo;
@@ -5840,6 +8030,7 @@ class BackupPlanAssociation {
     return {
       'alloydbClusterBackupPlanAssociationProperties':
           ?alloydbClusterBackupPlanAssociationProperties,
+      'autoProtectionPolicyBinding': ?autoProtectionPolicyBinding,
       'backupPlan': ?backupPlan,
       'backupPlanRevisionId': ?backupPlanRevisionId,
       'backupPlanRevisionName': ?backupPlanRevisionName,
@@ -5850,12 +8041,48 @@ class BackupPlanAssociation {
       'filestoreInstanceBackupPlanAssociationProperties':
           ?filestoreInstanceBackupPlanAssociationProperties,
       'name': ?name,
+      'netappVolumeBackupPlanAssociationProperties':
+          ?netappVolumeBackupPlanAssociationProperties,
       'resource': ?resource,
       'resourceType': ?resourceType,
       'rulesConfigInfo': ?rulesConfigInfo,
       'state': ?state,
       'updateTime': ?updateTime,
     };
+  }
+}
+
+/// BackupPlanDetail defines configuration of protection.
+class BackupPlanDetail {
+  /// The resource name of the BackupPlan to apply to resources that match the
+  /// policy's criteria.
+  ///
+  /// This backup plan must be in the same location as AutoProtectionPolicy.
+  /// Format: projects/{project}/locations/{location}/backupPlans/{backupPlanId}
+  ///
+  /// Required.
+  core.String? backupPlan;
+
+  /// The type of resource that this policy will automatically protect.
+  ///
+  /// Allowed values are, `compute.googleapis.com/Instance` and
+  /// `compute.googleapis.com/Disk` are supported.
+  ///
+  /// Required.
+  core.String? resourceType;
+
+  BackupPlanDetail({this.backupPlan, this.resourceType});
+
+  BackupPlanDetail.fromJson(core.Map json_)
+    : this(
+        backupPlan: json_['backupPlan'] as core.String?,
+        resourceType: json_['resourceType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final backupPlan = this.backupPlan;
+    final resourceType = this.resourceType;
+    return {'backupPlan': ?backupPlan, 'resourceType': ?resourceType};
   }
 }
 
@@ -5986,6 +8213,24 @@ class BackupRule {
       'ruleId': ?ruleId,
       'standardSchedule': ?standardSchedule,
     };
+  }
+}
+
+/// Configuration for selecting a backup.
+class BackupSelectionConfig {
+  /// The fully qualified URI of the backupdr data source.
+  ///
+  /// Required. Immutable.
+  core.String? dataSource;
+
+  BackupSelectionConfig({this.dataSource});
+
+  BackupSelectionConfig.fromJson(core.Map json_)
+    : this(dataSource: json_['dataSource'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final dataSource = this.dataSource;
+    return {'dataSource': ?dataSource};
   }
 }
 
@@ -6374,8 +8619,207 @@ class Binding {
   }
 }
 
+/// BindingEvaluationSummary contains the summary of the last run of job that
+/// applies policy to matching resources for a given binding.
+typedef BindingEvaluationSummary = $EvaluationSummary;
+
+/// BindingMatchingResource contains the details of a resource that matches the
+/// criteria of a binding.
+class BindingMatchingResource {
+  /// The auto protection details of the resource from the current binding's
+  /// perspective.
+  ///
+  /// Output only.
+  AutoProtectionDetails? autoProtectionDetails;
+
+  /// The timestamp when the resource was last evaluated for protection.
+  ///
+  /// Output only.
+  core.String? lastEvaluationTime;
+
+  /// Identifier.
+  ///
+  /// The resource name of the `BindingMatchingResource`. Format:
+  /// `projects/{project}/locations/{location}/autoProtectionPolicies/{auto_protection_policy}/bindings/{binding}/matchingResources/{matching_resource}`
+  core.String? name;
+
+  /// Resource name of the workload that matches the criteria of the binding.
+  ///
+  /// The format can be either a relative resource name (e.g.,
+  /// `projects/my-project/zones/us-central1-a/instances/my-instance`) or a
+  /// schemeless full resource name (e.g.,
+  /// `//compute.googleapis.com/projects/my-project/zones/us-central1-a/instances/my-instance`).
+  ///
+  /// Required. Immutable.
+  core.String? resource;
+
+  BindingMatchingResource({
+    this.autoProtectionDetails,
+    this.lastEvaluationTime,
+    this.name,
+    this.resource,
+  });
+
+  BindingMatchingResource.fromJson(core.Map json_)
+    : this(
+        autoProtectionDetails: json_.containsKey('autoProtectionDetails')
+            ? AutoProtectionDetails.fromJson(
+                json_['autoProtectionDetails']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        lastEvaluationTime: json_['lastEvaluationTime'] as core.String?,
+        name: json_['name'] as core.String?,
+        resource: json_['resource'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final autoProtectionDetails = this.autoProtectionDetails;
+    final lastEvaluationTime = this.lastEvaluationTime;
+    final name = this.name;
+    final resource = this.resource;
+    return {
+      'autoProtectionDetails': ?autoProtectionDetails,
+      'lastEvaluationTime': ?lastEvaluationTime,
+      'name': ?name,
+      'resource': ?resource,
+    };
+  }
+}
+
+/// BindingSummary contains count of different containers covered through this
+/// policy.
+class BindingSummary {
+  /// Total count of Projects protected with this policy.
+  ///
+  /// Output only.
+  core.String? projectCount;
+
+  BindingSummary({this.projectCount});
+
+  BindingSummary.fromJson(core.Map json_)
+    : this(projectCount: json_['projectCount'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final projectCount = this.projectCount;
+    return {'projectCount': ?projectCount};
+  }
+}
+
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
+
+/// Info for Cleanup phase execution.
+class CleanupPhaseInfo {
+  /// Time taken to perform the cleanup of restored resource.
+  ///
+  /// Output only.
+  core.String? cleanupDuration;
+
+  /// The time when the resources will be cleaned up.
+  ///
+  /// Output only.
+  core.String? cleanupTime;
+
+  /// End time of the phase.
+  ///
+  /// Output only.
+  core.String? endTime;
+
+  /// Error details if the phase failed.
+  ///
+  /// Output only.
+  Status? error;
+
+  /// Snapshot of cleanup rule provided for this execution when execution is
+  /// failed.
+  ///
+  /// Output only.
+  RestoreVerificationCleanupRule? failureCleanupRule;
+
+  /// The state of this phase.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "PHASE_STATE_UNSPECIFIED" : Phase state is not set.
+  /// - "PENDING" : This phase is pending execution.
+  /// - "RUNNING" : The phase is actively executing.
+  /// - "SUCCEEDED" : The phase completed successfully.
+  /// - "FAILED" : The phase encountered an error and failed.
+  /// - "TIMED_OUT" : The phase timed out.
+  /// - "SKIPPED" : The phase was skipped.
+  /// - "WAITING" : The phase is waiting to be executed.
+  core.String? phaseState;
+
+  /// Start time of the phase.
+  ///
+  /// Output only.
+  core.String? startTime;
+
+  /// Snapshot of cleanup rule provided for this execution when execution is
+  /// successful.
+  ///
+  /// Output only.
+  RestoreVerificationCleanupRule? successCleanupRule;
+
+  CleanupPhaseInfo({
+    this.cleanupDuration,
+    this.cleanupTime,
+    this.endTime,
+    this.error,
+    this.failureCleanupRule,
+    this.phaseState,
+    this.startTime,
+    this.successCleanupRule,
+  });
+
+  CleanupPhaseInfo.fromJson(core.Map json_)
+    : this(
+        cleanupDuration: json_['cleanupDuration'] as core.String?,
+        cleanupTime: json_['cleanupTime'] as core.String?,
+        endTime: json_['endTime'] as core.String?,
+        error: json_.containsKey('error')
+            ? Status.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        failureCleanupRule: json_.containsKey('failureCleanupRule')
+            ? RestoreVerificationCleanupRule.fromJson(
+                json_['failureCleanupRule']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        phaseState: json_['phaseState'] as core.String?,
+        startTime: json_['startTime'] as core.String?,
+        successCleanupRule: json_.containsKey('successCleanupRule')
+            ? RestoreVerificationCleanupRule.fromJson(
+                json_['successCleanupRule']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final cleanupDuration = this.cleanupDuration;
+    final cleanupTime = this.cleanupTime;
+    final endTime = this.endTime;
+    final error = this.error;
+    final failureCleanupRule = this.failureCleanupRule;
+    final phaseState = this.phaseState;
+    final startTime = this.startTime;
+    final successCleanupRule = this.successCleanupRule;
+    return {
+      'cleanupDuration': ?cleanupDuration,
+      'cleanupTime': ?cleanupTime,
+      'endTime': ?endTime,
+      'error': ?error,
+      'failureCleanupRule': ?failureCleanupRule,
+      'phaseState': ?phaseState,
+      'startTime': ?startTime,
+      'successCleanupRule': ?successCleanupRule,
+    };
+  }
+}
 
 /// Cloud SQL instance's BPA properties.
 typedef CloudSqlInstanceBackupPlanAssociationProperties =
@@ -7257,6 +9701,33 @@ class ConfidentialInstanceConfig {
   }
 }
 
+/// Criteria specifies a set of criteria for matching resources.
+class Criteria {
+  /// A list of matching conditions that a resource must meet to be protected by
+  /// the policy.
+  ///
+  /// Required.
+  core.List<MatchingCondition>? matchingConditions;
+
+  Criteria({this.matchingConditions});
+
+  Criteria.fromJson(core.Map json_)
+    : this(
+        matchingConditions: (json_['matchingConditions'] as core.List?)
+            ?.map(
+              (value) => MatchingCondition.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final matchingConditions = this.matchingConditions;
+    return {'matchingConditions': ?matchingConditions};
+  }
+}
+
 /// A customer-supplied encryption key.
 class CustomerEncryptionKey {
   /// The name of the encryption key that is stored in Google Cloud KMS.
@@ -7341,6 +9812,7 @@ class DataSource {
   /// BackupPlanAssociation or Appliance SLA pointing to it)
   /// - "PASSIVE" : The data source is no longer protected (but may have backups
   /// under it)
+  /// - "PAUSED" : The data source has been created but backups are paused
   core.String? configState;
 
   /// The time when the instance was created.
@@ -7640,6 +10112,12 @@ class DataSourceGcpResource {
   /// Location of the resource: //"global"/"unspecified".
   core.String? location;
 
+  /// NetAppVolumeDataSourceProperties has a subset of NetApp Volume properties
+  /// that are useful at the Datasource level.
+  ///
+  /// Output only.
+  NetAppVolumeDataSourceProperties? netappVolumeDatasourceProperties;
+
   /// The type of the Google Cloud resource.
   ///
   /// Use the Unified Resource Type, eg. compute.googleapis.com/Instance.
@@ -7653,6 +10131,7 @@ class DataSourceGcpResource {
     this.filestoreInstanceDatasourceProperties,
     this.gcpResourcename,
     this.location,
+    this.netappVolumeDatasourceProperties,
     this.type,
   });
 
@@ -7694,6 +10173,13 @@ class DataSourceGcpResource {
             : null,
         gcpResourcename: json_['gcpResourcename'] as core.String?,
         location: json_['location'] as core.String?,
+        netappVolumeDatasourceProperties:
+            json_.containsKey('netappVolumeDatasourceProperties')
+            ? NetAppVolumeDataSourceProperties.fromJson(
+                json_['netappVolumeDatasourceProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         type: json_['type'] as core.String?,
       );
 
@@ -7709,6 +10195,8 @@ class DataSourceGcpResource {
         this.filestoreInstanceDatasourceProperties;
     final gcpResourcename = this.gcpResourcename;
     final location = this.location;
+    final netappVolumeDatasourceProperties =
+        this.netappVolumeDatasourceProperties;
     final type = this.type;
     return {
       'alloyDbClusterDatasourceProperties': ?alloyDbClusterDatasourceProperties,
@@ -7721,6 +10209,7 @@ class DataSourceGcpResource {
           ?filestoreInstanceDatasourceProperties,
       'gcpResourcename': ?gcpResourcename,
       'location': ?location,
+      'netappVolumeDatasourceProperties': ?netappVolumeDatasourceProperties,
       'type': ?type,
     };
   }
@@ -7757,6 +10246,11 @@ class DataSourceGcpResourceInfo {
   /// Output only.
   core.String? location;
 
+  /// The NetApp Volume properties.
+  ///
+  /// Output only.
+  NetAppVolumeDataSourceReferenceProperties? netappVolumeProperties;
+
   /// The type of the Google Cloud resource.
   ///
   /// Ex: compute.googleapis.com/Instance
@@ -7770,6 +10264,7 @@ class DataSourceGcpResourceInfo {
     this.filestoreInstanceProperties,
     this.gcpResourcename,
     this.location,
+    this.netappVolumeProperties,
     this.type,
   });
 
@@ -7797,6 +10292,12 @@ class DataSourceGcpResourceInfo {
             : null,
         gcpResourcename: json_['gcpResourcename'] as core.String?,
         location: json_['location'] as core.String?,
+        netappVolumeProperties: json_.containsKey('netappVolumeProperties')
+            ? NetAppVolumeDataSourceReferenceProperties.fromJson(
+                json_['netappVolumeProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         type: json_['type'] as core.String?,
       );
 
@@ -7806,6 +10307,7 @@ class DataSourceGcpResourceInfo {
     final filestoreInstanceProperties = this.filestoreInstanceProperties;
     final gcpResourcename = this.gcpResourcename;
     final location = this.location;
+    final netappVolumeProperties = this.netappVolumeProperties;
     final type = this.type;
     return {
       'alloyDbClusterProperties': ?alloyDbClusterProperties,
@@ -7813,6 +10315,7 @@ class DataSourceGcpResourceInfo {
       'filestoreInstanceProperties': ?filestoreInstanceProperties,
       'gcpResourcename': ?gcpResourcename,
       'location': ?location,
+      'netappVolumeProperties': ?netappVolumeProperties,
       'type': ?type,
     };
   }
@@ -7848,6 +10351,7 @@ class DataSourceReference {
   /// BackupPlanAssociation or Appliance SLA pointing to it)
   /// - "PASSIVE" : The data source is no longer protected (but may have backups
   /// under it)
+  /// - "PAUSED" : The data source has been created but backups are paused
   core.String? dataSourceBackupConfigState;
 
   /// Number of backups in the DataSource.
@@ -8581,6 +11085,45 @@ class Entry {
   }
 }
 
+/// Summary of the last execution.
+class ExecutionSummary {
+  /// The resource name of the last execution.
+  ///
+  /// Format:
+  /// `projects/{project}/locations/{location}/restoreTemplates/{restore_template}/executions/{execution}`
+  ///
+  /// Output only.
+  core.String? lastExecution;
+
+  /// The state of the last execution.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "EXECUTION_STATE_UNSPECIFIED" : State not set.
+  /// - "RUNNING" : Execution is running.
+  /// - "SUCCEEDED" : Execution succeeded.
+  /// - "FAILED" : Execution failed.
+  /// - "DELETING" : Resources are being deleted (cleanup).
+  core.String? lastExecutionState;
+
+  ExecutionSummary({this.lastExecution, this.lastExecutionState});
+
+  ExecutionSummary.fromJson(core.Map json_)
+    : this(
+        lastExecution: json_['lastExecution'] as core.String?,
+        lastExecutionState: json_['lastExecutionState'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final lastExecution = this.lastExecution;
+    final lastExecutionState = this.lastExecutionState;
+    return {
+      'lastExecution': ?lastExecution,
+      'lastExecutionState': ?lastExecutionState,
+    };
+  }
+}
+
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
 ///
@@ -9136,6 +11679,15 @@ class GCPBackupPlanInfo {
 /// All Google Cloud resources regardless of type are protected with backup plan
 /// associations.
 class GcpBackupConfig {
+  /// The resource name of the `AutoProtectionPolicyBinding` that manages this
+  /// datasource, if any.
+  ///
+  /// Format:
+  /// `projects/{project}/locations/{location}/autoProtectionPolicies/{policy}/bindings/{binding}`.
+  ///
+  /// Output only.
+  core.String? autoProtectionPolicyBinding;
+
   /// The name of the backup plan.
   core.String? backupPlan;
 
@@ -9157,6 +11709,7 @@ class GcpBackupConfig {
   core.List<core.String>? backupPlanRules;
 
   GcpBackupConfig({
+    this.autoProtectionPolicyBinding,
     this.backupPlan,
     this.backupPlanAssociation,
     this.backupPlanDescription,
@@ -9167,6 +11720,8 @@ class GcpBackupConfig {
 
   GcpBackupConfig.fromJson(core.Map json_)
     : this(
+        autoProtectionPolicyBinding:
+            json_['autoProtectionPolicyBinding'] as core.String?,
         backupPlan: json_['backupPlan'] as core.String?,
         backupPlanAssociation: json_['backupPlanAssociation'] as core.String?,
         backupPlanDescription: json_['backupPlanDescription'] as core.String?,
@@ -9178,6 +11733,7 @@ class GcpBackupConfig {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final autoProtectionPolicyBinding = this.autoProtectionPolicyBinding;
     final backupPlan = this.backupPlan;
     final backupPlanAssociation = this.backupPlanAssociation;
     final backupPlanDescription = this.backupPlanDescription;
@@ -9185,6 +11741,7 @@ class GcpBackupConfig {
     final backupPlanRevisionName = this.backupPlanRevisionName;
     final backupPlanRules = this.backupPlanRules;
     return {
+      'autoProtectionPolicyBinding': ?autoProtectionPolicyBinding,
       'backupPlan': ?backupPlan,
       'backupPlanAssociation': ?backupPlanAssociation,
       'backupPlanDescription': ?backupPlanDescription,
@@ -9426,6 +11983,42 @@ class InitiateBackupResponse {
   }
 }
 
+/// Request message for initiating delete of an AutoProtectionPolicyBinding.
+class InitiateDeleteAutoProtectionPolicyBindingRequest {
+  /// The current etag of the AutoProtectionPolicyBinding.
+  ///
+  /// If an etag is provided and does not match the current etag of the binding,
+  /// deletion will be blocked and an ABORTED error will be returned.
+  ///
+  /// Optional.
+  core.String? etag;
+
+  /// An optional request ID to identify requests.
+  ///
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. The request ID must be a valid UUID with the exception that zero
+  /// UUID is not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// Optional.
+  core.String? requestId;
+
+  InitiateDeleteAutoProtectionPolicyBindingRequest({this.etag, this.requestId});
+
+  InitiateDeleteAutoProtectionPolicyBindingRequest.fromJson(core.Map json_)
+    : this(
+        etag: json_['etag'] as core.String?,
+        requestId: json_['requestId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final requestId = this.requestId;
+    return {'etag': ?etag, 'requestId': ?requestId};
+  }
+}
+
 /// Additional instance params.
 class InstanceParams {
   /// Resource manager tags to be bound to the instance.
@@ -9446,6 +12039,42 @@ class InstanceParams {
   core.Map<core.String, core.dynamic> toJson() {
     final resourceManagerTags = this.resourceManagerTags;
     return {'resourceManagerTags': ?resourceManagerTags};
+  }
+}
+
+/// KeyValuePair defines a key-value pair for matching resource labels.
+class KeyValuePair {
+  /// The key of the label to match.
+  ///
+  /// This must be in the format `{label_key}`. The key must match the regex
+  /// Format:`\p{Ll}\p{Lo}{0,62}`.
+  ///
+  /// Required.
+  core.String? key;
+
+  /// The values of the label to match.
+  ///
+  /// There will be explicit “OR” between values of array. Each value must be in
+  /// the format `{label_value}`. The value must match the regex Format:
+  /// `[\\p{Ll}\\p{Lo}\\p{N}_-]{1,63}`.
+  ///
+  /// Required.
+  core.List<core.String>? values;
+
+  KeyValuePair({this.key, this.values});
+
+  KeyValuePair.fromJson(core.Map json_)
+    : this(
+        key: json_['key'] as core.String?,
+        values: (json_['values'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final key = this.key;
+    final values = this.values;
+    return {'key': ?key, 'values': ?values};
   }
 }
 
@@ -9480,6 +12109,149 @@ class LabelKeyValPair {
     final key = this.key;
     final value = this.value;
     return {'key': ?key, 'value': ?value};
+  }
+}
+
+/// Response message for ListAppliedAutoProtectionPolicies.
+class ListAppliedAutoProtectionPoliciesResponse {
+  /// A list of the AppliedAutoProtectionPolicy resources found.
+  core.List<AppliedAutoProtectionPolicy>? appliedAutoProtectionPolicies;
+
+  /// A token that can be sent as `page_token` to retrieve the next page.
+  core.String? nextPageToken;
+
+  /// Unordered list.
+  ///
+  /// Locations that could not be reached. For example,
+  /// "projects/my-project/locations/us-east1"\].
+  core.List<core.String>? unreachable;
+
+  ListAppliedAutoProtectionPoliciesResponse({
+    this.appliedAutoProtectionPolicies,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListAppliedAutoProtectionPoliciesResponse.fromJson(core.Map json_)
+    : this(
+        appliedAutoProtectionPolicies:
+            (json_['appliedAutoProtectionPolicies'] as core.List?)
+                ?.map(
+                  (value) => AppliedAutoProtectionPolicy.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final appliedAutoProtectionPolicies = this.appliedAutoProtectionPolicies;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'appliedAutoProtectionPolicies': ?appliedAutoProtectionPolicies,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
+  }
+}
+
+/// Response message for ListAutoProtectionPolicies.
+class ListAutoProtectionPoliciesResponse {
+  /// A list of the AutoProtectionPolicy resources found.
+  core.List<AutoProtectionPolicy>? autoProtectionPolicies;
+
+  /// A token that can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListAutoProtectionPoliciesResponse({
+    this.autoProtectionPolicies,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListAutoProtectionPoliciesResponse.fromJson(core.Map json_)
+    : this(
+        autoProtectionPolicies: (json_['autoProtectionPolicies'] as core.List?)
+            ?.map(
+              (value) => AutoProtectionPolicy.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final autoProtectionPolicies = this.autoProtectionPolicies;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'autoProtectionPolicies': ?autoProtectionPolicies,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
+  }
+}
+
+/// Response message for ListAutoProtectionPolicyBindings.
+class ListAutoProtectionPolicyBindingsResponse {
+  /// A list of the AutoProtectionPolicyBindings resources found.
+  core.List<AutoProtectionPolicyBinding>? autoProtectionPolicyBindings;
+
+  /// A token that can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// Unordered list.
+  ///
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListAutoProtectionPolicyBindingsResponse({
+    this.autoProtectionPolicyBindings,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListAutoProtectionPolicyBindingsResponse.fromJson(core.Map json_)
+    : this(
+        autoProtectionPolicyBindings:
+            (json_['autoProtectionPolicyBindings'] as core.List?)
+                ?.map(
+                  (value) => AutoProtectionPolicyBinding.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final autoProtectionPolicyBindings = this.autoProtectionPolicyBindings;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'autoProtectionPolicyBindings': ?autoProtectionPolicyBindings,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
   }
 }
 
@@ -9735,6 +12507,46 @@ class ListBackupsResponse {
       'backups': ?backups,
       'nextPageToken': ?nextPageToken,
       'unreachable': ?unreachable,
+    };
+  }
+}
+
+/// The response message for getting a list of `BindingMatchingResources`.
+class ListBindingMatchingResourcesResponse {
+  /// The list of `BindingMatchingResources` in the project,location for the
+  /// specified binding.
+  core.List<BindingMatchingResource>? matchingResources;
+
+  /// A token which may be sent as page_token in a subsequent
+  /// `ListBindingMatchingResources` call to retrieve the next page of results.
+  ///
+  /// If this field is omitted or empty, then there are no more results to
+  /// return.
+  core.String? nextPageToken;
+
+  ListBindingMatchingResourcesResponse({
+    this.matchingResources,
+    this.nextPageToken,
+  });
+
+  ListBindingMatchingResourcesResponse.fromJson(core.Map json_)
+    : this(
+        matchingResources: (json_['matchingResources'] as core.List?)
+            ?.map(
+              (value) => BindingMatchingResource.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final matchingResources = this.matchingResources;
+    final nextPageToken = this.nextPageToken;
+    return {
+      'matchingResources': ?matchingResources,
+      'nextPageToken': ?nextPageToken,
     };
   }
 }
@@ -10000,6 +12812,204 @@ class ListResourceBackupConfigsResponse {
   }
 }
 
+/// Response message for listing RestoreTemplateExecutions.
+class ListRestoreTemplateExecutionsResponse {
+  /// A token identifying a page of results.
+  core.String? nextPageToken;
+
+  /// The list of RestoreTemplateExecution instances.
+  core.List<RestoreTemplateExecution>? restoreTemplateExecutions;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListRestoreTemplateExecutionsResponse({
+    this.nextPageToken,
+    this.restoreTemplateExecutions,
+    this.unreachable,
+  });
+
+  ListRestoreTemplateExecutionsResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        restoreTemplateExecutions:
+            (json_['restoreTemplateExecutions'] as core.List?)
+                ?.map(
+                  (value) => RestoreTemplateExecution.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final restoreTemplateExecutions = this.restoreTemplateExecutions;
+    final unreachable = this.unreachable;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'restoreTemplateExecutions': ?restoreTemplateExecutions,
+      'unreachable': ?unreachable,
+    };
+  }
+}
+
+/// Response message for listing RestoreTemplates.
+class ListRestoreTemplatesResponse {
+  /// A token which may be sent as `page_token` in a subsequent
+  /// `ListRestoreTemplates` call.
+  core.String? nextPageToken;
+
+  /// The list of RestoreTemplates.
+  core.List<RestoreTemplate>? restoreTemplates;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListRestoreTemplatesResponse({
+    this.nextPageToken,
+    this.restoreTemplates,
+    this.unreachable,
+  });
+
+  ListRestoreTemplatesResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        restoreTemplates: (json_['restoreTemplates'] as core.List?)
+            ?.map(
+              (value) => RestoreTemplate.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final restoreTemplates = this.restoreTemplates;
+    final unreachable = this.unreachable;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'restoreTemplates': ?restoreTemplates,
+      'unreachable': ?unreachable,
+    };
+  }
+}
+
+/// Response message for ListRestoreVerificationPlanAssociations.
+class ListRestoreVerificationPlanAssociationsResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// The list of RestoreVerificationPlanAssociations.
+  core.List<RestoreVerificationPlanAssociation>?
+  restoreVerificationPlanAssociations;
+
+  /// Unordered list.
+  ///
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListRestoreVerificationPlanAssociationsResponse({
+    this.nextPageToken,
+    this.restoreVerificationPlanAssociations,
+    this.unreachable,
+  });
+
+  ListRestoreVerificationPlanAssociationsResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        restoreVerificationPlanAssociations:
+            (json_['restoreVerificationPlanAssociations'] as core.List?)
+                ?.map(
+                  (value) => RestoreVerificationPlanAssociation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final restoreVerificationPlanAssociations =
+        this.restoreVerificationPlanAssociations;
+    final unreachable = this.unreachable;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'restoreVerificationPlanAssociations':
+          ?restoreVerificationPlanAssociations,
+      'unreachable': ?unreachable,
+    };
+  }
+}
+
+/// The response message for getting a list of `RestoreVerificationPlans`.
+class ListRestoreVerificationPlansResponse {
+  /// A token which may be sent as page_token in a subsequent
+  /// `ListRestoreVerificationPlans` call to retrieve the next page of results.
+  ///
+  /// If this field is omitted or empty, then there are no more results to
+  /// return.
+  core.String? nextPageToken;
+
+  /// The list of `RestoreVerificationPlans` in the project for the specified
+  /// location.
+  ///
+  /// If the `{location}` value in the request is "-", the response contains a
+  /// list of resources from all locations. In case any location is unreachable,
+  /// the response will only return restore verification plans in reachable
+  /// locations and the 'unreachable' field will be populated with a list of
+  /// unreachable locations.
+  core.List<RestoreVerificationPlan>? restoreVerificationPlans;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListRestoreVerificationPlansResponse({
+    this.nextPageToken,
+    this.restoreVerificationPlans,
+    this.unreachable,
+  });
+
+  ListRestoreVerificationPlansResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        restoreVerificationPlans:
+            (json_['restoreVerificationPlans'] as core.List?)
+                ?.map(
+                  (value) => RestoreVerificationPlan.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final restoreVerificationPlans = this.restoreVerificationPlans;
+    final unreachable = this.unreachable;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'restoreVerificationPlans': ?restoreVerificationPlans,
+      'unreachable': ?unreachable,
+    };
+  }
+}
+
 /// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
@@ -10254,6 +13264,32 @@ class ManagementURI {
   }
 }
 
+/// MatchingCondition specifies a set of conditions for matching resources.
+class MatchingCondition {
+  /// A condition that matches resources based on their labels.
+  ///
+  /// For MVP, this is limited to a single label match.
+  ///
+  /// Optional.
+  KeyValuePair? labelCondition;
+
+  MatchingCondition({this.labelCondition});
+
+  MatchingCondition.fromJson(core.Map json_)
+    : this(
+        labelCondition: json_.containsKey('labelCondition')
+            ? KeyValuePair.fromJson(
+                json_['labelCondition'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final labelCondition = this.labelCondition;
+    return {'labelCondition': ?labelCondition};
+  }
+}
+
 /// A metadata key/value entry.
 class Metadata {
   /// Array of key/value pairs.
@@ -10278,6 +13314,125 @@ class Metadata {
   core.Map<core.String, core.dynamic> toJson() {
     final items = this.items;
     return {'items': ?items};
+  }
+}
+
+/// NetAppVolumeBackupPlanAssociationProperties represents NetApp Volume backup
+/// plan association properties in BackupPlanAssociation.
+///
+/// .
+class NetAppVolumeBackupPlanAssociationProperties {
+  /// The creation timestamp of the source resource.
+  ///
+  /// Output only.
+  core.String? sourceResourceCreateTime;
+
+  NetAppVolumeBackupPlanAssociationProperties({this.sourceResourceCreateTime});
+
+  NetAppVolumeBackupPlanAssociationProperties.fromJson(core.Map json_)
+    : this(
+        sourceResourceCreateTime:
+            json_['sourceResourceCreateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final sourceResourceCreateTime = this.sourceResourceCreateTime;
+    return {'sourceResourceCreateTime': ?sourceResourceCreateTime};
+  }
+}
+
+/// NetAppVolumeBackupProperties represents NetApp Volume backup properties in
+/// Backup.
+///
+/// .
+class NetAppVolumeBackupProperties {
+  /// The source volume of the Backup.
+  ///
+  /// Output only.
+  core.String? sourceResource;
+
+  NetAppVolumeBackupProperties({this.sourceResource});
+
+  NetAppVolumeBackupProperties.fromJson(core.Map json_)
+    : this(sourceResource: json_['sourceResource'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final sourceResource = this.sourceResource;
+    return {'sourceResource': ?sourceResource};
+  }
+}
+
+/// NetAppVolumeDataSourceProperties represents NetApp Volume properties stored
+/// in DataSource.
+///
+/// .
+class NetAppVolumeDataSourceProperties {
+  /// The source volume represented by this DataSource.
+  ///
+  /// Output only.
+  core.String? sourceResource;
+
+  /// The volume creation timestamp.
+  ///
+  /// Output only.
+  core.String? sourceResourceCreateTime;
+
+  NetAppVolumeDataSourceProperties({
+    this.sourceResource,
+    this.sourceResourceCreateTime,
+  });
+
+  NetAppVolumeDataSourceProperties.fromJson(core.Map json_)
+    : this(
+        sourceResource: json_['sourceResource'] as core.String?,
+        sourceResourceCreateTime:
+            json_['sourceResourceCreateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final sourceResource = this.sourceResource;
+    final sourceResourceCreateTime = this.sourceResourceCreateTime;
+    return {
+      'sourceResource': ?sourceResource,
+      'sourceResourceCreateTime': ?sourceResourceCreateTime,
+    };
+  }
+}
+
+/// NetAppVolumeDataSourceReferenceProperties represents NetApp Volume
+/// properties stored in DataSourceReference.
+///
+/// .
+class NetAppVolumeDataSourceReferenceProperties {
+  /// The source volume represented by this DataSourceReference.
+  ///
+  /// Output only.
+  core.String? sourceResource;
+
+  /// The volume creation timestamp.
+  ///
+  /// Output only.
+  core.String? sourceResourceCreateTime;
+
+  NetAppVolumeDataSourceReferenceProperties({
+    this.sourceResource,
+    this.sourceResourceCreateTime,
+  });
+
+  NetAppVolumeDataSourceReferenceProperties.fromJson(core.Map json_)
+    : this(
+        sourceResource: json_['sourceResource'] as core.String?,
+        sourceResourceCreateTime:
+            json_['sourceResourceCreateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final sourceResource = this.sourceResource;
+    final sourceResourceCreateTime = this.sourceResourceCreateTime;
+    return {
+      'sourceResource': ?sourceResource,
+      'sourceResourceCreateTime': ?sourceResourceCreateTime,
+    };
   }
 }
 
@@ -10806,6 +13961,303 @@ class Policy {
   }
 }
 
+/// PolicyEvaluationSummary contains the summary of the last run of job that
+/// applies policy to matching resources.
+typedef PolicyEvaluationSummary = $EvaluationSummary;
+
+/// Configuration for Post-Restore.
+typedef PostRestoreConfig = $Config00;
+
+/// Info for Post-Restore phase execution.
+class PostRestorePhaseInfo {
+  /// The fully qualified URI of the Cloud Run Execution triggered for
+  /// post-restore actions.
+  ///
+  /// Output only.
+  core.String? cloudRunExecution;
+
+  /// End time of the phase.
+  ///
+  /// Output only.
+  core.String? endTime;
+
+  /// Error details if the phase failed.
+  ///
+  /// Output only.
+  Status? error;
+
+  /// The state of this phase.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "PHASE_STATE_UNSPECIFIED" : Phase state is not set.
+  /// - "PENDING" : This phase is pending execution.
+  /// - "RUNNING" : The phase is actively executing.
+  /// - "SUCCEEDED" : The phase completed successfully.
+  /// - "FAILED" : The phase encountered an error and failed.
+  /// - "TIMED_OUT" : The phase timed out.
+  /// - "SKIPPED" : The phase was skipped.
+  /// - "WAITING" : The phase is waiting to be executed.
+  core.String? phaseState;
+
+  /// Snapshot of config that will be executed after successful restore
+  /// operation.
+  ///
+  /// Output only.
+  PostRestoreConfig? postRestoreConfig;
+
+  /// Start time of the phase.
+  ///
+  /// Output only.
+  core.String? startTime;
+
+  PostRestorePhaseInfo({
+    this.cloudRunExecution,
+    this.endTime,
+    this.error,
+    this.phaseState,
+    this.postRestoreConfig,
+    this.startTime,
+  });
+
+  PostRestorePhaseInfo.fromJson(core.Map json_)
+    : this(
+        cloudRunExecution: json_['cloudRunExecution'] as core.String?,
+        endTime: json_['endTime'] as core.String?,
+        error: json_.containsKey('error')
+            ? Status.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        phaseState: json_['phaseState'] as core.String?,
+        postRestoreConfig: json_.containsKey('postRestoreConfig')
+            ? PostRestoreConfig.fromJson(
+                json_['postRestoreConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        startTime: json_['startTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final cloudRunExecution = this.cloudRunExecution;
+    final endTime = this.endTime;
+    final error = this.error;
+    final phaseState = this.phaseState;
+    final postRestoreConfig = this.postRestoreConfig;
+    final startTime = this.startTime;
+    return {
+      'cloudRunExecution': ?cloudRunExecution,
+      'endTime': ?endTime,
+      'error': ?error,
+      'phaseState': ?phaseState,
+      'postRestoreConfig': ?postRestoreConfig,
+      'startTime': ?startTime,
+    };
+  }
+}
+
+/// Configuration for Pre-Restore.
+typedef PreRestoreConfig = $Config00;
+
+/// Info for Pre-Restore phase execution.
+class PreRestorePhaseInfo {
+  /// The fully qualified URI of the Cloud Run Execution triggered for
+  /// pre-restore actions.
+  ///
+  /// Output only.
+  core.String? cloudRunExecution;
+
+  /// End time of the phase.
+  ///
+  /// Output only.
+  core.String? endTime;
+
+  /// Error details if the phase failed.
+  ///
+  /// Output only.
+  Status? error;
+
+  /// The state of this phase.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "PHASE_STATE_UNSPECIFIED" : Phase state is not set.
+  /// - "PENDING" : This phase is pending execution.
+  /// - "RUNNING" : The phase is actively executing.
+  /// - "SUCCEEDED" : The phase completed successfully.
+  /// - "FAILED" : The phase encountered an error and failed.
+  /// - "TIMED_OUT" : The phase timed out.
+  /// - "SKIPPED" : The phase was skipped.
+  /// - "WAITING" : The phase is waiting to be executed.
+  core.String? phaseState;
+
+  /// Snapshot of config that will be executed before restore operation.
+  ///
+  /// Output only.
+  PreRestoreConfig? preRestoreConfig;
+
+  /// Start time of the phase.
+  ///
+  /// Output only.
+  core.String? startTime;
+
+  PreRestorePhaseInfo({
+    this.cloudRunExecution,
+    this.endTime,
+    this.error,
+    this.phaseState,
+    this.preRestoreConfig,
+    this.startTime,
+  });
+
+  PreRestorePhaseInfo.fromJson(core.Map json_)
+    : this(
+        cloudRunExecution: json_['cloudRunExecution'] as core.String?,
+        endTime: json_['endTime'] as core.String?,
+        error: json_.containsKey('error')
+            ? Status.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        phaseState: json_['phaseState'] as core.String?,
+        preRestoreConfig: json_.containsKey('preRestoreConfig')
+            ? PreRestoreConfig.fromJson(
+                json_['preRestoreConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        startTime: json_['startTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final cloudRunExecution = this.cloudRunExecution;
+    final endTime = this.endTime;
+    final error = this.error;
+    final phaseState = this.phaseState;
+    final preRestoreConfig = this.preRestoreConfig;
+    final startTime = this.startTime;
+    return {
+      'cloudRunExecution': ?cloudRunExecution,
+      'endTime': ?endTime,
+      'error': ?error,
+      'phaseState': ?phaseState,
+      'preRestoreConfig': ?preRestoreConfig,
+      'startTime': ?startTime,
+    };
+  }
+}
+
+/// Info for Prepare phase execution.
+class PreparePhaseInfo {
+  /// The source backup used for the restore.
+  ///
+  /// The fully qualified URI of the backupdr backup.
+  ///
+  /// Output only.
+  core.String? backup;
+
+  /// Snapshot of config used in this execution.
+  ///
+  /// Output only.
+  BackupSelectionConfig? backupSelectionConfig;
+
+  /// End time of the phase.
+  ///
+  /// Output only.
+  core.String? endTime;
+
+  /// Error details if the phase failed.
+  ///
+  /// Output only.
+  Status? error;
+
+  /// Indicates whether the backup was explicitly passed in the request.
+  ///
+  /// Output only.
+  core.bool? isBackupExplicitlyPassed;
+
+  /// The state of this phase.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "PHASE_STATE_UNSPECIFIED" : Phase state is not set.
+  /// - "PENDING" : This phase is pending execution.
+  /// - "RUNNING" : The phase is actively executing.
+  /// - "SUCCEEDED" : The phase completed successfully.
+  /// - "FAILED" : The phase encountered an error and failed.
+  /// - "TIMED_OUT" : The phase timed out.
+  /// - "SKIPPED" : The phase was skipped.
+  /// - "WAITING" : The phase is waiting to be executed.
+  core.String? phaseState;
+
+  /// The restore verification plan association associated with the execution.
+  ///
+  /// Output only.
+  core.String? restoreVerificationPlanAssociation;
+
+  /// Start time of the phase.
+  ///
+  /// Output only.
+  core.String? startTime;
+
+  PreparePhaseInfo({
+    this.backup,
+    this.backupSelectionConfig,
+    this.endTime,
+    this.error,
+    this.isBackupExplicitlyPassed,
+    this.phaseState,
+    this.restoreVerificationPlanAssociation,
+    this.startTime,
+  });
+
+  PreparePhaseInfo.fromJson(core.Map json_)
+    : this(
+        backup: json_['backup'] as core.String?,
+        backupSelectionConfig: json_.containsKey('backupSelectionConfig')
+            ? BackupSelectionConfig.fromJson(
+                json_['backupSelectionConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        endTime: json_['endTime'] as core.String?,
+        error: json_.containsKey('error')
+            ? Status.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        isBackupExplicitlyPassed:
+            json_['isBackupExplicitlyPassed'] as core.bool?,
+        phaseState: json_['phaseState'] as core.String?,
+        restoreVerificationPlanAssociation:
+            json_['restoreVerificationPlanAssociation'] as core.String?,
+        startTime: json_['startTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final backup = this.backup;
+    final backupSelectionConfig = this.backupSelectionConfig;
+    final endTime = this.endTime;
+    final error = this.error;
+    final isBackupExplicitlyPassed = this.isBackupExplicitlyPassed;
+    final phaseState = this.phaseState;
+    final restoreVerificationPlanAssociation =
+        this.restoreVerificationPlanAssociation;
+    final startTime = this.startTime;
+    return {
+      'backup': ?backup,
+      'backupSelectionConfig': ?backupSelectionConfig,
+      'endTime': ?endTime,
+      'error': ?error,
+      'isBackupExplicitlyPassed': ?isBackupExplicitlyPassed,
+      'phaseState': ?phaseState,
+      'restoreVerificationPlanAssociation': ?restoreVerificationPlanAssociation,
+      'startTime': ?startTime,
+    };
+  }
+}
+
 /// RegionDiskTargetEnvironment represents the target environment for the disk.
 class RegionDiskTargetEnvironment {
   /// Target project for the disk.
@@ -11132,6 +14584,774 @@ class RestoreDiskFromInstanceOptions {
   }
 }
 
+/// Info for Restore phase execution.
+class RestorePhaseInfo {
+  /// End time of the phase.
+  ///
+  /// Output only.
+  core.String? endTime;
+
+  /// Error details if the phase failed.
+  ///
+  /// Output only.
+  Status? error;
+
+  /// The state of this phase.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "PHASE_STATE_UNSPECIFIED" : Phase state is not set.
+  /// - "PENDING" : This phase is pending execution.
+  /// - "RUNNING" : The phase is actively executing.
+  /// - "SUCCEEDED" : The phase completed successfully.
+  /// - "FAILED" : The phase encountered an error and failed.
+  /// - "TIMED_OUT" : The phase timed out.
+  /// - "SKIPPED" : The phase was skipped.
+  /// - "WAITING" : The phase is waiting to be executed.
+  core.String? phaseState;
+
+  /// Time taken to restore the resource.
+  ///
+  /// Output only.
+  core.String? restoreDuration;
+
+  /// Snapshot of environment config used during restore of this
+  /// RestoreTemplateExecution.
+  ///
+  /// Output only.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? restoreProperties;
+
+  /// The resource created or restored by this execution.
+  ///
+  /// Output only.
+  core.String? restoreResource;
+
+  /// Start time of the phase.
+  ///
+  /// Output only.
+  core.String? startTime;
+
+  RestorePhaseInfo({
+    this.endTime,
+    this.error,
+    this.phaseState,
+    this.restoreDuration,
+    this.restoreProperties,
+    this.restoreResource,
+    this.startTime,
+  });
+
+  RestorePhaseInfo.fromJson(core.Map json_)
+    : this(
+        endTime: json_['endTime'] as core.String?,
+        error: json_.containsKey('error')
+            ? Status.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        phaseState: json_['phaseState'] as core.String?,
+        restoreDuration: json_['restoreDuration'] as core.String?,
+        restoreProperties: json_.containsKey('restoreProperties')
+            ? json_['restoreProperties'] as core.Map<core.String, core.dynamic>
+            : null,
+        restoreResource: json_['restoreResource'] as core.String?,
+        startTime: json_['startTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final endTime = this.endTime;
+    final error = this.error;
+    final phaseState = this.phaseState;
+    final restoreDuration = this.restoreDuration;
+    final restoreProperties = this.restoreProperties;
+    final restoreResource = this.restoreResource;
+    final startTime = this.startTime;
+    return {
+      'endTime': ?endTime,
+      'error': ?error,
+      'phaseState': ?phaseState,
+      'restoreDuration': ?restoreDuration,
+      'restoreProperties': ?restoreProperties,
+      'restoreResource': ?restoreResource,
+      'startTime': ?startTime,
+    };
+  }
+}
+
+/// A `RestoreTemplate` encapsulates DR readiness configurations for validating
+/// backups.
+class RestoreTemplate {
+  /// Backup selection configuration.
+  ///
+  /// Required.
+  BackupSelectionConfig? backupSelectionConfig;
+
+  /// The time when the restore template was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// User-provided description of the restore template.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// Etag for concurrency control.
+  ///
+  /// Optional.
+  core.String? etag;
+
+  /// Summary of the last execution.
+  ///
+  /// Output only.
+  ExecutionSummary? executionSummary;
+
+  /// User-defined labels.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Identifier.
+  ///
+  /// The resource name of the RestoreTemplate.
+  core.String? name;
+
+  /// Post-restore configuration.
+  ///
+  /// Optional.
+  PostRestoreConfig? postRestoreConfig;
+
+  /// Pre-restore configuration.
+  ///
+  /// Optional.
+  PreRestoreConfig? preRestoreConfig;
+
+  /// The specific type of the workload being restored.
+  ///
+  /// The format is "{service_name}/{resource_kind}", for example,
+  /// "compute.googleapis.com/Instance".
+  ///
+  /// Required. Immutable.
+  core.String? resourceType;
+
+  /// Defines target environments where the resource will be restored.
+  ///
+  /// The target resource name in `restore_properties` supports the
+  /// `{EXECUTION_ID}` token to dynamically generate unique resource names for
+  /// each execution. During restore execution, every occurrence of
+  /// `{EXECUTION_ID}` in the target resource name is replaced with the
+  /// 8-character `RestoreTemplateExecution` ID (for example,
+  /// `"restored-resource-{EXECUTION_ID}"` or
+  /// `"restored-{EXECUTION_ID}-resource"` resolves to
+  /// `"restored-resource-5d437b06"` or `"restored-5d437b06-resource"`).
+  ///
+  /// Required.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? restoreProperties;
+
+  /// The state of the restore template.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : State not specified.
+  /// - "CREATING" : The template is being created.
+  /// - "ACTIVE" : The template is active and ready to use.
+  /// - "UPDATING" : The template is being updated.
+  /// - "DELETING" : The template is being deleted.
+  core.String? state;
+
+  /// The time when the restore template was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  /// Verification configuration.
+  ///
+  /// Optional.
+  VerificationConfig? verificationConfig;
+
+  RestoreTemplate({
+    this.backupSelectionConfig,
+    this.createTime,
+    this.description,
+    this.etag,
+    this.executionSummary,
+    this.labels,
+    this.name,
+    this.postRestoreConfig,
+    this.preRestoreConfig,
+    this.resourceType,
+    this.restoreProperties,
+    this.state,
+    this.updateTime,
+    this.verificationConfig,
+  });
+
+  RestoreTemplate.fromJson(core.Map json_)
+    : this(
+        backupSelectionConfig: json_.containsKey('backupSelectionConfig')
+            ? BackupSelectionConfig.fromJson(
+                json_['backupSelectionConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        executionSummary: json_.containsKey('executionSummary')
+            ? ExecutionSummary.fromJson(
+                json_['executionSummary']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        postRestoreConfig: json_.containsKey('postRestoreConfig')
+            ? PostRestoreConfig.fromJson(
+                json_['postRestoreConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        preRestoreConfig: json_.containsKey('preRestoreConfig')
+            ? PreRestoreConfig.fromJson(
+                json_['preRestoreConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        resourceType: json_['resourceType'] as core.String?,
+        restoreProperties: json_.containsKey('restoreProperties')
+            ? json_['restoreProperties'] as core.Map<core.String, core.dynamic>
+            : null,
+        state: json_['state'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+        verificationConfig: json_.containsKey('verificationConfig')
+            ? VerificationConfig.fromJson(
+                json_['verificationConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final backupSelectionConfig = this.backupSelectionConfig;
+    final createTime = this.createTime;
+    final description = this.description;
+    final etag = this.etag;
+    final executionSummary = this.executionSummary;
+    final labels = this.labels;
+    final name = this.name;
+    final postRestoreConfig = this.postRestoreConfig;
+    final preRestoreConfig = this.preRestoreConfig;
+    final resourceType = this.resourceType;
+    final restoreProperties = this.restoreProperties;
+    final state = this.state;
+    final updateTime = this.updateTime;
+    final verificationConfig = this.verificationConfig;
+    return {
+      'backupSelectionConfig': ?backupSelectionConfig,
+      'createTime': ?createTime,
+      'description': ?description,
+      'etag': ?etag,
+      'executionSummary': ?executionSummary,
+      'labels': ?labels,
+      'name': ?name,
+      'postRestoreConfig': ?postRestoreConfig,
+      'preRestoreConfig': ?preRestoreConfig,
+      'resourceType': ?resourceType,
+      'restoreProperties': ?restoreProperties,
+      'state': ?state,
+      'updateTime': ?updateTime,
+      'verificationConfig': ?verificationConfig,
+    };
+  }
+}
+
+/// A `RestoreTemplateExecution` represents a single historical or active
+/// execution run.
+class RestoreTemplateExecution {
+  /// Info for the cleanup phase.
+  ///
+  /// Output only.
+  CleanupPhaseInfo? cleanupPhaseInfo;
+
+  /// Create time of the execution.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Identifier.
+  ///
+  /// Resource name of the execution.
+  core.String? name;
+
+  /// The current active phase.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "EXECUTION_PHASE_UNSPECIFIED" : Execution phase not specified.
+  /// - "PREPARING" : Preparing for execution.
+  /// - "EXECUTING_PRE_RESTORE_ACTION" : Executing pre-restore action.
+  /// - "RESTORING" : Restoring the resource.
+  /// - "EXECUTING_POST_RESTORE_ACTION" : Executing post-restore action.
+  /// - "VERIFYING" : Verifying the restored resource.
+  /// - "CLEANING_UP" : Cleaning up resources.
+  /// - "COMPLETED" : Execution completed.
+  core.String? phase;
+
+  /// Info for the post-restore phase.
+  ///
+  /// Output only.
+  PostRestorePhaseInfo? postRestorePhaseInfo;
+
+  /// Info for the pre-restore phase.
+  ///
+  /// Output only.
+  PreRestorePhaseInfo? preRestorePhaseInfo;
+
+  /// Info for the prepare phase.
+  ///
+  /// Output only.
+  PreparePhaseInfo? preparePhaseInfo;
+
+  /// The workload resource type being restored.
+  ///
+  /// The format is "{service_name}/{resource_kind}", for example,
+  /// "compute.googleapis.com/Instance".
+  ///
+  /// Output only.
+  core.String? resourceType;
+
+  /// Info for the restore phase.
+  ///
+  /// Output only.
+  RestorePhaseInfo? restorePhaseInfo;
+
+  /// State of the execution.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "EXECUTION_STATE_UNSPECIFIED" : State not set.
+  /// - "RUNNING" : Execution is running.
+  /// - "SUCCEEDED" : Execution succeeded.
+  /// - "FAILED" : Execution failed.
+  /// - "DELETING" : Resources are being deleted (cleanup).
+  core.String? state;
+
+  /// The type of the execution.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "EXECUTION_TYPE_UNSPECIFIED" : Execution type not specified.
+  /// - "SCHEDULED" : Scheduled execution.
+  /// - "ON_DEMAND" : On-demand execution.
+  core.String? type;
+
+  /// Update time of the execution.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  /// Info for the verification phase.
+  ///
+  /// Output only.
+  VerificationPhaseInfo? verificationPhaseInfo;
+
+  RestoreTemplateExecution({
+    this.cleanupPhaseInfo,
+    this.createTime,
+    this.name,
+    this.phase,
+    this.postRestorePhaseInfo,
+    this.preRestorePhaseInfo,
+    this.preparePhaseInfo,
+    this.resourceType,
+    this.restorePhaseInfo,
+    this.state,
+    this.type,
+    this.updateTime,
+    this.verificationPhaseInfo,
+  });
+
+  RestoreTemplateExecution.fromJson(core.Map json_)
+    : this(
+        cleanupPhaseInfo: json_.containsKey('cleanupPhaseInfo')
+            ? CleanupPhaseInfo.fromJson(
+                json_['cleanupPhaseInfo']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        createTime: json_['createTime'] as core.String?,
+        name: json_['name'] as core.String?,
+        phase: json_['phase'] as core.String?,
+        postRestorePhaseInfo: json_.containsKey('postRestorePhaseInfo')
+            ? PostRestorePhaseInfo.fromJson(
+                json_['postRestorePhaseInfo']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        preRestorePhaseInfo: json_.containsKey('preRestorePhaseInfo')
+            ? PreRestorePhaseInfo.fromJson(
+                json_['preRestorePhaseInfo']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        preparePhaseInfo: json_.containsKey('preparePhaseInfo')
+            ? PreparePhaseInfo.fromJson(
+                json_['preparePhaseInfo']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        resourceType: json_['resourceType'] as core.String?,
+        restorePhaseInfo: json_.containsKey('restorePhaseInfo')
+            ? RestorePhaseInfo.fromJson(
+                json_['restorePhaseInfo']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        state: json_['state'] as core.String?,
+        type: json_['type'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+        verificationPhaseInfo: json_.containsKey('verificationPhaseInfo')
+            ? VerificationPhaseInfo.fromJson(
+                json_['verificationPhaseInfo']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final cleanupPhaseInfo = this.cleanupPhaseInfo;
+    final createTime = this.createTime;
+    final name = this.name;
+    final phase = this.phase;
+    final postRestorePhaseInfo = this.postRestorePhaseInfo;
+    final preRestorePhaseInfo = this.preRestorePhaseInfo;
+    final preparePhaseInfo = this.preparePhaseInfo;
+    final resourceType = this.resourceType;
+    final restorePhaseInfo = this.restorePhaseInfo;
+    final state = this.state;
+    final type = this.type;
+    final updateTime = this.updateTime;
+    final verificationPhaseInfo = this.verificationPhaseInfo;
+    return {
+      'cleanupPhaseInfo': ?cleanupPhaseInfo,
+      'createTime': ?createTime,
+      'name': ?name,
+      'phase': ?phase,
+      'postRestorePhaseInfo': ?postRestorePhaseInfo,
+      'preRestorePhaseInfo': ?preRestorePhaseInfo,
+      'preparePhaseInfo': ?preparePhaseInfo,
+      'resourceType': ?resourceType,
+      'restorePhaseInfo': ?restorePhaseInfo,
+      'state': ?state,
+      'type': ?type,
+      'updateTime': ?updateTime,
+      'verificationPhaseInfo': ?verificationPhaseInfo,
+    };
+  }
+}
+
+/// Defines the specific cleanup action.
+class RestoreVerificationCleanupRule {
+  /// Duration after restore finishes when cleanup triggers.
+  ///
+  /// Delay must be non-negative and at most 30 days (2592000 seconds).
+  ///
+  /// Optional.
+  core.String? cleanupDelay;
+
+  /// If set to true, the restored resource will not be cleaned up.
+  ///
+  /// Optional.
+  core.bool? skipCleanup;
+
+  RestoreVerificationCleanupRule({this.cleanupDelay, this.skipCleanup});
+
+  RestoreVerificationCleanupRule.fromJson(core.Map json_)
+    : this(
+        cleanupDelay: json_['cleanupDelay'] as core.String?,
+        skipCleanup: json_['skipCleanup'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final cleanupDelay = this.cleanupDelay;
+    final skipCleanup = this.skipCleanup;
+    return {'cleanupDelay': ?cleanupDelay, 'skipCleanup': ?skipCleanup};
+  }
+}
+
+/// A `RestoreVerificationPlan` specifies the scheduling and clean-up template
+/// for automated restore verification.
+///
+/// It contains a `RestoreVerificationSchedule` to dictate when the
+/// verifications should run, and a `CleanupConfig` for post-verification
+/// resource deletion.
+class RestoreVerificationPlan {
+  /// When the `RestoreVerificationPlan` was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The description of the `RestoreVerificationPlan` resource.
+  ///
+  /// The description allows for additional details about
+  /// `RestoreVerificationPlan` and its use cases to be provided. An example
+  /// description is the following: "This is a restore verification plan that
+  /// performs a daily verification and cleans up the resources immediately
+  /// after." The description must be at most 2048 characters.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// The cleanup rule to apply if the restore verification fails.
+  ///
+  /// Optional.
+  RestoreVerificationCleanupRule? failureCleanupRule;
+
+  /// User-defined labels.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Identifier.
+  ///
+  /// The resource name of the `RestoreVerificationPlan`. Format:
+  /// `projects/{project}/locations/{location}/restoreVerificationPlans/{restoreVerificationPlan}`
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Describes the schedule on which the restore verification will be executed.
+  ///
+  /// The schedule is specified as a
+  /// [Crontab](https://en.wikipedia.org/wiki/Cron#Overview) string.
+  ///
+  /// Required.
+  core.String? schedule;
+
+  /// The `State` for the `RestoreVerificationPlan`.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : State not set.
+  /// - "CREATING" : The resource is being created.
+  /// - "ACTIVE" : The resource has been created and is fully usable.
+  /// - "DELETING" : The resource is being deleted.
+  /// - "INACTIVE" : The resource has been created but is not usable.
+  /// - "UPDATING" : The resource is being updated.
+  /// - "ERROR" : The resource is in an error state due to a configuration
+  /// issue.
+  core.String? state;
+
+  /// The cleanup rule to apply if the restore verification succeeds.
+  ///
+  /// Optional.
+  RestoreVerificationCleanupRule? successCleanupRule;
+
+  /// Specifies the time zone to be used in interpreting schedule.
+  ///
+  /// The value of this field must be a time zone name from the
+  /// [tz database](https://en.wikipedia.org/wiki/Tz_database), like
+  /// "America/New_York" or "UTC". Defaults to `UTC` if not specified.
+  ///
+  /// Optional.
+  core.String? timeZone;
+
+  /// When the `RestoreVerificationPlan` was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  RestoreVerificationPlan({
+    this.createTime,
+    this.description,
+    this.failureCleanupRule,
+    this.labels,
+    this.name,
+    this.schedule,
+    this.state,
+    this.successCleanupRule,
+    this.timeZone,
+    this.updateTime,
+  });
+
+  RestoreVerificationPlan.fromJson(core.Map json_)
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        failureCleanupRule: json_.containsKey('failureCleanupRule')
+            ? RestoreVerificationCleanupRule.fromJson(
+                json_['failureCleanupRule']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        schedule: json_['schedule'] as core.String?,
+        state: json_['state'] as core.String?,
+        successCleanupRule: json_.containsKey('successCleanupRule')
+            ? RestoreVerificationCleanupRule.fromJson(
+                json_['successCleanupRule']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        timeZone: json_['timeZone'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final description = this.description;
+    final failureCleanupRule = this.failureCleanupRule;
+    final labels = this.labels;
+    final name = this.name;
+    final schedule = this.schedule;
+    final state = this.state;
+    final successCleanupRule = this.successCleanupRule;
+    final timeZone = this.timeZone;
+    final updateTime = this.updateTime;
+    return {
+      'createTime': ?createTime,
+      'description': ?description,
+      'failureCleanupRule': ?failureCleanupRule,
+      'labels': ?labels,
+      'name': ?name,
+      'schedule': ?schedule,
+      'state': ?state,
+      'successCleanupRule': ?successCleanupRule,
+      'timeZone': ?timeZone,
+      'updateTime': ?updateTime,
+    };
+  }
+}
+
+/// A `RestoreVerificationPlanAssociation` binds a specific workload to a
+/// `RestoreVerificationPlan`.
+class RestoreVerificationPlanAssociation {
+  /// The time when the association was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The description of the `RestoreVerificationPlanAssociation` resource.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// User-defined labels.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Identifier.
+  ///
+  /// The resource name of RestoreVerificationPlanAssociation in below format
+  /// Format :
+  /// projects/{project}/locations/{location}/restoreVerificationPlans/{restore_verification_plan}/associations/{association}
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The type of the Google Cloud resource (e.g.,
+  /// `compute.googleapis.com/Instance`, `sqladmin.googleapis.com/Instance`).
+  ///
+  /// Required. Immutable.
+  core.String? resourceType;
+
+  /// The canonical name of the RestoreTemplate to trigger.
+  ///
+  /// Required. Immutable.
+  core.String? restoreTemplate;
+
+  /// The `State` for the `RestoreVerificationPlanAssociation`.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : State not set.
+  /// - "CREATING" : The resource is being created.
+  /// - "ACTIVE" : The resource has been created and is fully usable.
+  /// - "DELETING" : The resource is being deleted.
+  /// - "INACTIVE" : The resource has been created but is not usable.
+  /// - "UPDATING" : The resource is being updated.
+  /// - "ERROR" : The resource is in an error state due to a configuration
+  /// issue.
+  core.String? state;
+
+  /// Results of the most recent automated restore initiation and the next
+  /// scheduled execution time.
+  ///
+  /// Output only.
+  TriggerSummary? triggerSummary;
+
+  /// The time when the association was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  RestoreVerificationPlanAssociation({
+    this.createTime,
+    this.description,
+    this.labels,
+    this.name,
+    this.resourceType,
+    this.restoreTemplate,
+    this.state,
+    this.triggerSummary,
+    this.updateTime,
+  });
+
+  RestoreVerificationPlanAssociation.fromJson(core.Map json_)
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        resourceType: json_['resourceType'] as core.String?,
+        restoreTemplate: json_['restoreTemplate'] as core.String?,
+        state: json_['state'] as core.String?,
+        triggerSummary: json_.containsKey('triggerSummary')
+            ? TriggerSummary.fromJson(
+                json_['triggerSummary'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final description = this.description;
+    final labels = this.labels;
+    final name = this.name;
+    final resourceType = this.resourceType;
+    final restoreTemplate = this.restoreTemplate;
+    final state = this.state;
+    final triggerSummary = this.triggerSummary;
+    final updateTime = this.updateTime;
+    return {
+      'createTime': ?createTime,
+      'description': ?description,
+      'labels': ?labels,
+      'name': ?name,
+      'resourceType': ?resourceType,
+      'restoreTemplate': ?restoreTemplate,
+      'state': ?state,
+      'triggerSummary': ?triggerSummary,
+      'updateTime': ?updateTime,
+    };
+  }
+}
+
 /// Message for rules config info.
 class RuleConfigInfo {
   /// google.rpc.Status object to store the last backup error.
@@ -11195,6 +15415,42 @@ class RuleConfigInfo {
           ?lastSuccessfulBackupConsistencyTime,
       'ruleId': ?ruleId,
     };
+  }
+}
+
+/// Request message for running a RestoreTemplate.
+class RunRestoreTemplateRequest {
+  /// The resource name of the Backup to restore from.
+  ///
+  /// If not specified, the latest backup matching the backup selection
+  /// configuration in the RestoreTemplate will be used. Format:
+  /// 'projects/{project}/locations/{location}/backupVaults/{backup_vault}/dataSources/{data_source}/backups/{backup}'
+  ///
+  /// Optional.
+  core.String? backup;
+
+  /// An optional request ID to identify requests.
+  ///
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// Optional.
+  core.String? requestId;
+
+  RunRestoreTemplateRequest({this.backup, this.requestId});
+
+  RunRestoreTemplateRequest.fromJson(core.Map json_)
+    : this(
+        backup: json_['backup'] as core.String?,
+        requestId: json_['requestId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final backup = this.backup;
+    final requestId = this.requestId;
+    return {'backup': ?backup, 'requestId': ?requestId};
   }
 }
 
@@ -11449,6 +15705,7 @@ class SetInternalStatusRequest {
   /// BackupPlanAssociation or Appliance SLA pointing to it)
   /// - "PASSIVE" : The data source is no longer protected (but may have backups
   /// under it)
+  /// - "PAUSED" : The data source has been created but backups are paused
   core.String? backupConfigState;
 
   /// An optional request ID to identify requests.
@@ -11833,6 +16090,234 @@ class TriggerBackupRequest {
       'labels': ?labels,
       'requestId': ?requestId,
       'ruleId': ?ruleId,
+    };
+  }
+}
+
+/// Request message for triggering a restore cleanup.
+typedef TriggerRestoreCleanupRequest = $Request02;
+
+/// Request message for TriggerRestoreVerification.
+class TriggerRestoreVerificationRequest {
+  /// An optional request ID to identify requests.
+  ///
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know that the server has already received the duplicate
+  /// request and can avoid responding with an error. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// Optional.
+  core.String? requestId;
+
+  TriggerRestoreVerificationRequest({this.requestId});
+
+  TriggerRestoreVerificationRequest.fromJson(core.Map json_)
+    : this(requestId: json_['requestId'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final requestId = this.requestId;
+    return {'requestId': ?requestId};
+  }
+}
+
+/// `TriggerSummary` contains the results of the most recent automated restore
+/// initiation and the next scheduled execution time.
+class TriggerSummary {
+  /// The error status of the most recent failed trigger.
+  ///
+  /// Output only.
+  Status? lastTriggerError;
+
+  /// The time of the most recent trigger initiation.
+  ///
+  /// Output only.
+  core.String? lastTriggerTime;
+
+  /// The resource name of the most recent initiated RestoreTemplateExecution.
+  ///
+  /// Format:
+  /// `projects/{project}/locations/{location}/restoreTemplates/{restore_template}/executions/{execution}`
+  ///
+  /// Output only.
+  core.String? lastVerificationExecution;
+
+  /// The scheduled time of the next trigger initiation.
+  ///
+  /// Output only.
+  core.String? nextTriggerTime;
+
+  TriggerSummary({
+    this.lastTriggerError,
+    this.lastTriggerTime,
+    this.lastVerificationExecution,
+    this.nextTriggerTime,
+  });
+
+  TriggerSummary.fromJson(core.Map json_)
+    : this(
+        lastTriggerError: json_.containsKey('lastTriggerError')
+            ? Status.fromJson(
+                json_['lastTriggerError']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        lastTriggerTime: json_['lastTriggerTime'] as core.String?,
+        lastVerificationExecution:
+            json_['lastVerificationExecution'] as core.String?,
+        nextTriggerTime: json_['nextTriggerTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final lastTriggerError = this.lastTriggerError;
+    final lastTriggerTime = this.lastTriggerTime;
+    final lastVerificationExecution = this.lastVerificationExecution;
+    final nextTriggerTime = this.nextTriggerTime;
+    return {
+      'lastTriggerError': ?lastTriggerError,
+      'lastTriggerTime': ?lastTriggerTime,
+      'lastVerificationExecution': ?lastVerificationExecution,
+      'nextTriggerTime': ?nextTriggerTime,
+    };
+  }
+}
+
+/// Configuration for Verification.
+typedef VerificationConfig = $Config00;
+
+/// Info for Verification phase execution.
+class VerificationPhaseInfo {
+  /// The fully qualified URI of the Cloud Run Execution triggered for
+  /// verification.
+  ///
+  /// Output only.
+  core.String? cloudRunExecution;
+
+  /// End time of the phase.
+  ///
+  /// Output only.
+  core.String? endTime;
+
+  /// Error details if the phase failed.
+  ///
+  /// Output only.
+  Status? error;
+
+  /// The state of this phase.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "PHASE_STATE_UNSPECIFIED" : Phase state is not set.
+  /// - "PENDING" : This phase is pending execution.
+  /// - "RUNNING" : The phase is actively executing.
+  /// - "SUCCEEDED" : The phase completed successfully.
+  /// - "FAILED" : The phase encountered an error and failed.
+  /// - "TIMED_OUT" : The phase timed out.
+  /// - "SKIPPED" : The phase was skipped.
+  /// - "WAITING" : The phase is waiting to be executed.
+  core.String? phaseState;
+
+  /// Start time of the phase.
+  ///
+  /// Output only.
+  core.String? startTime;
+
+  /// Snapshot of config that will be executed after successful post restore
+  /// validation.
+  ///
+  /// Output only.
+  VerificationConfig? verificationConfig;
+
+  VerificationPhaseInfo({
+    this.cloudRunExecution,
+    this.endTime,
+    this.error,
+    this.phaseState,
+    this.startTime,
+    this.verificationConfig,
+  });
+
+  VerificationPhaseInfo.fromJson(core.Map json_)
+    : this(
+        cloudRunExecution: json_['cloudRunExecution'] as core.String?,
+        endTime: json_['endTime'] as core.String?,
+        error: json_.containsKey('error')
+            ? Status.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        phaseState: json_['phaseState'] as core.String?,
+        startTime: json_['startTime'] as core.String?,
+        verificationConfig: json_.containsKey('verificationConfig')
+            ? VerificationConfig.fromJson(
+                json_['verificationConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final cloudRunExecution = this.cloudRunExecution;
+    final endTime = this.endTime;
+    final error = this.error;
+    final phaseState = this.phaseState;
+    final startTime = this.startTime;
+    final verificationConfig = this.verificationConfig;
+    return {
+      'cloudRunExecution': ?cloudRunExecution,
+      'endTime': ?endTime,
+      'error': ?error,
+      'phaseState': ?phaseState,
+      'startTime': ?startTime,
+      'verificationConfig': ?verificationConfig,
+    };
+  }
+}
+
+/// VerificationSummary contains the status and timestamp of the latest
+/// Automated Verification test.
+class VerificationSummary {
+  /// The last verification execution.
+  ///
+  /// Output only.
+  core.String? lastVerificationExecution;
+
+  /// The state of the last verification.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Verification state is unspecified.
+  /// - "SUCCEEDED" : Verification succeeded.
+  /// - "FAILED" : Verification failed.
+  core.String? lastVerificationState;
+
+  /// The time when the backup was last verified.
+  ///
+  /// Output only.
+  core.String? lastVerificationTime;
+
+  VerificationSummary({
+    this.lastVerificationExecution,
+    this.lastVerificationState,
+    this.lastVerificationTime,
+  });
+
+  VerificationSummary.fromJson(core.Map json_)
+    : this(
+        lastVerificationExecution:
+            json_['lastVerificationExecution'] as core.String?,
+        lastVerificationState: json_['lastVerificationState'] as core.String?,
+        lastVerificationTime: json_['lastVerificationTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final lastVerificationExecution = this.lastVerificationExecution;
+    final lastVerificationState = this.lastVerificationState;
+    final lastVerificationTime = this.lastVerificationTime;
+    return {
+      'lastVerificationExecution': ?lastVerificationExecution,
+      'lastVerificationState': ?lastVerificationState,
+      'lastVerificationTime': ?lastVerificationTime,
     };
   }
 }

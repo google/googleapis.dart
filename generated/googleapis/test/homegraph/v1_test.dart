@@ -414,6 +414,7 @@ api.EventData buildEventData() {
     o.event = buildUnnamed11();
     o.eventId = 'foo';
     o.eventTime = 'foo';
+    o.jsonTraitEvent = buildJsonTraitEvent();
   }
   buildCounterEventData--;
   return o;
@@ -425,6 +426,7 @@ void checkEventData(api.EventData o) {
     checkUnnamed11(o.event!);
     unittest.expect(o.eventId!, unittest.equals('foo'));
     unittest.expect(o.eventTime!, unittest.equals('foo'));
+    checkJsonTraitEvent(o.jsonTraitEvent!);
   }
   buildCounterEventData--;
 }
@@ -541,12 +543,108 @@ void checkHomeTraitUpdates(api.HomeTraitUpdates o) {
   buildCounterHomeTraitUpdates--;
 }
 
-core.List<api.QueryRequestInput> buildUnnamed15() => [
+core.Map<core.String, core.Object?> buildUnnamed15() => {
+  'x': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+  'y': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+};
+
+void checkUnnamed15(core.Map<core.String, core.Object?> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  var casted7 = (o['x']!) as core.Map;
+  unittest.expect(casted7, unittest.hasLength(3));
+  unittest.expect(casted7['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted7['bool'], unittest.equals(true));
+  unittest.expect(casted7['string'], unittest.equals('foo'));
+  var casted8 = (o['y']!) as core.Map;
+  unittest.expect(casted8, unittest.hasLength(3));
+  unittest.expect(casted8['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted8['bool'], unittest.equals(true));
+  unittest.expect(casted8['string'], unittest.equals('foo'));
+}
+
+core.int buildCounterJsonTrait = 0;
+api.JsonTrait buildJsonTrait() {
+  final o = api.JsonTrait();
+  buildCounterJsonTrait++;
+  if (buildCounterJsonTrait < 3) {
+    o.data = buildUnnamed15();
+    o.id = 'foo';
+  }
+  buildCounterJsonTrait--;
+  return o;
+}
+
+void checkJsonTrait(api.JsonTrait o) {
+  buildCounterJsonTrait++;
+  if (buildCounterJsonTrait < 3) {
+    checkUnnamed15(o.data!);
+    unittest.expect(o.id!, unittest.equals('foo'));
+  }
+  buildCounterJsonTrait--;
+}
+
+core.Map<core.String, core.Object?> buildUnnamed16() => {
+  'x': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+  'y': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+};
+
+void checkUnnamed16(core.Map<core.String, core.Object?> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  var casted9 = (o['x']!) as core.Map;
+  unittest.expect(casted9, unittest.hasLength(3));
+  unittest.expect(casted9['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted9['bool'], unittest.equals(true));
+  unittest.expect(casted9['string'], unittest.equals('foo'));
+  var casted10 = (o['y']!) as core.Map;
+  unittest.expect(casted10, unittest.hasLength(3));
+  unittest.expect(casted10['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted10['bool'], unittest.equals(true));
+  unittest.expect(casted10['string'], unittest.equals('foo'));
+}
+
+core.int buildCounterJsonTraitEvent = 0;
+api.JsonTraitEvent buildJsonTraitEvent() {
+  final o = api.JsonTraitEvent();
+  buildCounterJsonTraitEvent++;
+  if (buildCounterJsonTraitEvent < 3) {
+    o.data = buildUnnamed16();
+    o.id = 'foo';
+  }
+  buildCounterJsonTraitEvent--;
+  return o;
+}
+
+void checkJsonTraitEvent(api.JsonTraitEvent o) {
+  buildCounterJsonTraitEvent++;
+  if (buildCounterJsonTraitEvent < 3) {
+    checkUnnamed16(o.data!);
+    unittest.expect(o.id!, unittest.equals('foo'));
+  }
+  buildCounterJsonTraitEvent--;
+}
+
+core.List<api.QueryRequestInput> buildUnnamed17() => [
   buildQueryRequestInput(),
   buildQueryRequestInput(),
 ];
 
-void checkUnnamed15(core.List<api.QueryRequestInput> o) {
+void checkUnnamed17(core.List<api.QueryRequestInput> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkQueryRequestInput(o[0]);
   checkQueryRequestInput(o[1]);
@@ -560,7 +658,7 @@ api.QueryRequest buildQueryRequest() {
     o.agentUserId = 'foo';
     o.deviceView = 'foo';
     o.includeDeviceMetadata = true;
-    o.inputs = buildUnnamed15();
+    o.inputs = buildUnnamed17();
     o.requestId = 'foo';
   }
   buildCounterQueryRequest--;
@@ -573,7 +671,7 @@ void checkQueryRequest(api.QueryRequest o) {
     unittest.expect(o.agentUserId!, unittest.equals('foo'));
     unittest.expect(o.deviceView!, unittest.equals('foo'));
     unittest.expect(o.includeDeviceMetadata!, unittest.isTrue);
-    checkUnnamed15(o.inputs!);
+    checkUnnamed17(o.inputs!);
     unittest.expect(o.requestId!, unittest.equals('foo'));
   }
   buildCounterQueryRequest--;
@@ -598,12 +696,12 @@ void checkQueryRequestInput(api.QueryRequestInput o) {
   buildCounterQueryRequestInput--;
 }
 
-core.List<api.AgentDeviceId> buildUnnamed16() => [
+core.List<api.AgentDeviceId> buildUnnamed18() => [
   buildAgentDeviceId(),
   buildAgentDeviceId(),
 ];
 
-void checkUnnamed16(core.List<api.AgentDeviceId> o) {
+void checkUnnamed18(core.List<api.AgentDeviceId> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAgentDeviceId(o[0]);
   checkAgentDeviceId(o[1]);
@@ -614,7 +712,7 @@ api.QueryRequestPayload buildQueryRequestPayload() {
   final o = api.QueryRequestPayload();
   buildCounterQueryRequestPayload++;
   if (buildCounterQueryRequestPayload < 3) {
-    o.devices = buildUnnamed16();
+    o.devices = buildUnnamed18();
   }
   buildCounterQueryRequestPayload--;
   return o;
@@ -623,7 +721,7 @@ api.QueryRequestPayload buildQueryRequestPayload() {
 void checkQueryRequestPayload(api.QueryRequestPayload o) {
   buildCounterQueryRequestPayload++;
   if (buildCounterQueryRequestPayload < 3) {
-    checkUnnamed16(o.devices!);
+    checkUnnamed18(o.devices!);
   }
   buildCounterQueryRequestPayload--;
 }
@@ -649,18 +747,18 @@ void checkQueryResponse(api.QueryResponse o) {
   buildCounterQueryResponse--;
 }
 
-core.Map<core.String, api.DeviceMetadata> buildUnnamed17() => {
+core.Map<core.String, api.DeviceMetadata> buildUnnamed19() => {
   'x': buildDeviceMetadata(),
   'y': buildDeviceMetadata(),
 };
 
-void checkUnnamed17(core.Map<core.String, api.DeviceMetadata> o) {
+void checkUnnamed19(core.Map<core.String, api.DeviceMetadata> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDeviceMetadata(o['x']!);
   checkDeviceMetadata(o['y']!);
 }
 
-core.Map<core.String, core.Object?> buildUnnamed18() => {
+core.Map<core.String, core.Object?> buildUnnamed20() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -673,130 +771,7 @@ core.Map<core.String, core.Object?> buildUnnamed18() => {
   },
 };
 
-void checkUnnamed18(core.Map<core.String, core.Object?> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  var casted7 = (o['x']!) as core.Map;
-  unittest.expect(casted7, unittest.hasLength(3));
-  unittest.expect(casted7['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted7['bool'], unittest.equals(true));
-  unittest.expect(casted7['string'], unittest.equals('foo'));
-  var casted8 = (o['y']!) as core.Map;
-  unittest.expect(casted8, unittest.hasLength(3));
-  unittest.expect(casted8['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted8['bool'], unittest.equals(true));
-  unittest.expect(casted8['string'], unittest.equals('foo'));
-}
-
-core.Map<core.String, core.Map<core.String, core.Object?>> buildUnnamed19() => {
-  'x': buildUnnamed18(),
-  'y': buildUnnamed18(),
-};
-
-void checkUnnamed19(
-  core.Map<core.String, core.Map<core.String, core.Object?>> o,
-) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed18(o['x']!);
-  checkUnnamed18(o['y']!);
-}
-
-core.Map<core.String, api.HomeTraitPayload> buildUnnamed20() => {
-  'x': buildHomeTraitPayload(),
-  'y': buildHomeTraitPayload(),
-};
-
-void checkUnnamed20(core.Map<core.String, api.HomeTraitPayload> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkHomeTraitPayload(o['x']!);
-  checkHomeTraitPayload(o['y']!);
-}
-
-core.int buildCounterQueryResponsePayload = 0;
-api.QueryResponsePayload buildQueryResponsePayload() {
-  final o = api.QueryResponsePayload();
-  buildCounterQueryResponsePayload++;
-  if (buildCounterQueryResponsePayload < 3) {
-    o.deviceMetadata = buildUnnamed17();
-    o.devices = buildUnnamed19();
-    o.homeTraitPayload = buildUnnamed20();
-  }
-  buildCounterQueryResponsePayload--;
-  return o;
-}
-
-void checkQueryResponsePayload(api.QueryResponsePayload o) {
-  buildCounterQueryResponsePayload++;
-  if (buildCounterQueryResponsePayload < 3) {
-    checkUnnamed17(o.deviceMetadata!);
-    checkUnnamed19(o.devices!);
-    checkUnnamed20(o.homeTraitPayload!);
-  }
-  buildCounterQueryResponsePayload--;
-}
-
-core.List<api.HomeEvents> buildUnnamed21() => [
-  buildHomeEvents(),
-  buildHomeEvents(),
-];
-
-void checkUnnamed21(core.List<api.HomeEvents> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkHomeEvents(o[0]);
-  checkHomeEvents(o[1]);
-}
-
-core.List<api.HomeTraitUpdates> buildUnnamed22() => [
-  buildHomeTraitUpdates(),
-  buildHomeTraitUpdates(),
-];
-
-void checkUnnamed22(core.List<api.HomeTraitUpdates> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkHomeTraitUpdates(o[0]);
-  checkHomeTraitUpdates(o[1]);
-}
-
-core.Map<core.String, core.Object?> buildUnnamed23() => {
-  'x': {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo',
-  },
-  'y': {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo',
-  },
-};
-
-void checkUnnamed23(core.Map<core.String, core.Object?> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  var casted9 = (o['x']!) as core.Map;
-  unittest.expect(casted9, unittest.hasLength(3));
-  unittest.expect(casted9['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted9['bool'], unittest.equals(true));
-  unittest.expect(casted9['string'], unittest.equals('foo'));
-  var casted10 = (o['y']!) as core.Map;
-  unittest.expect(casted10, unittest.hasLength(3));
-  unittest.expect(casted10['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted10['bool'], unittest.equals(true));
-  unittest.expect(casted10['string'], unittest.equals('foo'));
-}
-
-core.Map<core.String, core.Object?> buildUnnamed24() => {
-  'x': {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo',
-  },
-  'y': {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo',
-  },
-};
-
-void checkUnnamed24(core.Map<core.String, core.Object?> o) {
+void checkUnnamed20(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted11 = (o['x']!) as core.Map;
   unittest.expect(casted11, unittest.hasLength(3));
@@ -810,15 +785,138 @@ void checkUnnamed24(core.Map<core.String, core.Object?> o) {
   unittest.expect(casted12['string'], unittest.equals('foo'));
 }
 
+core.Map<core.String, core.Map<core.String, core.Object?>> buildUnnamed21() => {
+  'x': buildUnnamed20(),
+  'y': buildUnnamed20(),
+};
+
+void checkUnnamed21(
+  core.Map<core.String, core.Map<core.String, core.Object?>> o,
+) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkUnnamed20(o['x']!);
+  checkUnnamed20(o['y']!);
+}
+
+core.Map<core.String, api.HomeTraitPayload> buildUnnamed22() => {
+  'x': buildHomeTraitPayload(),
+  'y': buildHomeTraitPayload(),
+};
+
+void checkUnnamed22(core.Map<core.String, api.HomeTraitPayload> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkHomeTraitPayload(o['x']!);
+  checkHomeTraitPayload(o['y']!);
+}
+
+core.int buildCounterQueryResponsePayload = 0;
+api.QueryResponsePayload buildQueryResponsePayload() {
+  final o = api.QueryResponsePayload();
+  buildCounterQueryResponsePayload++;
+  if (buildCounterQueryResponsePayload < 3) {
+    o.deviceMetadata = buildUnnamed19();
+    o.devices = buildUnnamed21();
+    o.homeTraitPayload = buildUnnamed22();
+  }
+  buildCounterQueryResponsePayload--;
+  return o;
+}
+
+void checkQueryResponsePayload(api.QueryResponsePayload o) {
+  buildCounterQueryResponsePayload++;
+  if (buildCounterQueryResponsePayload < 3) {
+    checkUnnamed19(o.deviceMetadata!);
+    checkUnnamed21(o.devices!);
+    checkUnnamed22(o.homeTraitPayload!);
+  }
+  buildCounterQueryResponsePayload--;
+}
+
+core.List<api.HomeEvents> buildUnnamed23() => [
+  buildHomeEvents(),
+  buildHomeEvents(),
+];
+
+void checkUnnamed23(core.List<api.HomeEvents> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkHomeEvents(o[0]);
+  checkHomeEvents(o[1]);
+}
+
+core.List<api.HomeTraitUpdates> buildUnnamed24() => [
+  buildHomeTraitUpdates(),
+  buildHomeTraitUpdates(),
+];
+
+void checkUnnamed24(core.List<api.HomeTraitUpdates> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkHomeTraitUpdates(o[0]);
+  checkHomeTraitUpdates(o[1]);
+}
+
+core.Map<core.String, core.Object?> buildUnnamed25() => {
+  'x': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+  'y': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+};
+
+void checkUnnamed25(core.Map<core.String, core.Object?> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  var casted13 = (o['x']!) as core.Map;
+  unittest.expect(casted13, unittest.hasLength(3));
+  unittest.expect(casted13['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted13['bool'], unittest.equals(true));
+  unittest.expect(casted13['string'], unittest.equals('foo'));
+  var casted14 = (o['y']!) as core.Map;
+  unittest.expect(casted14, unittest.hasLength(3));
+  unittest.expect(casted14['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted14['bool'], unittest.equals(true));
+  unittest.expect(casted14['string'], unittest.equals('foo'));
+}
+
+core.Map<core.String, core.Object?> buildUnnamed26() => {
+  'x': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+  'y': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+};
+
+void checkUnnamed26(core.Map<core.String, core.Object?> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  var casted15 = (o['x']!) as core.Map;
+  unittest.expect(casted15, unittest.hasLength(3));
+  unittest.expect(casted15['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted15['bool'], unittest.equals(true));
+  unittest.expect(casted15['string'], unittest.equals('foo'));
+  var casted16 = (o['y']!) as core.Map;
+  unittest.expect(casted16, unittest.hasLength(3));
+  unittest.expect(casted16['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted16['bool'], unittest.equals(true));
+  unittest.expect(casted16['string'], unittest.equals('foo'));
+}
+
 core.int buildCounterReportStateAndNotificationDevice = 0;
 api.ReportStateAndNotificationDevice buildReportStateAndNotificationDevice() {
   final o = api.ReportStateAndNotificationDevice();
   buildCounterReportStateAndNotificationDevice++;
   if (buildCounterReportStateAndNotificationDevice < 3) {
-    o.homeEvents = buildUnnamed21();
-    o.homeTraits = buildUnnamed22();
-    o.notifications = buildUnnamed23();
-    o.states = buildUnnamed24();
+    o.homeEvents = buildUnnamed23();
+    o.homeTraits = buildUnnamed24();
+    o.notifications = buildUnnamed25();
+    o.states = buildUnnamed26();
   }
   buildCounterReportStateAndNotificationDevice--;
   return o;
@@ -829,10 +927,10 @@ void checkReportStateAndNotificationDevice(
 ) {
   buildCounterReportStateAndNotificationDevice++;
   if (buildCounterReportStateAndNotificationDevice < 3) {
-    checkUnnamed21(o.homeEvents!);
-    checkUnnamed22(o.homeTraits!);
-    checkUnnamed23(o.notifications!);
-    checkUnnamed24(o.states!);
+    checkUnnamed23(o.homeEvents!);
+    checkUnnamed24(o.homeTraits!);
+    checkUnnamed25(o.notifications!);
+    checkUnnamed26(o.states!);
   }
   buildCounterReportStateAndNotificationDevice--;
 }
@@ -866,12 +964,12 @@ void checkReportStateAndNotificationRequest(
   buildCounterReportStateAndNotificationRequest--;
 }
 
-core.Map<core.String, api.Result> buildUnnamed25() => {
+core.Map<core.String, api.Result> buildUnnamed27() => {
   'x': buildResult(),
   'y': buildResult(),
 };
 
-void checkUnnamed25(core.Map<core.String, api.Result> o) {
+void checkUnnamed27(core.Map<core.String, api.Result> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResult(o['x']!);
   checkResult(o['y']!);
@@ -883,7 +981,7 @@ buildReportStateAndNotificationResponse() {
   final o = api.ReportStateAndNotificationResponse();
   buildCounterReportStateAndNotificationResponse++;
   if (buildCounterReportStateAndNotificationResponse < 3) {
-    o.deviceResults = buildUnnamed25();
+    o.deviceResults = buildUnnamed27();
     o.requestId = 'foo';
   }
   buildCounterReportStateAndNotificationResponse--;
@@ -895,7 +993,7 @@ void checkReportStateAndNotificationResponse(
 ) {
   buildCounterReportStateAndNotificationResponse++;
   if (buildCounterReportStateAndNotificationResponse < 3) {
-    checkUnnamed25(o.deviceResults!);
+    checkUnnamed27(o.deviceResults!);
     unittest.expect(o.requestId!, unittest.equals('foo'));
   }
   buildCounterReportStateAndNotificationResponse--;
@@ -1017,9 +1115,9 @@ void checkSyncResponse(api.SyncResponse o) {
   buildCounterSyncResponse--;
 }
 
-core.List<api.Device> buildUnnamed26() => [buildDevice(), buildDevice()];
+core.List<api.Device> buildUnnamed28() => [buildDevice(), buildDevice()];
 
-void checkUnnamed26(core.List<api.Device> o) {
+void checkUnnamed28(core.List<api.Device> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDevice(o[0]);
   checkDevice(o[1]);
@@ -1031,7 +1129,7 @@ api.SyncResponsePayload buildSyncResponsePayload() {
   buildCounterSyncResponsePayload++;
   if (buildCounterSyncResponsePayload < 3) {
     o.agentUserId = 'foo';
-    o.devices = buildUnnamed26();
+    o.devices = buildUnnamed28();
   }
   buildCounterSyncResponsePayload--;
   return o;
@@ -1041,12 +1139,12 @@ void checkSyncResponsePayload(api.SyncResponsePayload o) {
   buildCounterSyncResponsePayload++;
   if (buildCounterSyncResponsePayload < 3) {
     unittest.expect(o.agentUserId!, unittest.equals('foo'));
-    checkUnnamed26(o.devices!);
+    checkUnnamed28(o.devices!);
   }
   buildCounterSyncResponsePayload--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed27() => {
+core.Map<core.String, core.Object?> buildUnnamed29() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -1059,18 +1157,18 @@ core.Map<core.String, core.Object?> buildUnnamed27() => {
   },
 };
 
-void checkUnnamed27(core.Map<core.String, core.Object?> o) {
+void checkUnnamed29(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted13 = (o['x']!) as core.Map;
-  unittest.expect(casted13, unittest.hasLength(3));
-  unittest.expect(casted13['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted13['bool'], unittest.equals(true));
-  unittest.expect(casted13['string'], unittest.equals('foo'));
-  var casted14 = (o['y']!) as core.Map;
-  unittest.expect(casted14, unittest.hasLength(3));
-  unittest.expect(casted14['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted14['bool'], unittest.equals(true));
-  unittest.expect(casted14['string'], unittest.equals('foo'));
+  var casted17 = (o['x']!) as core.Map;
+  unittest.expect(casted17, unittest.hasLength(3));
+  unittest.expect(casted17['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted17['bool'], unittest.equals(true));
+  unittest.expect(casted17['string'], unittest.equals('foo'));
+  var casted18 = (o['y']!) as core.Map;
+  unittest.expect(casted18, unittest.hasLength(3));
+  unittest.expect(casted18['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted18['bool'], unittest.equals(true));
+  unittest.expect(casted18['string'], unittest.equals('foo'));
 }
 
 core.int buildCounterTraitData = 0;
@@ -1079,8 +1177,9 @@ api.TraitData buildTraitData() {
   buildCounterTraitData++;
   if (buildCounterTraitData < 3) {
     o.commitTime = 'foo';
+    o.jsonTrait = buildJsonTrait();
     o.providerUpdateTime = 'foo';
-    o.trait = buildUnnamed27();
+    o.trait = buildUnnamed29();
   }
   buildCounterTraitData--;
   return o;
@@ -1090,8 +1189,9 @@ void checkTraitData(api.TraitData o) {
   buildCounterTraitData++;
   if (buildCounterTraitData < 3) {
     unittest.expect(o.commitTime!, unittest.equals('foo'));
+    checkJsonTrait(o.jsonTrait!);
     unittest.expect(o.providerUpdateTime!, unittest.equals('foo'));
-    checkUnnamed27(o.trait!);
+    checkUnnamed29(o.trait!);
   }
   buildCounterTraitData--;
 }
@@ -1248,6 +1348,28 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkHomeTraitUpdates(od);
+    });
+  });
+
+  unittest.group('obj-schema-JsonTrait', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildJsonTrait();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.JsonTrait.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkJsonTrait(od);
+    });
+  });
+
+  unittest.group('obj-schema-JsonTraitEvent', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildJsonTraitEvent();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.JsonTraitEvent.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkJsonTraitEvent(od);
     });
   });
 

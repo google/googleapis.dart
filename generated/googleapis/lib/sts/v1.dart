@@ -115,7 +115,7 @@ class OrganizationsLocationsWorkloadIdentityPoolsOpenidResource {
   ) : _requester = client;
 
   /// Fetches the signing keys for an agentic or managed workload identity pool
-  /// and returns them in JWKs format, defined in
+  /// and returns them in JWK Set format, defined in
   /// [RFC 7517](https://tools.ietf.org/html/rfc7517).
   ///
   /// For now, only agentic system pools are supported. **Preview** This feature
@@ -128,7 +128,7 @@ class OrganizationsLocationsWorkloadIdentityPoolsOpenidResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the pool whose JWKS needs to be retrieved.
+  /// [name] - Required. The name of the pool whose JWKs need to be retrieved.
   /// Format:
   /// 'organizations/{ORGANIZATION_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}'
   /// 'projects/{PROJECT_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}'
@@ -272,7 +272,7 @@ class ProjectsLocationsWorkloadIdentityPoolsOpenidResource {
   ) : _requester = client;
 
   /// Fetches the signing keys for an agentic or managed workload identity pool
-  /// and returns them in JWKs format, defined in
+  /// and returns them in JWK Set format, defined in
   /// [RFC 7517](https://tools.ietf.org/html/rfc7517).
   ///
   /// For now, only agentic system pools are supported. **Preview** This feature
@@ -285,7 +285,7 @@ class ProjectsLocationsWorkloadIdentityPoolsOpenidResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the pool whose JWKS needs to be retrieved.
+  /// [name] - Required. The name of the pool whose JWKs need to be retrieved.
   /// Format:
   /// 'organizations/{ORGANIZATION_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}'
   /// 'projects/{PROJECT_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}'
@@ -444,6 +444,24 @@ class V1Resource {
 
 /// Request message for ExchangeToken.
 class GoogleIdentityStsV1ExchangeTokenRequest {
+  /// A security token that represents the identity of the acting party.
+  ///
+  /// Typically, this is the party that is authorized to use the requested
+  /// security token and act on behalf of the subject.
+  ///
+  /// Optional.
+  core.String? actorToken;
+
+  /// An identifier that indicates the type of the security token in the
+  /// `actor_token` parameter.
+  ///
+  /// Required when the `actor_token` parameter is set. Supported values are
+  /// `urn:ietf:params:oauth:token-type:jwt`,
+  /// `urn:ietf:params:oauth:token-type:id_token`.
+  ///
+  /// Optional.
+  core.String? actorTokenType;
+
   /// The full resource name of the identity provider; for example:
   /// `//iam.googleapis.com/projects//locations/global/workloadIdentityPools//providers/`
   /// for workload identity pool providers, or
@@ -596,6 +614,8 @@ class GoogleIdentityStsV1ExchangeTokenRequest {
   core.String? subjectTokenType;
 
   GoogleIdentityStsV1ExchangeTokenRequest({
+    this.actorToken,
+    this.actorTokenType,
     this.audience,
     this.grantType,
     this.options,
@@ -607,6 +627,8 @@ class GoogleIdentityStsV1ExchangeTokenRequest {
 
   GoogleIdentityStsV1ExchangeTokenRequest.fromJson(core.Map json_)
     : this(
+        actorToken: json_['actorToken'] as core.String?,
+        actorTokenType: json_['actorTokenType'] as core.String?,
         audience: json_['audience'] as core.String?,
         grantType: json_['grantType'] as core.String?,
         options: json_['options'] as core.String?,
@@ -617,6 +639,8 @@ class GoogleIdentityStsV1ExchangeTokenRequest {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final actorToken = this.actorToken;
+    final actorTokenType = this.actorTokenType;
     final audience = this.audience;
     final grantType = this.grantType;
     final options = this.options;
@@ -625,6 +649,8 @@ class GoogleIdentityStsV1ExchangeTokenRequest {
     final subjectToken = this.subjectToken;
     final subjectTokenType = this.subjectTokenType;
     return {
+      'actorToken': ?actorToken,
+      'actorTokenType': ?actorTokenType,
       'audience': ?audience,
       'grantType': ?grantType,
       'options': ?options,
@@ -718,7 +744,7 @@ class GoogleIdentityStsV1ExchangeTokenResponse {
 
 /// A JSON web key set (JWK) See also
 /// https://datatracker.ietf.org/doc/html/rfc7517 and
-/// https://github.com/spiffe/spiffe/blob/main/standards/JWT-SVID.md#6-representation-in-the-spiffe-bundle
+/// https://github.com/spiffe/spiffe/blob/main/standards/JWT-SVID.md#6-representation-in-the-spiffe-bundle.
 class GoogleIdentityStsV1Jwk {
   /// Algorithm intended for use with the key.
   ///
@@ -783,7 +809,7 @@ class GoogleIdentityStsV1Jwk {
 
 /// Response message for GetJwks.
 class GoogleIdentityStsV1Jwks {
-  /// The JWKS for this OP.
+  /// The JWKs for this OP.
   core.List<GoogleIdentityStsV1Jwk>? keys;
 
   GoogleIdentityStsV1Jwks({this.keys});
@@ -808,37 +834,36 @@ class GoogleIdentityStsV1Jwks {
 /// Response message for GetOpenIdProviderConfig.
 ///
 /// Message fields are defined in
-/// https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfigurationResponse
+/// https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfigurationResponse.
 class GoogleIdentityStsV1OpenIdProviderConfig {
   /// URL pointing to an authorization endpoint under this issuer.
   ///
   /// Note: Currently this endpoint returns a 404.
   core.String? authorizationEndpoint;
 
-  /// JSON array containing a list of the JWS signing algorithms (alg values)
-  /// supported by the OP for the ID token to encode the claims in a JWT
-  /// \[JWT\].
+  /// JSON array that contains a list of the JWS signing algorithms (alg values)
+  /// supported by the OP for the ID token to encode the claims in a JWT.
   ///
-  /// Note: Currently always "\["RS256"\]".
+  /// Supported value: `RS256`.
   core.List<core.String>? idTokenSigningAlgValuesSupported;
 
   /// URL using the https scheme with no query or fragment components that the
   /// OP asserts as its issuer identifier.
   core.String? issuer;
 
-  /// URL of the OP's JWK Set \[JWK\] document, which MUST use the https scheme.
+  /// URL of the OP's JWK Set document, which MUST use the https scheme.
   core.String? jwksUri;
 
-  /// JSON array containing a list of the OAuth 2.0 response_type values that
+  /// JSON array that contains a list of the OAuth 2.0 response_type values that
   /// this OP supports.
   ///
-  /// Note: Currently always "\["id_token"\]".
+  /// Supported value: `id_token`.
   core.List<core.String>? responseTypesSupported;
 
-  /// JSON array containing a list of the subject identifier types that this OP
-  /// supports.
+  /// JSON array that contains a list of the subject identifier types that this
+  /// OP supports.
   ///
-  /// Note: Currently always "\["public"\]".
+  /// Supported value: `public`.
   core.List<core.String>? subjectTypesSupported;
 
   /// URL pointing to a token endpoint under this issuer.

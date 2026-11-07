@@ -956,6 +956,7 @@ api.DailyRollUpDataPointsResponse buildDailyRollUpDataPointsResponse() {
   final o = api.DailyRollUpDataPointsResponse();
   buildCounterDailyRollUpDataPointsResponse++;
   if (buildCounterDailyRollUpDataPointsResponse < 3) {
+    o.nextPageToken = 'foo';
     o.rollupDataPoints = buildUnnamed9();
   }
   buildCounterDailyRollUpDataPointsResponse--;
@@ -965,6 +966,7 @@ api.DailyRollUpDataPointsResponse buildDailyRollUpDataPointsResponse() {
 void checkDailyRollUpDataPointsResponse(api.DailyRollUpDataPointsResponse o) {
   buildCounterDailyRollUpDataPointsResponse++;
   if (buildCounterDailyRollUpDataPointsResponse < 3) {
+    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
     checkUnnamed9(o.rollupDataPoints!);
   }
   buildCounterDailyRollUpDataPointsResponse--;
@@ -7050,6 +7052,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.GoogleHealthApi(mock).users.dataTypes.dataPoints;
       final arg_parent = 'foo';
+      final arg_dataSourceFamily = 'foo';
       final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -7088,6 +7091,10 @@ void main() {
             }
           }
           unittest.expect(
+            queryMap['dataSourceFamily']!.first,
+            unittest.equals(arg_dataSourceFamily),
+          );
+          unittest.expect(
             queryMap['filter']!.first,
             unittest.equals(arg_filter),
           );
@@ -7112,6 +7119,7 @@ void main() {
       );
       final response = await res.list(
         arg_parent,
+        dataSourceFamily: arg_dataSourceFamily,
         filter: arg_filter,
         pageSize: arg_pageSize,
         pageToken: arg_pageToken,

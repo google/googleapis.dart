@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260909",
+    "revision": "20260930",
     "rootUrl": "https://cloudlocationfinder.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Location Finder API",
@@ -229,7 +229,7 @@
                                             "type": "string"
                                         },
                                         "pageSize": {
-                                            "description": "Optional. The maximum number of cloud locations to return per page. The service might return fewer cloud locations than this value. If unspecified, server will pick an appropriate default.",
+                                            "description": "Optional. The maximum number of cloud locations to return per page. The service might return fewer cloud locations than this value. If unspecified, at most 500 cloud locations will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.",
                                             "format": "int32",
                                             "location": "query",
                                             "type": "integer"
@@ -265,7 +265,7 @@
                                     ],
                                     "parameters": {
                                         "pageSize": {
-                                            "description": "Optional. The maximum number of cloud locations to return. The service might return fewer cloud locations than this value. If unspecified, server will pick an appropriate default.",
+                                            "description": "Optional. The maximum number of cloud locations to return. The service might return fewer cloud locations than this value. If unspecified, at most 500 cloud locations will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.",
                                             "format": "int32",
                                             "location": "query",
                                             "type": "integer"
@@ -324,13 +324,15 @@
                         "CLOUD_LOCATION_TYPE_UNSPECIFIED",
                         "CLOUD_LOCATION_TYPE_REGION",
                         "CLOUD_LOCATION_TYPE_ZONE",
-                        "CLOUD_LOCATION_TYPE_GDCC_ZONE"
+                        "CLOUD_LOCATION_TYPE_GDCC_ZONE",
+                        "CLOUD_LOCATION_TYPE_GLOBAL"
                     ],
                     "enumDescriptions": [
                         "Unspecified type.",
                         "CloudLocation type for region.",
                         "CloudLocation type for zone.",
-                        "CloudLocation type for Google Distributed Cloud Connected Zone."
+                        "CloudLocation type for Google Distributed Cloud Connected Zone.",
+                        "CloudLocation type for global."
                     ],
                     "type": "string"
                 },

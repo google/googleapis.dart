@@ -33,11 +33,18 @@
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsAgentsResource]
 ///     - [ProjectsLocationsAiApplicationsResource]
+///       - [ProjectsLocationsAiApplicationsAgentsResource]
+///       - [ProjectsLocationsAiApplicationsEndpointsResource]
+///       - [ProjectsLocationsAiApplicationsMcpServersResource]
 ///     - [ProjectsLocationsBindingsResource]
 ///     - [ProjectsLocationsEndpointsResource]
+///     - [ProjectsLocationsFindingsResource]
 ///     - [ProjectsLocationsMcpServersResource]
 ///     - [ProjectsLocationsOperationsResource]
+///     - [ProjectsLocationsPublishersResource]
 ///     - [ProjectsLocationsServicesResource]
+///     - [ProjectsLocationsSkillsResource]
+///       - [ProjectsLocationsSkillsRevisionsResource]
 library;
 
 import 'dart:async' as async;
@@ -51,7 +58,15 @@ import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
-    show ApiRequestError, DetailedApiRequestError;
+    show
+        ApiRequestError,
+        ByteRange,
+        DetailedApiRequestError,
+        DownloadOptions,
+        Media,
+        PartialDownloadOptions,
+        ResumableUploadOptions,
+        UploadOptions;
 
 /// Agent Registry is a centralized, unified catalog that lets you store,
 /// discover, and govern Model Context Protocol (MCP) servers, tools, and AI
@@ -113,12 +128,18 @@ class ProjectsLocationsResource {
       ProjectsLocationsBindingsResource(_requester);
   ProjectsLocationsEndpointsResource get endpoints =>
       ProjectsLocationsEndpointsResource(_requester);
+  ProjectsLocationsFindingsResource get findings =>
+      ProjectsLocationsFindingsResource(_requester);
   ProjectsLocationsMcpServersResource get mcpServers =>
       ProjectsLocationsMcpServersResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
       ProjectsLocationsOperationsResource(_requester);
+  ProjectsLocationsPublishersResource get publishers =>
+      ProjectsLocationsPublishersResource(_requester);
   ProjectsLocationsServicesResource get services =>
       ProjectsLocationsServicesResource(_requester);
+  ProjectsLocationsSkillsResource get skills =>
+      ProjectsLocationsSkillsResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
@@ -365,8 +386,54 @@ class ProjectsLocationsAgentsResource {
 class ProjectsLocationsAiApplicationsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsAiApplicationsAgentsResource get agents =>
+      ProjectsLocationsAiApplicationsAgentsResource(_requester);
+  ProjectsLocationsAiApplicationsEndpointsResource get endpoints =>
+      ProjectsLocationsAiApplicationsEndpointsResource(_requester);
+  ProjectsLocationsAiApplicationsMcpServersResource get mcpServers =>
+      ProjectsLocationsAiApplicationsMcpServersResource(_requester);
+
   ProjectsLocationsAiApplicationsResource(commons.ApiRequester client)
     : _requester = client;
+
+  /// Gets details of a single AI Application.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Target AI Application resource name. Format:
+  /// `projects/{project}/locations/{location}/aiApplications/{ai_application}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/aiApplications/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AiApplication].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AiApplication> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AiApplication.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
 
   /// Gets the access control policy for a resource.
   ///
@@ -424,6 +491,62 @@ class ProjectsLocationsAiApplicationsResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists AI Applications in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent project and location to query. Format:
+  /// `projects/{project}/locations/{location}`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filtering results.
+  ///
+  /// [orderBy] - Optional. Hint for how to order the results.
+  ///
+  /// [pageSize] - Optional. Requested page size. Server may return fewer items
+  /// than requested. If unspecified, server will pick an appropriate default.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results the server
+  /// should return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAiApplicationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAiApplicationsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/aiApplications';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListAiApplicationsResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -525,6 +648,279 @@ class ProjectsLocationsAiApplicationsResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1TestIamPermissionsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsAiApplicationsAgentsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAiApplicationsAgentsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Gets details of a single Agent under an AI Application.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the resource. Format:
+  /// `projects/{project}/locations/{location}/aiApplications/{ai_application}/agents/{agent}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/aiApplications/\[^/\]+/agents/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Agent].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Agent> get(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Agent.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists Agents under an AI Application.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent value (AI Application) for
+  /// ListAiApplicationAgentsRequest. Format:
+  /// `projects/{project}/locations/{location}/aiApplications/{ai_application}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/aiApplications/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. Requested page size. Server may return fewer items
+  /// than requested. If unspecified, server will pick an appropriate default.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results the server
+  /// should return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAiApplicationAgentsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAiApplicationAgentsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/agents';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListAiApplicationAgentsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsAiApplicationsEndpointsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAiApplicationsEndpointsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Gets details of a single Endpoint under an AI Application.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the resource. Format:
+  /// `projects/{project}/locations/{location}/aiApplications/{ai_application}/endpoints/{endpoint}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/aiApplications/\[^/\]+/endpoints/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Endpoint].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Endpoint> get(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Endpoint.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists Endpoints under an AI Application.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent value (AI Application) for
+  /// ListAiApplicationEndpointsRequest. Format:
+  /// `projects/{project}/locations/{location}/aiApplications/{ai_application}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/aiApplications/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. Requested page size. Server may return fewer items
+  /// than requested. If unspecified, server will pick an appropriate default.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results the server
+  /// should return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAiApplicationEndpointsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAiApplicationEndpointsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/endpoints';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListAiApplicationEndpointsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsAiApplicationsMcpServersResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAiApplicationsMcpServersResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Gets details of a single McpServer under an AI Application.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the resource. Format:
+  /// `projects/{project}/locations/{location}/aiApplications/{ai_application}/mcpServers/{mcp_server}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/aiApplications/\[^/\]+/mcpServers/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [McpServer].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<McpServer> get(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return McpServer.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists McpServers under an AI Application.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent value (AI Application) for
+  /// ListAiApplicationMcpServersRequest. Format:
+  /// `projects/{project}/locations/{location}/aiApplications/{ai_application}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/aiApplications/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. Requested page size. Server may return fewer items
+  /// than requested. If unspecified, server will pick an appropriate default.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results the server
+  /// should return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAiApplicationMcpServersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAiApplicationMcpServersResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/mcpServers';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListAiApplicationMcpServersResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -967,6 +1363,103 @@ class ProjectsLocationsEndpointsResource {
   }
 }
 
+class ProjectsLocationsFindingsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsFindingsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Gets details of a single Finding.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the Finding to retrieve. Format:
+  /// `projects/{project}/locations/{location}/findings/{finding}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/findings/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Finding].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Finding> get(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Finding.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists Findings in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent value for ListFindingsRequest. Format:
+  /// `projects/{project}/locations/{location}`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filtering results
+  ///
+  /// [orderBy] - Optional. Hint for how to order the results
+  ///
+  /// [pageSize] - Optional. Requested page size. Server may return fewer items
+  /// than requested. If unspecified, server will pick an appropriate default.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results the server
+  /// should return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListFindingsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListFindingsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/findings';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListFindingsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 class ProjectsLocationsMcpServersResource {
   final commons.ApiRequester _requester;
 
@@ -1299,6 +1792,93 @@ class ProjectsLocationsOperationsResource {
   }
 }
 
+class ProjectsLocationsPublishersResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsPublishersResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Fetches details of a specific Publisher.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Target publisher resource name. Format:
+  /// `projects/{project}/locations/{location}/publishers/{publisher}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/publishers/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Publisher].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Publisher> get(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Publisher.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all Publishers in a location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent location to query. Format:
+  /// `projects/{project}/locations/{location}`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. Page limit size.
+  ///
+  /// [pageToken] - Optional. Page offset token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListPublishersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListPublishersResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/publishers';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListPublishersResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 class ProjectsLocationsServicesResource {
   final commons.ApiRequester _requester;
 
@@ -1573,6 +2153,738 @@ class ProjectsLocationsServicesResource {
   }
 }
 
+class ProjectsLocationsSkillsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsSkillsRevisionsResource get revisions =>
+      ProjectsLocationsSkillsRevisionsResource(_requester);
+
+  ProjectsLocationsSkillsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// =========================================================================
+  /// # Skills Collection APIs Creates a Skill resource container, optionally
+  /// publishing the initial SkillRevision inline in a single, atomic CRUD
+  /// roundtrip.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project and location location to bootstrap.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. Signed UUID request idempotency token.
+  ///
+  /// [skillId] - Required. Custom, user-defined unique container identifier.
+  /// Must be unique within the parent project and location. This value should
+  /// be 4-64 characters, and valid characters are `/a-z-/`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    Skill request,
+    core.String parent, {
+    core.String? requestId,
+    core.String? skillId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'skillId': ?skillId == null ? null : [skillId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/skills';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a Skill container along with all its revisions.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Target Skill container name to remove.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/skills/\[^/\]+$`.
+  ///
+  /// [force] - Optional. If set to true, any child SkillRevisions under this
+  /// Skill will also be deleted. Otherwise, the request will only succeed if
+  /// the Skill has no child SkillRevisions.
+  ///
+  /// [requestId] - Optional. Signed UUID request idempotency token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.bool? force,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'force': ?force == null ? null : ['${force}'],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Fetches the active configuration and metadata of a Skill.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Target resource container name.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/skills/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// [downloadOptions] - Options for downloading. A download can be either a
+  /// Metadata (default) or Media download. Partial Media downloads are possible
+  /// as well.
+  ///
+  /// Completes with a
+  ///
+  /// - [Skill] for Metadata downloads (see [downloadOptions]).
+  ///
+  /// - [commons.Media] for Media downloads (see [downloadOptions]).
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<core.Object> get(
+    core.String name, {
+    core.String? $fields,
+    commons.DownloadOptions downloadOptions = commons.DownloadOptions.metadata,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+      downloadOptions: downloadOptions,
+    );
+    if (downloadOptions.isMetadataDownload) {
+      return Skill.fromJson(response_ as core.Map<core.String, core.dynamic>);
+    } else {
+      return response_ as commons.Media;
+    }
+  }
+
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/skills/\[^/\]+$`.
+  ///
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> getIamPolicy(
+    core.String resource, {
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
+          ? null
+          : ['${options_requestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1Policy.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists logical Skills available in a project.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent value for ListSkillsRequest
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Use this field to specify filter criteria on list
+  /// results. Filter expressions can be used to restrict results based upon
+  /// filterable fields, where equality operators can be used. See
+  /// [instructions](https://docs.cloud.google.com/agent-registry/search-agents-and-tools)
+  /// for more details. Allowed operators: `=`, `<`, `>`, `NOT`, `AND`, `OR`,
+  /// and `()`. | Field | `=` | `<`, `>` | |--------------|-----|----------| |
+  /// state | Yes | No | | targetState | Yes | No | | createTime | Yes | Yes | |
+  /// updateTime | Yes | Yes | Examples: * `state=ACTIVE` to restrict results to
+  /// skills in the `ACTIVE` state.
+  ///
+  /// [orderBy] - Optional. Hint for how to order the results
+  ///
+  /// [pageSize] - Optional. Requested page size. Server may return fewer items
+  /// than requested. If unspecified, server will pick an appropriate default.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results the server
+  /// should return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListSkillsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListSkillsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/skills';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListSkillsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates Skill metadata or overrides active pointers/state using REST
+  /// standard PATCH.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. Resource name of the Skill. Format:
+  /// `projects/{project}/locations/{location}/skills/{skill}` The `{skill}`
+  /// segment acts as the resource ID. If the skill is associated with a
+  /// Publisher, this segment typically uses a hyphenated namespace prefix
+  /// corresponding to the publisher (e.g., `google-workspace-create-docs`).
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/skills/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. Signed UUID request idempotency token.
+  ///
+  /// [updateMask] - Optional. Standard update target mask mapping relative
+  /// fields.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    Skill request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Custom deep-search method to filter by frontmatter or query SKILL.md text
+  /// blobs.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent value for SearchSkillsRequest. Format:
+  /// `projects/{project}/locations/{location}`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Use this field to specify additional filter criteria
+  /// on search results. Filter expressions can be used to restrict results
+  /// based upon filterable fields, where equality operators can be used. See
+  /// [instructions](https://docs.cloud.google.com/agent-registry/search-agents-and-tools)
+  /// for more details. Allowed operators: `=`, `<`, `>`, `NOT`, `AND`, `OR`,
+  /// and `()`. | Field | `=` | `<`, `>` | |--------------|-----|----------| |
+  /// state | Yes | No | | targetState | Yes | No | | createTime | Yes | Yes | |
+  /// updateTime | Yes | Yes | Examples: * `state=ACTIVE` to restrict results to
+  /// skills in the `ACTIVE` state.
+  ///
+  /// [pageSize] - Optional. The maximum number of search results to return per
+  /// page. The page size is capped at `100`, even if a larger value is
+  /// specified. A negative value will result in an `INVALID_ARGUMENT` error. If
+  /// unspecified or set to `0`, a default value of `20` will be used. The
+  /// server may return fewer results than requested.
+  ///
+  /// [pageToken] - Optional. If present, retrieve the next batch of results
+  /// from the preceding call to this method. `page_token` must be the value of
+  /// `next_page_token` from the previous response. The values of all other
+  /// method parameters, must be identical to those in the previous call.
+  ///
+  /// [searchString] - Optional. Search criteria used to select the Skills to
+  /// return. If no search criteria is specified then all accessible Skills will
+  /// be returned. Search expressions can be used to restrict results based upon
+  /// searchable fields, where the operators can be used along with the suffix
+  /// wildcard symbol `*`. See
+  /// [instructions](https://docs.cloud.google.com/agent-registry/search-agents-and-tools)
+  /// for more details. Allowed operators: `=`, `:`, `NOT`, `AND`, `OR`, and
+  /// `()`. Searchable fields: | Field | `=` | `:` | `*` | Keyword Search |
+  /// |---------------------------|-----|-----|-----|----------------| | skillId
+  /// | Yes | Yes | Yes | Included | | name | No | Yes | Yes | Included | |
+  /// displayName | No | Yes | Yes | Included | | description | No | Yes | No |
+  /// Included | | frontmatter.name | No | Yes | No | Included | |
+  /// frontmatter.description | No | Yes | No | Included | |
+  /// frontmatter.compatibility | No | Yes | No | Included | |
+  /// frontmatter.license | No | Yes | No | Included | Examples: *
+  /// `skillId="urn:skill:projects-1234:locations:global:private-important-skill"`
+  /// to find the skill with the specified skill ID. * `name:important` to find
+  /// skills whose name contains `important` as a word. * `displayName:works*`
+  /// to find skills whose display name contains words that start with `works`.
+  ///
+  /// [searchType] - Optional. The type of search.
+  /// Possible string values are:
+  /// - "SEARCH_TYPE_UNSPECIFIED" : Invalid search type.
+  /// - "KEYWORD" : Search for a keyword across all searchable fields.
+  /// - "SEMANTIC" : Search based on the meaning and intent of a natural
+  /// language query.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SearchSkillsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SearchSkillsResponse> search(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? searchString,
+    core.String? searchType,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'searchString': ?searchString == null ? null : [searchString],
+      'searchType': ?searchType == null ? null : [searchType],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/skills:search';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SearchSkillsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
+  /// and `PERMISSION_DENIED` errors.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/skills/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> setIamPolicy(
+    GoogleIamV1SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1Policy.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a `NOT_FOUND` error. Note: This operation is designed to
+  /// be used for building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/skills/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1TestIamPermissionsResponse> testIamPermissions(
+    GoogleIamV1TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1TestIamPermissionsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsSkillsRevisionsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsSkillsRevisionsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates a new immutable revision and triggers validation pipelines.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent logical container name.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/skills/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. Signed UUID request idempotency token.
+  ///
+  /// [skillRevisionId] - Optional. Custom, user-defined unique revision
+  /// identifier. Format: 4-63 characters, matching regex
+  /// `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    SkillRevision request,
+    core.String parent, {
+    core.String? requestId,
+    core.String? skillRevisionId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'skillRevisionId': ?skillRevisionId == null ? null : [skillRevisionId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/revisions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a specific revision (restricted to admins to purge accidentally
+  /// committed secrets).
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Target revision name to remove.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/skills/\[^/\]+/revisions/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. Signed UUID request idempotency token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single immutable Revision.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Target revision name.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/skills/\[^/\]+/revisions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// [downloadOptions] - Options for downloading. A download can be either a
+  /// Metadata (default) or Media download. Partial Media downloads are possible
+  /// as well.
+  ///
+  /// Completes with a
+  ///
+  /// - [SkillRevision] for Metadata downloads (see [downloadOptions]).
+  ///
+  /// - [commons.Media] for Media downloads (see [downloadOptions]).
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<core.Object> get(
+    core.String name, {
+    core.String? $fields,
+    commons.DownloadOptions downloadOptions = commons.DownloadOptions.metadata,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+      downloadOptions: downloadOptions,
+    );
+    if (downloadOptions.isMetadataDownload) {
+      return SkillRevision.fromJson(
+        response_ as core.Map<core.String, core.dynamic>,
+      );
+    } else {
+      return response_ as commons.Media;
+    }
+  }
+
+  /// Lists all revisions belonging to a parent Skill.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent logical container name to query.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/skills/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. Page limit size.
+  ///
+  /// [pageToken] - Optional. Page offset token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListSkillRevisionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListSkillRevisionsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/revisions';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListSkillRevisionsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 /// Represents the skills of an Agent.
 class A2ASkill {
   /// A more detailed description of the skill.
@@ -1821,7 +3133,7 @@ class AgentSpec {
 
   /// The type of the agent spec content.
   ///
-  /// Required.
+  /// Required. Immutable.
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : Unspecified type.
   /// - "NO_SPEC" : There is no spec for the Agent. The `content` field must be
@@ -1844,6 +3156,118 @@ class AgentSpec {
     final content = this.content;
     final type = this.type;
     return {'content': ?content, 'type': ?type};
+  }
+}
+
+/// Represents an AI Application.
+class AiApplication {
+  /// Properties of an underlying cloud resource that can comprise an AI
+  /// Application.
+  ///
+  /// Output only.
+  ApplicationProperties? applicationProperties;
+
+  /// Consumer provided attributes.
+  ///
+  /// Optional.
+  Attributes? attributes;
+
+  /// Creation time.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// User-defined description of the AI Application.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// User-defined name for the AI Application.
+  ///
+  /// Optional.
+  core.String? displayName;
+
+  /// Identifier.
+  ///
+  /// Resource name of the AI Application. Format:
+  /// `projects/{project}/locations/{location}/aiApplications/{ai_application}`
+  core.String? name;
+
+  /// The current state of the AI Application.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "CREATING" : The resource is being provisioned or created.
+  /// - "ACTIVE" : The resource is active and ready for use.
+  /// - "DELETING" : The resource is in the process of being deleted.
+  core.String? state;
+
+  /// Universally unique identifier (UUID4) for the AI Application.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  /// Last update time.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  AiApplication({
+    this.applicationProperties,
+    this.attributes,
+    this.createTime,
+    this.description,
+    this.displayName,
+    this.name,
+    this.state,
+    this.uid,
+    this.updateTime,
+  });
+
+  AiApplication.fromJson(core.Map json_)
+    : this(
+        applicationProperties: json_.containsKey('applicationProperties')
+            ? ApplicationProperties.fromJson(
+                json_['applicationProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        attributes: json_.containsKey('attributes')
+            ? Attributes.fromJson(
+                json_['attributes'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        name: json_['name'] as core.String?,
+        state: json_['state'] as core.String?,
+        uid: json_['uid'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final applicationProperties = this.applicationProperties;
+    final attributes = this.attributes;
+    final createTime = this.createTime;
+    final description = this.description;
+    final displayName = this.displayName;
+    final name = this.name;
+    final state = this.state;
+    final uid = this.uid;
+    final updateTime = this.updateTime;
+    return {
+      'applicationProperties': ?applicationProperties,
+      'attributes': ?attributes,
+      'createTime': ?createTime,
+      'description': ?description,
+      'displayName': ?displayName,
+      'name': ?name,
+      'state': ?state,
+      'uid': ?uid,
+      'updateTime': ?updateTime,
+    };
   }
 }
 
@@ -1917,6 +3341,154 @@ class Annotations {
       'openWorldHint': ?openWorldHint,
       'readOnlyHint': ?readOnlyHint,
       'title': ?title,
+    };
+  }
+}
+
+/// Additional system properties of an Application.
+class ApplicationProperties {
+  /// Additional metadata specific to the App Hub application.
+  ///
+  /// The key is a string that identifies the type of metadata and the value is
+  /// the metadata contents specific to that type. Key format:
+  /// `apphub.googleapis.com/{metadataType}`
+  ///
+  /// Output only.
+  core.Map<core.String, ExtendedMetadata>? extendedMetadata;
+
+  ApplicationProperties({this.extendedMetadata});
+
+  ApplicationProperties.fromJson(core.Map json_)
+    : this(
+        extendedMetadata:
+            (json_['extendedMetadata'] as core.Map<core.String, core.dynamic>?)
+                ?.map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    ExtendedMetadata.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  ),
+                ),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final extendedMetadata = this.extendedMetadata;
+    return {'extendedMetadata': ?extendedMetadata};
+  }
+}
+
+/// Direct write-only raw archive payload upload.
+class ArchiveUploadSource {
+  /// Input only.
+  ///
+  /// Write-only raw ZIP/TAR archive payload bytes containing the skill package.
+  ///
+  /// Required.
+  core.String? archiveContent;
+  core.List<core.int> get archiveContentAsBytes =>
+      convert.base64.decode(archiveContent!);
+
+  set archiveContentAsBytes(core.List<core.int> bytes_) {
+    archiveContent = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  ArchiveUploadSource({this.archiveContent});
+
+  ArchiveUploadSource.fromJson(core.Map json_)
+    : this(archiveContent: json_['archiveContent'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final archiveContent = this.archiveContent;
+    return {'archiveContent': ?archiveContent};
+  }
+}
+
+/// Consumer provided attributes.
+class Attributes {
+  /// Business team that ensures user needs are met and value is delivered
+  ///
+  /// Optional.
+  core.List<ContactInfo>? businessOwners;
+
+  /// User-defined criticality information.
+  ///
+  /// Optional.
+  Criticality? criticality;
+
+  /// Developer team that owns development and coding.
+  ///
+  /// Optional.
+  core.List<ContactInfo>? developerOwners;
+
+  /// User-defined environment information.
+  ///
+  /// Optional.
+  Environment? environment;
+
+  /// Operator team that ensures runtime and operations.
+  ///
+  /// Optional.
+  core.List<ContactInfo>? operatorOwners;
+
+  Attributes({
+    this.businessOwners,
+    this.criticality,
+    this.developerOwners,
+    this.environment,
+    this.operatorOwners,
+  });
+
+  Attributes.fromJson(core.Map json_)
+    : this(
+        businessOwners: (json_['businessOwners'] as core.List?)
+            ?.map(
+              (value) => ContactInfo.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        criticality: json_.containsKey('criticality')
+            ? Criticality.fromJson(
+                json_['criticality'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        developerOwners: (json_['developerOwners'] as core.List?)
+            ?.map(
+              (value) => ContactInfo.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        environment: json_.containsKey('environment')
+            ? Environment.fromJson(
+                json_['environment'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        operatorOwners: (json_['operatorOwners'] as core.List?)
+            ?.map(
+              (value) => ContactInfo.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final businessOwners = this.businessOwners;
+    final criticality = this.criticality;
+    final developerOwners = this.developerOwners;
+    final environment = this.environment;
+    final operatorOwners = this.operatorOwners;
+    return {
+      'businessOwners': ?businessOwners,
+      'criticality': ?criticality,
+      'developerOwners': ?developerOwners,
+      'environment': ?environment,
+      'operatorOwners': ?operatorOwners,
     };
   }
 }
@@ -1999,9 +3571,9 @@ class Binding {
   /// Required.
   core.String? name;
 
-  /// The target Agent of the Binding.
+  /// The source Agent of the Binding.
   ///
-  /// Required.
+  /// Optional.
   Source? source;
 
   /// The target Agent Registry Resource of the Binding.
@@ -2109,6 +3681,12 @@ class Card {
     return {'content': ?content, 'type': ?type};
   }
 }
+
+/// Contact information of stakeholders.
+typedef ContactInfo = $ContactInfo;
+
+/// Criticality of the Application, Service, or Workload
+typedef Criticality = $Criticality;
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
@@ -2239,7 +3817,7 @@ class EndpointSpec {
 
   /// The type of the endpoint spec content.
   ///
-  /// Required.
+  /// Required. Immutable.
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : Unspecified type.
   /// - "NO_SPEC" : There is no spec for the Endpoint. The `content` field must
@@ -2263,6 +3841,9 @@ class EndpointSpec {
   }
 }
 
+/// Environment of the Application, Service, or Workload
+typedef Environment = $Environment;
+
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
 ///
@@ -2282,6 +3863,9 @@ class EndpointSpec {
 /// service that evaluates it. See the service documentation for additional
 /// information.
 typedef Expr = $Expr;
+
+/// Additional metadata for a Service or Workload.
+typedef ExtendedMetadata = $ExtendedMetadata;
 
 /// Message for response to fetching available Bindings.
 class FetchAvailableBindingsResponse {
@@ -2309,6 +3893,242 @@ class FetchAvailableBindingsResponse {
     final bindings = this.bindings;
     final nextPageToken = this.nextPageToken;
     return {'bindings': ?bindings, 'nextPageToken': ?nextPageToken};
+  }
+}
+
+/// File location of the finding.
+class File {
+  /// Line number (1-based), or 0 if whole File / unknown.
+  ///
+  /// Optional.
+  core.String? lineNumber;
+
+  /// Relative path of the file containing the finding.
+  ///
+  /// Optional.
+  core.String? path;
+
+  File({this.lineNumber, this.path});
+
+  File.fromJson(core.Map json_)
+    : this(
+        lineNumber: json_['lineNumber'] as core.String?,
+        path: json_['path'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final lineNumber = this.lineNumber;
+    final path = this.path;
+    return {'lineNumber': ?lineNumber, 'path': ?path};
+  }
+}
+
+/// Represents a security Finding.
+class Finding {
+  /// Create time.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Detailed description of the finding.
+  ///
+  /// Optional.
+  core.String? detail;
+
+  /// File associated with the finding.
+  ///
+  /// Optional.
+  core.List<File>? files;
+
+  /// Class of the finding.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "FINDING_CLASS_UNSPECIFIED" : Unspecified finding class.
+  /// - "VULNERABILITY" : Describes a potential weakness in software that
+  /// increases risk to Confidentiality & Integrity & Availability.
+  /// - "SECRET" : Describes a potential security risk due to plaintext
+  /// credentials, keys, or tokens being exposed in an asset or workload.
+  core.String? findingClass;
+
+  /// Identifier.
+  ///
+  /// Resource name of the Finding. Format:
+  /// `projects/{project}/locations/{location}/findings/{finding}`.
+  core.String? name;
+
+  /// The resource that the finding is associated with.
+  ///
+  /// Optional.
+  core.String? resource;
+
+  /// Severity of the finding.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "SEVERITY_UNSPECIFIED" : This value is used for findings when a source
+  /// doesn't write a severity value.
+  /// - "SEVERITY_CRITICAL" : Critical severity.
+  /// - "SEVERITY_HIGH" : High severity.
+  /// - "SEVERITY_MEDIUM" : Medium severity.
+  /// - "SEVERITY_LOW" : Low severity.
+  core.String? severity;
+
+  /// Universally unique identifier (UUID4) for the Finding.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  /// Update time.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  Finding({
+    this.createTime,
+    this.detail,
+    this.files,
+    this.findingClass,
+    this.name,
+    this.resource,
+    this.severity,
+    this.uid,
+    this.updateTime,
+  });
+
+  Finding.fromJson(core.Map json_)
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        detail: json_['detail'] as core.String?,
+        files: (json_['files'] as core.List?)
+            ?.map(
+              (value) =>
+                  File.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+        findingClass: json_['findingClass'] as core.String?,
+        name: json_['name'] as core.String?,
+        resource: json_['resource'] as core.String?,
+        severity: json_['severity'] as core.String?,
+        uid: json_['uid'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final detail = this.detail;
+    final files = this.files;
+    final findingClass = this.findingClass;
+    final name = this.name;
+    final resource = this.resource;
+    final severity = this.severity;
+    final uid = this.uid;
+    final updateTime = this.updateTime;
+    return {
+      'createTime': ?createTime,
+      'detail': ?detail,
+      'files': ?files,
+      'findingClass': ?findingClass,
+      'name': ?name,
+      'resource': ?resource,
+      'severity': ?severity,
+      'uid': ?uid,
+      'updateTime': ?updateTime,
+    };
+  }
+}
+
+/// Structured metadata attributes extracted from the package's local SKILL.md
+/// frontmatter.
+class Frontmatter {
+  /// Environmental dependencies or local sidecars.
+  ///
+  /// Optional.
+  core.String? compatibility;
+
+  /// Functional description.
+  ///
+  /// Required.
+  core.String? description;
+
+  /// License.
+  ///
+  /// Optional.
+  core.String? license;
+
+  /// Extensible flattened map mapping custom tags, authors, and version
+  /// parameters.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? metadata;
+
+  /// The name of the skill.
+  ///
+  /// Required.
+  core.String? name;
+
+  Frontmatter({
+    this.compatibility,
+    this.description,
+    this.license,
+    this.metadata,
+    this.name,
+  });
+
+  Frontmatter.fromJson(core.Map json_)
+    : this(
+        compatibility: json_['compatibility'] as core.String?,
+        description: json_['description'] as core.String?,
+        license: json_['license'] as core.String?,
+        metadata: (json_['metadata'] as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        name: json_['name'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final compatibility = this.compatibility;
+    final description = this.description;
+    final license = this.license;
+    final metadata = this.metadata;
+    final name = this.name;
+    return {
+      'compatibility': ?compatibility,
+      'description': ?description,
+      'license': ?license,
+      'metadata': ?metadata,
+      'name': ?name,
+    };
+  }
+}
+
+/// Specifications for Cloud Storage objects.
+class GcsSource {
+  /// Cloud Storage object generation ID.
+  ///
+  /// If not specified, the latest generation is used.
+  ///
+  /// Optional.
+  core.String? generation;
+
+  /// Cloud Storage object URI.
+  ///
+  /// Format: `gs://{bucket_name}/{object_name}`
+  ///
+  /// Required.
+  core.String? uri;
+
+  GcsSource({this.generation, this.uri});
+
+  GcsSource.fromJson(core.Map json_)
+    : this(
+        generation: json_['generation'] as core.String?,
+        uri: json_['uri'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final generation = this.generation;
+    final uri = this.uri;
+    return {'generation': ?generation, 'uri': ?uri};
   }
 }
 
@@ -2700,6 +4520,138 @@ class ListAgentsResponse {
   }
 }
 
+/// Message for response to listing Agents under an AI Application.
+class ListAiApplicationAgentsResponse {
+  /// The list of Agents.
+  core.List<Agent>? agents;
+
+  /// A token identifying a page of results the server should return.
+  core.String? nextPageToken;
+
+  ListAiApplicationAgentsResponse({this.agents, this.nextPageToken});
+
+  ListAiApplicationAgentsResponse.fromJson(core.Map json_)
+    : this(
+        agents: (json_['agents'] as core.List?)
+            ?.map(
+              (value) =>
+                  Agent.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final agents = this.agents;
+    final nextPageToken = this.nextPageToken;
+    return {'agents': ?agents, 'nextPageToken': ?nextPageToken};
+  }
+}
+
+/// Message for response to listing Endpoints under an AI Application.
+class ListAiApplicationEndpointsResponse {
+  /// The list of Endpoints.
+  core.List<Endpoint>? endpoints;
+
+  /// A token identifying a page of results the server should return.
+  core.String? nextPageToken;
+
+  ListAiApplicationEndpointsResponse({this.endpoints, this.nextPageToken});
+
+  ListAiApplicationEndpointsResponse.fromJson(core.Map json_)
+    : this(
+        endpoints: (json_['endpoints'] as core.List?)
+            ?.map(
+              (value) => Endpoint.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final endpoints = this.endpoints;
+    final nextPageToken = this.nextPageToken;
+    return {'endpoints': ?endpoints, 'nextPageToken': ?nextPageToken};
+  }
+}
+
+/// Message for response to listing McpServers under an AI Application.
+class ListAiApplicationMcpServersResponse {
+  /// The list of McpServers.
+  core.List<McpServer>? mcpServers;
+
+  /// A token identifying a page of results the server should return.
+  core.String? nextPageToken;
+
+  ListAiApplicationMcpServersResponse({this.mcpServers, this.nextPageToken});
+
+  ListAiApplicationMcpServersResponse.fromJson(core.Map json_)
+    : this(
+        mcpServers: (json_['mcpServers'] as core.List?)
+            ?.map(
+              (value) => McpServer.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final mcpServers = this.mcpServers;
+    final nextPageToken = this.nextPageToken;
+    return {'mcpServers': ?mcpServers, 'nextPageToken': ?nextPageToken};
+  }
+}
+
+/// Message for response to listing AiApplications.
+class ListAiApplicationsResponse {
+  /// The list of AiApplications.
+  core.List<AiApplication>? aiApplications;
+
+  /// A token identifying a page of results the server should return.
+  core.String? nextPageToken;
+
+  /// Unordered list.
+  ///
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListAiApplicationsResponse({
+    this.aiApplications,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListAiApplicationsResponse.fromJson(core.Map json_)
+    : this(
+        aiApplications: (json_['aiApplications'] as core.List?)
+            ?.map(
+              (value) => AiApplication.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final aiApplications = this.aiApplications;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'aiApplications': ?aiApplications,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
+  }
+}
+
 /// Message for response to listing Bindings
 class ListBindingsResponse {
   /// The list of Binding resources matching the parent and filter criteria in
@@ -2767,6 +4719,35 @@ class ListEndpointsResponse {
     final endpoints = this.endpoints;
     final nextPageToken = this.nextPageToken;
     return {'endpoints': ?endpoints, 'nextPageToken': ?nextPageToken};
+  }
+}
+
+/// Message for response to listing Findings.
+class ListFindingsResponse {
+  /// The list of Findings.
+  core.List<Finding>? findings;
+
+  /// A token identifying a page of results the server should return.
+  core.String? nextPageToken;
+
+  ListFindingsResponse({this.findings, this.nextPageToken});
+
+  ListFindingsResponse.fromJson(core.Map json_)
+    : this(
+        findings: (json_['findings'] as core.List?)
+            ?.map(
+              (value) => Finding.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final findings = this.findings;
+    final nextPageToken = this.nextPageToken;
+    return {'findings': ?findings, 'nextPageToken': ?nextPageToken};
   }
 }
 
@@ -2877,6 +4858,35 @@ class ListOperationsResponse {
   }
 }
 
+/// Response listing Publishers.
+class ListPublishersResponse {
+  /// Page offset continuation token.
+  core.String? nextPageToken;
+
+  /// The returned list of Publishers.
+  core.List<Publisher>? publishers;
+
+  ListPublishersResponse({this.nextPageToken, this.publishers});
+
+  ListPublishersResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        publishers: (json_['publishers'] as core.List?)
+            ?.map(
+              (value) => Publisher.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final publishers = this.publishers;
+    return {'nextPageToken': ?nextPageToken, 'publishers': ?publishers};
+  }
+}
+
 /// Message for response to listing Services
 class ListServicesResponse {
   /// A token identifying a page of results the server should return.
@@ -2909,6 +4919,74 @@ class ListServicesResponse {
     final nextPageToken = this.nextPageToken;
     final services = this.services;
     return {'nextPageToken': ?nextPageToken, 'services': ?services};
+  }
+}
+
+/// Response listing Revisions.
+class ListSkillRevisionsResponse {
+  /// Page offset continuation token.
+  core.String? nextPageToken;
+
+  /// Returned version snapshot list.
+  core.List<SkillRevision>? skillRevisions;
+
+  ListSkillRevisionsResponse({this.nextPageToken, this.skillRevisions});
+
+  ListSkillRevisionsResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        skillRevisions: (json_['skillRevisions'] as core.List?)
+            ?.map(
+              (value) => SkillRevision.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final skillRevisions = this.skillRevisions;
+    return {'nextPageToken': ?nextPageToken, 'skillRevisions': ?skillRevisions};
+  }
+}
+
+/// Response structure listing logical Skills.
+class ListSkillsResponse {
+  /// Page continuation continuation token.
+  core.String? nextPageToken;
+
+  /// Returned container list.
+  core.List<Skill>? skills;
+
+  /// Unreachable locations or failures.
+  core.List<core.String>? unreachable;
+
+  ListSkillsResponse({this.nextPageToken, this.skills, this.unreachable});
+
+  ListSkillsResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        skills: (json_['skills'] as core.List?)
+            ?.map(
+              (value) =>
+                  Skill.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final skills = this.skills;
+    final unreachable = this.unreachable;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'skills': ?skills,
+      'unreachable': ?unreachable,
+    };
   }
 }
 
@@ -3053,7 +5131,7 @@ class McpServerSpec {
 
   /// The type of the MCP Server spec content.
   ///
-  /// Required.
+  /// Required. Immutable.
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : Unspecified type.
   /// - "NO_SPEC" : There is no spec for the MCP Server. The `content` field
@@ -3206,6 +5284,171 @@ class Protocol {
   }
 }
 
+/// Represents a verified Publisher of Skills.
+///
+/// Prepopulated publishers include `publishers/cloud.google.com` and
+/// `publishers/workspace.google.com`.
+class Publisher {
+  /// Human readable display name of the publisher.
+  ///
+  /// Optional.
+  core.String? displayName;
+
+  /// URI pointing to official publisher documentation.
+  ///
+  /// Optional.
+  core.String? documentationUri;
+
+  /// Identifier.
+  ///
+  /// Resource name of the publisher. Format:
+  /// `projects/{project}/locations/{location}/publishers/{publisher}`
+  core.String? name;
+
+  /// The curation tier of the publisher.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "PUBLISHER_TIER_UNSPECIFIED" : Default value. Unspecified.
+  /// - "FIRST_PARTY" : First-party Google-curated and verified global
+  /// publishers.
+  /// - "THIRD_PARTY" : Third-party verified enterprise partner publishers.
+  /// - "PRIVATE" : Private publishers within the developer's workspace/project.
+  core.String? publisherTier;
+
+  /// URI pointing to the support portal or email.
+  ///
+  /// Optional.
+  core.String? supportUri;
+
+  /// The verified prefix (e.g. "snowflake-", "google-") associated with this
+  /// publisher.
+  ///
+  /// The system uses this prefix to enforce name-squatting rules during Skill
+  /// registration. Must be globally unique across all publishers.
+  ///
+  /// Required.
+  core.String? verifiedPrefix;
+
+  Publisher({
+    this.displayName,
+    this.documentationUri,
+    this.name,
+    this.publisherTier,
+    this.supportUri,
+    this.verifiedPrefix,
+  });
+
+  Publisher.fromJson(core.Map json_)
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        documentationUri: json_['documentationUri'] as core.String?,
+        name: json_['name'] as core.String?,
+        publisherTier: json_['publisherTier'] as core.String?,
+        supportUri: json_['supportUri'] as core.String?,
+        verifiedPrefix: json_['verifiedPrefix'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    final documentationUri = this.documentationUri;
+    final name = this.name;
+    final publisherTier = this.publisherTier;
+    final supportUri = this.supportUri;
+    final verifiedPrefix = this.verifiedPrefix;
+    return {
+      'displayName': ?displayName,
+      'documentationUri': ?documentationUri,
+      'name': ?name,
+      'publisherTier': ?publisherTier,
+      'supportUri': ?supportUri,
+      'verifiedPrefix': ?verifiedPrefix,
+    };
+  }
+}
+
+/// Scan result of the skill revision.
+class ScanResult {
+  /// The error message if the scan failed.
+  ///
+  /// Output only.
+  core.String? errorMessage;
+
+  /// The finding resource names for the skill revision.
+  ///
+  /// Output only.
+  core.List<core.String>? findings;
+
+  /// The state of the vulnerability check.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "SCAN_STATE_UNSPECIFIED" : Should not be used.
+  /// - "FAILED" : The underlying scanning system failed to execute the scan.
+  /// - "UNSUPPORTED_FORMAT" : The uploaded artifact format is unsupported by
+  /// the scanning system.
+  /// - "SUCCEEDED" : The scan has completed successfully.
+  /// - "DISABLED" : The scan was disabled.
+  /// - "RUNNING" : The scan is running.
+  core.String? scanState;
+
+  /// The time when the scan was completed.
+  ///
+  /// Output only.
+  core.String? scanTime;
+
+  ScanResult({this.errorMessage, this.findings, this.scanState, this.scanTime});
+
+  ScanResult.fromJson(core.Map json_)
+    : this(
+        errorMessage: json_['errorMessage'] as core.String?,
+        findings: (json_['findings'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        scanState: json_['scanState'] as core.String?,
+        scanTime: json_['scanTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final errorMessage = this.errorMessage;
+    final findings = this.findings;
+    final scanState = this.scanState;
+    final scanTime = this.scanTime;
+    return {
+      'errorMessage': ?errorMessage,
+      'findings': ?findings,
+      'scanState': ?scanState,
+      'scanTime': ?scanTime,
+    };
+  }
+}
+
+/// Configuration for scanning of the skill.
+class ScanningConfig {
+  /// The security scanning policy.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "POLICY_UNSPECIFIED" : Default value. Inherits system default
+  /// (ENABLED_BLOCKING).
+  /// - "DISABLED" : Bypasses scanning.
+  /// - "ENABLED_BLOCKING" : Scans the skill package and blocks download if
+  /// security or safety issues are found.
+  /// - "ENABLED_NONBLOCKING" : Scans the skill package in audit mode without
+  /// blocking downloads.
+  core.String? policy;
+
+  ScanningConfig({this.policy});
+
+  ScanningConfig.fromJson(core.Map json_)
+    : this(policy: json_['policy'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final policy = this.policy;
+    return {'policy': ?policy};
+  }
+}
+
 /// Message for searching Agents
 class SearchAgentsRequest {
   /// The maximum number of search results to return per page.
@@ -3244,7 +5487,7 @@ class SearchAgentsRequest {
   /// No | Included | | skills.name | No | Yes | No | Included | |
   /// skills.description | No | Yes | No | Included | | skills.tags | No | Yes |
   /// No | Included | | skills.examples | No | Yes | No | Included | Examples: *
-  /// `agentId="urn:agent:projects-123:projects:123:locations:us-central1:reasoningEngines:1234"`
+  /// `agentId="urn:agent:projects-123:projects:123:locations:us-central1:aiplatform:reasoningEngines:1234"`
   /// to find the agent with the specified agent ID. * `name:important` to find
   /// agents whose name contains `important` as a word. * `displayName:works*`
   /// to find agents whose display name contains words that start with `works`.
@@ -3409,6 +5652,34 @@ class SearchMcpServersResponse {
   }
 }
 
+/// Response listing searched Skills.
+class SearchSkillsResponse {
+  /// Query page offset continuation token.
+  core.String? nextPageToken;
+
+  /// Matched Skills list.
+  core.List<Skill>? skills;
+
+  SearchSkillsResponse({this.nextPageToken, this.skills});
+
+  SearchSkillsResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        skills: (json_['skills'] as core.List?)
+            ?.map(
+              (value) =>
+                  Skill.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final skills = this.skills;
+    return {'nextPageToken': ?nextPageToken, 'skills': ?skills};
+  }
+}
+
 /// Represents a user-defined Service.
 class Service {
   /// The spec of the Agent.
@@ -3548,6 +5819,354 @@ class Service {
   }
 }
 
+/// Represents an Executable Agent Skill or a Composite Tool Suite (Bundle).
+///
+/// Sibling resource with Agent and McpServer under
+/// agentregistry.googleapis.com.
+class Skill {
+  /// Create time.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The full resource name of the revision currently served by default
+  /// (floating track).
+  ///
+  /// Format:
+  /// `projects/{project}/locations/{location}/skills/{skill}/revisions/{revision}`
+  ///
+  /// Optional.
+  core.String? defaultRevision;
+
+  /// Brief summary describing the capabilities of the skill.
+  ///
+  /// Maximum length is 2048 characters.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// Human-readable display name of the skill.
+  ///
+  /// Maximum length is 128 characters.
+  ///
+  /// Optional.
+  core.String? displayName;
+
+  /// Lightweight frontmatter metadata attributes copied from the default
+  /// revision.
+  ///
+  /// Output only.
+  Frontmatter? frontmatter;
+
+  /// Input only.
+  ///
+  /// Optional nested initial revision payload to support standard one-shot
+  /// creation. The server processes this field on input during creation but
+  /// must never return it in responses.
+  ///
+  /// Optional.
+  SkillRevision? initialRevision;
+
+  /// Identifier.
+  ///
+  /// Resource name of the Skill. Format:
+  /// `projects/{project}/locations/{location}/skills/{skill}` The `{skill}`
+  /// segment acts as the resource ID. If the skill is associated with a
+  /// Publisher, this segment typically uses a hyphenated namespace prefix
+  /// corresponding to the publisher (e.g., `google-workspace-create-docs`).
+  core.String? name;
+
+  /// The publisher resource associated with this skill.
+  ///
+  /// Format: `projects/{project}/locations/{location}/publishers/{publisher}`
+  /// The publisher dictates the allowed namespace prefixes for the skill's name
+  /// and logical `skill_id` (e.g., Publisher `google` authorizes the `google-*`
+  /// prefix).
+  ///
+  /// Optional.
+  core.String? publisher;
+
+  /// Scanning configuration for the skill.
+  ///
+  /// Optional.
+  ScanningConfig? scanningConfig;
+
+  /// A stable, globally unique logical identifier for the skill.
+  ///
+  /// It is securely constructed by the backend by combining the associated
+  /// `publisher`'s verified namespace and the skill's resource ID to enforce
+  /// strict ownership. For example, the prefix `google-` is reserved
+  /// exclusively for first-party Google publishers to prevent namespace
+  /// squatting. Example: `urn:skill:google-workspace:create-docs`
+  ///
+  /// Output only.
+  core.String? skillId;
+
+  /// The system-managed state of the skill.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "STATE_CREATING" : The skill is being created. It is not served.
+  /// - "STATE_DRAFT" : The skill is in draft, or lacks a valid payload. It is
+  /// not served.
+  /// - "STATE_ACTIVE" : The skill is active and is served.
+  /// - "STATE_DISABLED" : The skill is disabled and is not served.
+  /// - "STATE_DEPRECATED" : The skill is deprecated. It is served, but emits
+  /// warnings.
+  /// - "STATE_DECOMMISSIONED" : The skill is decommissioned and is not served.
+  /// - "STATE_DELETING" : The skill is being deleted. It is not served.
+  core.String? state;
+
+  /// User-managed target state of the skill.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "TARGET_STATE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "TARGET_STATE_DRAFT" : The skill is in draft and cannot be served.
+  /// - "TARGET_STATE_ACTIVE" : The skill is active and can be served.
+  /// - "TARGET_STATE_DISABLED" : The skill is disabled and cannot be served.
+  /// - "TARGET_STATE_DEPRECATED" : The skill is deprecated. It can still be
+  /// served, but emits warnings.
+  /// - "TARGET_STATE_DECOMMISSIONED" : The skill is decommissioned and cannot
+  /// be served.
+  core.String? targetState;
+
+  /// Structural deployment type (SIMPLE leaf vs COMPOSITE bundle).
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "SIMPLE" : A standard, leaf executable skill containing natural language
+  /// and code.
+  core.String? type;
+
+  /// Universally unique identifier (UUID4) for the logical container.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  /// Update time.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  Skill({
+    this.createTime,
+    this.defaultRevision,
+    this.description,
+    this.displayName,
+    this.frontmatter,
+    this.initialRevision,
+    this.name,
+    this.publisher,
+    this.scanningConfig,
+    this.skillId,
+    this.state,
+    this.targetState,
+    this.type,
+    this.uid,
+    this.updateTime,
+  });
+
+  Skill.fromJson(core.Map json_)
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        defaultRevision: json_['defaultRevision'] as core.String?,
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        frontmatter: json_.containsKey('frontmatter')
+            ? Frontmatter.fromJson(
+                json_['frontmatter'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        initialRevision: json_.containsKey('initialRevision')
+            ? SkillRevision.fromJson(
+                json_['initialRevision'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        name: json_['name'] as core.String?,
+        publisher: json_['publisher'] as core.String?,
+        scanningConfig: json_.containsKey('scanningConfig')
+            ? ScanningConfig.fromJson(
+                json_['scanningConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        skillId: json_['skillId'] as core.String?,
+        state: json_['state'] as core.String?,
+        targetState: json_['targetState'] as core.String?,
+        type: json_['type'] as core.String?,
+        uid: json_['uid'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final defaultRevision = this.defaultRevision;
+    final description = this.description;
+    final displayName = this.displayName;
+    final frontmatter = this.frontmatter;
+    final initialRevision = this.initialRevision;
+    final name = this.name;
+    final publisher = this.publisher;
+    final scanningConfig = this.scanningConfig;
+    final skillId = this.skillId;
+    final state = this.state;
+    final targetState = this.targetState;
+    final type = this.type;
+    final uid = this.uid;
+    final updateTime = this.updateTime;
+    return {
+      'createTime': ?createTime,
+      'defaultRevision': ?defaultRevision,
+      'description': ?description,
+      'displayName': ?displayName,
+      'frontmatter': ?frontmatter,
+      'initialRevision': ?initialRevision,
+      'name': ?name,
+      'publisher': ?publisher,
+      'scanningConfig': ?scanningConfig,
+      'skillId': ?skillId,
+      'state': ?state,
+      'targetState': ?targetState,
+      'type': ?type,
+      'uid': ?uid,
+      'updateTime': ?updateTime,
+    };
+  }
+}
+
+/// Represents an immutable, versioned snapshot of a Skill package.
+class SkillRevision {
+  /// Direct write-only raw archive upload source.
+  ///
+  /// Optional. Immutable.
+  ArchiveUploadSource? archiveUploadSource;
+
+  /// Revision creation timestamp.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Extracted YAML frontmatter configuration snapshot.
+  ///
+  /// Output only.
+  Frontmatter? frontmatter;
+
+  /// Cloud Storage object generation URI.
+  ///
+  /// Optional. Immutable.
+  GcsSource? gcsSource;
+
+  /// Identifier.
+  ///
+  /// Resource name of the SkillRevision. Format:
+  /// `projects/{project}/locations/{location}/skills/{skill}/revisions/{revision}`
+  core.String? name;
+
+  /// Scan result of the skill revision.
+  ///
+  /// Output only.
+  ScanResult? scanResult;
+
+  /// Cryptographic SHA-256 integrity and deduplication digest of the payload
+  /// zip.
+  ///
+  /// Output only.
+  core.String? sha256Hash;
+
+  /// Size of the compiled zip payload in bytes (assists client download
+  /// progress).
+  ///
+  /// Output only.
+  core.String? sizeBytes;
+
+  /// The system-managed lifecycle state of this revision.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "CREATING" : The revision is being created.
+  /// - "ACTIVE" : The revision is active.
+  /// - "FAILED" : The revision failed to compile or ingest.
+  /// - "DELETING" : The revision is being deleted.
+  core.String? state;
+
+  /// Universally unique identifier (UUID4) for the skill revision.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  SkillRevision({
+    this.archiveUploadSource,
+    this.createTime,
+    this.frontmatter,
+    this.gcsSource,
+    this.name,
+    this.scanResult,
+    this.sha256Hash,
+    this.sizeBytes,
+    this.state,
+    this.uid,
+  });
+
+  SkillRevision.fromJson(core.Map json_)
+    : this(
+        archiveUploadSource: json_.containsKey('archiveUploadSource')
+            ? ArchiveUploadSource.fromJson(
+                json_['archiveUploadSource']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        createTime: json_['createTime'] as core.String?,
+        frontmatter: json_.containsKey('frontmatter')
+            ? Frontmatter.fromJson(
+                json_['frontmatter'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        gcsSource: json_.containsKey('gcsSource')
+            ? GcsSource.fromJson(
+                json_['gcsSource'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        name: json_['name'] as core.String?,
+        scanResult: json_.containsKey('scanResult')
+            ? ScanResult.fromJson(
+                json_['scanResult'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        sha256Hash: json_['sha256Hash'] as core.String?,
+        sizeBytes: json_['sizeBytes'] as core.String?,
+        state: json_['state'] as core.String?,
+        uid: json_['uid'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final archiveUploadSource = this.archiveUploadSource;
+    final createTime = this.createTime;
+    final frontmatter = this.frontmatter;
+    final gcsSource = this.gcsSource;
+    final name = this.name;
+    final scanResult = this.scanResult;
+    final sha256Hash = this.sha256Hash;
+    final sizeBytes = this.sizeBytes;
+    final state = this.state;
+    final uid = this.uid;
+    return {
+      'archiveUploadSource': ?archiveUploadSource,
+      'createTime': ?createTime,
+      'frontmatter': ?frontmatter,
+      'gcsSource': ?gcsSource,
+      'name': ?name,
+      'scanResult': ?scanResult,
+      'sha256Hash': ?sha256Hash,
+      'sizeBytes': ?sizeBytes,
+      'state': ?state,
+      'uid': ?uid,
+    };
+  }
+}
+
 /// The source of the Binding.
 class Source {
   /// The identifier of the source Agent.
@@ -3597,6 +6216,16 @@ class Target {
 
 /// Represents a single tool provided by an MCP Server.
 class Tool {
+  /// Protocol-level tool metadata conforming to MCP _meta specification.
+  ///
+  /// Output only.
+  ///
+  /// Output only.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? P_meta;
+
   /// Annotations associated with the tool.
   ///
   /// Output only.
@@ -3612,10 +6241,13 @@ class Tool {
   /// Output only.
   core.String? name;
 
-  Tool({this.annotations, this.description, this.name});
+  Tool({this.P_meta, this.annotations, this.description, this.name});
 
   Tool.fromJson(core.Map json_)
     : this(
+        P_meta: json_.containsKey('_meta')
+            ? json_['_meta'] as core.Map<core.String, core.dynamic>
+            : null,
         annotations: json_.containsKey('annotations')
             ? Annotations.fromJson(
                 json_['annotations'] as core.Map<core.String, core.dynamic>,
@@ -3626,10 +6258,12 @@ class Tool {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final P_meta = this.P_meta;
     final annotations = this.annotations;
     final description = this.description;
     final name = this.name;
     return {
+      '_meta': ?P_meta,
       'annotations': ?annotations,
       'description': ?description,
       'name': ?name,

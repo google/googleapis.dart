@@ -51,7 +51,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260405",
+    "revision": "20260916",
     "rootUrl": "https://www.googleapis.com/",
     "servicePath": "drive/v2/",
     "title": "Google Drive API",
@@ -2653,7 +2653,7 @@
         "permissions": {
             "methods": {
                 "delete": {
-                    "description": "Deletes a permission from a file or shared drive. **Warning:** Concurrent permissions operations on the same file are not supported; only the last update is applied.",
+                    "description": "Deletes a permission from a file or shared drive. **Warning:** Concurrent permission modifications (such as update or delete) on the same file, folder, or shared drive aren't supported across any users or clients; only the last update is applied.",
                     "flatPath": "files/{fileId}/permissions/{permissionId}",
                     "httpMethod": "DELETE",
                     "id": "drive.permissions.delete",
@@ -2795,7 +2795,7 @@
                     ]
                 },
                 "insert": {
-                    "description": "Inserts a permission for a file or shared drive. **Warning:** Concurrent permissions operations on the same file are not supported; only the last update is applied.",
+                    "description": "Inserts a permission for a file or shared drive. **Warning:** Concurrent permission modifications (such as update or delete) on the same file, folder, or shared drive aren't supported across any users or clients; only the last update is applied.",
                     "flatPath": "files/{fileId}/permissions",
                     "httpMethod": "POST",
                     "id": "drive.permissions.insert",
@@ -2940,7 +2940,7 @@
                     ]
                 },
                 "patch": {
-                    "description": "Updates a permission using patch semantics. **Warning:** Concurrent permissions operations on the same file are not supported; only the last update is applied.",
+                    "description": "Updates a permission using patch semantics. **Warning:** Concurrent permission modifications (such as update or delete) on the same file, folder, or shared drive aren't supported across any users or clients; only the last update is applied.",
                     "flatPath": "files/{fileId}/permissions/{permissionId}",
                     "httpMethod": "PATCH",
                     "id": "drive.permissions.patch",
@@ -3013,7 +3013,7 @@
                     ]
                 },
                 "update": {
-                    "description": "Updates a permission. **Warning:** Concurrent permissions operations on the same file are not supported; only the last update is applied.",
+                    "description": "Updates a permission. **Warning:** Concurrent permission modifications (such as update or delete) on the same file, folder, or shared drive aren't supported across any users or clients; only the last update is applied.",
                     "flatPath": "files/{fileId}/permissions/{permissionId}",
                     "httpMethod": "PUT",
                     "id": "drive.permissions.update",

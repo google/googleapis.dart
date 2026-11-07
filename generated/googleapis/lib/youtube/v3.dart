@@ -720,21 +720,23 @@ class ChannelBannersResource {
   /// with must be linked to the specified YouTube content owner.
   ///
   /// [onBehalfOfContentOwnerChannel] - This parameter can only be used in a
-  /// properly authorized request. *Note:* This parameter is intended
-  /// exclusively for YouTube content partners. The
-  /// *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID
-  /// of the channel to which a video is being added. This parameter is required
-  /// when a request specifies a value for the onBehalfOfContentOwner parameter,
-  /// and it can only be used in conjunction with that parameter. In addition,
-  /// the request must be authorized using a CMS account that is linked to the
-  /// content owner that the onBehalfOfContentOwner parameter specifies.
-  /// Finally, the channel that the onBehalfOfContentOwnerChannel parameter
-  /// value specifies must be linked to the content owner that the
-  /// onBehalfOfContentOwner parameter specifies. This parameter is intended for
-  /// YouTube content partners that own and manage many different YouTube
-  /// channels. It allows content owners to authenticate once and perform
-  /// actions on behalf of the channel specified in the parameter value, without
-  /// having to provide authentication credentials for each separate channel.
+  /// properly
+  /// [authorized request](https://developers.google.com/youtube/data/guides/authentication).
+  /// *Note:* This parameter is intended exclusively for YouTube content
+  /// partners. The *onBehalfOfContentOwnerChannel* parameter specifies the
+  /// YouTube channel ID of the channel to which a video is being added. This
+  /// parameter is required when a request specifies a value for the
+  /// onBehalfOfContentOwner parameter, and it can only be used in conjunction
+  /// with that parameter. In addition, the request must be authorized using a
+  /// CMS account that is linked to the content owner that the
+  /// onBehalfOfContentOwner parameter specifies. Finally, the channel that the
+  /// onBehalfOfContentOwnerChannel parameter value specifies must be linked to
+  /// the content owner that the onBehalfOfContentOwner parameter specifies.
+  /// This parameter is intended for YouTube content partners that own and
+  /// manage many different YouTube channels. It allows content owners to
+  /// authenticate once and perform actions on behalf of the channel specified
+  /// in the parameter value, without having to provide authentication
+  /// credentials for each separate channel.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -872,21 +874,23 @@ class ChannelSectionsResource {
   /// be linked to the specified YouTube content owner.
   ///
   /// [onBehalfOfContentOwnerChannel] - This parameter can only be used in a
-  /// properly authorized request. *Note:* This parameter is intended
-  /// exclusively for YouTube content partners. The
-  /// *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID
-  /// of the channel to which a video is being added. This parameter is required
-  /// when a request specifies a value for the onBehalfOfContentOwner parameter,
-  /// and it can only be used in conjunction with that parameter. In addition,
-  /// the request must be authorized using a CMS account that is linked to the
-  /// content owner that the onBehalfOfContentOwner parameter specifies.
-  /// Finally, the channel that the onBehalfOfContentOwnerChannel parameter
-  /// value specifies must be linked to the content owner that the
-  /// onBehalfOfContentOwner parameter specifies. This parameter is intended for
-  /// YouTube content partners that own and manage many different YouTube
-  /// channels. It allows content owners to authenticate once and perform
-  /// actions on behalf of the channel specified in the parameter value, without
-  /// having to provide authentication credentials for each separate channel.
+  /// properly
+  /// [authorized request](https://developers.google.com/youtube/data/guides/authentication).
+  /// *Note:* This parameter is intended exclusively for YouTube content
+  /// partners. The *onBehalfOfContentOwnerChannel* parameter specifies the
+  /// YouTube channel ID of the channel to which a video is being added. This
+  /// parameter is required when a request specifies a value for the
+  /// onBehalfOfContentOwner parameter, and it can only be used in conjunction
+  /// with that parameter. In addition, the request must be authorized using a
+  /// CMS account that is linked to the content owner that the
+  /// onBehalfOfContentOwner parameter specifies. Finally, the channel that the
+  /// onBehalfOfContentOwnerChannel parameter value specifies must be linked to
+  /// the content owner that the onBehalfOfContentOwner parameter specifies.
+  /// This parameter is intended for YouTube content partners that own and
+  /// manage many different YouTube channels. It allows content owners to
+  /// authenticate once and perform actions on behalf of the channel specified
+  /// in the parameter value, without having to provide authentication
+  /// credentials for each separate channel.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1214,7 +1218,10 @@ class ChannelsResource {
   /// all their video and channel data, without having to provide authentication
   /// credentials for each individual channel. The actual CMS account that the
   /// user authenticates with needs to be linked to the specified YouTube
-  /// content owner.
+  /// content owner. This parameter must be provided if the request is
+  /// authenticated with credentials for a CMS content owner user acting on a
+  /// managed channel. If omitted, the request executes under the authenticated
+  /// user's direct context and returns an HTTP 403 Forbidden error.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1347,8 +1354,6 @@ class CommentThreadsResource {
   /// result set that should be returned. In an API response, the nextPageToken
   /// and prevPageToken properties identify other pages that could be retrieved.
   ///
-  /// [postId] - Returns the comment threads of the specified post.
-  ///
   /// [searchTerms] - Limits the returned comment threads to those matching the
   /// specified key words. Not compatible with the 'id' filter.
   ///
@@ -1379,7 +1384,6 @@ class CommentThreadsResource {
     core.String? moderationStatus,
     core.String? order,
     core.String? pageToken,
-    core.String? postId,
     core.String? searchTerms,
     core.String? textFormat,
     core.String? videoId,
@@ -1399,7 +1403,6 @@ class CommentThreadsResource {
       'moderationStatus': ?moderationStatus == null ? null : [moderationStatus],
       'order': ?order == null ? null : [order],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'postId': ?postId == null ? null : [postId],
       'searchTerms': ?searchTerms == null ? null : [searchTerms],
       'textFormat': ?textFormat == null ? null : [textFormat],
       'videoId': ?videoId == null ? null : [videoId],
@@ -1840,21 +1843,23 @@ class LiveBroadcastsResource {
   /// be linked to the specified YouTube content owner.
   ///
   /// [onBehalfOfContentOwnerChannel] - This parameter can only be used in a
-  /// properly authorized request. *Note:* This parameter is intended
-  /// exclusively for YouTube content partners. The
-  /// *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID
-  /// of the channel to which a video is being added. This parameter is required
-  /// when a request specifies a value for the onBehalfOfContentOwner parameter,
-  /// and it can only be used in conjunction with that parameter. In addition,
-  /// the request must be authorized using a CMS account that is linked to the
-  /// content owner that the onBehalfOfContentOwner parameter specifies.
-  /// Finally, the channel that the onBehalfOfContentOwnerChannel parameter
-  /// value specifies must be linked to the content owner that the
-  /// onBehalfOfContentOwner parameter specifies. This parameter is intended for
-  /// YouTube content partners that own and manage many different YouTube
-  /// channels. It allows content owners to authenticate once and perform
-  /// actions on behalf of the channel specified in the parameter value, without
-  /// having to provide authentication credentials for each separate channel.
+  /// properly
+  /// [authorized request](https://developers.google.com/youtube/data/guides/authentication).
+  /// *Note:* This parameter is intended exclusively for YouTube content
+  /// partners. The *onBehalfOfContentOwnerChannel* parameter specifies the
+  /// YouTube channel ID of the channel to which a video is being added. This
+  /// parameter is required when a request specifies a value for the
+  /// onBehalfOfContentOwner parameter, and it can only be used in conjunction
+  /// with that parameter. In addition, the request must be authorized using a
+  /// CMS account that is linked to the content owner that the
+  /// onBehalfOfContentOwner parameter specifies. Finally, the channel that the
+  /// onBehalfOfContentOwnerChannel parameter value specifies must be linked to
+  /// the content owner that the onBehalfOfContentOwner parameter specifies.
+  /// This parameter is intended for YouTube content partners that own and
+  /// manage many different YouTube channels. It allows content owners to
+  /// authenticate once and perform actions on behalf of the channel specified
+  /// in the parameter value, without having to provide authentication
+  /// credentials for each separate channel.
   ///
   /// [streamId] - Stream to bind, if not set unbind the current one.
   ///
@@ -1922,21 +1927,23 @@ class LiveBroadcastsResource {
   /// be linked to the specified YouTube content owner.
   ///
   /// [onBehalfOfContentOwnerChannel] - This parameter can only be used in a
-  /// properly authorized request. *Note:* This parameter is intended
-  /// exclusively for YouTube content partners. The
-  /// *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID
-  /// of the channel to which a video is being added. This parameter is required
-  /// when a request specifies a value for the onBehalfOfContentOwner parameter,
-  /// and it can only be used in conjunction with that parameter. In addition,
-  /// the request must be authorized using a CMS account that is linked to the
-  /// content owner that the onBehalfOfContentOwner parameter specifies.
-  /// Finally, the channel that the onBehalfOfContentOwnerChannel parameter
-  /// value specifies must be linked to the content owner that the
-  /// onBehalfOfContentOwner parameter specifies. This parameter is intended for
-  /// YouTube content partners that own and manage many different YouTube
-  /// channels. It allows content owners to authenticate once and perform
-  /// actions on behalf of the channel specified in the parameter value, without
-  /// having to provide authentication credentials for each separate channel.
+  /// properly
+  /// [authorized request](https://developers.google.com/youtube/data/guides/authentication).
+  /// *Note:* This parameter is intended exclusively for YouTube content
+  /// partners. The *onBehalfOfContentOwnerChannel* parameter specifies the
+  /// YouTube channel ID of the channel to which a video is being added. This
+  /// parameter is required when a request specifies a value for the
+  /// onBehalfOfContentOwner parameter, and it can only be used in conjunction
+  /// with that parameter. In addition, the request must be authorized using a
+  /// CMS account that is linked to the content owner that the
+  /// onBehalfOfContentOwner parameter specifies. Finally, the channel that the
+  /// onBehalfOfContentOwnerChannel parameter value specifies must be linked to
+  /// the content owner that the onBehalfOfContentOwner parameter specifies.
+  /// This parameter is intended for YouTube content partners that own and
+  /// manage many different YouTube channels. It allows content owners to
+  /// authenticate once and perform actions on behalf of the channel specified
+  /// in the parameter value, without having to provide authentication
+  /// credentials for each separate channel.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1997,21 +2004,23 @@ class LiveBroadcastsResource {
   /// be linked to the specified YouTube content owner.
   ///
   /// [onBehalfOfContentOwnerChannel] - This parameter can only be used in a
-  /// properly authorized request. *Note:* This parameter is intended
-  /// exclusively for YouTube content partners. The
-  /// *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID
-  /// of the channel to which a video is being added. This parameter is required
-  /// when a request specifies a value for the onBehalfOfContentOwner parameter,
-  /// and it can only be used in conjunction with that parameter. In addition,
-  /// the request must be authorized using a CMS account that is linked to the
-  /// content owner that the onBehalfOfContentOwner parameter specifies.
-  /// Finally, the channel that the onBehalfOfContentOwnerChannel parameter
-  /// value specifies must be linked to the content owner that the
-  /// onBehalfOfContentOwner parameter specifies. This parameter is intended for
-  /// YouTube content partners that own and manage many different YouTube
-  /// channels. It allows content owners to authenticate once and perform
-  /// actions on behalf of the channel specified in the parameter value, without
-  /// having to provide authentication credentials for each separate channel.
+  /// properly
+  /// [authorized request](https://developers.google.com/youtube/data/guides/authentication).
+  /// *Note:* This parameter is intended exclusively for YouTube content
+  /// partners. The *onBehalfOfContentOwnerChannel* parameter specifies the
+  /// YouTube channel ID of the channel to which a video is being added. This
+  /// parameter is required when a request specifies a value for the
+  /// onBehalfOfContentOwner parameter, and it can only be used in conjunction
+  /// with that parameter. In addition, the request must be authorized using a
+  /// CMS account that is linked to the content owner that the
+  /// onBehalfOfContentOwner parameter specifies. Finally, the channel that the
+  /// onBehalfOfContentOwnerChannel parameter value specifies must be linked to
+  /// the content owner that the onBehalfOfContentOwner parameter specifies.
+  /// This parameter is intended for YouTube content partners that own and
+  /// manage many different YouTube channels. It allows content owners to
+  /// authenticate once and perform actions on behalf of the channel specified
+  /// in the parameter value, without having to provide authentication
+  /// credentials for each separate channel.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2079,21 +2088,23 @@ class LiveBroadcastsResource {
   /// be linked to the specified YouTube content owner.
   ///
   /// [onBehalfOfContentOwnerChannel] - This parameter can only be used in a
-  /// properly authorized request. *Note:* This parameter is intended
-  /// exclusively for YouTube content partners. The
-  /// *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID
-  /// of the channel to which a video is being added. This parameter is required
-  /// when a request specifies a value for the onBehalfOfContentOwner parameter,
-  /// and it can only be used in conjunction with that parameter. In addition,
-  /// the request must be authorized using a CMS account that is linked to the
-  /// content owner that the onBehalfOfContentOwner parameter specifies.
-  /// Finally, the channel that the onBehalfOfContentOwnerChannel parameter
-  /// value specifies must be linked to the content owner that the
-  /// onBehalfOfContentOwner parameter specifies. This parameter is intended for
-  /// YouTube content partners that own and manage many different YouTube
-  /// channels. It allows content owners to authenticate once and perform
-  /// actions on behalf of the channel specified in the parameter value, without
-  /// having to provide authentication credentials for each separate channel.
+  /// properly
+  /// [authorized request](https://developers.google.com/youtube/data/guides/authentication).
+  /// *Note:* This parameter is intended exclusively for YouTube content
+  /// partners. The *onBehalfOfContentOwnerChannel* parameter specifies the
+  /// YouTube channel ID of the channel to which a video is being added. This
+  /// parameter is required when a request specifies a value for the
+  /// onBehalfOfContentOwner parameter, and it can only be used in conjunction
+  /// with that parameter. In addition, the request must be authorized using a
+  /// CMS account that is linked to the content owner that the
+  /// onBehalfOfContentOwner parameter specifies. Finally, the channel that the
+  /// onBehalfOfContentOwnerChannel parameter value specifies must be linked to
+  /// the content owner that the onBehalfOfContentOwner parameter specifies.
+  /// This parameter is intended for YouTube content partners that own and
+  /// manage many different YouTube channels. It allows content owners to
+  /// authenticate once and perform actions on behalf of the channel specified
+  /// in the parameter value, without having to provide authentication
+  /// credentials for each separate channel.
   ///
   /// [part] - The *part* parameter specifies a comma-separated list of one or
   /// more liveBroadcast resource properties that the API response will include.
@@ -2187,21 +2198,23 @@ class LiveBroadcastsResource {
   /// be linked to the specified YouTube content owner.
   ///
   /// [onBehalfOfContentOwnerChannel] - This parameter can only be used in a
-  /// properly authorized request. *Note:* This parameter is intended
-  /// exclusively for YouTube content partners. The
-  /// *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID
-  /// of the channel to which a video is being added. This parameter is required
-  /// when a request specifies a value for the onBehalfOfContentOwner parameter,
-  /// and it can only be used in conjunction with that parameter. In addition,
-  /// the request must be authorized using a CMS account that is linked to the
-  /// content owner that the onBehalfOfContentOwner parameter specifies.
-  /// Finally, the channel that the onBehalfOfContentOwnerChannel parameter
-  /// value specifies must be linked to the content owner that the
-  /// onBehalfOfContentOwner parameter specifies. This parameter is intended for
-  /// YouTube content partners that own and manage many different YouTube
-  /// channels. It allows content owners to authenticate once and perform
-  /// actions on behalf of the channel specified in the parameter value, without
-  /// having to provide authentication credentials for each separate channel.
+  /// properly
+  /// [authorized request](https://developers.google.com/youtube/data/guides/authentication).
+  /// *Note:* This parameter is intended exclusively for YouTube content
+  /// partners. The *onBehalfOfContentOwnerChannel* parameter specifies the
+  /// YouTube channel ID of the channel to which a video is being added. This
+  /// parameter is required when a request specifies a value for the
+  /// onBehalfOfContentOwner parameter, and it can only be used in conjunction
+  /// with that parameter. In addition, the request must be authorized using a
+  /// CMS account that is linked to the content owner that the
+  /// onBehalfOfContentOwner parameter specifies. Finally, the channel that the
+  /// onBehalfOfContentOwnerChannel parameter value specifies must be linked to
+  /// the content owner that the onBehalfOfContentOwner parameter specifies.
+  /// This parameter is intended for YouTube content partners that own and
+  /// manage many different YouTube channels. It allows content owners to
+  /// authenticate once and perform actions on behalf of the channel specified
+  /// in the parameter value, without having to provide authentication
+  /// credentials for each separate channel.
   ///
   /// [pageToken] - The *pageToken* parameter identifies a specific page in the
   /// result set that should be returned. In an API response, the nextPageToken
@@ -2272,8 +2285,8 @@ class LiveBroadcastsResource {
   /// - "testing" : Start testing the broadcast. YouTube transmits video to the
   /// broadcast's monitor stream. Note that you can only transition a broadcast
   /// to the testing state if its
-  /// contentDetails.monitorStream.enableMonitorStream property is set to
-  /// true.",
+  /// \[`contentDetails.monitorStream.enableMonitorStream`\](https://developers.google.com/youtube/data/live/reference/rest/v3/liveBroadcasts#contentDetails.monitorStream.enableMonitorStream)
+  /// property is set to true.",
   /// - "live" : Return only persistent broadcasts.
   /// - "complete" : The broadcast is over. YouTube stops transmitting video.
   ///
@@ -2296,21 +2309,23 @@ class LiveBroadcastsResource {
   /// be linked to the specified YouTube content owner.
   ///
   /// [onBehalfOfContentOwnerChannel] - This parameter can only be used in a
-  /// properly authorized request. *Note:* This parameter is intended
-  /// exclusively for YouTube content partners. The
-  /// *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID
-  /// of the channel to which a video is being added. This parameter is required
-  /// when a request specifies a value for the onBehalfOfContentOwner parameter,
-  /// and it can only be used in conjunction with that parameter. In addition,
-  /// the request must be authorized using a CMS account that is linked to the
-  /// content owner that the onBehalfOfContentOwner parameter specifies.
-  /// Finally, the channel that the onBehalfOfContentOwnerChannel parameter
-  /// value specifies must be linked to the content owner that the
-  /// onBehalfOfContentOwner parameter specifies. This parameter is intended for
-  /// YouTube content partners that own and manage many different YouTube
-  /// channels. It allows content owners to authenticate once and perform
-  /// actions on behalf of the channel specified in the parameter value, without
-  /// having to provide authentication credentials for each separate channel.
+  /// properly
+  /// [authorized request](https://developers.google.com/youtube/data/guides/authentication).
+  /// *Note:* This parameter is intended exclusively for YouTube content
+  /// partners. The *onBehalfOfContentOwnerChannel* parameter specifies the
+  /// YouTube channel ID of the channel to which a video is being added. This
+  /// parameter is required when a request specifies a value for the
+  /// onBehalfOfContentOwner parameter, and it can only be used in conjunction
+  /// with that parameter. In addition, the request must be authorized using a
+  /// CMS account that is linked to the content owner that the
+  /// onBehalfOfContentOwner parameter specifies. Finally, the channel that the
+  /// onBehalfOfContentOwnerChannel parameter value specifies must be linked to
+  /// the content owner that the onBehalfOfContentOwner parameter specifies.
+  /// This parameter is intended for YouTube content partners that own and
+  /// manage many different YouTube channels. It allows content owners to
+  /// authenticate once and perform actions on behalf of the channel specified
+  /// in the parameter value, without having to provide authentication
+  /// credentials for each separate channel.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2390,21 +2405,23 @@ class LiveBroadcastsResource {
   /// be linked to the specified YouTube content owner.
   ///
   /// [onBehalfOfContentOwnerChannel] - This parameter can only be used in a
-  /// properly authorized request. *Note:* This parameter is intended
-  /// exclusively for YouTube content partners. The
-  /// *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID
-  /// of the channel to which a video is being added. This parameter is required
-  /// when a request specifies a value for the onBehalfOfContentOwner parameter,
-  /// and it can only be used in conjunction with that parameter. In addition,
-  /// the request must be authorized using a CMS account that is linked to the
-  /// content owner that the onBehalfOfContentOwner parameter specifies.
-  /// Finally, the channel that the onBehalfOfContentOwnerChannel parameter
-  /// value specifies must be linked to the content owner that the
-  /// onBehalfOfContentOwner parameter specifies. This parameter is intended for
-  /// YouTube content partners that own and manage many different YouTube
-  /// channels. It allows content owners to authenticate once and perform
-  /// actions on behalf of the channel specified in the parameter value, without
-  /// having to provide authentication credentials for each separate channel.
+  /// properly
+  /// [authorized request](https://developers.google.com/youtube/data/guides/authentication).
+  /// *Note:* This parameter is intended exclusively for YouTube content
+  /// partners. The *onBehalfOfContentOwnerChannel* parameter specifies the
+  /// YouTube channel ID of the channel to which a video is being added. This
+  /// parameter is required when a request specifies a value for the
+  /// onBehalfOfContentOwner parameter, and it can only be used in conjunction
+  /// with that parameter. In addition, the request must be authorized using a
+  /// CMS account that is linked to the content owner that the
+  /// onBehalfOfContentOwner parameter specifies. Finally, the channel that the
+  /// onBehalfOfContentOwnerChannel parameter value specifies must be linked to
+  /// the content owner that the onBehalfOfContentOwner parameter specifies.
+  /// This parameter is intended for YouTube content partners that own and
+  /// manage many different YouTube channels. It allows content owners to
+  /// authenticate once and perform actions on behalf of the channel specified
+  /// in the parameter value, without having to provide authentication
+  /// credentials for each separate channel.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2543,6 +2560,8 @@ class LiveChatMessagesResource {
 
   /// Deletes a chat message.
   ///
+  /// A call to this method has a quota cost of 20 units.
+  ///
   /// Request parameters:
   ///
   /// [id] - null
@@ -2573,13 +2592,15 @@ class LiveChatMessagesResource {
 
   /// Inserts a new resource into this collection.
   ///
+  /// A call to this method has a quota cost of 20 units.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [part] - The *part* parameter serves two purposes. It identifies the
-  /// properties that the write operation will set as well as the properties
-  /// that the API response will include. Set the parameter value to snippet.
+  /// [part] - The `part` parameter serves two purposes. It identifies the
+  /// properties that the write operation sets as well as the properties that
+  /// the API response includes. Set the parameter value to `snippet`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2620,26 +2641,28 @@ class LiveChatMessagesResource {
 
   /// Retrieves a list of resources, possibly filtered.
   ///
+  /// A call to this method has a quota cost of 5 units.
+  ///
   /// Request parameters:
   ///
-  /// [liveChatId] - The id of the live chat for which comments should be
+  /// [liveChatId] - The ID of the live chat for which messages should be
   /// returned.
   ///
-  /// [part] - The *part* parameter specifies the liveChatComment resource parts
-  /// that the API response will include. Supported values are id, snippet, and
-  /// authorDetails.
+  /// [part] - The `part` parameter specifies the `liveChatMessage` resource
+  /// parts that the API response includes. Supported values are `id`,
+  /// `snippet`, and `authorDetails`.
   ///
   /// [hl] - Specifies the localization language in which the system messages
   /// should be returned.
   ///
-  /// [maxResults] - The *maxResults* parameter specifies the maximum number of
+  /// [maxResults] - The `maxResults` parameter specifies the maximum number of
   /// items that should be returned in the result set. Not used in the streaming
   /// RPC.
   /// Value must be between "200" and "2000".
   ///
-  /// [pageToken] - The *pageToken* parameter identifies a specific page in the
-  /// result set that should be returned. In an API response, the nextPageToken
-  /// property identify other pages that could be retrieved.
+  /// [pageToken] - The `pageToken` parameter identifies a specific page in the
+  /// result set that should be returned. In an API response, the
+  /// `nextPageToken` property identifies other pages that could be retrieved.
   ///
   /// [profileImageSize] - Specifies the size of the profile image that should
   /// be returned for each user.
@@ -2691,11 +2714,14 @@ class LiveChatMessagesResource {
     );
   }
 
-  /// Transition a durable chat event.
+  /// Transitions a durable chat event.
+  ///
+  /// A call to this method has a quota cost of 20 units.
   ///
   /// Request parameters:
   ///
-  /// [id] - The ID that uniquely identify the chat message event to transition.
+  /// [id] - The ID that uniquely identifies the chat message event to
+  /// transition.
   ///
   /// [status] - The status to which the chat event is going to transition.
   /// Possible string values are:
@@ -2902,21 +2928,23 @@ class LiveStreamsResource {
   /// be linked to the specified YouTube content owner.
   ///
   /// [onBehalfOfContentOwnerChannel] - This parameter can only be used in a
-  /// properly authorized request. *Note:* This parameter is intended
-  /// exclusively for YouTube content partners. The
-  /// *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID
-  /// of the channel to which a video is being added. This parameter is required
-  /// when a request specifies a value for the onBehalfOfContentOwner parameter,
-  /// and it can only be used in conjunction with that parameter. In addition,
-  /// the request must be authorized using a CMS account that is linked to the
-  /// content owner that the onBehalfOfContentOwner parameter specifies.
-  /// Finally, the channel that the onBehalfOfContentOwnerChannel parameter
-  /// value specifies must be linked to the content owner that the
-  /// onBehalfOfContentOwner parameter specifies. This parameter is intended for
-  /// YouTube content partners that own and manage many different YouTube
-  /// channels. It allows content owners to authenticate once and perform
-  /// actions on behalf of the channel specified in the parameter value, without
-  /// having to provide authentication credentials for each separate channel.
+  /// properly
+  /// [authorized request](https://developers.google.com/youtube/data/guides/authentication).
+  /// *Note:* This parameter is intended exclusively for YouTube content
+  /// partners. The *onBehalfOfContentOwnerChannel* parameter specifies the
+  /// YouTube channel ID of the channel to which a video is being added. This
+  /// parameter is required when a request specifies a value for the
+  /// onBehalfOfContentOwner parameter, and it can only be used in conjunction
+  /// with that parameter. In addition, the request must be authorized using a
+  /// CMS account that is linked to the content owner that the
+  /// onBehalfOfContentOwner parameter specifies. Finally, the channel that the
+  /// onBehalfOfContentOwnerChannel parameter value specifies must be linked to
+  /// the content owner that the onBehalfOfContentOwner parameter specifies.
+  /// This parameter is intended for YouTube content partners that own and
+  /// manage many different YouTube channels. It allows content owners to
+  /// authenticate once and perform actions on behalf of the channel specified
+  /// in the parameter value, without having to provide authentication
+  /// credentials for each separate channel.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2977,21 +3005,23 @@ class LiveStreamsResource {
   /// be linked to the specified YouTube content owner.
   ///
   /// [onBehalfOfContentOwnerChannel] - This parameter can only be used in a
-  /// properly authorized request. *Note:* This parameter is intended
-  /// exclusively for YouTube content partners. The
-  /// *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID
-  /// of the channel to which a video is being added. This parameter is required
-  /// when a request specifies a value for the onBehalfOfContentOwner parameter,
-  /// and it can only be used in conjunction with that parameter. In addition,
-  /// the request must be authorized using a CMS account that is linked to the
-  /// content owner that the onBehalfOfContentOwner parameter specifies.
-  /// Finally, the channel that the onBehalfOfContentOwnerChannel parameter
-  /// value specifies must be linked to the content owner that the
-  /// onBehalfOfContentOwner parameter specifies. This parameter is intended for
-  /// YouTube content partners that own and manage many different YouTube
-  /// channels. It allows content owners to authenticate once and perform
-  /// actions on behalf of the channel specified in the parameter value, without
-  /// having to provide authentication credentials for each separate channel.
+  /// properly
+  /// [authorized request](https://developers.google.com/youtube/data/guides/authentication).
+  /// *Note:* This parameter is intended exclusively for YouTube content
+  /// partners. The *onBehalfOfContentOwnerChannel* parameter specifies the
+  /// YouTube channel ID of the channel to which a video is being added. This
+  /// parameter is required when a request specifies a value for the
+  /// onBehalfOfContentOwner parameter, and it can only be used in conjunction
+  /// with that parameter. In addition, the request must be authorized using a
+  /// CMS account that is linked to the content owner that the
+  /// onBehalfOfContentOwner parameter specifies. Finally, the channel that the
+  /// onBehalfOfContentOwnerChannel parameter value specifies must be linked to
+  /// the content owner that the onBehalfOfContentOwner parameter specifies.
+  /// This parameter is intended for YouTube content partners that own and
+  /// manage many different YouTube channels. It allows content owners to
+  /// authenticate once and perform actions on behalf of the channel specified
+  /// in the parameter value, without having to provide authentication
+  /// credentials for each separate channel.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3069,21 +3099,23 @@ class LiveStreamsResource {
   /// be linked to the specified YouTube content owner.
   ///
   /// [onBehalfOfContentOwnerChannel] - This parameter can only be used in a
-  /// properly authorized request. *Note:* This parameter is intended
-  /// exclusively for YouTube content partners. The
-  /// *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID
-  /// of the channel to which a video is being added. This parameter is required
-  /// when a request specifies a value for the onBehalfOfContentOwner parameter,
-  /// and it can only be used in conjunction with that parameter. In addition,
-  /// the request must be authorized using a CMS account that is linked to the
-  /// content owner that the onBehalfOfContentOwner parameter specifies.
-  /// Finally, the channel that the onBehalfOfContentOwnerChannel parameter
-  /// value specifies must be linked to the content owner that the
-  /// onBehalfOfContentOwner parameter specifies. This parameter is intended for
-  /// YouTube content partners that own and manage many different YouTube
-  /// channels. It allows content owners to authenticate once and perform
-  /// actions on behalf of the channel specified in the parameter value, without
-  /// having to provide authentication credentials for each separate channel.
+  /// properly
+  /// [authorized request](https://developers.google.com/youtube/data/guides/authentication).
+  /// *Note:* This parameter is intended exclusively for YouTube content
+  /// partners. The *onBehalfOfContentOwnerChannel* parameter specifies the
+  /// YouTube channel ID of the channel to which a video is being added. This
+  /// parameter is required when a request specifies a value for the
+  /// onBehalfOfContentOwner parameter, and it can only be used in conjunction
+  /// with that parameter. In addition, the request must be authorized using a
+  /// CMS account that is linked to the content owner that the
+  /// onBehalfOfContentOwner parameter specifies. Finally, the channel that the
+  /// onBehalfOfContentOwnerChannel parameter value specifies must be linked to
+  /// the content owner that the onBehalfOfContentOwner parameter specifies.
+  /// This parameter is intended for YouTube content partners that own and
+  /// manage many different YouTube channels. It allows content owners to
+  /// authenticate once and perform actions on behalf of the channel specified
+  /// in the parameter value, without having to provide authentication
+  /// credentials for each separate channel.
   ///
   /// [pageToken] - The *pageToken* parameter identifies a specific page in the
   /// result set that should be returned. In an API response, the nextPageToken
@@ -3166,21 +3198,23 @@ class LiveStreamsResource {
   /// be linked to the specified YouTube content owner.
   ///
   /// [onBehalfOfContentOwnerChannel] - This parameter can only be used in a
-  /// properly authorized request. *Note:* This parameter is intended
-  /// exclusively for YouTube content partners. The
-  /// *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID
-  /// of the channel to which a video is being added. This parameter is required
-  /// when a request specifies a value for the onBehalfOfContentOwner parameter,
-  /// and it can only be used in conjunction with that parameter. In addition,
-  /// the request must be authorized using a CMS account that is linked to the
-  /// content owner that the onBehalfOfContentOwner parameter specifies.
-  /// Finally, the channel that the onBehalfOfContentOwnerChannel parameter
-  /// value specifies must be linked to the content owner that the
-  /// onBehalfOfContentOwner parameter specifies. This parameter is intended for
-  /// YouTube content partners that own and manage many different YouTube
-  /// channels. It allows content owners to authenticate once and perform
-  /// actions on behalf of the channel specified in the parameter value, without
-  /// having to provide authentication credentials for each separate channel.
+  /// properly
+  /// [authorized request](https://developers.google.com/youtube/data/guides/authentication).
+  /// *Note:* This parameter is intended exclusively for YouTube content
+  /// partners. The *onBehalfOfContentOwnerChannel* parameter specifies the
+  /// YouTube channel ID of the channel to which a video is being added. This
+  /// parameter is required when a request specifies a value for the
+  /// onBehalfOfContentOwner parameter, and it can only be used in conjunction
+  /// with that parameter. In addition, the request must be authorized using a
+  /// CMS account that is linked to the content owner that the
+  /// onBehalfOfContentOwner parameter specifies. Finally, the channel that the
+  /// onBehalfOfContentOwnerChannel parameter value specifies must be linked to
+  /// the content owner that the onBehalfOfContentOwner parameter specifies.
+  /// This parameter is intended for YouTube content partners that own and
+  /// manage many different YouTube channels. It allows content owners to
+  /// authenticate once and perform actions on behalf of the channel specified
+  /// in the parameter value, without having to provide authentication
+  /// credentials for each separate channel.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3428,21 +3462,23 @@ class PlaylistImagesResource {
   /// be linked to the specified YouTube content owner.
   ///
   /// [onBehalfOfContentOwnerChannel] - This parameter can only be used in a
-  /// properly authorized request. *Note:* This parameter is intended
-  /// exclusively for YouTube content partners. The
-  /// *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID
-  /// of the channel to which a video is being added. This parameter is required
-  /// when a request specifies a value for the onBehalfOfContentOwner parameter,
-  /// and it can only be used in conjunction with that parameter. In addition,
-  /// the request must be authorized using a CMS account that is linked to the
-  /// content owner that the onBehalfOfContentOwner parameter specifies.
-  /// Finally, the channel that the onBehalfOfContentOwnerChannel parameter
-  /// value specifies must be linked to the content owner that the
-  /// onBehalfOfContentOwner parameter specifies. This parameter is intended for
-  /// YouTube content partners that own and manage many different YouTube
-  /// channels. It allows content owners to authenticate once and perform
-  /// actions on behalf of the channel specified in the parameter value, without
-  /// having to provide authentication credentials for each separate channel.
+  /// properly
+  /// [authorized request](https://developers.google.com/youtube/data/guides/authentication).
+  /// *Note:* This parameter is intended exclusively for YouTube content
+  /// partners. The *onBehalfOfContentOwnerChannel* parameter specifies the
+  /// YouTube channel ID of the channel to which a video is being added. This
+  /// parameter is required when a request specifies a value for the
+  /// onBehalfOfContentOwner parameter, and it can only be used in conjunction
+  /// with that parameter. In addition, the request must be authorized using a
+  /// CMS account that is linked to the content owner that the
+  /// onBehalfOfContentOwner parameter specifies. Finally, the channel that the
+  /// onBehalfOfContentOwnerChannel parameter value specifies must be linked to
+  /// the content owner that the onBehalfOfContentOwner parameter specifies.
+  /// This parameter is intended for YouTube content partners that own and
+  /// manage many different YouTube channels. It allows content owners to
+  /// authenticate once and perform actions on behalf of the channel specified
+  /// in the parameter value, without having to provide authentication
+  /// credentials for each separate channel.
   ///
   /// [part] - The *part* parameter specifies the properties that the API
   /// response will include.
@@ -3526,21 +3562,23 @@ class PlaylistImagesResource {
   /// be linked to the specified YouTube content owner.
   ///
   /// [onBehalfOfContentOwnerChannel] - This parameter can only be used in a
-  /// properly authorized request. *Note:* This parameter is intended
-  /// exclusively for YouTube content partners. The
-  /// *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID
-  /// of the channel to which a video is being added. This parameter is required
-  /// when a request specifies a value for the onBehalfOfContentOwner parameter,
-  /// and it can only be used in conjunction with that parameter. In addition,
-  /// the request must be authorized using a CMS account that is linked to the
-  /// content owner that the onBehalfOfContentOwner parameter specifies.
-  /// Finally, the channel that the onBehalfOfContentOwnerChannel parameter
-  /// value specifies must be linked to the content owner that the
-  /// onBehalfOfContentOwner parameter specifies. This parameter is intended for
-  /// YouTube content partners that own and manage many different YouTube
-  /// channels. It allows content owners to authenticate once and perform
-  /// actions on behalf of the channel specified in the parameter value, without
-  /// having to provide authentication credentials for each separate channel.
+  /// properly
+  /// [authorized request](https://developers.google.com/youtube/data/guides/authentication).
+  /// *Note:* This parameter is intended exclusively for YouTube content
+  /// partners. The *onBehalfOfContentOwnerChannel* parameter specifies the
+  /// YouTube channel ID of the channel to which a video is being added. This
+  /// parameter is required when a request specifies a value for the
+  /// onBehalfOfContentOwner parameter, and it can only be used in conjunction
+  /// with that parameter. In addition, the request must be authorized using a
+  /// CMS account that is linked to the content owner that the
+  /// onBehalfOfContentOwner parameter specifies. Finally, the channel that the
+  /// onBehalfOfContentOwnerChannel parameter value specifies must be linked to
+  /// the content owner that the onBehalfOfContentOwner parameter specifies.
+  /// This parameter is intended for YouTube content partners that own and
+  /// manage many different YouTube channels. It allows content owners to
+  /// authenticate once and perform actions on behalf of the channel specified
+  /// in the parameter value, without having to provide authentication
+  /// credentials for each separate channel.
   ///
   /// [pageToken] - The *pageToken* parameter identifies a specific page in the
   /// result set that should be returned. In an API response, the nextPageToken
@@ -4023,21 +4061,23 @@ class PlaylistsResource {
   /// be linked to the specified YouTube content owner.
   ///
   /// [onBehalfOfContentOwnerChannel] - This parameter can only be used in a
-  /// properly authorized request. *Note:* This parameter is intended
-  /// exclusively for YouTube content partners. The
-  /// *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID
-  /// of the channel to which a video is being added. This parameter is required
-  /// when a request specifies a value for the onBehalfOfContentOwner parameter,
-  /// and it can only be used in conjunction with that parameter. In addition,
-  /// the request must be authorized using a CMS account that is linked to the
-  /// content owner that the onBehalfOfContentOwner parameter specifies.
-  /// Finally, the channel that the onBehalfOfContentOwnerChannel parameter
-  /// value specifies must be linked to the content owner that the
-  /// onBehalfOfContentOwner parameter specifies. This parameter is intended for
-  /// YouTube content partners that own and manage many different YouTube
-  /// channels. It allows content owners to authenticate once and perform
-  /// actions on behalf of the channel specified in the parameter value, without
-  /// having to provide authentication credentials for each separate channel.
+  /// properly
+  /// [authorized request](https://developers.google.com/youtube/data/guides/authentication).
+  /// *Note:* This parameter is intended exclusively for YouTube content
+  /// partners. The *onBehalfOfContentOwnerChannel* parameter specifies the
+  /// YouTube channel ID of the channel to which a video is being added. This
+  /// parameter is required when a request specifies a value for the
+  /// onBehalfOfContentOwner parameter, and it can only be used in conjunction
+  /// with that parameter. In addition, the request must be authorized using a
+  /// CMS account that is linked to the content owner that the
+  /// onBehalfOfContentOwner parameter specifies. Finally, the channel that the
+  /// onBehalfOfContentOwnerChannel parameter value specifies must be linked to
+  /// the content owner that the onBehalfOfContentOwner parameter specifies.
+  /// This parameter is intended for YouTube content partners that own and
+  /// manage many different YouTube channels. It allows content owners to
+  /// authenticate once and perform actions on behalf of the channel specified
+  /// in the parameter value, without having to provide authentication
+  /// credentials for each separate channel.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4118,21 +4158,23 @@ class PlaylistsResource {
   /// be linked to the specified YouTube content owner.
   ///
   /// [onBehalfOfContentOwnerChannel] - This parameter can only be used in a
-  /// properly authorized request. *Note:* This parameter is intended
-  /// exclusively for YouTube content partners. The
-  /// *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID
-  /// of the channel to which a video is being added. This parameter is required
-  /// when a request specifies a value for the onBehalfOfContentOwner parameter,
-  /// and it can only be used in conjunction with that parameter. In addition,
-  /// the request must be authorized using a CMS account that is linked to the
-  /// content owner that the onBehalfOfContentOwner parameter specifies.
-  /// Finally, the channel that the onBehalfOfContentOwnerChannel parameter
-  /// value specifies must be linked to the content owner that the
-  /// onBehalfOfContentOwner parameter specifies. This parameter is intended for
-  /// YouTube content partners that own and manage many different YouTube
-  /// channels. It allows content owners to authenticate once and perform
-  /// actions on behalf of the channel specified in the parameter value, without
-  /// having to provide authentication credentials for each separate channel.
+  /// properly
+  /// [authorized request](https://developers.google.com/youtube/data/guides/authentication).
+  /// *Note:* This parameter is intended exclusively for YouTube content
+  /// partners. The *onBehalfOfContentOwnerChannel* parameter specifies the
+  /// YouTube channel ID of the channel to which a video is being added. This
+  /// parameter is required when a request specifies a value for the
+  /// onBehalfOfContentOwner parameter, and it can only be used in conjunction
+  /// with that parameter. In addition, the request must be authorized using a
+  /// CMS account that is linked to the content owner that the
+  /// onBehalfOfContentOwner parameter specifies. Finally, the channel that the
+  /// onBehalfOfContentOwnerChannel parameter value specifies must be linked to
+  /// the content owner that the onBehalfOfContentOwner parameter specifies.
+  /// This parameter is intended for YouTube content partners that own and
+  /// manage many different YouTube channels. It allows content owners to
+  /// authenticate once and perform actions on behalf of the channel specified
+  /// in the parameter value, without having to provide authentication
+  /// credentials for each separate channel.
   ///
   /// [pageToken] - The *pageToken* parameter identifies a specific page in the
   /// result set that should be returned. In an API response, the nextPageToken
@@ -4283,7 +4325,7 @@ class SearchResource {
   ///
   /// [eventType] - Filter on the livestream status of the videos.
   /// Possible string values are:
-  /// - "none"
+  /// - "none" : The resource does not have live broadcast content.
   /// - "upcoming" : The live broadcast is upcoming.
   /// - "live" : The live broadcast is active.
   /// - "completed" : The live broadcast has been completed.
@@ -4652,21 +4694,23 @@ class SubscriptionsResource {
   /// be linked to the specified YouTube content owner.
   ///
   /// [onBehalfOfContentOwnerChannel] - This parameter can only be used in a
-  /// properly authorized request. *Note:* This parameter is intended
-  /// exclusively for YouTube content partners. The
-  /// *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID
-  /// of the channel to which a video is being added. This parameter is required
-  /// when a request specifies a value for the onBehalfOfContentOwner parameter,
-  /// and it can only be used in conjunction with that parameter. In addition,
-  /// the request must be authorized using a CMS account that is linked to the
-  /// content owner that the onBehalfOfContentOwner parameter specifies.
-  /// Finally, the channel that the onBehalfOfContentOwnerChannel parameter
-  /// value specifies must be linked to the content owner that the
-  /// onBehalfOfContentOwner parameter specifies. This parameter is intended for
-  /// YouTube content partners that own and manage many different YouTube
-  /// channels. It allows content owners to authenticate once and perform
-  /// actions on behalf of the channel specified in the parameter value, without
-  /// having to provide authentication credentials for each separate channel.
+  /// properly
+  /// [authorized request](https://developers.google.com/youtube/data/guides/authentication).
+  /// *Note:* This parameter is intended exclusively for YouTube content
+  /// partners. The *onBehalfOfContentOwnerChannel* parameter specifies the
+  /// YouTube channel ID of the channel to which a video is being added. This
+  /// parameter is required when a request specifies a value for the
+  /// onBehalfOfContentOwner parameter, and it can only be used in conjunction
+  /// with that parameter. In addition, the request must be authorized using a
+  /// CMS account that is linked to the content owner that the
+  /// onBehalfOfContentOwner parameter specifies. Finally, the channel that the
+  /// onBehalfOfContentOwnerChannel parameter value specifies must be linked to
+  /// the content owner that the onBehalfOfContentOwner parameter specifies.
+  /// This parameter is intended for YouTube content partners that own and
+  /// manage many different YouTube channels. It allows content owners to
+  /// authenticate once and perform actions on behalf of the channel specified
+  /// in the parameter value, without having to provide authentication
+  /// credentials for each separate channel.
   ///
   /// [order] - The order of the returned subscriptions
   /// Possible string values are:
@@ -5543,21 +5587,23 @@ class VideosResource {
   /// be linked to the specified YouTube content owner.
   ///
   /// [onBehalfOfContentOwnerChannel] - This parameter can only be used in a
-  /// properly authorized request. *Note:* This parameter is intended
-  /// exclusively for YouTube content partners. The
-  /// *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID
-  /// of the channel to which a video is being added. This parameter is required
-  /// when a request specifies a value for the onBehalfOfContentOwner parameter,
-  /// and it can only be used in conjunction with that parameter. In addition,
-  /// the request must be authorized using a CMS account that is linked to the
-  /// content owner that the onBehalfOfContentOwner parameter specifies.
-  /// Finally, the channel that the onBehalfOfContentOwnerChannel parameter
-  /// value specifies must be linked to the content owner that the
-  /// onBehalfOfContentOwner parameter specifies. This parameter is intended for
-  /// YouTube content partners that own and manage many different YouTube
-  /// channels. It allows content owners to authenticate once and perform
-  /// actions on behalf of the channel specified in the parameter value, without
-  /// having to provide authentication credentials for each separate channel.
+  /// properly
+  /// [authorized request](https://developers.google.com/youtube/data/guides/authentication).
+  /// *Note:* This parameter is intended exclusively for YouTube content
+  /// partners. The *onBehalfOfContentOwnerChannel* parameter specifies the
+  /// YouTube channel ID of the channel to which a video is being added. This
+  /// parameter is required when a request specifies a value for the
+  /// onBehalfOfContentOwner parameter, and it can only be used in conjunction
+  /// with that parameter. In addition, the request must be authorized using a
+  /// CMS account that is linked to the content owner that the
+  /// onBehalfOfContentOwner parameter specifies. Finally, the channel that the
+  /// onBehalfOfContentOwnerChannel parameter value specifies must be linked to
+  /// the content owner that the onBehalfOfContentOwner parameter specifies.
+  /// This parameter is intended for YouTube content partners that own and
+  /// manage many different YouTube channels. It allows content owners to
+  /// authenticate once and perform actions on behalf of the channel specified
+  /// in the parameter value, without having to provide authentication
+  /// credentials for each separate channel.
   ///
   /// [stabilize] - Should stabilize be applied to the upload.
   ///
@@ -5644,8 +5690,10 @@ class VideosResource {
   /// [chart] - Return the videos that are in the specified chart.
   /// Possible string values are:
   /// - "chartUnspecified"
-  /// - "mostPopular" : Return the most popular videos for the specified content
-  /// region and video category.
+  /// - "mostPopular" : Return the most popular videos for the specified
+  /// [content region](https://developers.google.com/youtube/data/reference/rest/v3/videos/list#regionCode)
+  /// and
+  /// [video category](https://developers.google.com/youtube/data/reference/rest/v3/videos/list#videoCategoryId).
   ///
   /// [hl] - Stands for "host language". Specifies the localization language of
   /// the metadata to be filled into snippet.localized. The field is filled with
@@ -5662,8 +5710,13 @@ class VideosResource {
   ///
   /// [maxResults] - The *maxResults* parameter specifies the maximum number of
   /// items that should be returned in the result set. *Note:* This parameter is
-  /// supported for use in conjunction with the myRating and chart parameters,
-  /// but it is not supported for use in conjunction with the id parameter.
+  /// supported for use in conjunction with the
+  /// \[`myRating`\](https://developers.google.com/youtube/data/reference/rest/v3/videos/list#myRating)
+  /// and
+  /// \[`chart`\](https://developers.google.com/youtube/data/reference/rest/v3/videos/list#chart)
+  /// parameters, but it is not supported for use in conjunction with the
+  /// \[`id`\](https://developers.google.com/youtube/data/reference/rest/v3/videos/list#id)
+  /// parameter.
   /// Value must be between "1" and "50".
   ///
   /// [maxWidth] - Return the player with maximum height specified in
@@ -5672,7 +5725,7 @@ class VideosResource {
   /// [myRating] - Return videos liked/disliked by the authenticated user. Does
   /// not support RateType.RATED_TYPE_NONE.
   /// Possible string values are:
-  /// - "none"
+  /// - "none" : The entity has not been rated.
   /// - "like" : The entity is liked.
   /// - "dislike" : The entity is disliked.
   ///
@@ -5691,8 +5744,12 @@ class VideosResource {
   /// result set that should be returned. In an API response, the nextPageToken
   /// and prevPageToken properties identify other pages that could be retrieved.
   /// *Note:* This parameter is supported for use in conjunction with the
-  /// myRating and chart parameters, but it is not supported for use in
-  /// conjunction with the id parameter.
+  /// \[`myRating`\](https://developers.google.com/youtube/data/reference/rest/v3/videos/list#myRating)
+  /// and
+  /// \[`chart`\](https://developers.google.com/youtube/data/reference/rest/v3/videos/list#chart)
+  /// parameters, but it is not supported for use in conjunction with the
+  /// \[`id`\](https://developers.google.com/youtube/data/reference/rest/v3/videos/list#id)
+  /// parameter.
   ///
   /// [regionCode] - Use a chart that is specific to the specified region
   ///
@@ -5767,7 +5824,7 @@ class VideosResource {
   ///
   /// [rating] - null
   /// Possible string values are:
-  /// - "none"
+  /// - "none" : The entity has not been rated.
   /// - "like" : The entity is liked.
   /// - "dislike" : The entity is disliked.
   ///
@@ -6082,26 +6139,28 @@ class YoutubeV3LiveChatMessagesResource {
 
   /// Allows a user to load live chat through a server-streamed RPC.
   ///
+  /// A call to this method has a quota cost of 5 units.
+  ///
   /// Request parameters:
   ///
   /// [hl] - Specifies the localization language in which the system messages
   /// should be returned.
   ///
-  /// [liveChatId] - The id of the live chat for which comments should be
+  /// [liveChatId] - The ID of the live chat for which messages should be
   /// returned.
   ///
-  /// [maxResults] - The *maxResults* parameter specifies the maximum number of
+  /// [maxResults] - The `maxResults` parameter specifies the maximum number of
   /// items that should be returned in the result set. Not used in the streaming
   /// RPC.
   /// Value must be between "200" and "2000".
   ///
-  /// [pageToken] - The *pageToken* parameter identifies a specific page in the
-  /// result set that should be returned. In an API response, the nextPageToken
-  /// property identify other pages that could be retrieved.
+  /// [pageToken] - The `pageToken` parameter identifies a specific page in the
+  /// result set that should be returned. In an API response, the
+  /// `nextPageToken` property identifies other pages that could be retrieved.
   ///
-  /// [part] - The *part* parameter specifies the liveChatComment resource parts
-  /// that the API response will include. Supported values are id, snippet, and
-  /// authorDetails.
+  /// [part] - The `part` parameter specifies the `liveChatMessage` resource
+  /// parts that the API response includes. Supported values are `id`,
+  /// `snippet`, and `authorDetails`.
   ///
   /// [profileImageSize] - Specifies the size of the profile image that should
   /// be returned for each user.
@@ -6202,7 +6261,7 @@ class AbuseReport {
   }
 }
 
-typedef AbuseType = $Shared02;
+typedef AbuseType = $Shared03;
 
 /// Rights management policy for YouTube resources.
 class AccessPolicy {
@@ -6316,20 +6375,6 @@ class ActivityContentDetails {
   /// This property is only present if the `snippet.type` is `comment`.
   ActivityContentDetailsComment? comment;
 
-  /// The `favorite` object contains information about a video that was marked
-  /// as a favorite video.
-  ///
-  /// This property is only present if the `snippet.type` is `favorite`.
-  /// Deprecated: This property is no longer returned.
-  ActivityContentDetailsFavorite? favorite;
-
-  /// The `like` object contains information about a resource that received a
-  /// positive (like) rating.
-  ///
-  /// This property is only present if the `snippet.type` is `like`. Deprecated:
-  /// This property is no longer returned.
-  ActivityContentDetailsLike? like;
-
   /// The `playlistItem` object contains information about a new playlist item.
   ///
   /// This property is only present if the `snippet.type` is `playlistItem`.
@@ -6356,7 +6401,6 @@ class ActivityContentDetails {
   /// subscribed to.
   ///
   /// This property is only present if the `snippet.type` is `subscription`.
-  /// Deprecated: This property is no longer returned.
   ActivityContentDetailsSubscription? subscription;
 
   /// The `upload` object contains information about the uploaded video.
@@ -6368,8 +6412,6 @@ class ActivityContentDetails {
     this.bulletin,
     this.channelItem,
     this.comment,
-    this.favorite,
-    this.like,
     this.playlistItem,
     this.promotedItem,
     this.recommendation,
@@ -6393,16 +6435,6 @@ class ActivityContentDetails {
         comment: json_.containsKey('comment')
             ? ActivityContentDetailsComment.fromJson(
                 json_['comment'] as core.Map<core.String, core.dynamic>,
-              )
-            : null,
-        favorite: json_.containsKey('favorite')
-            ? ActivityContentDetailsFavorite.fromJson(
-                json_['favorite'] as core.Map<core.String, core.dynamic>,
-              )
-            : null,
-        like: json_.containsKey('like')
-            ? ActivityContentDetailsLike.fromJson(
-                json_['like'] as core.Map<core.String, core.dynamic>,
               )
             : null,
         playlistItem: json_.containsKey('playlistItem')
@@ -6441,8 +6473,6 @@ class ActivityContentDetails {
     final bulletin = this.bulletin;
     final channelItem = this.channelItem;
     final comment = this.comment;
-    final favorite = this.favorite;
-    final like = this.like;
     final playlistItem = this.playlistItem;
     final promotedItem = this.promotedItem;
     final recommendation = this.recommendation;
@@ -6453,8 +6483,6 @@ class ActivityContentDetails {
       'bulletin': ?bulletin,
       'channelItem': ?channelItem,
       'comment': ?comment,
-      'favorite': ?favorite,
-      'like': ?like,
       'playlistItem': ?playlistItem,
       'promotedItem': ?promotedItem,
       'recommendation': ?recommendation,
@@ -6522,56 +6550,6 @@ class ActivityContentDetailsComment {
   ActivityContentDetailsComment({this.resourceId});
 
   ActivityContentDetailsComment.fromJson(core.Map json_)
-    : this(
-        resourceId: json_.containsKey('resourceId')
-            ? ResourceId.fromJson(
-                json_['resourceId'] as core.Map<core.String, core.dynamic>,
-              )
-            : null,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final resourceId = this.resourceId;
-    return {'resourceId': ?resourceId};
-  }
-}
-
-/// Information about a video that was marked as a favorite video.
-///
-/// Deprecated: This resource is no longer returned.
-class ActivityContentDetailsFavorite {
-  /// The `resourceId` object contains information that identifies the resource
-  /// that was marked as a favorite.
-  ResourceId? resourceId;
-
-  ActivityContentDetailsFavorite({this.resourceId});
-
-  ActivityContentDetailsFavorite.fromJson(core.Map json_)
-    : this(
-        resourceId: json_.containsKey('resourceId')
-            ? ResourceId.fromJson(
-                json_['resourceId'] as core.Map<core.String, core.dynamic>,
-              )
-            : null,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final resourceId = this.resourceId;
-    return {'resourceId': ?resourceId};
-  }
-}
-
-/// Information about a resource that received a positive (like) rating.
-///
-/// Deprecated: This resource is no longer returned.
-class ActivityContentDetailsLike {
-  /// The `resourceId` object contains information that identifies the rated
-  /// resource.
-  ResourceId? resourceId;
-
-  ActivityContentDetailsLike({this.resourceId});
-
-  ActivityContentDetailsLike.fromJson(core.Map json_)
     : this(
         resourceId: json_.containsKey('resourceId')
             ? ResourceId.fromJson(
@@ -6736,8 +6714,6 @@ class ActivityContentDetailsRecommendation {
   /// The reason that the resource is recommended to the user.
   /// Possible string values are:
   /// - "reasonUnspecified"
-  /// - "videoFavorited" : Deprecated: This reason is no longer used.
-  /// - "videoLiked" : Deprecated: This reason is no longer used.
   /// - "videoWatched"
   core.String? reason;
 
@@ -6843,8 +6819,6 @@ class ActivityContentDetailsSocial {
 }
 
 /// Information about a channel that a user subscribed to.
-///
-/// Deprecated: This resource is no longer returned.
 class ActivityContentDetailsSubscription {
   /// The `resourceId` object contains information that identifies the resource
   /// that the user subscribed to.
@@ -7027,10 +7001,8 @@ class ActivitySnippet {
   /// Possible string values are:
   /// - "typeUnspecified"
   /// - "upload"
-  /// - "like" : Deprecated: This type is no longer supported.
-  /// - "favorite" : Deprecated: This type is no longer supported.
   /// - "comment"
-  /// - "subscription" : Deprecated: This type is no longer supported.
+  /// - "subscription"
   /// - "playlistItem"
   /// - "recommendation"
   /// - "bulletin"
@@ -7932,8 +7904,11 @@ class ChannelBrandingSettings {
 class ChannelContentDetailsRelatedPlaylists {
   /// The ID of the playlist that contains the channel"s favorite videos.
   ///
-  /// Use the playlistItems.insert and playlistItems.delete to add or remove
-  /// items from that list.
+  /// Use the
+  /// \[`playlistItems.insert`\](https://developers.google.com/youtube/data/reference/rest/v3/playlistItems/insert)
+  /// and
+  /// \[`playlistItems.delete`\](https://developers.google.com/youtube/data/reference/rest/v3/playlistItems/delete)
+  /// to add or remove items from that list.
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
   )
@@ -7941,20 +7916,29 @@ class ChannelContentDetailsRelatedPlaylists {
 
   /// The ID of the playlist that contains the channel"s liked videos.
   ///
-  /// Use the playlistItems.insert and playlistItems.delete to add or remove
-  /// items from that list.
+  /// Use the
+  /// \[`playlistItems.insert`\](https://developers.google.com/youtube/data/reference/rest/v3/playlistItems/insert)
+  /// and
+  /// \[`playlistItems.delete`\](https://developers.google.com/youtube/data/reference/rest/v3/playlistItems/delete)
+  /// to add or remove items from that list.
   core.String? likes;
 
   /// The ID of the playlist that contains the channel"s uploaded videos.
   ///
-  /// Use the videos.insert method to upload new videos and the videos.delete
+  /// Use the
+  /// \[`videos.insert`\](https://developers.google.com/youtube/data/reference/rest/v3/videos/insert)
+  /// method to upload new videos and the
+  /// \[`videos.delete`\](https://developers.google.com/youtube/data/reference/rest/v3/videos/delete)
   /// method to delete previously uploaded videos.
   core.String? uploads;
 
   /// The ID of the playlist that contains the channel"s watch history.
   ///
-  /// Use the playlistItems.insert and playlistItems.delete to add or remove
-  /// items from that list.
+  /// Use the
+  /// \[`playlistItems.insert`\](https://developers.google.com/youtube/data/reference/rest/v3/playlistItems/insert)
+  /// and
+  /// \[`playlistItems.delete`\](https://developers.google.com/youtube/data/reference/rest/v3/playlistItems/delete)
+  /// to add or remove items from that list.
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
   )
@@ -7962,8 +7946,11 @@ class ChannelContentDetailsRelatedPlaylists {
 
   /// The ID of the playlist that contains the channel"s watch later playlist.
   ///
-  /// Use the playlistItems.insert and playlistItems.delete to add or remove
-  /// items from that list.
+  /// Use the
+  /// \[`playlistItems.insert`\](https://developers.google.com/youtube/data/reference/rest/v3/playlistItems/insert)
+  /// and
+  /// \[`playlistItems.delete`\](https://developers.google.com/youtube/data/reference/rest/v3/playlistItems/delete)
+  /// to add or remove items from that list.
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
   )
@@ -9340,6 +9327,15 @@ class CommentSnippet {
   /// case of a video or post comment it's the video/post's channel.
   core.String? channelId;
 
+  /// The URL of the image or animated GIF attached to the comment, if any.
+  ///
+  /// This property is only present when a comment contains an image or GIF. The
+  /// URL is served as a signed link with a six-hour time to live (TTL) and
+  /// expires six hours after retrieval.
+  ///
+  /// Output only.
+  core.String? imageUrl;
+
   /// The total number of likes this comment has received.
   core.int? likeCount;
 
@@ -9355,9 +9351,6 @@ class CommentSnippet {
 
   /// The unique id of the top-level comment, only set for replies.
   core.String? parentId;
-
-  /// The ID of the post the comment refers to, if any.
-  core.String? postId;
 
   /// The date and time when the comment was originally published.
   core.DateTime? publishedAt;
@@ -9387,7 +9380,7 @@ class CommentSnippet {
   /// For the time being this will never return RATE_TYPE_DISLIKE and instead
   /// return RATE_TYPE_NONE. This may change in the future.
   /// Possible string values are:
-  /// - "none"
+  /// - "none" : The entity has not been rated.
   /// - "like" : The entity is liked.
   /// - "dislike" : The entity is disliked.
   core.String? viewerRating;
@@ -9399,10 +9392,10 @@ class CommentSnippet {
     this.authorProfileImageUrl,
     this.canRate,
     this.channelId,
+    this.imageUrl,
     this.likeCount,
     this.moderationStatus,
     this.parentId,
-    this.postId,
     this.publishedAt,
     this.textDisplay,
     this.textOriginal,
@@ -9423,10 +9416,10 @@ class CommentSnippet {
         authorProfileImageUrl: json_['authorProfileImageUrl'] as core.String?,
         canRate: json_['canRate'] as core.bool?,
         channelId: json_['channelId'] as core.String?,
+        imageUrl: json_['imageUrl'] as core.String?,
         likeCount: json_['likeCount'] as core.int?,
         moderationStatus: json_['moderationStatus'] as core.String?,
         parentId: json_['parentId'] as core.String?,
-        postId: json_['postId'] as core.String?,
         publishedAt: json_.containsKey('publishedAt')
             ? core.DateTime.parse(json_['publishedAt'] as core.String)
             : null,
@@ -9446,10 +9439,10 @@ class CommentSnippet {
     final authorProfileImageUrl = this.authorProfileImageUrl;
     final canRate = this.canRate;
     final channelId = this.channelId;
+    final imageUrl = this.imageUrl;
     final likeCount = this.likeCount;
     final moderationStatus = this.moderationStatus;
     final parentId = this.parentId;
-    final postId = this.postId;
     final publishedAt = this.publishedAt;
     final textDisplay = this.textDisplay;
     final textOriginal = this.textOriginal;
@@ -9463,10 +9456,10 @@ class CommentSnippet {
       'authorProfileImageUrl': ?authorProfileImageUrl,
       'canRate': ?canRate,
       'channelId': ?channelId,
+      'imageUrl': ?imageUrl,
       'likeCount': ?likeCount,
       'moderationStatus': ?moderationStatus,
       'parentId': ?parentId,
-      'postId': ?postId,
       'publishedAt': ?publishedAt?.toUtc().toIso8601String(),
       'textDisplay': ?textDisplay,
       'textOriginal': ?textOriginal,
@@ -9693,9 +9686,6 @@ class CommentThreadSnippet {
   /// YouTube users.
   core.bool? isPublic;
 
-  /// The ID of the post the comments refer to, if any.
-  core.String? postId;
-
   /// The top level comment of this thread.
   Comment? topLevelComment;
 
@@ -9709,7 +9699,6 @@ class CommentThreadSnippet {
     this.canReply,
     this.channelId,
     this.isPublic,
-    this.postId,
     this.topLevelComment,
     this.totalReplyCount,
     this.videoId,
@@ -9720,7 +9709,6 @@ class CommentThreadSnippet {
         canReply: json_['canReply'] as core.bool?,
         channelId: json_['channelId'] as core.String?,
         isPublic: json_['isPublic'] as core.bool?,
-        postId: json_['postId'] as core.String?,
         topLevelComment: json_.containsKey('topLevelComment')
             ? Comment.fromJson(
                 json_['topLevelComment'] as core.Map<core.String, core.dynamic>,
@@ -9734,7 +9722,6 @@ class CommentThreadSnippet {
     final canReply = this.canReply;
     final channelId = this.channelId;
     final isPublic = this.isPublic;
-    final postId = this.postId;
     final topLevelComment = this.topLevelComment;
     final totalReplyCount = this.totalReplyCount;
     final videoId = this.videoId;
@@ -9742,7 +9729,6 @@ class CommentThreadSnippet {
       'canReply': ?canReply,
       'channelId': ?channelId,
       'isPublic': ?isPublic,
-      'postId': ?postId,
       'topLevelComment': ?topLevelComment,
       'totalReplyCount': ?totalReplyCount,
       'videoId': ?videoId,
@@ -11924,7 +11910,7 @@ class InvideoTiming {
   }
 }
 
-typedef LanguageTag = $Shared19;
+typedef LanguageTag = $Shared23;
 
 class LevelDetails {
   /// The name that should be used when referring to this level.
@@ -12055,7 +12041,9 @@ class LiveBroadcastContentDetails {
   /// Optional.
   AvailabilityConfig? availabilityConfig;
 
-  /// This value uniquely identifies the live stream bound to the broadcast.
+  /// This value uniquely identifies the \[`live
+  /// stream`\](https://developers.google.com/youtube/data/live/reference/rest/v3/liveStreams)
+  /// bound to the broadcast.
   core.String? boundStreamId;
 
   /// The date and time that the live stream referenced by boundStreamId was
@@ -12139,9 +12127,10 @@ class LiveBroadcastContentDetails {
   /// The mesh for projecting the video if projection is mesh.
   ///
   /// The mesh value must be a UTF-8 string containing the base-64 encoding of
-  /// 3D mesh data that follows the Spherical Video V2 RFC specification for an
-  /// mshp box, excluding the box size and type but including the following four
-  /// reserved zero bytes for the version and flags.
+  /// 3D mesh data that follows the
+  /// [Spherical Video V2 RFC specification](https://github.com/google/spatial-media/blob/master/docs/spherical-video-v2-rfc.md)
+  /// for an mshp box, excluding the box size and type but including the
+  /// following four reserved zero bytes for the version and flags.
   core.String? mesh;
   core.List<core.int> get meshAsBytes => convert.base64.decode(mesh!);
 
@@ -12178,9 +12167,12 @@ class LiveBroadcastContentDetails {
   core.bool? recordFromStart;
 
   /// This setting indicates whether the broadcast should automatically begin
-  /// with an in-stream slate when you update the broadcast's status to live.
+  /// with an \[in-stream
+  /// slate\](https://developers.google.com/youtube/data/live/getting-started#Displaying_Slates)
+  /// when you update the broadcast's status to live.
   ///
-  /// After updating the status, you then need to send a liveCuepoints.insert
+  /// After updating the status, you then need to send a
+  /// \[`liveCuepoints.insert`\](https://developers.google.com/youtube/data/live/reference/rest/v3/liveCuepoints/insert)
   /// request that sets the cuepoint's eventState to end to remove the in-stream
   /// slate and make your broadcast stream visible to viewers.
   @core.Deprecated(
@@ -12435,7 +12427,9 @@ class LiveBroadcastSnippet {
   /// This information is only available once the broadcast's state is live.
   core.DateTime? actualStartTime;
 
-  /// The YouTube video category associated with the video broadcast.
+  /// The YouTube
+  /// [video category](https://developers.google.com/youtube/data/reference/rest/v3/videoCategories/list)
+  /// associated with the video broadcast.
   core.String? categoryId;
 
   /// The ID that YouTube uses to uniquely identify the channel that is
@@ -12445,8 +12439,9 @@ class LiveBroadcastSnippet {
   /// The broadcast's description.
   ///
   /// As with the title, you can set this field by modifying the broadcast
-  /// resource or by setting the description field of the corresponding video
-  /// resource.
+  /// resource or by setting the
+  /// \[`description`\](https://developers.google.com/youtube/data/reference/rest/v3/videos#snippet.description)
+  /// field of the corresponding video resource.
   core.String? description;
 
   /// Indicates whether this broadcast is the default broadcast.
@@ -12477,7 +12472,8 @@ class LiveBroadcastSnippet {
   /// The broadcast's title.
   ///
   /// Note that the broadcast represents exactly one YouTube video. You can set
-  /// this field by modifying the broadcast resource or by setting the title
+  /// this field by modifying the broadcast resource or by setting the
+  /// \[`title`\](https://developers.google.com/youtube/data/reference/rest/v3/videos#snippet.title)
   /// field of the corresponding video resource.
   core.String? title;
 
@@ -12586,7 +12582,8 @@ class LiveBroadcastStatistics {
 class LiveBroadcastStatus {
   /// The broadcast's status.
   ///
-  /// The status can be updated using the API's liveBroadcasts.transition
+  /// The status can be updated using the API's
+  /// \[`liveBroadcasts.transition`\](https://developers.google.com/youtube/data/live/reference/rest/v3/liveBroadcasts/transition)
   /// method.
   /// Possible string values are:
   /// - "lifeCycleStatusUnspecified" : No value or the value is unknown.
@@ -12621,7 +12618,9 @@ class LiveBroadcastStatus {
   /// Note that the broadcast represents exactly one YouTube video, so the
   /// privacy settings are identical to those supported for videos. In addition,
   /// you can set this field by modifying the broadcast resource or by setting
-  /// the privacyStatus field of the corresponding video resource.
+  /// the
+  /// \[`privacyStatus`\](https://developers.google.com/youtube/data/reference/rest/v3/videos#status.privacyStatus)
+  /// field of the corresponding video resource.
   /// Possible string values are:
   /// - "public"
   /// - "unlisted"
@@ -12808,7 +12807,7 @@ class LiveChatFanFundingEventDetails {
   }
 }
 
-/// Details about the gift event, this is only set if the type is 'giftEvent'.
+/// Details about the gift event, this is only set if the type is `giftEvent`.
 class LiveChatGiftDetails {
   /// The alternative text to be used for accessibility.
   core.String? altText;
@@ -12884,7 +12883,7 @@ class LiveChatGiftMembershipReceivedDetails {
   /// membership.
   ///
   /// This ID will always refer to a message whose type is
-  /// 'membershipGiftingEvent'.
+  /// `membershipGiftingEvent`.
   core.String? associatedMembershipGiftingMessageId;
 
   /// The ID of the user that made the membership gifting purchase.
@@ -13167,7 +13166,7 @@ class LiveChatMessageListResponse {
 
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "youtube#liveChatMessageListResponse".
+  /// Value: the fixed string `"youtube#liveChatMessageListResponse"`.
   core.String? kind;
   core.String? nextPageToken;
 
@@ -13184,7 +13183,7 @@ class LiveChatMessageListResponse {
   )
   TokenPagination? tokenPagination;
 
-  /// The visitorId identifies the visitor.
+  /// Identifies the visitor.
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
   )
@@ -13305,17 +13304,17 @@ class LiveChatMessageSnippet {
   core.String? displayMessage;
 
   /// Details about the funding event, this is only set if the type is
-  /// 'fanFundingEvent'.
+  /// `fanFundingEvent`.
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
   )
   LiveChatFanFundingEventDetails? fanFundingEventDetails;
 
-  /// Details about the gift event, this is only set if the type is 'giftEvent'.
+  /// Details about the gift event, this is only set if the type is `giftEvent`.
   LiveChatGiftDetails? giftDetails;
 
   /// Details about the Gift Membership Received event, this is only set if the
-  /// type is 'giftMembershipReceivedEvent'.
+  /// type is `giftMembershipReceivedEvent`.
   LiveChatGiftMembershipReceivedDetails? giftMembershipReceivedDetails;
 
   /// Whether the message has display content that should be displayed to users.
@@ -13323,11 +13322,11 @@ class LiveChatMessageSnippet {
   core.String? liveChatId;
 
   /// Details about the Member Milestone Chat event, this is only set if the
-  /// type is 'memberMilestoneChatEvent'.
+  /// type is `memberMilestoneChatEvent`.
   LiveChatMemberMilestoneChatDetails? memberMilestoneChatDetails;
 
   /// Details about the Membership Gifting event, this is only set if the type
-  /// is 'membershipGiftingEvent'.
+  /// is `membershipGiftingEvent`.
   LiveChatMembershipGiftingDetails? membershipGiftingDetails;
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
@@ -13339,27 +13338,27 @@ class LiveChatMessageSnippet {
   LiveChatMessageRetractedDetails? messageRetractedDetails;
 
   /// Details about the New Member Announcement event, this is only set if the
-  /// type is 'newSponsorEvent'.
+  /// type is `newSponsorEvent`.
   ///
-  /// Please note that "member" is the new term for "sponsor".
+  /// The term "member" replaces "sponsor".
   LiveChatNewSponsorDetails? newSponsorDetails;
 
-  /// Details about the poll event, this is only set if the type is 'pollEvent'.
+  /// Details about the poll event, this is only set if the type is `pollEvent`.
   LiveChatPollDetails? pollDetails;
 
   /// The date and time when the message was orignally published.
   core.DateTime? publishedAt;
 
   /// Details about the Super Chat event, this is only set if the type is
-  /// 'superChatEvent'.
+  /// `superChatEvent`.
   LiveChatSuperChatDetails? superChatDetails;
 
   /// Details about the Super Sticker event, this is only set if the type is
-  /// 'superStickerEvent'.
+  /// `superStickerEvent`.
   LiveChatSuperStickerDetails? superStickerDetails;
 
   /// Details about the text message, this is only set if the type is
-  /// 'textMessageEvent'.
+  /// `textMessageEvent`.
   LiveChatTextMessageDetails? textMessageDetails;
 
   /// The type of message, this will always be present, it determines the
@@ -13828,7 +13827,7 @@ class LiveChatSuperChatDetails {
 
   /// The tier in which the amount belongs.
   ///
-  /// Lower amounts belong to lower tiers. The lowest tier is 1.
+  /// Lower amounts belong to lower tiers. The lowest tier is `1`.
   core.int? tier;
 
   /// The comment added by the user to this Super Chat event.
@@ -13882,7 +13881,7 @@ class LiveChatSuperStickerDetails {
 
   /// The tier in which the amount belongs.
   ///
-  /// Lower amounts belong to lower tiers. The lowest tier is 1.
+  /// Lower amounts belong to lower tiers. The lowest tier is `1`.
   core.int? tier;
 
   LiveChatSuperStickerDetails({
@@ -13941,7 +13940,7 @@ class LiveChatTextMessageDetails {
 class LiveChatUserBannedMessageDetails {
   /// The duration of the ban.
   ///
-  /// This property is only present if the banType is temporary.
+  /// This property is only present if the `banType` is `temporary`.
   core.String? banDurationSeconds;
 
   /// The type of ban.
@@ -14164,13 +14163,14 @@ class LiveStreamContentDetails {
   /// broadcasts if those broadcasts occur at different times. If you set this
   /// value to false, then the stream will not be reusable, which means that it
   /// can only be bound to one broadcast. Non-reusable streams differ from
-  /// reusable streams in the following ways: - A non-reusable stream can only
-  /// be bound to one broadcast. - A non-reusable stream might be deleted by an
-  /// automated process after the broadcast ends. - The liveStreams.list method
-  /// does not list non-reusable streams if you call the method and set the mine
-  /// parameter to true. The only way to use that method to retrieve the
-  /// resource for a non-reusable stream is to use the id parameter to identify
-  /// the stream.
+  /// reusable streams in the following ways: * A non-reusable stream can only
+  /// be bound to one broadcast. * A non-reusable stream might be deleted by an
+  /// automated process after the broadcast ends. * The
+  /// \[`liveStreams.list`\](https://developers.google.com/youtube/data/live/reference/rest/v3/liveStreams/list)
+  /// method does not list non-reusable streams if you call the method and set
+  /// the mine parameter to true. The only way to use that method to retrieve
+  /// the resource for a non-reusable stream is to use the id parameter to
+  /// identify the stream.
   core.bool? isReusable;
 
   LiveStreamContentDetails({this.closedCaptionsIngestionUrl, this.isReusable});
@@ -14929,8 +14929,10 @@ class MembershipsLevelSnippet {
 
 /// Settings and Info of the monitor stream
 class MonitorStreamInfo {
-  /// If you have set the enableMonitorStream property to true, then this
-  /// property determines the length of the live broadcast delay.
+  /// If you have set the
+  /// \[`enableMonitorStream`\](https://developers.google.com/youtube/data/live/reference/rest/v3/liveBroadcasts#contentDetails.monitorStream.enableMonitorStream)
+  /// property to true, then this property determines the length of the live
+  /// broadcast delay.
   core.int? broadcastStreamDelayMs;
 
   /// HTML code that embeds a player that plays the monitor stream.
@@ -15004,15 +15006,21 @@ class PageInfo {
 /// YouTube does not limit the number of playlists that each user creates. By
 /// default, playlists are publicly visible to other users, but playlists can be
 /// public or private. YouTube also uses playlists to identify special
-/// collections of videos for a channel, such as: - uploaded videos - favorite
-/// videos - positively rated (liked) videos - watch history - watch later To be
+/// collections of videos for a channel, such as: * uploaded videos * favorite
+/// videos * positively rated (liked) videos * watch history * watch later To be
 /// more specific, these lists are associated with a channel, which is a
 /// collection of a person, group, or company's videos, playlists, and other
 /// YouTube information. You can retrieve the playlist IDs for each of these
-/// lists from the channel resource for a given channel. You can then use the
-/// playlistItems.list method to retrieve any of those lists. You can also add
-/// or remove items from those lists by calling the playlistItems.insert and
-/// playlistItems.delete methods.
+/// lists from the \[`channel
+/// resource`\](https://developers.google.com/youtube/data/reference/rest/v3/channels)
+/// for a given channel. You can then use the
+/// \[`playlistItems.list`\](https://developers.google.com/youtube/data/reference/rest/v3/playlistItems/list)
+/// method to retrieve any of those lists. You can also add or remove items from
+/// those lists by calling the
+/// \[`playlistItems.insert`\](https://developers.google.com/youtube/data/reference/rest/v3/playlistItems/insert)
+/// and
+/// \[`playlistItems.delete`\](https://developers.google.com/youtube/data/reference/rest/v3/playlistItems/delete)
+/// methods.
 class Playlist {
   /// The contentDetails object contains information like video count.
   PlaylistContentDetails? contentDetails;
@@ -15226,15 +15234,20 @@ class PlaylistImageListResponse {
 /// In addition, the playlistImage resource contains details about the included
 /// resource that pertain specifically to how that resource is used in that
 /// playlist. YouTube uses playlists to identify special collections of videos
-/// for a channel, such as: - uploaded videos - favorite videos - positively
-/// rated (liked) videos - watch history To be more specific, these lists are
+/// for a channel, such as: * uploaded videos * favorite videos * positively
+/// rated (liked) videos * watch history To be more specific, these lists are
 /// associated with a channel, which is a collection of a person, group, or
 /// company's videos, playlists, and other YouTube information. You can retrieve
-/// the playlist IDs for each of these lists from the channel resource for a
-/// given channel. You can then use the playlistImages.list method to retrieve
-/// image data for any of those playlists. You can also add or remove images
-/// from those lists by calling the playlistImages.insert and
-/// playlistImages.delete methods.
+/// the playlist IDs for each of these lists from the \[`channel
+/// resource`\](https://developers.google.com/youtube/data/reference/rest/v3/channels)
+/// for a given channel. You can then use the
+/// \[`playlistImages.list`\](https://developers.google.com/youtube/data/reference/rest/v3/playlistImages/list)
+/// method to retrieve image data for any of those playlists. You can also add
+/// or remove images from those lists by calling the
+/// \[`playlistImages.insert`\](https://developers.google.com/youtube/data/reference/rest/v3/playlistImages/insert)
+/// and
+/// \[`playlistImages.delete`\](https://developers.google.com/youtube/data/reference/rest/v3/playlistImages/delete)
+/// methods.
 class PlaylistImageSnippet {
   /// The image height.
   core.int? height;
@@ -15280,17 +15293,23 @@ class PlaylistImageSnippet {
 /// In addition, the playlistItem resource contains details about the included
 /// resource that pertain specifically to how that resource is used in that
 /// playlist. YouTube uses playlists to identify special collections of videos
-/// for a channel, such as: - uploaded videos - favorite videos - positively
-/// rated (liked) videos - watch history - watch later To be more specific,
+/// for a channel, such as: * uploaded videos * favorite videos * positively
+/// rated (liked) videos * watch history * watch later To be more specific,
 /// these lists are associated with a channel, which is a collection of a
 /// person, group, or company's videos, playlists, and other YouTube
 /// information. You can retrieve the playlist IDs for each of these lists from
-/// the channel resource for a given channel. You can then use the
-/// playlistItems.list method to retrieve any of those lists. You can also add
-/// or remove items from those lists by calling the playlistItems.insert and
-/// playlistItems.delete methods. For example, if a user gives a positive rating
-/// to a video, you would insert that video into the liked videos playlist for
-/// that user's channel.
+/// the \[`channel
+/// resource`\](https://developers.google.com/youtube/data/reference/rest/v3/channels)
+/// for a given channel. You can then use the
+/// \[`playlistItems.list`\](https://developers.google.com/youtube/data/reference/rest/v3/playlistItems/list)
+/// method to retrieve any of those lists. You can also add or remove items from
+/// those lists by calling the
+/// \[`playlistItems.insert`\](https://developers.google.com/youtube/data/reference/rest/v3/playlistItems/insert)
+/// and
+/// \[`playlistItems.delete`\](https://developers.google.com/youtube/data/reference/rest/v3/playlistItems/delete)
+/// methods. For example, if a user gives a positive rating to a video, you
+/// would insert that video into the liked videos playlist for that user's
+/// channel.
 class PlaylistItem {
   /// The contentDetails object is included in the resource if the included item
   /// is a YouTube video.
@@ -15394,8 +15413,9 @@ class PlaylistItemContentDetails {
 
   /// The ID that YouTube uses to uniquely identify a video.
   ///
-  /// To retrieve the video resource, set the id query parameter to this value
-  /// in your API request.
+  /// To \[retrieve the `video`
+  /// resource\](https://developers.google.com/youtube/data/reference/rest/v3/videos/list),
+  /// set the id query parameter to this value in your API request.
   core.String? videoId;
 
   /// The date and time that the video was published to YouTube.
@@ -16208,7 +16228,7 @@ class SearchResultSnippet {
   ///
   /// Or it's "none" if there is not any upcoming/active live broadcasts.
   /// Possible string values are:
-  /// - "none"
+  /// - "none" : The resource does not have live broadcast content.
   /// - "upcoming" : The live broadcast is upcoming.
   /// - "live" : The live broadcast is active.
   /// - "completed" : The live broadcast has been completed.
@@ -17155,6 +17175,9 @@ class ThumbnailDetails {
   /// The quad high definition (1440p / 2K) quality image for this resource.
   Thumbnail? qhd;
 
+  /// The Shorts aspect ratio (9:16) image for this resource.
+  Thumbnail? shortsAspectRatio;
+
   /// The standard quality image for this resource.
   Thumbnail? standard;
 
@@ -17168,6 +17191,7 @@ class ThumbnailDetails {
     this.maxres,
     this.medium,
     this.qhd,
+    this.shortsAspectRatio,
     this.standard,
     this.uhd,
   });
@@ -17204,6 +17228,12 @@ class ThumbnailDetails {
                 json_['qhd'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        shortsAspectRatio: json_.containsKey('shortsAspectRatio')
+            ? Thumbnail.fromJson(
+                json_['shortsAspectRatio']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         standard: json_.containsKey('standard')
             ? Thumbnail.fromJson(
                 json_['standard'] as core.Map<core.String, core.dynamic>,
@@ -17223,6 +17253,7 @@ class ThumbnailDetails {
     final maxres = this.maxres;
     final medium = this.medium;
     final qhd = this.qhd;
+    final shortsAspectRatio = this.shortsAspectRatio;
     final standard = this.standard;
     final uhd = this.uhd;
     return {
@@ -17232,6 +17263,7 @@ class ThumbnailDetails {
       'maxres': ?maxres,
       'medium': ?medium,
       'qhd': ?qhd,
+      'shortsAspectRatio': ?shortsAspectRatio,
       'standard': ?standard,
       'uhd': ?uhd,
     };
@@ -17405,8 +17437,8 @@ class Video {
   /// This data can only be retrieved by the video owner.
   VideoSuggestions? suggestions;
 
-  /// The topicDetails object encapsulates information about Freebase topics
-  /// associated with the video.
+  /// The topicDetails object encapsulates information about
+  /// [Freebase](http://www.freebase.com) topics associated with the video.
   VideoTopicDetails? topicDetails;
 
   Video({
@@ -18963,7 +18995,7 @@ typedef VideoProjectDetails = $Empty;
 class VideoRating {
   /// Rating of a video.
   /// Possible string values are:
-  /// - "none"
+  /// - "none" : The entity has not been rated.
   /// - "like" : The entity is liked.
   /// - "dislike" : The entity is disliked.
   core.String? rating;
@@ -19031,7 +19063,9 @@ class VideoRecordingDetails {
 /// Basic details about a video, including title, description, uploader,
 /// thumbnails and category.
 class VideoSnippet {
-  /// The YouTube video category associated with the video.
+  /// The YouTube
+  /// [video category](https://developers.google.com/youtube/data/reference/rest/v3/videoCategories/list)
+  /// associated with the video.
   core.String? categoryId;
 
   /// The ID that YouTube uses to uniquely identify the channel that the video
@@ -19057,7 +19091,7 @@ class VideoSnippet {
   ///
   /// Or it's "none" if the video is not an upcoming/active live broadcast.
   /// Possible string values are:
-  /// - "none"
+  /// - "none" : The resource does not have live broadcast content.
   /// - "upcoming" : The live broadcast is upcoming.
   /// - "live" : The live broadcast is active.
   /// - "completed" : The live broadcast has been completed.
@@ -19396,7 +19430,7 @@ class VideoStatsStatistics {
 
 /// Basic details about a video category, such as its localized title.
 ///
-/// Next Id: 19
+/// Next Id: 20
 class VideoStatus {
   /// Indicates if the video contains altered or synthetic media.
   core.bool? containsSyntheticMedia;
@@ -19408,8 +19442,8 @@ class VideoStatus {
 
   /// This value explains why a video failed to upload.
   ///
-  /// This property is only present if the uploadStatus property indicates that
-  /// the upload failed.
+  /// This property is only present if the `uploadStatus` property indicates
+  /// that the upload failed.
   /// Possible string values are:
   /// - "conversion" : Unable to convert video content.
   /// - "invalidFile" : Invalid file format.
@@ -19423,12 +19457,20 @@ class VideoStatus {
   ///
   /// @mutable youtube.videos.insert youtube.videos.update
   /// Possible string values are:
-  /// - "youtube"
-  /// - "creativeCommon"
+  /// - "youtube" : Standard YouTube license.
+  /// - "creativeCommon" : Creative Commons license.
   core.String? license;
   core.bool? madeForKids;
 
   /// The video's privacy status.
+  ///
+  /// In a `videos.insert` request, if you don't specify a value for this
+  /// property, the uploaded video's privacy status defaults to `public`.
+  /// Certain uploads might default to `private` based on creator account
+  /// settings, as explained in the
+  /// [YouTube Help Center](https://support.google.com/youtube/answer/157177).
+  /// Videos uploaded from unverified API projects are not restricted to private
+  /// viewing mode.
   /// Possible string values are:
   /// - "public"
   /// - "unlisted"
@@ -19449,8 +19491,8 @@ class VideoStatus {
 
   /// This value explains why YouTube rejected an uploaded video.
   ///
-  /// This property is only present if the uploadStatus property indicates that
-  /// the upload was rejected.
+  /// This property is only present if the `uploadStatus` property indicates
+  /// that the upload was rejected.
   /// Possible string values are:
   /// - "copyright" : Copyright infringement.
   /// - "inappropriate" : Inappropriate video content.

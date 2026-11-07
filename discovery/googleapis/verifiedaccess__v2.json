@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20251230",
+    "revision": "20261018",
     "rootUrl": "https://verifiedaccess.googleapis.com/",
     "servicePath": "",
     "title": "Chrome Verified Access API",
@@ -319,7 +319,9 @@
                         "CHROMIUM_OS",
                         "WINDOWS",
                         "MAC_OS_X",
-                        "LINUX"
+                        "LINUX",
+                        "IOS",
+                        "ANDROID"
                     ],
                     "enumDescriptions": [
                         "UNSPECIFIED.",
@@ -327,7 +329,9 @@
                         "ChromiumOS.",
                         "Windows.",
                         "Mac Os X.",
-                        "Linux"
+                        "Linux",
+                        "iOS.",
+                        "Android."
                     ],
                     "readOnly": true,
                     "type": "string"

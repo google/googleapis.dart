@@ -5226,6 +5226,7 @@ api.GooglePrivacyDlpV2ImageLocation buildGooglePrivacyDlpV2ImageLocation() {
   buildCounterGooglePrivacyDlpV2ImageLocation++;
   if (buildCounterGooglePrivacyDlpV2ImageLocation < 3) {
     o.boundingBoxes = buildUnnamed74();
+    o.pageNumber = 42;
   }
   buildCounterGooglePrivacyDlpV2ImageLocation--;
   return o;
@@ -5237,6 +5238,7 @@ void checkGooglePrivacyDlpV2ImageLocation(
   buildCounterGooglePrivacyDlpV2ImageLocation++;
   if (buildCounterGooglePrivacyDlpV2ImageLocation < 3) {
     checkUnnamed74(o.boundingBoxes!);
+    unittest.expect(o.pageNumber!, unittest.equals(42));
   }
   buildCounterGooglePrivacyDlpV2ImageLocation--;
 }

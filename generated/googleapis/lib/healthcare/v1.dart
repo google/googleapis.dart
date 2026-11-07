@@ -9585,11 +9585,9 @@ class BulkDeleteResourcesRequest {
   /// Optional.
   core.String? until;
 
-  /// If set to true, the request will only perform a dry run.
+  /// If set to `true`, the request will only perform a dry run.
   ///
-  /// By default (once the behavior change is fully rolled out), this will
-  /// default to true. During the transition period, the default depends on the
-  /// Mendel flag status for the project.
+  /// By default this will default to `false`.
   ///
   /// Optional.
   core.bool? validateOnly;
@@ -10422,6 +10420,36 @@ class CryptoHashConfig {
     final cryptoKey = this.cryptoKey;
     final kmsWrapped = this.kmsWrapped;
     return {'cryptoKey': ?cryptoKey, 'kmsWrapped': ?kmsWrapped};
+  }
+}
+
+/// Defines a custom regular expression pattern to detect and redact in the
+/// image.
+class CustomRegex {
+  /// The capturing group indexes to redact.
+  ///
+  /// Optional.
+  core.List<core.int>? groupIndexes;
+
+  /// The regular expression pattern to match.
+  ///
+  /// Optional.
+  core.String? pattern;
+
+  CustomRegex({this.groupIndexes, this.pattern});
+
+  CustomRegex.fromJson(core.Map json_)
+    : this(
+        groupIndexes: (json_['groupIndexes'] as core.List?)
+            ?.map((value) => value as core.int)
+            .toList(),
+        pattern: json_['pattern'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final groupIndexes = this.groupIndexes;
+    final pattern = this.pattern;
+    return {'groupIndexes': ?groupIndexes, 'pattern': ?pattern};
   }
 }
 
@@ -13575,6 +13603,11 @@ class Image {
 
 /// Specifies how to handle de-identification of image pixels.
 class ImageConfig {
+  /// Custom regex patterns to redact from the image.
+  ///
+  /// Optional.
+  core.List<CustomRegex>? customRegexes;
+
   /// Determines how to redact text from image.
   ///
   /// Optional.
@@ -13587,14 +13620,27 @@ class ImageConfig {
   /// - "REDACT_NO_TEXT" : Do not redact text.
   core.String? textRedactionMode;
 
-  ImageConfig({this.textRedactionMode});
+  ImageConfig({this.customRegexes, this.textRedactionMode});
 
   ImageConfig.fromJson(core.Map json_)
-    : this(textRedactionMode: json_['textRedactionMode'] as core.String?);
+    : this(
+        customRegexes: (json_['customRegexes'] as core.List?)
+            ?.map(
+              (value) => CustomRegex.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        textRedactionMode: json_['textRedactionMode'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final customRegexes = this.customRegexes;
     final textRedactionMode = this.textRedactionMode;
-    return {'textRedactionMode': ?textRedactionMode};
+    return {
+      'customRegexes': ?customRegexes,
+      'textRedactionMode': ?textRedactionMode,
+    };
   }
 }
 

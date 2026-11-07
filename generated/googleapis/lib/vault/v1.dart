@@ -1980,7 +1980,7 @@ class CorpusQuery {
   /// If set, **CorpusType** must be **DRIVE**.
   HeldDriveQuery? driveQuery;
 
-  /// Service-specific options for Gemini holds.
+  /// Service-specific options for Gemini app holds.
   ///
   /// If set, **CorpusType** must be **GEMINI**.
   HeldGeminiQuery? geminiQuery;
@@ -2422,7 +2422,10 @@ class ExportOptions {
   /// Options for Drive exports.
   DriveExportOptions? driveOptions;
 
-  /// Option available for Gemini export.
+  /// Option available for Gemini in Workspace export.
+  GeminiInWorkspaceExportOptions? geminiInWorkspaceOptions;
+
+  /// Option available for Gemini app export.
   GeminiExportOptions? geminiOptions;
 
   /// Options for Groups exports.
@@ -2449,6 +2452,7 @@ class ExportOptions {
   ExportOptions({
     this.calendarOptions,
     this.driveOptions,
+    this.geminiInWorkspaceOptions,
     this.geminiOptions,
     this.groupsOptions,
     this.hangoutsChatOptions,
@@ -2467,6 +2471,12 @@ class ExportOptions {
         driveOptions: json_.containsKey('driveOptions')
             ? DriveExportOptions.fromJson(
                 json_['driveOptions'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        geminiInWorkspaceOptions: json_.containsKey('geminiInWorkspaceOptions')
+            ? GeminiInWorkspaceExportOptions.fromJson(
+                json_['geminiInWorkspaceOptions']
+                    as core.Map<core.String, core.dynamic>,
               )
             : null,
         geminiOptions: json_.containsKey('geminiOptions')
@@ -2501,6 +2511,7 @@ class ExportOptions {
   core.Map<core.String, core.dynamic> toJson() {
     final calendarOptions = this.calendarOptions;
     final driveOptions = this.driveOptions;
+    final geminiInWorkspaceOptions = this.geminiInWorkspaceOptions;
     final geminiOptions = this.geminiOptions;
     final groupsOptions = this.groupsOptions;
     final hangoutsChatOptions = this.hangoutsChatOptions;
@@ -2510,6 +2521,7 @@ class ExportOptions {
     return {
       'calendarOptions': ?calendarOptions,
       'driveOptions': ?driveOptions,
+      'geminiInWorkspaceOptions': ?geminiInWorkspaceOptions,
       'geminiOptions': ?geminiOptions,
       'groupsOptions': ?groupsOptions,
       'hangoutsChatOptions': ?hangoutsChatOptions,
@@ -2556,10 +2568,16 @@ class ExportStats {
   }
 }
 
-/// The options for Gemini exports.
+/// The options for Gemini app exports.
 typedef GeminiExportOptions = $ExportOptions00;
 
-/// Additional options for Gemini search
+/// The options for Gemini in Workspace exports.
+typedef GeminiInWorkspaceExportOptions = $ExportOptions00;
+
+/// Additional options for Gemini in Workspace search
+typedef GeminiInWorkspaceOptions = $Empty;
+
+/// Additional options for Gemini app search
 typedef GeminiOptions = $Empty;
 
 /// Options for Groups exports.
@@ -2707,7 +2725,7 @@ class HeldDriveQuery {
   }
 }
 
-/// Options for Gemini holds.
+/// Options for Gemini app holds.
 typedef HeldGeminiQuery = $Empty;
 
 /// Query options for group holds.
@@ -2807,7 +2825,8 @@ class Hold {
   /// and classic Hangouts.
   /// - "VOICE" : Google Voice.
   /// - "CALENDAR" : Calendar.
-  /// - "GEMINI" : Gemini.
+  /// - "GEMINI" : Gemini app.
+  /// - "GEMINI_IN_WORKSPACE" : Gemini in Workspace.
   core.String? corpus;
 
   /// The unique immutable ID of the hold.
@@ -3087,8 +3106,8 @@ class MailExportOptions {
   /// - "PST" : Export as PST. Only available for Gmail, Groups, Hangouts, Voice
   /// and Calendar.
   /// - "ICS" : Export as ICS. Only available for Calendar.
-  /// - "XML" : Export as XML. Only available for Gemini.
-  /// - "JSON" : Export as JSON. Only available for Gemini in Workpace.
+  /// - "XML" : Export as XML. Only available for Gemini app.
+  /// - "JSON" : Export as JSON. Only available for Gemini in Workspace.
   core.String? exportFormat;
 
   /// To enable exporting linked Drive files, set to **true**.
@@ -3404,7 +3423,8 @@ class Query {
   /// and classic Hangouts.
   /// - "VOICE" : Google Voice.
   /// - "CALENDAR" : Calendar.
-  /// - "GEMINI" : Gemini.
+  /// - "GEMINI" : Gemini app.
+  /// - "GEMINI_IN_WORKSPACE" : Gemini in Workspace.
   core.String? corpus;
 
   /// The data source to search.
@@ -3427,7 +3447,10 @@ class Query {
   /// Specify in GMT. The value is rounded to 12 AM on the specified date.
   core.String? endTime;
 
-  /// Set Gemini search-specific options.
+  /// Set Gemini in Workspace search-specific options.
+  GeminiInWorkspaceOptions? geminiInWorkspaceOptions;
+
+  /// Set Gemini app search-specific options.
   GeminiOptions? geminiOptions;
 
   /// Required when **SearchMethod** is **ROOM**.
@@ -3543,6 +3566,7 @@ class Query {
     this.driveDocumentInfo,
     this.driveOptions,
     this.endTime,
+    this.geminiInWorkspaceOptions,
     this.geminiOptions,
     this.hangoutsChatInfo,
     this.hangoutsChatOptions,
@@ -3585,6 +3609,12 @@ class Query {
               )
             : null,
         endTime: json_['endTime'] as core.String?,
+        geminiInWorkspaceOptions: json_.containsKey('geminiInWorkspaceOptions')
+            ? GeminiInWorkspaceOptions.fromJson(
+                json_['geminiInWorkspaceOptions']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         geminiOptions: json_.containsKey('geminiOptions')
             ? GeminiOptions.fromJson(
                 json_['geminiOptions'] as core.Map<core.String, core.dynamic>,
@@ -3647,6 +3677,7 @@ class Query {
     final driveDocumentInfo = this.driveDocumentInfo;
     final driveOptions = this.driveOptions;
     final endTime = this.endTime;
+    final geminiInWorkspaceOptions = this.geminiInWorkspaceOptions;
     final geminiOptions = this.geminiOptions;
     final hangoutsChatInfo = this.hangoutsChatInfo;
     final hangoutsChatOptions = this.hangoutsChatOptions;
@@ -3669,6 +3700,7 @@ class Query {
       'driveDocumentInfo': ?driveDocumentInfo,
       'driveOptions': ?driveOptions,
       'endTime': ?endTime,
+      'geminiInWorkspaceOptions': ?geminiInWorkspaceOptions,
       'geminiOptions': ?geminiOptions,
       'hangoutsChatInfo': ?hangoutsChatInfo,
       'hangoutsChatOptions': ?hangoutsChatOptions,

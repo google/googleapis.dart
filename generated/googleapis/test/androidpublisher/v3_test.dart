@@ -615,8 +615,10 @@ api.AppStoreAppActiveApkSet buildAppStoreAppActiveApkSet() {
   final o = api.AppStoreAppActiveApkSet();
   buildCounterAppStoreAppActiveApkSet++;
   if (buildCounterAppStoreAppActiveApkSet < 3) {
+    o.alreadyPublishedOnPlay = true;
     o.baseApkId = 'foo';
     o.splitApkId = buildUnnamed5();
+    o.versionCode = 'foo';
   }
   buildCounterAppStoreAppActiveApkSet--;
   return o;
@@ -625,8 +627,10 @@ api.AppStoreAppActiveApkSet buildAppStoreAppActiveApkSet() {
 void checkAppStoreAppActiveApkSet(api.AppStoreAppActiveApkSet o) {
   buildCounterAppStoreAppActiveApkSet++;
   if (buildCounterAppStoreAppActiveApkSet < 3) {
+    unittest.expect(o.alreadyPublishedOnPlay!, unittest.isTrue);
     unittest.expect(o.baseApkId!, unittest.equals('foo'));
     checkUnnamed5(o.splitApkId!);
+    unittest.expect(o.versionCode!, unittest.equals('foo'));
   }
   buildCounterAppStoreAppActiveApkSet--;
 }
@@ -10059,7 +10063,9 @@ core.int buildCounterUpdateAppStoreHostedAppResponse = 0;
 api.UpdateAppStoreHostedAppResponse buildUpdateAppStoreHostedAppResponse() {
   final o = api.UpdateAppStoreHostedAppResponse();
   buildCounterUpdateAppStoreHostedAppResponse++;
-  if (buildCounterUpdateAppStoreHostedAppResponse < 3) {}
+  if (buildCounterUpdateAppStoreHostedAppResponse < 3) {
+    o.updateId = 'foo';
+  }
   buildCounterUpdateAppStoreHostedAppResponse--;
   return o;
 }
@@ -10068,7 +10074,9 @@ void checkUpdateAppStoreHostedAppResponse(
   api.UpdateAppStoreHostedAppResponse o,
 ) {
   buildCounterUpdateAppStoreHostedAppResponse++;
-  if (buildCounterUpdateAppStoreHostedAppResponse < 3) {}
+  if (buildCounterUpdateAppStoreHostedAppResponse < 3) {
+    unittest.expect(o.updateId!, unittest.equals('foo'));
+  }
   buildCounterUpdateAppStoreHostedAppResponse--;
 }
 

@@ -766,6 +766,9 @@ class PartnersSubscriptionsLineItemsResource {
   /// Value must have pattern
   /// `^partners/\[^/\]+/subscriptions/\[^/\]+/lineItems/\[^/\]+$`.
   ///
+  /// [requestId] - Optional. An idempotency ID for the request. A random UUID
+  /// is recommended. Restricted to 36 ASCII characters.
+  ///
   /// [updateMask] - Required. The list of fields to update. Only a limited set
   /// of fields can be updated. The allowed fields are the following: -
   /// `product_payload.googleHomePayload.googleStructureId`
@@ -783,11 +786,13 @@ class PartnersSubscriptionsLineItemsResource {
   async.Future<SubscriptionLineItem> patch(
     SubscriptionLineItem request,
     core.String name, {
+    core.String? requestId,
     core.String? updateMask,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
       'updateMask': ?updateMask == null ? null : [updateMask],
       'fields': ?$fields == null ? null : [$fields],
     };
@@ -1128,11 +1133,15 @@ class EntitleSubscriptionIntent {
 ///
 /// The end user identity is inferred from the request OAuth context.
 class EntitleSubscriptionRequest {
-  /// The line items to be entitled.
+  /// Deprecated: This field is no longer supported.
   ///
-  /// If unspecified, all line items will be entitled.
+  /// All line items are entitled automatically. Optional. The line items to be
+  /// entitled. If unspecified, all line items will be entitled.
   ///
   /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<EntitleSubscriptionRequestLineItemEntitlementDetails>?
   lineItemEntitlementDetails;
 
@@ -2762,6 +2771,18 @@ class SubscriptionLineItem {
   /// Output only.
   SubscriptionLineItemOneTimeRecurrenceDetails? oneTimeRecurrenceDetails;
 
+  /// The plan type of the line item.
+  ///
+  /// Optional. Output only.
+  /// Possible string values are:
+  /// - "LINE_ITEM_PLAN_TYPE_UNSPECIFIED" : The line item plan type is
+  /// unspecified.
+  /// - "LINE_ITEM_PLAN_TYPE_BASE" : The line item is the base plan in the
+  /// subscription.
+  /// - "LINE_ITEM_PLAN_TYPE_ADDON" : The line item is an add-on to the
+  /// subscription.
+  core.String? planType;
+
   /// Product resource name that identifies the product associated with this
   /// line item.
   ///
@@ -2820,6 +2841,7 @@ class SubscriptionLineItem {
     this.lineItemPromotionSpecs,
     this.name,
     this.oneTimeRecurrenceDetails,
+    this.planType,
     this.product,
     this.productPayload,
     this.recurrenceType,
@@ -2863,6 +2885,7 @@ class SubscriptionLineItem {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        planType: json_['planType'] as core.String?,
         product: json_['product'] as core.String?,
         productPayload: json_.containsKey('productPayload')
             ? ProductPayload.fromJson(
@@ -2883,6 +2906,7 @@ class SubscriptionLineItem {
     final lineItemPromotionSpecs = this.lineItemPromotionSpecs;
     final name = this.name;
     final oneTimeRecurrenceDetails = this.oneTimeRecurrenceDetails;
+    final planType = this.planType;
     final product = this.product;
     final productPayload = this.productPayload;
     final recurrenceType = this.recurrenceType;
@@ -2897,6 +2921,7 @@ class SubscriptionLineItem {
       'lineItemPromotionSpecs': ?lineItemPromotionSpecs,
       'name': ?name,
       'oneTimeRecurrenceDetails': ?oneTimeRecurrenceDetails,
+      'planType': ?planType,
       'product': ?product,
       'productPayload': ?productPayload,
       'recurrenceType': ?recurrenceType,

@@ -448,9 +448,9 @@ class ProjectsLocationsAccountConnectorsResource {
   /// [parent] - Required. Parent value for ListAccountConnectorsRequest
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - Optional. Filtering results
+  /// [filter] - Optional. Filtering results.
   ///
-  /// [orderBy] - Optional. Hint for how to order the results
+  /// [orderBy] - Optional. Hint for how to order the results.
   ///
   /// [pageSize] - Optional. Requested page size. Server may return fewer items
   /// than requested. If unspecified, server will pick an appropriate default.
@@ -834,9 +834,9 @@ class ProjectsLocationsAccountConnectorsUsersResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/accountConnectors/\[^/\]+$`.
   ///
-  /// [filter] - Optional. Filtering results
+  /// [filter] - Optional. Filtering results.
   ///
-  /// [orderBy] - Optional. Hint for how to order the results
+  /// [orderBy] - Optional. Hint for how to order the results.
   ///
   /// [pageSize] - Optional. Requested page size. Server may return fewer items
   /// than requested. If unspecified, server will pick an appropriate default.
@@ -944,9 +944,8 @@ class ProjectsLocationsConnectionsResource {
   /// [parent] - Required. Value for parent.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [connectionId] - Required. Id of the requesting object If auto-generating
-  /// Id server-side, remove this field and connection_id from the
-  /// method_signature of Create RPC
+  /// [connectionId] - Required. The ID to use for the connection, which becomes
+  /// the final component of the connection's resource name.
   ///
   /// [requestId] - Optional. An optional request ID to identify requests.
   /// Specify a unique request ID so that if you must retry your request, the
@@ -1202,9 +1201,9 @@ class ProjectsLocationsConnectionsResource {
   /// [parent] - Required. Parent value for ListConnectionsRequest
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - Optional. Filtering results
+  /// [filter] - Optional. Filtering results.
   ///
-  /// [orderBy] - Optional. Hint for how to order the results
+  /// [orderBy] - Optional. Hint for how to order the results.
   ///
   /// [pageSize] - Optional. Requested page size. Server may return fewer items
   /// than requested. If unspecified, server will pick an appropriate default.
@@ -1380,6 +1379,98 @@ class ProjectsLocationsConnectionsGitRepositoryLinksResource {
     commons.ApiRequester client,
   ) : _requester = client;
 
+  /// Add a comment to a Pull Request.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the GitRepositoryLink in the
+  /// format `projects / * /locations / * /connections / * /gitRepositoryLinks /
+  /// * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+/gitRepositoryLinks/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [PullRequestComment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PullRequestComment> addPullRequestComment(
+    AddGitRepositoryLinkPullRequestCommentRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$name') + ':addPullRequestComment';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return PullRequestComment.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Add a review comment (inline on diff) to a Pull Request.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the GitRepositoryLink in the
+  /// format `projects / * /locations / * /connections / * /gitRepositoryLinks /
+  /// * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+/gitRepositoryLinks/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [PullRequestReviewComment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PullRequestReviewComment> addPullRequestReviewComment(
+    AddGitRepositoryLinkPullRequestReviewCommentRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$name') + ':addPullRequestReviewComment';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return PullRequestReviewComment.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Creates a GitRepositoryLink.
   ///
   /// Upon linking a Git Repository, Developer Connect will configure the Git
@@ -1517,6 +1608,253 @@ class ProjectsLocationsConnectionsGitRepositoryLinksResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Diff commits for a GitRepositoryLink.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the GitRepositoryLink.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+/gitRepositoryLinks/\[^/\]+$`.
+  ///
+  /// [baseSha] - Required. The base commit SHA or ref.
+  ///
+  /// [headSha] - Required. The head commit SHA or ref.
+  ///
+  /// [pathFilters] - Optional. Path patterns or exact paths to filter returned
+  /// files. When `path_filters` is specified, `FileDiff.patch` is populated for
+  /// all matching files (use `["**"]` to include patches for all changed
+  /// files). When `path_filters` is omitted or empty, the full list of
+  /// `FileDiff` is returned without patch diffs (`FileDiff.patch` is empty).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DiffGitRepositoryLinkCommitResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DiffGitRepositoryLinkCommitResponse> diffCommit(
+    core.String name, {
+    core.String? baseSha,
+    core.String? headSha,
+    core.List<core.String>? pathFilters,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'baseSha': ?baseSha == null ? null : [baseSha],
+      'headSha': ?headSha == null ? null : [headSha],
+      'pathFilters': ?pathFilters,
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':diffCommit';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return DiffGitRepositoryLinkCommitResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Fetch Commit details from a Git repository link.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the GitRepositoryLink in the
+  /// format `projects / * /locations / * /connections / * /gitRepositoryLinks /
+  /// * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+/gitRepositoryLinks/\[^/\]+$`.
+  ///
+  /// [commitSha] - Required. The commit SHA, or symbolic revision (for example,
+  /// branch name, tag, or Git reference).
+  ///
+  /// [pathFilters] - Optional. Path patterns or exact paths to filter returned
+  /// files (only applicable in `FULL` view). When `path_filters` is specified,
+  /// `FileDiff.patch` is populated for all matching files (use `["**"]` to
+  /// include patches for all changed files). When `path_filters` is omitted or
+  /// empty, the full list of `FileDiff` is returned without patch diffs
+  /// (`FileDiff.patch` is empty).
+  ///
+  /// [view] - Optional. The level of commit details to return in the response.
+  /// Defaults to `FULL` if unspecified. In `FULL` view, `files` metadata (paths
+  /// and statuses) are returned; `path_filters` must also be specified to
+  /// populate line patch hunks.
+  /// Possible string values are:
+  /// - "COMMIT_VIEW_UNSPECIFIED" : Unspecified, defaults to BASIC.
+  /// - "BASIC" : Basic view, returns commit metadata but no file diffs.
+  /// - "FULL" : Full view, returns commit metadata and file diffs.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [FetchGitRepositoryLinkCommitResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<FetchGitRepositoryLinkCommitResponse> fetchCommit(
+    core.String name, {
+    core.String? commitSha,
+    core.List<core.String>? pathFilters,
+    core.String? view,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'commitSha': ?commitSha == null ? null : [commitSha],
+      'pathFilters': ?pathFilters,
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':fetchCommit';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return FetchGitRepositoryLinkCommitResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Fetch a list of Commits from a Git repository link.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the GitRepositoryLink in the
+  /// format `projects / * /locations / * /connections / * /gitRepositoryLinks /
+  /// * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+/gitRepositoryLinks/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. Number of results to return in the list. Default is
+  /// 50. Max is 100.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `FetchGitRepositoryLinkCommitList` call. Provide this to retrieve the
+  /// subsequent page. When paginating, all other parameters provided to
+  /// `FetchGitRepositoryLinkCommitList` must match the call that provided the
+  /// page token.
+  ///
+  /// [ref] - Optional. The commit SHA, or symbolic revision (for example,
+  /// branch name, tag, or Git reference) from which to start listing commits.
+  ///
+  /// [view] - Optional. The level of commit details to return in the response.
+  /// Only `BASIC` is supported; `FULL` returns `INVALID_ARGUMENT`. Defaults to
+  /// `BASIC` if unspecified. Use `FetchGitRepositoryLinkCommit` to get file
+  /// diffs for a single commit.
+  /// Possible string values are:
+  /// - "COMMIT_VIEW_UNSPECIFIED" : Unspecified, defaults to BASIC.
+  /// - "BASIC" : Basic view, returns commit metadata but no file diffs.
+  /// - "FULL" : Full view, returns commit metadata and file diffs.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [FetchGitRepositoryLinkCommitListResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<FetchGitRepositoryLinkCommitListResponse> fetchCommitList(
+    core.String name, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? ref,
+    core.String? view,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'ref': ?ref == null ? null : [ref],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':fetchCommitList';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return FetchGitRepositoryLinkCommitListResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Fetches blame information for a file or line range in a file.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the GitRepositoryLink in the
+  /// format `projects / * /locations / * /connections / * /gitRepositoryLinks /
+  /// * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+/gitRepositoryLinks/\[^/\]+$`.
+  ///
+  /// [firstLine] - Optional. The 1-indexed starting line number of the range to
+  /// blame (inclusive). If not specified, blame begins at line 1.
+  ///
+  /// [lastLine] - Optional. The 1-indexed ending line number of the range to
+  /// blame (inclusive). If not specified, blame extends to the end of the file.
+  ///
+  /// [path] - Required. The file path within the repository.
+  ///
+  /// [ref] - Required. The SCM commit SHA, or symbolic revision (for example,
+  /// branch name, tag) from which to fetch the blame.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [FetchGitRepositoryLinkFileBlameResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<FetchGitRepositoryLinkFileBlameResponse> fetchFileBlame(
+    core.String name, {
+    core.int? firstLine,
+    core.int? lastLine,
+    core.String? path,
+    core.String? ref,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'firstLine': ?firstLine == null ? null : ['${firstLine}'],
+      'lastLine': ?lastLine == null ? null : ['${lastLine}'],
+      'path': ?path == null ? null : [path],
+      'ref': ?ref == null ? null : [ref],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':fetchFileBlame';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return FetchGitRepositoryLinkFileBlameResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Fetch the list of branches or tags for a given repository.
   ///
   /// Request parameters:
@@ -1571,6 +1909,114 @@ class ProjectsLocationsConnectionsGitRepositoryLinksResource {
       queryParams: queryParams_,
     );
     return FetchGitRefsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Fetch Pull Request details from a Git repository link.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the GitRepositoryLink in the
+  /// format `projects / * /locations / * /connections / * /gitRepositoryLinks /
+  /// * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+/gitRepositoryLinks/\[^/\]+$`.
+  ///
+  /// [pullRequestId] - Required. The ID of the Pull Request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [PullRequest].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PullRequest> fetchPullRequest(
+    core.String name, {
+    core.String? pullRequestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'pullRequestId': ?pullRequestId == null ? null : [pullRequestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':fetchPullRequest';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return PullRequest.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Fetches a list of Pull Requests from the remote repository.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The GitRepositoryLink resource name in the format
+  /// `projects / * /locations / * /connections / * /gitRepositoryLinks / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+/gitRepositoryLinks/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. A filter expression that filters the pull requests
+  /// returned in the response. Only a single equality comparison on `state` is
+  /// supported, for example `state = "OPEN"`. Supported values are `OPEN`,
+  /// `CLOSED`, and `MERGED`. `DECLINED` is only supported for SCM providers
+  /// that support declining pull requests, and returns `INVALID_ARGUMENT` for
+  /// GitHub, GitHub Enterprise, GitLab, and GitLab Enterprise. Other values or
+  /// expressions return `INVALID_ARGUMENT`. Defaults to `state = "OPEN"` if
+  /// unspecified.
+  ///
+  /// [pageSize] - Optional. Number of results to return in the list. Default is
+  /// 20. Max is 100. A page may contain fewer than `page_size` results even
+  /// when more results are available; use `next_page_token` to check for more
+  /// pages.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `FetchGitRepositoryLinkPullRequestList` call. Provide this to retrieve the
+  /// subsequent page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [FetchGitRepositoryLinkPullRequestListResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<FetchGitRepositoryLinkPullRequestListResponse>
+  fetchPullRequestList(
+    core.String name, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':fetchPullRequestList';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return FetchGitRepositoryLinkPullRequestListResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -1711,13 +2157,13 @@ class ProjectsLocationsConnectionsGitRepositoryLinksResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Parent value for ListGitRepositoryLinksRequest
+  /// [parent] - Required. Parent value for ListGitRepositoryLinksRequest.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+$`.
   ///
-  /// [filter] - Optional. Filtering results
+  /// [filter] - Optional. Filtering results.
   ///
-  /// [orderBy] - Optional. Hint for how to order the results
+  /// [orderBy] - Optional. Hint for how to order the results.
   ///
   /// [pageSize] - Optional. Requested page size. Server may return fewer items
   /// than requested. If unspecified, server will pick an appropriate default.
@@ -1759,6 +2205,96 @@ class ProjectsLocationsConnectionsGitRepositoryLinksResource {
       queryParams: queryParams_,
     );
     return ListGitRepositoryLinksResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Modifies a Pull Request in the remote SCM repository associated with a
+  /// GitRepositoryLink.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The GitRepositoryLink resource name in the format
+  /// `projects / * /locations / * /connections / * /gitRepositoryLinks / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+/gitRepositoryLinks/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [PullRequest].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PullRequest> modifyPullRequest(
+    ModifyGitRepositoryLinkPullRequestRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':modifyPullRequest';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return PullRequest.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Opens a Pull Request in the remote SCM repository associated with a
+  /// GitRepositoryLink.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The GitRepositoryLink resource name in the format
+  /// `projects / * /locations / * /connections / * /gitRepositoryLinks / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+/gitRepositoryLinks/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [PullRequest].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PullRequest> openPullRequest(
+    OpenGitRepositoryLinkPullRequestRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':openPullRequest';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return PullRequest.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -2678,6 +3214,88 @@ class AccountConnector {
   }
 }
 
+/// Request message for AddGitRepositoryLinkPullRequestComment.
+class AddGitRepositoryLinkPullRequestCommentRequest {
+  /// The comment to add.
+  ///
+  /// Required.
+  PullRequestComment? comment;
+
+  /// The ID of the Pull Request.
+  ///
+  /// Required.
+  core.String? pullRequestId;
+
+  AddGitRepositoryLinkPullRequestCommentRequest({
+    this.comment,
+    this.pullRequestId,
+  });
+
+  AddGitRepositoryLinkPullRequestCommentRequest.fromJson(core.Map json_)
+    : this(
+        comment: json_.containsKey('comment')
+            ? PullRequestComment.fromJson(
+                json_['comment'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        pullRequestId: json_['pullRequestId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final comment = this.comment;
+    final pullRequestId = this.pullRequestId;
+    return {'comment': ?comment, 'pullRequestId': ?pullRequestId};
+  }
+}
+
+/// Request message for AddGitRepositoryLinkPullRequestReviewComment.
+class AddGitRepositoryLinkPullRequestReviewCommentRequest {
+  /// The review comment to add.
+  ///
+  /// Required.
+  PullRequestReviewComment? comment;
+
+  /// The commit SHA to comment on.
+  ///
+  /// If not specified, defaults to the HEAD commit of the Pull Request.
+  ///
+  /// Optional.
+  core.String? commitId;
+
+  /// The ID of the Pull Request.
+  ///
+  /// Required.
+  core.String? pullRequestId;
+
+  AddGitRepositoryLinkPullRequestReviewCommentRequest({
+    this.comment,
+    this.commitId,
+    this.pullRequestId,
+  });
+
+  AddGitRepositoryLinkPullRequestReviewCommentRequest.fromJson(core.Map json_)
+    : this(
+        comment: json_.containsKey('comment')
+            ? PullRequestReviewComment.fromJson(
+                json_['comment'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        commitId: json_['commitId'] as core.String?,
+        pullRequestId: json_['pullRequestId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final comment = this.comment;
+    final commitId = this.commitId;
+    final pullRequestId = this.pullRequestId;
+    return {
+      'comment': ?comment,
+      'commitId': ?commitId,
+      'pullRequestId': ?pullRequestId,
+    };
+  }
+}
+
 /// AppHubService represents the App Hub Service.
 class AppHubService {
   /// The name of the App Hub Service.
@@ -3149,6 +3767,38 @@ class BitbucketDataCenterConfig {
   }
 }
 
+/// BlameRange represents blame information for a range of lines.
+class BlameRange {
+  /// The commit metadata for this line range.
+  SCMCommit? commit;
+
+  /// The 1-indexed starting line number of the range (inclusive).
+  core.int? firstLine;
+
+  /// The 1-indexed ending line number of the range (inclusive).
+  core.int? lastLine;
+
+  BlameRange({this.commit, this.firstLine, this.lastLine});
+
+  BlameRange.fromJson(core.Map json_)
+    : this(
+        commit: json_.containsKey('commit')
+            ? SCMCommit.fromJson(
+                json_['commit'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        firstLine: json_['firstLine'] as core.int?,
+        lastLine: json_['lastLine'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final commit = this.commit;
+    final firstLine = this.firstLine;
+    final lastLine = this.lastLine;
+    return {'commit': ?commit, 'firstLine': ?firstLine, 'lastLine': ?lastLine};
+  }
+}
+
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
 
@@ -3165,7 +3815,7 @@ class Connection {
   /// Configuration for connections to an instance of Bitbucket Data Center.
   BitbucketDataCenterConfig? bitbucketDataCenterConfig;
 
-  /// Create timestamp
+  /// Create timestamp.
   ///
   /// Output only.
   core.String? createTime;
@@ -3177,7 +3827,7 @@ class Connection {
   /// Optional.
   CryptoKeyConfig? cryptoKeyConfig;
 
-  /// Delete timestamp
+  /// Delete timestamp.
   ///
   /// Output only.
   core.String? deleteTime;
@@ -3197,9 +3847,9 @@ class Connection {
   /// Optional.
   core.String? etag;
 
-  /// Configuration for the git proxy feature.
+  /// Configuration for the Git proxy feature.
   ///
-  /// Enabling the git proxy allows clients to perform git operations on the
+  /// Enabling the Git proxy allows clients to perform Git operations on the
   /// repositories linked in the connection.
   /// [Learn more](https://docs.cloud.google.com/developer-connect/docs/configure-git-proxy).
   ///
@@ -3253,7 +3903,7 @@ class Connection {
   /// Output only.
   core.String? uid;
 
-  /// Update timestamp
+  /// Update timestamp.
   ///
   /// Output only.
   core.String? updateTime;
@@ -3700,6 +4350,30 @@ class DeploymentEvent {
   }
 }
 
+/// Response message for DiffGitRepositoryLinkCommit.
+class DiffGitRepositoryLinkCommitResponse {
+  /// The file diff extracted from the unified diff.
+  core.List<FileDiff>? files;
+
+  DiffGitRepositoryLinkCommitResponse({this.files});
+
+  DiffGitRepositoryLinkCommitResponse.fromJson(core.Map json_)
+    : this(
+        files: (json_['files'] as core.List?)
+            ?.map(
+              (value) => FileDiff.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final files = this.files;
+    return {'files': ?files};
+  }
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -3814,6 +4488,131 @@ class FetchGitHubInstallationsResponse {
 /// Response for fetching git refs.
 typedef FetchGitRefsResponse = $FetchGitRefsResponse;
 
+/// Response message for FetchGitRepositoryLinkCommitList.
+class FetchGitRepositoryLinkCommitListResponse {
+  /// The list of commit metadata.
+  core.List<SCMCommit>? commits;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  FetchGitRepositoryLinkCommitListResponse({this.commits, this.nextPageToken});
+
+  FetchGitRepositoryLinkCommitListResponse.fromJson(core.Map json_)
+    : this(
+        commits: (json_['commits'] as core.List?)
+            ?.map(
+              (value) => SCMCommit.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final commits = this.commits;
+    final nextPageToken = this.nextPageToken;
+    return {'commits': ?commits, 'nextPageToken': ?nextPageToken};
+  }
+}
+
+/// Response message for FetchGitRepositoryLinkCommit.
+class FetchGitRepositoryLinkCommitResponse {
+  /// The commit metadata.
+  SCMCommit? commit;
+
+  /// List of file changes and patch diffs.
+  ///
+  /// Omitted when view is `BASIC`. Patch diffs (`FileDiff.patch`) are only
+  /// populated when `path_filters` is specified in the request.
+  core.List<FileDiff>? files;
+
+  FetchGitRepositoryLinkCommitResponse({this.commit, this.files});
+
+  FetchGitRepositoryLinkCommitResponse.fromJson(core.Map json_)
+    : this(
+        commit: json_.containsKey('commit')
+            ? SCMCommit.fromJson(
+                json_['commit'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        files: (json_['files'] as core.List?)
+            ?.map(
+              (value) => FileDiff.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final commit = this.commit;
+    final files = this.files;
+    return {'commit': ?commit, 'files': ?files};
+  }
+}
+
+/// Response message for FetchGitRepositoryLinkFileBlame.
+class FetchGitRepositoryLinkFileBlameResponse {
+  /// The list of blame ranges for the file.
+  core.List<BlameRange>? ranges;
+
+  FetchGitRepositoryLinkFileBlameResponse({this.ranges});
+
+  FetchGitRepositoryLinkFileBlameResponse.fromJson(core.Map json_)
+    : this(
+        ranges: (json_['ranges'] as core.List?)
+            ?.map(
+              (value) => BlameRange.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final ranges = this.ranges;
+    return {'ranges': ?ranges};
+  }
+}
+
+/// Response message for FetchGitRepositoryLinkPullRequestList.
+class FetchGitRepositoryLinkPullRequestListResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// The list of pull requests.
+  core.List<PullRequest>? pullRequests;
+
+  FetchGitRepositoryLinkPullRequestListResponse({
+    this.nextPageToken,
+    this.pullRequests,
+  });
+
+  FetchGitRepositoryLinkPullRequestListResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        pullRequests: (json_['pullRequests'] as core.List?)
+            ?.map(
+              (value) => PullRequest.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final pullRequests = this.pullRequests;
+    return {'nextPageToken': ?nextPageToken, 'pullRequests': ?pullRequests};
+  }
+}
+
 /// Response message for FetchLinkableGitRepositories.
 class FetchLinkableGitRepositoriesResponse {
   /// The git repositories that can be linked to the connection.
@@ -3888,6 +4687,37 @@ class FetchUserRepositoriesResponse {
     final nextPageToken = this.nextPageToken;
     final userRepos = this.userRepos;
     return {'nextPageToken': ?nextPageToken, 'userRepos': ?userRepos};
+  }
+}
+
+/// Message for a file diff.
+class FileDiff {
+  /// Standard unified diff patch hunk for the file.
+  ///
+  /// Only populated when `path_filters` is specified in the request; otherwise
+  /// empty.
+  core.String? patch;
+
+  /// Relative path to the file in the repository.
+  core.String? path;
+
+  /// Status of change: "ADDED", "MODIFIED", "REMOVED", "RENAMED".
+  core.String? status;
+
+  FileDiff({this.patch, this.path, this.status});
+
+  FileDiff.fromJson(core.Map json_)
+    : this(
+        patch: json_['patch'] as core.String?,
+        path: json_['path'] as core.String?,
+        status: json_['status'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final patch = this.patch;
+    final path = this.path;
+    final status = this.status;
+    return {'patch': ?patch, 'path': ?path, 'status': ?status};
   }
 }
 
@@ -4407,9 +5237,12 @@ class GitLabEnterpriseConfig {
   }
 }
 
-/// The git proxy configuration.
+/// Configuration for proxies.
+///
+/// For legacy reasons, this message is named `GitProxyConfig`, but it includes
+/// settings for both Git and HTTP proxy.
 class GitProxyConfig {
-  /// Setting this to true allows the git proxy to be used for performing git
+  /// Setting this to true allows the Git proxy to be used for performing Git
   /// operations on the repositories linked in the connection.
   ///
   /// Optional.
@@ -4452,12 +5285,12 @@ class GitRepositoryLink {
   /// Required.
   core.String? cloneUri;
 
-  /// Create timestamp
+  /// Create timestamp.
   ///
   /// Output only.
   core.String? createTime;
 
-  /// Delete timestamp
+  /// Delete timestamp.
   ///
   /// Output only.
   core.String? deleteTime;
@@ -4469,9 +5302,9 @@ class GitRepositoryLink {
   /// Optional.
   core.String? etag;
 
-  /// URI to access the linked repository through the Git Proxy.
+  /// URI to access the linked repository through the Git proxy.
   ///
-  /// This field is only populated if the git proxy is enabled for the
+  /// This field is only populated if the Git proxy is enabled for the
   /// connection.
   ///
   /// Output only.
@@ -4499,7 +5332,7 @@ class GitRepositoryLink {
   /// Output only.
   core.String? uid;
 
-  /// Update timestamp
+  /// Update timestamp.
   ///
   /// Output only.
   core.String? updateTime;
@@ -4936,7 +5769,7 @@ class ListAccountConnectorsResponse {
 
 /// Message for response to listing Connections
 class ListConnectionsResponse {
-  /// The list of Connection
+  /// The list of Connections.
   core.List<Connection>? connections;
 
   /// A token identifying a page of results the server should return.
@@ -5014,7 +5847,7 @@ class ListDeploymentEventsResponse {
 
 /// Message for response to listing GitRepositoryLinks
 class ListGitRepositoryLinksResponse {
-  /// The list of GitRepositoryLinks
+  /// The list of GitRepositoryLinks.
   core.List<GitRepositoryLink>? gitRepositoryLinks;
 
   /// A token identifying a page of results the server should return.
@@ -5220,6 +6053,70 @@ class ListUsersResponse {
 /// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
+/// Message for modifying SCM Pull Request.
+class ModifyGitRepositoryLinkPullRequestRequest {
+  /// The target branch to merge into.
+  ///
+  /// Optional.
+  core.String? baseRef;
+
+  /// The body description of the Pull Request.
+  ///
+  /// Optional.
+  core.String? body;
+
+  /// The SCM-specific pull request identifier (for example, "45").
+  ///
+  /// Required.
+  core.String? pullRequestId;
+
+  /// The state of the Pull Request.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "OPEN" : The pull request is open.
+  /// - "CLOSED" : The pull request is closed.
+  core.String? state;
+
+  /// The title of the Pull Request.
+  ///
+  /// Optional.
+  core.String? title;
+
+  ModifyGitRepositoryLinkPullRequestRequest({
+    this.baseRef,
+    this.body,
+    this.pullRequestId,
+    this.state,
+    this.title,
+  });
+
+  ModifyGitRepositoryLinkPullRequestRequest.fromJson(core.Map json_)
+    : this(
+        baseRef: json_['baseRef'] as core.String?,
+        body: json_['body'] as core.String?,
+        pullRequestId: json_['pullRequestId'] as core.String?,
+        state: json_['state'] as core.String?,
+        title: json_['title'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final baseRef = this.baseRef;
+    final body = this.body;
+    final pullRequestId = this.pullRequestId;
+    final state = this.state;
+    final title = this.title;
+    return {
+      'baseRef': ?baseRef,
+      'body': ?body,
+      'pullRequestId': ?pullRequestId,
+      'state': ?state,
+      'title': ?title,
+    };
+  }
+}
+
 /// Represents an OAuth token of the account that authorized the Connection, and
 /// associated metadata.
 class OAuthCredential {
@@ -5254,6 +6151,32 @@ class OAuthCredential {
       'oauthTokenSecretVersion': ?oauthTokenSecretVersion,
       'username': ?username,
     };
+  }
+}
+
+/// Message for opening SCM Pull Request.
+class OpenGitRepositoryLinkPullRequestRequest {
+  /// The Pull Request details to open.
+  ///
+  /// Input fields used: title, body, head_ref, base_ref.
+  ///
+  /// Required.
+  PullRequest? pullRequest;
+
+  OpenGitRepositoryLinkPullRequestRequest({this.pullRequest});
+
+  OpenGitRepositoryLinkPullRequestRequest.fromJson(core.Map json_)
+    : this(
+        pullRequest: json_.containsKey('pullRequest')
+            ? PullRequest.fromJson(
+                json_['pullRequest'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final pullRequest = this.pullRequest;
+    return {'pullRequest': ?pullRequest};
   }
 }
 
@@ -5562,6 +6485,344 @@ class ProxyConfig {
   }
 }
 
+/// Message representing a SCM Pull Request.
+class PullRequest {
+  /// The username of the author.
+  ///
+  /// Output only.
+  core.String? author;
+
+  /// The target commit SHA of the base branch.
+  ///
+  /// Required.
+  core.String? baseRef;
+
+  /// The body description of the PR.
+  ///
+  /// Optional.
+  core.String? body;
+
+  /// When the PR was closed.
+  ///
+  /// Output only.
+  core.String? closeTime;
+
+  /// When the PR was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// When the PR was declined.
+  ///
+  /// Only set for SCM providers that support declining pull requests. Never set
+  /// for GitHub, GitHub Enterprise, GitLab, or GitLab Enterprise, where a pull
+  /// request closed without being merged is `CLOSED`.
+  ///
+  /// Output only.
+  core.String? declineTime;
+
+  /// The source commit SHA of the head branch.
+  ///
+  /// Required.
+  core.String? headRef;
+
+  /// The HTML URL of the pull request on the SCM provider.
+  ///
+  /// Output only.
+  core.String? htmlUrl;
+
+  /// The ID of the PR.
+  ///
+  /// Required.
+  core.String? id;
+
+  /// When the PR was merged.
+  ///
+  /// Output only.
+  core.String? mergeTime;
+
+  /// The mergeability state of the pull request.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "MERGEABILITY_UNSPECIFIED" : Mergeability state is unspecified.
+  /// - "MERGEABLE" : The pull request can be merged cleanly without Git
+  /// conflicts.
+  /// - "CONFLICTING" : The pull request has merge conflicts and cannot be
+  /// merged cleanly.
+  /// - "COMPUTING" : The mergeability state is currently being computed
+  /// asynchronously by the upstream SCM provider.
+  core.String? mergeability;
+
+  /// The current state of the PR.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default value.
+  /// - "OPEN" : The PR is open.
+  /// - "CLOSED" : The PR is closed.
+  /// - "MERGED" : The PR is merged.
+  /// - "DECLINED" : The PR is declined. Only used by SCM providers that support
+  /// declining pull requests. Never used for GitHub, GitHub Enterprise, GitLab,
+  /// or GitLab Enterprise, where a pull request closed without being merged is
+  /// `CLOSED`.
+  core.String? state;
+
+  /// The title of the PR.
+  ///
+  /// Required.
+  core.String? title;
+
+  /// When the PR was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  PullRequest({
+    this.author,
+    this.baseRef,
+    this.body,
+    this.closeTime,
+    this.createTime,
+    this.declineTime,
+    this.headRef,
+    this.htmlUrl,
+    this.id,
+    this.mergeTime,
+    this.mergeability,
+    this.state,
+    this.title,
+    this.updateTime,
+  });
+
+  PullRequest.fromJson(core.Map json_)
+    : this(
+        author: json_['author'] as core.String?,
+        baseRef: json_['baseRef'] as core.String?,
+        body: json_['body'] as core.String?,
+        closeTime: json_['closeTime'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        declineTime: json_['declineTime'] as core.String?,
+        headRef: json_['headRef'] as core.String?,
+        htmlUrl: json_['htmlUrl'] as core.String?,
+        id: json_['id'] as core.String?,
+        mergeTime: json_['mergeTime'] as core.String?,
+        mergeability: json_['mergeability'] as core.String?,
+        state: json_['state'] as core.String?,
+        title: json_['title'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final author = this.author;
+    final baseRef = this.baseRef;
+    final body = this.body;
+    final closeTime = this.closeTime;
+    final createTime = this.createTime;
+    final declineTime = this.declineTime;
+    final headRef = this.headRef;
+    final htmlUrl = this.htmlUrl;
+    final id = this.id;
+    final mergeTime = this.mergeTime;
+    final mergeability = this.mergeability;
+    final state = this.state;
+    final title = this.title;
+    final updateTime = this.updateTime;
+    return {
+      'author': ?author,
+      'baseRef': ?baseRef,
+      'body': ?body,
+      'closeTime': ?closeTime,
+      'createTime': ?createTime,
+      'declineTime': ?declineTime,
+      'headRef': ?headRef,
+      'htmlUrl': ?htmlUrl,
+      'id': ?id,
+      'mergeTime': ?mergeTime,
+      'mergeability': ?mergeability,
+      'state': ?state,
+      'title': ?title,
+      'updateTime': ?updateTime,
+    };
+  }
+}
+
+/// Message representing a SCM Pull Request Comment.
+class PullRequestComment {
+  /// The username of the author.
+  ///
+  /// Output only.
+  core.String? author;
+
+  /// The body of the comment.
+  ///
+  /// Required.
+  core.String? body;
+
+  /// When the comment was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The ID of the comment.
+  ///
+  /// Output only.
+  core.String? id;
+
+  /// When the comment was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  PullRequestComment({
+    this.author,
+    this.body,
+    this.createTime,
+    this.id,
+    this.updateTime,
+  });
+
+  PullRequestComment.fromJson(core.Map json_)
+    : this(
+        author: json_['author'] as core.String?,
+        body: json_['body'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        id: json_['id'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final author = this.author;
+    final body = this.body;
+    final createTime = this.createTime;
+    final id = this.id;
+    final updateTime = this.updateTime;
+    return {
+      'author': ?author,
+      'body': ?body,
+      'createTime': ?createTime,
+      'id': ?id,
+      'updateTime': ?updateTime,
+    };
+  }
+}
+
+/// Message representing a SCM Pull Request Review Comment (inline on diff).
+class PullRequestReviewComment {
+  /// The username of the author.
+  ///
+  /// Output only.
+  core.String? author;
+
+  /// The body of the comment.
+  ///
+  /// Required.
+  core.String? body;
+
+  /// The commit SHA the comment was actually applied to.
+  ///
+  /// Output only.
+  core.String? commitId;
+
+  /// When the comment was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The first line of the comment range (inclusive).
+  ///
+  /// If not specified, the comment applies only to the `last_line`.
+  ///
+  /// Optional.
+  core.int? firstLine;
+
+  /// The ID of the comment.
+  ///
+  /// Output only.
+  core.String? id;
+
+  /// The last line of the comment range (inclusive).
+  ///
+  /// If `first_line` is not specified, the comment applies only to this line.
+  ///
+  /// Required.
+  core.int? lastLine;
+
+  /// The file path to comment on.
+  ///
+  /// Required.
+  core.String? path;
+
+  /// The side of the diff to comment on.
+  ///
+  /// Defaults to HEAD.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "DIFF_SIDE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "BASE" : The side of the diff before changes (deleted or modified
+  /// lines).
+  /// - "HEAD" : The side of the diff after changes (added or modified lines).
+  core.String? side;
+
+  /// When the comment was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  PullRequestReviewComment({
+    this.author,
+    this.body,
+    this.commitId,
+    this.createTime,
+    this.firstLine,
+    this.id,
+    this.lastLine,
+    this.path,
+    this.side,
+    this.updateTime,
+  });
+
+  PullRequestReviewComment.fromJson(core.Map json_)
+    : this(
+        author: json_['author'] as core.String?,
+        body: json_['body'] as core.String?,
+        commitId: json_['commitId'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        firstLine: json_['firstLine'] as core.int?,
+        id: json_['id'] as core.String?,
+        lastLine: json_['lastLine'] as core.int?,
+        path: json_['path'] as core.String?,
+        side: json_['side'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final author = this.author;
+    final body = this.body;
+    final commitId = this.commitId;
+    final createTime = this.createTime;
+    final firstLine = this.firstLine;
+    final id = this.id;
+    final lastLine = this.lastLine;
+    final path = this.path;
+    final side = this.side;
+    final updateTime = this.updateTime;
+    return {
+      'author': ?author,
+      'body': ?body,
+      'commitId': ?commitId,
+      'createTime': ?createTime,
+      'firstLine': ?firstLine,
+      'id': ?id,
+      'lastLine': ?lastLine,
+      'path': ?path,
+      'side': ?side,
+      'updateTime': ?updateTime,
+    };
+  }
+}
+
 /// RuntimeConfig represents the runtimes where the application is deployed.
 class RuntimeConfig {
   /// App Hub Service.
@@ -5652,6 +6913,63 @@ class RuntimeConfig {
       'googleCloudRun': ?googleCloudRun,
       'state': ?state,
       'uri': ?uri,
+    };
+  }
+}
+
+/// SCMCommit represents commit metadata.
+class SCMCommit {
+  /// The author's display name.
+  core.String? author;
+
+  /// The author's email address.
+  core.String? authorEmail;
+
+  /// Timestamp when the commit was authored.
+  core.String? commitTime;
+
+  /// Commit message text.
+  core.String? message;
+
+  /// Full 40-character SCM commit SHA.
+  core.String? sha;
+
+  /// The SCM provider's HTML URL link for this commit.
+  core.String? url;
+
+  SCMCommit({
+    this.author,
+    this.authorEmail,
+    this.commitTime,
+    this.message,
+    this.sha,
+    this.url,
+  });
+
+  SCMCommit.fromJson(core.Map json_)
+    : this(
+        author: json_['author'] as core.String?,
+        authorEmail: json_['authorEmail'] as core.String?,
+        commitTime: json_['commitTime'] as core.String?,
+        message: json_['message'] as core.String?,
+        sha: json_['sha'] as core.String?,
+        url: json_['url'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final author = this.author;
+    final authorEmail = this.authorEmail;
+    final commitTime = this.commitTime;
+    final message = this.message;
+    final sha = this.sha;
+    final url = this.url;
+    return {
+      'author': ?author,
+      'authorEmail': ?authorEmail,
+      'commitTime': ?commitTime,
+      'message': ?message,
+      'sha': ?sha,
+      'url': ?url,
     };
   }
 }

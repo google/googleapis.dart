@@ -8973,21 +8973,23 @@ class GooglePrivacyDlpV2AdjustByMatchingInfoTypes {
   /// - "MATCHING_TYPE_FULL_MATCH" : Full match. - Dictionary: join of
   /// Dictionary results matched the complete finding quote - Regex: all regex
   /// matches fill a finding quote from start to end - Exclude infoType:
-  /// completely inside affecting infoTypes findings
+  /// completely inside affecting infoTypes findings - Exclude by prompt:
+  /// finding matches the prompt definition
   /// - "MATCHING_TYPE_PARTIAL_MATCH" : Partial match. - Dictionary: at least
   /// one of the tokens in the finding matches - Regex: substring of the finding
-  /// matches - Exclude infoType: intersects with affecting infoTypes findings
+  /// matches - Exclude infoType: intersects with affecting infoTypes findings -
+  /// Exclude by prompt: not supported
   /// - "MATCHING_TYPE_INVERSE_MATCH" : Inverse match. - Dictionary: no tokens
   /// in the finding match the dictionary - Regex: finding doesn't match the
   /// regex - Exclude infoType: no intersection with affecting infoTypes
-  /// findings
+  /// findings - Exclude by prompt: finding does not match the prompt definition
   /// - "MATCHING_TYPE_RULE_SPECIFIC" : Rule-specific match. The matching logic
   /// is based on the specific rule being used. This is required for rules where
   /// the matching behavior is not a simple string comparison (e.g., image
   /// containment). This matching type can only be used with the
   /// `ExcludeByImageFindings` rule. - Exclude by image findings: The matching
   /// logic is defined within `ExcludeByImageFindings` based on spatial
-  /// relationships between bounding boxes.
+  /// relationships between bounding boxes. - Exclude by prompt: not supported
   core.String? matchingType;
 
   /// Minimum likelihood of the `adjust_by_matching_info_types.info_types`
@@ -10094,9 +10096,10 @@ class GooglePrivacyDlpV2ByteContentItem {
   /// - "CSV" : csv
   /// - "TSV" : tsv
   /// - "AUDIO" : Audio file types. Only used for profiling.
-  /// - "VIDEO" : Video file types. Only used for profiling.
+  /// - "VIDEO" : Video file types.
   /// - "EXECUTABLE" : Executable file types. Only used for profiling.
   /// - "AI_MODEL" : AI model file types. Only used for profiling.
+  /// - "IMAGE_TIFF" : TIFF image format.
   core.String? type;
 
   GooglePrivacyDlpV2ByteContentItem({this.data, this.type});
@@ -16031,21 +16034,23 @@ class GooglePrivacyDlpV2ExclusionRule {
   /// - "MATCHING_TYPE_FULL_MATCH" : Full match. - Dictionary: join of
   /// Dictionary results matched the complete finding quote - Regex: all regex
   /// matches fill a finding quote from start to end - Exclude infoType:
-  /// completely inside affecting infoTypes findings
+  /// completely inside affecting infoTypes findings - Exclude by prompt:
+  /// finding matches the prompt definition
   /// - "MATCHING_TYPE_PARTIAL_MATCH" : Partial match. - Dictionary: at least
   /// one of the tokens in the finding matches - Regex: substring of the finding
-  /// matches - Exclude infoType: intersects with affecting infoTypes findings
+  /// matches - Exclude infoType: intersects with affecting infoTypes findings -
+  /// Exclude by prompt: not supported
   /// - "MATCHING_TYPE_INVERSE_MATCH" : Inverse match. - Dictionary: no tokens
   /// in the finding match the dictionary - Regex: finding doesn't match the
   /// regex - Exclude infoType: no intersection with affecting infoTypes
-  /// findings
+  /// findings - Exclude by prompt: finding does not match the prompt definition
   /// - "MATCHING_TYPE_RULE_SPECIFIC" : Rule-specific match. The matching logic
   /// is based on the specific rule being used. This is required for rules where
   /// the matching behavior is not a simple string comparison (e.g., image
   /// containment). This matching type can only be used with the
   /// `ExcludeByImageFindings` rule. - Exclude by image findings: The matching
   /// logic is defined within `ExcludeByImageFindings` based on spatial
-  /// relationships between bounding boxes.
+  /// relationships between bounding boxes. - Exclude by prompt: not supported
   core.String? matchingType;
 
   /// Regular expression which defines the rule.
@@ -17822,7 +17827,10 @@ class GooglePrivacyDlpV2ImageLocation {
   /// finding.
   core.List<GooglePrivacyDlpV2BoundingBox>? boundingBoxes;
 
-  GooglePrivacyDlpV2ImageLocation({this.boundingBoxes});
+  /// The 0-indexed page number or frame index for multi-page image formats.
+  core.int? pageNumber;
+
+  GooglePrivacyDlpV2ImageLocation({this.boundingBoxes, this.pageNumber});
 
   GooglePrivacyDlpV2ImageLocation.fromJson(core.Map json_)
     : this(
@@ -17833,11 +17841,13 @@ class GooglePrivacyDlpV2ImageLocation {
               ),
             )
             .toList(),
+        pageNumber: json_['pageNumber'] as core.int?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final boundingBoxes = this.boundingBoxes;
-    return {'boundingBoxes': ?boundingBoxes};
+    final pageNumber = this.pageNumber;
+    return {'boundingBoxes': ?boundingBoxes, 'pageNumber': ?pageNumber};
   }
 }
 
