@@ -4209,7 +4209,26 @@ class GoogleCloudAssuredworkloadsV1SimilarControls {
 }
 
 /// A list of strings for the parameter value.
-typedef GoogleCloudAssuredworkloadsV1StringList = $StringList02;
+class GoogleCloudAssuredworkloadsV1StringList {
+  /// The strings in the list.
+  ///
+  /// Required.
+  core.List<core.String>? values;
+
+  GoogleCloudAssuredworkloadsV1StringList({this.values});
+
+  GoogleCloudAssuredworkloadsV1StringList.fromJson(core.Map json_)
+    : this(
+        values: (json_['values'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final values = this.values;
+    return {'values': ?values};
+  }
+}
 
 /// The details for a target resource.
 class GoogleCloudAssuredworkloadsV1TargetResourceDetails {

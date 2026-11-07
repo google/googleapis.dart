@@ -3742,7 +3742,7 @@ class GoogleIamV1SetIamPolicyRequest {
 typedef GoogleIamV1TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
-typedef GoogleIamV1TestIamPermissionsResponse = $PermissionsResponse;
+typedef GoogleIamV1TestIamPermissionsResponse = $TestIamPermissionsResponse00;
 
 /// The response message for Operations.ListOperations.
 class GoogleLongrunningListOperationsResponse {

@@ -5092,7 +5092,7 @@ typedef CancelAutomationRunResponse = $Empty;
 typedef CancelOperationRequest = $Empty;
 
 /// The request object used by `CancelRollout`.
-typedef CancelRolloutRequest = $Request08;
+typedef CancelRolloutRequest = $Request07;
 
 /// The response object from `CancelRollout`.
 typedef CancelRolloutResponse = $Empty;
@@ -12132,7 +12132,7 @@ class Task {
 }
 
 /// The request object used by `TerminateJobRun`.
-typedef TerminateJobRunRequest = $Request08;
+typedef TerminateJobRunRequest = $Request07;
 
 /// The response object from `TerminateJobRun`.
 typedef TerminateJobRunResponse = $Empty;
@@ -12141,7 +12141,7 @@ typedef TerminateJobRunResponse = $Empty;
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
-typedef TestIamPermissionsResponse = $PermissionsResponse;
+typedef TestIamPermissionsResponse = $TestIamPermissionsResponse00;
 
 /// Represents a time of day.
 ///

@@ -126714,7 +126714,7 @@ class InstanceGroupManagersPatchPerInstanceConfigsReq {
   }
 }
 
-typedef InstanceGroupManagersRecreateInstancesRequest = $Request10;
+typedef InstanceGroupManagersRecreateInstancesRequest = $Request09;
 typedef InstanceGroupManagersResumeInstancesRequest =
     $InstanceGroupManagersResumeInstancesRequest;
 
@@ -130389,7 +130389,7 @@ class InstancesSetSecurityPolicyRequest {
   }
 }
 
-typedef InstancesSetServiceAccountRequest = $Shared17;
+typedef InstancesSetServiceAccountRequest = $Shared13;
 
 class InstancesStartWithEncryptionKeyRequest {
   /// Array of disks associated with this instance that are protected with
@@ -162317,7 +162317,7 @@ class RegionInstanceGroupManagersListInstancesResponse {
   }
 }
 
-typedef RegionInstanceGroupManagersRecreateRequest = $Request10;
+typedef RegionInstanceGroupManagersRecreateRequest = $Request09;
 typedef RegionInstanceGroupManagersResumeInstancesRequest =
     $InstanceGroupManagersResumeInstancesRequest;
 
@@ -178710,7 +178710,7 @@ class ServerBinding {
 }
 
 /// A service account.
-typedef ServiceAccount = $Shared17;
+typedef ServiceAccount = $Shared13;
 
 /// Represents a ServiceAttachment resource.
 ///

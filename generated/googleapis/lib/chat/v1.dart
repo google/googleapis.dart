@@ -14114,7 +14114,7 @@ class TextButton {
 /// [Formatting text in Google Chat apps](https://developers.google.com/workspace/chat/format-messages#card-formatting)
 /// and \[Formatting text in Google Workspace
 /// Add-ons\](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
-typedef TextParagraph = $Shared02;
+typedef TextParagraph = $Shared01;
 
 /// A thread in a Google Chat space.
 ///

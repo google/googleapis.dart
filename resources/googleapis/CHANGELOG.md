@@ -1,3 +1,55 @@
+## 19.0.0-wip
+
+### APIs
+
+- `agentidentity` - **REMOVED**
+- `agentidentitycredentials` - **REMOVED**
+- `agentregistry` - **REMOVED**
+- `auditmanager` - **REMOVED**
+- `blockchainnodeengine` - **REMOVED**
+- `chromewebstore` - **REMOVED** `v1.1`
+- `cloudproductregistry` - **REMOVED**
+- `cloudresourcemanager` - **REMOVED** `v2`
+- `colaboratory` - **REMOVED**
+- `connectors` - **REMOVED** `v1`
+- `datacatalog` - **REMOVED**
+- `deploymentmanager` - **REMOVED**
+- `devicerun` - **REMOVED**
+- `dfareporting` - **REMOVED** `v3.5`
+- `discovery` - **REMOVED**
+- `displayvideo` - **REMOVED** `v2`
+- `displayvideo` - **REMOVED** `v3`
+- `displayvideo` - **REMOVED** `v4`
+- `domains` - **REMOVED**
+- `drive` - **REMOVED** `v2`
+- `firebasedynamiclinks` - **REMOVED**
+- `firebaseml` - **REMOVED**
+- `fitness` - **REMOVED**
+- `ftp` - **REMOVED**
+- `gkehub` - **REMOVED** `v1`
+- `gmailpostmastertools` - **REMOVED** `v1`
+- `hypercomputecluster` - **REMOVED**
+- `identitytoolkit` - **REMOVED** `v3`
+- `integrations` - **REMOVED**
+- `jobs` - **REMOVED** `v3`
+- `libraryagent` - **REMOVED**
+- `memcache` - **REMOVED**
+- `metastore` - **REMOVED**
+- `ml` - **REMOVED**
+- `notebooks` - **REMOVED** `v1`
+- `osconfig` - **REMOVED** `v1`
+- `policytroubleshooter` - **REMOVED** `v1`
+- `pubsublite` - **REMOVED**
+- `run` - **REMOVED** `v1`
+- `safebrowsing` - **REMOVED** `v4`
+- `servicecontrol` - **REMOVED** `v1`
+- `storagebatchoperations` - **REMOVED**
+- `tagmanager` - **REMOVED** `v1`
+- `tpu` - **REMOVED** `v1`
+- `trafficdirector` - **REMOVED** `v2`
+- `verifiedaccess` - **REMOVED** `v1`
+- `videointelligence` - **REMOVED**
+
 ## 18.0.0
 
 - Mark APIs as `@Deprecated` with references to replacement

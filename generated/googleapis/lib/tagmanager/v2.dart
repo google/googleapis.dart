@@ -54,7 +54,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -7714,7 +7713,30 @@ class RevertZoneResponse {
 
 /// Represents a reference to atag that fires before another tag in order to set
 /// up dependencies.
-typedef SetupTag = $SetupTag;
+class SetupTag {
+  /// If true, fire the main tag if and only if the setup tag fires
+  /// successfully.
+  ///
+  /// If false, fire the main tag regardless of setup tag firing status.
+  core.bool? stopOnSetupFailure;
+
+  /// The name of the setup tag.
+  core.String? tagName;
+
+  SetupTag({this.stopOnSetupFailure, this.tagName});
+
+  SetupTag.fromJson(core.Map json_)
+    : this(
+        stopOnSetupFailure: json_['stopOnSetupFailure'] as core.bool?,
+        tagName: json_['tagName'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final stopOnSetupFailure = this.stopOnSetupFailure;
+    final tagName = this.tagName;
+    return {'stopOnSetupFailure': ?stopOnSetupFailure, 'tagName': ?tagName};
+  }
+}
 
 /// The status of a workspace after synchronization.
 class SyncStatus {
@@ -8069,7 +8091,33 @@ class TagConsentSetting {
 
 /// Represents a tag that fires after another tag in order to tear down
 /// dependencies.
-typedef TeardownTag = $TeardownTag;
+class TeardownTag {
+  /// If true, fire the teardown tag if and only if the main tag fires
+  /// successfully.
+  ///
+  /// If false, fire the teardown tag regardless of main tag firing status.
+  core.bool? stopTeardownOnFailure;
+
+  /// The name of the teardown tag.
+  core.String? tagName;
+
+  TeardownTag({this.stopTeardownOnFailure, this.tagName});
+
+  TeardownTag.fromJson(core.Map json_)
+    : this(
+        stopTeardownOnFailure: json_['stopTeardownOnFailure'] as core.bool?,
+        tagName: json_['tagName'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final stopTeardownOnFailure = this.stopTeardownOnFailure;
+    final tagName = this.tagName;
+    return {
+      'stopTeardownOnFailure': ?stopTeardownOnFailure,
+      'tagName': ?tagName,
+    };
+  }
+}
 
 /// Represents a Google Tag Manager Transformation.
 class Transformation {

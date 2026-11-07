@@ -9828,7 +9828,7 @@ class AppVersionRange {
 }
 
 /// Deprecated: subscription archiving is not supported.
-typedef ArchiveSubscriptionRequest = $Shared01;
+typedef ArchiveSubscriptionRequest = $Shared03;
 
 /// Summary of an artifact.
 class ArtifactSummary {

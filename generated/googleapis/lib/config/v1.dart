@@ -6004,7 +6004,7 @@ class TerraformVersion {
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
-typedef TestIamPermissionsResponse = $PermissionsResponse;
+typedef TestIamPermissionsResponse = $TestIamPermissionsResponse00;
 
 /// A request to unlock a state file passed to a 'UnlockDeployment' call.
 class UnlockDeploymentRequest {

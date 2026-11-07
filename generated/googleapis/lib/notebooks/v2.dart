@@ -1727,7 +1727,53 @@ class CheckAuthorizationResponse {
 }
 
 /// Response for checking if a notebook instance is upgradeable.
-typedef CheckInstanceUpgradabilityResponse = $Response04;
+class CheckInstanceUpgradabilityResponse {
+  /// The new image self link this instance will be upgraded to if calling the
+  /// upgrade endpoint.
+  ///
+  /// This field will only be populated if field upgradeable is true.
+  core.String? upgradeImage;
+
+  /// Additional information about upgrade.
+  core.String? upgradeInfo;
+
+  /// The version this instance will be upgraded to if calling the upgrade
+  /// endpoint.
+  ///
+  /// This field will only be populated if field upgradeable is true.
+  core.String? upgradeVersion;
+
+  /// If an instance is upgradeable.
+  core.bool? upgradeable;
+
+  CheckInstanceUpgradabilityResponse({
+    this.upgradeImage,
+    this.upgradeInfo,
+    this.upgradeVersion,
+    this.upgradeable,
+  });
+
+  CheckInstanceUpgradabilityResponse.fromJson(core.Map json_)
+    : this(
+        upgradeImage: json_['upgradeImage'] as core.String?,
+        upgradeInfo: json_['upgradeInfo'] as core.String?,
+        upgradeVersion: json_['upgradeVersion'] as core.String?,
+        upgradeable: json_['upgradeable'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final upgradeImage = this.upgradeImage;
+    final upgradeInfo = this.upgradeInfo;
+    final upgradeVersion = this.upgradeVersion;
+    final upgradeable = this.upgradeable;
+    return {
+      'upgradeImage': ?upgradeImage,
+      'upgradeInfo': ?upgradeInfo,
+      'upgradeVersion': ?upgradeVersion,
+      'upgradeable': ?upgradeable,
+    };
+  }
+}
 
 /// A set of Confidential Instance options.
 class ConfidentialInstanceConfig {
@@ -3614,7 +3660,7 @@ class SupportedValues {
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
-typedef TestIamPermissionsResponse = $PermissionsResponse;
+typedef TestIamPermissionsResponse = $TestIamPermissionsResponse00;
 
 /// The entry of VM image upgrade history.
 class UpgradeHistoryEntry {
@@ -3748,7 +3794,24 @@ class UpgradeInstanceRequest {
 }
 
 /// Request for upgrading a notebook instance from within the VM
-typedef UpgradeInstanceSystemRequest = $Request13;
+class UpgradeInstanceSystemRequest {
+  /// The VM hardware token for authenticating the VM.
+  ///
+  /// https://cloud.google.com/compute/docs/instances/verifying-instance-identity
+  ///
+  /// Required.
+  core.String? vmId;
+
+  UpgradeInstanceSystemRequest({this.vmId});
+
+  UpgradeInstanceSystemRequest.fromJson(core.Map json_)
+    : this(vmId: json_['vmId'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final vmId = this.vmId;
+    return {'vmId': ?vmId};
+  }
+}
 
 /// Definition of a custom Compute Engine virtual machine image for starting a
 /// notebook instance with the environment installed directly on the VM.

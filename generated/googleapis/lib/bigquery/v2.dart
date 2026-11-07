@@ -20929,7 +20929,7 @@ class TableSchema {
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
-typedef TestIamPermissionsResponse = $PermissionsResponse;
+typedef TestIamPermissionsResponse = $TestIamPermissionsResponse00;
 
 class TimePartitioning {
   /// Number of milliseconds for which to keep the storage for a partition.

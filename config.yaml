@@ -2,7 +2,7 @@
 # should be ignored.
 packages:
   googleapis:
-    version: 18.0.0
+    version: 19.0.0-wip
     repository: https://github.com/google/googleapis.dart/tree/master/generated/googleapis
     readme: resources/README.md
     license: resources/LICENSE
@@ -27,9 +27,6 @@ packages:
       - adsenseplatform:v1
       - advisorynotifications:v1
       - agenciesandbrands:v1
-      - agentidentity:v1
-      - agentidentitycredentials:v1
-      - agentregistry:v1
       - aiplatform:v1
       - airquality:v1
       - alloydb:v1
@@ -49,7 +46,6 @@ packages:
       - areainsights:v1
       - artifactregistry:v1
       - assuredworkloads:v1
-      - auditmanager:v1
       - authorizedbuyersmarketplace:v1
       - backupdr:v1
       - baremetalsolution:v2
@@ -65,7 +61,6 @@ packages:
       - bigtableadmin:v2
       - billingbudgets:v1
       - binaryauthorization:v1
-      - blockchainnodeengine:v1
       - blogger:v3
       - books:v1
       - businessprofileperformance:v1
@@ -76,7 +71,6 @@ packages:
       - chromemanagement:v1
       - chromepolicy:v1
       - chromeuxreport:v1
-      - chromewebstore:v1.1
       - chromewebstore:v2
       - civicinfo:v2
       - classroom:v1
@@ -93,10 +87,8 @@ packages:
       - cloudidentity:v1
       - cloudkms:v1
       - cloudlocationfinder:v1
-      - cloudproductregistry:v1
       - cloudprofiler:v2
       - cloudresourcemanager:v1
-      - cloudresourcemanager:v2
       - cloudresourcemanager:v3
       - cloudscheduler:v1
       - cloudsearch:v1
@@ -104,11 +96,9 @@ packages:
       - cloudsupport:v2
       - cloudtasks:v2
       - cloudtrace:v2
-      - colaboratory:v1
       - composer:v1
       - compute:v1
       - config:v1
-      - connectors:v1
       - connectors:v2
       - contactcenterinsights:v1
       - container:v1
@@ -116,7 +106,6 @@ packages:
       - css:v1
       - curationpartners:v1
       - customsearch:v1
-      - datacatalog:v1
       - dataform:v1
       - datafusion:v1
       - datalineage:v1
@@ -129,28 +118,19 @@ packages:
       - datastore:v1
       - datastream:v1
       - deepreview:v1
-      - deploymentmanager:v2
       - developerconnect:v1
       - developerknowledge:v1
-      - devicerun:v1
-      - dfareporting:v3.5
       - dfareporting:v5
       - dialogflow:v2
       - dialogflow:v3
       - digitalassetlinks:v1
-      - discovery:v1
-      - displayvideo:v2
-      - displayvideo:v3
-      - displayvideo:v4
       - displayvideo:v5
       - dlp:v2
       - dns:v1
       - docs:v1
       - documentai:v1
-      - domains:v1
       - doubleclickbidmanager:v2
       - doubleclicksearch:v2
-      - drive:v2
       - drive:v3
       - driveactivity:v2
       - drivelabels:v2
@@ -162,49 +142,37 @@ packages:
       - firebaseappdistribution:v1
       - firebaseapphosting:v1
       - firebasedataconnect:v1
-      - firebasedynamiclinks:v1
       - firebasehosting:v1
-      - firebaseml:v1
       - firebaserules:v1
       - firestore:v1
-      - fitness:v1
       - forms:v1
-      - ftp:v1
       - games:v1
       - gamesConfiguration:v1configuration
       - gamesManagement:v1management
       - gkebackup:v1
-      - gkehub:v1
       - gkehub:v2
       - gkeonprem:v1
       - gmail:v1
-      - gmailpostmastertools:v1
       - gmailpostmastertools:v2
       - groupsmigration:v1
       - groupssettings:v1
       - health:v4
       - healthcare:v1
       - homegraph:v1
-      - hypercomputecluster:v1
       - iam:v1
       - iam:v2
       - iamcredentials:v1
       - iap:v1
       - identitytoolkit:v1
       - identitytoolkit:v2
-      - identitytoolkit:v3
       - ids:v1
       - indexing:v3
-      - integrations:v1
-      - integrations:v2
-      - jobs:v3
       - jobs:v4
       - keep:v1
       - kgsearch:v1
       - kmsinventory:v1
       - language:v1
       - language:v2
-      - libraryagent:v1
       - licensing:v1
       - localservices:v1
       - logging:v2
@@ -213,7 +181,6 @@ packages:
       - managedkafka:v1
       - manufacturers:v1
       - meet:v2
-      - memcache:v1
       - merchantapi:accounts_v1
       - merchantapi:conversions_v1
       - merchantapi:datasources_v1
@@ -227,9 +194,7 @@ packages:
       - merchantapi:promotions_v1
       - merchantapi:quota_v1
       - merchantapi:reports_v1
-      - metastore:v1
       - migrationcenter:v1
-      - ml:v1
       - monitoring:v3
       - mybusinessaccountmanagement:v1
       - mybusinessbusinessinformation:v1
@@ -242,14 +207,12 @@ packages:
       - networkmanagement:v1
       - networksecurity:v1
       - networkservices:v1
-      - notebooks:v1
       - notebooks:v2
       - oauth2:v2
       - observability:v1
       - ondemandscanning:v1
       - oracledatabase:v1
       - orgpolicy:v2
-      - osconfig:v1
       - osconfig:v2
       - oslogin:v1
       - pagespeedonline:v5
@@ -262,13 +225,11 @@ packages:
       - playintegrity:v1
       - policyanalyzer:v1
       - policysimulator:v1
-      - policytroubleshooter:v1
       - policytroubleshooter:v3
       - pollen:v1
       - privateca:v1
       - publicca:v1
       - pubsub:v1
-      - pubsublite:v1
       - readerrevenuesubscriptionlinking:v1
       - realtimebidding:v1
       - recaptchaenterprise:v1
@@ -276,11 +237,9 @@ packages:
       - redis:v1
       - reseller:v1
       - retail:v2
-      - run:v1
       - run:v2
       - runtimeconfig:v1
       - saasservicemgmt:v1
-      - safebrowsing:v4
       - safebrowsing:v5
       - script:v1
       - searchads360:v23
@@ -290,7 +249,6 @@ packages:
       - securitycenter:v1
       - securityposture:v1
       - serviceconsumermanagement:v1
-      - servicecontrol:v1
       - servicecontrol:v2
       - servicedirectory:v1
       - servicemanagement:v1
@@ -305,27 +263,21 @@ packages:
       - speech:v1
       - sqladmin:v1
       - storage:v1
-      - storagebatchoperations:v1
       - storagetransfer:v1
       - streetviewpublish:v1
       - sts:v1
-      - tagmanager:v1
       - tagmanager:v2
       - tasks:v1
       - testing:v1
       - texttospeech:v1
-      - tpu:v1
       - tpu:v2
-      - trafficdirector:v2
       - trafficdirector:v3
       - transcoder:v1
       - translate:v3
       - travelimpactmodel:v1
       - vault:v1
-      - verifiedaccess:v1
       - verifiedaccess:v2
       - versionhistory:v1
-      - videointelligence:v1
       - vision:v1
       - vmmigration:v1
       - vmwareengine:v1
@@ -396,10 +348,13 @@ skip_tests:
 skipped_apis:
   - admob:v1beta
   - adsenseplatform:v1alpha
+  - agentidentity:v1
   - agentidentity:v1alpha
   - agentidentity:v1beta
+  - agentidentitycredentials:v1
   - agentidentitycredentials:v1alpha
   - agentidentitycredentials:v1beta
+  - agentregistry:v1
   - agentregistry:v1alpha
   - aiplatform:v1beta1
   - alloydb:v1alpha
@@ -413,14 +368,17 @@ skipped_apis:
   - artifactregistry:v1beta1
   - artifactregistry:v1beta2
   - assuredworkloads:v1beta1
+  - auditmanager:v1
   - authorizedbuyersmarketplace:v1alpha
   - authorizedbuyersmarketplace:v1beta
   - backupdr:v1beta
   - beyondcorp:v1alpha
   - billingbudgets:v1beta1
   - binaryauthorization:v1beta1
+  - blockchainnodeengine:v1
   - ces:v1beta
   - checks:v1alpha
+  - chromewebstore:v1.1
   - cloudasset:v1beta1
   - cloudasset:v1p1beta1
   - cloudasset:v1p5beta1
@@ -432,23 +390,28 @@ skipped_apis:
   - cloudidentity:v1beta1
   - cloudlocationfinder:v1alpha
   - cloudnumberregistry:v1alpha
+  - cloudproductregistry:v1
   - cloudresourcemanager:v1beta1
+  - cloudresourcemanager:v2
   - cloudresourcemanager:v2beta1
   - cloudscheduler:v1beta1
   - cloudtasks:v2beta2
   - cloudtasks:v2beta3
   - cloudtrace:v1
   - cloudtrace:v2beta1
+  - colaboratory:v1
   - colaboratory:v1beta
   - composer:v1beta1
   - compute:alpha
   - compute:beta
   - compute:preview
+  - connectors:v1
   - contactcenteraiplatform:v1alpha1
   - container:v1beta1
   - containeranalysis:v1alpha1
   - containeranalysis:v1beta1
   - databasecenter:v1beta
+  - datacatalog:v1
   - datacatalog:v1beta1
   - dataform:v1beta1
   - datafusion:v1beta1
@@ -457,55 +420,81 @@ skipped_apis:
   - datastore:v1beta1
   - datastore:v1beta3
   - deploymentmanager:alpha
+  - deploymentmanager:v2
   - deploymentmanager:v2beta
   - developerknowledge:v1alpha
+  - devicerun:v1
   - devicerun:v1alpha
+  - dfareporting:v3.5
   - dialogflow:v2beta1
   - dialogflow:v3beta1
+  - discovery:v1
   - discoveryengine:v1
   - discoveryengine:v1alpha
   - discoveryengine:v1beta
+  - displayvideo:v2
+  - displayvideo:v3
+  - displayvideo:v4
   - dns:v1beta2
   - documentai:v1beta3
+  - domains:v1
   - domains:v1alpha2
   - domains:v1beta1
+  - drive:v2
   - drivelabels:v2beta
   - file:v1beta1
   - firebaseappdistribution:v1alpha
   - firebaseapphosting:v1beta
   - firebasecrashlytics:v1alpha
   - firebasedataconnect:v1beta
+  - firebasedynamiclinks:v1
   - firebasehosting:v1beta1
+  - firebaseml:v1
   - firebaseml:v1beta2
   - firebaseml:v2beta
   - firestore:v1beta1
   - firestore:v1beta2
+  - fitness:v1
+  - ftp:v1
   - ftp:v1alpha
+  - gkehub:v1
   - gkehub:v1alpha
   - gkehub:v1beta
   - gkehub:v1beta1
   - gkehub:v2beta
+  - gmailpostmastertools:v1
   - gmailpostmastertools:v1beta1
   - health:v4beta
   - healthcare:v1beta1
+  - hypercomputecluster:v1
   - iam:v2beta
   - iap:v1beta1
+  - identitytoolkit:v3
+  - integrations:v1
+  - integrations:v2
+  - jobs:v3
   - jobs:v3p1beta1
   - language:v1beta2
+  - libraryagent:v1
   - managedidentities:v1alpha1
   - managedidentities:v1beta1
   - marketingplatformadmin:v1alpha
+  - memcache:v1
   - memcache:v1beta2
+  - metastore:v1
   - metastore:v1alpha
   - metastore:v1beta
   - migrationcenter:v1alpha1
+  - ml:v1
   - monitoring:v1
   - netapp:v1beta1
   - networkconnectivity:v1alpha1
   - networkmanagement:v1beta1
   - networksecurity:v1beta1
   - networkservices:v1beta1
+  - notebooks:v1
   - ondemandscanning:v1beta1
+  - osconfig:v1
   - osconfig:v1alpha
   - osconfig:v1beta
   - osconfig:v2beta
@@ -518,6 +507,7 @@ skipped_apis:
   - policyanalyzer:v1beta1
   - policysimulator:v1alpha
   - policysimulator:v1beta
+  - policytroubleshooter:v1
   - policytroubleshooter:v1beta
   - policytroubleshooter:v3beta
   - privateca:v1beta1
@@ -525,30 +515,40 @@ skipped_apis:
   - publicca:v1beta1
   - pubsub:v1beta1a
   - pubsub:v1beta2
+  - pubsublite:v1
   - recommender:v1beta1
   - redis:v1beta1
   - retail:v2alpha
   - retail:v2beta
+  - run:v1
   - runtimeconfig:v1beta1
   - saasservicemgmt:v1beta1
+  - safebrowsing:v4
   - searchads360:v0
   - secretmanager:v1beta1
   - secretmanager:v1beta2
   - securitycenter:v1beta1
   - securitycenter:v1beta2
   - serviceconsumermanagement:v1beta1
+  - servicecontrol:v1
   - servicedirectory:v1beta1
   - servicenetworking:v1beta
   - serviceusage:v1beta1
   - speech:v1p1beta1
   - sqladmin:v1beta4
+  - storagebatchoperations:v1
   - sts:v1beta
+  - tagmanager:v1
   - texttospeech:v1beta1
   - threatintelligence:v1beta
+  - tpu:v1
   - tpu:v1alpha1
   - tpu:v2alpha1
+  - trafficdirector:v2
   - translate:v2
   - translate:v3beta1
+  - verifiedaccess:v1
+  - videointelligence:v1
   - videointelligence:v1beta2
   - videointelligence:v1p1beta1
   - videointelligence:v1p2beta1

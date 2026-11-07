@@ -8641,7 +8641,7 @@ typedef Status = $Status00;
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
-typedef TestIamPermissionsResponse = $PermissionsResponse;
+typedef TestIamPermissionsResponse = $TestIamPermissionsResponse00;
 
 /// UpgradeDependency represents a dependency when upgrading a resource.
 class UpgradeDependency {

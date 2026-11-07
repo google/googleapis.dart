@@ -14903,7 +14903,7 @@ class GoogleCloudDialogflowV2ConversationGeneratorContext {
   }
 }
 
-typedef GoogleCloudDialogflowV2ConversationInfo = $Shared10;
+typedef GoogleCloudDialogflowV2ConversationInfo = $Shared08;
 
 class GoogleCloudDialogflowV2ConversationModel {
   GoogleCloudDialogflowV2ArticleSuggestionModelMetadata?
@@ -15320,7 +15320,7 @@ class GoogleCloudDialogflowV2ConversationTelephonyConnectionInfoMimeContent {
 }
 
 typedef GoogleCloudDialogflowV2ConversationTelephonyConnectionInfoSipHeader =
-    $Shared05;
+    $Shared07;
 
 class GoogleCloudDialogflowV2CreateConversationModelEvaluationRequest {
   GoogleCloudDialogflowV2ConversationModelEvaluation?
@@ -16170,7 +16170,7 @@ class GoogleCloudDialogflowV2FewShotExample {
   }
 }
 
-typedef GoogleCloudDialogflowV2FreeFormContext = $Shared02;
+typedef GoogleCloudDialogflowV2FreeFormContext = $Shared01;
 
 class GoogleCloudDialogflowV2FreeFormSuggestion {
   core.String? response;
@@ -16300,7 +16300,7 @@ class GoogleCloudDialogflowV2FulfillmentGenericWebService {
   }
 }
 
-typedef GoogleCloudDialogflowV2GcsDestination = $Shared11;
+typedef GoogleCloudDialogflowV2GcsDestination = $Shared09;
 
 class GoogleCloudDialogflowV2GcsSources {
   core.List<core.String>? uris;
@@ -16984,7 +16984,7 @@ class GoogleCloudDialogflowV2GeneratorEvaluationConfigAgentAssistInputDataConfig
 }
 
 typedef GoogleCloudDialogflowV2GeneratorEvaluationConfigDatasetInputDataConfig =
-    $Shared20;
+    $Shared16;
 
 class GoogleCloudDialogflowV2GeneratorEvaluationConfigInputDataConfig {
   GoogleCloudDialogflowV2GeneratorEvaluationConfigAgentAssistInputDataConfig?
@@ -18599,7 +18599,7 @@ class GoogleCloudDialogflowV2InputConfig {
   }
 }
 
-typedef GoogleCloudDialogflowV2InputDataset = $Shared20;
+typedef GoogleCloudDialogflowV2InputDataset = $Shared16;
 
 class GoogleCloudDialogflowV2Intent {
   core.String? action;
@@ -19053,7 +19053,7 @@ class GoogleCloudDialogflowV2IntentMessageBasicCardButton {
 }
 
 typedef GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction =
-    $Shared11;
+    $Shared09;
 
 class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard {
   ///
@@ -19744,7 +19744,7 @@ class GoogleCloudDialogflowV2IntentMessageTableCard {
   }
 }
 
-typedef GoogleCloudDialogflowV2IntentMessageTableCardCell = $Shared02;
+typedef GoogleCloudDialogflowV2IntentMessageTableCardCell = $Shared01;
 
 class GoogleCloudDialogflowV2IntentMessageTableCardRow {
   core.List<GoogleCloudDialogflowV2IntentMessageTableCardCell>? cells;
@@ -22028,7 +22028,7 @@ class GoogleCloudDialogflowV2ResponseMessage {
 }
 
 typedef GoogleCloudDialogflowV2ResponseMessageEndInteraction = $Empty;
-typedef GoogleCloudDialogflowV2ResponseMessageLiveAgentHandoff = $Shared12;
+typedef GoogleCloudDialogflowV2ResponseMessageLiveAgentHandoff = $Shared10;
 
 class GoogleCloudDialogflowV2ResponseMessageMixedAudio {
   core.List<GoogleCloudDialogflowV2ResponseMessageMixedAudioSegment>? segments;
@@ -22721,7 +22721,7 @@ class GoogleCloudDialogflowV2Segment {
   }
 }
 
-typedef GoogleCloudDialogflowV2Sentiment = $Shared21;
+typedef GoogleCloudDialogflowV2Sentiment = $Shared17;
 
 class GoogleCloudDialogflowV2SentimentAnalysisRequestConfig {
   core.bool? analyzeQueryTextSentiment;
@@ -24842,7 +24842,7 @@ class GoogleCloudDialogflowV2SynthesizeSpeechConfig {
   }
 }
 
-typedef GoogleCloudDialogflowV2TextInput = $Shared22;
+typedef GoogleCloudDialogflowV2TextInput = $Shared18;
 
 class GoogleCloudDialogflowV2TextToSpeechSettings {
   core.bool? enableTextToSpeech;

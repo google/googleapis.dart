@@ -3279,7 +3279,7 @@ typedef Status = $Status00;
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
-typedef TestIamPermissionsResponse = $PermissionsResponse;
+typedef TestIamPermissionsResponse = $TestIamPermissionsResponse00;
 
 /// A Pub/Sub topic which Secret Manager will publish to when control plane
 /// events occur on this secret.

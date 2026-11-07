@@ -6606,7 +6606,7 @@ class GoogleIamV1SetIamPolicyRequest {
 typedef GoogleIamV1TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
-typedef GoogleIamV1TestIamPermissionsResponse = $PermissionsResponse;
+typedef GoogleIamV1TestIamPermissionsResponse = $TestIamPermissionsResponse00;
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.

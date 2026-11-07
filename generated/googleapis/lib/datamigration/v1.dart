@@ -12673,7 +12673,7 @@ class TcpProxyScript {
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
-typedef TestIamPermissionsResponse = $PermissionsResponse;
+typedef TestIamPermissionsResponse = $TestIamPermissionsResponse00;
 
 /// Trigger is not used as an independent entity, it is retrieved as part of a
 /// Table entity.

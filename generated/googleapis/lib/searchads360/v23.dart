@@ -9956,15 +9956,50 @@ class GoogleAdsSearchads360V23CommonPolicyTopicEvidenceDestinationTextList {
 }
 
 /// A list of fragments of text that violated a policy.
-typedef GoogleAdsSearchads360V23CommonPolicyTopicEvidenceTextList = $TextList;
+class GoogleAdsSearchads360V23CommonPolicyTopicEvidenceTextList {
+  /// The fragments of text from the resource that caused the policy finding.
+  core.List<core.String>? texts;
+
+  GoogleAdsSearchads360V23CommonPolicyTopicEvidenceTextList({this.texts});
+
+  GoogleAdsSearchads360V23CommonPolicyTopicEvidenceTextList.fromJson(
+    core.Map json_,
+  ) : this(
+        texts: (json_['texts'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final texts = this.texts;
+    return {'texts': ?texts};
+  }
+}
 
 /// A list of websites that caused a policy finding.
 ///
 /// Used for ONE_WEBSITE_PER_AD_GROUP policy topic, for example. In case there
 /// are more than five websites, only the top five (those that appear in
 /// resources the most) will be listed here.
-typedef GoogleAdsSearchads360V23CommonPolicyTopicEvidenceWebsiteList =
-    $WebsiteList;
+class GoogleAdsSearchads360V23CommonPolicyTopicEvidenceWebsiteList {
+  /// Websites that caused the policy finding.
+  core.List<core.String>? websites;
+
+  GoogleAdsSearchads360V23CommonPolicyTopicEvidenceWebsiteList({this.websites});
+
+  GoogleAdsSearchads360V23CommonPolicyTopicEvidenceWebsiteList.fromJson(
+    core.Map json_,
+  ) : this(
+        websites: (json_['websites'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final websites = this.websites;
+    return {'websites': ?websites};
+  }
+}
 
 /// The city where the travel activity is available.
 class GoogleAdsSearchads360V23CommonActivityCityInfo {
@@ -22866,7 +22901,7 @@ class GoogleAdsSearchads360V23CommonPriceOffering {
 }
 
 /// Brand of the product.
-typedef GoogleAdsSearchads360V23CommonProductBrandInfo = $Shared27;
+typedef GoogleAdsSearchads360V23CommonProductBrandInfo = $Shared25;
 
 /// Category of a product offer.
 class GoogleAdsSearchads360V23CommonProductCategoryInfo {
@@ -22935,10 +22970,10 @@ class GoogleAdsSearchads360V23CommonProductChannelExclusivityInfo {
 }
 
 /// Locality of a product offer.
-typedef GoogleAdsSearchads360V23CommonProductChannelInfo = $Shared28;
+typedef GoogleAdsSearchads360V23CommonProductChannelInfo = $Shared26;
 
 /// Condition of a product offer.
-typedef GoogleAdsSearchads360V23CommonProductConditionInfo = $Shared29;
+typedef GoogleAdsSearchads360V23CommonProductConditionInfo = $Shared27;
 
 /// Custom attribute of a product offer.
 class GoogleAdsSearchads360V23CommonProductCustomAttributeInfo {
@@ -22996,7 +23031,7 @@ class GoogleAdsSearchads360V23CommonProductGroupingInfo {
 }
 
 /// Item id of a product offer.
-typedef GoogleAdsSearchads360V23CommonProductItemIdInfo = $Shared30;
+typedef GoogleAdsSearchads360V23CommonProductItemIdInfo = $Shared28;
 
 /// Labels of a product offer.
 ///
@@ -23057,7 +23092,7 @@ class GoogleAdsSearchads360V23CommonProductTypeFullInfo {
 }
 
 /// Type of a product offer.
-typedef GoogleAdsSearchads360V23CommonProductTypeInfo = $Shared31;
+typedef GoogleAdsSearchads360V23CommonProductTypeInfo = $Shared29;
 
 /// A Promotion asset.
 class GoogleAdsSearchads360V23CommonPromotionAsset {
@@ -32500,7 +32535,7 @@ class GoogleAdsSearchads360V23ResourcesInvoiceRegulatoryCostSummary {
 
 /// Brand of the product.
 typedef GoogleAdsSearchads360V23ResourcesListingGroupFilterDimensionProductBrand =
-    $Shared27;
+    $Shared25;
 
 /// One element of a category at a certain level.
 ///
@@ -32548,11 +32583,11 @@ class GoogleAdsSearchads360V23ResourcesListingGroupFilterDimensionProductCategor
 
 /// Locality of a product offer.
 typedef GoogleAdsSearchads360V23ResourcesListingGroupFilterDimensionProductChannel =
-    $Shared28;
+    $Shared26;
 
 /// Condition of a product offer.
 typedef GoogleAdsSearchads360V23ResourcesListingGroupFilterDimensionProductCondition =
-    $Shared29;
+    $Shared27;
 
 /// Custom attribute of a product offer.
 class GoogleAdsSearchads360V23ResourcesListingGroupFilterDimensionProductCustomAttribute {
@@ -32592,11 +32627,11 @@ class GoogleAdsSearchads360V23ResourcesListingGroupFilterDimensionProductCustomA
 
 /// Item id of a product offer.
 typedef GoogleAdsSearchads360V23ResourcesListingGroupFilterDimensionProductItemId =
-    $Shared30;
+    $Shared28;
 
 /// Type of a product offer.
 typedef GoogleAdsSearchads360V23ResourcesListingGroupFilterDimensionProductType =
-    $Shared31;
+    $Shared29;
 
 /// Filters for URLs in a page feed and URLs from the advertiser web domain.
 ///
@@ -72203,7 +72238,7 @@ class GoogleAdsSearchads360V23ServicesEnablementResult {
 }
 
 /// Request message for ExperimentService.EndExperiment.
-typedef GoogleAdsSearchads360V23ServicesEndExperimentRequest = $Request04;
+typedef GoogleAdsSearchads360V23ServicesEndExperimentRequest = $Request03;
 
 /// A single operation on an experiment arm.
 class GoogleAdsSearchads360V23ServicesExperimentArmOperation {
@@ -90024,7 +90059,7 @@ class GoogleAdsSearchads360V23ServicesPromoteCampaignDraftRequest {
 }
 
 /// Request message for ExperimentService.PromoteExperiment.
-typedef GoogleAdsSearchads360V23ServicesPromoteExperimentRequest = $Request04;
+typedef GoogleAdsSearchads360V23ServicesPromoteExperimentRequest = $Request03;
 
 /// Request message for LocalServicesLeadService.ProvideLeadFeedback.
 class GoogleAdsSearchads360V23ServicesProvideLeadFeedbackRequest {
@@ -90815,10 +90850,10 @@ typedef GoogleAdsSearchads360V23ServicesRunBatchJobRequest = $Empty;
 
 /// Request message for OfflineUserDataJobService.RunOfflineUserDataJob.
 typedef GoogleAdsSearchads360V23ServicesRunOfflineUserDataJobRequest =
-    $Request04;
+    $Request03;
 
 /// Request message for ExperimentService.ScheduleExperiment.
-typedef GoogleAdsSearchads360V23ServicesScheduleExperimentRequest = $Request04;
+typedef GoogleAdsSearchads360V23ServicesScheduleExperimentRequest = $Request03;
 
 /// A single operation (update) on a Search Ads 360 campaign.
 class GoogleAdsSearchads360V23ServicesSearchAds360CampaignOperation {

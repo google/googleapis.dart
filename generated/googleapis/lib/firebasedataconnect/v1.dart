@@ -2558,7 +2558,7 @@ class Datasource {
 typedef Empty = $Empty;
 
 /// The ExecuteMutation request to Firebase SQL Connect.
-typedef ExecuteMutationRequest = $Request11;
+typedef ExecuteMutationRequest = $Request10;
 
 /// The ExecuteMutation response from Firebase SQL Connect.
 class ExecuteMutationResponse {
@@ -2604,7 +2604,7 @@ class ExecuteMutationResponse {
 }
 
 /// The ExecuteQuery request to Firebase SQL Connect.
-typedef ExecuteQueryRequest = $Request11;
+typedef ExecuteQueryRequest = $Request10;
 
 /// The ExecuteQuery response from Firebase SQL Connect.
 class ExecuteQueryResponse {

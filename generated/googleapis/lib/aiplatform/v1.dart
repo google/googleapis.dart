@@ -61166,7 +61166,7 @@ typedef GenaiVertexV1GoogleSearchCallStepGoogleSearchCallStepArguments =
     $Arguments02;
 
 /// The result of the Google Search.
-typedef GenaiVertexV1GoogleSearchResultContentGoogleSearchResult = $Shared13;
+typedef GenaiVertexV1GoogleSearchResultContentGoogleSearchResult = $Shared11;
 
 class GenaiVertexV1GoogleSearchResultDelta {
   core.bool? isError;
@@ -61227,7 +61227,7 @@ class GenaiVertexV1GoogleSearchResultStep {
 }
 
 /// The result of the Google Search.
-typedef GenaiVertexV1GoogleSearchResultStepGoogleSearchResultItem = $Shared13;
+typedef GenaiVertexV1GoogleSearchResultStepGoogleSearchResultItem = $Shared11;
 
 /// An image content block.
 class GenaiVertexV1ImageContent {
@@ -62790,13 +62790,13 @@ class GenaiVertexV1RetrievalCallStepRetrievalStepArguments {
 /// Search, etc.
 ///
 /// ToolResultDelta.type
-typedef GenaiVertexV1RetrievalResultDelta = $Shared14;
+typedef GenaiVertexV1RetrievalResultDelta = $Shared12;
 
 /// Vertex Retrieval result step.
 ///
 /// Used by Vertex Retrieval tools such as Parallel AI, Exa AI, Vertex AI
 /// Search, etc.
-typedef GenaiVertexV1RetrievalResultStep = $Shared14;
+typedef GenaiVertexV1RetrievalResultStep = $Shared12;
 
 /// Encapsulates a snippet of a user review that answers a question about the
 /// features of a specific place in Google Maps.
@@ -63638,7 +63638,7 @@ class GenaiVertexV1TextContentAnnotation {
   }
 }
 
-typedef GenaiVertexV1TextDelta = $Shared02;
+typedef GenaiVertexV1TextDelta = $Shared01;
 
 /// Configuration for text output format.
 class GenaiVertexV1TextResponseFormat {
@@ -66771,7 +66771,7 @@ class GoogleCloudAiplatformV1AudioTranscriptionConfig {
 /// Deprecated: Use top-level `language_codes` instead.
 ///
 /// Indicates the language of the audio should be automatically detected.
-typedef GoogleCloudAiplatformV1AudioTranscriptionConfigLanguageAuto = $Shared01;
+typedef GoogleCloudAiplatformV1AudioTranscriptionConfigLanguageAuto = $Shared03;
 
 /// Deprecated: Use top-level `language_codes` instead.
 ///
@@ -101627,7 +101627,39 @@ class GoogleCloudAiplatformV1ModelOriginalModelInfo {
 }
 
 /// Detail description of the source information of the model.
-typedef GoogleCloudAiplatformV1ModelSourceInfo = $ModelSourceInfo;
+class GoogleCloudAiplatformV1ModelSourceInfo {
+  /// If this Model is copy of another Model.
+  ///
+  /// If true then source_type pertains to the original.
+  core.bool? copy;
+
+  /// Type of the model source.
+  /// Possible string values are:
+  /// - "MODEL_SOURCE_TYPE_UNSPECIFIED" : Should not be used.
+  /// - "AUTOML" : The Model is uploaded by automl training pipeline.
+  /// - "CUSTOM" : The Model is uploaded by user or custom training pipeline.
+  /// - "BQML" : The Model is registered and sync'ed from BigQuery ML.
+  /// - "MODEL_GARDEN" : The Model is saved or tuned from Model Garden.
+  /// - "GENIE" : The Model is saved or tuned from Genie.
+  /// - "CUSTOM_TEXT_EMBEDDING" : The Model is uploaded by text embedding
+  /// finetuning pipeline.
+  /// - "MARKETPLACE" : The Model is saved or tuned from Marketplace.
+  core.String? sourceType;
+
+  GoogleCloudAiplatformV1ModelSourceInfo({this.copy, this.sourceType});
+
+  GoogleCloudAiplatformV1ModelSourceInfo.fromJson(core.Map json_)
+    : this(
+        copy: json_['copy'] as core.bool?,
+        sourceType: json_['sourceType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final copy = this.copy;
+    final sourceType = this.sourceType;
+    return {'copy': ?copy, 'sourceType': ?sourceType};
+  }
+}
 
 /// Describes the machine learning model version checkpoint.
 class GoogleCloudAiplatformV1ModelVersionCheckpoint {
@@ -108591,7 +108623,30 @@ class GoogleCloudAiplatformV1Probe {
 }
 
 /// ExecAction specifies a command to execute.
-typedef GoogleCloudAiplatformV1ProbeExecAction = $ExecAction;
+class GoogleCloudAiplatformV1ProbeExecAction {
+  /// Command is the command line to execute inside the container, the working
+  /// directory for the command is root ('/') in the container's filesystem.
+  ///
+  /// The command is simply exec'd, it is not run inside a shell, so traditional
+  /// shell instructions ('|', etc) won't work. To use a shell, you need to
+  /// explicitly call out to that shell. Exit status of 0 is treated as
+  /// live/healthy and non-zero is unhealthy.
+  core.List<core.String>? command;
+
+  GoogleCloudAiplatformV1ProbeExecAction({this.command});
+
+  GoogleCloudAiplatformV1ProbeExecAction.fromJson(core.Map json_)
+    : this(
+        command: (json_['command'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final command = this.command;
+    return {'command': ?command};
+  }
+}
 
 /// GrpcAction checks the health of a container using a gRPC service.
 class GoogleCloudAiplatformV1ProbeGrpcAction {
@@ -127707,7 +127762,7 @@ class GoogleIamV1SetIamPolicyRequest {
 }
 
 /// Response message for `TestIamPermissions` method.
-typedef GoogleIamV1TestIamPermissionsResponse = $PermissionsResponse;
+typedef GoogleIamV1TestIamPermissionsResponse = $TestIamPermissionsResponse00;
 
 /// The response message for Operations.ListOperations.
 class GoogleLongrunningListOperationsResponse {

@@ -15954,7 +15954,7 @@ class Tags {
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
-typedef TestIamPermissionsResponse = $PermissionsResponse;
+typedef TestIamPermissionsResponse = $TestIamPermissionsResponse00;
 
 /// Represents a Trial for a project.
 class Trial {
@@ -16095,7 +16095,28 @@ class TriggerBackupRequest {
 }
 
 /// Request message for triggering a restore cleanup.
-typedef TriggerRestoreCleanupRequest = $Request02;
+class TriggerRestoreCleanupRequest {
+  /// An optional request ID to identify requests.
+  ///
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes after the first
+  /// request. The request ID must be a valid UUID with the exception that zero
+  /// UUID is not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// Optional.
+  core.String? requestId;
+
+  TriggerRestoreCleanupRequest({this.requestId});
+
+  TriggerRestoreCleanupRequest.fromJson(core.Map json_)
+    : this(requestId: json_['requestId'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final requestId = this.requestId;
+    return {'requestId': ?requestId};
+  }
+}
 
 /// Request message for TriggerRestoreVerification.
 class TriggerRestoreVerificationRequest {

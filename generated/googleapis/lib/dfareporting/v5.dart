@@ -106,7 +106,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -18488,7 +18487,42 @@ class CreativeAsset {
 }
 
 /// Creative Asset ID.
-typedef CreativeAssetId = $CreativeAssetId;
+class CreativeAssetId {
+  /// Name of the creative asset.
+  ///
+  /// This is a required field while inserting an asset. After insertion, this
+  /// assetIdentifier is used to identify the uploaded asset. Characters in the
+  /// name must be alphanumeric or one of the following: ".-_ ". Spaces are
+  /// allowed.
+  core.String? name;
+
+  /// Type of asset to upload.
+  ///
+  /// This is a required field. FLASH and IMAGE are no longer supported for new
+  /// uploads. All image assets should use HTML_IMAGE.
+  /// Possible string values are:
+  /// - "IMAGE"
+  /// - "FLASH"
+  /// - "VIDEO"
+  /// - "HTML"
+  /// - "HTML_IMAGE"
+  /// - "AUDIO"
+  core.String? type;
+
+  CreativeAssetId({this.name, this.type});
+
+  CreativeAssetId.fromJson(core.Map json_)
+    : this(
+        name: json_['name'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final type = this.type;
+    return {'name': ?name, 'type': ?type};
+  }
+}
 
 /// CreativeAssets contains properties of a creative asset file which will be
 /// uploaded or has already been uploaded.
@@ -18828,7 +18862,48 @@ class CreativeAssignment {
 }
 
 /// Click-through URL
-typedef CreativeClickThroughUrl = $CreativeClickThroughUrl;
+class CreativeClickThroughUrl {
+  /// Read-only convenience field representing the actual URL that will be used
+  /// for this click-through.
+  ///
+  /// The URL is computed as follows: - If landingPageId is specified then that
+  /// landing page's URL is assigned to this field. - Otherwise, the
+  /// customClickThroughUrl is assigned to this field.
+  core.String? computedClickThroughUrl;
+
+  /// Custom click-through URL.
+  ///
+  /// Applicable if the landingPageId field is left unset.
+  core.String? customClickThroughUrl;
+
+  /// ID of the landing page for the click-through URL.
+  core.String? landingPageId;
+
+  CreativeClickThroughUrl({
+    this.computedClickThroughUrl,
+    this.customClickThroughUrl,
+    this.landingPageId,
+  });
+
+  CreativeClickThroughUrl.fromJson(core.Map json_)
+    : this(
+        computedClickThroughUrl:
+            json_['computedClickThroughUrl'] as core.String?,
+        customClickThroughUrl: json_['customClickThroughUrl'] as core.String?,
+        landingPageId: json_['landingPageId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final computedClickThroughUrl = this.computedClickThroughUrl;
+    final customClickThroughUrl = this.customClickThroughUrl;
+    final landingPageId = this.landingPageId;
+    return {
+      'computedClickThroughUrl': ?computedClickThroughUrl,
+      'customClickThroughUrl': ?customClickThroughUrl,
+      'landingPageId': ?landingPageId,
+    };
+  }
+}
 
 /// Creative Custom Event.
 class CreativeCustomEvent {
@@ -20484,7 +20559,71 @@ class DimensionFilter {
 }
 
 /// Represents a DimensionValue resource.
-typedef DimensionValue = $DimensionValue;
+class DimensionValue {
+  /// The name of the dimension.
+  core.String? dimensionName;
+
+  /// The eTag of this response for caching purposes.
+  core.String? etag;
+
+  /// The ID associated with the value if available.
+  core.String? id;
+
+  /// The kind of resource this is, in this case dfareporting#dimensionValue.
+  core.String? kind;
+
+  /// Determines how the 'value' field is matched when filtering.
+  ///
+  /// If not specified, defaults to EXACT. If set to WILDCARD_EXPRESSION, '*' is
+  /// allowed as a placeholder for variable length character sequences, and it
+  /// can be escaped with a backslash. Note, only paid search dimensions
+  /// ('dfa:paidSearch*') allow a matchType other than EXACT.
+  /// Possible string values are:
+  /// - "EXACT"
+  /// - "BEGINS_WITH"
+  /// - "CONTAINS"
+  /// - "WILDCARD_EXPRESSION"
+  core.String? matchType;
+
+  /// The value of the dimension.
+  core.String? value;
+
+  DimensionValue({
+    this.dimensionName,
+    this.etag,
+    this.id,
+    this.kind,
+    this.matchType,
+    this.value,
+  });
+
+  DimensionValue.fromJson(core.Map json_)
+    : this(
+        dimensionName: json_['dimensionName'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        id: json_['id'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        matchType: json_['matchType'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final dimensionName = this.dimensionName;
+    final etag = this.etag;
+    final id = this.id;
+    final kind = this.kind;
+    final matchType = this.matchType;
+    final value = this.value;
+    return {
+      'dimensionName': ?dimensionName,
+      'etag': ?etag,
+      'id': ?id,
+      'kind': ?kind,
+      'matchType': ?matchType,
+      'value': ?value,
+    };
+  }
+}
 
 /// Represents the list of DimensionValue resources.
 class DimensionValueList {
@@ -25430,7 +25569,24 @@ class OfflineUserAddressInfo {
 }
 
 /// Offset Position.
-typedef OffsetPosition = $OffsetPosition;
+class OffsetPosition {
+  /// Offset distance from left side of an asset or a window.
+  core.int? left;
+
+  /// Offset distance from top side of an asset or a window.
+  core.int? top;
+
+  OffsetPosition({this.left, this.top});
+
+  OffsetPosition.fromJson(core.Map json_)
+    : this(left: json_['left'] as core.int?, top: json_['top'] as core.int?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final left = this.left;
+    final top = this.top;
+    return {'left': ?left, 'top': ?top};
+  }
+}
 
 /// Omniture Integration Settings.
 class OmnitureSettings {
@@ -30130,7 +30286,58 @@ class SitesListResponse {
 }
 
 /// Represents the dimensions of ads, placements, creatives, or creative assets.
-typedef Size = $Size;
+class Size {
+  /// Height of this size.
+  ///
+  /// Acceptable values are 0 to 32767, inclusive.
+  core.int? height;
+
+  /// IAB standard size.
+  ///
+  /// This is a read-only, auto-generated field.
+  core.bool? iab;
+
+  /// ID of this size.
+  ///
+  /// This is a read-only, auto-generated field.
+  core.String? id;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#size".
+  core.String? kind;
+
+  /// Width of this size.
+  ///
+  /// Acceptable values are 0 to 32767, inclusive.
+  core.int? width;
+
+  Size({this.height, this.iab, this.id, this.kind, this.width});
+
+  Size.fromJson(core.Map json_)
+    : this(
+        height: json_['height'] as core.int?,
+        iab: json_['iab'] as core.bool?,
+        id: json_['id'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        width: json_['width'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final height = this.height;
+    final iab = this.iab;
+    final id = this.id;
+    final kind = this.kind;
+    final width = this.width;
+    return {
+      'height': ?height,
+      'iab': ?iab,
+      'id': ?id,
+      'kind': ?kind,
+      'width': ?width,
+    };
+  }
+}
 
 /// Size List Response
 class SizesListResponse {

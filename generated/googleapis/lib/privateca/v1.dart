@@ -4168,7 +4168,7 @@ class EcKeyType {
 typedef Empty = $Empty;
 
 /// Request message for CertificateAuthorityService.EnableCertificateAuthority.
-typedef EnableCertificateAuthorityRequest = $Request05;
+typedef EnableCertificateAuthorityRequest = $Request04;
 
 /// The configuration used for encrypting data at rest.
 class EncryptionSpec {
@@ -4281,7 +4281,7 @@ class ExtendedKeyUsageOptions {
 }
 
 /// Request message for CertificateAuthorityService.FetchCaCerts.
-typedef FetchCaCertsRequest = $Request05;
+typedef FetchCaCertsRequest = $Request04;
 
 /// Response message for CertificateAuthorityService.FetchCaCerts.
 class FetchCaCertsResponse {
@@ -6097,11 +6097,11 @@ class SubordinateConfigChain {
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
-typedef TestIamPermissionsResponse = $PermissionsResponse;
+typedef TestIamPermissionsResponse = $TestIamPermissionsResponse00;
 
 /// Request message for
 /// CertificateAuthorityService.UndeleteCertificateAuthority.
-typedef UndeleteCertificateAuthorityRequest = $Request05;
+typedef UndeleteCertificateAuthorityRequest = $Request04;
 
 /// User-defined URLs for accessing content published by this
 /// CertificateAuthority.

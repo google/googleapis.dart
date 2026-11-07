@@ -15486,7 +15486,7 @@ class GoogleCloudContactcenterinsightsV1ExportIssueModelRequest {
 
 /// Google Cloud Storage Object URI to save the issue model to.
 typedef GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination =
-    $Shared18;
+    $Shared14;
 
 /// Agent Assist frequently-asked-question answer data.
 class GoogleCloudContactcenterinsightsV1FaqAnswerData {
@@ -16264,7 +16264,7 @@ class GoogleCloudContactcenterinsightsV1ImportIssueModelRequest {
 
 /// Google Cloud Storage Object URI to get the issue model file from.
 typedef GoogleCloudContactcenterinsightsV1ImportIssueModelRequestGcsSource =
-    $Shared18;
+    $Shared14;
 
 /// The request to ingest conversations.
 class GoogleCloudContactcenterinsightsV1IngestConversationsRequest {
@@ -21442,7 +21442,7 @@ class GoogleIamV1SetIamPolicyRequest {
 typedef GoogleIamV1TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
-typedef GoogleIamV1TestIamPermissionsResponse = $PermissionsResponse;
+typedef GoogleIamV1TestIamPermissionsResponse = $TestIamPermissionsResponse00;
 
 /// The response message for Operations.ListOperations.
 class GoogleLongrunningListOperationsResponse {

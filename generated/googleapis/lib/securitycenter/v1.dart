@@ -8080,7 +8080,7 @@ class AffectedResources {
   }
 }
 
-typedef Agent = $Shared09;
+typedef Agent = $Shared06;
 
 class AgentAnomaly {
   core.double? confidenceScore;
@@ -8768,7 +8768,7 @@ class AuditLogConfig {
   }
 }
 
-typedef AwsAccount = $Shared06;
+typedef AwsAccount = $Shared04;
 
 class AwsMetadata {
   AwsAccount? account;
@@ -8810,9 +8810,9 @@ class AwsMetadata {
   }
 }
 
-typedef AwsOrganization = $Shared03;
-typedef AwsOrganizationalUnit = $Shared06;
-typedef AzureManagementGroup = $Shared09;
+typedef AwsOrganization = $Shared02;
+typedef AwsOrganizationalUnit = $Shared04;
+typedef AzureManagementGroup = $Shared06;
 
 class AzureMetadata {
   core.List<AzureManagementGroup>? managementGroups;
@@ -8867,9 +8867,9 @@ class AzureMetadata {
   }
 }
 
-typedef AzureResourceGroup = $Shared06;
-typedef AzureSubscription = $Shared09;
-typedef AzureTenant = $Shared09;
+typedef AzureResourceGroup = $Shared04;
+typedef AzureSubscription = $Shared06;
+typedef AzureTenant = $Shared06;
 
 class BackupDisasterRecovery {
   core.String? appliance;
@@ -9414,7 +9414,7 @@ class Connection {
   }
 }
 
-typedef Contact = $Shared32;
+typedef Contact = $Shared30;
 
 class ContactDetails {
   core.List<Contact>? contacts;
@@ -12074,7 +12074,7 @@ class GoogleCloudSecuritycenterV1ResourceApplicationAttributes {
 }
 
 typedef GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo =
-    $Shared32;
+    $Shared30;
 
 class GoogleCloudSecuritycenterV1ResourceApplicationAttributesCriticality {
   ///
@@ -13013,7 +13013,7 @@ class Kubernetes {
   }
 }
 
-typedef Label = $Shared05;
+typedef Label = $Shared07;
 
 class ListAssetsResponse {
   core.List<ListAssetsResult>? listAssetsResults;
@@ -14072,7 +14072,7 @@ class PathNodeAssociatedFinding {
   }
 }
 
-typedef Pipeline = $Shared26;
+typedef Pipeline = $Shared22;
 
 class Pod {
   core.List<Container>? containers;
@@ -15392,8 +15392,8 @@ class Subject {
   }
 }
 
-typedef TestIamPermissionsRequest = $Shared33;
-typedef TestIamPermissionsResponse = $Shared33;
+typedef TestIamPermissionsRequest = $Shared31;
+typedef TestIamPermissionsResponse = $Shared31;
 
 class TicketInfo {
   core.String? assignee;

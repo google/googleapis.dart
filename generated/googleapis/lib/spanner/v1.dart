@@ -13612,7 +13612,7 @@ class TestIamPermissionsRequest {
 }
 
 /// Response message for `TestIamPermissions` method.
-typedef TestIamPermissionsResponse = $PermissionsResponse;
+typedef TestIamPermissionsResponse = $TestIamPermissionsResponse00;
 
 /// A transaction.
 class Transaction {

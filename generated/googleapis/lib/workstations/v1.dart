@@ -3832,7 +3832,7 @@ typedef SuspendWorkstationRequest = $WorkstationRequest;
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
-typedef TestIamPermissionsResponse = $PermissionsResponse;
+typedef TestIamPermissionsResponse = $TestIamPermissionsResponse00;
 
 /// A single instance of a developer workstation with its own persistent
 /// storage.

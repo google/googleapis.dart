@@ -135,364 +135,6 @@ class $ActionParameter {
 
 /// Used by:
 ///
-/// - displayvideo:v2 : ActiveViewVideoViewabilityMetricConfig
-/// - displayvideo:v3 : ActiveViewVideoViewabilityMetricConfig
-/// - displayvideo:v4 : ActiveViewVideoViewabilityMetricConfig
-class $ActiveViewVideoViewabilityMetricConfig {
-  /// The display name of the custom metric.
-  ///
-  /// Required.
-  core.String? displayName;
-
-  /// The minimum visible video duration required (in seconds) in order for an
-  /// impression to be recorded.
-  ///
-  /// You must specify minimum_duration, minimum_quartile or both. If both are
-  /// specified, an impression meets the metric criteria if either requirement
-  /// is met (whichever happens first).
-  /// Possible string values are:
-  /// - "VIDEO_DURATION_UNSPECIFIED" : Value is not specified or is unknown in
-  /// this version.
-  /// - "VIDEO_DURATION_SECONDS_NONE" : No duration value.
-  /// - "VIDEO_DURATION_SECONDS_0" : 0 seconds.
-  /// - "VIDEO_DURATION_SECONDS_1" : 1 second.
-  /// - "VIDEO_DURATION_SECONDS_2" : 2 seconds.
-  /// - "VIDEO_DURATION_SECONDS_3" : 3 seconds.
-  /// - "VIDEO_DURATION_SECONDS_4" : 4 seconds.
-  /// - "VIDEO_DURATION_SECONDS_5" : 5 seconds.
-  /// - "VIDEO_DURATION_SECONDS_6" : 6 seconds.
-  /// - "VIDEO_DURATION_SECONDS_7" : 7 seconds.
-  /// - "VIDEO_DURATION_SECONDS_8" : 8 seconds.
-  /// - "VIDEO_DURATION_SECONDS_9" : 9 seconds.
-  /// - "VIDEO_DURATION_SECONDS_10" : 10 seconds.
-  /// - "VIDEO_DURATION_SECONDS_11" : 11 seconds.
-  /// - "VIDEO_DURATION_SECONDS_12" : 12 seconds.
-  /// - "VIDEO_DURATION_SECONDS_13" : 13 seconds.
-  /// - "VIDEO_DURATION_SECONDS_14" : 14 seconds.
-  /// - "VIDEO_DURATION_SECONDS_15" : 15 seconds.
-  /// - "VIDEO_DURATION_SECONDS_30" : 30 seconds.
-  /// - "VIDEO_DURATION_SECONDS_45" : 45 seconds.
-  /// - "VIDEO_DURATION_SECONDS_60" : 60 seconds.
-  core.String? minimumDuration;
-
-  /// The minimum visible video duration required, based on the video quartiles,
-  /// in order for an impression to be recorded.
-  ///
-  /// You must specify minimum_duration, minimum_quartile or both. If both are
-  /// specified, an impression meets the metric criteria if either requirement
-  /// is met (whichever happens first).
-  /// Possible string values are:
-  /// - "VIDEO_DURATION_QUARTILE_UNSPECIFIED" : Value is not specified or is
-  /// unknown in this version.
-  /// - "VIDEO_DURATION_QUARTILE_NONE" : No quartile value.
-  /// - "VIDEO_DURATION_QUARTILE_FIRST" : First quartile.
-  /// - "VIDEO_DURATION_QUARTILE_SECOND" : Second quartile (midpoint).
-  /// - "VIDEO_DURATION_QUARTILE_THIRD" : Third quartile.
-  /// - "VIDEO_DURATION_QUARTILE_FOURTH" : Fourth quartile (completion).
-  core.String? minimumQuartile;
-
-  /// The minimum percentage of the video ad's pixels visible on the screen in
-  /// order for an impression to be recorded.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "VIEWABILITY_PERCENT_UNSPECIFIED" : Value is not specified or is unknown
-  /// in this version.
-  /// - "VIEWABILITY_PERCENT_0" : 0% viewable.
-  /// - "VIEWABILITY_PERCENT_25" : 25% viewable.
-  /// - "VIEWABILITY_PERCENT_50" : 50% viewable.
-  /// - "VIEWABILITY_PERCENT_75" : 75% viewable.
-  /// - "VIEWABILITY_PERCENT_100" : 100% viewable.
-  core.String? minimumViewability;
-
-  /// The minimum percentage of the video ad's volume required in order for an
-  /// impression to be recorded.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "VIDEO_VOLUME_PERCENT_UNSPECIFIED" : Value is not specified or is
-  /// unknown in this version.
-  /// - "VIDEO_VOLUME_PERCENT_0" : 0% volume.
-  /// - "VIDEO_VOLUME_PERCENT_10" : 10% volume.
-  core.String? minimumVolume;
-
-  $ActiveViewVideoViewabilityMetricConfig({
-    this.displayName,
-    this.minimumDuration,
-    this.minimumQuartile,
-    this.minimumViewability,
-    this.minimumVolume,
-  });
-
-  $ActiveViewVideoViewabilityMetricConfig.fromJson(core.Map json_)
-    : this(
-        displayName: json_['displayName'] as core.String?,
-        minimumDuration: json_['minimumDuration'] as core.String?,
-        minimumQuartile: json_['minimumQuartile'] as core.String?,
-        minimumViewability: json_['minimumViewability'] as core.String?,
-        minimumVolume: json_['minimumVolume'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final displayName = this.displayName;
-    final minimumDuration = this.minimumDuration;
-    final minimumQuartile = this.minimumQuartile;
-    final minimumViewability = this.minimumViewability;
-    final minimumVolume = this.minimumVolume;
-    return {
-      'displayName': ?displayName,
-      'minimumDuration': ?minimumDuration,
-      'minimumQuartile': ?minimumQuartile,
-      'minimumViewability': ?minimumViewability,
-      'minimumVolume': ?minimumVolume,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v3 : AdPolicyCriterionRestriction
-/// - displayvideo:v4 : AdPolicyCriterionRestriction
-class $AdPolicyCriterionRestriction {
-  /// The country criterion id.
-  core.String? countryCriterionId;
-
-  /// Localized name for the country.
-  ///
-  /// May be empty.
-  core.String? countryLabel;
-
-  $AdPolicyCriterionRestriction({this.countryCriterionId, this.countryLabel});
-
-  $AdPolicyCriterionRestriction.fromJson(core.Map json_)
-    : this(
-        countryCriterionId: json_['countryCriterionId'] as core.String?,
-        countryLabel: json_['countryLabel'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final countryCriterionId = this.countryCriterionId;
-    final countryLabel = this.countryLabel;
-    return {
-      'countryCriterionId': ?countryCriterionId,
-      'countryLabel': ?countryLabel,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v3 : AdPolicyTopicAppealInfo
-/// - displayvideo:v4 : AdPolicyTopicAppealInfo
-class $AdPolicyTopicAppealInfo {
-  /// Only available when appeal_type is `APPEAL_FORM`.
-  core.String? appealFormLink;
-
-  /// Whether the decision can be appealed through a self-service appeal or an
-  /// appeal form.
-  /// Possible string values are:
-  /// - "AD_POLICY_APPEAL_TYPE_UNKNOWN" : Unknown or not specified.
-  /// - "SELF_SERVICE_APPEAL" : The decision can be appealed through a
-  /// self-service appeal.
-  /// - "APPEAL_FORM" : The decision can be appealed using an appeal form.
-  core.String? appealType;
-
-  $AdPolicyTopicAppealInfo({this.appealFormLink, this.appealType});
-
-  $AdPolicyTopicAppealInfo.fromJson(core.Map json_)
-    : this(
-        appealFormLink: json_['appealFormLink'] as core.String?,
-        appealType: json_['appealType'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final appealFormLink = this.appealFormLink;
-    final appealType = this.appealType;
-    return {'appealFormLink': ?appealFormLink, 'appealType': ?appealType};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v3 : AdPolicyTopicEvidenceCounterfeit
-/// - displayvideo:v4 : AdPolicyTopicEvidenceCounterfeit
-class $AdPolicyTopicEvidenceCounterfeit {
-  /// The content or product owners that made a complaint.
-  core.List<core.String>? owners;
-
-  $AdPolicyTopicEvidenceCounterfeit({this.owners});
-
-  $AdPolicyTopicEvidenceCounterfeit.fromJson(core.Map json_)
-    : this(
-        owners: (json_['owners'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final owners = this.owners;
-    return {'owners': ?owners};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v3 : AdPolicyTopicEvidenceDestinationMismatch
-/// - displayvideo:v4 : AdPolicyTopicEvidenceDestinationMismatch
-class $AdPolicyTopicEvidenceDestinationMismatch {
-  /// The set of URLs that do not match.
-  ///
-  /// The list can include single or multiple uri types. Example 1:
-  /// \[`DISPLAY_URL`, `FINAL_URL`\] means ad display URL does not match with
-  /// the ad final URL. Example 2: \[`FINAL_URL`\] means ad final URL did not
-  /// match the crawled url, which is also considered as destination mismatch.
-  core.List<core.String>? uriTypes;
-
-  $AdPolicyTopicEvidenceDestinationMismatch({this.uriTypes});
-
-  $AdPolicyTopicEvidenceDestinationMismatch.fromJson(core.Map json_)
-    : this(
-        uriTypes: (json_['uriTypes'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final uriTypes = this.uriTypes;
-    return {'uriTypes': ?uriTypes};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v3 : AdPolicyTopicEvidenceDestinationNotWorking
-/// - displayvideo:v4 : AdPolicyTopicEvidenceDestinationNotWorking
-class $AdPolicyTopicEvidenceDestinationNotWorking {
-  /// The device where visiting the URL resulted in the error.
-  /// Possible string values are:
-  /// - "AD_POLICY_TOPIC_EVIDENCE_DESTINATION_NOT_WORKING_DEVICE_TYPE_UNKNOWN" :
-  /// Not specified or unknown.
-  /// - "DESKTOP" : Desktop device.
-  /// - "ANDROID" : Android device.
-  /// - "IOS" : iOS device.
-  core.String? device;
-
-  /// The type of DNS error.
-  /// Possible string values are:
-  /// -
-  /// "AD_POLICY_TOPIC_EVIDENCE_DESTINATION_NOT_WORKING_DNS_ERROR_TYPE_UNKNOWN"
-  /// : Not specified or unknown.
-  /// - "HOSTNAME_NOT_FOUND" : Host name not found in DNS when fetching landing
-  /// page.
-  /// - "GOOGLE_CRAWLER_DNS_ISSUE" : Google could not crawl the landing page
-  /// when communicating with DNS.
-  core.String? dnsErrorType;
-
-  /// The full URL that didn't work.
-  core.String? expandedUri;
-
-  /// The HTTP error code.
-  core.String? httpErrorCode;
-
-  /// The last time the error was seen when navigating to URL.
-  core.String? lastCheckedTime;
-
-  $AdPolicyTopicEvidenceDestinationNotWorking({
-    this.device,
-    this.dnsErrorType,
-    this.expandedUri,
-    this.httpErrorCode,
-    this.lastCheckedTime,
-  });
-
-  $AdPolicyTopicEvidenceDestinationNotWorking.fromJson(core.Map json_)
-    : this(
-        device: json_['device'] as core.String?,
-        dnsErrorType: json_['dnsErrorType'] as core.String?,
-        expandedUri: json_['expandedUri'] as core.String?,
-        httpErrorCode: json_['httpErrorCode'] as core.String?,
-        lastCheckedTime: json_['lastCheckedTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final device = this.device;
-    final dnsErrorType = this.dnsErrorType;
-    final expandedUri = this.expandedUri;
-    final httpErrorCode = this.httpErrorCode;
-    final lastCheckedTime = this.lastCheckedTime;
-    return {
-      'device': ?device,
-      'dnsErrorType': ?dnsErrorType,
-      'expandedUri': ?expandedUri,
-      'httpErrorCode': ?httpErrorCode,
-      'lastCheckedTime': ?lastCheckedTime,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v3 : AdPolicyTopicEvidenceDestinationTextList
-/// - displayvideo:v4 : AdPolicyTopicEvidenceDestinationTextList
-class $AdPolicyTopicEvidenceDestinationTextList {
-  /// Destination text that caused the policy finding.
-  core.List<core.String>? destinationTexts;
-
-  $AdPolicyTopicEvidenceDestinationTextList({this.destinationTexts});
-
-  $AdPolicyTopicEvidenceDestinationTextList.fromJson(core.Map json_)
-    : this(
-        destinationTexts: (json_['destinationTexts'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final destinationTexts = this.destinationTexts;
-    return {'destinationTexts': ?destinationTexts};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v3 : AdPolicyTopicEvidenceLegalRemovalDmca
-/// - displayvideo:v4 : AdPolicyTopicEvidenceLegalRemovalDmca
-class $AdPolicyTopicEvidenceLegalRemovalDmca {
-  /// The entity who made the legal complaint.
-  core.String? complainant;
-
-  $AdPolicyTopicEvidenceLegalRemovalDmca({this.complainant});
-
-  $AdPolicyTopicEvidenceLegalRemovalDmca.fromJson(core.Map json_)
-    : this(complainant: json_['complainant'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final complainant = this.complainant;
-    return {'complainant': ?complainant};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v3 : AdPolicyTopicEvidenceLegalRemovalLocalLegal
-/// - displayvideo:v4 : AdPolicyTopicEvidenceLegalRemovalLocalLegal
-class $AdPolicyTopicEvidenceLegalRemovalLocalLegal {
-  /// Type of law for the legal notice.
-  core.String? lawType;
-
-  $AdPolicyTopicEvidenceLegalRemovalLocalLegal({this.lawType});
-
-  $AdPolicyTopicEvidenceLegalRemovalLocalLegal.fromJson(core.Map json_)
-    : this(lawType: json_['lawType'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final lawType = this.lawType;
-    return {'lawType': ?lawType};
-  }
-}
-
-/// Used by:
-///
 /// - authorizedbuyersmarketplace:v1 : AdSize
 /// - curationpartners:v1 : AdSize
 class $AdSize {
@@ -530,43 +172,6 @@ class $AdSize {
     final type = this.type;
     final width = this.width;
     return {'height': ?height, 'type': ?type, 'width': ?width};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : AdUrl
-/// - displayvideo:v3 : AdUrl
-/// - displayvideo:v4 : AdUrl
-class $AdUrl {
-  /// The type of the Ad URL.
-  /// Possible string values are:
-  /// - "AD_URL_TYPE_UNSPECIFIED" : Unknown or unspecified.
-  /// - "AD_URL_TYPE_BEACON_IMPRESSION" : A 1x1 tracking pixel to ping when an
-  /// impression of a creative is delivered.
-  /// - "AD_URL_TYPE_BEACON_EXPANDABLE_DCM_IMPRESSION" : Expandable DCM
-  /// impression beacon. At serving time, it is expanded to several beacons.
-  /// - "AD_URL_TYPE_BEACON_CLICK" : Tracking URL to ping when the click event
-  /// is triggered.
-  /// - "AD_URL_TYPE_BEACON_SKIP" : Tracking URL to ping when the skip event is
-  /// triggered.
-  core.String? type;
-
-  /// The URL string value.
-  core.String? url;
-
-  $AdUrl({this.type, this.url});
-
-  $AdUrl.fromJson(core.Map json_)
-    : this(
-        type: json_['type'] as core.String?,
-        url: json_['url'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final type = this.type;
-    final url = this.url;
-    return {'type': ?type, 'url': ?url};
   }
 }
 
@@ -652,635 +257,6 @@ class $AddressPool {
       'manualAssign': ?manualAssign,
       'pool': ?pool,
     };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v3 : Adloox
-/// - displayvideo:v4 : Adloox
-class $Adloox {
-  /// Adult and Explicit Sexual Content
-  /// [GARM](https://wfanet.org/leadership/garm/about-garm) risk ranges to
-  /// exclude.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "GARM_RISK_EXCLUSION_UNSPECIFIED" : This enum is only a placeholder and
-  /// it doesn't specify any GARM risk exclusion option.
-  /// - "GARM_RISK_EXCLUSION_FLOOR" : Exclude floor risk.
-  /// - "GARM_RISK_EXCLUSION_HIGH" : Exclude high and floor risk.
-  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude medium, high, and floor risk.
-  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude all levels of risk (low, medium,
-  /// high and floor).
-  core.String? adultExplicitSexualContent;
-
-  /// Arms and Ammunition Content
-  /// [GARM](https://wfanet.org/leadership/garm/about-garm) risk ranges to
-  /// exclude.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "GARM_RISK_EXCLUSION_UNSPECIFIED" : This enum is only a placeholder and
-  /// it doesn't specify any GARM risk exclusion option.
-  /// - "GARM_RISK_EXCLUSION_FLOOR" : Exclude floor risk.
-  /// - "GARM_RISK_EXCLUSION_HIGH" : Exclude high and floor risk.
-  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude medium, high, and floor risk.
-  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude all levels of risk (low, medium,
-  /// high and floor).
-  core.String? armsAmmunitionContent;
-
-  /// Crime and Harmful Acts Content
-  /// [GARM](https://wfanet.org/leadership/garm/about-garm) risk ranges to
-  /// exclude.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "GARM_RISK_EXCLUSION_UNSPECIFIED" : This enum is only a placeholder and
-  /// it doesn't specify any GARM risk exclusion option.
-  /// - "GARM_RISK_EXCLUSION_FLOOR" : Exclude floor risk.
-  /// - "GARM_RISK_EXCLUSION_HIGH" : Exclude high and floor risk.
-  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude medium, high, and floor risk.
-  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude all levels of risk (low, medium,
-  /// high and floor).
-  core.String? crimeHarmfulActsIndividualsSocietyHumanRightsViolationsContent;
-
-  /// Death, Injury, or Military Conflict Content
-  /// [GARM](https://wfanet.org/leadership/garm/about-garm) risk ranges to
-  /// exclude.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "GARM_RISK_EXCLUSION_UNSPECIFIED" : This enum is only a placeholder and
-  /// it doesn't specify any GARM risk exclusion option.
-  /// - "GARM_RISK_EXCLUSION_FLOOR" : Exclude floor risk.
-  /// - "GARM_RISK_EXCLUSION_HIGH" : Exclude high and floor risk.
-  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude medium, high, and floor risk.
-  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude all levels of risk (low, medium,
-  /// high and floor).
-  core.String? deathInjuryMilitaryConflictContent;
-
-  /// Debated Sensitive Social Issue Content
-  /// [GARM](https://wfanet.org/leadership/garm/about-garm) risk ranges to
-  /// exclude.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "GARM_RISK_EXCLUSION_UNSPECIFIED" : This enum is only a placeholder and
-  /// it doesn't specify any GARM risk exclusion option.
-  /// - "GARM_RISK_EXCLUSION_FLOOR" : Exclude floor risk.
-  /// - "GARM_RISK_EXCLUSION_HIGH" : Exclude high and floor risk.
-  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude medium, high, and floor risk.
-  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude all levels of risk (low, medium,
-  /// high and floor).
-  core.String? debatedSensitiveSocialIssueContent;
-
-  /// IAB viewability threshold for display ads.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "DISPLAY_IAB_VIEWABILITY_UNSPECIFIED" : Default value when not specified
-  /// or is unknown in this version.
-  /// - "DISPLAY_IAB_VIEWABILITY_10" : 10%+ in view (IAB display viewability
-  /// standard).
-  /// - "DISPLAY_IAB_VIEWABILITY_20" : 20%+ in view (IAB display viewability
-  /// standard).
-  /// - "DISPLAY_IAB_VIEWABILITY_35" : 35%+ in view (IAB display viewability
-  /// standard).
-  /// - "DISPLAY_IAB_VIEWABILITY_50" : 50%+ in view (IAB display viewability
-  /// standard).
-  /// - "DISPLAY_IAB_VIEWABILITY_75" : 75%+ in view (IAB display viewability
-  /// standard).
-  core.String? displayIabViewability;
-
-  /// Scope3 categories to exclude.
-  core.List<core.String>? excludedAdlooxCategories;
-
-  /// Scope3's fraud IVT MFA categories to exclude.
-  ///
-  /// Optional.
-  core.List<core.String>? excludedFraudIvtMfaCategories;
-
-  /// Hate Speech and Acts of Aggression Content
-  /// [GARM](https://wfanet.org/leadership/garm/about-garm) risk ranges to
-  /// exclude.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "GARM_RISK_EXCLUSION_UNSPECIFIED" : This enum is only a placeholder and
-  /// it doesn't specify any GARM risk exclusion option.
-  /// - "GARM_RISK_EXCLUSION_FLOOR" : Exclude floor risk.
-  /// - "GARM_RISK_EXCLUSION_HIGH" : Exclude high and floor risk.
-  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude medium, high, and floor risk.
-  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude all levels of risk (low, medium,
-  /// high and floor).
-  core.String? hateSpeechActsAggressionContent;
-
-  /// Illegal Drugs/Alcohol Content
-  /// [GARM](https://wfanet.org/leadership/garm/about-garm) risk ranges to
-  /// exclude.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "GARM_RISK_EXCLUSION_UNSPECIFIED" : This enum is only a placeholder and
-  /// it doesn't specify any GARM risk exclusion option.
-  /// - "GARM_RISK_EXCLUSION_FLOOR" : Exclude floor risk.
-  /// - "GARM_RISK_EXCLUSION_HIGH" : Exclude high and floor risk.
-  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude medium, high, and floor risk.
-  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude all levels of risk (low, medium,
-  /// high and floor).
-  core.String? illegalDrugsTobaccoEcigarettesVapingAlcoholContent;
-
-  /// Misinformation Content
-  /// [GARM](https://wfanet.org/leadership/garm/about-garm) risk ranges to
-  /// exclude.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "GARM_RISK_EXCLUSION_UNSPECIFIED" : This enum is only a placeholder and
-  /// it doesn't specify any GARM risk exclusion option.
-  /// - "GARM_RISK_EXCLUSION_FLOOR" : Exclude floor risk.
-  /// - "GARM_RISK_EXCLUSION_HIGH" : Exclude high and floor risk.
-  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude medium, high, and floor risk.
-  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude all levels of risk (low, medium,
-  /// high and floor).
-  core.String? misinformationContent;
-
-  /// Obscenity and Profanity Content
-  /// [GARM](https://wfanet.org/leadership/garm/about-garm) risk ranges to
-  /// exclude.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "GARM_RISK_EXCLUSION_UNSPECIFIED" : This enum is only a placeholder and
-  /// it doesn't specify any GARM risk exclusion option.
-  /// - "GARM_RISK_EXCLUSION_FLOOR" : Exclude floor risk.
-  /// - "GARM_RISK_EXCLUSION_HIGH" : Exclude high and floor risk.
-  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude medium, high, and floor risk.
-  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude all levels of risk (low, medium,
-  /// high and floor).
-  core.String? obscenityProfanityContent;
-
-  /// Online Piracy Content
-  /// [GARM](https://wfanet.org/leadership/garm/about-garm) risk ranges to
-  /// exclude.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "GARM_RISK_EXCLUSION_UNSPECIFIED" : This enum is only a placeholder and
-  /// it doesn't specify any GARM risk exclusion option.
-  /// - "GARM_RISK_EXCLUSION_FLOOR" : Exclude floor risk.
-  /// - "GARM_RISK_EXCLUSION_HIGH" : Exclude high and floor risk.
-  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude medium, high, and floor risk.
-  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude all levels of risk (low, medium,
-  /// high and floor).
-  core.String? onlinePiracyContent;
-
-  /// Spam or Harmful Content
-  /// [GARM](https://wfanet.org/leadership/garm/about-garm) risk ranges to
-  /// exclude.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "GARM_RISK_EXCLUSION_UNSPECIFIED" : This enum is only a placeholder and
-  /// it doesn't specify any GARM risk exclusion option.
-  /// - "GARM_RISK_EXCLUSION_FLOOR" : Exclude floor risk.
-  /// - "GARM_RISK_EXCLUSION_HIGH" : Exclude high and floor risk.
-  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude medium, high, and floor risk.
-  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude all levels of risk (low, medium,
-  /// high and floor).
-  core.String? spamHarmfulContent;
-
-  /// Terrorism Content [GARM](https://wfanet.org/leadership/garm/about-garm)
-  /// risk ranges to exclude.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "GARM_RISK_EXCLUSION_UNSPECIFIED" : This enum is only a placeholder and
-  /// it doesn't specify any GARM risk exclusion option.
-  /// - "GARM_RISK_EXCLUSION_FLOOR" : Exclude floor risk.
-  /// - "GARM_RISK_EXCLUSION_HIGH" : Exclude high and floor risk.
-  /// - "GARM_RISK_EXCLUSION_MEDIUM" : Exclude medium, high, and floor risk.
-  /// - "GARM_RISK_EXCLUSION_LOW" : Exclude all levels of risk (low, medium,
-  /// high and floor).
-  core.String? terrorismContent;
-
-  /// IAB viewability threshold for video ads.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "VIDEO_IAB_VIEWABILITY_UNSPECIFIED" : Default value when not specified
-  /// or is unknown in this version.
-  /// - "VIDEO_IAB_VIEWABILITY_10" : 10%+ in view (IAB video viewability
-  /// standard).
-  /// - "VIDEO_IAB_VIEWABILITY_20" : 20%+ in view (IAB video viewability
-  /// standard).
-  /// - "VIDEO_IAB_VIEWABILITY_35" : 35%+ in view (IAB video viewability
-  /// standard).
-  /// - "VIDEO_IAB_VIEWABILITY_50" : 50%+ in view (IAB video viewability
-  /// standard).
-  /// - "VIDEO_IAB_VIEWABILITY_75" : 75%+ in view (IAB video viewability
-  /// standard).
-  core.String? videoIabViewability;
-
-  $Adloox({
-    this.adultExplicitSexualContent,
-    this.armsAmmunitionContent,
-    this.crimeHarmfulActsIndividualsSocietyHumanRightsViolationsContent,
-    this.deathInjuryMilitaryConflictContent,
-    this.debatedSensitiveSocialIssueContent,
-    this.displayIabViewability,
-    this.excludedAdlooxCategories,
-    this.excludedFraudIvtMfaCategories,
-    this.hateSpeechActsAggressionContent,
-    this.illegalDrugsTobaccoEcigarettesVapingAlcoholContent,
-    this.misinformationContent,
-    this.obscenityProfanityContent,
-    this.onlinePiracyContent,
-    this.spamHarmfulContent,
-    this.terrorismContent,
-    this.videoIabViewability,
-  });
-
-  $Adloox.fromJson(core.Map json_)
-    : this(
-        adultExplicitSexualContent:
-            json_['adultExplicitSexualContent'] as core.String?,
-        armsAmmunitionContent: json_['armsAmmunitionContent'] as core.String?,
-        crimeHarmfulActsIndividualsSocietyHumanRightsViolationsContent:
-            json_['crimeHarmfulActsIndividualsSocietyHumanRightsViolationsContent']
-                as core.String?,
-        deathInjuryMilitaryConflictContent:
-            json_['deathInjuryMilitaryConflictContent'] as core.String?,
-        debatedSensitiveSocialIssueContent:
-            json_['debatedSensitiveSocialIssueContent'] as core.String?,
-        displayIabViewability: json_['displayIabViewability'] as core.String?,
-        excludedAdlooxCategories:
-            (json_['excludedAdlooxCategories'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        excludedFraudIvtMfaCategories:
-            (json_['excludedFraudIvtMfaCategories'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        hateSpeechActsAggressionContent:
-            json_['hateSpeechActsAggressionContent'] as core.String?,
-        illegalDrugsTobaccoEcigarettesVapingAlcoholContent:
-            json_['illegalDrugsTobaccoEcigarettesVapingAlcoholContent']
-                as core.String?,
-        misinformationContent: json_['misinformationContent'] as core.String?,
-        obscenityProfanityContent:
-            json_['obscenityProfanityContent'] as core.String?,
-        onlinePiracyContent: json_['onlinePiracyContent'] as core.String?,
-        spamHarmfulContent: json_['spamHarmfulContent'] as core.String?,
-        terrorismContent: json_['terrorismContent'] as core.String?,
-        videoIabViewability: json_['videoIabViewability'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final adultExplicitSexualContent = this.adultExplicitSexualContent;
-    final armsAmmunitionContent = this.armsAmmunitionContent;
-    final crimeHarmfulActsIndividualsSocietyHumanRightsViolationsContent =
-        this.crimeHarmfulActsIndividualsSocietyHumanRightsViolationsContent;
-    final deathInjuryMilitaryConflictContent =
-        this.deathInjuryMilitaryConflictContent;
-    final debatedSensitiveSocialIssueContent =
-        this.debatedSensitiveSocialIssueContent;
-    final displayIabViewability = this.displayIabViewability;
-    final excludedAdlooxCategories = this.excludedAdlooxCategories;
-    final excludedFraudIvtMfaCategories = this.excludedFraudIvtMfaCategories;
-    final hateSpeechActsAggressionContent =
-        this.hateSpeechActsAggressionContent;
-    final illegalDrugsTobaccoEcigarettesVapingAlcoholContent =
-        this.illegalDrugsTobaccoEcigarettesVapingAlcoholContent;
-    final misinformationContent = this.misinformationContent;
-    final obscenityProfanityContent = this.obscenityProfanityContent;
-    final onlinePiracyContent = this.onlinePiracyContent;
-    final spamHarmfulContent = this.spamHarmfulContent;
-    final terrorismContent = this.terrorismContent;
-    final videoIabViewability = this.videoIabViewability;
-    return {
-      'adultExplicitSexualContent': ?adultExplicitSexualContent,
-      'armsAmmunitionContent': ?armsAmmunitionContent,
-      'crimeHarmfulActsIndividualsSocietyHumanRightsViolationsContent':
-          ?crimeHarmfulActsIndividualsSocietyHumanRightsViolationsContent,
-      'deathInjuryMilitaryConflictContent': ?deathInjuryMilitaryConflictContent,
-      'debatedSensitiveSocialIssueContent': ?debatedSensitiveSocialIssueContent,
-      'displayIabViewability': ?displayIabViewability,
-      'excludedAdlooxCategories': ?excludedAdlooxCategories,
-      'excludedFraudIvtMfaCategories': ?excludedFraudIvtMfaCategories,
-      'hateSpeechActsAggressionContent': ?hateSpeechActsAggressionContent,
-      'illegalDrugsTobaccoEcigarettesVapingAlcoholContent':
-          ?illegalDrugsTobaccoEcigarettesVapingAlcoholContent,
-      'misinformationContent': ?misinformationContent,
-      'obscenityProfanityContent': ?obscenityProfanityContent,
-      'onlinePiracyContent': ?onlinePiracyContent,
-      'spamHarmfulContent': ?spamHarmfulContent,
-      'terrorismContent': ?terrorismContent,
-      'videoIabViewability': ?videoIabViewability,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v3 : AdvertiserBillingConfig
-/// - displayvideo:v4 : AdvertiserBillingConfig
-class $AdvertiserBillingConfig {
-  /// The ID of a billing profile assigned to the advertiser.
-  ///
-  /// Required.
-  core.String? billingProfileId;
-
-  $AdvertiserBillingConfig({this.billingProfileId});
-
-  $AdvertiserBillingConfig.fromJson(core.Map json_)
-    : this(billingProfileId: json_['billingProfileId'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final billingProfileId = this.billingProfileId;
-    return {'billingProfileId': ?billingProfileId};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : AdvertiserCreativeConfig
-/// - displayvideo:v3 : AdvertiserCreativeConfig
-/// - displayvideo:v4 : AdvertiserCreativeConfig
-class $AdvertiserCreativeConfig {
-  /// Whether or not the advertiser is enabled for dynamic creatives.
-  core.bool? dynamicCreativeEnabled;
-
-  /// An ID for configuring campaign monitoring provided by Integral Ad Service
-  /// (IAS).
-  ///
-  /// The DV360 system will append an IAS "Campaign Monitor" tag containing this
-  /// ID to the creative tag.
-  core.String? iasClientId;
-
-  /// Whether or not to disable Google's About this Ad feature that adds badging
-  /// (to identify the content as an ad) and transparency information (on
-  /// interaction with About this Ad) to your ads for Online Behavioral
-  /// Advertising (OBA) and regulatory requirements.
-  ///
-  /// About this Ad gives users greater control over the ads they see and helps
-  /// you explain why they're seeing your ad. \[Learn
-  /// more\](//support.google.com/displayvideo/answer/14315795). If you choose
-  /// to set this field to `true`, note that ads served through Display & Video
-  /// 360 must comply to the following: * Be Online Behavioral Advertising (OBA)
-  /// compliant, as per your contract with Google Marketing Platform. * In the
-  /// European Economic Area (EEA), include transparency information and a
-  /// mechanism for users to report illegal content in ads. If using an
-  /// alternative ad badging, transparency, and reporting solution, you must
-  /// ensure it includes the required transparency information and illegal
-  /// content flagging mechanism and that you notify Google of any illegal
-  /// content reports using the appropriate
-  /// \[form\](//support.google.com/legal/troubleshooter/1114905?sjid=6787484030557261960-EU#ts=2981967%2C2982031%2C12980091).
-  core.bool? obaComplianceDisabled;
-
-  /// By setting this field to `true`, you, on behalf of your company, authorize
-  /// Google to use video creatives associated with this Display & Video 360
-  /// advertiser to provide reporting and features related to the advertiser's
-  /// television campaigns.
-  ///
-  /// Applicable only when the advertiser has a CM360 hybrid ad server
-  /// configuration.
-  core.bool? videoCreativeDataSharingAuthorized;
-
-  $AdvertiserCreativeConfig({
-    this.dynamicCreativeEnabled,
-    this.iasClientId,
-    this.obaComplianceDisabled,
-    this.videoCreativeDataSharingAuthorized,
-  });
-
-  $AdvertiserCreativeConfig.fromJson(core.Map json_)
-    : this(
-        dynamicCreativeEnabled: json_['dynamicCreativeEnabled'] as core.bool?,
-        iasClientId: json_['iasClientId'] as core.String?,
-        obaComplianceDisabled: json_['obaComplianceDisabled'] as core.bool?,
-        videoCreativeDataSharingAuthorized:
-            json_['videoCreativeDataSharingAuthorized'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final dynamicCreativeEnabled = this.dynamicCreativeEnabled;
-    final iasClientId = this.iasClientId;
-    final obaComplianceDisabled = this.obaComplianceDisabled;
-    final videoCreativeDataSharingAuthorized =
-        this.videoCreativeDataSharingAuthorized;
-    return {
-      'dynamicCreativeEnabled': ?dynamicCreativeEnabled,
-      'iasClientId': ?iasClientId,
-      'obaComplianceDisabled': ?obaComplianceDisabled,
-      'videoCreativeDataSharingAuthorized': ?videoCreativeDataSharingAuthorized,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : AdvertiserGeneralConfig
-/// - displayvideo:v3 : AdvertiserGeneralConfig
-/// - displayvideo:v4 : AdvertiserGeneralConfig
-class $AdvertiserGeneralConfig {
-  /// Advertiser's currency in ISO 4217 format.
-  ///
-  /// Accepted codes and the currencies they represent are: Currency Code :
-  /// Currency Name * `ARS` : Argentine Peso * `AUD` : Australian Dollar * `BRL`
-  /// : Brazilian Real * `CAD` : Canadian Dollar * `CHF` : Swiss Franc * `CLP` :
-  /// Chilean Peso * `CNY` : Chinese Yuan * `COP` : Colombian Peso * `CZK` :
-  /// Czech Koruna * `DKK` : Danish Krone * `EGP` : Egyption Pound * `EUR` :
-  /// Euro * `GBP` : British Pound * `HKD` : Hong Kong Dollar * `HUF` :
-  /// Hungarian Forint * `IDR` : Indonesian Rupiah * `ILS` : Israeli Shekel *
-  /// `INR` : Indian Rupee * `JPY` : Japanese Yen * `KRW` : South Korean Won *
-  /// `MXN` : Mexican Pesos * `MYR` : Malaysian Ringgit * `NGN` : Nigerian Naira
-  /// * `NOK` : Norwegian Krone * `NZD` : New Zealand Dollar * `PEN` : Peruvian
-  /// Nuevo Sol * `PLN` : Polish Zloty * `RON` : New Romanian Leu * `RUB` :
-  /// Russian Ruble * `SEK` : Swedish Krona * `TRY` : Turkish Lira * `TWD` : New
-  /// Taiwan Dollar * `USD` : US Dollar * `ZAR` : South African Rand
-  ///
-  /// Required. Immutable.
-  core.String? currencyCode;
-
-  /// The domain URL of the advertiser's primary website.
-  ///
-  /// The system will send this information to publishers that require website
-  /// URL to associate a campaign with an advertiser. Provide a URL with no path
-  /// or query string, beginning with `http:` or `https:`. For example,
-  /// http://www.example.com
-  ///
-  /// Required.
-  core.String? domainUrl;
-
-  /// The standard TZ database name of the advertiser's time zone.
-  ///
-  /// For example, `America/New_York`. See more at:
-  /// https://en.wikipedia.org/wiki/List_of_tz_database_time_zones For CM360
-  /// hybrid advertisers, the time zone is the same as that of the associated
-  /// CM360 account; for third-party only advertisers, the time zone is the same
-  /// as that of the parent partner.
-  ///
-  /// Output only.
-  core.String? timeZone;
-
-  $AdvertiserGeneralConfig({this.currencyCode, this.domainUrl, this.timeZone});
-
-  $AdvertiserGeneralConfig.fromJson(core.Map json_)
-    : this(
-        currencyCode: json_['currencyCode'] as core.String?,
-        domainUrl: json_['domainUrl'] as core.String?,
-        timeZone: json_['timeZone'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final currencyCode = this.currencyCode;
-    final domainUrl = this.domainUrl;
-    final timeZone = this.timeZone;
-    return {
-      'currencyCode': ?currencyCode,
-      'domainUrl': ?domainUrl,
-      'timeZone': ?timeZone,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : AdvertiserTargetingConfig
-/// - displayvideo:v3 : AdvertiserTargetingConfig
-/// - displayvideo:v4 : AdvertiserTargetingConfig
-class $AdvertiserTargetingConfig {
-  /// Whether or not connected TV devices are exempt from viewability targeting
-  /// for all video line items under the advertiser.
-  core.bool? exemptTvFromViewabilityTargeting;
-
-  $AdvertiserTargetingConfig({this.exemptTvFromViewabilityTargeting});
-
-  $AdvertiserTargetingConfig.fromJson(core.Map json_)
-    : this(
-        exemptTvFromViewabilityTargeting:
-            json_['exemptTvFromViewabilityTargeting'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final exemptTvFromViewabilityTargeting =
-        this.exemptTvFromViewabilityTargeting;
-    return {
-      'exemptTvFromViewabilityTargeting': ?exemptTvFromViewabilityTargeting,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : AgeRangeAssignedTargetingOptionDetails
-/// - displayvideo:v3 : AgeRangeAssignedTargetingOptionDetails
-/// - displayvideo:v4 : AgeRangeAssignedTargetingOptionDetails
-class $AgeRangeAssignedTargetingOptionDetails {
-  /// The age range of an audience.
-  ///
-  /// We only support targeting a continuous age range of an audience. Thus, the
-  /// age range represented in this field can be 1) targeted solely, or, 2) part
-  /// of a larger continuous age range. The reach of a continuous age range
-  /// targeting can be expanded by also targeting an audience of an unknown age.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "AGE_RANGE_UNSPECIFIED" : Default value when age range is not specified
-  /// in this version. This enum is a placeholder for default value and does not
-  /// represent a real age range option.
-  /// - "AGE_RANGE_18_24" : The age range of the audience is 18 to 24.
-  /// - "AGE_RANGE_25_34" : The age range of the audience is 25 to 34.
-  /// - "AGE_RANGE_35_44" : The age range of the audience is 35 to 44.
-  /// - "AGE_RANGE_45_54" : The age range of the audience is 45 to 54.
-  /// - "AGE_RANGE_55_64" : The age range of the audience is 55 to 64.
-  /// - "AGE_RANGE_65_PLUS" : The age range of the audience is 65 and up.
-  /// - "AGE_RANGE_UNKNOWN" : The age range of the audience is unknown.
-  /// - "AGE_RANGE_18_20" : The age range of the audience is 18 to 20, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  /// - "AGE_RANGE_21_24" : The age range of the audience is 21 to 24, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  /// - "AGE_RANGE_25_29" : The age range of the audience is 25 to 29, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  /// - "AGE_RANGE_30_34" : The age range of the audience is 30 to 34, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  /// - "AGE_RANGE_35_39" : The age range of the audience is 35 to 39, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  /// - "AGE_RANGE_40_44" : The age range of the audience is 40 to 44, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  /// - "AGE_RANGE_45_49" : The age range of the audience is 45 to 49, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  /// - "AGE_RANGE_50_54" : The age range of the audience is 50 to 54, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  /// - "AGE_RANGE_55_59" : The age range of the audience is 55 to 59, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  /// - "AGE_RANGE_60_64" : The age range of the audience is 60 to 64, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  core.String? ageRange;
-
-  $AgeRangeAssignedTargetingOptionDetails({this.ageRange});
-
-  $AgeRangeAssignedTargetingOptionDetails.fromJson(core.Map json_)
-    : this(ageRange: json_['ageRange'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final ageRange = this.ageRange;
-    return {'ageRange': ?ageRange};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : AgeRangeTargetingOptionDetails
-/// - displayvideo:v3 : AgeRangeTargetingOptionDetails
-/// - displayvideo:v4 : AgeRangeTargetingOptionDetails
-class $AgeRangeTargetingOptionDetails {
-  /// The age range of an audience.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "AGE_RANGE_UNSPECIFIED" : Default value when age range is not specified
-  /// in this version. This enum is a placeholder for default value and does not
-  /// represent a real age range option.
-  /// - "AGE_RANGE_18_24" : The age range of the audience is 18 to 24.
-  /// - "AGE_RANGE_25_34" : The age range of the audience is 25 to 34.
-  /// - "AGE_RANGE_35_44" : The age range of the audience is 35 to 44.
-  /// - "AGE_RANGE_45_54" : The age range of the audience is 45 to 54.
-  /// - "AGE_RANGE_55_64" : The age range of the audience is 55 to 64.
-  /// - "AGE_RANGE_65_PLUS" : The age range of the audience is 65 and up.
-  /// - "AGE_RANGE_UNKNOWN" : The age range of the audience is unknown.
-  /// - "AGE_RANGE_18_20" : The age range of the audience is 18 to 20, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  /// - "AGE_RANGE_21_24" : The age range of the audience is 21 to 24, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  /// - "AGE_RANGE_25_29" : The age range of the audience is 25 to 29, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  /// - "AGE_RANGE_30_34" : The age range of the audience is 30 to 34, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  /// - "AGE_RANGE_35_39" : The age range of the audience is 35 to 39, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  /// - "AGE_RANGE_40_44" : The age range of the audience is 40 to 44, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  /// - "AGE_RANGE_45_49" : The age range of the audience is 45 to 49, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  /// - "AGE_RANGE_50_54" : The age range of the audience is 50 to 54, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  /// - "AGE_RANGE_55_59" : The age range of the audience is 55 to 59, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  /// - "AGE_RANGE_60_64" : The age range of the audience is 60 to 64, only
-  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
-  core.String? ageRange;
-
-  $AgeRangeTargetingOptionDetails({this.ageRange});
-
-  $AgeRangeTargetingOptionDetails.fromJson(core.Map json_)
-    : this(ageRange: json_['ageRange'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final ageRange = this.ageRange;
-    return {'ageRange': ?ageRange};
   }
 }
 
@@ -1436,150 +412,6 @@ class $AnalysisCompleted {
   core.Map<core.String, core.dynamic> toJson() {
     final analysisType = this.analysisType;
     return {'analysisType': ?analysisType};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : AppAssignedTargetingOptionDetails
-/// - displayvideo:v3 : AppAssignedTargetingOptionDetails
-/// - displayvideo:v4 : AppAssignedTargetingOptionDetails
-class $AppAssignedTargetingOptionDetails {
-  /// The ID of the app.
-  ///
-  /// Android's Play store app uses bundle ID, for example
-  /// `com.google.android.gm`. Apple's App store app ID uses 9 digit string, for
-  /// example `422689480`.
-  ///
-  /// Required.
-  core.String? appId;
-
-  /// Indicates the platform of the targeted app.
-  ///
-  /// If this field is not specified, the app platform will be assumed to be
-  /// mobile (i.e., Android or iOS), and we will derive the appropriate mobile
-  /// platform from the app ID.
-  /// Possible string values are:
-  /// - "APP_PLATFORM_UNSPECIFIED" : Default value when app platform is not
-  /// specified in this version. This enum is a placeholder for default value
-  /// and does not represent a real platform option.
-  /// - "APP_PLATFORM_IOS" : The app platform is iOS.
-  /// - "APP_PLATFORM_ANDROID" : The app platform is Android.
-  /// - "APP_PLATFORM_ROKU" : The app platform is Roku.
-  /// - "APP_PLATFORM_AMAZON_FIRETV" : The app platform is Amazon FireTV.
-  /// - "APP_PLATFORM_PLAYSTATION" : The app platform is Playstation.
-  /// - "APP_PLATFORM_APPLE_TV" : The app platform is Apple TV.
-  /// - "APP_PLATFORM_XBOX" : The app platform is Xbox.
-  /// - "APP_PLATFORM_SAMSUNG_TV" : The app platform is Samsung TV.
-  /// - "APP_PLATFORM_ANDROID_TV" : The app platform is Android TV.
-  /// - "APP_PLATFORM_GENERIC_CTV" : The app platform is a CTV platform that is
-  /// not explicitly listed elsewhere.
-  /// - "APP_PLATFORM_LG_TV" : The app platform is LG TV.
-  /// - "APP_PLATFORM_VIZIO_TV" : The app platform is VIZIO TV.
-  /// - "APP_PLATFORM_VIDAA" : The app platform is Vidaa.
-  core.String? appPlatform;
-
-  /// The display name of the app.
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  /// Indicates if this option is being negatively targeted.
-  core.bool? negative;
-
-  $AppAssignedTargetingOptionDetails({
-    this.appId,
-    this.appPlatform,
-    this.displayName,
-    this.negative,
-  });
-
-  $AppAssignedTargetingOptionDetails.fromJson(core.Map json_)
-    : this(
-        appId: json_['appId'] as core.String?,
-        appPlatform: json_['appPlatform'] as core.String?,
-        displayName: json_['displayName'] as core.String?,
-        negative: json_['negative'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final appId = this.appId;
-    final appPlatform = this.appPlatform;
-    final displayName = this.displayName;
-    final negative = this.negative;
-    return {
-      'appId': ?appId,
-      'appPlatform': ?appPlatform,
-      'displayName': ?displayName,
-      'negative': ?negative,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : AppCategoryAssignedTargetingOptionDetails
-/// - displayvideo:v3 : AppCategoryAssignedTargetingOptionDetails
-/// - displayvideo:v4 : AppCategoryAssignedTargetingOptionDetails
-class $AppCategoryAssignedTargetingOptionDetails {
-  /// The display name of the app category.
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  /// Indicates if this option is being negatively targeted.
-  core.bool? negative;
-
-  /// The targeting_option_id field when targeting_type is
-  /// `TARGETING_TYPE_APP_CATEGORY`.
-  ///
-  /// Required.
-  core.String? targetingOptionId;
-
-  $AppCategoryAssignedTargetingOptionDetails({
-    this.displayName,
-    this.negative,
-    this.targetingOptionId,
-  });
-
-  $AppCategoryAssignedTargetingOptionDetails.fromJson(core.Map json_)
-    : this(
-        displayName: json_['displayName'] as core.String?,
-        negative: json_['negative'] as core.bool?,
-        targetingOptionId: json_['targetingOptionId'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final displayName = this.displayName;
-    final negative = this.negative;
-    final targetingOptionId = this.targetingOptionId;
-    return {
-      'displayName': ?displayName,
-      'negative': ?negative,
-      'targetingOptionId': ?targetingOptionId,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : AppCategoryTargetingOptionDetails
-/// - displayvideo:v3 : AppCategoryTargetingOptionDetails
-/// - displayvideo:v4 : AppCategoryTargetingOptionDetails
-class $AppCategoryTargetingOptionDetails {
-  /// The name of the app collection.
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  $AppCategoryTargetingOptionDetails({this.displayName});
-
-  $AppCategoryTargetingOptionDetails.fromJson(core.Map json_)
-    : this(displayName: json_['displayName'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final displayName = this.displayName;
-    return {'displayName': ?displayName};
   }
 }
 
@@ -1777,471 +609,7 @@ class $ArtifactsGcsSource {
 
 /// Used by:
 ///
-/// - displayvideo:v2 : Asset
-/// - displayvideo:v3 : Asset
-/// - displayvideo:v4 : Asset
-class $Asset {
-  /// The asset content.
-  ///
-  /// For uploaded assets, the content is the serving path.
-  core.String? content;
-
-  /// Media ID of the uploaded asset.
-  ///
-  /// This is a unique identifier for the asset. This ID can be passed to other
-  /// API calls, e.g. CreateCreative to associate the asset with a creative. The
-  /// Media ID space updated on **April 5, 2023**. Update media IDs cached
-  /// before **April 5, 2023** by retrieving the new media ID from associated
-  /// creative resources or re-uploading the asset.
-  core.String? mediaId;
-
-  $Asset({this.content, this.mediaId});
-
-  $Asset.fromJson(core.Map json_)
-    : this(
-        content: json_['content'] as core.String?,
-        mediaId: json_['mediaId'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final content = this.content;
-    final mediaId = this.mediaId;
-    return {'content': ?content, 'mediaId': ?mediaId};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : AssignedInventorySource
-/// - displayvideo:v3 : AssignedInventorySource
-/// - displayvideo:v4 : AssignedInventorySource
-class $AssignedInventorySource {
-  /// The unique ID of the assigned inventory source.
-  ///
-  /// The ID is only unique within a given inventory source group. It may be
-  /// reused in other contexts.
-  ///
-  /// Output only.
-  core.String? assignedInventorySourceId;
-
-  /// The ID of the inventory source entity being targeted.
-  ///
-  /// Required.
-  core.String? inventorySourceId;
-
-  /// The resource name of the assigned inventory source.
-  ///
-  /// Output only.
-  core.String? name;
-
-  $AssignedInventorySource({
-    this.assignedInventorySourceId,
-    this.inventorySourceId,
-    this.name,
-  });
-
-  $AssignedInventorySource.fromJson(core.Map json_)
-    : this(
-        assignedInventorySourceId:
-            json_['assignedInventorySourceId'] as core.String?,
-        inventorySourceId: json_['inventorySourceId'] as core.String?,
-        name: json_['name'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final assignedInventorySourceId = this.assignedInventorySourceId;
-    final inventorySourceId = this.inventorySourceId;
-    final name = this.name;
-    return {
-      'assignedInventorySourceId': ?assignedInventorySourceId,
-      'inventorySourceId': ?inventorySourceId,
-      'name': ?name,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : AssignedLocation
-/// - displayvideo:v3 : AssignedLocation
-/// - displayvideo:v4 : AssignedLocation
-class $AssignedLocation {
-  /// The unique ID of the assigned location.
-  ///
-  /// The ID is only unique within a location list. It may be reused in other
-  /// contexts.
-  ///
-  /// Output only.
-  core.String? assignedLocationId;
-
-  /// The resource name of the assigned location.
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// The ID of the targeting option assigned to the location list.
-  ///
-  /// Required.
-  core.String? targetingOptionId;
-
-  $AssignedLocation({
-    this.assignedLocationId,
-    this.name,
-    this.targetingOptionId,
-  });
-
-  $AssignedLocation.fromJson(core.Map json_)
-    : this(
-        assignedLocationId: json_['assignedLocationId'] as core.String?,
-        name: json_['name'] as core.String?,
-        targetingOptionId: json_['targetingOptionId'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final assignedLocationId = this.assignedLocationId;
-    final name = this.name;
-    final targetingOptionId = this.targetingOptionId;
-    return {
-      'assignedLocationId': ?assignedLocationId,
-      'name': ?name,
-      'targetingOptionId': ?targetingOptionId,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : AssignedUserRole
-/// - displayvideo:v3 : AssignedUserRole
-/// - displayvideo:v4 : AssignedUserRole
-class $AssignedUserRole {
-  /// The ID of the advertiser that the assigend user role applies to.
-  core.String? advertiserId;
-
-  /// The ID of the assigned user role.
-  ///
-  /// Output only.
-  core.String? assignedUserRoleId;
-
-  /// The ID of the partner that the assigned user role applies to.
-  core.String? partnerId;
-
-  /// The user role to assign to a user for the entity.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "USER_ROLE_UNSPECIFIED" : Default value when the user role is not
-  /// specified or is unknown in this version.
-  /// - "ADMIN" : The user can manage campaigns, creatives, insertion orders,
-  /// line items, and reports for the entity. They can view and edit billing
-  /// information, create or modify users, and enable or disable exchanges. This
-  /// role can only be assigned for a partner entity.
-  /// - "ADMIN_PARTNER_CLIENT" : The user can manage campaigns, creatives,
-  /// insertion orders, line items, and reports for the entity. They can create
-  /// and modify other `ADMIN_PARTNER_CLIENT` users and view billing
-  /// information. They cannot view revenue models, markups, or any other
-  /// reseller-sensitive fields. This role can only be assigned for a partner
-  /// entity.
-  /// - "STANDARD" : The user can manage campaigns, creatives, insertion orders,
-  /// line items, and reports for the entity. They cannot create and modify
-  /// users or view billing information.
-  /// - "STANDARD_PLANNER" : The user can view all campaigns, creatives,
-  /// insertion orders, line items, and reports for the entity, including all
-  /// cost data. They can create and modify planning-related features, including
-  /// plans and inventory.
-  /// - "STANDARD_PLANNER_LIMITED" : The user can view all campaigns, creatives,
-  /// insertion orders, line items, and reports for the entity. They can create
-  /// or modify planning-related features, including plans and inventory. They
-  /// have no access to cost data and cannot start, accept, or negotiate deals.
-  /// - "STANDARD_PARTNER_CLIENT" : The user can manage campaigns, creatives,
-  /// insertion orders, line items, and reports for the entity. They cannot
-  /// create or modify other users or view billing information. They cannot view
-  /// revenue models, markups, or any other reseller-sensitive fields. This role
-  /// can only be assigned for an advertiser entity.
-  /// - "READ_ONLY" : The user can only build reports and view data for the
-  /// entity.
-  /// - "REPORTING_ONLY" : The user can only create and manage reports.
-  /// - "LIMITED_REPORTING_ONLY" : The user can only create and manage the
-  /// following client-safe reports: General, Audience Performance,
-  /// Cross-Partner, Keyword, Order ID, Category, and Third-Party Data Provider.
-  /// - "CREATIVE" : The user can view media plan information they need to
-  /// collaborate, but can't view cost-related data or Marketplace.
-  /// - "CREATIVE_ADMIN" : The user can view media plan information they need to
-  /// collaborate, but can't view cost-related data or Marketplace. In addition,
-  /// they can add other creative admins or creative users to the entity.
-  core.String? userRole;
-
-  $AssignedUserRole({
-    this.advertiserId,
-    this.assignedUserRoleId,
-    this.partnerId,
-    this.userRole,
-  });
-
-  $AssignedUserRole.fromJson(core.Map json_)
-    : this(
-        advertiserId: json_['advertiserId'] as core.String?,
-        assignedUserRoleId: json_['assignedUserRoleId'] as core.String?,
-        partnerId: json_['partnerId'] as core.String?,
-        userRole: json_['userRole'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final advertiserId = this.advertiserId;
-    final assignedUserRoleId = this.assignedUserRoleId;
-    final partnerId = this.partnerId;
-    final userRole = this.userRole;
-    return {
-      'advertiserId': ?advertiserId,
-      'assignedUserRoleId': ?assignedUserRoleId,
-      'partnerId': ?partnerId,
-      'userRole': ?userRole,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - ml:v1 : GoogleCloudMlV1__IntegratedGradientsAttribution
-/// - ml:v1 : GoogleCloudMlV1__XraiAttribution
-class $Attribution {
-  /// Number of steps for approximating the path integral.
-  ///
-  /// A good value to start is 50 and gradually increase until the sum to diff
-  /// property is met within the desired error range.
-  core.int? numIntegralSteps;
-
-  $Attribution({this.numIntegralSteps});
-
-  $Attribution.fromJson(core.Map json_)
-    : this(numIntegralSteps: json_['numIntegralSteps'] as core.int?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final numIntegralSteps = this.numIntegralSteps;
-    return {'numIntegralSteps': ?numIntegralSteps};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : AudioContentTypeAssignedTargetingOptionDetails
-/// - displayvideo:v3 : AudioContentTypeAssignedTargetingOptionDetails
-/// - displayvideo:v4 : AudioContentTypeAssignedTargetingOptionDetails
-class $AudioContentTypeAssignedTargetingOptionDetails {
-  /// The audio content type.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "AUDIO_CONTENT_TYPE_UNSPECIFIED" : Audio content type is not specified
-  /// in this version. This enum is a place holder for a default value and does
-  /// not represent a real content stream type.
-  /// - "AUDIO_CONTENT_TYPE_UNKNOWN" : The audio content type is unknown.
-  /// - "AUDIO_CONTENT_TYPE_MUSIC" : The audio content type is music.
-  /// - "AUDIO_CONTENT_TYPE_BROADCAST" : The audio content type is broadcast.
-  /// - "AUDIO_CONTENT_TYPE_PODCAST" : The audio content type is podcast.
-  /// - "AUDIO_CONTENT_TYPE_CATCH_UP_RADIO" : The audio content type is catch-up
-  /// radio.
-  /// - "AUDIO_CONTENT_TYPE_WEB_RADIO" : The audio content type is web radio.
-  /// - "AUDIO_CONTENT_TYPE_VIDEO_GAME" : The audio content type is video game.
-  /// - "AUDIO_CONTENT_TYPE_TEXT_TO_SPEECH" : The audio content type is
-  /// text-to-speech.
-  core.String? audioContentType;
-
-  $AudioContentTypeAssignedTargetingOptionDetails({this.audioContentType});
-
-  $AudioContentTypeAssignedTargetingOptionDetails.fromJson(core.Map json_)
-    : this(audioContentType: json_['audioContentType'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final audioContentType = this.audioContentType;
-    return {'audioContentType': ?audioContentType};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : AudioContentTypeTargetingOptionDetails
-/// - displayvideo:v3 : AudioContentTypeTargetingOptionDetails
-/// - displayvideo:v4 : AudioContentTypeTargetingOptionDetails
-class $AudioContentTypeTargetingOptionDetails {
-  /// The audio content type.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "AUDIO_CONTENT_TYPE_UNSPECIFIED" : Audio content type is not specified
-  /// in this version. This enum is a place holder for a default value and does
-  /// not represent a real content stream type.
-  /// - "AUDIO_CONTENT_TYPE_UNKNOWN" : The audio content type is unknown.
-  /// - "AUDIO_CONTENT_TYPE_MUSIC" : The audio content type is music.
-  /// - "AUDIO_CONTENT_TYPE_BROADCAST" : The audio content type is broadcast.
-  /// - "AUDIO_CONTENT_TYPE_PODCAST" : The audio content type is podcast.
-  /// - "AUDIO_CONTENT_TYPE_CATCH_UP_RADIO" : The audio content type is catch-up
-  /// radio.
-  /// - "AUDIO_CONTENT_TYPE_WEB_RADIO" : The audio content type is web radio.
-  /// - "AUDIO_CONTENT_TYPE_VIDEO_GAME" : The audio content type is video game.
-  /// - "AUDIO_CONTENT_TYPE_TEXT_TO_SPEECH" : The audio content type is
-  /// text-to-speech.
-  core.String? audioContentType;
-
-  $AudioContentTypeTargetingOptionDetails({this.audioContentType});
-
-  $AudioContentTypeTargetingOptionDetails.fromJson(core.Map json_)
-    : this(audioContentType: json_['audioContentType'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final audioContentType = this.audioContentType;
-    return {'audioContentType': ?audioContentType};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : AudioVideoOffset
-/// - displayvideo:v3 : AudioVideoOffset
-/// - displayvideo:v4 : AudioVideoOffset
-class $AudioVideoOffset {
-  /// The offset in percentage of the audio or video duration.
-  ///
-  /// Optional.
-  core.String? percentage;
-
-  /// The offset in seconds from the start of the audio or video.
-  ///
-  /// Optional.
-  core.String? seconds;
-
-  $AudioVideoOffset({this.percentage, this.seconds});
-
-  $AudioVideoOffset.fromJson(core.Map json_)
-    : this(
-        percentage: json_['percentage'] as core.String?,
-        seconds: json_['seconds'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final percentage = this.percentage;
-    final seconds = this.seconds;
-    return {'percentage': ?percentage, 'seconds': ?seconds};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : AuditAdvertiserResponse
-/// - displayvideo:v3 : AuditAdvertiserResponse
-/// - displayvideo:v4 : AuditAdvertiserResponse
-class $AuditAdvertiserResponse {
-  /// The number of individual targeting options from the following targeting
-  /// types that are assigned to a line item under this advertiser.
-  ///
-  /// These individual targeting options count towards the limit of 4500000 ad
-  /// group targeting options per advertiser. Qualifying Targeting types: *
-  /// Channels, URLs, apps, and collections * Demographic * Google Audiences,
-  /// including Affinity, Custom Affinity, and In-market audiences * Inventory
-  /// source * Keyword * Mobile app category * User lists * Video targeting *
-  /// Viewability
-  core.String? adGroupCriteriaCount;
-
-  /// The number of individual targeting options from the following targeting
-  /// types that are assigned to a line item under this advertiser.
-  ///
-  /// These individual targeting options count towards the limit of 900000
-  /// campaign targeting options per advertiser. Qualifying Targeting types: *
-  /// Position * Browser * Connection speed * Day and time * Device and
-  /// operating system * Digital content label * Sensitive categories *
-  /// Environment * Geography, including business chains and proximity * ISP *
-  /// Language * Third-party verification
-  core.String? campaignCriteriaCount;
-
-  /// The number of channels created under this advertiser.
-  ///
-  /// These channels count towards the limit of 1000 channels per advertiser.
-  core.String? channelsCount;
-
-  /// The number of negative keyword lists created under this advertiser.
-  ///
-  /// These negative keyword lists count towards the limit of 20 negative
-  /// keyword lists per advertiser.
-  core.String? negativeKeywordListsCount;
-
-  /// The number of negatively targeted channels created under this advertiser.
-  ///
-  /// These negatively targeted channels count towards the limit of 5 negatively
-  /// targeted channels per advertiser.
-  core.String? negativelyTargetedChannelsCount;
-
-  /// The number of ACTIVE and PAUSED campaigns under this advertiser.
-  ///
-  /// These campaigns count towards the limit of 9999 campaigns per advertiser.
-  core.String? usedCampaignsCount;
-
-  /// The number of ACTIVE, PAUSED and DRAFT insertion orders under this
-  /// advertiser.
-  ///
-  /// These insertion orders count towards the limit of 9999 insertion orders
-  /// per advertiser.
-  core.String? usedInsertionOrdersCount;
-
-  /// The number of ACTIVE, PAUSED, and DRAFT line items under this advertiser.
-  ///
-  /// These line items count towards the limit of 9999 line items per
-  /// advertiser.
-  core.String? usedLineItemsCount;
-
-  $AuditAdvertiserResponse({
-    this.adGroupCriteriaCount,
-    this.campaignCriteriaCount,
-    this.channelsCount,
-    this.negativeKeywordListsCount,
-    this.negativelyTargetedChannelsCount,
-    this.usedCampaignsCount,
-    this.usedInsertionOrdersCount,
-    this.usedLineItemsCount,
-  });
-
-  $AuditAdvertiserResponse.fromJson(core.Map json_)
-    : this(
-        adGroupCriteriaCount: json_['adGroupCriteriaCount'] as core.String?,
-        campaignCriteriaCount: json_['campaignCriteriaCount'] as core.String?,
-        channelsCount: json_['channelsCount'] as core.String?,
-        negativeKeywordListsCount:
-            json_['negativeKeywordListsCount'] as core.String?,
-        negativelyTargetedChannelsCount:
-            json_['negativelyTargetedChannelsCount'] as core.String?,
-        usedCampaignsCount: json_['usedCampaignsCount'] as core.String?,
-        usedInsertionOrdersCount:
-            json_['usedInsertionOrdersCount'] as core.String?,
-        usedLineItemsCount: json_['usedLineItemsCount'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final adGroupCriteriaCount = this.adGroupCriteriaCount;
-    final campaignCriteriaCount = this.campaignCriteriaCount;
-    final channelsCount = this.channelsCount;
-    final negativeKeywordListsCount = this.negativeKeywordListsCount;
-    final negativelyTargetedChannelsCount =
-        this.negativelyTargetedChannelsCount;
-    final usedCampaignsCount = this.usedCampaignsCount;
-    final usedInsertionOrdersCount = this.usedInsertionOrdersCount;
-    final usedLineItemsCount = this.usedLineItemsCount;
-    return {
-      'adGroupCriteriaCount': ?adGroupCriteriaCount,
-      'campaignCriteriaCount': ?campaignCriteriaCount,
-      'channelsCount': ?channelsCount,
-      'negativeKeywordListsCount': ?negativeKeywordListsCount,
-      'negativelyTargetedChannelsCount': ?negativelyTargetedChannelsCount,
-      'usedCampaignsCount': ?usedCampaignsCount,
-      'usedInsertionOrdersCount': ?usedInsertionOrdersCount,
-      'usedLineItemsCount': ?usedLineItemsCount,
-    };
-  }
-}
-
-/// Used by:
-///
 /// - accesscontextmanager:v1 : AuditLogConfig
-/// - agentidentity:v1 : AuditLogConfig
-/// - agentregistry:v1 : GoogleIamV1AuditLogConfig
 /// - analyticshub:v1 : AuditLogConfig
 /// - apigateway:v1 : ApigatewayAuditLogConfig
 /// - apigee:v1 : GoogleIamV1AuditLogConfig
@@ -2263,34 +631,25 @@ class $AuditAdvertiserResponse {
 /// - cloudfunctions:v2 : AuditLogConfig
 /// - cloudkms:v1 : AuditLogConfig
 /// - cloudresourcemanager:v1 : AuditLogConfig
-/// - cloudresourcemanager:v2 : AuditLogConfig
 /// - cloudresourcemanager:v3 : AuditLogConfig
 /// - config:v1 : AuditLogConfig
-/// - connectors:v1 : AuditLogConfig
 /// - contactcenterinsights:v1 : GoogleIamV1AuditLogConfig
 /// - datafusion:v1 : AuditLogConfig
 /// - datamigration:v1 : AuditLogConfig
 /// - dataplex:v1 : GoogleIamV1AuditLogConfig
-/// - deploymentmanager:v2 : AuditLogConfig
 /// - dns:v1 : GoogleIamV1AuditLogConfig
-/// - domains:v1 : AuditLogConfig
 /// - eventarc:v1 : AuditLogConfig
 /// - gkebackup:v1 : AuditLogConfig
-/// - gkehub:v1 : AuditLogConfig
 /// - healthcare:v1 : AuditLogConfig
 /// - iam:v1 : AuditLogConfig
 /// - identitytoolkit:v2 : GoogleIamV1AuditLogConfig
-/// - metastore:v1 : AuditLogConfig
-/// - ml:v1 : GoogleIamV1__AuditLogConfig
 /// - networkconnectivity:v1 : AuditLogConfig
 /// - networkmanagement:v1 : AuditLogConfig
 /// - networksecurity:v1 : GoogleIamV1AuditLogConfig
 /// - networkservices:v1 : AuditLogConfig
 /// - policysimulator:v1 : GoogleIamV1AuditLogConfig
-/// - policytroubleshooter:v1 : GoogleIamV1AuditLogConfig
 /// - policytroubleshooter:v3 : GoogleIamV1AuditLogConfig
 /// - privateca:v1 : AuditLogConfig
-/// - run:v1 : AuditLogConfig
 /// - run:v2 : GoogleIamV1AuditLogConfig
 /// - secretmanager:v1 : AuditLogConfig
 /// - securesourcemanager:v1 : AuditLogConfig
@@ -2366,96 +725,6 @@ class $AuthRequirement {
     final audiences = this.audiences;
     final providerId = this.providerId;
     return {'audiences': ?audiences, 'providerId': ?providerId};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : AuthorizedSellerStatusAssignedTargetingOptionDetails
-/// - displayvideo:v3 : AuthorizedSellerStatusAssignedTargetingOptionDetails
-/// - displayvideo:v4 : AuthorizedSellerStatusAssignedTargetingOptionDetails
-class $AuthorizedSellerStatusAssignedTargetingOptionDetails {
-  /// The authorized seller status to target.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "AUTHORIZED_SELLER_STATUS_UNSPECIFIED" : Default value when authorized
-  /// seller status is not specified in this version. This enum is a placeholder
-  /// for the default value, or "Authorized Direct Sellers and Resellers" in the
-  /// UI.
-  /// - "AUTHORIZED_SELLER_STATUS_AUTHORIZED_DIRECT_SELLERS_ONLY" : Only
-  /// authorized sellers that directly own the inventory being monetized, as
-  /// indicated by a DIRECT declaration in the ads.txt file. This value is
-  /// equivalent to "Authorized Direct Sellers" in the UI.
-  /// - "AUTHORIZED_SELLER_STATUS_AUTHORIZED_AND_NON_PARTICIPATING_PUBLISHERS" :
-  /// All authorized sellers, including publishers that have not posted an
-  /// ads.txt file. Display & Video 360 automatically disallows unauthorized
-  /// sellers. This value is equivalent to "Authorized and Non-Participating
-  /// Publishers" in the UI.
-  core.String? authorizedSellerStatus;
-
-  /// The targeting_option_id of a TargetingOption of type
-  /// `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS`.
-  ///
-  /// Required.
-  core.String? targetingOptionId;
-
-  $AuthorizedSellerStatusAssignedTargetingOptionDetails({
-    this.authorizedSellerStatus,
-    this.targetingOptionId,
-  });
-
-  $AuthorizedSellerStatusAssignedTargetingOptionDetails.fromJson(core.Map json_)
-    : this(
-        authorizedSellerStatus: json_['authorizedSellerStatus'] as core.String?,
-        targetingOptionId: json_['targetingOptionId'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final authorizedSellerStatus = this.authorizedSellerStatus;
-    final targetingOptionId = this.targetingOptionId;
-    return {
-      'authorizedSellerStatus': ?authorizedSellerStatus,
-      'targetingOptionId': ?targetingOptionId,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : AuthorizedSellerStatusTargetingOptionDetails
-/// - displayvideo:v3 : AuthorizedSellerStatusTargetingOptionDetails
-/// - displayvideo:v4 : AuthorizedSellerStatusTargetingOptionDetails
-class $AuthorizedSellerStatusTargetingOptionDetails {
-  /// The authorized seller status.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "AUTHORIZED_SELLER_STATUS_UNSPECIFIED" : Default value when authorized
-  /// seller status is not specified in this version. This enum is a placeholder
-  /// for the default value, or "Authorized Direct Sellers and Resellers" in the
-  /// UI.
-  /// - "AUTHORIZED_SELLER_STATUS_AUTHORIZED_DIRECT_SELLERS_ONLY" : Only
-  /// authorized sellers that directly own the inventory being monetized, as
-  /// indicated by a DIRECT declaration in the ads.txt file. This value is
-  /// equivalent to "Authorized Direct Sellers" in the UI.
-  /// - "AUTHORIZED_SELLER_STATUS_AUTHORIZED_AND_NON_PARTICIPATING_PUBLISHERS" :
-  /// All authorized sellers, including publishers that have not posted an
-  /// ads.txt file. Display & Video 360 automatically disallows unauthorized
-  /// sellers. This value is equivalent to "Authorized and Non-Participating
-  /// Publishers" in the UI.
-  core.String? authorizedSellerStatus;
-
-  $AuthorizedSellerStatusTargetingOptionDetails({this.authorizedSellerStatus});
-
-  $AuthorizedSellerStatusTargetingOptionDetails.fromJson(core.Map json_)
-    : this(
-        authorizedSellerStatus: json_['authorizedSellerStatus'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final authorizedSellerStatus = this.authorizedSellerStatus;
-    return {'authorizedSellerStatus': ?authorizedSellerStatus};
   }
 }
 
@@ -2602,31 +871,6 @@ class $BgpPeerConfig {
       'controlPlaneNodes': ?controlPlaneNodes,
       'ipAddress': ?ipAddress,
     };
-  }
-}
-
-/// Used by:
-///
-/// - connectors:v1 : BillingConfig
-/// - integrations:v1 : GoogleCloudConnectorsV1BillingConfig
-class $BillingConfig {
-  /// Billing category for the connector.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "BILLING_CATEGORY_UNSPECIFIED" : Billing category is not specified.
-  /// - "GCP_AND_TECHNICAL_CONNECTOR" : GCP/Technical connector.
-  /// - "NON_GCP_CONNECTOR" : Non-GCP connector.
-  core.String? billingCategory;
-
-  $BillingConfig({this.billingCategory});
-
-  $BillingConfig.fromJson(core.Map json_)
-    : this(billingCategory: json_['billingCategory'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final billingCategory = this.billingCategory;
-    return {'billingCategory': ?billingCategory};
   }
 }
 
@@ -2795,29 +1039,6 @@ class $Blobstore2Info {
 
 /// Used by:
 ///
-/// - integrations:v1 : GoogleCloudIntegrationsV1alphaBooleanParameterArray
-/// - integrations:v2 : GoogleCloudIntegrationsV2DuetBooleanParameterArray
-class $BooleanParameterArray {
-  /// Boolean array.
-  core.List<core.bool>? booleanValues;
-
-  $BooleanParameterArray({this.booleanValues});
-
-  $BooleanParameterArray.fromJson(core.Map json_)
-    : this(
-        booleanValues: (json_['booleanValues'] as core.List?)
-            ?.map((value) => value as core.bool)
-            .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final booleanValues = this.booleanValues;
-    return {'booleanValues': ?booleanValues};
-  }
-}
-
-/// Used by:
-///
 /// - cloudasset:v1 : GoogleCloudOrgpolicyV1BooleanPolicy
 /// - cloudresourcemanager:v1 : BooleanPolicy
 class $BooleanPolicy {
@@ -2889,76 +1110,6 @@ class $BoostSpecConditionBoostSpecBoostControlSpecControlPoint {
 
 /// Used by:
 ///
-/// - displayvideo:v2 : BrowserAssignedTargetingOptionDetails
-/// - displayvideo:v3 : BrowserAssignedTargetingOptionDetails
-/// - displayvideo:v4 : BrowserAssignedTargetingOptionDetails
-class $BrowserAssignedTargetingOptionDetails {
-  /// The display name of the browser.
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  /// Indicates if this option is being negatively targeted.
-  ///
-  /// All assigned browser targeting options on the same resource must have the
-  /// same value for this field.
-  core.bool? negative;
-
-  /// The targeting_option_id of a TargetingOption of type
-  /// `TARGETING_TYPE_BROWSER`.
-  ///
-  /// Required.
-  core.String? targetingOptionId;
-
-  $BrowserAssignedTargetingOptionDetails({
-    this.displayName,
-    this.negative,
-    this.targetingOptionId,
-  });
-
-  $BrowserAssignedTargetingOptionDetails.fromJson(core.Map json_)
-    : this(
-        displayName: json_['displayName'] as core.String?,
-        negative: json_['negative'] as core.bool?,
-        targetingOptionId: json_['targetingOptionId'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final displayName = this.displayName;
-    final negative = this.negative;
-    final targetingOptionId = this.targetingOptionId;
-    return {
-      'displayName': ?displayName,
-      'negative': ?negative,
-      'targetingOptionId': ?targetingOptionId,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : BrowserTargetingOptionDetails
-/// - displayvideo:v3 : BrowserTargetingOptionDetails
-/// - displayvideo:v4 : BrowserTargetingOptionDetails
-class $BrowserTargetingOptionDetails {
-  /// The display name of the browser.
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  $BrowserTargetingOptionDetails({this.displayName});
-
-  $BrowserTargetingOptionDetails.fromJson(core.Map json_)
-    : this(displayName: json_['displayName'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final displayName = this.displayName;
-    return {'displayName': ?displayName};
-  }
-}
-
-/// Used by:
-///
 /// - containeranalysis:v1 : BuildMetadata
 /// - ondemandscanning:v1 : BuildMetadata
 class $BuildMetadata {
@@ -2983,246 +1134,6 @@ class $BuildMetadata {
       'finishedOn': ?finishedOn,
       'invocationId': ?invocationId,
       'startedOn': ?startedOn,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - run:v1 : BuildStatus
-/// - run:v2 : GoogleCloudRunV2BuildStatus
-class $BuildStatus {
-  /// The log URL for the Cloud Build execution.
-  core.String? cloudBuildLogUrl;
-
-  /// The message details of the build.
-  core.String? message;
-
-  /// The status of the build.
-  core.String? status;
-
-  $BuildStatus({this.cloudBuildLogUrl, this.message, this.status});
-
-  $BuildStatus.fromJson(core.Map json_)
-    : this(
-        cloudBuildLogUrl: json_['cloudBuildLogUrl'] as core.String?,
-        message: json_['message'] as core.String?,
-        status: json_['status'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final cloudBuildLogUrl = this.cloudBuildLogUrl;
-    final message = this.message;
-    final status = this.status;
-    return {
-      'cloudBuildLogUrl': ?cloudBuildLogUrl,
-      'message': ?message,
-      'status': ?status,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : BusinessChainAssignedTargetingOptionDetails
-/// - displayvideo:v3 : BusinessChainAssignedTargetingOptionDetails
-/// - displayvideo:v4 : BusinessChainAssignedTargetingOptionDetails
-class $BusinessChainAssignedTargetingOptionDetails {
-  /// The display name of a business chain, e.g. "KFC", "Chase Bank".
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  /// The radius of the area around the business chain that will be targeted.
-  ///
-  /// The units of the radius are specified by proximity_radius_unit. Must be 1
-  /// to 800 if unit is `DISTANCE_UNIT_KILOMETERS` and 1 to 500 if unit is
-  /// `DISTANCE_UNIT_MILES`. The minimum increment for both cases is 0.1. Inputs
-  /// will be rounded to the nearest acceptable value if it is too granular,
-  /// e.g. 15.57 will become 15.6.
-  ///
-  /// Required.
-  core.double? proximityRadiusAmount;
-
-  /// The unit of distance by which the targeting radius is measured.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "DISTANCE_UNIT_UNSPECIFIED" : Type value is not specified or is unknown
-  /// in this version.
-  /// - "DISTANCE_UNIT_MILES" : Miles.
-  /// - "DISTANCE_UNIT_KILOMETERS" : Kilometers.
-  core.String? proximityRadiusUnit;
-
-  /// The targeting_option_id of a TargetingOption of type
-  /// `TARGETING_TYPE_BUSINESS_CHAIN`.
-  ///
-  /// Accepted business chain targeting option IDs can be retrieved using
-  /// SearchTargetingOptions.
-  ///
-  /// Required.
-  core.String? targetingOptionId;
-
-  $BusinessChainAssignedTargetingOptionDetails({
-    this.displayName,
-    this.proximityRadiusAmount,
-    this.proximityRadiusUnit,
-    this.targetingOptionId,
-  });
-
-  $BusinessChainAssignedTargetingOptionDetails.fromJson(core.Map json_)
-    : this(
-        displayName: json_['displayName'] as core.String?,
-        proximityRadiusAmount: (json_['proximityRadiusAmount'] as core.num?)
-            ?.toDouble(),
-        proximityRadiusUnit: json_['proximityRadiusUnit'] as core.String?,
-        targetingOptionId: json_['targetingOptionId'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final displayName = this.displayName;
-    final proximityRadiusAmount = this.proximityRadiusAmount;
-    final proximityRadiusUnit = this.proximityRadiusUnit;
-    final targetingOptionId = this.targetingOptionId;
-    return {
-      'displayName': ?displayName,
-      'proximityRadiusAmount': ?proximityRadiusAmount,
-      'proximityRadiusUnit': ?proximityRadiusUnit,
-      'targetingOptionId': ?targetingOptionId,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : BusinessChainSearchTerms
-/// - displayvideo:v3 : BusinessChainSearchTerms
-/// - displayvideo:v4 : BusinessChainSearchTerms
-class $BusinessChainSearchTerms {
-  /// The search query for the desired business chain.
-  ///
-  /// The query must be the full name of the business, e.g. "KFC",
-  /// "mercedes-benz".
-  core.String? businessChainQuery;
-
-  /// The search query for the desired geo region, e.g. "Seattle", "United
-  /// State".
-  core.String? regionQuery;
-
-  $BusinessChainSearchTerms({this.businessChainQuery, this.regionQuery});
-
-  $BusinessChainSearchTerms.fromJson(core.Map json_)
-    : this(
-        businessChainQuery: json_['businessChainQuery'] as core.String?,
-        regionQuery: json_['regionQuery'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final businessChainQuery = this.businessChainQuery;
-    final regionQuery = this.regionQuery;
-    return {
-      'businessChainQuery': ?businessChainQuery,
-      'regionQuery': ?regionQuery,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : BusinessChainTargetingOptionDetails
-/// - displayvideo:v3 : BusinessChainTargetingOptionDetails
-/// - displayvideo:v4 : BusinessChainTargetingOptionDetails
-class $BusinessChainTargetingOptionDetails {
-  /// The display name of the business chain, e.g. "KFC", "Chase Bank".
-  ///
-  /// Output only.
-  core.String? businessChain;
-
-  /// The display name of the geographic region, e.g. "Ontario, Canada".
-  ///
-  /// Output only.
-  core.String? geoRegion;
-
-  /// The type of the geographic region.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "GEO_REGION_TYPE_UNKNOWN" : The geographic region type is unknown.
-  /// - "GEO_REGION_TYPE_OTHER" : The geographic region type is other.
-  /// - "GEO_REGION_TYPE_COUNTRY" : The geographic region is a country.
-  /// - "GEO_REGION_TYPE_REGION" : The geographic region type is region.
-  /// - "GEO_REGION_TYPE_TERRITORY" : The geographic region is a territory.
-  /// - "GEO_REGION_TYPE_PROVINCE" : The geographic region is a province.
-  /// - "GEO_REGION_TYPE_STATE" : The geographic region is a state.
-  /// - "GEO_REGION_TYPE_PREFECTURE" : The geographic region is a prefecture.
-  /// - "GEO_REGION_TYPE_GOVERNORATE" : The geographic region is a governorate.
-  /// - "GEO_REGION_TYPE_CANTON" : The geographic region is a canton.
-  /// - "GEO_REGION_TYPE_UNION_TERRITORY" : The geographic region is a union
-  /// territory.
-  /// - "GEO_REGION_TYPE_AUTONOMOUS_COMMUNITY" : The geographic region is an
-  /// autonomous community.
-  /// - "GEO_REGION_TYPE_DMA_REGION" : The geographic region is a designated
-  /// market area (DMA) region.
-  /// - "GEO_REGION_TYPE_METRO" : The geographic region type is metro.
-  /// - "GEO_REGION_TYPE_CONGRESSIONAL_DISTRICT" : The geographic region is a
-  /// congressional district.
-  /// - "GEO_REGION_TYPE_COUNTY" : The geographic region is a county.
-  /// - "GEO_REGION_TYPE_MUNICIPALITY" : The geographic region is a
-  /// municipality.
-  /// - "GEO_REGION_TYPE_CITY" : The geographic region is a city.
-  /// - "GEO_REGION_TYPE_POSTAL_CODE" : The geographic region targeting type is
-  /// postal code.
-  /// - "GEO_REGION_TYPE_DEPARTMENT" : The geographic region targeting type is
-  /// department.
-  /// - "GEO_REGION_TYPE_AIRPORT" : The geographic region is an airport.
-  /// - "GEO_REGION_TYPE_TV_REGION" : The geographic region is a TV region.
-  /// - "GEO_REGION_TYPE_OKRUG" : The geographic region is an okrug.
-  /// - "GEO_REGION_TYPE_BOROUGH" : The geographic region is a borough.
-  /// - "GEO_REGION_TYPE_CITY_REGION" : The geographic region is a city region.
-  /// - "GEO_REGION_TYPE_ARRONDISSEMENT" : The geographic region is an
-  /// arrondissement.
-  /// - "GEO_REGION_TYPE_NEIGHBORHOOD" : The geographic region is a
-  /// neighborhood.
-  /// - "GEO_REGION_TYPE_UNIVERSITY" : The geographic region is a university.
-  /// - "GEO_REGION_TYPE_DISTRICT" : The geographic region is a district.
-  /// - "GEO_REGION_TYPE_NATIONAL_PARK" : The geographic region is a national
-  /// park.
-  /// - "GEO_REGION_TYPE_BARRIO" : The geographic region is a barrio.
-  /// - "GEO_REGION_TYPE_SUB_WARD" : The geographic region is a sub ward.
-  /// - "GEO_REGION_TYPE_MUNICIPALITY_DISTRICT" : The geographic region is a
-  /// municipality district.
-  /// - "GEO_REGION_TYPE_SUB_DISTRICT" : The geographic region is a sub
-  /// district.
-  /// - "GEO_REGION_TYPE_QUARTER" : The geographic region is a quarter.
-  /// - "GEO_REGION_TYPE_DIVISION" : The geographic region is a division.
-  /// - "GEO_REGION_TYPE_COMMUNE" : The geographic region is a commune.
-  /// - "GEO_REGION_TYPE_COLLOQUIAL_AREA" : The geographic region is a
-  /// colloquial area.
-  /// - "GEO_REGION_TYPE_POST_TOWN" : The geographic region is a post town.
-  /// - "GEO_REGION_TYPE_WARD" : The geographic region is a ward.
-  core.String? geoRegionType;
-
-  $BusinessChainTargetingOptionDetails({
-    this.businessChain,
-    this.geoRegion,
-    this.geoRegionType,
-  });
-
-  $BusinessChainTargetingOptionDetails.fromJson(core.Map json_)
-    : this(
-        businessChain: json_['businessChain'] as core.String?,
-        geoRegion: json_['geoRegion'] as core.String?,
-        geoRegionType: json_['geoRegionType'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final businessChain = this.businessChain;
-    final geoRegion = this.geoRegion;
-    final geoRegionType = this.geoRegionType;
-    return {
-      'businessChain': ?businessChain,
-      'geoRegion': ?geoRegion,
-      'geoRegionType': ?geoRegionType,
     };
   }
 }
@@ -3610,92 +1521,6 @@ class $CaConnection {
 
 /// Used by:
 ///
-/// - displayvideo:v2 : CarrierAndIspAssignedTargetingOptionDetails
-/// - displayvideo:v3 : CarrierAndIspAssignedTargetingOptionDetails
-/// - displayvideo:v4 : CarrierAndIspAssignedTargetingOptionDetails
-class $CarrierAndIspAssignedTargetingOptionDetails {
-  /// The display name of the carrier or ISP.
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  /// Indicates if this option is being negatively targeted.
-  ///
-  /// All assigned carrier and ISP targeting options on the same resource must
-  /// have the same value for this field.
-  core.bool? negative;
-
-  /// The targeting_option_id of a TargetingOption of type
-  /// `TARGETING_TYPE_CARRIER_AND_ISP`.
-  ///
-  /// Required.
-  core.String? targetingOptionId;
-
-  $CarrierAndIspAssignedTargetingOptionDetails({
-    this.displayName,
-    this.negative,
-    this.targetingOptionId,
-  });
-
-  $CarrierAndIspAssignedTargetingOptionDetails.fromJson(core.Map json_)
-    : this(
-        displayName: json_['displayName'] as core.String?,
-        negative: json_['negative'] as core.bool?,
-        targetingOptionId: json_['targetingOptionId'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final displayName = this.displayName;
-    final negative = this.negative;
-    final targetingOptionId = this.targetingOptionId;
-    return {
-      'displayName': ?displayName,
-      'negative': ?negative,
-      'targetingOptionId': ?targetingOptionId,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : CarrierAndIspTargetingOptionDetails
-/// - displayvideo:v3 : CarrierAndIspTargetingOptionDetails
-/// - displayvideo:v4 : CarrierAndIspTargetingOptionDetails
-class $CarrierAndIspTargetingOptionDetails {
-  /// The display name of the carrier or ISP.
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  /// The type indicating if it's carrier or ISP.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "CARRIER_AND_ISP_TYPE_UNSPECIFIED" : Default value when type is not
-  /// specified or is unknown in this version.
-  /// - "CARRIER_AND_ISP_TYPE_ISP" : Indicates this targeting resource refers to
-  /// an ISP.
-  /// - "CARRIER_AND_ISP_TYPE_CARRIER" : Indicates this targeting resource
-  /// refers to a mobile carrier.
-  core.String? type;
-
-  $CarrierAndIspTargetingOptionDetails({this.displayName, this.type});
-
-  $CarrierAndIspTargetingOptionDetails.fromJson(core.Map json_)
-    : this(
-        displayName: json_['displayName'] as core.String?,
-        type: json_['type'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final displayName = this.displayName;
-    final type = this.type;
-    return {'displayName': ?displayName, 'type': ?type};
-  }
-}
-
-/// Used by:
-///
 /// - containeranalysis:v1 : Category
 /// - ondemandscanning:v1 : Category
 class $Category {
@@ -3717,73 +1542,6 @@ class $Category {
     final categoryId = this.categoryId;
     final name = this.name;
     return {'categoryId': ?categoryId, 'name': ?name};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : CategoryAssignedTargetingOptionDetails
-/// - displayvideo:v3 : CategoryAssignedTargetingOptionDetails
-/// - displayvideo:v4 : CategoryAssignedTargetingOptionDetails
-class $CategoryAssignedTargetingOptionDetails {
-  /// The display name of the category.
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  /// Indicates if this option is being negatively targeted.
-  core.bool? negative;
-
-  /// The targeting_option_id field when targeting_type is
-  /// `TARGETING_TYPE_CATEGORY`.
-  ///
-  /// Required.
-  core.String? targetingOptionId;
-
-  $CategoryAssignedTargetingOptionDetails({
-    this.displayName,
-    this.negative,
-    this.targetingOptionId,
-  });
-
-  $CategoryAssignedTargetingOptionDetails.fromJson(core.Map json_)
-    : this(
-        displayName: json_['displayName'] as core.String?,
-        negative: json_['negative'] as core.bool?,
-        targetingOptionId: json_['targetingOptionId'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final displayName = this.displayName;
-    final negative = this.negative;
-    final targetingOptionId = this.targetingOptionId;
-    return {
-      'displayName': ?displayName,
-      'negative': ?negative,
-      'targetingOptionId': ?targetingOptionId,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : CategoryTargetingOptionDetails
-/// - displayvideo:v3 : CategoryTargetingOptionDetails
-/// - displayvideo:v4 : CategoryTargetingOptionDetails
-class $CategoryTargetingOptionDetails {
-  /// The display name of the category.
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  $CategoryTargetingOptionDetails({this.displayName});
-
-  $CategoryTargetingOptionDetails.fromJson(core.Map json_)
-    : this(displayName: json_['displayName'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final displayName = this.displayName;
-    return {'displayName': ?displayName};
   }
 }
 
@@ -3991,364 +1749,6 @@ class $Certification {
 
 /// Used by:
 ///
-/// - displayvideo:v2 : Channel
-/// - displayvideo:v3 : Channel
-/// - displayvideo:v4 : Channel
-class $Channel00 {
-  /// The ID of the advertiser that owns the channel.
-  core.String? advertiserId;
-
-  /// The unique ID of the channel.
-  ///
-  /// Assigned by the system.
-  ///
-  /// Output only.
-  core.String? channelId;
-
-  /// The display name of the channel.
-  ///
-  /// Must be UTF-8 encoded with a maximum length of 240 bytes.
-  ///
-  /// Required.
-  core.String? displayName;
-
-  /// The resource name of the channel.
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// Number of line items that are directly targeting this channel negatively.
-  ///
-  /// Output only.
-  core.String? negativelyTargetedLineItemCount;
-
-  /// The ID of the partner that owns the channel.
-  core.String? partnerId;
-
-  /// Number of line items that are directly targeting this channel positively.
-  ///
-  /// Output only.
-  core.String? positivelyTargetedLineItemCount;
-
-  $Channel00({
-    this.advertiserId,
-    this.channelId,
-    this.displayName,
-    this.name,
-    this.negativelyTargetedLineItemCount,
-    this.partnerId,
-    this.positivelyTargetedLineItemCount,
-  });
-
-  $Channel00.fromJson(core.Map json_)
-    : this(
-        advertiserId: json_['advertiserId'] as core.String?,
-        channelId: json_['channelId'] as core.String?,
-        displayName: json_['displayName'] as core.String?,
-        name: json_['name'] as core.String?,
-        negativelyTargetedLineItemCount:
-            json_['negativelyTargetedLineItemCount'] as core.String?,
-        partnerId: json_['partnerId'] as core.String?,
-        positivelyTargetedLineItemCount:
-            json_['positivelyTargetedLineItemCount'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final advertiserId = this.advertiserId;
-    final channelId = this.channelId;
-    final displayName = this.displayName;
-    final name = this.name;
-    final negativelyTargetedLineItemCount =
-        this.negativelyTargetedLineItemCount;
-    final partnerId = this.partnerId;
-    final positivelyTargetedLineItemCount =
-        this.positivelyTargetedLineItemCount;
-    return {
-      'advertiserId': ?advertiserId,
-      'channelId': ?channelId,
-      'displayName': ?displayName,
-      'name': ?name,
-      'negativelyTargetedLineItemCount': ?negativelyTargetedLineItemCount,
-      'partnerId': ?partnerId,
-      'positivelyTargetedLineItemCount': ?positivelyTargetedLineItemCount,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - drive:v2 : Channel
-/// - drive:v3 : Channel
-class $Channel01 {
-  /// The address where notifications are delivered for this channel.
-  core.String? address;
-
-  /// Date and time of notification channel expiration, expressed as a Unix
-  /// timestamp, in milliseconds.
-  ///
-  /// Optional.
-  core.String? expiration;
-
-  /// A UUID or similar unique string that identifies this channel.
-  core.String? id;
-
-  /// Identifies this as a notification channel used to watch for changes to a
-  /// resource, which is `api#channel`.
-  core.String? kind;
-
-  /// Additional parameters controlling delivery channel behavior.
-  ///
-  /// Optional.
-  core.Map<core.String, core.String>? params;
-
-  /// A Boolean value to indicate whether payload is wanted.
-  ///
-  /// Optional.
-  core.bool? payload;
-
-  /// An opaque ID that identifies the resource being watched on this channel.
-  ///
-  /// Stable across different API versions.
-  core.String? resourceId;
-
-  /// A version-specific identifier for the watched resource.
-  core.String? resourceUri;
-
-  /// An arbitrary string delivered to the target address with each notification
-  /// delivered over this channel.
-  ///
-  /// Optional.
-  core.String? token;
-
-  /// The type of delivery mechanism used for this channel.
-  ///
-  /// Valid values are "web_hook" or "webhook".
-  core.String? type;
-
-  $Channel01({
-    this.address,
-    this.expiration,
-    this.id,
-    this.kind,
-    this.params,
-    this.payload,
-    this.resourceId,
-    this.resourceUri,
-    this.token,
-    this.type,
-  });
-
-  $Channel01.fromJson(core.Map json_)
-    : this(
-        address: json_['address'] as core.String?,
-        expiration: json_['expiration'] as core.String?,
-        id: json_['id'] as core.String?,
-        kind: json_['kind'] as core.String?,
-        params: (json_['params'] as core.Map<core.String, core.dynamic>?)?.map(
-          (key, value) => core.MapEntry(key, value as core.String),
-        ),
-        payload: json_['payload'] as core.bool?,
-        resourceId: json_['resourceId'] as core.String?,
-        resourceUri: json_['resourceUri'] as core.String?,
-        token: json_['token'] as core.String?,
-        type: json_['type'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final address = this.address;
-    final expiration = this.expiration;
-    final id = this.id;
-    final kind = this.kind;
-    final params = this.params;
-    final payload = this.payload;
-    final resourceId = this.resourceId;
-    final resourceUri = this.resourceUri;
-    final token = this.token;
-    final type = this.type;
-    return {
-      'address': ?address,
-      'expiration': ?expiration,
-      'id': ?id,
-      'kind': ?kind,
-      'params': ?params,
-      'payload': ?payload,
-      'resourceId': ?resourceId,
-      'resourceUri': ?resourceUri,
-      'token': ?token,
-      'type': ?type,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : ChannelAssignedTargetingOptionDetails
-/// - displayvideo:v3 : ChannelAssignedTargetingOptionDetails
-/// - displayvideo:v4 : ChannelAssignedTargetingOptionDetails
-class $ChannelAssignedTargetingOptionDetails {
-  /// ID of the channel.
-  ///
-  /// Should refer to the channel ID field on a \[Partner-owned
-  /// channel\](partners.channels#Channel.FIELDS.channel_id) or
-  /// \[advertiser-owned
-  /// channel\](advertisers.channels#Channel.FIELDS.channel_id) resource.
-  ///
-  /// Required.
-  core.String? channelId;
-
-  /// Indicates if this option is being negatively targeted.
-  ///
-  /// For advertiser level assigned targeting option, this field must be true.
-  core.bool? negative;
-
-  $ChannelAssignedTargetingOptionDetails({this.channelId, this.negative});
-
-  $ChannelAssignedTargetingOptionDetails.fromJson(core.Map json_)
-    : this(
-        channelId: json_['channelId'] as core.String?,
-        negative: json_['negative'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final channelId = this.channelId;
-    final negative = this.negative;
-    return {'channelId': ?channelId, 'negative': ?negative};
-  }
-}
-
-/// Used by:
-///
-/// - safebrowsing:v4 : GoogleSecuritySafebrowsingV4Checksum
-/// - webrisk:v1 : GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum
-class $Checksum {
-  /// The SHA256 hash of the client state; that is, of the sorted list of all
-  /// hashes present in the database.
-  core.String? sha256;
-  core.List<core.int> get sha256AsBytes => convert.base64.decode(sha256!);
-
-  set sha256AsBytes(core.List<core.int> bytes_) {
-    sha256 = convert.base64
-        .encode(bytes_)
-        .replaceAll('/', '_')
-        .replaceAll('+', '-');
-  }
-
-  $Checksum({this.sha256});
-
-  $Checksum.fromJson(core.Map json_)
-    : this(sha256: json_['sha256'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final sha256 = this.sha256;
-    return {'sha256': ?sha256};
-  }
-}
-
-/// Used by:
-///
-/// - integrations:v1 : GoogleCloudIntegrationsV1alphaCloudLoggingDetails
-/// - integrations:v2 : GoogleCloudIntegrationsV2CloudLoggingDetails
-class $CloudLoggingDetails {
-  /// Severity selected by the customer for the logs to be sent to Cloud
-  /// Logging, for the integration version getting executed.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "CLOUD_LOGGING_SEVERITY_UNSPECIFIED" : Unspecified
-  /// - "INFO" : If Severity selected is `INFO`, then all the Integration
-  /// Execution States (`IN_PROCESS`, `ON_HOLD`, `SUCCEEDED`, `SUSPENDED`,
-  /// `ERROR`, `CANCELLED`) will be sent to Cloud Logging.
-  /// - "ERROR" : If Severity selected is `ERROR`, then only the following
-  /// Integration Execution States (`ERROR`, `CANCELLED`) will be sent to Cloud
-  /// Logging.
-  /// - "WARNING" : If Severity selected is `WARNING`, then only the following
-  /// Integration Execution States (`ERROR`, `CANCELLED`) will be sent to Cloud
-  /// Logging.
-  core.String? cloudLoggingSeverity;
-
-  /// Status of whether Cloud Logging is enabled or not for the integration
-  /// version getting executed.
-  ///
-  /// Optional.
-  core.bool? enableCloudLogging;
-
-  $CloudLoggingDetails({this.cloudLoggingSeverity, this.enableCloudLogging});
-
-  $CloudLoggingDetails.fromJson(core.Map json_)
-    : this(
-        cloudLoggingSeverity: json_['cloudLoggingSeverity'] as core.String?,
-        enableCloudLogging: json_['enableCloudLogging'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final cloudLoggingSeverity = this.cloudLoggingSeverity;
-    final enableCloudLogging = this.enableCloudLogging;
-    return {
-      'cloudLoggingSeverity': ?cloudLoggingSeverity,
-      'enableCloudLogging': ?enableCloudLogging,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - integrations:v1 : EnterpriseCrmEventbusProtoCloudSchedulerConfig
-/// - integrations:v1 : GoogleCloudIntegrationsV1alphaCloudSchedulerConfig
-/// - integrations:v2 : GoogleCloudIntegrationsV2DuetCloudSchedulerConfig
-class $CloudSchedulerConfig {
-  /// The cron tab of cloud scheduler trigger.
-  ///
-  /// Required.
-  core.String? cronTab;
-
-  /// When the job was deleted from Pantheon UI, error_message will be populated
-  /// when Get/List integrations
-  ///
-  /// Optional.
-  core.String? errorMessage;
-
-  /// The location where associated cloud scheduler job will be created
-  ///
-  /// Required.
-  core.String? location;
-
-  /// Service account used by Cloud Scheduler to trigger the integration at
-  /// scheduled time
-  ///
-  /// Required.
-  core.String? serviceAccountEmail;
-
-  $CloudSchedulerConfig({
-    this.cronTab,
-    this.errorMessage,
-    this.location,
-    this.serviceAccountEmail,
-  });
-
-  $CloudSchedulerConfig.fromJson(core.Map json_)
-    : this(
-        cronTab: json_['cronTab'] as core.String?,
-        errorMessage: json_['errorMessage'] as core.String?,
-        location: json_['location'] as core.String?,
-        serviceAccountEmail: json_['serviceAccountEmail'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final cronTab = this.cronTab;
-    final errorMessage = this.errorMessage;
-    final location = this.location;
-    final serviceAccountEmail = this.serviceAccountEmail;
-    return {
-      'cronTab': ?cronTab,
-      'errorMessage': ?errorMessage,
-      'location': ?location,
-      'serviceAccountEmail': ?serviceAccountEmail,
-    };
-  }
-}
-
-/// Used by:
-///
 /// - gkeonprem:v1 : BareMetalAdminClusterOperationsConfig
 /// - gkeonprem:v1 : BareMetalClusterOperationsConfig
 class $ClusterOperationsConfig {
@@ -4364,213 +1764,6 @@ class $ClusterOperationsConfig {
   core.Map<core.String, core.dynamic> toJson() {
     final enableApplicationLogs = this.enableApplicationLogs;
     return {'enableApplicationLogs': ?enableApplicationLogs};
-  }
-}
-
-/// Used by:
-///
-/// - gkehub:v1 : ClusterUpgradeIgnoredMembership
-/// - gkehub:v2 : ClusterUpgradeIgnoredMembership
-class $ClusterUpgradeIgnoredMembership {
-  /// Time when the membership was first set to ignored.
-  core.String? ignoredTime;
-
-  /// Reason why the membership is ignored.
-  core.String? reason;
-
-  $ClusterUpgradeIgnoredMembership({this.ignoredTime, this.reason});
-
-  $ClusterUpgradeIgnoredMembership.fromJson(core.Map json_)
-    : this(
-        ignoredTime: json_['ignoredTime'] as core.String?,
-        reason: json_['reason'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final ignoredTime = this.ignoredTime;
-    final reason = this.reason;
-    return {'ignoredTime': ?ignoredTime, 'reason': ?reason};
-  }
-}
-
-/// Used by:
-///
-/// - gkehub:v1 : ClusterUpgradeUpgradeStatus
-/// - gkehub:v2 : ClusterUpgradeUpgradeStatus
-class $ClusterUpgradeUpgradeStatus {
-  /// Status code of the upgrade.
-  /// Possible string values are:
-  /// - "CODE_UNSPECIFIED" : Required by https://linter.aip.dev/126/unspecified.
-  /// - "INELIGIBLE" : The upgrade is ineligible. At the scope level, this means
-  /// the upgrade is ineligible for all the clusters in the scope.
-  /// - "PENDING" : The upgrade is pending. At the scope level, this means the
-  /// upgrade is pending for all the clusters in the scope.
-  /// - "IN_PROGRESS" : The upgrade is in progress. At the scope level, this
-  /// means the upgrade is in progress for at least one cluster in the scope.
-  /// - "SOAKING" : The upgrade has finished and is soaking until the soaking
-  /// time is up. At the scope level, this means at least one cluster is in
-  /// soaking while the rest are either soaking or complete.
-  /// - "FORCED_SOAKING" : A cluster will be forced to enter soaking if an
-  /// upgrade doesn't finish within a certain limit, despite it's actual status.
-  /// - "COMPLETE" : The upgrade has passed all post conditions (soaking). At
-  /// the scope level, this means all eligible clusters are in COMPLETE status.
-  core.String? code;
-
-  /// Reason for this status.
-  core.String? reason;
-
-  /// Last timestamp the status was updated.
-  core.String? updateTime;
-
-  $ClusterUpgradeUpgradeStatus({this.code, this.reason, this.updateTime});
-
-  $ClusterUpgradeUpgradeStatus.fromJson(core.Map json_)
-    : this(
-        code: json_['code'] as core.String?,
-        reason: json_['reason'] as core.String?,
-        updateTime: json_['updateTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final code = this.code;
-    final reason = this.reason;
-    final updateTime = this.updateTime;
-    return {'code': ?code, 'reason': ?reason, 'updateTime': ?updateTime};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : CmHybridConfig
-/// - displayvideo:v3 : CmHybridConfig
-/// - displayvideo:v4 : CmHybridConfig
-class $CmHybridConfig {
-  /// Account ID of the CM360 Floodlight configuration linked with the DV360
-  /// advertiser.
-  ///
-  /// Required. Immutable.
-  core.String? cmAccountId;
-
-  /// The set of CM360 Advertiser IDs sharing the CM360 Floodlight
-  /// configuration.
-  ///
-  /// Output only.
-  core.List<core.String>? cmAdvertiserIds;
-
-  /// ID of the CM360 Floodlight configuration linked with the DV360 advertiser.
-  ///
-  /// Required. Immutable.
-  core.String? cmFloodlightConfigId;
-
-  /// By setting this field to `true`, you, on behalf of your company, authorize
-  /// the sharing of information from the given Floodlight configuration to this
-  /// Display & Video 360 advertiser.
-  ///
-  /// Required. Immutable.
-  core.bool? cmFloodlightLinkingAuthorized;
-
-  /// A list of CM360 sites whose placements will be synced to DV360 as
-  /// creatives.
-  ///
-  /// If absent or empty in CreateAdvertiser method, the system will
-  /// automatically create a CM360 site. Removing sites from this list may cause
-  /// DV360 creatives synced from CM360 to be deleted. At least one site must be
-  /// specified.
-  core.List<core.String>? cmSyncableSiteIds;
-
-  /// Whether or not to report DV360 cost to CM360.
-  core.bool? dv360ToCmCostReportingEnabled;
-
-  /// Whether or not to include DV360 data in CM360 data transfer reports.
-  core.bool? dv360ToCmDataSharingEnabled;
-
-  $CmHybridConfig({
-    this.cmAccountId,
-    this.cmAdvertiserIds,
-    this.cmFloodlightConfigId,
-    this.cmFloodlightLinkingAuthorized,
-    this.cmSyncableSiteIds,
-    this.dv360ToCmCostReportingEnabled,
-    this.dv360ToCmDataSharingEnabled,
-  });
-
-  $CmHybridConfig.fromJson(core.Map json_)
-    : this(
-        cmAccountId: json_['cmAccountId'] as core.String?,
-        cmAdvertiserIds: (json_['cmAdvertiserIds'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-        cmFloodlightConfigId: json_['cmFloodlightConfigId'] as core.String?,
-        cmFloodlightLinkingAuthorized:
-            json_['cmFloodlightLinkingAuthorized'] as core.bool?,
-        cmSyncableSiteIds: (json_['cmSyncableSiteIds'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-        dv360ToCmCostReportingEnabled:
-            json_['dv360ToCmCostReportingEnabled'] as core.bool?,
-        dv360ToCmDataSharingEnabled:
-            json_['dv360ToCmDataSharingEnabled'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final cmAccountId = this.cmAccountId;
-    final cmAdvertiserIds = this.cmAdvertiserIds;
-    final cmFloodlightConfigId = this.cmFloodlightConfigId;
-    final cmFloodlightLinkingAuthorized = this.cmFloodlightLinkingAuthorized;
-    final cmSyncableSiteIds = this.cmSyncableSiteIds;
-    final dv360ToCmCostReportingEnabled = this.dv360ToCmCostReportingEnabled;
-    final dv360ToCmDataSharingEnabled = this.dv360ToCmDataSharingEnabled;
-    return {
-      'cmAccountId': ?cmAccountId,
-      'cmAdvertiserIds': ?cmAdvertiserIds,
-      'cmFloodlightConfigId': ?cmFloodlightConfigId,
-      'cmFloodlightLinkingAuthorized': ?cmFloodlightLinkingAuthorized,
-      'cmSyncableSiteIds': ?cmSyncableSiteIds,
-      'dv360ToCmCostReportingEnabled': ?dv360ToCmCostReportingEnabled,
-      'dv360ToCmDataSharingEnabled': ?dv360ToCmDataSharingEnabled,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : CmTrackingAd
-/// - displayvideo:v3 : CmTrackingAd
-/// - displayvideo:v4 : CmTrackingAd
-class $CmTrackingAd {
-  /// The ad ID of the campaign manager 360 tracking Ad.
-  ///
-  /// Optional.
-  core.String? cmAdId;
-
-  /// The creative ID of the campaign manager 360 tracking Ad.
-  ///
-  /// Optional.
-  core.String? cmCreativeId;
-
-  /// The placement ID of the campaign manager 360 tracking Ad.
-  ///
-  /// Optional.
-  core.String? cmPlacementId;
-
-  $CmTrackingAd({this.cmAdId, this.cmCreativeId, this.cmPlacementId});
-
-  $CmTrackingAd.fromJson(core.Map json_)
-    : this(
-        cmAdId: json_['cmAdId'] as core.String?,
-        cmCreativeId: json_['cmCreativeId'] as core.String?,
-        cmPlacementId: json_['cmPlacementId'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final cmAdId = this.cmAdId;
-    final cmCreativeId = this.cmCreativeId;
-    final cmPlacementId = this.cmPlacementId;
-    return {
-      'cmAdId': ?cmAdId,
-      'cmCreativeId': ?cmCreativeId,
-      'cmPlacementId': ?cmPlacementId,
-    };
   }
 }
 
@@ -4622,76 +1815,6 @@ class $Color {
     final green = this.green;
     final red = this.red;
     return {'alpha': ?alpha, 'blue': ?blue, 'green': ?green, 'red': ?red};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : CombinedAudience
-/// - displayvideo:v3 : CombinedAudience
-/// - displayvideo:v4 : CombinedAudience
-class $CombinedAudience {
-  /// The unique ID of the combined audience.
-  ///
-  /// Assigned by the system.
-  ///
-  /// Output only.
-  core.String? combinedAudienceId;
-
-  /// The display name of the combined audience.
-  ///
-  /// .
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  /// The resource name of the combined audience.
-  ///
-  /// Output only.
-  core.String? name;
-
-  $CombinedAudience({this.combinedAudienceId, this.displayName, this.name});
-
-  $CombinedAudience.fromJson(core.Map json_)
-    : this(
-        combinedAudienceId: json_['combinedAudienceId'] as core.String?,
-        displayName: json_['displayName'] as core.String?,
-        name: json_['name'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final combinedAudienceId = this.combinedAudienceId;
-    final displayName = this.displayName;
-    final name = this.name;
-    return {
-      'combinedAudienceId': ?combinedAudienceId,
-      'displayName': ?displayName,
-      'name': ?name,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : CombinedAudienceTargetingSetting
-/// - displayvideo:v3 : CombinedAudienceTargetingSetting
-/// - displayvideo:v4 : CombinedAudienceTargetingSetting
-class $CombinedAudienceTargetingSetting {
-  /// Combined audience id of combined audience targeting setting.
-  ///
-  /// This id is combined_audience_id.
-  ///
-  /// Required.
-  core.String? combinedAudienceId;
-
-  $CombinedAudienceTargetingSetting({this.combinedAudienceId});
-
-  $CombinedAudienceTargetingSetting.fromJson(core.Map json_)
-    : this(combinedAudienceId: json_['combinedAudienceId'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final combinedAudienceId = this.combinedAudienceId;
-    return {'combinedAudienceId': ?combinedAudienceId};
   }
 }
 
@@ -4798,25 +1921,6 @@ class $Completeness {
       'environment': ?environment,
       'materials': ?materials,
     };
-  }
-}
-
-/// Used by:
-///
-/// - container:v1 : ComplianceStandard
-/// - gkehub:v1 : ComplianceStandard
-class $ComplianceStandard {
-  /// Name of the compliance standard.
-  core.String? standard;
-
-  $ComplianceStandard({this.standard});
-
-  $ComplianceStandard.fromJson(core.Map json_)
-    : this(standard: json_['standard'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final standard = this.standard;
-    return {'standard': ?standard};
   }
 }
 
@@ -5024,1013 +2128,6 @@ class $Config01 {
 
 /// Used by:
 ///
-/// - gkehub:v1 : ConfigManagementContainerOverride
-/// - gkehub:v2 : ConfigManagementContainerOverride
-class $ConfigManagementContainerOverride {
-  /// The name of the container.
-  ///
-  /// Required.
-  core.String? containerName;
-
-  /// The cpu limit of the container.
-  ///
-  /// Use the following CPU resource units:
-  /// https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu.
-  ///
-  /// Optional.
-  core.String? cpuLimit;
-
-  /// The cpu request of the container.
-  ///
-  /// Use the following CPU resource units:
-  /// https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu.
-  ///
-  /// Optional.
-  core.String? cpuRequest;
-
-  /// The memory limit of the container.
-  ///
-  /// Use the following memory resource units:
-  /// https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory.
-  ///
-  /// Optional.
-  core.String? memoryLimit;
-
-  /// The memory request of the container.
-  ///
-  /// Use the following memory resource units:
-  /// https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory.
-  ///
-  /// Optional.
-  core.String? memoryRequest;
-
-  $ConfigManagementContainerOverride({
-    this.containerName,
-    this.cpuLimit,
-    this.cpuRequest,
-    this.memoryLimit,
-    this.memoryRequest,
-  });
-
-  $ConfigManagementContainerOverride.fromJson(core.Map json_)
-    : this(
-        containerName: json_['containerName'] as core.String?,
-        cpuLimit: json_['cpuLimit'] as core.String?,
-        cpuRequest: json_['cpuRequest'] as core.String?,
-        memoryLimit: json_['memoryLimit'] as core.String?,
-        memoryRequest: json_['memoryRequest'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final containerName = this.containerName;
-    final cpuLimit = this.cpuLimit;
-    final cpuRequest = this.cpuRequest;
-    final memoryLimit = this.memoryLimit;
-    final memoryRequest = this.memoryRequest;
-    return {
-      'containerName': ?containerName,
-      'cpuLimit': ?cpuLimit,
-      'cpuRequest': ?cpuRequest,
-      'memoryLimit': ?memoryLimit,
-      'memoryRequest': ?memoryRequest,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - gkehub:v1 : ConfigManagementGitConfig
-/// - gkehub:v2 : ConfigManagementGitConfig
-class $ConfigManagementGitConfig {
-  /// The Google Cloud Service Account Email used for auth when secret_type is
-  /// `gcpserviceaccount`.
-  ///
-  /// Annotates the `RootSync` or `RepoSync` controller's Kubernetes Service
-  /// Account.
-  ///
-  /// Optional.
-  core.String? gcpServiceAccountEmail;
-
-  /// URL for the HTTPS proxy to be used when communicating with the Git repo.
-  ///
-  /// Defines an HTTPS_PROXY environment variable and only accepts `https` or
-  /// unadorned URLs. For example, `https://proxy.internal.business.co:443` or
-  /// `proxy.internal.business.co:443`. If using an unadorned URL, make sure the
-  /// communication between your proxy server and Git host is secure. Rejects
-  /// `http://` URLs. Only specify when secret_type is `cookiefile`, `token`, or
-  /// `none`.
-  ///
-  /// Optional.
-  core.String? httpsProxy;
-
-  /// The path within the Git repository that represents the top level of the
-  /// repo to sync.
-  ///
-  /// Default: the root directory of the repository.
-  ///
-  /// Optional.
-  core.String? policyDir;
-
-  /// Type of secret configured for access to the Git repo.
-  ///
-  /// Must be one of `ssh`, `cookiefile`, `gcenode`, `token`,
-  /// `gcpserviceaccount`, `githubapp` or `none`. The validation of this is
-  /// case-sensitive.
-  ///
-  /// Required.
-  core.String? secretType;
-
-  /// The branch of the repository to sync from.
-  ///
-  /// Default: master.
-  ///
-  /// Optional.
-  core.String? syncBranch;
-
-  /// The URL of the Git repository to use as the source of truth.
-  ///
-  /// Required.
-  core.String? syncRepo;
-
-  /// Git revision (tag or hash) or branch to sync from.
-  ///
-  /// Default `HEAD`. If not `HEAD`, takes precedence over `sync_branch` field.
-  /// When using a hash, must be a full hash, and not an abbreviated form.
-  ///
-  /// Optional.
-  core.String? syncRev;
-
-  /// Period in seconds between consecutive syncs.
-  ///
-  /// Default: 15.
-  ///
-  /// Optional.
-  core.String? syncWaitSecs;
-
-  $ConfigManagementGitConfig({
-    this.gcpServiceAccountEmail,
-    this.httpsProxy,
-    this.policyDir,
-    this.secretType,
-    this.syncBranch,
-    this.syncRepo,
-    this.syncRev,
-    this.syncWaitSecs,
-  });
-
-  $ConfigManagementGitConfig.fromJson(core.Map json_)
-    : this(
-        gcpServiceAccountEmail: json_['gcpServiceAccountEmail'] as core.String?,
-        httpsProxy: json_['httpsProxy'] as core.String?,
-        policyDir: json_['policyDir'] as core.String?,
-        secretType: json_['secretType'] as core.String?,
-        syncBranch: json_['syncBranch'] as core.String?,
-        syncRepo: json_['syncRepo'] as core.String?,
-        syncRev: json_['syncRev'] as core.String?,
-        syncWaitSecs: json_['syncWaitSecs'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final gcpServiceAccountEmail = this.gcpServiceAccountEmail;
-    final httpsProxy = this.httpsProxy;
-    final policyDir = this.policyDir;
-    final secretType = this.secretType;
-    final syncBranch = this.syncBranch;
-    final syncRepo = this.syncRepo;
-    final syncRev = this.syncRev;
-    final syncWaitSecs = this.syncWaitSecs;
-    return {
-      'gcpServiceAccountEmail': ?gcpServiceAccountEmail,
-      'httpsProxy': ?httpsProxy,
-      'policyDir': ?policyDir,
-      'secretType': ?secretType,
-      'syncBranch': ?syncBranch,
-      'syncRepo': ?syncRepo,
-      'syncRev': ?syncRev,
-      'syncWaitSecs': ?syncWaitSecs,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - gkehub:v1 : ConfigManagementGroupVersionKind
-/// - gkehub:v2 : ConfigManagementGroupVersionKind
-class $ConfigManagementGroupVersionKind {
-  /// Kubernetes Group
-  core.String? group;
-
-  /// Kubernetes Kind
-  core.String? kind;
-
-  /// Kubernetes Version
-  core.String? version;
-
-  $ConfigManagementGroupVersionKind({this.group, this.kind, this.version});
-
-  $ConfigManagementGroupVersionKind.fromJson(core.Map json_)
-    : this(
-        group: json_['group'] as core.String?,
-        kind: json_['kind'] as core.String?,
-        version: json_['version'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final group = this.group;
-    final kind = this.kind;
-    final version = this.version;
-    return {'group': ?group, 'kind': ?kind, 'version': ?version};
-  }
-}
-
-/// Used by:
-///
-/// - gkehub:v1 : ConfigManagementHierarchyControllerConfig
-/// - gkehub:v2 : ConfigManagementHierarchyControllerConfig
-class $ConfigManagementHierarchyControllerConfig {
-  /// Whether hierarchical resource quota is enabled in this cluster.
-  core.bool? enableHierarchicalResourceQuota;
-
-  /// Whether pod tree labels are enabled in this cluster.
-  core.bool? enablePodTreeLabels;
-
-  /// Whether Hierarchy Controller is enabled in this cluster.
-  core.bool? enabled;
-
-  $ConfigManagementHierarchyControllerConfig({
-    this.enableHierarchicalResourceQuota,
-    this.enablePodTreeLabels,
-    this.enabled,
-  });
-
-  $ConfigManagementHierarchyControllerConfig.fromJson(core.Map json_)
-    : this(
-        enableHierarchicalResourceQuota:
-            json_['enableHierarchicalResourceQuota'] as core.bool?,
-        enablePodTreeLabels: json_['enablePodTreeLabels'] as core.bool?,
-        enabled: json_['enabled'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final enableHierarchicalResourceQuota =
-        this.enableHierarchicalResourceQuota;
-    final enablePodTreeLabels = this.enablePodTreeLabels;
-    final enabled = this.enabled;
-    return {
-      'enableHierarchicalResourceQuota': ?enableHierarchicalResourceQuota,
-      'enablePodTreeLabels': ?enablePodTreeLabels,
-      'enabled': ?enabled,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - gkehub:v1 : ConfigManagementOciConfig
-/// - gkehub:v2 : ConfigManagementOciConfig
-class $ConfigManagementOciConfig {
-  /// The Google Cloud Service Account Email used for auth when secret_type is
-  /// `gcpserviceaccount`.
-  ///
-  /// Annotates the `RootSync` or `RepoSync` controller's Kubernetes Service
-  /// Account.
-  ///
-  /// Optional.
-  core.String? gcpServiceAccountEmail;
-
-  /// The absolute path of the directory that contains the local resources.
-  ///
-  /// Default: the root directory of the image.
-  ///
-  /// Optional.
-  core.String? policyDir;
-
-  /// Type of secret configured for access to the OCI repo.
-  ///
-  /// Must be one of `gcenode`, `gcpserviceaccount`, `k8sserviceaccount` or
-  /// `none`. The validation of this is case-sensitive.
-  ///
-  /// Required.
-  core.String? secretType;
-
-  /// The OCI image repository URL for the package to sync from.
-  ///
-  /// e.g. `LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY_NAME/PACKAGE_NAME`.
-  ///
-  /// Required.
-  core.String? syncRepo;
-
-  /// Period in seconds between consecutive syncs.
-  ///
-  /// Default: 15.
-  ///
-  /// Optional.
-  core.String? syncWaitSecs;
-
-  $ConfigManagementOciConfig({
-    this.gcpServiceAccountEmail,
-    this.policyDir,
-    this.secretType,
-    this.syncRepo,
-    this.syncWaitSecs,
-  });
-
-  $ConfigManagementOciConfig.fromJson(core.Map json_)
-    : this(
-        gcpServiceAccountEmail: json_['gcpServiceAccountEmail'] as core.String?,
-        policyDir: json_['policyDir'] as core.String?,
-        secretType: json_['secretType'] as core.String?,
-        syncRepo: json_['syncRepo'] as core.String?,
-        syncWaitSecs: json_['syncWaitSecs'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final gcpServiceAccountEmail = this.gcpServiceAccountEmail;
-    final policyDir = this.policyDir;
-    final secretType = this.secretType;
-    final syncRepo = this.syncRepo;
-    final syncWaitSecs = this.syncWaitSecs;
-    return {
-      'gcpServiceAccountEmail': ?gcpServiceAccountEmail,
-      'policyDir': ?policyDir,
-      'secretType': ?secretType,
-      'syncRepo': ?syncRepo,
-      'syncWaitSecs': ?syncWaitSecs,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - gkehub:v1 : ConfigManagementPolicyControllerMigration
-/// - gkehub:v2 : ConfigManagementPolicyControllerMigration
-class $ConfigManagementPolicyControllerMigration {
-  /// Last time this membership spec was copied to PoCo feature.
-  core.String? copyTime;
-
-  /// Stage of the migration.
-  /// Possible string values are:
-  /// - "STAGE_UNSPECIFIED" : Unknown state of migration.
-  /// - "ACM_MANAGED" : ACM Hub/Operator manages policycontroller. No migration
-  /// yet completed.
-  /// - "POCO_MANAGED" : All migrations steps complete; Poco Hub now manages
-  /// policycontroller.
-  core.String? stage;
-
-  $ConfigManagementPolicyControllerMigration({this.copyTime, this.stage});
-
-  $ConfigManagementPolicyControllerMigration.fromJson(core.Map json_)
-    : this(
-        copyTime: json_['copyTime'] as core.String?,
-        stage: json_['stage'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final copyTime = this.copyTime;
-    final stage = this.stage;
-    return {'copyTime': ?copyTime, 'stage': ?stage};
-  }
-}
-
-/// Used by:
-///
-/// - gkehub:v1 : ConfigManagementPolicyControllerVersion
-/// - gkehub:v2 : ConfigManagementPolicyControllerVersion
-class $ConfigManagementPolicyControllerVersion {
-  /// The gatekeeper image tag that is composed of ACM version, git tag, build
-  /// number.
-  core.String? version;
-
-  $ConfigManagementPolicyControllerVersion({this.version});
-
-  $ConfigManagementPolicyControllerVersion.fromJson(core.Map json_)
-    : this(version: json_['version'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final version = this.version;
-    return {'version': ?version};
-  }
-}
-
-/// Used by:
-///
-/// - connectors:v1 : ConnectionStatus
-/// - integrations:v1 : GoogleCloudConnectorsV1ConnectionStatus
-class $ConnectionStatus {
-  /// Description.
-  core.String? description;
-
-  /// State.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : Connection does not have a state yet.
-  /// - "CREATING" : Connection is being created.
-  /// - "ACTIVE" : Connection is running and ready for requests.
-  /// - "INACTIVE" : Connection is stopped.
-  /// - "DELETING" : Connection is being deleted.
-  /// - "UPDATING" : Connection is being updated.
-  /// - "ERROR" : Connection is not running due to an error.
-  /// - "AUTHORIZATION_REQUIRED" : Connection is not running because the
-  /// authorization configuration is not complete.
-  core.String? state;
-
-  /// Status provides detailed information for the state.
-  core.String? status;
-
-  $ConnectionStatus({this.description, this.state, this.status});
-
-  $ConnectionStatus.fromJson(core.Map json_)
-    : this(
-        description: json_['description'] as core.String?,
-        state: json_['state'] as core.String?,
-        status: json_['status'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final description = this.description;
-    final state = this.state;
-    final status = this.status;
-    return {'description': ?description, 'state': ?state, 'status': ?status};
-  }
-}
-
-/// Used by:
-///
-/// - agentregistry:v1 : ContactInfo
-/// - apphub:v1 : ContactInfo
-class $ContactInfo {
-  /// Contact's name.
-  ///
-  /// Can have a maximum length of 63 characters.
-  ///
-  /// Optional.
-  core.String? displayName;
-
-  /// Email address of the contacts.
-  ///
-  /// Required.
-  core.String? email;
-
-  $ContactInfo({this.displayName, this.email});
-
-  $ContactInfo.fromJson(core.Map json_)
-    : this(
-        displayName: json_['displayName'] as core.String?,
-        email: json_['email'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final displayName = this.displayName;
-    final email = this.email;
-    return {'displayName': ?displayName, 'email': ?email};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : ContentDurationAssignedTargetingOptionDetails
-/// - displayvideo:v3 : ContentDurationAssignedTargetingOptionDetails
-/// - displayvideo:v4 : ContentDurationAssignedTargetingOptionDetails
-class $ContentDurationAssignedTargetingOptionDetails {
-  /// The content duration.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "CONTENT_DURATION_UNSPECIFIED" : Content duration is not specified in
-  /// this version. This enum is a place holder for a default value and does not
-  /// represent a real content duration.
-  /// - "CONTENT_DURATION_UNKNOWN" : The content duration is unknown.
-  /// - "CONTENT_DURATION_0_TO_1_MIN" : Content is 0-1 minute long.
-  /// - "CONTENT_DURATION_1_TO_5_MIN" : Content is 1-5 minutes long.
-  /// - "CONTENT_DURATION_5_TO_15_MIN" : Content is 5-15 minutes long.
-  /// - "CONTENT_DURATION_15_TO_30_MIN" : Content is 15-30 minutes long.
-  /// - "CONTENT_DURATION_30_TO_60_MIN" : Content is 30-60 minutes long.
-  /// - "CONTENT_DURATION_OVER_60_MIN" : Content is over 60 minutes long.
-  core.String? contentDuration;
-
-  /// The targeting_option_id field when targeting_type is
-  /// `TARGETING_TYPE_CONTENT_DURATION`.
-  ///
-  /// Required.
-  core.String? targetingOptionId;
-
-  $ContentDurationAssignedTargetingOptionDetails({
-    this.contentDuration,
-    this.targetingOptionId,
-  });
-
-  $ContentDurationAssignedTargetingOptionDetails.fromJson(core.Map json_)
-    : this(
-        contentDuration: json_['contentDuration'] as core.String?,
-        targetingOptionId: json_['targetingOptionId'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final contentDuration = this.contentDuration;
-    final targetingOptionId = this.targetingOptionId;
-    return {
-      'contentDuration': ?contentDuration,
-      'targetingOptionId': ?targetingOptionId,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : ContentDurationTargetingOptionDetails
-/// - displayvideo:v3 : ContentDurationTargetingOptionDetails
-/// - displayvideo:v4 : ContentDurationTargetingOptionDetails
-class $ContentDurationTargetingOptionDetails {
-  /// The content duration.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "CONTENT_DURATION_UNSPECIFIED" : Content duration is not specified in
-  /// this version. This enum is a place holder for a default value and does not
-  /// represent a real content duration.
-  /// - "CONTENT_DURATION_UNKNOWN" : The content duration is unknown.
-  /// - "CONTENT_DURATION_0_TO_1_MIN" : Content is 0-1 minute long.
-  /// - "CONTENT_DURATION_1_TO_5_MIN" : Content is 1-5 minutes long.
-  /// - "CONTENT_DURATION_5_TO_15_MIN" : Content is 5-15 minutes long.
-  /// - "CONTENT_DURATION_15_TO_30_MIN" : Content is 15-30 minutes long.
-  /// - "CONTENT_DURATION_30_TO_60_MIN" : Content is 30-60 minutes long.
-  /// - "CONTENT_DURATION_OVER_60_MIN" : Content is over 60 minutes long.
-  core.String? contentDuration;
-
-  $ContentDurationTargetingOptionDetails({this.contentDuration});
-
-  $ContentDurationTargetingOptionDetails.fromJson(core.Map json_)
-    : this(contentDuration: json_['contentDuration'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final contentDuration = this.contentDuration;
-    return {'contentDuration': ?contentDuration};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : ContentGenreAssignedTargetingOptionDetails
-/// - displayvideo:v3 : ContentGenreAssignedTargetingOptionDetails
-/// - displayvideo:v4 : ContentGenreAssignedTargetingOptionDetails
-class $ContentGenreAssignedTargetingOptionDetails {
-  /// The display name of the content genre.
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  /// Indicates if this option is being negatively targeted.
-  core.bool? negative;
-
-  /// The targeting_option_id field when targeting_type is
-  /// `TARGETING_TYPE_CONTENT_GENRE`.
-  ///
-  /// Required.
-  core.String? targetingOptionId;
-
-  $ContentGenreAssignedTargetingOptionDetails({
-    this.displayName,
-    this.negative,
-    this.targetingOptionId,
-  });
-
-  $ContentGenreAssignedTargetingOptionDetails.fromJson(core.Map json_)
-    : this(
-        displayName: json_['displayName'] as core.String?,
-        negative: json_['negative'] as core.bool?,
-        targetingOptionId: json_['targetingOptionId'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final displayName = this.displayName;
-    final negative = this.negative;
-    final targetingOptionId = this.targetingOptionId;
-    return {
-      'displayName': ?displayName,
-      'negative': ?negative,
-      'targetingOptionId': ?targetingOptionId,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : ContentGenreTargetingOptionDetails
-/// - displayvideo:v3 : ContentGenreTargetingOptionDetails
-/// - displayvideo:v4 : ContentGenreTargetingOptionDetails
-class $ContentGenreTargetingOptionDetails {
-  /// The display name of the content genre
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  $ContentGenreTargetingOptionDetails({this.displayName});
-
-  $ContentGenreTargetingOptionDetails.fromJson(core.Map json_)
-    : this(displayName: json_['displayName'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final displayName = this.displayName;
-    return {'displayName': ?displayName};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : ContentInstreamPositionAssignedTargetingOptionDetails
-/// - displayvideo:v3 : ContentInstreamPositionAssignedTargetingOptionDetails
-/// - displayvideo:v4 : ContentInstreamPositionAssignedTargetingOptionDetails
-class $ContentInstreamPositionAssignedTargetingOptionDetails {
-  /// The ad type to target.
-  ///
-  /// Only applicable to insertion order targeting and new line items supporting
-  /// the specified ad type will inherit this targeting option by default.
-  /// Possible values are: * `AD_TYPE_VIDEO`, the setting will be inherited by
-  /// new line item when line_item_type is `LINE_ITEM_TYPE_VIDEO_DEFAULT`. *
-  /// `AD_TYPE_AUDIO`, the setting will be inherited by new line item when
-  /// line_item_type is `LINE_ITEM_TYPE_AUDIO_DEFAULT`.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "AD_TYPE_UNSPECIFIED" : Ad type is not specified or is unknown in this
-  /// version.
-  /// - "AD_TYPE_DISPLAY" : Display creatives, e.g. image and HTML5.
-  /// - "AD_TYPE_VIDEO" : Video creatives, e.g. video ads that play during
-  /// streaming content in video players.
-  /// - "AD_TYPE_AUDIO" : Audio creatives, e.g. audio ads that play during audio
-  /// content.
-  core.String? adType;
-
-  /// The content instream position for video or audio ads.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "CONTENT_INSTREAM_POSITION_UNSPECIFIED" : Content instream position is
-  /// not specified in this version. This enum is a place holder for a default
-  /// value and does not represent a real in stream ad position.
-  /// - "CONTENT_INSTREAM_POSITION_PRE_ROLL" : Ads that play before streaming
-  /// content.
-  /// - "CONTENT_INSTREAM_POSITION_MID_ROLL" : Ads that play between the
-  /// beginning and end of streaming content.
-  /// - "CONTENT_INSTREAM_POSITION_POST_ROLL" : Ads that play at the end of
-  /// streaming content.
-  /// - "CONTENT_INSTREAM_POSITION_UNKNOWN" : Ads instream position is unknown.
-  core.String? contentInstreamPosition;
-
-  $ContentInstreamPositionAssignedTargetingOptionDetails({
-    this.adType,
-    this.contentInstreamPosition,
-  });
-
-  $ContentInstreamPositionAssignedTargetingOptionDetails.fromJson(
-    core.Map json_,
-  ) : this(
-        adType: json_['adType'] as core.String?,
-        contentInstreamPosition:
-            json_['contentInstreamPosition'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final adType = this.adType;
-    final contentInstreamPosition = this.contentInstreamPosition;
-    return {
-      'adType': ?adType,
-      'contentInstreamPosition': ?contentInstreamPosition,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : ContentInstreamPositionTargetingOptionDetails
-/// - displayvideo:v3 : ContentInstreamPositionTargetingOptionDetails
-/// - displayvideo:v4 : ContentInstreamPositionTargetingOptionDetails
-class $ContentInstreamPositionTargetingOptionDetails {
-  /// The content instream position.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "CONTENT_INSTREAM_POSITION_UNSPECIFIED" : Content instream position is
-  /// not specified in this version. This enum is a place holder for a default
-  /// value and does not represent a real in stream ad position.
-  /// - "CONTENT_INSTREAM_POSITION_PRE_ROLL" : Ads that play before streaming
-  /// content.
-  /// - "CONTENT_INSTREAM_POSITION_MID_ROLL" : Ads that play between the
-  /// beginning and end of streaming content.
-  /// - "CONTENT_INSTREAM_POSITION_POST_ROLL" : Ads that play at the end of
-  /// streaming content.
-  /// - "CONTENT_INSTREAM_POSITION_UNKNOWN" : Ads instream position is unknown.
-  core.String? contentInstreamPosition;
-
-  $ContentInstreamPositionTargetingOptionDetails({
-    this.contentInstreamPosition,
-  });
-
-  $ContentInstreamPositionTargetingOptionDetails.fromJson(core.Map json_)
-    : this(
-        contentInstreamPosition:
-            json_['contentInstreamPosition'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final contentInstreamPosition = this.contentInstreamPosition;
-    return {'contentInstreamPosition': ?contentInstreamPosition};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : ContentOutstreamPositionAssignedTargetingOptionDetails
-/// - displayvideo:v3 : ContentOutstreamPositionAssignedTargetingOptionDetails
-/// - displayvideo:v4 : ContentOutstreamPositionAssignedTargetingOptionDetails
-class $ContentOutstreamPositionAssignedTargetingOptionDetails {
-  /// The ad type to target.
-  ///
-  /// Only applicable to insertion order targeting and new line items supporting
-  /// the specified ad type will inherit this targeting option by default.
-  /// Possible values are: * `AD_TYPE_DISPLAY`, the setting will be inherited by
-  /// new line item when line_item_type is `LINE_ITEM_TYPE_DISPLAY_DEFAULT`. *
-  /// `AD_TYPE_VIDEO`, the setting will be inherited by new line item when
-  /// line_item_type is `LINE_ITEM_TYPE_VIDEO_DEFAULT`.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "AD_TYPE_UNSPECIFIED" : Ad type is not specified or is unknown in this
-  /// version.
-  /// - "AD_TYPE_DISPLAY" : Display creatives, e.g. image and HTML5.
-  /// - "AD_TYPE_VIDEO" : Video creatives, e.g. video ads that play during
-  /// streaming content in video players.
-  /// - "AD_TYPE_AUDIO" : Audio creatives, e.g. audio ads that play during audio
-  /// content.
-  core.String? adType;
-
-  /// The content outstream position.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "CONTENT_OUTSTREAM_POSITION_UNSPECIFIED" : Content outstream position is
-  /// not specified in this version. This enum is a place holder for a default
-  /// value and does not represent a real content outstream position.
-  /// - "CONTENT_OUTSTREAM_POSITION_UNKNOWN" : The ad position is unknown in the
-  /// content outstream.
-  /// - "CONTENT_OUTSTREAM_POSITION_IN_ARTICLE" : Ads that appear between the
-  /// paragraphs of your pages.
-  /// - "CONTENT_OUTSTREAM_POSITION_IN_BANNER" : Ads that display on the top and
-  /// the sides of a page.
-  /// - "CONTENT_OUTSTREAM_POSITION_IN_FEED" : Ads that appear in a scrollable
-  /// stream of content. A feed is typically editorial (e.g. a list of articles
-  /// or news) or listings (e.g. a list of products or services).
-  /// - "CONTENT_OUTSTREAM_POSITION_INTERSTITIAL" : Ads shown before or between
-  /// content loads.
-  core.String? contentOutstreamPosition;
-
-  $ContentOutstreamPositionAssignedTargetingOptionDetails({
-    this.adType,
-    this.contentOutstreamPosition,
-  });
-
-  $ContentOutstreamPositionAssignedTargetingOptionDetails.fromJson(
-    core.Map json_,
-  ) : this(
-        adType: json_['adType'] as core.String?,
-        contentOutstreamPosition:
-            json_['contentOutstreamPosition'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final adType = this.adType;
-    final contentOutstreamPosition = this.contentOutstreamPosition;
-    return {
-      'adType': ?adType,
-      'contentOutstreamPosition': ?contentOutstreamPosition,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : ContentOutstreamPositionTargetingOptionDetails
-/// - displayvideo:v3 : ContentOutstreamPositionTargetingOptionDetails
-/// - displayvideo:v4 : ContentOutstreamPositionTargetingOptionDetails
-class $ContentOutstreamPositionTargetingOptionDetails {
-  /// The content outstream position.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "CONTENT_OUTSTREAM_POSITION_UNSPECIFIED" : Content outstream position is
-  /// not specified in this version. This enum is a place holder for a default
-  /// value and does not represent a real content outstream position.
-  /// - "CONTENT_OUTSTREAM_POSITION_UNKNOWN" : The ad position is unknown in the
-  /// content outstream.
-  /// - "CONTENT_OUTSTREAM_POSITION_IN_ARTICLE" : Ads that appear between the
-  /// paragraphs of your pages.
-  /// - "CONTENT_OUTSTREAM_POSITION_IN_BANNER" : Ads that display on the top and
-  /// the sides of a page.
-  /// - "CONTENT_OUTSTREAM_POSITION_IN_FEED" : Ads that appear in a scrollable
-  /// stream of content. A feed is typically editorial (e.g. a list of articles
-  /// or news) or listings (e.g. a list of products or services).
-  /// - "CONTENT_OUTSTREAM_POSITION_INTERSTITIAL" : Ads shown before or between
-  /// content loads.
-  core.String? contentOutstreamPosition;
-
-  $ContentOutstreamPositionTargetingOptionDetails({
-    this.contentOutstreamPosition,
-  });
-
-  $ContentOutstreamPositionTargetingOptionDetails.fromJson(core.Map json_)
-    : this(
-        contentOutstreamPosition:
-            json_['contentOutstreamPosition'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final contentOutstreamPosition = this.contentOutstreamPosition;
-    return {'contentOutstreamPosition': ?contentOutstreamPosition};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : ContentStreamTypeAssignedTargetingOptionDetails
-/// - displayvideo:v3 : ContentStreamTypeAssignedTargetingOptionDetails
-/// - displayvideo:v4 : ContentStreamTypeAssignedTargetingOptionDetails
-class $ContentStreamTypeAssignedTargetingOptionDetails {
-  /// The content stream type.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "CONTENT_STREAM_TYPE_UNSPECIFIED" : Content stream type is not specified
-  /// in this version. This enum is a place holder for a default value and does
-  /// not represent a real content stream type.
-  /// - "CONTENT_LIVE_STREAM" : The content is being live-streamed.
-  /// - "CONTENT_ON_DEMAND" : The content is viewed on-demand.
-  core.String? contentStreamType;
-
-  /// The targeting_option_id field when targeting_type is
-  /// `TARGETING_TYPE_CONTENT_STREAM_TYPE`.
-  ///
-  /// Required.
-  core.String? targetingOptionId;
-
-  $ContentStreamTypeAssignedTargetingOptionDetails({
-    this.contentStreamType,
-    this.targetingOptionId,
-  });
-
-  $ContentStreamTypeAssignedTargetingOptionDetails.fromJson(core.Map json_)
-    : this(
-        contentStreamType: json_['contentStreamType'] as core.String?,
-        targetingOptionId: json_['targetingOptionId'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final contentStreamType = this.contentStreamType;
-    final targetingOptionId = this.targetingOptionId;
-    return {
-      'contentStreamType': ?contentStreamType,
-      'targetingOptionId': ?targetingOptionId,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : ContentStreamTypeTargetingOptionDetails
-/// - displayvideo:v3 : ContentStreamTypeTargetingOptionDetails
-/// - displayvideo:v4 : ContentStreamTypeTargetingOptionDetails
-class $ContentStreamTypeTargetingOptionDetails {
-  /// The content stream type.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "CONTENT_STREAM_TYPE_UNSPECIFIED" : Content stream type is not specified
-  /// in this version. This enum is a place holder for a default value and does
-  /// not represent a real content stream type.
-  /// - "CONTENT_LIVE_STREAM" : The content is being live-streamed.
-  /// - "CONTENT_ON_DEMAND" : The content is viewed on-demand.
-  core.String? contentStreamType;
-
-  $ContentStreamTypeTargetingOptionDetails({this.contentStreamType});
-
-  $ContentStreamTypeTargetingOptionDetails.fromJson(core.Map json_)
-    : this(contentStreamType: json_['contentStreamType'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final contentStreamType = this.contentStreamType;
-    return {'contentStreamType': ?contentStreamType};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v3 : ContentThemeAssignedTargetingOptionDetails
-/// - displayvideo:v4 : ContentThemeAssignedTargetingOptionDetails
-class $ContentThemeAssignedTargetingOptionDetails {
-  /// An enum for the DV360 content theme classifier.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "CONTENT_THEME_UNSPECIFIED" : Content theme is not specified or is
-  /// unknown in this version.
-  /// - "CONTENT_THEME_FIGHTING_VIDEO_GAMES" : Fighting video games.
-  /// - "CONTENT_THEME_MATURE_GAMES" : Mature games.
-  /// - "CONTENT_THEME_NOT_YET_DETERMINED_HEALTH_SOURCES" : Not yet determined
-  /// health sources.
-  /// - "CONTENT_THEME_NOT_YET_DETERMINED_NEWS_SOURCES" : Not yet determined
-  /// news sources.
-  /// - "CONTENT_THEME_POLITICS" : Politics.
-  /// - "CONTENT_THEME_RECENT_NEWS" : Recent news.
-  /// - "CONTENT_THEME_RELIGION" : Religion.
-  /// - "CONTENT_THEME_UNPLEASANT_HEALTH_CONTENT" : Unpleasant health content.
-  /// - "CONTENT_THEME_UNPLEASANT_NEWS" : Unpleasant news.
-  core.String? contentTheme;
-
-  /// An enum for the DV360 content theme classified to be EXCLUDED.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "CONTENT_THEME_UNSPECIFIED" : Content theme is not specified or is
-  /// unknown in this version.
-  /// - "CONTENT_THEME_FIGHTING_VIDEO_GAMES" : Fighting video games.
-  /// - "CONTENT_THEME_MATURE_GAMES" : Mature games.
-  /// - "CONTENT_THEME_NOT_YET_DETERMINED_HEALTH_SOURCES" : Not yet determined
-  /// health sources.
-  /// - "CONTENT_THEME_NOT_YET_DETERMINED_NEWS_SOURCES" : Not yet determined
-  /// news sources.
-  /// - "CONTENT_THEME_POLITICS" : Politics.
-  /// - "CONTENT_THEME_RECENT_NEWS" : Recent news.
-  /// - "CONTENT_THEME_RELIGION" : Religion.
-  /// - "CONTENT_THEME_UNPLEASANT_HEALTH_CONTENT" : Unpleasant health content.
-  /// - "CONTENT_THEME_UNPLEASANT_NEWS" : Unpleasant news.
-  core.String? excludedContentTheme;
-
-  /// ID of the content theme to be EXCLUDED.
-  ///
-  /// Required.
-  core.String? excludedTargetingOptionId;
-
-  $ContentThemeAssignedTargetingOptionDetails({
-    this.contentTheme,
-    this.excludedContentTheme,
-    this.excludedTargetingOptionId,
-  });
-
-  $ContentThemeAssignedTargetingOptionDetails.fromJson(core.Map json_)
-    : this(
-        contentTheme: json_['contentTheme'] as core.String?,
-        excludedContentTheme: json_['excludedContentTheme'] as core.String?,
-        excludedTargetingOptionId:
-            json_['excludedTargetingOptionId'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final contentTheme = this.contentTheme;
-    final excludedContentTheme = this.excludedContentTheme;
-    final excludedTargetingOptionId = this.excludedTargetingOptionId;
-    return {
-      'contentTheme': ?contentTheme,
-      'excludedContentTheme': ?excludedContentTheme,
-      'excludedTargetingOptionId': ?excludedTargetingOptionId,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v3 : ContentThemeTargetingOptionDetails
-/// - displayvideo:v4 : ContentThemeTargetingOptionDetails
-class $ContentThemeTargetingOptionDetails {
-  /// An enum for the DV360 content theme content classifier.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "CONTENT_THEME_UNSPECIFIED" : Content theme is not specified or is
-  /// unknown in this version.
-  /// - "CONTENT_THEME_FIGHTING_VIDEO_GAMES" : Fighting video games.
-  /// - "CONTENT_THEME_MATURE_GAMES" : Mature games.
-  /// - "CONTENT_THEME_NOT_YET_DETERMINED_HEALTH_SOURCES" : Not yet determined
-  /// health sources.
-  /// - "CONTENT_THEME_NOT_YET_DETERMINED_NEWS_SOURCES" : Not yet determined
-  /// news sources.
-  /// - "CONTENT_THEME_POLITICS" : Politics.
-  /// - "CONTENT_THEME_RECENT_NEWS" : Recent news.
-  /// - "CONTENT_THEME_RELIGION" : Religion.
-  /// - "CONTENT_THEME_UNPLEASANT_HEALTH_CONTENT" : Unpleasant health content.
-  /// - "CONTENT_THEME_UNPLEASANT_NEWS" : Unpleasant news.
-  core.String? contentTheme;
-
-  $ContentThemeTargetingOptionDetails({this.contentTheme});
-
-  $ContentThemeTargetingOptionDetails.fromJson(core.Map json_)
-    : this(contentTheme: json_['contentTheme'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final contentTheme = this.contentTheme;
-    return {'contentTheme': ?contentTheme};
-  }
-}
-
-/// Used by:
-///
 /// - firebaseappdistribution:v1 : GdataContentTypeInfo
 /// - walletobjects:v1 : ContentTypeInfo
 class $ContentTypeInfo {
@@ -6143,149 +2240,6 @@ class $ContextChildrenRequest {
 
 /// Used by:
 ///
-/// - displayvideo:v2 : CounterEvent
-/// - displayvideo:v3 : CounterEvent
-/// - displayvideo:v4 : CounterEvent
-class $CounterEvent {
-  /// The name of the counter event.
-  ///
-  /// Required.
-  core.String? name;
-
-  /// The name used to identify this counter event in reports.
-  ///
-  /// Required.
-  core.String? reportingName;
-
-  $CounterEvent({this.name, this.reportingName});
-
-  $CounterEvent.fromJson(core.Map json_)
-    : this(
-        name: json_['name'] as core.String?,
-        reportingName: json_['reportingName'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final name = this.name;
-    final reportingName = this.reportingName;
-    return {'name': ?name, 'reportingName': ?reportingName};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : CreateAssetRequest
-/// - displayvideo:v3 : CreateAssetRequest
-/// - displayvideo:v4 : CreateAssetRequest
-class $CreateAssetRequest {
-  /// The filename of the asset, including the file extension.
-  ///
-  /// The filename must be UTF-8 encoded with a maximum size of 240 bytes.
-  ///
-  /// Required.
-  core.String? filename;
-
-  $CreateAssetRequest({this.filename});
-
-  $CreateAssetRequest.fromJson(core.Map json_)
-    : this(filename: json_['filename'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final filename = this.filename;
-    return {'filename': ?filename};
-  }
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.5 : CreativeAssetId
-/// - dfareporting:v5 : CreativeAssetId
-class $CreativeAssetId {
-  /// Name of the creative asset.
-  ///
-  /// This is a required field while inserting an asset. After insertion, this
-  /// assetIdentifier is used to identify the uploaded asset. Characters in the
-  /// name must be alphanumeric or one of the following: ".-_ ". Spaces are
-  /// allowed.
-  core.String? name;
-
-  /// Type of asset to upload.
-  ///
-  /// This is a required field. FLASH and IMAGE are no longer supported for new
-  /// uploads. All image assets should use HTML_IMAGE.
-  /// Possible string values are:
-  /// - "IMAGE"
-  /// - "FLASH"
-  /// - "VIDEO"
-  /// - "HTML"
-  /// - "HTML_IMAGE"
-  /// - "AUDIO"
-  core.String? type;
-
-  $CreativeAssetId({this.name, this.type});
-
-  $CreativeAssetId.fromJson(core.Map json_)
-    : this(
-        name: json_['name'] as core.String?,
-        type: json_['type'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final name = this.name;
-    final type = this.type;
-    return {'name': ?name, 'type': ?type};
-  }
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.5 : CreativeClickThroughUrl
-/// - dfareporting:v5 : CreativeClickThroughUrl
-class $CreativeClickThroughUrl {
-  /// Read-only convenience field representing the actual URL that will be used
-  /// for this click-through.
-  ///
-  /// The URL is computed as follows: - If landingPageId is specified then that
-  /// landing page's URL is assigned to this field. - Otherwise, the
-  /// customClickThroughUrl is assigned to this field.
-  core.String? computedClickThroughUrl;
-
-  /// Custom click-through URL.
-  ///
-  /// Applicable if the landingPageId field is left unset.
-  core.String? customClickThroughUrl;
-
-  /// ID of the landing page for the click-through URL.
-  core.String? landingPageId;
-
-  $CreativeClickThroughUrl({
-    this.computedClickThroughUrl,
-    this.customClickThroughUrl,
-    this.landingPageId,
-  });
-
-  $CreativeClickThroughUrl.fromJson(core.Map json_)
-    : this(
-        computedClickThroughUrl:
-            json_['computedClickThroughUrl'] as core.String?,
-        customClickThroughUrl: json_['customClickThroughUrl'] as core.String?,
-        landingPageId: json_['landingPageId'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final computedClickThroughUrl = this.computedClickThroughUrl;
-    final customClickThroughUrl = this.customClickThroughUrl;
-    final landingPageId = this.landingPageId;
-    return {
-      'computedClickThroughUrl': ?computedClickThroughUrl,
-      'customClickThroughUrl': ?customClickThroughUrl,
-      'landingPageId': ?landingPageId,
-    };
-  }
-}
-
-/// Used by:
-///
 /// - authorizedbuyersmarketplace:v1 : CriteriaTargeting
 /// - curationpartners:v1 : CriteriaTargeting
 class $CriteriaTargeting {
@@ -6314,33 +2268,6 @@ class $CriteriaTargeting {
       'excludedCriteriaIds': ?excludedCriteriaIds,
       'targetedCriteriaIds': ?targetedCriteriaIds,
     };
-  }
-}
-
-/// Used by:
-///
-/// - agentregistry:v1 : Criticality
-/// - apphub:v1 : Criticality
-class $Criticality {
-  /// Criticality Type.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "TYPE_UNSPECIFIED" : Unspecified type.
-  /// - "MISSION_CRITICAL" : Mission critical service, application or workload.
-  /// - "HIGH" : High impact.
-  /// - "MEDIUM" : Medium impact.
-  /// - "LOW" : Low impact.
-  core.String? type;
-
-  $Criticality({this.type});
-
-  $Criticality.fromJson(core.Map json_)
-    : this(type: json_['type'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final type = this.type;
-    return {'type': ?type};
   }
 }
 
@@ -6483,251 +2410,6 @@ class $CryptoKeyVersionTemplate {
 
 /// Used by:
 ///
-/// - displayvideo:v3 : CustomBiddingAlgorithmRulesError
-/// - displayvideo:v4 : CustomBiddingAlgorithmRulesError
-class $CustomBiddingAlgorithmRulesError {
-  /// The type of error.
-  /// Possible string values are:
-  /// - "ERROR_CODE_UNSPECIFIED" : The error is not specified or is unknown in
-  /// this version.
-  /// - "SYNTAX_ERROR" : The rules have a syntax error.
-  /// - "CONSTRAINT_VIOLATION_ERROR" : The rules have a constraint violation
-  /// error.
-  /// - "INTERNAL_ERROR" : Internal errors were thrown while processing the
-  /// rules.
-  core.String? errorCode;
-
-  $CustomBiddingAlgorithmRulesError({this.errorCode});
-
-  $CustomBiddingAlgorithmRulesError.fromJson(core.Map json_)
-    : this(errorCode: json_['errorCode'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final errorCode = this.errorCode;
-    return {'errorCode': ?errorCode};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v3 : CustomBiddingAlgorithmRulesRef
-/// - displayvideo:v4 : CustomBiddingAlgorithmRulesRef
-class $CustomBiddingAlgorithmRulesRef {
-  /// A resource name to be used in media.download to download the rules files.
-  ///
-  /// Or media.upload to upload the rules files. Resource names have the format
-  /// `customBiddingAlgorithms/{custom_bidding_algorithm_id}/rulesRef/{ref_id}`.
-  core.String? resourceName;
-
-  $CustomBiddingAlgorithmRulesRef({this.resourceName});
-
-  $CustomBiddingAlgorithmRulesRef.fromJson(core.Map json_)
-    : this(resourceName: json_['resourceName'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final resourceName = this.resourceName;
-    return {'resourceName': ?resourceName};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v3 : CustomBiddingModelDetails
-/// - displayvideo:v4 : CustomBiddingModelDetails
-class $CustomBiddingModelDetails {
-  /// The unique ID of the relevant advertiser.
-  core.String? advertiserId;
-
-  /// The readiness state of custom bidding model.
-  /// Possible string values are:
-  /// - "READINESS_STATE_UNSPECIFIED" : State is not specified or is unknown in
-  /// this version.
-  /// - "READINESS_STATE_ACTIVE" : The model is trained and ready for serving.
-  /// - "READINESS_STATE_INSUFFICIENT_DATA" : There is not enough data to train
-  /// the serving model.
-  /// - "READINESS_STATE_TRAINING" : The model is training and not ready for
-  /// serving.
-  /// - "READINESS_STATE_NO_VALID_SCRIPT" : A valid custom bidding script has
-  /// not been provided with which to train the model. This state will only be
-  /// applied to algorithms whose `custom_bidding_algorithm_type` is
-  /// `SCRIPT_BASED`.
-  /// - "READINESS_STATE_EVALUATION_FAILURE" : A valid script was provided but
-  /// failed evaluation. This is applicable for scripts that could not be
-  /// evaluated in the alloted time.
-  core.String? readinessState;
-
-  /// The suspension state of custom bidding model.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "SUSPENSION_STATE_UNSPECIFIED" : State is not specified or is unknown in
-  /// this version.
-  /// - "SUSPENSION_STATE_ENABLED" : Model is enabled, either recently used,
-  /// currently used or scheduled to be used. The algorithm is actively scoring
-  /// impressions for this advertiser.
-  /// - "SUSPENSION_STATE_DORMANT" : Model has not been used recently. Although
-  /// the model still acts as `ENABLED`, it will eventually be suspended if not
-  /// used.
-  /// - "SUSPENSION_STATE_SUSPENDED" : Model is suspended from scoring
-  /// impressions and cannot serve. If the algorithm is assigned to a line item
-  /// under this advertiser or otherwise updated, it will switch back to the
-  /// `ENABLED` state and require time to prepare the serving model again.
-  core.String? suspensionState;
-
-  $CustomBiddingModelDetails({
-    this.advertiserId,
-    this.readinessState,
-    this.suspensionState,
-  });
-
-  $CustomBiddingModelDetails.fromJson(core.Map json_)
-    : this(
-        advertiserId: json_['advertiserId'] as core.String?,
-        readinessState: json_['readinessState'] as core.String?,
-        suspensionState: json_['suspensionState'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final advertiserId = this.advertiserId;
-    final readinessState = this.readinessState;
-    final suspensionState = this.suspensionState;
-    return {
-      'advertiserId': ?advertiserId,
-      'readinessState': ?readinessState,
-      'suspensionState': ?suspensionState,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : CustomBiddingScriptRef
-/// - displayvideo:v3 : CustomBiddingScriptRef
-/// - displayvideo:v4 : CustomBiddingScriptRef
-class $CustomBiddingScriptRef {
-  /// A resource name to be used in media.download to Download the script files.
-  ///
-  /// Or media.upload to Upload the script files. Resource names have the format
-  /// `customBiddingAlgorithms/{custom_bidding_algorithm_id}/scriptRef/{ref_id}`.
-  core.String? resourceName;
-
-  $CustomBiddingScriptRef({this.resourceName});
-
-  $CustomBiddingScriptRef.fromJson(core.Map json_)
-    : this(resourceName: json_['resourceName'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final resourceName = this.resourceName;
-    return {'resourceName': ?resourceName};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : CustomLabel
-/// - displayvideo:v3 : CustomLabel
-/// - displayvideo:v4 : CustomLabel
-class $CustomLabel {
-  /// The key of the label.
-  /// Possible string values are:
-  /// - "CUSTOM_LABEL_KEY_UNSPECIFIED" : Not specified or unknown.
-  /// - "CUSTOM_LABEL_KEY_0" : Key index 0.
-  /// - "CUSTOM_LABEL_KEY_1" : Key index 1.
-  /// - "CUSTOM_LABEL_KEY_2" : Key index 2.
-  /// - "CUSTOM_LABEL_KEY_3" : Key index 3.
-  /// - "CUSTOM_LABEL_KEY_4" : Key index 4.
-  core.String? key;
-
-  /// The value of the label.
-  core.String? value;
-
-  $CustomLabel({this.key, this.value});
-
-  $CustomLabel.fromJson(core.Map json_)
-    : this(
-        key: json_['key'] as core.String?,
-        value: json_['value'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final key = this.key;
-    final value = this.value;
-    return {'key': ?key, 'value': ?value};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : CustomList
-/// - displayvideo:v3 : CustomList
-/// - displayvideo:v4 : CustomList
-class $CustomList {
-  /// The unique ID of the custom list.
-  ///
-  /// Assigned by the system.
-  ///
-  /// Output only.
-  core.String? customListId;
-
-  /// The display name of the custom list.
-  ///
-  /// .
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  /// The resource name of the custom list.
-  ///
-  /// Output only.
-  core.String? name;
-
-  $CustomList({this.customListId, this.displayName, this.name});
-
-  $CustomList.fromJson(core.Map json_)
-    : this(
-        customListId: json_['customListId'] as core.String?,
-        displayName: json_['displayName'] as core.String?,
-        name: json_['name'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final customListId = this.customListId;
-    final displayName = this.displayName;
-    final name = this.name;
-    return {
-      'customListId': ?customListId,
-      'displayName': ?displayName,
-      'name': ?name,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : CustomListTargetingSetting
-/// - displayvideo:v3 : CustomListTargetingSetting
-/// - displayvideo:v4 : CustomListTargetingSetting
-class $CustomListTargetingSetting {
-  /// Custom id of custom list targeting setting.
-  ///
-  /// This id is custom_list_id.
-  ///
-  /// Required.
-  core.String? customListId;
-
-  $CustomListTargetingSetting({this.customListId});
-
-  $CustomListTargetingSetting.fromJson(core.Map json_)
-    : this(customListId: json_['customListId'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final customListId = this.customListId;
-    return {'customListId': ?customListId};
-  }
-}
-
-/// Used by:
-///
 /// - datamanager:v1 : CustomVariable
 /// - datamanager:v1 : ItemCustomVariable
 class $CustomVariable {
@@ -6805,10 +2487,6 @@ class $DataLinkResponse {
 /// - container:v1 : Date
 /// - curationpartners:v1 : Date
 /// - deepreview:v1 : Date
-/// - devicerun:v1 : Date
-/// - displayvideo:v2 : Date
-/// - displayvideo:v3 : Date
-/// - displayvideo:v4 : Date
 /// - dlp:v2 : GoogleTypeDate
 /// - documentai:v1 : GoogleTypeDate
 /// - doubleclickbidmanager:v2 : Date
@@ -6821,7 +2499,6 @@ class $DataLinkResponse {
 /// - merchantapi:reports_v1 : Date
 /// - migrationcenter:v1 : Date
 /// - mybusinessbusinessinformation:v1 : Date
-/// - osconfig:v1 : Date
 /// - people:v1 : Date
 /// - places:v1 : GoogleTypeDate
 /// - policysimulator:v1 : GoogleTypeDate
@@ -6863,156 +2540,6 @@ class $Date {
     final month = this.month;
     final year = this.year;
     return {'day': ?day, 'month': ?month, 'year': ?year};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : DayAndTimeAssignedTargetingOptionDetails
-/// - displayvideo:v3 : DayAndTimeAssignedTargetingOptionDetails
-/// - displayvideo:v4 : DayAndTimeAssignedTargetingOptionDetails
-class $DayAndTimeAssignedTargetingOptionDetails {
-  /// The day of the week for this day and time targeting setting.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "DAY_OF_WEEK_UNSPECIFIED" : The day of the week is unspecified.
-  /// - "MONDAY" : Monday
-  /// - "TUESDAY" : Tuesday
-  /// - "WEDNESDAY" : Wednesday
-  /// - "THURSDAY" : Thursday
-  /// - "FRIDAY" : Friday
-  /// - "SATURDAY" : Saturday
-  /// - "SUNDAY" : Sunday
-  core.String? dayOfWeek;
-
-  /// The end hour for day and time targeting.
-  ///
-  /// Must be between 1 (1 hour after start of day) and 24 (end of day).
-  ///
-  /// Required.
-  core.int? endHour;
-
-  /// The start hour for day and time targeting.
-  ///
-  /// Must be between 0 (start of day) and 23 (1 hour before end of day).
-  ///
-  /// Required.
-  core.int? startHour;
-
-  /// The mechanism used to determine which timezone to use for this day and
-  /// time targeting setting.
-  ///
-  /// For Demand Gen line items, this field is always
-  /// `TIME_ZONE_RESOLUTION_ADVERTISER`.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "TIME_ZONE_RESOLUTION_UNSPECIFIED" : Time zone resolution is either
-  /// unspecific or unknown.
-  /// - "TIME_ZONE_RESOLUTION_END_USER" : Times are resolved in the time zone of
-  /// the user that saw the ad.
-  /// - "TIME_ZONE_RESOLUTION_ADVERTISER" : Times are resolved in the time zone
-  /// of the advertiser that served the ad.
-  core.String? timeZoneResolution;
-
-  $DayAndTimeAssignedTargetingOptionDetails({
-    this.dayOfWeek,
-    this.endHour,
-    this.startHour,
-    this.timeZoneResolution,
-  });
-
-  $DayAndTimeAssignedTargetingOptionDetails.fromJson(core.Map json_)
-    : this(
-        dayOfWeek: json_['dayOfWeek'] as core.String?,
-        endHour: json_['endHour'] as core.int?,
-        startHour: json_['startHour'] as core.int?,
-        timeZoneResolution: json_['timeZoneResolution'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final dayOfWeek = this.dayOfWeek;
-    final endHour = this.endHour;
-    final startHour = this.startHour;
-    final timeZoneResolution = this.timeZoneResolution;
-    return {
-      'dayOfWeek': ?dayOfWeek,
-      'endHour': ?endHour,
-      'startHour': ?startHour,
-      'timeZoneResolution': ?timeZoneResolution,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v3 : DcmTrackingInfo
-/// - displayvideo:v4 : DcmTrackingInfo
-class $DcmTrackingInfo {
-  /// The DCM creative id.
-  ///
-  /// Required.
-  core.String? creativeId;
-
-  /// The DCM placement id.
-  ///
-  /// Required.
-  core.String? placementId;
-
-  /// The DCM tracking ad id.
-  ///
-  /// Required.
-  core.String? trackingAdId;
-
-  $DcmTrackingInfo({this.creativeId, this.placementId, this.trackingAdId});
-
-  $DcmTrackingInfo.fromJson(core.Map json_)
-    : this(
-        creativeId: json_['creativeId'] as core.String?,
-        placementId: json_['placementId'] as core.String?,
-        trackingAdId: json_['trackingAdId'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final creativeId = this.creativeId;
-    final placementId = this.placementId;
-    final trackingAdId = this.trackingAdId;
-    return {
-      'creativeId': ?creativeId,
-      'placementId': ?placementId,
-      'trackingAdId': ?trackingAdId,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - connectors:v1 : DeadLetterConfig
-/// - integrations:v1 : GoogleCloudConnectorsV1EventingConfigDeadLetterConfig
-class $DeadLetterConfig {
-  /// Project which has the topic given.
-  ///
-  /// Optional.
-  core.String? projectId;
-
-  /// Topic to push events which couldn't be processed.
-  ///
-  /// Optional.
-  core.String? topic;
-
-  $DeadLetterConfig({this.projectId, this.topic});
-
-  $DeadLetterConfig.fromJson(core.Map json_)
-    : this(
-        projectId: json_['projectId'] as core.String?,
-        topic: json_['topic'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final projectId = this.projectId;
-    final topic = this.topic;
-    return {'projectId': ?projectId, 'topic': ?topic};
   }
 }
 
@@ -7089,85 +2616,6 @@ class $Decimal {
   core.Map<core.String, core.dynamic> toJson() {
     final value = this.value;
     return {'value': ?value};
-  }
-}
-
-/// Used by:
-///
-/// - drive:v2 : DecryptionMetadata
-/// - drive:v3 : DecryptionMetadata
-class $DecryptionMetadata {
-  /// Chunk size used if content was encrypted with the AES 256 GCM Cipher.
-  ///
-  /// Possible values are: - default - small
-  core.String? aes256GcmChunkSize;
-
-  /// The URL-safe Base64 encoded HMAC-SHA256 digest of the resource metadata
-  /// with its DEK (Data Encryption Key); see
-  /// https://developers.google.com/workspace/cse/reference
-  core.String? encryptionResourceKeyHash;
-
-  /// The signed JSON Web Token (JWT) which can be used to authorize the
-  /// requesting user with the Key ACL Service (KACLS).
-  ///
-  /// The JWT asserts that the requesting user has at least read permissions on
-  /// the file.
-  core.String? jwt;
-
-  /// The ID of the KACLS (Key ACL Service) used to encrypt the file.
-  core.String? kaclsId;
-
-  /// The name of the KACLS (Key ACL Service) used to encrypt the file.
-  core.String? kaclsName;
-
-  /// Key format for the unwrapped key.
-  ///
-  /// Must be `tinkAesGcmKey`.
-  core.String? keyFormat;
-
-  /// The URL-safe Base64 encoded wrapped key used to encrypt the contents of
-  /// the file.
-  core.String? wrappedKey;
-
-  $DecryptionMetadata({
-    this.aes256GcmChunkSize,
-    this.encryptionResourceKeyHash,
-    this.jwt,
-    this.kaclsId,
-    this.kaclsName,
-    this.keyFormat,
-    this.wrappedKey,
-  });
-
-  $DecryptionMetadata.fromJson(core.Map json_)
-    : this(
-        aes256GcmChunkSize: json_['aes256GcmChunkSize'] as core.String?,
-        encryptionResourceKeyHash:
-            json_['encryptionResourceKeyHash'] as core.String?,
-        jwt: json_['jwt'] as core.String?,
-        kaclsId: json_['kaclsId'] as core.String?,
-        kaclsName: json_['kaclsName'] as core.String?,
-        keyFormat: json_['keyFormat'] as core.String?,
-        wrappedKey: json_['wrappedKey'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final aes256GcmChunkSize = this.aes256GcmChunkSize;
-    final encryptionResourceKeyHash = this.encryptionResourceKeyHash;
-    final jwt = this.jwt;
-    final kaclsId = this.kaclsId;
-    final kaclsName = this.kaclsName;
-    final keyFormat = this.keyFormat;
-    final wrappedKey = this.wrappedKey;
-    return {
-      'aes256GcmChunkSize': ?aes256GcmChunkSize,
-      'encryptionResourceKeyHash': ?encryptionResourceKeyHash,
-      'jwt': ?jwt,
-      'kaclsId': ?kaclsId,
-      'kaclsName': ?kaclsName,
-      'keyFormat': ?keyFormat,
-      'wrappedKey': ?wrappedKey,
-    };
   }
 }
 
@@ -7265,102 +2713,6 @@ class $DelimitedKey {
 
 /// Used by:
 ///
-/// - displayvideo:v2 : DemandGenBiddingStrategy
-/// - displayvideo:v3 : DemandGenBiddingStrategy
-/// - displayvideo:v4 : DemandGenBiddingStrategy
-class $DemandGenBiddingStrategy {
-  /// The value effectively used by the bidding strategy.
-  ///
-  /// This field will be the same as value if set. If value is not set and the
-  /// strategy is assigned to an ad group, this field will be inherited from the
-  /// line item's bidding strategy. If type is not
-  /// `DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_CPA` or
-  /// `DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_ROAS`, this field will be 0.
-  ///
-  /// Output only.
-  core.String? effectiveBiddingValue;
-
-  /// Source of the effective bidding value.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "BIDDING_SOURCE_UNSPECIFIED" : Bidding source is not specified or
-  /// unknown.
-  /// - "BIDDING_SOURCE_LINE_ITEM" : Bidding value is inherited from the line
-  /// item.
-  /// - "BIDDING_SOURCE_AD_GROUP" : Bidding value is defined in the ad group.
-  core.String? effectiveBiddingValueSource;
-
-  /// The type of the bidding strategy.
-  ///
-  /// This can only be set when assigned to a line item. Ad groups will inherit
-  /// this value from their line item.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "DEMAND_GEN_BIDDING_STRATEGY_TYPE_UNSPECIFIED" : Type is not specified
-  /// or unknown.
-  /// - "DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_CPA" : A bidding strategy that
-  /// automatically optimizes conversions per dollar.
-  /// - "DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_ROAS" : A bidding strategy that
-  /// automatically maximizes revenue while averaging a specific target Return
-  /// On Ad Spend (ROAS).
-  /// - "DEMAND_GEN_BIDDING_STRATEGY_TYPE_MAXIMIZE_CONVERSIONS" : A bidding
-  /// strategy that automatically maximizes number of conversions
-  /// - "DEMAND_GEN_BIDDING_STRATEGY_TYPE_MAXIMIZE_CONVERSION_VALUE" : A bidding
-  /// strategy that automatically maximizes revenue while spending your budget.
-  /// - "DEMAND_GEN_BIDDING_STRATEGY_TYPE_MAXIMIZE_CLICKS" : A bidding strategy
-  /// that automatically maximizes clicks within a given budget.
-  /// - "DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_CPC" : A bidding strategy that
-  /// automatically optimizes cost per click.
-  core.String? type;
-
-  /// The value used by the bidding strategy.
-  ///
-  /// This can be set when assigned to line items or ad groups. This field is
-  /// only applicable for the following strategy types: *
-  /// `DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_CPA` *
-  /// `DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_CPC` *
-  /// `DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_ROAS` Value of this field is in
-  /// micros of the advertiser's currency or ROAS value. For example, 1000000
-  /// represents 1.0 standard units of the currency or 100% ROAS value. If not
-  /// using an applicable strategy, the value of this field will be 0.
-  ///
-  /// Optional.
-  core.String? value;
-
-  $DemandGenBiddingStrategy({
-    this.effectiveBiddingValue,
-    this.effectiveBiddingValueSource,
-    this.type,
-    this.value,
-  });
-
-  $DemandGenBiddingStrategy.fromJson(core.Map json_)
-    : this(
-        effectiveBiddingValue: json_['effectiveBiddingValue'] as core.String?,
-        effectiveBiddingValueSource:
-            json_['effectiveBiddingValueSource'] as core.String?,
-        type: json_['type'] as core.String?,
-        value: json_['value'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final effectiveBiddingValue = this.effectiveBiddingValue;
-    final effectiveBiddingValueSource = this.effectiveBiddingValueSource;
-    final type = this.type;
-    final value = this.value;
-    return {
-      'effectiveBiddingValue': ?effectiveBiddingValue,
-      'effectiveBiddingValueSource': ?effectiveBiddingValueSource,
-      'type': ?type,
-      'value': ?value,
-    };
-  }
-}
-
-/// Used by:
-///
 /// - containeranalysis:v1 : DeploymentOccurrence
 /// - ondemandscanning:v1 : DeploymentOccurrence
 class $DeploymentOccurrence {
@@ -7434,48 +2786,6 @@ class $DeploymentOccurrence {
       'resourceUri': ?resourceUri,
       'undeployTime': ?undeployTime,
       'userEmail': ?userEmail,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - connectors:v1 : Destination
-/// - integrations:v1 : GoogleCloudConnectorsV1Destination
-class $Destination {
-  /// For publicly routable host.
-  core.String? host;
-
-  /// The port is the target port number that is accepted by the destination.
-  ///
-  /// Optional.
-  core.int? port;
-
-  /// PSC service attachments.
-  ///
-  /// Format: projects / * /regions / * /serviceAttachments / *
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? serviceAttachment;
-
-  $Destination({this.host, this.port, this.serviceAttachment});
-
-  $Destination.fromJson(core.Map json_)
-    : this(
-        host: json_['host'] as core.String?,
-        port: json_['port'] as core.int?,
-        serviceAttachment: json_['serviceAttachment'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final host = this.host;
-    final port = this.port;
-    final serviceAttachment = this.serviceAttachment;
-    return {
-      'host': ?host,
-      'port': ?port,
-      'serviceAttachment': ?serviceAttachment,
     };
   }
 }
@@ -7560,159 +2870,6 @@ class $DeveloperConnectConfig {
 
 /// Used by:
 ///
-/// - displayvideo:v2 : DeviceMakeModelAssignedTargetingOptionDetails
-/// - displayvideo:v3 : DeviceMakeModelAssignedTargetingOptionDetails
-/// - displayvideo:v4 : DeviceMakeModelAssignedTargetingOptionDetails
-class $DeviceMakeModelAssignedTargetingOptionDetails {
-  /// The display name of the device make and model.
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  /// Indicates if this option is being negatively targeted.
-  core.bool? negative;
-
-  /// The targeting_option_id field when targeting_type is
-  /// `TARGETING_TYPE_DEVICE_MAKE_MODEL`.
-  ///
-  /// Required.
-  core.String? targetingOptionId;
-
-  $DeviceMakeModelAssignedTargetingOptionDetails({
-    this.displayName,
-    this.negative,
-    this.targetingOptionId,
-  });
-
-  $DeviceMakeModelAssignedTargetingOptionDetails.fromJson(core.Map json_)
-    : this(
-        displayName: json_['displayName'] as core.String?,
-        negative: json_['negative'] as core.bool?,
-        targetingOptionId: json_['targetingOptionId'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final displayName = this.displayName;
-    final negative = this.negative;
-    final targetingOptionId = this.targetingOptionId;
-    return {
-      'displayName': ?displayName,
-      'negative': ?negative,
-      'targetingOptionId': ?targetingOptionId,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : DeviceMakeModelTargetingOptionDetails
-/// - displayvideo:v3 : DeviceMakeModelTargetingOptionDetails
-/// - displayvideo:v4 : DeviceMakeModelTargetingOptionDetails
-class $DeviceMakeModelTargetingOptionDetails {
-  /// The display name of the device make and model.
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  $DeviceMakeModelTargetingOptionDetails({this.displayName});
-
-  $DeviceMakeModelTargetingOptionDetails.fromJson(core.Map json_)
-    : this(displayName: json_['displayName'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final displayName = this.displayName;
-    return {'displayName': ?displayName};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : DeviceTypeAssignedTargetingOptionDetails
-/// - displayvideo:v3 : DeviceTypeAssignedTargetingOptionDetails
-/// - displayvideo:v4 : DeviceTypeAssignedTargetingOptionDetails
-class $DeviceTypeAssignedTargetingOptionDetails {
-  /// The display name of the device type.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "DEVICE_TYPE_UNSPECIFIED" : Default value when device type is not
-  /// specified in this version. This enum is a placeholder for default value
-  /// and does not represent a real device type option.
-  /// - "DEVICE_TYPE_COMPUTER" : Computer.
-  /// - "DEVICE_TYPE_CONNECTED_TV" : Connected TV.
-  /// - "DEVICE_TYPE_SMART_PHONE" : Smart phone.
-  /// - "DEVICE_TYPE_TABLET" : Tablet.
-  /// - "DEVICE_TYPE_CONNECTED_DEVICE" : Connected device.
-  core.String? deviceType;
-
-  /// Bid multiplier allows you to show your ads more or less frequently based
-  /// on the device type.
-  ///
-  /// It will apply a multiplier on the original bid price. When this field is
-  /// 0, it indicates this field is not applicable instead of multiplying 0 on
-  /// the original bid price. For example, if the bid price without multiplier
-  /// is $10.0 and the multiplier is 1.5 for Tablet, the resulting bid price for
-  /// Tablet will be $15.0. Only applicable to YouTube and Partners line items.
-  ///
-  /// Output only.
-  core.double? youtubeAndPartnersBidMultiplier;
-
-  $DeviceTypeAssignedTargetingOptionDetails({
-    this.deviceType,
-    this.youtubeAndPartnersBidMultiplier,
-  });
-
-  $DeviceTypeAssignedTargetingOptionDetails.fromJson(core.Map json_)
-    : this(
-        deviceType: json_['deviceType'] as core.String?,
-        youtubeAndPartnersBidMultiplier:
-            (json_['youtubeAndPartnersBidMultiplier'] as core.num?)?.toDouble(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final deviceType = this.deviceType;
-    final youtubeAndPartnersBidMultiplier =
-        this.youtubeAndPartnersBidMultiplier;
-    return {
-      'deviceType': ?deviceType,
-      'youtubeAndPartnersBidMultiplier': ?youtubeAndPartnersBidMultiplier,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : DeviceTypeTargetingOptionDetails
-/// - displayvideo:v3 : DeviceTypeTargetingOptionDetails
-/// - displayvideo:v4 : DeviceTypeTargetingOptionDetails
-class $DeviceTypeTargetingOptionDetails {
-  /// The device type that is used to be targeted.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "DEVICE_TYPE_UNSPECIFIED" : Default value when device type is not
-  /// specified in this version. This enum is a placeholder for default value
-  /// and does not represent a real device type option.
-  /// - "DEVICE_TYPE_COMPUTER" : Computer.
-  /// - "DEVICE_TYPE_CONNECTED_TV" : Connected TV.
-  /// - "DEVICE_TYPE_SMART_PHONE" : Smart phone.
-  /// - "DEVICE_TYPE_TABLET" : Tablet.
-  /// - "DEVICE_TYPE_CONNECTED_DEVICE" : Connected device.
-  core.String? deviceType;
-
-  $DeviceTypeTargetingOptionDetails({this.deviceType});
-
-  $DeviceTypeTargetingOptionDetails.fromJson(core.Map json_)
-    : this(deviceType: json_['deviceType'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final deviceType = this.deviceType;
-    return {'deviceType': ?deviceType};
-  }
-}
-
-/// Used by:
-///
 /// - firebaseappdistribution:v1 : GdataDiffVersionResponse
 /// - walletobjects:v1 : DiffVersionResponse
 class $DiffVersionResponse {
@@ -7737,162 +2894,6 @@ class $DiffVersionResponse {
       'objectSizeBytes': ?objectSizeBytes,
       'objectVersion': ?objectVersion,
     };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : DigitalContentLabelAssignedTargetingOptionDetails
-/// - displayvideo:v3 : DigitalContentLabelAssignedTargetingOptionDetails
-class $DigitalContentLabelAssignedTargetingOptionDetails {
-  /// The display name of the digital content label rating tier to be EXCLUDED.
-  ///
-  /// This field only accepts the value `CONTENT_RATING_TIER_UNRATED`.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "CONTENT_RATING_TIER_UNSPECIFIED" : Content label is not specified in
-  /// this version. This enum is a place holder for a default value and does not
-  /// represent a real content rating.
-  /// - "CONTENT_RATING_TIER_UNRATED" : Content that has not been labeled.
-  core.String? excludedContentRatingTier;
-
-  $DigitalContentLabelAssignedTargetingOptionDetails({
-    this.excludedContentRatingTier,
-  });
-
-  $DigitalContentLabelAssignedTargetingOptionDetails.fromJson(core.Map json_)
-    : this(
-        excludedContentRatingTier:
-            json_['excludedContentRatingTier'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final excludedContentRatingTier = this.excludedContentRatingTier;
-    return {'excludedContentRatingTier': ?excludedContentRatingTier};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : DigitalContentLabelTargetingOptionDetails
-/// - displayvideo:v3 : DigitalContentLabelTargetingOptionDetails
-class $DigitalContentLabelTargetingOptionDetails {
-  /// An enum for the content label brand safety tiers.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "CONTENT_RATING_TIER_UNSPECIFIED" : Content label is not specified in
-  /// this version. This enum is a place holder for a default value and does not
-  /// represent a real content rating.
-  /// - "CONTENT_RATING_TIER_UNRATED" : Content that has not been labeled.
-  core.String? contentRatingTier;
-
-  $DigitalContentLabelTargetingOptionDetails({this.contentRatingTier});
-
-  $DigitalContentLabelTargetingOptionDetails.fromJson(core.Map json_)
-    : this(contentRatingTier: json_['contentRatingTier'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final contentRatingTier = this.contentRatingTier;
-    return {'contentRatingTier': ?contentRatingTier};
-  }
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.5 : DimensionValue
-/// - dfareporting:v5 : DimensionValue
-class $DimensionValue {
-  /// The name of the dimension.
-  core.String? dimensionName;
-
-  /// The eTag of this response for caching purposes.
-  core.String? etag;
-
-  /// The ID associated with the value if available.
-  core.String? id;
-
-  /// The kind of resource this is, in this case dfareporting#dimensionValue.
-  core.String? kind;
-
-  /// Determines how the 'value' field is matched when filtering.
-  ///
-  /// If not specified, defaults to EXACT. If set to WILDCARD_EXPRESSION, '*' is
-  /// allowed as a placeholder for variable length character sequences, and it
-  /// can be escaped with a backslash. Note, only paid search dimensions
-  /// ('dfa:paidSearch*') allow a matchType other than EXACT.
-  /// Possible string values are:
-  /// - "EXACT"
-  /// - "BEGINS_WITH"
-  /// - "CONTAINS"
-  /// - "WILDCARD_EXPRESSION"
-  core.String? matchType;
-
-  /// The value of the dimension.
-  core.String? value;
-
-  $DimensionValue({
-    this.dimensionName,
-    this.etag,
-    this.id,
-    this.kind,
-    this.matchType,
-    this.value,
-  });
-
-  $DimensionValue.fromJson(core.Map json_)
-    : this(
-        dimensionName: json_['dimensionName'] as core.String?,
-        etag: json_['etag'] as core.String?,
-        id: json_['id'] as core.String?,
-        kind: json_['kind'] as core.String?,
-        matchType: json_['matchType'] as core.String?,
-        value: json_['value'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final dimensionName = this.dimensionName;
-    final etag = this.etag;
-    final id = this.id;
-    final kind = this.kind;
-    final matchType = this.matchType;
-    final value = this.value;
-    return {
-      'dimensionName': ?dimensionName,
-      'etag': ?etag,
-      'id': ?id,
-      'kind': ?kind,
-      'matchType': ?matchType,
-      'value': ?value,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : Dimensions
-/// - displayvideo:v3 : Dimensions
-/// - displayvideo:v4 : Dimensions
-class $Dimensions {
-  /// The height in pixels.
-  core.int? heightPixels;
-
-  /// The width in pixels.
-  core.int? widthPixels;
-
-  $Dimensions({this.heightPixels, this.widthPixels});
-
-  $Dimensions.fromJson(core.Map json_)
-    : this(
-        heightPixels: json_['heightPixels'] as core.int?,
-        widthPixels: json_['widthPixels'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final heightPixels = this.heightPixels;
-    final widthPixels = this.widthPixels;
-    return {'heightPixels': ?heightPixels, 'widthPixels': ?widthPixels};
   }
 }
 
@@ -8118,26 +3119,6 @@ class $DisksStartAsyncReplicationRequest {
 
 /// Used by:
 ///
-/// - displayvideo:v2 : DisplayVideoSourceAd
-/// - displayvideo:v3 : DisplayVideoSourceAd
-/// - displayvideo:v4 : DisplayVideoSourceAd
-class $DisplayVideoSourceAd {
-  /// The ID of the source creative.
-  core.String? creativeId;
-
-  $DisplayVideoSourceAd({this.creativeId});
-
-  $DisplayVideoSourceAd.fromJson(core.Map json_)
-    : this(creativeId: json_['creativeId'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final creativeId = this.creativeId;
-    return {'creativeId': ?creativeId};
-  }
-}
-
-/// Used by:
-///
 /// - servicemanagement:v1 : DocumentationRule
 /// - serviceusage:v1 : DocumentationRule
 class $DocumentationRule {
@@ -8223,333 +3204,6 @@ class $DoubleList {
 
 /// Used by:
 ///
-/// - integrations:v1 : GoogleCloudIntegrationsV1alphaDoubleParameterArray
-/// - integrations:v2 : GoogleCloudIntegrationsV2DuetDoubleParameterArray
-class $DoubleParameterArray {
-  /// Double number array.
-  core.List<core.double>? doubleValues;
-
-  $DoubleParameterArray({this.doubleValues});
-
-  $DoubleParameterArray.fromJson(core.Map json_)
-    : this(
-        doubleValues: (json_['doubleValues'] as core.List?)
-            ?.map((value) => (value as core.num).toDouble())
-            .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final doubleValues = this.doubleValues;
-    return {'doubleValues': ?doubleValues};
-  }
-}
-
-/// Used by:
-///
-/// - trafficdirector:v2 : DoubleRange
-/// - trafficdirector:v3 : DoubleRange
-class $DoubleRange {
-  /// end of the range (exclusive)
-  core.double? end;
-
-  /// start of the range (inclusive)
-  core.double? start;
-
-  $DoubleRange({this.end, this.start});
-
-  $DoubleRange.fromJson(core.Map json_)
-    : this(
-        end: (json_['end'] as core.num?)?.toDouble(),
-        start: (json_['start'] as core.num?)?.toDouble(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final end = this.end;
-    final start = this.start;
-    return {'end': ?end, 'start': ?start};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : DoubleVerifyAppStarRating
-/// - displayvideo:v3 : DoubleVerifyAppStarRating
-/// - displayvideo:v4 : DoubleVerifyAppStarRating
-class $DoubleVerifyAppStarRating {
-  /// Avoid bidding on apps with insufficient star ratings.
-  core.bool? avoidInsufficientStarRating;
-
-  /// Avoid bidding on apps with the star ratings.
-  /// Possible string values are:
-  /// - "APP_STAR_RATE_UNSPECIFIED" : This enum is only a placeholder and it
-  /// doesn't specify any app star rating options.
-  /// - "APP_STAR_RATE_1_POINT_5_LESS" : Official Apps with rating \< 1.5 Stars.
-  /// - "APP_STAR_RATE_2_LESS" : Official Apps with rating \< 2 Stars.
-  /// - "APP_STAR_RATE_2_POINT_5_LESS" : Official Apps with rating \< 2.5 Stars.
-  /// - "APP_STAR_RATE_3_LESS" : Official Apps with rating \< 3 Stars.
-  /// - "APP_STAR_RATE_3_POINT_5_LESS" : Official Apps with rating \< 3.5 Stars.
-  /// - "APP_STAR_RATE_4_LESS" : Official Apps with rating \< 4 Stars.
-  /// - "APP_STAR_RATE_4_POINT_5_LESS" : Official Apps with rating \< 4.5 Stars.
-  core.String? avoidedStarRating;
-
-  $DoubleVerifyAppStarRating({
-    this.avoidInsufficientStarRating,
-    this.avoidedStarRating,
-  });
-
-  $DoubleVerifyAppStarRating.fromJson(core.Map json_)
-    : this(
-        avoidInsufficientStarRating:
-            json_['avoidInsufficientStarRating'] as core.bool?,
-        avoidedStarRating: json_['avoidedStarRating'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final avoidInsufficientStarRating = this.avoidInsufficientStarRating;
-    final avoidedStarRating = this.avoidedStarRating;
-    return {
-      'avoidInsufficientStarRating': ?avoidInsufficientStarRating,
-      'avoidedStarRating': ?avoidedStarRating,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : DoubleVerifyBrandSafetyCategories
-/// - displayvideo:v3 : DoubleVerifyBrandSafetyCategories
-/// - displayvideo:v4 : DoubleVerifyBrandSafetyCategories
-class $DoubleVerifyBrandSafetyCategories {
-  /// Unknown or unrateable.
-  core.bool? avoidUnknownBrandSafetyCategory;
-
-  /// Brand safety high severity avoidance categories.
-  core.List<core.String>? avoidedHighSeverityCategories;
-
-  /// Brand safety medium severity avoidance categories.
-  core.List<core.String>? avoidedMediumSeverityCategories;
-
-  $DoubleVerifyBrandSafetyCategories({
-    this.avoidUnknownBrandSafetyCategory,
-    this.avoidedHighSeverityCategories,
-    this.avoidedMediumSeverityCategories,
-  });
-
-  $DoubleVerifyBrandSafetyCategories.fromJson(core.Map json_)
-    : this(
-        avoidUnknownBrandSafetyCategory:
-            json_['avoidUnknownBrandSafetyCategory'] as core.bool?,
-        avoidedHighSeverityCategories:
-            (json_['avoidedHighSeverityCategories'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        avoidedMediumSeverityCategories:
-            (json_['avoidedMediumSeverityCategories'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final avoidUnknownBrandSafetyCategory =
-        this.avoidUnknownBrandSafetyCategory;
-    final avoidedHighSeverityCategories = this.avoidedHighSeverityCategories;
-    final avoidedMediumSeverityCategories =
-        this.avoidedMediumSeverityCategories;
-    return {
-      'avoidUnknownBrandSafetyCategory': ?avoidUnknownBrandSafetyCategory,
-      'avoidedHighSeverityCategories': ?avoidedHighSeverityCategories,
-      'avoidedMediumSeverityCategories': ?avoidedMediumSeverityCategories,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : DoubleVerifyDisplayViewability
-/// - displayvideo:v3 : DoubleVerifyDisplayViewability
-/// - displayvideo:v4 : DoubleVerifyDisplayViewability
-class $DoubleVerifyDisplayViewability {
-  /// Target web and app inventory to maximize IAB viewable rate.
-  /// Possible string values are:
-  /// - "IAB_VIEWED_RATE_UNSPECIFIED" : This enum is only a placeholder and it
-  /// doesn't specify any IAB viewed rate options.
-  /// - "IAB_VIEWED_RATE_80_PERCENT_HIGHER" : Target web and app inventory to
-  /// maximize IAB viewable rate 80% or higher.
-  /// - "IAB_VIEWED_RATE_75_PERCENT_HIGHER" : Target web and app inventory to
-  /// maximize IAB viewable rate 75% or higher.
-  /// - "IAB_VIEWED_RATE_70_PERCENT_HIGHER" : Target web and app inventory to
-  /// maximize IAB viewable rate 70% or higher.
-  /// - "IAB_VIEWED_RATE_65_PERCENT_HIGHER" : Target web and app inventory to
-  /// maximize IAB viewable rate 65% or higher.
-  /// - "IAB_VIEWED_RATE_60_PERCENT_HIGHER" : Target web and app inventory to
-  /// maximize IAB viewable rate 60% or higher.
-  /// - "IAB_VIEWED_RATE_55_PERCENT_HIGHER" : Target web and app inventory to
-  /// maximize IAB viewable rate 55% or higher.
-  /// - "IAB_VIEWED_RATE_50_PERCENT_HIGHER" : Target web and app inventory to
-  /// maximize IAB viewable rate 50% or higher.
-  /// - "IAB_VIEWED_RATE_40_PERCENT_HIGHER" : Target web and app inventory to
-  /// maximize IAB viewable rate 40% or higher.
-  /// - "IAB_VIEWED_RATE_30_PERCENT_HIGHER" : Target web and app inventory to
-  /// maximize IAB viewable rate 30% or higher.
-  core.String? iab;
-
-  /// Target web and app inventory to maximize 100% viewable duration.
-  /// Possible string values are:
-  /// - "AVERAGE_VIEW_DURATION_UNSPECIFIED" : This enum is only a placeholder
-  /// and it doesn't specify any average view duration options.
-  /// - "AVERAGE_VIEW_DURATION_5_SEC" : Target web and app inventory to maximize
-  /// 100% viewable duration 5 seconds or more.
-  /// - "AVERAGE_VIEW_DURATION_10_SEC" : Target web and app inventory to
-  /// maximize 100% viewable duration 10 seconds or more.
-  /// - "AVERAGE_VIEW_DURATION_15_SEC" : Target web and app inventory to
-  /// maximize 100% viewable duration 15 seconds or more.
-  core.String? viewableDuring;
-
-  $DoubleVerifyDisplayViewability({this.iab, this.viewableDuring});
-
-  $DoubleVerifyDisplayViewability.fromJson(core.Map json_)
-    : this(
-        iab: json_['iab'] as core.String?,
-        viewableDuring: json_['viewableDuring'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final iab = this.iab;
-    final viewableDuring = this.viewableDuring;
-    return {'iab': ?iab, 'viewableDuring': ?viewableDuring};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : DoubleVerifyFraudInvalidTraffic
-/// - displayvideo:v3 : DoubleVerifyFraudInvalidTraffic
-/// - displayvideo:v4 : DoubleVerifyFraudInvalidTraffic
-class $DoubleVerifyFraudInvalidTraffic {
-  /// Insufficient Historical Fraud & IVT Stats.
-  core.bool? avoidInsufficientOption;
-
-  /// Avoid Sites and Apps with historical Fraud & IVT.
-  /// Possible string values are:
-  /// - "FRAUD_UNSPECIFIED" : This enum is only a placeholder and it doesn't
-  /// specify any fraud and invalid traffic options.
-  /// - "AD_IMPRESSION_FRAUD_100" : 100% Fraud & IVT.
-  /// - "AD_IMPRESSION_FRAUD_50" : 50% or Higher Fraud & IVT.
-  /// - "AD_IMPRESSION_FRAUD_25" : 25% or Higher Fraud & IVT.
-  /// - "AD_IMPRESSION_FRAUD_10" : 10% or Higher Fraud & IVT.
-  /// - "AD_IMPRESSION_FRAUD_8" : 8% or Higher Fraud & IVT.
-  /// - "AD_IMPRESSION_FRAUD_6" : 6% or Higher Fraud & IVT.
-  /// - "AD_IMPRESSION_FRAUD_4" : 4% or Higher Fraud & IVT.
-  /// - "AD_IMPRESSION_FRAUD_2" : 2% or Higher Fraud & IVT.
-  core.String? avoidedFraudOption;
-
-  $DoubleVerifyFraudInvalidTraffic({
-    this.avoidInsufficientOption,
-    this.avoidedFraudOption,
-  });
-
-  $DoubleVerifyFraudInvalidTraffic.fromJson(core.Map json_)
-    : this(
-        avoidInsufficientOption: json_['avoidInsufficientOption'] as core.bool?,
-        avoidedFraudOption: json_['avoidedFraudOption'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final avoidInsufficientOption = this.avoidInsufficientOption;
-    final avoidedFraudOption = this.avoidedFraudOption;
-    return {
-      'avoidInsufficientOption': ?avoidInsufficientOption,
-      'avoidedFraudOption': ?avoidedFraudOption,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : DoubleVerifyVideoViewability
-/// - displayvideo:v3 : DoubleVerifyVideoViewability
-/// - displayvideo:v4 : DoubleVerifyVideoViewability
-class $DoubleVerifyVideoViewability {
-  /// Target inventory to maximize impressions with 400x300 or greater player
-  /// size.
-  /// Possible string values are:
-  /// - "PLAYER_SIZE_400X300_UNSPECIFIED" : This enum is only a placeholder and
-  /// it doesn't specify any impressions options.
-  /// - "PLAYER_SIZE_400X300_95" : Sites with 95%+ of impressions.
-  /// - "PLAYER_SIZE_400X300_70" : Sites with 70%+ of impressions.
-  /// - "PLAYER_SIZE_400X300_25" : Sites with 25%+ of impressions.
-  /// - "PLAYER_SIZE_400X300_5" : Sites with 5%+ of impressions.
-  core.String? playerImpressionRate;
-
-  /// Target web inventory to maximize IAB viewable rate.
-  /// Possible string values are:
-  /// - "VIDEO_IAB_UNSPECIFIED" : This enum is only a placeholder and it doesn't
-  /// specify any video IAB viewable rate options.
-  /// - "IAB_VIEWABILITY_80_PERCENT_HIGHER" : Target web and app inventory to
-  /// maximize IAB viewable rate 80% or higher.
-  /// - "IAB_VIEWABILITY_75_PERCENT_HIGHER" : Target web and app inventory to
-  /// maximize IAB viewable rate 75% or higher.
-  /// - "IAB_VIEWABILITY_70_PERCENT_HIGHER" : Target web and app inventory to
-  /// maximize IAB viewable rate 70% or higher.
-  /// - "IAB_VIEWABILITY_65_PERCENT_HIHGER" : Target web and app inventory to
-  /// maximize IAB viewable rate 65% or higher.
-  /// - "IAB_VIEWABILITY_60_PERCENT_HIGHER" : Target web and app inventory to
-  /// maximize IAB viewable rate 60% or higher.
-  /// - "IAB_VIEWABILITY_55_PERCENT_HIHGER" : Target web and app inventory to
-  /// maximize IAB viewable rate 55% or higher.
-  /// - "IAB_VIEWABILITY_50_PERCENT_HIGHER" : Target web and app inventory to
-  /// maximize IAB viewable rate 50% or higher.
-  /// - "IAB_VIEWABILITY_40_PERCENT_HIHGER" : Target web and app inventory to
-  /// maximize IAB viewable rate 40% or higher.
-  /// - "IAB_VIEWABILITY_30_PERCENT_HIHGER" : Target web and app inventory to
-  /// maximize IAB viewable rate 30% or higher.
-  core.String? videoIab;
-
-  /// Target web inventory to maximize fully viewable rate.
-  /// Possible string values are:
-  /// - "VIDEO_VIEWABLE_RATE_UNSPECIFIED" : This enum is only a placeholder and
-  /// it doesn't specify any video viewable rate options.
-  /// - "VIEWED_PERFORMANCE_40_PERCENT_HIGHER" : Target web inventory to
-  /// maximize fully viewable rate 40% or higher.
-  /// - "VIEWED_PERFORMANCE_35_PERCENT_HIGHER" : Target web inventory to
-  /// maximize fully viewable rate 35% or higher.
-  /// - "VIEWED_PERFORMANCE_30_PERCENT_HIGHER" : Target web inventory to
-  /// maximize fully viewable rate 30% or higher.
-  /// - "VIEWED_PERFORMANCE_25_PERCENT_HIGHER" : Target web inventory to
-  /// maximize fully viewable rate 25% or higher.
-  /// - "VIEWED_PERFORMANCE_20_PERCENT_HIGHER" : Target web inventory to
-  /// maximize fully viewable rate 20% or higher.
-  /// - "VIEWED_PERFORMANCE_10_PERCENT_HIGHER" : Target web inventory to
-  /// maximize fully viewable rate 10% or higher.
-  core.String? videoViewableRate;
-
-  $DoubleVerifyVideoViewability({
-    this.playerImpressionRate,
-    this.videoIab,
-    this.videoViewableRate,
-  });
-
-  $DoubleVerifyVideoViewability.fromJson(core.Map json_)
-    : this(
-        playerImpressionRate: json_['playerImpressionRate'] as core.String?,
-        videoIab: json_['videoIab'] as core.String?,
-        videoViewableRate: json_['videoViewableRate'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final playerImpressionRate = this.playerImpressionRate;
-    final videoIab = this.videoIab;
-    final videoViewableRate = this.videoViewableRate;
-    return {
-      'playerImpressionRate': ?playerImpressionRate,
-      'videoIab': ?videoIab,
-      'videoViewableRate': ?videoViewableRate,
-    };
-  }
-}
-
-/// Used by:
-///
 /// - firebaseappdistribution:v1 : GdataDownloadParameters
 /// - walletobjects:v1 : DownloadParameters
 class $DownloadParameters {
@@ -8629,210 +3283,6 @@ class $DrainingMachine {
 
 /// Used by:
 ///
-/// - displayvideo:v2 : DuplicateLineItemRequest
-/// - displayvideo:v3 : DuplicateLineItemRequest
-/// - displayvideo:v4 : DuplicateLineItemRequest
-class $DuplicateLineItemRequest {
-  /// Whether this line item will serve European Union political ads.
-  ///
-  /// If contains_eu_political_ads has been set to
-  /// `DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` in the parent advertiser, then
-  /// this field will be assigned `DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` if
-  /// not otherwise specified. This field can then be updated using the UI, API,
-  /// or Structured Data Files. This field must be assigned when creating a new
-  /// line item. Otherwise, **the `advertisers.lineItems.create` request will
-  /// fail**.
-  /// Possible string values are:
-  /// - "EU_POLITICAL_ADVERTISING_STATUS_UNKNOWN" : Unknown.
-  /// - "CONTAINS_EU_POLITICAL_ADVERTISING" : Contains EU political advertising.
-  /// - "DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING" : Does not contain EU
-  /// political advertising.
-  core.String? containsEuPoliticalAds;
-
-  /// The display name of the new line item.
-  ///
-  /// Must be UTF-8 encoded with a maximum size of 240 bytes.
-  core.String? targetDisplayName;
-
-  $DuplicateLineItemRequest({
-    this.containsEuPoliticalAds,
-    this.targetDisplayName,
-  });
-
-  $DuplicateLineItemRequest.fromJson(core.Map json_)
-    : this(
-        containsEuPoliticalAds: json_['containsEuPoliticalAds'] as core.String?,
-        targetDisplayName: json_['targetDisplayName'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final containsEuPoliticalAds = this.containsEuPoliticalAds;
-    final targetDisplayName = this.targetDisplayName;
-    return {
-      'containsEuPoliticalAds': ?containsEuPoliticalAds,
-      'targetDisplayName': ?targetDisplayName,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : DuplicateLineItemResponse
-/// - displayvideo:v3 : DuplicateLineItemResponse
-/// - displayvideo:v4 : DuplicateLineItemResponse
-class $DuplicateLineItemResponse {
-  /// The ID of the created line item.
-  core.String? duplicateLineItemId;
-
-  $DuplicateLineItemResponse({this.duplicateLineItemId});
-
-  $DuplicateLineItemResponse.fromJson(core.Map json_)
-    : this(duplicateLineItemId: json_['duplicateLineItemId'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final duplicateLineItemId = this.duplicateLineItemId;
-    return {'duplicateLineItemId': ?duplicateLineItemId};
-  }
-}
-
-/// Used by:
-///
-/// - trafficdirector:v2 : DynamicListenerState
-/// - trafficdirector:v3 : DynamicListenerState
-class $DynamicListenerState {
-  /// The timestamp when the Listener was last successfully updated.
-  core.String? lastUpdated;
-
-  /// The listener config.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object?>? listener;
-
-  /// This is the per-resource version information.
-  ///
-  /// This version is currently taken from the :ref:`version_info ` field at the
-  /// time that the listener was loaded. In the future, discrete per-listener
-  /// versions may be supported by the API.
-  core.String? versionInfo;
-
-  $DynamicListenerState({this.lastUpdated, this.listener, this.versionInfo});
-
-  $DynamicListenerState.fromJson(core.Map json_)
-    : this(
-        lastUpdated: json_['lastUpdated'] as core.String?,
-        listener: json_.containsKey('listener')
-            ? json_['listener'] as core.Map<core.String, core.dynamic>
-            : null,
-        versionInfo: json_['versionInfo'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final lastUpdated = this.lastUpdated;
-    final listener = this.listener;
-    final versionInfo = this.versionInfo;
-    return {
-      'lastUpdated': ?lastUpdated,
-      'listener': ?listener,
-      'versionInfo': ?versionInfo,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : EditGuaranteedOrderReadAccessorsRequest
-/// - displayvideo:v3 : EditGuaranteedOrderReadAccessorsRequest
-/// - displayvideo:v4 : EditGuaranteedOrderReadAccessorsRequest
-class $EditGuaranteedOrderReadAccessorsRequest {
-  /// The advertisers to add as read accessors to the guaranteed order.
-  core.List<core.String>? addedAdvertisers;
-
-  /// The partner context in which the change is being made.
-  ///
-  /// Required.
-  core.String? partnerId;
-
-  /// Whether to give all advertisers of the read/write accessor partner read
-  /// access to the guaranteed order.
-  ///
-  /// Only applicable if read_write_partner_id is set in the guaranteed order.
-  core.bool? readAccessInherited;
-
-  /// The advertisers to remove as read accessors to the guaranteed order.
-  core.List<core.String>? removedAdvertisers;
-
-  $EditGuaranteedOrderReadAccessorsRequest({
-    this.addedAdvertisers,
-    this.partnerId,
-    this.readAccessInherited,
-    this.removedAdvertisers,
-  });
-
-  $EditGuaranteedOrderReadAccessorsRequest.fromJson(core.Map json_)
-    : this(
-        addedAdvertisers: (json_['addedAdvertisers'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-        partnerId: json_['partnerId'] as core.String?,
-        readAccessInherited: json_['readAccessInherited'] as core.bool?,
-        removedAdvertisers: (json_['removedAdvertisers'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final addedAdvertisers = this.addedAdvertisers;
-    final partnerId = this.partnerId;
-    final readAccessInherited = this.readAccessInherited;
-    final removedAdvertisers = this.removedAdvertisers;
-    return {
-      'addedAdvertisers': ?addedAdvertisers,
-      'partnerId': ?partnerId,
-      'readAccessInherited': ?readAccessInherited,
-      'removedAdvertisers': ?removedAdvertisers,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : EditGuaranteedOrderReadAccessorsResponse
-/// - displayvideo:v3 : EditGuaranteedOrderReadAccessorsResponse
-/// - displayvideo:v4 : EditGuaranteedOrderReadAccessorsResponse
-class $EditGuaranteedOrderReadAccessorsResponse {
-  /// Whether all advertisers of read_write_partner_id have read access to the
-  /// guaranteed order.
-  core.bool? readAccessInherited;
-
-  /// The IDs of advertisers with read access to the guaranteed order.
-  core.List<core.String>? readAdvertiserIds;
-
-  $EditGuaranteedOrderReadAccessorsResponse({
-    this.readAccessInherited,
-    this.readAdvertiserIds,
-  });
-
-  $EditGuaranteedOrderReadAccessorsResponse.fromJson(core.Map json_)
-    : this(
-        readAccessInherited: json_['readAccessInherited'] as core.bool?,
-        readAdvertiserIds: (json_['readAdvertiserIds'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final readAccessInherited = this.readAccessInherited;
-    final readAdvertiserIds = this.readAdvertiserIds;
-    return {
-      'readAccessInherited': ?readAccessInherited,
-      'readAdvertiserIds': ?readAdvertiserIds,
-    };
-  }
-}
-
-/// Used by:
-///
 /// - accessapproval:v1 : DismissApprovalRequestMessage
 /// - accessapproval:v1 : Empty
 /// - accessapproval:v1 : InvalidateApprovalRequestMessage
@@ -8848,18 +3298,6 @@ class $EditGuaranteedOrderReadAccessorsResponse {
 /// - adsenseplatform:v1 : RequestSiteReviewResponse
 /// - agenciesandbrands:v1 : Empty
 /// - agenciesandbrands:v1 : RunReportRequest
-/// - agentidentity:v1 : AgentIdentityPool
-/// - agentidentity:v1 : DirectIdJagInput
-/// - agentidentity:v1 : Empty
-/// - agentidentity:v1 : GeminiEnterpriseAuthProviderParams
-/// - agentidentity:v1 : GoogleAccount
-/// - agentidentity:v1 : RevokeAuthorizationResponse
-/// - agentidentity:v1 : WorkforceIdentityFederation
-/// - agentidentitycredentials:v1 : GoogleCloudAgentidentitycredentialsV1_ConsentRejected
-/// - agentidentitycredentials:v1 : GoogleCloudAgentidentitycredentialsV1_FinalizeCredentialsResponse
-/// - agentidentitycredentials:v1 : GoogleCloudAgentidentitycredentialsV1_Pending
-/// - agentregistry:v1 : CancelOperationRequest
-/// - agentregistry:v1 : Empty
 /// - aiplatform:v1 : GenaiVertexV1CodeExecution
 /// - aiplatform:v1 : GenaiVertexV1DeleteInteractionResponse
 /// - aiplatform:v1 : GenaiVertexV1FileSearchCallDelta
@@ -9039,8 +3477,6 @@ class $EditGuaranteedOrderReadAccessorsResponse {
 /// - assuredworkloads:v1 : GoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse
 /// - assuredworkloads:v1 : GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse
 /// - assuredworkloads:v1 : GoogleProtobufEmpty
-/// - auditmanager:v1 : CancelOperationRequest
-/// - auditmanager:v1 : Empty
 /// - authorizedbuyersmarketplace:v1 : ActivateClientRequest
 /// - authorizedbuyersmarketplace:v1 : ActivateClientUserRequest
 /// - authorizedbuyersmarketplace:v1 : CancelNegotiationRequest
@@ -9102,8 +3538,6 @@ class $EditGuaranteedOrderReadAccessorsResponse {
 /// - billingbudgets:v1 : GoogleCloudBillingBudgetsV1LastPeriodAmount
 /// - billingbudgets:v1 : GoogleProtobufEmpty
 /// - binaryauthorization:v1 : Empty
-/// - blockchainnodeengine:v1 : CancelOperationRequest
-/// - blockchainnodeengine:v1 : GoogleProtobufEmpty
 /// - books:v1 : Empty
 /// - certificatemanager:v1 : CancelOperationRequest
 /// - certificatemanager:v1 : Empty
@@ -9197,7 +3631,6 @@ class $EditGuaranteedOrderReadAccessorsResponse {
 /// - cloudresourcemanager:v1 : GetAncestryRequest
 /// - cloudresourcemanager:v1 : RestoreDefault
 /// - cloudresourcemanager:v1 : UndeleteProjectRequest
-/// - cloudresourcemanager:v2 : UndeleteFolderRequest
 /// - cloudresourcemanager:v3 : Empty
 /// - cloudresourcemanager:v3 : UndeleteFolderRequest
 /// - cloudresourcemanager:v3 : UndeleteProjectRequest
@@ -9229,15 +3662,6 @@ class $EditGuaranteedOrderReadAccessorsResponse {
 /// - config:v1 : ExportPreviewResultRequest
 /// - config:v1 : ExportRevisionStatefileRequest
 /// - config:v1 : LockDeploymentRequest
-/// - connectors:v1 : CancelOperationRequest
-/// - connectors:v1 : DeprecateCustomConnectorVersionRequest
-/// - connectors:v1 : Empty
-/// - connectors:v1 : ListenEventResponse
-/// - connectors:v1 : RefreshConnectionSchemaMetadataRequest
-/// - connectors:v1 : RemoveConnectionToolspecOverrideRequest
-/// - connectors:v1 : RepairEventingRequest
-/// - connectors:v1 : RetryEventSubscriptionRequest
-/// - connectors:v1 : WithdrawCustomConnectorVersionRequest
 /// - connectors:v2 : Empty
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1AppealAssessmentRequest
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1DeployQaScorecardRevisionRequest
@@ -9264,14 +3688,6 @@ class $EditGuaranteedOrderReadAccessorsResponse {
 /// - curationpartners:v1 : DeactivateDataSegmentRequest
 /// - curationpartners:v1 : Empty
 /// - curationpartners:v1 : RunReportRequest
-/// - datacatalog:v1 : Empty
-/// - datacatalog:v1 : GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema
-/// - datacatalog:v1 : GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema
-/// - datacatalog:v1 : GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema
-/// - datacatalog:v1 : GoogleCloudDatacatalogV1StarEntryRequest
-/// - datacatalog:v1 : GoogleCloudDatacatalogV1StarEntryResponse
-/// - datacatalog:v1 : GoogleCloudDatacatalogV1UnstarEntryRequest
-/// - datacatalog:v1 : GoogleCloudDatacatalogV1UnstarEntryResponse
 /// - dataform:v1 : ActionSimpleLoadMode
 /// - dataform:v1 : CancelOperationRequest
 /// - dataform:v1 : CancelWorkflowInvocationRequest
@@ -9372,11 +3788,6 @@ class $EditGuaranteedOrderReadAccessorsResponse {
 /// - developerconnect:v1 : FetchAccessTokenRequest
 /// - developerconnect:v1 : FetchReadTokenRequest
 /// - developerconnect:v1 : FetchReadWriteTokenRequest
-/// - devicerun:v1 : CatalogAndroidxTestOrchestratorDetails
-/// - devicerun:v1 : CatalogAutomationSupport
-/// - devicerun:v1 : CatalogIosDeviceDetails
-/// - devicerun:v1 : Empty
-/// - devicerun:v1 : GoogleLongrunningCancelOperationRequest
 /// - dialogflow:v2 : GoogleCloudDialogflowV2AgentAssistantFeedbackCompanionFeedback
 /// - dialogflow:v2 : GoogleCloudDialogflowV2CompanionAgentKnowledgeSource
 /// - dialogflow:v2 : GoogleCloudDialogflowV2CompleteConversationRequest
@@ -9395,17 +3806,6 @@ class $EditGuaranteedOrderReadAccessorsResponse {
 /// - dialogflow:v3 : GoogleCloudDialogflowCxV3ToolDataStoreToolFallbackPrompt
 /// - dialogflow:v3 : GoogleCloudDialogflowCxV3TrainFlowRequest
 /// - dialogflow:v3 : GoogleProtobufEmpty
-/// - displayvideo:v2 : ActivateManualTriggerRequest
-/// - displayvideo:v2 : DeactivateManualTriggerRequest
-/// - displayvideo:v2 : Empty
-/// - displayvideo:v3 : AdPolicyTopicConstraintAdPolicyGlobalCertificateDomainMismatchConstraint
-/// - displayvideo:v3 : AdPolicyTopicConstraintAdPolicyGlobalCertificateMissingConstraint
-/// - displayvideo:v3 : AdPolicyTopicConstraintAdPolicyResellerConstraint
-/// - displayvideo:v3 : Empty
-/// - displayvideo:v4 : AdPolicyTopicConstraintAdPolicyGlobalCertificateDomainMismatchConstraint
-/// - displayvideo:v4 : AdPolicyTopicConstraintAdPolicyGlobalCertificateMissingConstraint
-/// - displayvideo:v4 : AdPolicyTopicConstraintAdPolicyResellerConstraint
-/// - displayvideo:v4 : Empty
 /// - dlp:v2 : GooglePrivacyDlpV2ActivateJobTriggerRequest
 /// - dlp:v2 : GooglePrivacyDlpV2AllInfoTypes
 /// - dlp:v2 : GooglePrivacyDlpV2AllMessages
@@ -9447,7 +3847,6 @@ class $EditGuaranteedOrderReadAccessorsResponse {
 /// - documentai:v1 : GoogleCloudDocumentaiV1EnableProcessorRequest
 /// - documentai:v1 : GoogleCloudDocumentaiV1UndeployProcessorVersionRequest
 /// - documentai:v1 : GoogleProtobufEmpty
-/// - domains:v1 : ResetAuthorizationCodeRequest
 /// - doubleclicksearch:v2 : IdMappingFile
 /// - driveactivity:v2 : Administrator
 /// - driveactivity:v2 : AnonymousUser
@@ -9491,8 +3890,6 @@ class $EditGuaranteedOrderReadAccessorsResponse {
 /// - firebasedataconnect:v1 : Empty
 /// - firebasehosting:v1 : CancelOperationRequest
 /// - firebasehosting:v1 : Empty
-/// - firebaseml:v1 : CancelOperationRequest
-/// - firebaseml:v1 : Empty
 /// - firebaserules:v1 : Empty
 /// - firestore:v1 : Empty
 /// - firestore:v1 : GoogleFirestoreAdminV1DailyRecurrence
@@ -9508,21 +3905,8 @@ class $EditGuaranteedOrderReadAccessorsResponse {
 /// - forms:v1 : PageBreakItem
 /// - forms:v1 : RenewWatchRequest
 /// - forms:v1 : TextItem
-/// - ftp:v1 : CancelOperationRequest
-/// - ftp:v1 : Empty
-/// - ftp:v1 : StartServerRequest
-/// - ftp:v1 : StopServerRequest
 /// - gkebackup:v1 : Empty
 /// - gkebackup:v1 : GoogleLongrunningCancelOperationRequest
-/// - gkehub:v1 : AppDevExperienceFeatureSpec
-/// - gkehub:v1 : CancelOperationRequest
-/// - gkehub:v1 : CancelRolloutRequest
-/// - gkehub:v1 : Empty
-/// - gkehub:v1 : FleetObservabilityMembershipSpec
-/// - gkehub:v1 : FleetObservabilityMembershipState
-/// - gkehub:v1 : PauseRolloutRequest
-/// - gkehub:v1 : RBACRoleBindingActuationFeatureState
-/// - gkehub:v1 : ScopeFeatureSpec
 /// - gkehub:v2 : CancelOperationRequest
 /// - gkehub:v2 : Empty
 /// - gkehub:v2 : RBACRoleBindingActuationSpec
@@ -9544,8 +3928,6 @@ class $EditGuaranteedOrderReadAccessorsResponse {
 /// - healthcare:v1 : SchemaJSON
 /// - homegraph:v1 : Empty
 /// - homegraph:v1 : RequestSyncDevicesResponse
-/// - hypercomputecluster:v1 : CancelOperationRequest
-/// - hypercomputecluster:v1 : Empty
 /// - iam:v1 : DisableServiceAccountKeyRequest
 /// - iam:v1 : DisableServiceAccountRequest
 /// - iam:v1 : Empty
@@ -9576,16 +3958,6 @@ class $EditGuaranteedOrderReadAccessorsResponse {
 /// - identitytoolkit:v2 : GoogleProtobufEmpty
 /// - ids:v1 : CancelOperationRequest
 /// - ids:v1 : Empty
-/// - integrations:v1 : GoogleCloudIntegrationsV1alphaDeprovisionClientRequest
-/// - integrations:v1 : GoogleCloudIntegrationsV1alphaExecuteTestCasesRequest
-/// - integrations:v1 : GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorResponse
-/// - integrations:v1 : GoogleCloudIntegrationsV1alphaPublishIntegrationVersionResponse
-/// - integrations:v1 : GoogleCloudIntegrationsV1alphaResolveSuspensionResponse
-/// - integrations:v1 : GoogleCloudIntegrationsV1alphaTakeoverEditLockRequest
-/// - integrations:v1 : GoogleCloudIntegrationsV1alphaTakeoverTestCaseEditLockRequest
-/// - integrations:v1 : GoogleCloudIntegrationsV1alphaUnpublishIntegrationVersionRequest
-/// - integrations:v1 : GoogleProtobufEmpty
-/// - jobs:v3 : Empty
 /// - jobs:v4 : Empty
 /// - keep:v1 : Empty
 /// - keep:v1 : Family
@@ -9617,8 +3989,6 @@ class $EditGuaranteedOrderReadAccessorsResponse {
 /// - manufacturers:v1 : Empty
 /// - meet:v2 : Empty
 /// - meet:v2 : EndActiveConferenceRequest
-/// - memcache:v1 : CancelOperationRequest
-/// - memcache:v1 : Empty
 /// - merchantapi:accounts_v1 : AccountAggregation
 /// - merchantapi:accounts_v1 : AccountManagement
 /// - merchantapi:accounts_v1 : ApproveAccountServiceRequest
@@ -9645,10 +4015,6 @@ class $EditGuaranteedOrderReadAccessorsResponse {
 /// - merchantapi:lfp_v1 : Empty
 /// - merchantapi:notifications_v1 : Empty
 /// - merchantapi:products_v1 : Empty
-/// - metastore:v1 : CancelMigrationRequest
-/// - metastore:v1 : CancelOperationRequest
-/// - metastore:v1 : CompleteMigrationRequest
-/// - metastore:v1 : Empty
 /// - migrationcenter:v1 : AggregationCount
 /// - migrationcenter:v1 : AggregationFrequency
 /// - migrationcenter:v1 : AggregationSum
@@ -9659,12 +4025,6 @@ class $EditGuaranteedOrderReadAccessorsResponse {
 /// - migrationcenter:v1 : CascadeLogicalDBsRule
 /// - migrationcenter:v1 : Empty
 /// - migrationcenter:v1 : ReportAssetFramesResponse
-/// - ml:v1 : GoogleCloudMlV1__CancelJobRequest
-/// - ml:v1 : GoogleCloudMlV1__CheckTrialEarlyStoppingStateRequest
-/// - ml:v1 : GoogleCloudMlV1__ListOptimalTrialsRequest
-/// - ml:v1 : GoogleCloudMlV1__SetDefaultVersionRequest
-/// - ml:v1 : GoogleCloudMlV1__StopTrialRequest
-/// - ml:v1 : GoogleProtobuf__Empty
 /// - monitoring:v3 : AvailabilityCriteria
 /// - monitoring:v3 : Custom
 /// - monitoring:v3 : Empty
@@ -9695,13 +4055,6 @@ class $EditGuaranteedOrderReadAccessorsResponse {
 /// - networksecurity:v1 : Empty
 /// - networkservices:v1 : CancelOperationRequest
 /// - networkservices:v1 : Empty
-/// - notebooks:v1 : BootImage
-/// - notebooks:v1 : CancelOperationRequest
-/// - notebooks:v1 : Empty
-/// - notebooks:v1 : ResetInstanceRequest
-/// - notebooks:v1 : StartInstanceRequest
-/// - notebooks:v1 : StopInstanceRequest
-/// - notebooks:v1 : TriggerScheduleRequest
 /// - notebooks:v2 : CancelOperationRequest
 /// - notebooks:v2 : Empty
 /// - notebooks:v2 : ResetInstanceRequest
@@ -9724,12 +4077,6 @@ class $EditGuaranteedOrderReadAccessorsResponse {
 /// - oracledatabase:v1 : StopGoldengateDeploymentRequest
 /// - oracledatabase:v1 : TestDatabaseConnectionRequest
 /// - orgpolicy:v2 : GoogleProtobufEmpty
-/// - osconfig:v1 : CancelOperationRequest
-/// - osconfig:v1 : CancelPatchJobRequest
-/// - osconfig:v1 : Empty
-/// - osconfig:v1 : GooSettings
-/// - osconfig:v1 : PausePatchDeploymentRequest
-/// - osconfig:v1 : ResumePatchDeploymentRequest
 /// - osconfig:v2 : CancelOperationRequest
 /// - osconfig:v2 : Empty
 /// - oslogin:v1 : Empty
@@ -9751,9 +4098,6 @@ class $EditGuaranteedOrderReadAccessorsResponse {
 /// - pubsub:v1 : TextConfig
 /// - pubsub:v1 : ValidateMessageResponse
 /// - pubsub:v1 : ValidateSchemaResponse
-/// - pubsublite:v1 : CancelOperationRequest
-/// - pubsublite:v1 : CommitCursorResponse
-/// - pubsublite:v1 : Empty
 /// - readerrevenuesubscriptionlinking:v1 : DeleteReaderResponse
 /// - realtimebidding:v1 : ActivatePretargetingConfigRequest
 /// - realtimebidding:v1 : CloseUserListRequest
@@ -9779,8 +4123,6 @@ class $EditGuaranteedOrderReadAccessorsResponse {
 /// - retail:v2 : GoogleCloudRetailV2ResumeModelRequest
 /// - retail:v2 : GoogleCloudRetailV2TuneModelRequest
 /// - retail:v2 : GoogleProtobufEmpty
-/// - run:v1 : CancelExecutionRequest
-/// - run:v1 : Empty
 /// - run:v2 : GoogleCloudRunV2BuildConfigurationDockerBuild
 /// - run:v2 : GoogleCloudRunV2DockerBuild
 /// - run:v2 : GoogleProtobufEmpty
@@ -9788,7 +4130,6 @@ class $EditGuaranteedOrderReadAccessorsResponse {
 /// - runtimeconfig:v1 : Empty
 /// - saasservicemgmt:v1 : Deprovision
 /// - saasservicemgmt:v1 : Empty
-/// - safebrowsing:v4 : GoogleProtobufEmpty
 /// - script:v1 : Empty
 /// - searchads360:v23 : GoogleAdsSearchads360V23Common_PolicyTopicConstraint_ResellerConstraint
 /// - searchads360:v23 : GoogleAdsSearchads360V23Common__BookOnGoogleAsset
@@ -9850,9 +4191,6 @@ class $EditGuaranteedOrderReadAccessorsResponse {
 /// - sqladmin:v1 : Empty
 /// - sqladmin:v1 : StopWorkloadReplayContext
 /// - sqladmin:v1 : SwitchoverBlueGreenDeploymentRequest
-/// - storagebatchoperations:v1 : CancelJobResponse
-/// - storagebatchoperations:v1 : CancelOperationRequest
-/// - storagebatchoperations:v1 : Empty
 /// - storagetransfer:v1 : CancelOperationRequest
 /// - storagetransfer:v1 : Empty
 /// - storagetransfer:v1 : PauseTransferOperationRequest
@@ -9865,7 +4203,6 @@ class $EditGuaranteedOrderReadAccessorsResponse {
 /// - testing:v1 : NoActivityIntent
 /// - texttospeech:v1 : CancelOperationRequest
 /// - texttospeech:v1 : Empty
-/// - tpu:v1 : Empty
 /// - tpu:v2 : AcceptedData
 /// - tpu:v2 : ActiveData
 /// - tpu:v2 : CreatingData
@@ -9879,7 +4216,6 @@ class $EditGuaranteedOrderReadAccessorsResponse {
 /// - tpu:v2 : StopNodeRequest
 /// - tpu:v2 : SuspendedData
 /// - tpu:v2 : SuspendingData
-/// - trafficdirector:v2 : NullMatch
 /// - trafficdirector:v3 : NullMatch
 /// - transcoder:v1 : Aes128Encryption
 /// - transcoder:v1 : Clearkey
@@ -9906,10 +4242,7 @@ class $EditGuaranteedOrderReadAccessorsResponse {
 /// - vault:v1 : HeldGeminiQuery
 /// - vault:v1 : ReopenMatterRequest
 /// - vault:v1 : UndeleteMatterRequest
-/// - verifiedaccess:v1 : Empty
 /// - verifiedaccess:v2 : Empty
-/// - videointelligence:v1 : GoogleLongrunning_CancelOperationRequest
-/// - videointelligence:v1 : GoogleProtobuf_Empty
 /// - vision:v1 : CancelOperationRequest
 /// - vision:v1 : Empty
 /// - vmmigration:v1 : AdaptingOSStep
@@ -9994,43 +4327,6 @@ class $EncryptionConfig {
   core.Map<core.String, core.dynamic> toJson() {
     final kmsKeyName = this.kmsKeyName;
     return {'kmsKeyName': ?kmsKeyName};
-  }
-}
-
-/// Used by:
-///
-/// - connectors:v1 : EncryptionKey
-/// - integrations:v1 : GoogleCloudConnectorsV1EncryptionKey
-class $EncryptionKey {
-  /// The \[KMS key name\] with which the content of the Operation is encrypted.
-  ///
-  /// The expected format: `projects / * /locations / * /keyRings / *
-  /// /cryptoKeys / * `. Will be empty string if google managed.
-  ///
-  /// Optional.
-  core.String? kmsKeyName;
-
-  /// Specifies the type of the encryption key.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "TYPE_UNSPECIFIED" : Value type is not specified.
-  /// - "GOOGLE_MANAGED" : Google Managed.
-  /// - "CUSTOMER_MANAGED" : Customer Managed.
-  core.String? type;
-
-  $EncryptionKey({this.kmsKeyName, this.type});
-
-  $EncryptionKey.fromJson(core.Map json_)
-    : this(
-        kmsKeyName: json_['kmsKeyName'] as core.String?,
-        type: json_['type'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final kmsKeyName = this.kmsKeyName;
-    final type = this.type;
-    return {'kmsKeyName': ?kmsKeyName, 'type': ?type};
   }
 }
 
@@ -10159,27 +4455,6 @@ class $EndpointGroupAssociationLocationDetails {
 
 /// Used by:
 ///
-/// - connectors:v1 : EnrichmentConfig
-/// - integrations:v1 : GoogleCloudConnectorsV1EnrichmentConfig
-class $EnrichmentConfig {
-  /// Append ACL to the event.
-  ///
-  /// Optional.
-  core.bool? appendAcl;
-
-  $EnrichmentConfig({this.appendAcl});
-
-  $EnrichmentConfig.fromJson(core.Map json_)
-    : this(appendAcl: json_['appendAcl'] as core.bool?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final appendAcl = this.appendAcl;
-    return {'appendAcl': ?appendAcl};
-  }
-}
-
-/// Used by:
-///
 /// - datamigration:v1 : DatabaseInstanceEntity
 /// - datamigration:v1 : SchemaEntity
 class $Entity {
@@ -10262,127 +4537,6 @@ class $EnvelopeSignature {
 
 /// Used by:
 ///
-/// - agentregistry:v1 : Environment
-/// - apphub:v1 : Environment
-class $Environment {
-  /// Environment Type.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "TYPE_UNSPECIFIED" : Unspecified type.
-  /// - "PRODUCTION" : Production environment.
-  /// - "STAGING" : Staging environment.
-  /// - "TEST" : Test environment.
-  /// - "DEVELOPMENT" : Development environment.
-  core.String? type;
-
-  $Environment({this.type});
-
-  $Environment.fromJson(core.Map json_)
-    : this(type: json_['type'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final type = this.type;
-    return {'type': ?type};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : EnvironmentAssignedTargetingOptionDetails
-/// - displayvideo:v3 : EnvironmentAssignedTargetingOptionDetails
-/// - displayvideo:v4 : EnvironmentAssignedTargetingOptionDetails
-class $EnvironmentAssignedTargetingOptionDetails {
-  /// The serving environment.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "ENVIRONMENT_UNSPECIFIED" : Default value when environment is not
-  /// specified in this version. This enum is a placeholder for default value
-  /// and does not represent a real environment option.
-  /// - "ENVIRONMENT_WEB_OPTIMIZED" : Target inventory displayed in browsers.
-  /// This includes inventory that was designed for the device it was viewed on,
-  /// such as mobile websites viewed on a mobile device.
-  /// ENVIRONMENT_WEB_NOT_OPTIMIZED, if targeted, should be deleted prior to the
-  /// deletion of this targeting option.
-  /// - "ENVIRONMENT_WEB_NOT_OPTIMIZED" : Target inventory displayed in
-  /// browsers. This includes inventory that was not designed for the device but
-  /// viewed on it, such as websites optimized for desktop but viewed on a
-  /// mobile device. ENVIRONMENT_WEB_OPTIMIZED should be targeted prior to the
-  /// addition of this targeting option.
-  /// - "ENVIRONMENT_APP" : Target inventory displayed in apps.
-  core.String? environment;
-
-  $EnvironmentAssignedTargetingOptionDetails({this.environment});
-
-  $EnvironmentAssignedTargetingOptionDetails.fromJson(core.Map json_)
-    : this(environment: json_['environment'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final environment = this.environment;
-    return {'environment': ?environment};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : EnvironmentTargetingOptionDetails
-/// - displayvideo:v3 : EnvironmentTargetingOptionDetails
-/// - displayvideo:v4 : EnvironmentTargetingOptionDetails
-class $EnvironmentTargetingOptionDetails {
-  /// The serving environment.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "ENVIRONMENT_UNSPECIFIED" : Default value when environment is not
-  /// specified in this version. This enum is a placeholder for default value
-  /// and does not represent a real environment option.
-  /// - "ENVIRONMENT_WEB_OPTIMIZED" : Target inventory displayed in browsers.
-  /// This includes inventory that was designed for the device it was viewed on,
-  /// such as mobile websites viewed on a mobile device.
-  /// ENVIRONMENT_WEB_NOT_OPTIMIZED, if targeted, should be deleted prior to the
-  /// deletion of this targeting option.
-  /// - "ENVIRONMENT_WEB_NOT_OPTIMIZED" : Target inventory displayed in
-  /// browsers. This includes inventory that was not designed for the device but
-  /// viewed on it, such as websites optimized for desktop but viewed on a
-  /// mobile device. ENVIRONMENT_WEB_OPTIMIZED should be targeted prior to the
-  /// addition of this targeting option.
-  /// - "ENVIRONMENT_APP" : Target inventory displayed in apps.
-  core.String? environment;
-
-  $EnvironmentTargetingOptionDetails({this.environment});
-
-  $EnvironmentTargetingOptionDetails.fromJson(core.Map json_)
-    : this(environment: json_['environment'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final environment = this.environment;
-    return {'environment': ?environment};
-  }
-}
-
-/// Used by:
-///
-/// - gkehub:v1 : ConfigManagementConfigSyncError
-/// - gkehub:v1 : ConfigManagementInstallError
-/// - gkehub:v2 : ConfigManagementConfigSyncError
-class $Error {
-  /// A string representing the user facing error message
-  core.String? errorMessage;
-
-  $Error({this.errorMessage});
-
-  $Error.fromJson(core.Map json_)
-    : this(errorMessage: json_['errorMessage'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final errorMessage = this.errorMessage;
-    return {'errorMessage': ?errorMessage};
-  }
-}
-
-/// Used by:
-///
 /// - backupdr:v1 : BindingEvaluationSummary
 /// - backupdr:v1 : PolicyEvaluationSummary
 class $EvaluationSummary {
@@ -10423,719 +4577,6 @@ class $EvaluationSummary {
       'matchingResourceCount': ?matchingResourceCount,
       'protectedResourceCount': ?protectedResourceCount,
     };
-  }
-}
-
-/// Used by:
-///
-/// - integrations:v1 : EnterpriseCrmEventbusProtoBooleanParameterArray
-/// - integrations:v1 : EnterpriseCrmFrontendsEventbusProtoBooleanParameterArray
-class $EventbusProtoBooleanParameterArray {
-  core.List<core.bool>? booleanValues;
-
-  $EventbusProtoBooleanParameterArray({this.booleanValues});
-
-  $EventbusProtoBooleanParameterArray.fromJson(core.Map json_)
-    : this(
-        booleanValues: (json_['booleanValues'] as core.List?)
-            ?.map((value) => value as core.bool)
-            .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final booleanValues = this.booleanValues;
-    return {'booleanValues': ?booleanValues};
-  }
-}
-
-/// Used by:
-///
-/// - integrations:v1 : EnterpriseCrmEventbusProtoDoubleParameterArray
-/// - integrations:v1 : EnterpriseCrmFrontendsEventbusProtoDoubleParameterArray
-class $EventbusProtoDoubleParameterArray {
-  core.List<core.double>? doubleValues;
-
-  $EventbusProtoDoubleParameterArray({this.doubleValues});
-
-  $EventbusProtoDoubleParameterArray.fromJson(core.Map json_)
-    : this(
-        doubleValues: (json_['doubleValues'] as core.List?)
-            ?.map((value) => (value as core.num).toDouble())
-            .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final doubleValues = this.doubleValues;
-    return {'doubleValues': ?doubleValues};
-  }
-}
-
-/// Used by:
-///
-/// - integrations:v1 : EnterpriseCrmEventbusProtoIntParameterArray
-/// - integrations:v1 : EnterpriseCrmFrontendsEventbusProtoIntParameterArray
-class $EventbusProtoIntParameterArray {
-  core.List<core.String>? intValues;
-
-  $EventbusProtoIntParameterArray({this.intValues});
-
-  $EventbusProtoIntParameterArray.fromJson(core.Map json_)
-    : this(
-        intValues: (json_['intValues'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final intValues = this.intValues;
-    return {'intValues': ?intValues};
-  }
-}
-
-/// Used by:
-///
-/// - integrations:v1 : EnterpriseCrmEventbusProtoProtoParameterArray
-/// - integrations:v1 : EnterpriseCrmFrontendsEventbusProtoProtoParameterArray
-class $EventbusProtoProtoParameterArray {
-  ///
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object?>>? protoValues;
-
-  $EventbusProtoProtoParameterArray({this.protoValues});
-
-  $EventbusProtoProtoParameterArray.fromJson(core.Map json_)
-    : this(
-        protoValues: (json_['protoValues'] as core.List?)
-            ?.map((value) => value as core.Map<core.String, core.dynamic>)
-            .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final protoValues = this.protoValues;
-    return {'protoValues': ?protoValues};
-  }
-}
-
-/// Used by:
-///
-/// - integrations:v1 : EnterpriseCrmEventbusProtoSerializedObjectParameter
-/// - integrations:v1 : EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameter
-class $EventbusProtoSerializedObjectParameter {
-  core.String? objectValue;
-  core.List<core.int> get objectValueAsBytes =>
-      convert.base64.decode(objectValue!);
-
-  set objectValueAsBytes(core.List<core.int> bytes_) {
-    objectValue = convert.base64
-        .encode(bytes_)
-        .replaceAll('/', '_')
-        .replaceAll('+', '-');
-  }
-
-  $EventbusProtoSerializedObjectParameter({this.objectValue});
-
-  $EventbusProtoSerializedObjectParameter.fromJson(core.Map json_)
-    : this(objectValue: json_['objectValue'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final objectValue = this.objectValue;
-    return {'objectValue': ?objectValue};
-  }
-}
-
-/// Used by:
-///
-/// - integrations:v1 : EnterpriseCrmEventbusProtoStringParameterArray
-/// - integrations:v1 : EnterpriseCrmFrontendsEventbusProtoStringParameterArray
-class $EventbusProtoStringParameterArray {
-  core.List<core.String>? stringValues;
-
-  $EventbusProtoStringParameterArray({this.stringValues});
-
-  $EventbusProtoStringParameterArray.fromJson(core.Map json_)
-    : this(
-        stringValues: (json_['stringValues'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final stringValues = this.stringValues;
-    return {'stringValues': ?stringValues};
-  }
-}
-
-/// Used by:
-///
-/// - connectors:v1 : EventingStatus
-/// - integrations:v1 : GoogleCloudConnectorsV1EventingStatus
-class $EventingStatus {
-  /// Description of error if State is set to "ERROR".
-  ///
-  /// Output only.
-  core.String? description;
-
-  /// State.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : Default state.
-  /// - "ACTIVE" : Eventing is enabled and ready to receive events.
-  /// - "ERROR" : Eventing is not active due to an error.
-  /// - "INGRESS_ENDPOINT_REQUIRED" : Ingress endpoint required.
-  core.String? state;
-
-  $EventingStatus({this.description, this.state});
-
-  $EventingStatus.fromJson(core.Map json_)
-    : this(
-        description: json_['description'] as core.String?,
-        state: json_['state'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final description = this.description;
-    final state = this.state;
-    return {'description': ?description, 'state': ?state};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : ExchangeAssignedTargetingOptionDetails
-/// - displayvideo:v3 : ExchangeAssignedTargetingOptionDetails
-/// - displayvideo:v4 : ExchangeAssignedTargetingOptionDetails
-class $ExchangeAssignedTargetingOptionDetails {
-  /// The enum value for the exchange.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "EXCHANGE_UNSPECIFIED" : Exchange is not specified or is unknown in this
-  /// version.
-  /// - "EXCHANGE_GOOGLE_AD_MANAGER" : Google Ad Manager.
-  /// - "EXCHANGE_APPNEXUS" : AppNexus.
-  /// - "EXCHANGE_BRIGHTROLL" : BrightRoll Exchange for Video from Yahoo!.
-  /// - "EXCHANGE_ADFORM" : Adform.
-  /// - "EXCHANGE_ADMETA" : Admeta.
-  /// - "EXCHANGE_ADMIXER" : Admixer.
-  /// - "EXCHANGE_ADSMOGO" : AdsMogo.
-  /// - "EXCHANGE_ADSWIZZ" : AdsWizz.
-  /// - "EXCHANGE_BIDSWITCH" : BidSwitch.
-  /// - "EXCHANGE_BRIGHTROLL_DISPLAY" : BrightRoll Exchange for Display from
-  /// Yahoo!.
-  /// - "EXCHANGE_CADREON" : Cadreon.
-  /// - "EXCHANGE_DAILYMOTION" : Dailymotion.
-  /// - "EXCHANGE_FIVE" : Five.
-  /// - "EXCHANGE_FLUCT" : Fluct.
-  /// - "EXCHANGE_FREEWHEEL" : FreeWheel SSP.
-  /// - "EXCHANGE_GENIEE" : Geniee.
-  /// - "EXCHANGE_GUMGUM" : GumGum.
-  /// - "EXCHANGE_IMOBILE" : i-mobile.
-  /// - "EXCHANGE_IBILLBOARD" : iBILLBOARD.
-  /// - "EXCHANGE_IMPROVE_DIGITAL" : Improve Digital.
-  /// - "EXCHANGE_INDEX" : Index Exchange.
-  /// - "EXCHANGE_KARGO" : Kargo.
-  /// - "EXCHANGE_MICROAD" : MicroAd.
-  /// - "EXCHANGE_MOPUB" : MoPub.
-  /// - "EXCHANGE_NEND" : Nend.
-  /// - "EXCHANGE_ONE_BY_AOL_DISPLAY" : ONE by AOL: Display Market Place.
-  /// - "EXCHANGE_ONE_BY_AOL_MOBILE" : ONE by AOL: Mobile.
-  /// - "EXCHANGE_ONE_BY_AOL_VIDEO" : ONE by AOL: Video.
-  /// - "EXCHANGE_OOYALA" : Ooyala.
-  /// - "EXCHANGE_OPENX" : OpenX.
-  /// - "EXCHANGE_PERMODO" : Permodo.
-  /// - "EXCHANGE_PLATFORMONE" : Platform One.
-  /// - "EXCHANGE_PLATFORMID" : PlatformId.
-  /// - "EXCHANGE_PUBMATIC" : PubMatic.
-  /// - "EXCHANGE_PULSEPOINT" : PulsePoint.
-  /// - "EXCHANGE_REVENUEMAX" : RevenueMax.
-  /// - "EXCHANGE_RUBICON" : Rubicon.
-  /// - "EXCHANGE_SMARTCLIP" : SmartClip.
-  /// - "EXCHANGE_SMARTRTB" : SmartRTB+.
-  /// - "EXCHANGE_SMARTSTREAMTV" : SmartstreamTv.
-  /// - "EXCHANGE_SOVRN" : Sovrn.
-  /// - "EXCHANGE_SPOTXCHANGE" : SpotXchange.
-  /// - "EXCHANGE_STROER" : Ströer SSP.
-  /// - "EXCHANGE_TEADSTV" : TeadsTv.
-  /// - "EXCHANGE_TELARIA" : Telaria.
-  /// - "EXCHANGE_TVN" : TVN.
-  /// - "EXCHANGE_UNITED" : United.
-  /// - "EXCHANGE_YIELDLAB" : Yieldlab.
-  /// - "EXCHANGE_YIELDMO" : Yieldmo.
-  /// - "EXCHANGE_UNRULYX" : UnrulyX.
-  /// - "EXCHANGE_OPEN8" : Open8.
-  /// - "EXCHANGE_TRITON" : Triton.
-  /// - "EXCHANGE_TRIPLELIFT" : TripleLift.
-  /// - "EXCHANGE_TABOOLA" : Taboola.
-  /// - "EXCHANGE_INMOBI" : InMobi.
-  /// - "EXCHANGE_SMAATO" : Smaato.
-  /// - "EXCHANGE_AJA" : Aja.
-  /// - "EXCHANGE_SUPERSHIP" : Supership.
-  /// - "EXCHANGE_NEXSTAR_DIGITAL" : Nexstar Digital.
-  /// - "EXCHANGE_WAZE" : Waze.
-  /// - "EXCHANGE_SOUNDCAST" : SoundCast.
-  /// - "EXCHANGE_SHARETHROUGH" : Sharethrough.
-  /// - "EXCHANGE_FYBER" : Fyber.
-  /// - "EXCHANGE_RED_FOR_PUBLISHERS" : Red For Publishers.
-  /// - "EXCHANGE_MEDIANET" : Media.net.
-  /// - "EXCHANGE_TAPJOY" : Tapjoy.
-  /// - "EXCHANGE_VISTAR" : Vistar.
-  /// - "EXCHANGE_DAX" : DAX.
-  /// - "EXCHANGE_JCD" : JCD.
-  /// - "EXCHANGE_PLACE_EXCHANGE" : Place Exchange.
-  /// - "EXCHANGE_APPLOVIN" : AppLovin.
-  /// - "EXCHANGE_CONNATIX" : Connatix.
-  /// - "EXCHANGE_RESET_DIGITAL" : Reset Digital.
-  /// - "EXCHANGE_HIVESTACK" : Hivestack.
-  /// - "EXCHANGE_DRAX" : Drax.
-  /// - "EXCHANGE_APPLOVIN_GBID" : AppLovin MAX.
-  /// - "EXCHANGE_FYBER_GBID" : DT Fairbid.
-  /// - "EXCHANGE_UNITY_GBID" : Unity LevelPlay.
-  /// - "EXCHANGE_CHARTBOOST_GBID" : Chartboost Mediation.
-  /// - "EXCHANGE_ADMOST_GBID" : AdMost.
-  /// - "EXCHANGE_TOPON_GBID" : TopOn.
-  /// - "EXCHANGE_NETFLIX" : Netflix.
-  /// - "EXCHANGE_CORE" : Core.
-  /// - "EXCHANGE_COMMERCE_GRID" : Commerce Grid.
-  /// - "EXCHANGE_SPOTIFY" : Spotify.
-  /// - "EXCHANGE_TUBI" : Tubi.
-  /// - "EXCHANGE_SNAP" : Snap.
-  /// - "EXCHANGE_CADENT" : Cadent.
-  /// - "EXCHANGE_EXTE" : Exte.
-  core.String? exchange;
-
-  $ExchangeAssignedTargetingOptionDetails({this.exchange});
-
-  $ExchangeAssignedTargetingOptionDetails.fromJson(core.Map json_)
-    : this(exchange: json_['exchange'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final exchange = this.exchange;
-    return {'exchange': ?exchange};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : ExchangeConfigEnabledExchange
-/// - displayvideo:v3 : ExchangeConfigEnabledExchange
-/// - displayvideo:v4 : ExchangeConfigEnabledExchange
-class $ExchangeConfigEnabledExchange {
-  /// The enabled exchange.
-  /// Possible string values are:
-  /// - "EXCHANGE_UNSPECIFIED" : Exchange is not specified or is unknown in this
-  /// version.
-  /// - "EXCHANGE_GOOGLE_AD_MANAGER" : Google Ad Manager.
-  /// - "EXCHANGE_APPNEXUS" : AppNexus.
-  /// - "EXCHANGE_BRIGHTROLL" : BrightRoll Exchange for Video from Yahoo!.
-  /// - "EXCHANGE_ADFORM" : Adform.
-  /// - "EXCHANGE_ADMETA" : Admeta.
-  /// - "EXCHANGE_ADMIXER" : Admixer.
-  /// - "EXCHANGE_ADSMOGO" : AdsMogo.
-  /// - "EXCHANGE_ADSWIZZ" : AdsWizz.
-  /// - "EXCHANGE_BIDSWITCH" : BidSwitch.
-  /// - "EXCHANGE_BRIGHTROLL_DISPLAY" : BrightRoll Exchange for Display from
-  /// Yahoo!.
-  /// - "EXCHANGE_CADREON" : Cadreon.
-  /// - "EXCHANGE_DAILYMOTION" : Dailymotion.
-  /// - "EXCHANGE_FIVE" : Five.
-  /// - "EXCHANGE_FLUCT" : Fluct.
-  /// - "EXCHANGE_FREEWHEEL" : FreeWheel SSP.
-  /// - "EXCHANGE_GENIEE" : Geniee.
-  /// - "EXCHANGE_GUMGUM" : GumGum.
-  /// - "EXCHANGE_IMOBILE" : i-mobile.
-  /// - "EXCHANGE_IBILLBOARD" : iBILLBOARD.
-  /// - "EXCHANGE_IMPROVE_DIGITAL" : Improve Digital.
-  /// - "EXCHANGE_INDEX" : Index Exchange.
-  /// - "EXCHANGE_KARGO" : Kargo.
-  /// - "EXCHANGE_MICROAD" : MicroAd.
-  /// - "EXCHANGE_MOPUB" : MoPub.
-  /// - "EXCHANGE_NEND" : Nend.
-  /// - "EXCHANGE_ONE_BY_AOL_DISPLAY" : ONE by AOL: Display Market Place.
-  /// - "EXCHANGE_ONE_BY_AOL_MOBILE" : ONE by AOL: Mobile.
-  /// - "EXCHANGE_ONE_BY_AOL_VIDEO" : ONE by AOL: Video.
-  /// - "EXCHANGE_OOYALA" : Ooyala.
-  /// - "EXCHANGE_OPENX" : OpenX.
-  /// - "EXCHANGE_PERMODO" : Permodo.
-  /// - "EXCHANGE_PLATFORMONE" : Platform One.
-  /// - "EXCHANGE_PLATFORMID" : PlatformId.
-  /// - "EXCHANGE_PUBMATIC" : PubMatic.
-  /// - "EXCHANGE_PULSEPOINT" : PulsePoint.
-  /// - "EXCHANGE_REVENUEMAX" : RevenueMax.
-  /// - "EXCHANGE_RUBICON" : Rubicon.
-  /// - "EXCHANGE_SMARTCLIP" : SmartClip.
-  /// - "EXCHANGE_SMARTRTB" : SmartRTB+.
-  /// - "EXCHANGE_SMARTSTREAMTV" : SmartstreamTv.
-  /// - "EXCHANGE_SOVRN" : Sovrn.
-  /// - "EXCHANGE_SPOTXCHANGE" : SpotXchange.
-  /// - "EXCHANGE_STROER" : Ströer SSP.
-  /// - "EXCHANGE_TEADSTV" : TeadsTv.
-  /// - "EXCHANGE_TELARIA" : Telaria.
-  /// - "EXCHANGE_TVN" : TVN.
-  /// - "EXCHANGE_UNITED" : United.
-  /// - "EXCHANGE_YIELDLAB" : Yieldlab.
-  /// - "EXCHANGE_YIELDMO" : Yieldmo.
-  /// - "EXCHANGE_UNRULYX" : UnrulyX.
-  /// - "EXCHANGE_OPEN8" : Open8.
-  /// - "EXCHANGE_TRITON" : Triton.
-  /// - "EXCHANGE_TRIPLELIFT" : TripleLift.
-  /// - "EXCHANGE_TABOOLA" : Taboola.
-  /// - "EXCHANGE_INMOBI" : InMobi.
-  /// - "EXCHANGE_SMAATO" : Smaato.
-  /// - "EXCHANGE_AJA" : Aja.
-  /// - "EXCHANGE_SUPERSHIP" : Supership.
-  /// - "EXCHANGE_NEXSTAR_DIGITAL" : Nexstar Digital.
-  /// - "EXCHANGE_WAZE" : Waze.
-  /// - "EXCHANGE_SOUNDCAST" : SoundCast.
-  /// - "EXCHANGE_SHARETHROUGH" : Sharethrough.
-  /// - "EXCHANGE_FYBER" : Fyber.
-  /// - "EXCHANGE_RED_FOR_PUBLISHERS" : Red For Publishers.
-  /// - "EXCHANGE_MEDIANET" : Media.net.
-  /// - "EXCHANGE_TAPJOY" : Tapjoy.
-  /// - "EXCHANGE_VISTAR" : Vistar.
-  /// - "EXCHANGE_DAX" : DAX.
-  /// - "EXCHANGE_JCD" : JCD.
-  /// - "EXCHANGE_PLACE_EXCHANGE" : Place Exchange.
-  /// - "EXCHANGE_APPLOVIN" : AppLovin.
-  /// - "EXCHANGE_CONNATIX" : Connatix.
-  /// - "EXCHANGE_RESET_DIGITAL" : Reset Digital.
-  /// - "EXCHANGE_HIVESTACK" : Hivestack.
-  /// - "EXCHANGE_DRAX" : Drax.
-  /// - "EXCHANGE_APPLOVIN_GBID" : AppLovin MAX.
-  /// - "EXCHANGE_FYBER_GBID" : DT Fairbid.
-  /// - "EXCHANGE_UNITY_GBID" : Unity LevelPlay.
-  /// - "EXCHANGE_CHARTBOOST_GBID" : Chartboost Mediation.
-  /// - "EXCHANGE_ADMOST_GBID" : AdMost.
-  /// - "EXCHANGE_TOPON_GBID" : TopOn.
-  /// - "EXCHANGE_NETFLIX" : Netflix.
-  /// - "EXCHANGE_CORE" : Core.
-  /// - "EXCHANGE_COMMERCE_GRID" : Commerce Grid.
-  /// - "EXCHANGE_SPOTIFY" : Spotify.
-  /// - "EXCHANGE_TUBI" : Tubi.
-  /// - "EXCHANGE_SNAP" : Snap.
-  /// - "EXCHANGE_CADENT" : Cadent.
-  /// - "EXCHANGE_EXTE" : Exte.
-  core.String? exchange;
-
-  /// Agency ID of Google Ad Manager.
-  ///
-  /// The field is only relevant when Google Ad Manager is the enabled exchange.
-  ///
-  /// Output only.
-  core.String? googleAdManagerAgencyId;
-
-  /// Network ID of Google Ad Manager.
-  ///
-  /// The field is only relevant when Google Ad Manager is the enabled exchange.
-  ///
-  /// Output only.
-  core.String? googleAdManagerBuyerNetworkId;
-
-  /// Seat ID of the enabled exchange.
-  ///
-  /// Output only.
-  core.String? seatId;
-
-  $ExchangeConfigEnabledExchange({
-    this.exchange,
-    this.googleAdManagerAgencyId,
-    this.googleAdManagerBuyerNetworkId,
-    this.seatId,
-  });
-
-  $ExchangeConfigEnabledExchange.fromJson(core.Map json_)
-    : this(
-        exchange: json_['exchange'] as core.String?,
-        googleAdManagerAgencyId:
-            json_['googleAdManagerAgencyId'] as core.String?,
-        googleAdManagerBuyerNetworkId:
-            json_['googleAdManagerBuyerNetworkId'] as core.String?,
-        seatId: json_['seatId'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final exchange = this.exchange;
-    final googleAdManagerAgencyId = this.googleAdManagerAgencyId;
-    final googleAdManagerBuyerNetworkId = this.googleAdManagerBuyerNetworkId;
-    final seatId = this.seatId;
-    return {
-      'exchange': ?exchange,
-      'googleAdManagerAgencyId': ?googleAdManagerAgencyId,
-      'googleAdManagerBuyerNetworkId': ?googleAdManagerBuyerNetworkId,
-      'seatId': ?seatId,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : ExchangeReviewStatus
-/// - displayvideo:v3 : ExchangeReviewStatus
-/// - displayvideo:v4 : ExchangeReviewStatus
-class $ExchangeReviewStatus {
-  /// The exchange reviewing the creative.
-  /// Possible string values are:
-  /// - "EXCHANGE_UNSPECIFIED" : Exchange is not specified or is unknown in this
-  /// version.
-  /// - "EXCHANGE_GOOGLE_AD_MANAGER" : Google Ad Manager.
-  /// - "EXCHANGE_APPNEXUS" : AppNexus.
-  /// - "EXCHANGE_BRIGHTROLL" : BrightRoll Exchange for Video from Yahoo!.
-  /// - "EXCHANGE_ADFORM" : Adform.
-  /// - "EXCHANGE_ADMETA" : Admeta.
-  /// - "EXCHANGE_ADMIXER" : Admixer.
-  /// - "EXCHANGE_ADSMOGO" : AdsMogo.
-  /// - "EXCHANGE_ADSWIZZ" : AdsWizz.
-  /// - "EXCHANGE_BIDSWITCH" : BidSwitch.
-  /// - "EXCHANGE_BRIGHTROLL_DISPLAY" : BrightRoll Exchange for Display from
-  /// Yahoo!.
-  /// - "EXCHANGE_CADREON" : Cadreon.
-  /// - "EXCHANGE_DAILYMOTION" : Dailymotion.
-  /// - "EXCHANGE_FIVE" : Five.
-  /// - "EXCHANGE_FLUCT" : Fluct.
-  /// - "EXCHANGE_FREEWHEEL" : FreeWheel SSP.
-  /// - "EXCHANGE_GENIEE" : Geniee.
-  /// - "EXCHANGE_GUMGUM" : GumGum.
-  /// - "EXCHANGE_IMOBILE" : i-mobile.
-  /// - "EXCHANGE_IBILLBOARD" : iBILLBOARD.
-  /// - "EXCHANGE_IMPROVE_DIGITAL" : Improve Digital.
-  /// - "EXCHANGE_INDEX" : Index Exchange.
-  /// - "EXCHANGE_KARGO" : Kargo.
-  /// - "EXCHANGE_MICROAD" : MicroAd.
-  /// - "EXCHANGE_MOPUB" : MoPub.
-  /// - "EXCHANGE_NEND" : Nend.
-  /// - "EXCHANGE_ONE_BY_AOL_DISPLAY" : ONE by AOL: Display Market Place.
-  /// - "EXCHANGE_ONE_BY_AOL_MOBILE" : ONE by AOL: Mobile.
-  /// - "EXCHANGE_ONE_BY_AOL_VIDEO" : ONE by AOL: Video.
-  /// - "EXCHANGE_OOYALA" : Ooyala.
-  /// - "EXCHANGE_OPENX" : OpenX.
-  /// - "EXCHANGE_PERMODO" : Permodo.
-  /// - "EXCHANGE_PLATFORMONE" : Platform One.
-  /// - "EXCHANGE_PLATFORMID" : PlatformId.
-  /// - "EXCHANGE_PUBMATIC" : PubMatic.
-  /// - "EXCHANGE_PULSEPOINT" : PulsePoint.
-  /// - "EXCHANGE_REVENUEMAX" : RevenueMax.
-  /// - "EXCHANGE_RUBICON" : Rubicon.
-  /// - "EXCHANGE_SMARTCLIP" : SmartClip.
-  /// - "EXCHANGE_SMARTRTB" : SmartRTB+.
-  /// - "EXCHANGE_SMARTSTREAMTV" : SmartstreamTv.
-  /// - "EXCHANGE_SOVRN" : Sovrn.
-  /// - "EXCHANGE_SPOTXCHANGE" : SpotXchange.
-  /// - "EXCHANGE_STROER" : Ströer SSP.
-  /// - "EXCHANGE_TEADSTV" : TeadsTv.
-  /// - "EXCHANGE_TELARIA" : Telaria.
-  /// - "EXCHANGE_TVN" : TVN.
-  /// - "EXCHANGE_UNITED" : United.
-  /// - "EXCHANGE_YIELDLAB" : Yieldlab.
-  /// - "EXCHANGE_YIELDMO" : Yieldmo.
-  /// - "EXCHANGE_UNRULYX" : UnrulyX.
-  /// - "EXCHANGE_OPEN8" : Open8.
-  /// - "EXCHANGE_TRITON" : Triton.
-  /// - "EXCHANGE_TRIPLELIFT" : TripleLift.
-  /// - "EXCHANGE_TABOOLA" : Taboola.
-  /// - "EXCHANGE_INMOBI" : InMobi.
-  /// - "EXCHANGE_SMAATO" : Smaato.
-  /// - "EXCHANGE_AJA" : Aja.
-  /// - "EXCHANGE_SUPERSHIP" : Supership.
-  /// - "EXCHANGE_NEXSTAR_DIGITAL" : Nexstar Digital.
-  /// - "EXCHANGE_WAZE" : Waze.
-  /// - "EXCHANGE_SOUNDCAST" : SoundCast.
-  /// - "EXCHANGE_SHARETHROUGH" : Sharethrough.
-  /// - "EXCHANGE_FYBER" : Fyber.
-  /// - "EXCHANGE_RED_FOR_PUBLISHERS" : Red For Publishers.
-  /// - "EXCHANGE_MEDIANET" : Media.net.
-  /// - "EXCHANGE_TAPJOY" : Tapjoy.
-  /// - "EXCHANGE_VISTAR" : Vistar.
-  /// - "EXCHANGE_DAX" : DAX.
-  /// - "EXCHANGE_JCD" : JCD.
-  /// - "EXCHANGE_PLACE_EXCHANGE" : Place Exchange.
-  /// - "EXCHANGE_APPLOVIN" : AppLovin.
-  /// - "EXCHANGE_CONNATIX" : Connatix.
-  /// - "EXCHANGE_RESET_DIGITAL" : Reset Digital.
-  /// - "EXCHANGE_HIVESTACK" : Hivestack.
-  /// - "EXCHANGE_DRAX" : Drax.
-  /// - "EXCHANGE_APPLOVIN_GBID" : AppLovin MAX.
-  /// - "EXCHANGE_FYBER_GBID" : DT Fairbid.
-  /// - "EXCHANGE_UNITY_GBID" : Unity LevelPlay.
-  /// - "EXCHANGE_CHARTBOOST_GBID" : Chartboost Mediation.
-  /// - "EXCHANGE_ADMOST_GBID" : AdMost.
-  /// - "EXCHANGE_TOPON_GBID" : TopOn.
-  /// - "EXCHANGE_NETFLIX" : Netflix.
-  /// - "EXCHANGE_CORE" : Core.
-  /// - "EXCHANGE_COMMERCE_GRID" : Commerce Grid.
-  /// - "EXCHANGE_SPOTIFY" : Spotify.
-  /// - "EXCHANGE_TUBI" : Tubi.
-  /// - "EXCHANGE_SNAP" : Snap.
-  /// - "EXCHANGE_CADENT" : Cadent.
-  /// - "EXCHANGE_EXTE" : Exte.
-  core.String? exchange;
-
-  /// Status of the exchange review.
-  /// Possible string values are:
-  /// - "REVIEW_STATUS_UNSPECIFIED" : Type value is not specified or is unknown
-  /// in this version.
-  /// - "REVIEW_STATUS_APPROVED" : The creative is approved.
-  /// - "REVIEW_STATUS_REJECTED" : The creative is rejected.
-  /// - "REVIEW_STATUS_PENDING" : The creative is pending review.
-  core.String? status;
-
-  $ExchangeReviewStatus({this.exchange, this.status});
-
-  $ExchangeReviewStatus.fromJson(core.Map json_)
-    : this(
-        exchange: json_['exchange'] as core.String?,
-        status: json_['status'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final exchange = this.exchange;
-    final status = this.status;
-    return {'exchange': ?exchange, 'status': ?status};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : ExchangeTargetingOptionDetails
-/// - displayvideo:v3 : ExchangeTargetingOptionDetails
-/// - displayvideo:v4 : ExchangeTargetingOptionDetails
-class $ExchangeTargetingOptionDetails {
-  /// The type of exchange.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "EXCHANGE_UNSPECIFIED" : Exchange is not specified or is unknown in this
-  /// version.
-  /// - "EXCHANGE_GOOGLE_AD_MANAGER" : Google Ad Manager.
-  /// - "EXCHANGE_APPNEXUS" : AppNexus.
-  /// - "EXCHANGE_BRIGHTROLL" : BrightRoll Exchange for Video from Yahoo!.
-  /// - "EXCHANGE_ADFORM" : Adform.
-  /// - "EXCHANGE_ADMETA" : Admeta.
-  /// - "EXCHANGE_ADMIXER" : Admixer.
-  /// - "EXCHANGE_ADSMOGO" : AdsMogo.
-  /// - "EXCHANGE_ADSWIZZ" : AdsWizz.
-  /// - "EXCHANGE_BIDSWITCH" : BidSwitch.
-  /// - "EXCHANGE_BRIGHTROLL_DISPLAY" : BrightRoll Exchange for Display from
-  /// Yahoo!.
-  /// - "EXCHANGE_CADREON" : Cadreon.
-  /// - "EXCHANGE_DAILYMOTION" : Dailymotion.
-  /// - "EXCHANGE_FIVE" : Five.
-  /// - "EXCHANGE_FLUCT" : Fluct.
-  /// - "EXCHANGE_FREEWHEEL" : FreeWheel SSP.
-  /// - "EXCHANGE_GENIEE" : Geniee.
-  /// - "EXCHANGE_GUMGUM" : GumGum.
-  /// - "EXCHANGE_IMOBILE" : i-mobile.
-  /// - "EXCHANGE_IBILLBOARD" : iBILLBOARD.
-  /// - "EXCHANGE_IMPROVE_DIGITAL" : Improve Digital.
-  /// - "EXCHANGE_INDEX" : Index Exchange.
-  /// - "EXCHANGE_KARGO" : Kargo.
-  /// - "EXCHANGE_MICROAD" : MicroAd.
-  /// - "EXCHANGE_MOPUB" : MoPub.
-  /// - "EXCHANGE_NEND" : Nend.
-  /// - "EXCHANGE_ONE_BY_AOL_DISPLAY" : ONE by AOL: Display Market Place.
-  /// - "EXCHANGE_ONE_BY_AOL_MOBILE" : ONE by AOL: Mobile.
-  /// - "EXCHANGE_ONE_BY_AOL_VIDEO" : ONE by AOL: Video.
-  /// - "EXCHANGE_OOYALA" : Ooyala.
-  /// - "EXCHANGE_OPENX" : OpenX.
-  /// - "EXCHANGE_PERMODO" : Permodo.
-  /// - "EXCHANGE_PLATFORMONE" : Platform One.
-  /// - "EXCHANGE_PLATFORMID" : PlatformId.
-  /// - "EXCHANGE_PUBMATIC" : PubMatic.
-  /// - "EXCHANGE_PULSEPOINT" : PulsePoint.
-  /// - "EXCHANGE_REVENUEMAX" : RevenueMax.
-  /// - "EXCHANGE_RUBICON" : Rubicon.
-  /// - "EXCHANGE_SMARTCLIP" : SmartClip.
-  /// - "EXCHANGE_SMARTRTB" : SmartRTB+.
-  /// - "EXCHANGE_SMARTSTREAMTV" : SmartstreamTv.
-  /// - "EXCHANGE_SOVRN" : Sovrn.
-  /// - "EXCHANGE_SPOTXCHANGE" : SpotXchange.
-  /// - "EXCHANGE_STROER" : Ströer SSP.
-  /// - "EXCHANGE_TEADSTV" : TeadsTv.
-  /// - "EXCHANGE_TELARIA" : Telaria.
-  /// - "EXCHANGE_TVN" : TVN.
-  /// - "EXCHANGE_UNITED" : United.
-  /// - "EXCHANGE_YIELDLAB" : Yieldlab.
-  /// - "EXCHANGE_YIELDMO" : Yieldmo.
-  /// - "EXCHANGE_UNRULYX" : UnrulyX.
-  /// - "EXCHANGE_OPEN8" : Open8.
-  /// - "EXCHANGE_TRITON" : Triton.
-  /// - "EXCHANGE_TRIPLELIFT" : TripleLift.
-  /// - "EXCHANGE_TABOOLA" : Taboola.
-  /// - "EXCHANGE_INMOBI" : InMobi.
-  /// - "EXCHANGE_SMAATO" : Smaato.
-  /// - "EXCHANGE_AJA" : Aja.
-  /// - "EXCHANGE_SUPERSHIP" : Supership.
-  /// - "EXCHANGE_NEXSTAR_DIGITAL" : Nexstar Digital.
-  /// - "EXCHANGE_WAZE" : Waze.
-  /// - "EXCHANGE_SOUNDCAST" : SoundCast.
-  /// - "EXCHANGE_SHARETHROUGH" : Sharethrough.
-  /// - "EXCHANGE_FYBER" : Fyber.
-  /// - "EXCHANGE_RED_FOR_PUBLISHERS" : Red For Publishers.
-  /// - "EXCHANGE_MEDIANET" : Media.net.
-  /// - "EXCHANGE_TAPJOY" : Tapjoy.
-  /// - "EXCHANGE_VISTAR" : Vistar.
-  /// - "EXCHANGE_DAX" : DAX.
-  /// - "EXCHANGE_JCD" : JCD.
-  /// - "EXCHANGE_PLACE_EXCHANGE" : Place Exchange.
-  /// - "EXCHANGE_APPLOVIN" : AppLovin.
-  /// - "EXCHANGE_CONNATIX" : Connatix.
-  /// - "EXCHANGE_RESET_DIGITAL" : Reset Digital.
-  /// - "EXCHANGE_HIVESTACK" : Hivestack.
-  /// - "EXCHANGE_DRAX" : Drax.
-  /// - "EXCHANGE_APPLOVIN_GBID" : AppLovin MAX.
-  /// - "EXCHANGE_FYBER_GBID" : DT Fairbid.
-  /// - "EXCHANGE_UNITY_GBID" : Unity LevelPlay.
-  /// - "EXCHANGE_CHARTBOOST_GBID" : Chartboost Mediation.
-  /// - "EXCHANGE_ADMOST_GBID" : AdMost.
-  /// - "EXCHANGE_TOPON_GBID" : TopOn.
-  /// - "EXCHANGE_NETFLIX" : Netflix.
-  /// - "EXCHANGE_CORE" : Core.
-  /// - "EXCHANGE_COMMERCE_GRID" : Commerce Grid.
-  /// - "EXCHANGE_SPOTIFY" : Spotify.
-  /// - "EXCHANGE_TUBI" : Tubi.
-  /// - "EXCHANGE_SNAP" : Snap.
-  /// - "EXCHANGE_CADENT" : Cadent.
-  /// - "EXCHANGE_EXTE" : Exte.
-  core.String? exchange;
-
-  $ExchangeTargetingOptionDetails({this.exchange});
-
-  $ExchangeTargetingOptionDetails.fromJson(core.Map json_)
-    : this(exchange: json_['exchange'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final exchange = this.exchange;
-    return {'exchange': ?exchange};
-  }
-}
-
-/// Used by:
-///
-/// - aiplatform:v1 : GoogleCloudAiplatformV1ProbeExecAction
-/// - run:v1 : ExecAction
-class $ExecAction {
-  /// Command is the command line to execute inside the container, the working
-  /// directory for the command is root ('/') in the container's filesystem.
-  ///
-  /// The command is simply exec'd, it is not run inside a shell, so traditional
-  /// shell instructions ('|', etc) won't work. To use a shell, you need to
-  /// explicitly call out to that shell. Exit status of 0 is treated as
-  /// live/healthy and non-zero is unhealthy.
-  core.List<core.String>? command;
-
-  $ExecAction({this.command});
-
-  $ExecAction.fromJson(core.Map json_)
-    : this(
-        command: (json_['command'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final command = this.command;
-    return {'command': ?command};
   }
 }
 
@@ -11192,70 +4633,6 @@ class $ExecutionStats {
       'executionDuration': ?executionDuration,
       'readOperations': ?readOperations,
       'resultsReturned': ?resultsReturned,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : ExitEvent
-/// - displayvideo:v3 : ExitEvent
-/// - displayvideo:v4 : ExitEvent
-class $ExitEvent {
-  /// The name of the click tag of the exit event.
-  ///
-  /// The name must be unique within one creative. Leave it empty or unset for
-  /// creatives containing image assets only.
-  ///
-  /// Optional.
-  core.String? name;
-
-  /// The name used to identify this event in reports.
-  ///
-  /// Leave it empty or unset for creatives containing image assets only.
-  ///
-  /// Optional.
-  core.String? reportingName;
-
-  /// The type of the exit event.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "EXIT_EVENT_TYPE_UNSPECIFIED" : Exit event type is not specified or is
-  /// unknown in this version.
-  /// - "EXIT_EVENT_TYPE_DEFAULT" : The exit event is the default one.
-  /// - "EXIT_EVENT_TYPE_BACKUP" : The exit event is a backup exit event. There
-  /// could be multiple backup exit events in a creative.
-  core.String? type;
-
-  /// The click through URL of the exit event.
-  ///
-  /// This is required when type is: * `EXIT_EVENT_TYPE_DEFAULT` *
-  /// `EXIT_EVENT_TYPE_BACKUP`
-  ///
-  /// Required.
-  core.String? url;
-
-  $ExitEvent({this.name, this.reportingName, this.type, this.url});
-
-  $ExitEvent.fromJson(core.Map json_)
-    : this(
-        name: json_['name'] as core.String?,
-        reportingName: json_['reportingName'] as core.String?,
-        type: json_['type'] as core.String?,
-        url: json_['url'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final name = this.name;
-    final reportingName = this.reportingName;
-    final type = this.type;
-    final url = this.url;
-    return {
-      'name': ?name,
-      'reportingName': ?reportingName,
-      'type': ?type,
-      'url': ?url,
     };
   }
 }
@@ -11460,8 +4837,6 @@ class $ExportOptions01 {
 /// Used by:
 ///
 /// - accesscontextmanager:v1 : Expr
-/// - agentidentity:v1 : Expr
-/// - agentregistry:v1 : Expr
 /// - aiplatform:v1 : GoogleTypeExpr
 /// - analyticshub:v1 : Expr
 /// - apigateway:v1 : ApigatewayExpr
@@ -11486,25 +4861,19 @@ class $ExportOptions01 {
 /// - cloudfunctions:v2 : Expr
 /// - cloudkms:v1 : Expr
 /// - cloudresourcemanager:v1 : Expr
-/// - cloudresourcemanager:v2 : Expr
 /// - cloudresourcemanager:v3 : Expr
 /// - cloudtasks:v2 : Expr
 /// - config:v1 : Expr
-/// - connectors:v1 : Expr
 /// - contactcenterinsights:v1 : GoogleTypeExpr
 /// - containeranalysis:v1 : Expr
-/// - datacatalog:v1 : Expr
 /// - dataform:v1 : Expr
 /// - datafusion:v1 : Expr
 /// - datamigration:v1 : Expr
 /// - dataplex:v1 : GoogleTypeExpr
 /// - dataproc:v1 : Expr
-/// - deploymentmanager:v2 : Expr
 /// - dns:v1 : Expr
-/// - domains:v1 : Expr
 /// - eventarc:v1 : Expr
 /// - gkebackup:v1 : Expr
-/// - gkehub:v1 : Expr
 /// - gkeonprem:v1 : Expr
 /// - healthcare:v1 : Expr
 /// - iam:v1 : Expr
@@ -11513,21 +4882,16 @@ class $ExportOptions01 {
 /// - identitytoolkit:v2 : GoogleTypeExpr
 /// - logging:v2 : Expr
 /// - managedidentities:v1 : Expr
-/// - metastore:v1 : Expr
-/// - ml:v1 : GoogleType__Expr
 /// - networkconnectivity:v1 : Expr
 /// - networkmanagement:v1 : Expr
 /// - networksecurity:v1 : Expr
 /// - networkservices:v1 : Expr
-/// - notebooks:v1 : Expr
 /// - notebooks:v2 : Expr
 /// - orgpolicy:v2 : GoogleTypeExpr
 /// - policysimulator:v1 : GoogleTypeExpr
-/// - policytroubleshooter:v1 : GoogleTypeExpr
 /// - policytroubleshooter:v3 : GoogleTypeExpr
 /// - privateca:v1 : Expr
 /// - pubsub:v1 : Expr
-/// - run:v1 : Expr
 /// - run:v2 : GoogleTypeExpr
 /// - secretmanager:v1 : Expr
 /// - securesourcemanager:v1 : Expr
@@ -11535,7 +4899,6 @@ class $ExportOptions01 {
 /// - servicedirectory:v1 : Expr
 /// - servicemanagement:v1 : Expr
 /// - spanner:v1 : Expr
-/// - storagebatchoperations:v1 : Expr
 /// - vmwareengine:v1 : Expr
 /// - workstations:v1 : Expr
 class $Expr {
@@ -11585,34 +4948,6 @@ class $Expr {
       'location': ?location,
       'title': ?title,
     };
-  }
-}
-
-/// Used by:
-///
-/// - agentregistry:v1 : ExtendedMetadata
-/// - apphub:v1 : ExtendedMetadata
-class $ExtendedMetadata {
-  /// The metadata contents.
-  ///
-  /// Output only.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object?>? metadataStruct;
-
-  $ExtendedMetadata({this.metadataStruct});
-
-  $ExtendedMetadata.fromJson(core.Map json_)
-    : this(
-        metadataStruct: json_.containsKey('metadataStruct')
-            ? json_['metadataStruct'] as core.Map<core.String, core.dynamic>
-            : null,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final metadataStruct = this.metadataStruct;
-    return {'metadataStruct': ?metadataStruct};
   }
 }
 
@@ -11809,30 +5144,6 @@ class $File {
 
 /// Used by:
 ///
-/// - run:v1 : FilestoreVolumeSource
-/// - run:v2 : GoogleCloudRunV2FilestoreVolumeSource
-class $FilestoreVolumeSource {
-  /// The resource name of the Filestore volume.
-  ///
-  /// Format:
-  /// `projects/{project}/locations/{location}/volumePools/{volume_pool}/volumes/{volume}`
-  ///
-  /// Required.
-  core.String? volume;
-
-  $FilestoreVolumeSource({this.volume});
-
-  $FilestoreVolumeSource.fromJson(core.Map json_)
-    : this(volume: json_['volume'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final volume = this.volume;
-    return {'volume': ?volume};
-  }
-}
-
-/// Used by:
-///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigFilterSpecs
 /// - dialogflow:v3 : GoogleCloudDialogflowCxV3FilterSpecs
 class $FilterSpecs {
@@ -11979,59 +5290,6 @@ class $Fingerprint {
     final v2Blob = this.v2Blob;
     final v2Name = this.v2Name;
     return {'v1Name': ?v1Name, 'v2Blob': ?v2Blob, 'v2Name': ?v2Name};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : FixedBidStrategy
-/// - displayvideo:v3 : FixedBidStrategy
-/// - displayvideo:v4 : FixedBidStrategy
-class $FixedBidStrategy {
-  /// The fixed bid amount, in micros of the advertiser's currency.
-  ///
-  /// For insertion order entity, bid_amount_micros should be set as 0. For line
-  /// item entity, bid_amount_micros must be greater than or equal to billable
-  /// unit of the given currency and smaller than or equal to the upper limit
-  /// 1000000000. For example, 1500000 represents 1.5 standard units of the
-  /// currency.
-  core.String? bidAmountMicros;
-
-  $FixedBidStrategy({this.bidAmountMicros});
-
-  $FixedBidStrategy.fromJson(core.Map json_)
-    : this(bidAmountMicros: json_['bidAmountMicros'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final bidAmountMicros = this.bidAmountMicros;
-    return {'bidAmountMicros': ?bidAmountMicros};
-  }
-}
-
-/// Used by:
-///
-/// - osconfig:v1 : FixedOrPercent
-/// - osconfig:v2 : FixedOrPercent
-class $FixedOrPercent {
-  /// Specifies a fixed value.
-  core.int? fixed;
-
-  /// Specifies the relative value defined as a percentage, which will be
-  /// multiplied by a reference value.
-  core.int? percent;
-
-  $FixedOrPercent({this.fixed, this.percent});
-
-  $FixedOrPercent.fromJson(core.Map json_)
-    : this(
-        fixed: json_['fixed'] as core.int?,
-        percent: json_['percent'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final fixed = this.fixed;
-    final percent = this.percent;
-    return {'fixed': ?fixed, 'percent': ?percent};
   }
 }
 
@@ -12185,96 +5443,6 @@ class $FractionSplit {
 
 /// Used by:
 ///
-/// - displayvideo:v2 : FrequencyCap
-/// - displayvideo:v3 : FrequencyCap
-/// - displayvideo:v4 : FrequencyCap
-class $FrequencyCap {
-  /// The maximum number of times a user may be shown the same ad during this
-  /// period.
-  ///
-  /// Must be greater than 0. Required when unlimited is `false` and max_views
-  /// is not set.
-  core.int? maxImpressions;
-
-  /// The maximum number of times a user may click-through or fully view an ad
-  /// during this period until it is no longer served to them.
-  ///
-  /// Must be greater than 0. Only applicable to YouTube and Partners resources.
-  /// Required when unlimited is `false` and max_impressions is not set.
-  ///
-  /// Optional.
-  core.int? maxViews;
-
-  /// The time unit in which the frequency cap will be applied.
-  ///
-  /// Required when unlimited is `false`.
-  /// Possible string values are:
-  /// - "TIME_UNIT_UNSPECIFIED" : Time unit value is not specified or is unknown
-  /// in this version.
-  /// - "TIME_UNIT_LIFETIME" : The frequency cap will be applied to the whole
-  /// life time of the line item.
-  /// - "TIME_UNIT_MONTHS" : The frequency cap will be applied to a number of
-  /// months.
-  /// - "TIME_UNIT_WEEKS" : The frequency cap will be applied to a number of
-  /// weeks.
-  /// - "TIME_UNIT_DAYS" : The frequency cap will be applied to a number of
-  /// days.
-  /// - "TIME_UNIT_HOURS" : The frequency cap will be applied to a number of
-  /// hours.
-  /// - "TIME_UNIT_MINUTES" : The frequency cap will be applied to a number of
-  /// minutes.
-  core.String? timeUnit;
-
-  /// The number of time_unit the frequency cap will last.
-  ///
-  /// Required when unlimited is `false`. The following restrictions apply based
-  /// on the value of time_unit: * `TIME_UNIT_MONTHS` - must be 1 *
-  /// `TIME_UNIT_WEEKS` - must be between 1 and 4 * `TIME_UNIT_DAYS` - must be
-  /// between 1 and 6 * `TIME_UNIT_HOURS` - must be between 1 and 23 *
-  /// `TIME_UNIT_MINUTES` - must be between 1 and 59
-  core.int? timeUnitCount;
-
-  /// Whether unlimited frequency capping is applied.
-  ///
-  /// When this field is set to `true`, the remaining frequency cap fields are
-  /// not applicable.
-  core.bool? unlimited;
-
-  $FrequencyCap({
-    this.maxImpressions,
-    this.maxViews,
-    this.timeUnit,
-    this.timeUnitCount,
-    this.unlimited,
-  });
-
-  $FrequencyCap.fromJson(core.Map json_)
-    : this(
-        maxImpressions: json_['maxImpressions'] as core.int?,
-        maxViews: json_['maxViews'] as core.int?,
-        timeUnit: json_['timeUnit'] as core.String?,
-        timeUnitCount: json_['timeUnitCount'] as core.int?,
-        unlimited: json_['unlimited'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final maxImpressions = this.maxImpressions;
-    final maxViews = this.maxViews;
-    final timeUnit = this.timeUnit;
-    final timeUnitCount = this.timeUnitCount;
-    final unlimited = this.unlimited;
-    return {
-      'maxImpressions': ?maxImpressions,
-      'maxViews': ?maxViews,
-      'timeUnit': ?timeUnit,
-      'timeUnitCount': ?timeUnitCount,
-      'unlimited': ?unlimited,
-    };
-  }
-}
-
-/// Used by:
-///
 /// - parallelstore:v1 : DestinationGcsBucket
 /// - parallelstore:v1 : SourceGcsBucket
 class $GcsBucket {
@@ -12292,121 +5460,6 @@ class $GcsBucket {
   core.Map<core.String, core.dynamic> toJson() {
     final uri = this.uri;
     return {'uri': ?uri};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : GenderAssignedTargetingOptionDetails
-/// - displayvideo:v3 : GenderAssignedTargetingOptionDetails
-/// - displayvideo:v4 : GenderAssignedTargetingOptionDetails
-class $GenderAssignedTargetingOptionDetails {
-  /// The gender of the audience.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "GENDER_UNSPECIFIED" : Default value when gender is not specified in
-  /// this version. This enum is a place holder for default value and does not
-  /// represent a real gender option.
-  /// - "GENDER_MALE" : The audience gender is male.
-  /// - "GENDER_FEMALE" : The audience gender is female.
-  /// - "GENDER_UNKNOWN" : The audience gender is unknown.
-  core.String? gender;
-
-  $GenderAssignedTargetingOptionDetails({this.gender});
-
-  $GenderAssignedTargetingOptionDetails.fromJson(core.Map json_)
-    : this(gender: json_['gender'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final gender = this.gender;
-    return {'gender': ?gender};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : GenderTargetingOptionDetails
-/// - displayvideo:v3 : GenderTargetingOptionDetails
-/// - displayvideo:v4 : GenderTargetingOptionDetails
-class $GenderTargetingOptionDetails {
-  /// The gender of an audience.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "GENDER_UNSPECIFIED" : Default value when gender is not specified in
-  /// this version. This enum is a place holder for default value and does not
-  /// represent a real gender option.
-  /// - "GENDER_MALE" : The audience gender is male.
-  /// - "GENDER_FEMALE" : The audience gender is female.
-  /// - "GENDER_UNKNOWN" : The audience gender is unknown.
-  core.String? gender;
-
-  $GenderTargetingOptionDetails({this.gender});
-
-  $GenderTargetingOptionDetails.fromJson(core.Map json_)
-    : this(gender: json_['gender'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final gender = this.gender;
-    return {'gender': ?gender};
-  }
-}
-
-/// Used by:
-///
-/// - drive:v2 : GenerateCseTokenResponse
-/// - drive:v3 : GenerateCseTokenResponse
-class $GenerateCseTokenResponse {
-  /// The current Key ACL Service (KACLS) ID associated with the JWT.
-  core.String? currentKaclsId;
-
-  /// Name of the KACLs that the returned KACLs ID points to.
-  core.String? currentKaclsName;
-
-  /// The fileId for which the JWT was generated.
-  core.String? fileId;
-
-  /// The signed JSON Web Token (JWT) for the file.
-  core.String? jwt;
-
-  /// Identifies what kind of resource this is.
-  ///
-  /// Value: the fixed string `"drive#generateCseTokenResponse"`.
-  ///
-  /// Output only.
-  core.String? kind;
-
-  $GenerateCseTokenResponse({
-    this.currentKaclsId,
-    this.currentKaclsName,
-    this.fileId,
-    this.jwt,
-    this.kind,
-  });
-
-  $GenerateCseTokenResponse.fromJson(core.Map json_)
-    : this(
-        currentKaclsId: json_['currentKaclsId'] as core.String?,
-        currentKaclsName: json_['currentKaclsName'] as core.String?,
-        fileId: json_['fileId'] as core.String?,
-        jwt: json_['jwt'] as core.String?,
-        kind: json_['kind'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final currentKaclsId = this.currentKaclsId;
-    final currentKaclsName = this.currentKaclsName;
-    final fileId = this.fileId;
-    final jwt = this.jwt;
-    final kind = this.kind;
-    return {
-      'currentKaclsId': ?currentKaclsId,
-      'currentKaclsName': ?currentKaclsName,
-      'fileId': ?fileId,
-      'jwt': ?jwt,
-      'kind': ?kind,
-    };
   }
 }
 
@@ -12453,221 +5506,6 @@ class $GenerateEnterpriseUpgradeUrlResponse {
 
 /// Used by:
 ///
-/// - displayvideo:v2 : GeoRegionAssignedTargetingOptionDetails
-/// - displayvideo:v3 : GeoRegionAssignedTargetingOptionDetails
-/// - displayvideo:v4 : GeoRegionAssignedTargetingOptionDetails
-class $GeoRegionAssignedTargetingOptionDetails {
-  /// The display name of the geographic region (e.g., "Ontario, Canada").
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  /// The type of geographic region targeting.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "GEO_REGION_TYPE_UNKNOWN" : The geographic region type is unknown.
-  /// - "GEO_REGION_TYPE_OTHER" : The geographic region type is other.
-  /// - "GEO_REGION_TYPE_COUNTRY" : The geographic region is a country.
-  /// - "GEO_REGION_TYPE_REGION" : The geographic region type is region.
-  /// - "GEO_REGION_TYPE_TERRITORY" : The geographic region is a territory.
-  /// - "GEO_REGION_TYPE_PROVINCE" : The geographic region is a province.
-  /// - "GEO_REGION_TYPE_STATE" : The geographic region is a state.
-  /// - "GEO_REGION_TYPE_PREFECTURE" : The geographic region is a prefecture.
-  /// - "GEO_REGION_TYPE_GOVERNORATE" : The geographic region is a governorate.
-  /// - "GEO_REGION_TYPE_CANTON" : The geographic region is a canton.
-  /// - "GEO_REGION_TYPE_UNION_TERRITORY" : The geographic region is a union
-  /// territory.
-  /// - "GEO_REGION_TYPE_AUTONOMOUS_COMMUNITY" : The geographic region is an
-  /// autonomous community.
-  /// - "GEO_REGION_TYPE_DMA_REGION" : The geographic region is a designated
-  /// market area (DMA) region.
-  /// - "GEO_REGION_TYPE_METRO" : The geographic region type is metro.
-  /// - "GEO_REGION_TYPE_CONGRESSIONAL_DISTRICT" : The geographic region is a
-  /// congressional district.
-  /// - "GEO_REGION_TYPE_COUNTY" : The geographic region is a county.
-  /// - "GEO_REGION_TYPE_MUNICIPALITY" : The geographic region is a
-  /// municipality.
-  /// - "GEO_REGION_TYPE_CITY" : The geographic region is a city.
-  /// - "GEO_REGION_TYPE_POSTAL_CODE" : The geographic region targeting type is
-  /// postal code.
-  /// - "GEO_REGION_TYPE_DEPARTMENT" : The geographic region targeting type is
-  /// department.
-  /// - "GEO_REGION_TYPE_AIRPORT" : The geographic region is an airport.
-  /// - "GEO_REGION_TYPE_TV_REGION" : The geographic region is a TV region.
-  /// - "GEO_REGION_TYPE_OKRUG" : The geographic region is an okrug.
-  /// - "GEO_REGION_TYPE_BOROUGH" : The geographic region is a borough.
-  /// - "GEO_REGION_TYPE_CITY_REGION" : The geographic region is a city region.
-  /// - "GEO_REGION_TYPE_ARRONDISSEMENT" : The geographic region is an
-  /// arrondissement.
-  /// - "GEO_REGION_TYPE_NEIGHBORHOOD" : The geographic region is a
-  /// neighborhood.
-  /// - "GEO_REGION_TYPE_UNIVERSITY" : The geographic region is a university.
-  /// - "GEO_REGION_TYPE_DISTRICT" : The geographic region is a district.
-  /// - "GEO_REGION_TYPE_NATIONAL_PARK" : The geographic region is a national
-  /// park.
-  /// - "GEO_REGION_TYPE_BARRIO" : The geographic region is a barrio.
-  /// - "GEO_REGION_TYPE_SUB_WARD" : The geographic region is a sub ward.
-  /// - "GEO_REGION_TYPE_MUNICIPALITY_DISTRICT" : The geographic region is a
-  /// municipality district.
-  /// - "GEO_REGION_TYPE_SUB_DISTRICT" : The geographic region is a sub
-  /// district.
-  /// - "GEO_REGION_TYPE_QUARTER" : The geographic region is a quarter.
-  /// - "GEO_REGION_TYPE_DIVISION" : The geographic region is a division.
-  /// - "GEO_REGION_TYPE_COMMUNE" : The geographic region is a commune.
-  /// - "GEO_REGION_TYPE_COLLOQUIAL_AREA" : The geographic region is a
-  /// colloquial area.
-  /// - "GEO_REGION_TYPE_POST_TOWN" : The geographic region is a post town.
-  /// - "GEO_REGION_TYPE_WARD" : The geographic region is a ward.
-  core.String? geoRegionType;
-
-  /// Indicates if this option is being negatively targeted.
-  core.bool? negative;
-
-  /// The targeting_option_id of a TargetingOption of type
-  /// `TARGETING_TYPE_GEO_REGION`.
-  ///
-  /// Required.
-  core.String? targetingOptionId;
-
-  $GeoRegionAssignedTargetingOptionDetails({
-    this.displayName,
-    this.geoRegionType,
-    this.negative,
-    this.targetingOptionId,
-  });
-
-  $GeoRegionAssignedTargetingOptionDetails.fromJson(core.Map json_)
-    : this(
-        displayName: json_['displayName'] as core.String?,
-        geoRegionType: json_['geoRegionType'] as core.String?,
-        negative: json_['negative'] as core.bool?,
-        targetingOptionId: json_['targetingOptionId'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final displayName = this.displayName;
-    final geoRegionType = this.geoRegionType;
-    final negative = this.negative;
-    final targetingOptionId = this.targetingOptionId;
-    return {
-      'displayName': ?displayName,
-      'geoRegionType': ?geoRegionType,
-      'negative': ?negative,
-      'targetingOptionId': ?targetingOptionId,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : GeoRegionSearchTerms
-/// - displayvideo:v3 : GeoRegionSearchTerms
-/// - displayvideo:v4 : GeoRegionSearchTerms
-class $GeoRegionSearchTerms {
-  /// The search query for the desired geo region.
-  ///
-  /// The query can be a prefix, e.g. "New Yor", "Seattle", "USA", etc.
-  core.String? geoRegionQuery;
-
-  $GeoRegionSearchTerms({this.geoRegionQuery});
-
-  $GeoRegionSearchTerms.fromJson(core.Map json_)
-    : this(geoRegionQuery: json_['geoRegionQuery'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final geoRegionQuery = this.geoRegionQuery;
-    return {'geoRegionQuery': ?geoRegionQuery};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : GeoRegionTargetingOptionDetails
-/// - displayvideo:v3 : GeoRegionTargetingOptionDetails
-/// - displayvideo:v4 : GeoRegionTargetingOptionDetails
-class $GeoRegionTargetingOptionDetails {
-  /// The display name of the geographic region (e.g., "Ontario, Canada").
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  /// The type of geographic region targeting.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "GEO_REGION_TYPE_UNKNOWN" : The geographic region type is unknown.
-  /// - "GEO_REGION_TYPE_OTHER" : The geographic region type is other.
-  /// - "GEO_REGION_TYPE_COUNTRY" : The geographic region is a country.
-  /// - "GEO_REGION_TYPE_REGION" : The geographic region type is region.
-  /// - "GEO_REGION_TYPE_TERRITORY" : The geographic region is a territory.
-  /// - "GEO_REGION_TYPE_PROVINCE" : The geographic region is a province.
-  /// - "GEO_REGION_TYPE_STATE" : The geographic region is a state.
-  /// - "GEO_REGION_TYPE_PREFECTURE" : The geographic region is a prefecture.
-  /// - "GEO_REGION_TYPE_GOVERNORATE" : The geographic region is a governorate.
-  /// - "GEO_REGION_TYPE_CANTON" : The geographic region is a canton.
-  /// - "GEO_REGION_TYPE_UNION_TERRITORY" : The geographic region is a union
-  /// territory.
-  /// - "GEO_REGION_TYPE_AUTONOMOUS_COMMUNITY" : The geographic region is an
-  /// autonomous community.
-  /// - "GEO_REGION_TYPE_DMA_REGION" : The geographic region is a designated
-  /// market area (DMA) region.
-  /// - "GEO_REGION_TYPE_METRO" : The geographic region type is metro.
-  /// - "GEO_REGION_TYPE_CONGRESSIONAL_DISTRICT" : The geographic region is a
-  /// congressional district.
-  /// - "GEO_REGION_TYPE_COUNTY" : The geographic region is a county.
-  /// - "GEO_REGION_TYPE_MUNICIPALITY" : The geographic region is a
-  /// municipality.
-  /// - "GEO_REGION_TYPE_CITY" : The geographic region is a city.
-  /// - "GEO_REGION_TYPE_POSTAL_CODE" : The geographic region targeting type is
-  /// postal code.
-  /// - "GEO_REGION_TYPE_DEPARTMENT" : The geographic region targeting type is
-  /// department.
-  /// - "GEO_REGION_TYPE_AIRPORT" : The geographic region is an airport.
-  /// - "GEO_REGION_TYPE_TV_REGION" : The geographic region is a TV region.
-  /// - "GEO_REGION_TYPE_OKRUG" : The geographic region is an okrug.
-  /// - "GEO_REGION_TYPE_BOROUGH" : The geographic region is a borough.
-  /// - "GEO_REGION_TYPE_CITY_REGION" : The geographic region is a city region.
-  /// - "GEO_REGION_TYPE_ARRONDISSEMENT" : The geographic region is an
-  /// arrondissement.
-  /// - "GEO_REGION_TYPE_NEIGHBORHOOD" : The geographic region is a
-  /// neighborhood.
-  /// - "GEO_REGION_TYPE_UNIVERSITY" : The geographic region is a university.
-  /// - "GEO_REGION_TYPE_DISTRICT" : The geographic region is a district.
-  /// - "GEO_REGION_TYPE_NATIONAL_PARK" : The geographic region is a national
-  /// park.
-  /// - "GEO_REGION_TYPE_BARRIO" : The geographic region is a barrio.
-  /// - "GEO_REGION_TYPE_SUB_WARD" : The geographic region is a sub ward.
-  /// - "GEO_REGION_TYPE_MUNICIPALITY_DISTRICT" : The geographic region is a
-  /// municipality district.
-  /// - "GEO_REGION_TYPE_SUB_DISTRICT" : The geographic region is a sub
-  /// district.
-  /// - "GEO_REGION_TYPE_QUARTER" : The geographic region is a quarter.
-  /// - "GEO_REGION_TYPE_DIVISION" : The geographic region is a division.
-  /// - "GEO_REGION_TYPE_COMMUNE" : The geographic region is a commune.
-  /// - "GEO_REGION_TYPE_COLLOQUIAL_AREA" : The geographic region is a
-  /// colloquial area.
-  /// - "GEO_REGION_TYPE_POST_TOWN" : The geographic region is a post town.
-  /// - "GEO_REGION_TYPE_WARD" : The geographic region is a ward.
-  core.String? geoRegionType;
-
-  $GeoRegionTargetingOptionDetails({this.displayName, this.geoRegionType});
-
-  $GeoRegionTargetingOptionDetails.fromJson(core.Map json_)
-    : this(
-        displayName: json_['displayName'] as core.String?,
-        geoRegionType: json_['geoRegionType'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final displayName = this.displayName;
-    final geoRegionType = this.geoRegionType;
-    return {'displayName': ?displayName, 'geoRegionType': ?geoRegionType};
-  }
-}
-
-/// Used by:
-///
 /// - accesscontextmanager:v1 : GetPolicyOptions
 /// - analyticshub:v1 : GetPolicyOptions
 /// - bigquery:v2 : GetPolicyOptions
@@ -12676,11 +5514,9 @@ class $GeoRegionTargetingOptionDetails {
 /// - bigquerydatapolicy:v2 : GetPolicyOptions
 /// - bigtableadmin:v2 : GetPolicyOptions
 /// - cloudresourcemanager:v1 : GetPolicyOptions
-/// - cloudresourcemanager:v2 : GetPolicyOptions
 /// - cloudresourcemanager:v3 : GetPolicyOptions
 /// - cloudtasks:v2 : GetPolicyOptions
 /// - containeranalysis:v1 : GetPolicyOptions
-/// - datacatalog:v1 : GetPolicyOptions
 /// - dns:v1 : GoogleIamV1GetPolicyOptions
 /// - iam:v1 : GetPolicyOptions
 /// - iap:v1 : GetPolicyOptions
@@ -12850,98 +5686,6 @@ class $GlossaryConfig {
       'glossary': ?glossary,
       'ignoreCase': ?ignoreCase,
     };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : GoogleAudience
-/// - displayvideo:v3 : GoogleAudience
-class $GoogleAudience {
-  /// The display name of the Google audience.
-  ///
-  /// .
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  /// The unique ID of the Google audience.
-  ///
-  /// Assigned by the system.
-  ///
-  /// Output only.
-  core.String? googleAudienceId;
-
-  /// The type of Google audience.
-  ///
-  /// .
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "GOOGLE_AUDIENCE_TYPE_UNSPECIFIED" : Default value when type is not
-  /// specified or is unknown.
-  /// - "GOOGLE_AUDIENCE_TYPE_AFFINITY" : Affinity type Google audience.
-  /// - "GOOGLE_AUDIENCE_TYPE_IN_MARKET" : In-Market type Google audience.
-  /// - "GOOGLE_AUDIENCE_TYPE_LIFE_EVENT" : Life-Event type Google audience.
-  /// - "GOOGLE_AUDIENCE_TYPE_EXTENDED_DEMOGRAPHIC" : Extended-Demographic type
-  /// Google audience.
-  core.String? googleAudienceType;
-
-  /// The resource name of the google audience.
-  ///
-  /// Output only.
-  core.String? name;
-
-  $GoogleAudience({
-    this.displayName,
-    this.googleAudienceId,
-    this.googleAudienceType,
-    this.name,
-  });
-
-  $GoogleAudience.fromJson(core.Map json_)
-    : this(
-        displayName: json_['displayName'] as core.String?,
-        googleAudienceId: json_['googleAudienceId'] as core.String?,
-        googleAudienceType: json_['googleAudienceType'] as core.String?,
-        name: json_['name'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final displayName = this.displayName;
-    final googleAudienceId = this.googleAudienceId;
-    final googleAudienceType = this.googleAudienceType;
-    final name = this.name;
-    return {
-      'displayName': ?displayName,
-      'googleAudienceId': ?googleAudienceId,
-      'googleAudienceType': ?googleAudienceType,
-      'name': ?name,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : GoogleAudienceTargetingSetting
-/// - displayvideo:v3 : GoogleAudienceTargetingSetting
-/// - displayvideo:v4 : GoogleAudienceTargetingSetting
-class $GoogleAudienceTargetingSetting {
-  /// Google audience id of the Google audience targeting setting.
-  ///
-  /// This id is google_audience_id.
-  ///
-  /// Required.
-  core.String? googleAudienceId;
-
-  $GoogleAudienceTargetingSetting({this.googleAudienceId});
-
-  $GoogleAudienceTargetingSetting.fromJson(core.Map json_)
-    : this(googleAudienceId: json_['googleAudienceId'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final googleAudienceId = this.googleAudienceId;
-    return {'googleAudienceId': ?googleAudienceId};
   }
 }
 
@@ -13256,78 +6000,6 @@ class $GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource {
 
 /// Used by:
 ///
-/// - displayvideo:v2 : GuaranteedOrderStatus
-/// - displayvideo:v3 : GuaranteedOrderStatus
-/// - displayvideo:v4 : GuaranteedOrderStatus
-class $GuaranteedOrderStatus {
-  /// The configuration status of the guaranteed order.
-  ///
-  /// Acceptable values are `PENDING` and `COMPLETED`. A guaranteed order must
-  /// be configured (fill in the required fields, choose creatives, and select a
-  /// default campaign) before it can serve. Currently the configuration action
-  /// can only be performed via UI.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "GUARANTEED_ORDER_CONFIG_STATUS_UNSPECIFIED" : The approval status is
-  /// not specified or is unknown in this version.
-  /// - "PENDING" : The beginning state of a guaranteed order. The guaranteed
-  /// order in this state needs to be configured before it can serve.
-  /// - "COMPLETED" : The state after the buyer configures a guaranteed order.
-  core.String? configStatus;
-
-  /// The user-provided reason for pausing this guaranteed order.
-  ///
-  /// Must be UTF-8 encoded with a maximum length of 100 bytes. Only applicable
-  /// when entity_status is set to `ENTITY_STATUS_PAUSED`.
-  core.String? entityPauseReason;
-
-  /// Whether or not the guaranteed order is servable.
-  ///
-  /// Acceptable values are `ENTITY_STATUS_ACTIVE`, `ENTITY_STATUS_ARCHIVED`,
-  /// and `ENTITY_STATUS_PAUSED`. Default value is `ENTITY_STATUS_ACTIVE`.
-  /// Possible string values are:
-  /// - "ENTITY_STATUS_UNSPECIFIED" : Default value when status is not specified
-  /// or is unknown in this version.
-  /// - "ENTITY_STATUS_ACTIVE" : The entity is enabled to bid and spend budget.
-  /// - "ENTITY_STATUS_ARCHIVED" : The entity is archived. Bidding and budget
-  /// spending are disabled. An entity can be deleted after archived. Deleted
-  /// entities cannot be retrieved.
-  /// - "ENTITY_STATUS_DRAFT" : The entity is under draft. Bidding and budget
-  /// spending are disabled.
-  /// - "ENTITY_STATUS_PAUSED" : Bidding and budget spending are paused for the
-  /// entity.
-  /// - "ENTITY_STATUS_SCHEDULED_FOR_DELETION" : The entity is scheduled for
-  /// deletion.
-  core.String? entityStatus;
-
-  $GuaranteedOrderStatus({
-    this.configStatus,
-    this.entityPauseReason,
-    this.entityStatus,
-  });
-
-  $GuaranteedOrderStatus.fromJson(core.Map json_)
-    : this(
-        configStatus: json_['configStatus'] as core.String?,
-        entityPauseReason: json_['entityPauseReason'] as core.String?,
-        entityStatus: json_['entityStatus'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final configStatus = this.configStatus;
-    final entityPauseReason = this.entityPauseReason;
-    final entityStatus = this.entityStatus;
-    return {
-      'configStatus': ?configStatus,
-      'entityPauseReason': ?entityPauseReason,
-      'entityStatus': ?entityStatus,
-    };
-  }
-}
-
-/// Used by:
-///
 /// - compute:v1 : GuestAttributesEntry
 /// - tpu:v2 : GuestAttributesEntry
 class $GuestAttributesEntry {
@@ -13354,41 +6026,6 @@ class $GuestAttributesEntry {
     final namespace = this.namespace;
     final value = this.value;
     return {'key': ?key, 'namespace': ?namespace, 'value': ?value};
-  }
-}
-
-/// Used by:
-///
-/// - connectors:v1 : HPAConfig
-/// - integrations:v1 : GoogleCloudConnectorsV1HPAConfig
-class $HPAConfig {
-  /// Percent CPU utilization where HPA triggers autoscaling.
-  ///
-  /// Output only.
-  core.String? cpuUtilizationThreshold;
-
-  /// Percent Memory utilization where HPA triggers autoscaling.
-  ///
-  /// Output only.
-  core.String? memoryUtilizationThreshold;
-
-  $HPAConfig({this.cpuUtilizationThreshold, this.memoryUtilizationThreshold});
-
-  $HPAConfig.fromJson(core.Map json_)
-    : this(
-        cpuUtilizationThreshold:
-            json_['cpuUtilizationThreshold'] as core.String?,
-        memoryUtilizationThreshold:
-            json_['memoryUtilizationThreshold'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final cpuUtilizationThreshold = this.cpuUtilizationThreshold;
-    final memoryUtilizationThreshold = this.memoryUtilizationThreshold;
-    return {
-      'cpuUtilizationThreshold': ?cpuUtilizationThreshold,
-      'memoryUtilizationThreshold': ?memoryUtilizationThreshold,
-    };
   }
 }
 
@@ -13477,86 +6114,6 @@ class $Header {
 
 /// Used by:
 ///
-/// - displayvideo:v2 : HouseholdIncomeAssignedTargetingOptionDetails
-/// - displayvideo:v3 : HouseholdIncomeAssignedTargetingOptionDetails
-/// - displayvideo:v4 : HouseholdIncomeAssignedTargetingOptionDetails
-class $HouseholdIncomeAssignedTargetingOptionDetails {
-  /// The household income of the audience.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "HOUSEHOLD_INCOME_UNSPECIFIED" : Default value when household income is
-  /// not specified in this version. This enum is a placeholder for default
-  /// value and does not represent a real household income option.
-  /// - "HOUSEHOLD_INCOME_UNKNOWN" : The household income of the audience is
-  /// unknown.
-  /// - "HOUSEHOLD_INCOME_LOWER_50_PERCENT" : The audience is in the lower 50%
-  /// of U.S. household incomes.
-  /// - "HOUSEHOLD_INCOME_TOP_41_TO_50_PERCENT" : The audience is in the top
-  /// 41-50% of U.S. household incomes.
-  /// - "HOUSEHOLD_INCOME_TOP_31_TO_40_PERCENT" : The audience is in the top
-  /// 31-40% of U.S. household incomes.
-  /// - "HOUSEHOLD_INCOME_TOP_21_TO_30_PERCENT" : The audience is in the top
-  /// 21-30% of U.S. household incomes.
-  /// - "HOUSEHOLD_INCOME_TOP_11_TO_20_PERCENT" : The audience is in the top
-  /// 11-20% of U.S. household incomes.
-  /// - "HOUSEHOLD_INCOME_TOP_10_PERCENT" : The audience is in the top 10% of
-  /// U.S. household incomes.
-  core.String? householdIncome;
-
-  $HouseholdIncomeAssignedTargetingOptionDetails({this.householdIncome});
-
-  $HouseholdIncomeAssignedTargetingOptionDetails.fromJson(core.Map json_)
-    : this(householdIncome: json_['householdIncome'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final householdIncome = this.householdIncome;
-    return {'householdIncome': ?householdIncome};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : HouseholdIncomeTargetingOptionDetails
-/// - displayvideo:v3 : HouseholdIncomeTargetingOptionDetails
-/// - displayvideo:v4 : HouseholdIncomeTargetingOptionDetails
-class $HouseholdIncomeTargetingOptionDetails {
-  /// The household income of an audience.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "HOUSEHOLD_INCOME_UNSPECIFIED" : Default value when household income is
-  /// not specified in this version. This enum is a placeholder for default
-  /// value and does not represent a real household income option.
-  /// - "HOUSEHOLD_INCOME_UNKNOWN" : The household income of the audience is
-  /// unknown.
-  /// - "HOUSEHOLD_INCOME_LOWER_50_PERCENT" : The audience is in the lower 50%
-  /// of U.S. household incomes.
-  /// - "HOUSEHOLD_INCOME_TOP_41_TO_50_PERCENT" : The audience is in the top
-  /// 41-50% of U.S. household incomes.
-  /// - "HOUSEHOLD_INCOME_TOP_31_TO_40_PERCENT" : The audience is in the top
-  /// 31-40% of U.S. household incomes.
-  /// - "HOUSEHOLD_INCOME_TOP_21_TO_30_PERCENT" : The audience is in the top
-  /// 21-30% of U.S. household incomes.
-  /// - "HOUSEHOLD_INCOME_TOP_11_TO_20_PERCENT" : The audience is in the top
-  /// 11-20% of U.S. household incomes.
-  /// - "HOUSEHOLD_INCOME_TOP_10_PERCENT" : The audience is in the top 10% of
-  /// U.S. household incomes.
-  core.String? householdIncome;
-
-  $HouseholdIncomeTargetingOptionDetails({this.householdIncome});
-
-  $HouseholdIncomeTargetingOptionDetails.fromJson(core.Map json_)
-    : this(householdIncome: json_['householdIncome'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final householdIncome = this.householdIncome;
-    return {'householdIncome': ?householdIncome};
-  }
-}
-
-/// Used by:
-///
 /// - adsense:v2 : HttpBody
 /// - aiplatform:v1 : GoogleApiHttpBody
 /// - airquality:v1 : HttpBody
@@ -13568,9 +6125,7 @@ class $HouseholdIncomeTargetingOptionDetails {
 /// - firebasedataconnect:v1 : HttpBody
 /// - health:v4 : HttpBody
 /// - healthcare:v1 : HttpBody
-/// - integrations:v2 : GoogleApiHttpBody
 /// - managedkafka:v1 : HttpBody
-/// - ml:v1 : GoogleApi__HttpBody
 /// - networkmanagement:v1 : HttpBody
 /// - pollen:v1 : HttpBody
 /// - retail:v2 : GoogleApiHttpBody
@@ -13624,124 +6179,6 @@ class $HttpBody {
 
 /// Used by:
 ///
-/// - displayvideo:v3 : IdFilter
-/// - displayvideo:v4 : IdFilter
-class $IdFilter {
-  /// YouTube Ads to download by ID.
-  ///
-  /// All IDs must belong to the same Advertiser or Partner specified in
-  /// CreateSdfDownloadTaskRequest.
-  core.List<core.String>? adGroupAdIds;
-
-  /// YouTube Ad Groups to download by ID.
-  ///
-  /// All IDs must belong to the same Advertiser or Partner specified in
-  /// CreateSdfDownloadTaskRequest.
-  core.List<core.String>? adGroupIds;
-
-  /// YouTube Ad Groups, by ID, to download in QA format.
-  ///
-  /// All IDs must belong to the same Advertiser or Partner specified in
-  /// CreateSdfDownloadTaskRequest.
-  ///
-  /// Optional.
-  core.List<core.String>? adGroupQaIds;
-
-  /// Campaigns to download by ID.
-  ///
-  /// All IDs must belong to the same Advertiser or Partner specified in
-  /// CreateSdfDownloadTaskRequest.
-  core.List<core.String>? campaignIds;
-
-  /// Insertion Orders to download by ID.
-  ///
-  /// All IDs must belong to the same Advertiser or Partner specified in
-  /// CreateSdfDownloadTaskRequest.
-  core.List<core.String>? insertionOrderIds;
-
-  /// Line Items to download by ID.
-  ///
-  /// All IDs must belong to the same Advertiser or Partner specified in
-  /// CreateSdfDownloadTaskRequest.
-  core.List<core.String>? lineItemIds;
-
-  /// Line Items, by ID, to download in QA format.
-  ///
-  /// All IDs must belong to the same Advertiser or Partner specified in
-  /// CreateSdfDownloadTaskRequest.
-  ///
-  /// Optional.
-  core.List<core.String>? lineItemQaIds;
-
-  /// Media Products to download by ID.
-  ///
-  /// All IDs must belong to the same Advertiser or Partner specified in
-  /// CreateSdfDownloadTaskRequest.
-  core.List<core.String>? mediaProductIds;
-
-  $IdFilter({
-    this.adGroupAdIds,
-    this.adGroupIds,
-    this.adGroupQaIds,
-    this.campaignIds,
-    this.insertionOrderIds,
-    this.lineItemIds,
-    this.lineItemQaIds,
-    this.mediaProductIds,
-  });
-
-  $IdFilter.fromJson(core.Map json_)
-    : this(
-        adGroupAdIds: (json_['adGroupAdIds'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-        adGroupIds: (json_['adGroupIds'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-        adGroupQaIds: (json_['adGroupQaIds'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-        campaignIds: (json_['campaignIds'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-        insertionOrderIds: (json_['insertionOrderIds'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-        lineItemIds: (json_['lineItemIds'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-        lineItemQaIds: (json_['lineItemQaIds'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-        mediaProductIds: (json_['mediaProductIds'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final adGroupAdIds = this.adGroupAdIds;
-    final adGroupIds = this.adGroupIds;
-    final adGroupQaIds = this.adGroupQaIds;
-    final campaignIds = this.campaignIds;
-    final insertionOrderIds = this.insertionOrderIds;
-    final lineItemIds = this.lineItemIds;
-    final lineItemQaIds = this.lineItemQaIds;
-    final mediaProductIds = this.mediaProductIds;
-    return {
-      'adGroupAdIds': ?adGroupAdIds,
-      'adGroupIds': ?adGroupIds,
-      'adGroupQaIds': ?adGroupQaIds,
-      'campaignIds': ?campaignIds,
-      'insertionOrderIds': ?insertionOrderIds,
-      'lineItemIds': ?lineItemIds,
-      'lineItemQaIds': ?lineItemQaIds,
-      'mediaProductIds': ?mediaProductIds,
-    };
-  }
-}
-
-/// Used by:
-///
 /// - containeranalysis:v1 : Identity
 /// - ondemandscanning:v1 : Identity
 class $Identity {
@@ -13763,623 +6200,6 @@ class $Identity {
     final revision = this.revision;
     final updateId = this.updateId;
     return {'revision': ?revision, 'updateId': ?updateId};
-  }
-}
-
-/// Used by:
-///
-/// - gkehub:v1 : IdentityServiceAzureADConfig
-/// - gkehub:v2 : IdentityServiceAzureADConfig
-class $IdentityServiceAzureADConfig {
-  /// ID for the registered client application that makes authentication
-  /// requests to the Azure AD identity provider.
-  core.String? clientId;
-
-  /// Input only.
-  ///
-  /// Unencrypted AzureAD client secret will be passed to the GKE Hub CLH.
-  core.String? clientSecret;
-
-  /// Encrypted AzureAD client secret.
-  ///
-  /// Output only.
-  core.String? encryptedClientSecret;
-  core.List<core.int> get encryptedClientSecretAsBytes =>
-      convert.base64.decode(encryptedClientSecret!);
-
-  set encryptedClientSecretAsBytes(core.List<core.int> bytes_) {
-    encryptedClientSecret = convert.base64
-        .encode(bytes_)
-        .replaceAll('/', '_')
-        .replaceAll('+', '-');
-  }
-
-  /// Format of the AzureAD groups that the client wants for auth.
-  ///
-  /// Optional.
-  core.String? groupFormat;
-
-  /// The redirect URL that kubectl uses for authorization.
-  core.String? kubectlRedirectUri;
-
-  /// Kind of Azure AD account to be authenticated.
-  ///
-  /// Supported values are or for accounts belonging to a specific tenant.
-  core.String? tenant;
-
-  /// Claim in the AzureAD ID Token that holds the user details.
-  ///
-  /// Optional.
-  core.String? userClaim;
-
-  $IdentityServiceAzureADConfig({
-    this.clientId,
-    this.clientSecret,
-    this.encryptedClientSecret,
-    this.groupFormat,
-    this.kubectlRedirectUri,
-    this.tenant,
-    this.userClaim,
-  });
-
-  $IdentityServiceAzureADConfig.fromJson(core.Map json_)
-    : this(
-        clientId: json_['clientId'] as core.String?,
-        clientSecret: json_['clientSecret'] as core.String?,
-        encryptedClientSecret: json_['encryptedClientSecret'] as core.String?,
-        groupFormat: json_['groupFormat'] as core.String?,
-        kubectlRedirectUri: json_['kubectlRedirectUri'] as core.String?,
-        tenant: json_['tenant'] as core.String?,
-        userClaim: json_['userClaim'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final clientId = this.clientId;
-    final clientSecret = this.clientSecret;
-    final encryptedClientSecret = this.encryptedClientSecret;
-    final groupFormat = this.groupFormat;
-    final kubectlRedirectUri = this.kubectlRedirectUri;
-    final tenant = this.tenant;
-    final userClaim = this.userClaim;
-    return {
-      'clientId': ?clientId,
-      'clientSecret': ?clientSecret,
-      'encryptedClientSecret': ?encryptedClientSecret,
-      'groupFormat': ?groupFormat,
-      'kubectlRedirectUri': ?kubectlRedirectUri,
-      'tenant': ?tenant,
-      'userClaim': ?userClaim,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - gkehub:v1 : IdentityServiceDiagnosticInterface
-/// - gkehub:v2 : IdentityServiceDiagnosticInterface
-class $IdentityServiceDiagnosticInterface {
-  /// Determines whether to enable the diagnostic interface.
-  core.bool? enabled;
-
-  /// Determines the expiration time of the diagnostic interface enablement.
-  ///
-  /// When reached, requests to the interface would be automatically rejected.
-  core.String? expirationTime;
-
-  $IdentityServiceDiagnosticInterface({this.enabled, this.expirationTime});
-
-  $IdentityServiceDiagnosticInterface.fromJson(core.Map json_)
-    : this(
-        enabled: json_['enabled'] as core.bool?,
-        expirationTime: json_['expirationTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final enabled = this.enabled;
-    final expirationTime = this.expirationTime;
-    return {'enabled': ?enabled, 'expirationTime': ?expirationTime};
-  }
-}
-
-/// Used by:
-///
-/// - gkehub:v1 : IdentityServiceGoogleConfig
-/// - gkehub:v2 : IdentityServiceGoogleConfig
-class $IdentityServiceGoogleConfig {
-  /// Disable automatic configuration of Google Plugin on supported platforms.
-  core.bool? disable;
-
-  $IdentityServiceGoogleConfig({this.disable});
-
-  $IdentityServiceGoogleConfig.fromJson(core.Map json_)
-    : this(disable: json_['disable'] as core.bool?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final disable = this.disable;
-    return {'disable': ?disable};
-  }
-}
-
-/// Used by:
-///
-/// - gkehub:v1 : IdentityServiceGroupConfig
-/// - gkehub:v2 : IdentityServiceGroupConfig
-class $IdentityServiceGroupConfig {
-  /// The location of the subtree in the LDAP directory to search for group
-  /// entries.
-  ///
-  /// Required.
-  core.String? baseDn;
-
-  /// Optional filter to be used when searching for groups a user belongs to.
-  ///
-  /// This can be used to explicitly match only certain groups in order to
-  /// reduce the amount of groups returned for each user. This defaults to
-  /// "(objectClass=Group)".
-  ///
-  /// Optional.
-  core.String? filter;
-
-  /// The identifying name of each group a user belongs to.
-  ///
-  /// For example, if this is set to "distinguishedName" then RBACs and other
-  /// group expectations should be written as full DNs. This defaults to
-  /// "distinguishedName".
-  ///
-  /// Optional.
-  core.String? idAttribute;
-
-  $IdentityServiceGroupConfig({this.baseDn, this.filter, this.idAttribute});
-
-  $IdentityServiceGroupConfig.fromJson(core.Map json_)
-    : this(
-        baseDn: json_['baseDn'] as core.String?,
-        filter: json_['filter'] as core.String?,
-        idAttribute: json_['idAttribute'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final baseDn = this.baseDn;
-    final filter = this.filter;
-    final idAttribute = this.idAttribute;
-    return {'baseDn': ?baseDn, 'filter': ?filter, 'idAttribute': ?idAttribute};
-  }
-}
-
-/// Used by:
-///
-/// - gkehub:v1 : IdentityServiceOidcConfig
-/// - gkehub:v2 : IdentityServiceOidcConfig
-class $IdentityServiceOidcConfig {
-  /// PEM-encoded CA for OIDC provider.
-  core.String? certificateAuthorityData;
-
-  /// ID for OIDC client application.
-  core.String? clientId;
-
-  /// Input only.
-  ///
-  /// Unencrypted OIDC client secret will be passed to the GKE Hub CLH.
-  core.String? clientSecret;
-
-  /// Flag to denote if reverse proxy is used to connect to auth provider.
-  ///
-  /// This flag should be set to true when provider is not reachable by Google
-  /// Cloud Console.
-  core.bool? deployCloudConsoleProxy;
-
-  /// Enable access token.
-  core.bool? enableAccessToken;
-
-  /// Encrypted OIDC Client secret
-  ///
-  /// Output only.
-  core.String? encryptedClientSecret;
-  core.List<core.int> get encryptedClientSecretAsBytes =>
-      convert.base64.decode(encryptedClientSecret!);
-
-  set encryptedClientSecretAsBytes(core.List<core.int> bytes_) {
-    encryptedClientSecret = convert.base64
-        .encode(bytes_)
-        .replaceAll('/', '_')
-        .replaceAll('+', '-');
-  }
-
-  /// Comma-separated list of key-value pairs.
-  core.String? extraParams;
-
-  /// Prefix to prepend to group name.
-  core.String? groupPrefix;
-
-  /// Claim in OIDC ID token that holds group information.
-  core.String? groupsClaim;
-
-  /// URI for the OIDC provider.
-  ///
-  /// This should point to the level below .well-known/openid-configuration.
-  core.String? issuerUri;
-
-  /// Registered redirect uri to redirect users going through OAuth flow using
-  /// kubectl plugin.
-  core.String? kubectlRedirectUri;
-
-  /// Comma-separated list of identifiers.
-  core.String? scopes;
-
-  /// Claim in OIDC ID token that holds username.
-  core.String? userClaim;
-
-  /// Prefix to prepend to user name.
-  core.String? userPrefix;
-
-  $IdentityServiceOidcConfig({
-    this.certificateAuthorityData,
-    this.clientId,
-    this.clientSecret,
-    this.deployCloudConsoleProxy,
-    this.enableAccessToken,
-    this.encryptedClientSecret,
-    this.extraParams,
-    this.groupPrefix,
-    this.groupsClaim,
-    this.issuerUri,
-    this.kubectlRedirectUri,
-    this.scopes,
-    this.userClaim,
-    this.userPrefix,
-  });
-
-  $IdentityServiceOidcConfig.fromJson(core.Map json_)
-    : this(
-        certificateAuthorityData:
-            json_['certificateAuthorityData'] as core.String?,
-        clientId: json_['clientId'] as core.String?,
-        clientSecret: json_['clientSecret'] as core.String?,
-        deployCloudConsoleProxy: json_['deployCloudConsoleProxy'] as core.bool?,
-        enableAccessToken: json_['enableAccessToken'] as core.bool?,
-        encryptedClientSecret: json_['encryptedClientSecret'] as core.String?,
-        extraParams: json_['extraParams'] as core.String?,
-        groupPrefix: json_['groupPrefix'] as core.String?,
-        groupsClaim: json_['groupsClaim'] as core.String?,
-        issuerUri: json_['issuerUri'] as core.String?,
-        kubectlRedirectUri: json_['kubectlRedirectUri'] as core.String?,
-        scopes: json_['scopes'] as core.String?,
-        userClaim: json_['userClaim'] as core.String?,
-        userPrefix: json_['userPrefix'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final certificateAuthorityData = this.certificateAuthorityData;
-    final clientId = this.clientId;
-    final clientSecret = this.clientSecret;
-    final deployCloudConsoleProxy = this.deployCloudConsoleProxy;
-    final enableAccessToken = this.enableAccessToken;
-    final encryptedClientSecret = this.encryptedClientSecret;
-    final extraParams = this.extraParams;
-    final groupPrefix = this.groupPrefix;
-    final groupsClaim = this.groupsClaim;
-    final issuerUri = this.issuerUri;
-    final kubectlRedirectUri = this.kubectlRedirectUri;
-    final scopes = this.scopes;
-    final userClaim = this.userClaim;
-    final userPrefix = this.userPrefix;
-    return {
-      'certificateAuthorityData': ?certificateAuthorityData,
-      'clientId': ?clientId,
-      'clientSecret': ?clientSecret,
-      'deployCloudConsoleProxy': ?deployCloudConsoleProxy,
-      'enableAccessToken': ?enableAccessToken,
-      'encryptedClientSecret': ?encryptedClientSecret,
-      'extraParams': ?extraParams,
-      'groupPrefix': ?groupPrefix,
-      'groupsClaim': ?groupsClaim,
-      'issuerUri': ?issuerUri,
-      'kubectlRedirectUri': ?kubectlRedirectUri,
-      'scopes': ?scopes,
-      'userClaim': ?userClaim,
-      'userPrefix': ?userPrefix,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - gkehub:v1 : IdentityServiceSamlConfig
-/// - gkehub:v2 : IdentityServiceSamlConfig
-class $IdentityServiceSamlConfig {
-  /// The mapping of additional user attributes like nickname, birthday and
-  /// address etc..
-  ///
-  /// `key` is the name of this additional attribute. `value` is a string
-  /// presenting as CEL(common expression language, go/cel) used for getting the
-  /// value from the resources. Take nickname as an example, in this case, `key`
-  /// is "attribute.nickname" and `value` is "assertion.nickname".
-  ///
-  /// Optional.
-  core.Map<core.String, core.String>? attributeMapping;
-
-  /// Prefix to prepend to group name.
-  ///
-  /// Optional.
-  core.String? groupPrefix;
-
-  /// The SAML attribute to read groups from.
-  ///
-  /// This value is expected to be a string and will be passed along as-is (with
-  /// the option of being prefixed by the `group_prefix`).
-  ///
-  /// Optional.
-  core.String? groupsAttribute;
-
-  /// The list of IdP certificates to validate the SAML response against.
-  ///
-  /// Required.
-  core.List<core.String>? identityProviderCertificates;
-
-  /// The entity ID of the SAML IdP.
-  ///
-  /// Required.
-  core.String? identityProviderId;
-
-  /// The URI where the SAML IdP exposes the SSO service.
-  ///
-  /// Required.
-  core.String? identityProviderSsoUri;
-
-  /// The SAML attribute to read username from.
-  ///
-  /// If unspecified, the username will be read from the NameID element of the
-  /// assertion in SAML response. This value is expected to be a string and will
-  /// be passed along as-is (with the option of being prefixed by the
-  /// `user_prefix`).
-  ///
-  /// Optional.
-  core.String? userAttribute;
-
-  /// Prefix to prepend to user name.
-  ///
-  /// Optional.
-  core.String? userPrefix;
-
-  $IdentityServiceSamlConfig({
-    this.attributeMapping,
-    this.groupPrefix,
-    this.groupsAttribute,
-    this.identityProviderCertificates,
-    this.identityProviderId,
-    this.identityProviderSsoUri,
-    this.userAttribute,
-    this.userPrefix,
-  });
-
-  $IdentityServiceSamlConfig.fromJson(core.Map json_)
-    : this(
-        attributeMapping:
-            (json_['attributeMapping'] as core.Map<core.String, core.dynamic>?)
-                ?.map((key, value) => core.MapEntry(key, value as core.String)),
-        groupPrefix: json_['groupPrefix'] as core.String?,
-        groupsAttribute: json_['groupsAttribute'] as core.String?,
-        identityProviderCertificates:
-            (json_['identityProviderCertificates'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        identityProviderId: json_['identityProviderId'] as core.String?,
-        identityProviderSsoUri: json_['identityProviderSsoUri'] as core.String?,
-        userAttribute: json_['userAttribute'] as core.String?,
-        userPrefix: json_['userPrefix'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final attributeMapping = this.attributeMapping;
-    final groupPrefix = this.groupPrefix;
-    final groupsAttribute = this.groupsAttribute;
-    final identityProviderCertificates = this.identityProviderCertificates;
-    final identityProviderId = this.identityProviderId;
-    final identityProviderSsoUri = this.identityProviderSsoUri;
-    final userAttribute = this.userAttribute;
-    final userPrefix = this.userPrefix;
-    return {
-      'attributeMapping': ?attributeMapping,
-      'groupPrefix': ?groupPrefix,
-      'groupsAttribute': ?groupsAttribute,
-      'identityProviderCertificates': ?identityProviderCertificates,
-      'identityProviderId': ?identityProviderId,
-      'identityProviderSsoUri': ?identityProviderSsoUri,
-      'userAttribute': ?userAttribute,
-      'userPrefix': ?userPrefix,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - gkehub:v1 : IdentityServiceServerConfig
-/// - gkehub:v2 : IdentityServiceServerConfig
-class $IdentityServiceServerConfig {
-  /// Contains a Base64 encoded, PEM formatted certificate authority certificate
-  /// for the LDAP server.
-  ///
-  /// This must be provided for the "ldaps" and "startTLS" connections.
-  ///
-  /// Optional.
-  core.String? certificateAuthorityData;
-  core.List<core.int> get certificateAuthorityDataAsBytes =>
-      convert.base64.decode(certificateAuthorityData!);
-
-  set certificateAuthorityDataAsBytes(core.List<core.int> bytes_) {
-    certificateAuthorityData = convert.base64
-        .encode(bytes_)
-        .replaceAll('/', '_')
-        .replaceAll('+', '-');
-  }
-
-  /// Defines the connection type to communicate with the LDAP server.
-  ///
-  /// If `starttls` or `ldaps` is specified, the certificate_authority_data
-  /// should not be empty.
-  ///
-  /// Optional.
-  core.String? connectionType;
-
-  /// Defines the hostname or IP of the LDAP server.
-  ///
-  /// Port is optional and will default to 389, if unspecified. For example,
-  /// "ldap.server.example" or "10.10.10.10:389".
-  ///
-  /// Required.
-  core.String? host;
-
-  $IdentityServiceServerConfig({
-    this.certificateAuthorityData,
-    this.connectionType,
-    this.host,
-  });
-
-  $IdentityServiceServerConfig.fromJson(core.Map json_)
-    : this(
-        certificateAuthorityData:
-            json_['certificateAuthorityData'] as core.String?,
-        connectionType: json_['connectionType'] as core.String?,
-        host: json_['host'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final certificateAuthorityData = this.certificateAuthorityData;
-    final connectionType = this.connectionType;
-    final host = this.host;
-    return {
-      'certificateAuthorityData': ?certificateAuthorityData,
-      'connectionType': ?connectionType,
-      'host': ?host,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - gkehub:v1 : IdentityServiceSimpleBindCredentials
-/// - gkehub:v2 : IdentityServiceSimpleBindCredentials
-class $IdentityServiceSimpleBindCredentials {
-  /// The distinguished name(DN) of the service account object/user.
-  ///
-  /// Required.
-  core.String? dn;
-
-  /// The encrypted password of the service account object/user.
-  ///
-  /// Output only.
-  core.String? encryptedPassword;
-  core.List<core.int> get encryptedPasswordAsBytes =>
-      convert.base64.decode(encryptedPassword!);
-
-  set encryptedPasswordAsBytes(core.List<core.int> bytes_) {
-    encryptedPassword = convert.base64
-        .encode(bytes_)
-        .replaceAll('/', '_')
-        .replaceAll('+', '-');
-  }
-
-  /// Input only.
-  ///
-  /// The password of the service account object/user.
-  ///
-  /// Required.
-  core.String? password;
-
-  $IdentityServiceSimpleBindCredentials({
-    this.dn,
-    this.encryptedPassword,
-    this.password,
-  });
-
-  $IdentityServiceSimpleBindCredentials.fromJson(core.Map json_)
-    : this(
-        dn: json_['dn'] as core.String?,
-        encryptedPassword: json_['encryptedPassword'] as core.String?,
-        password: json_['password'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final dn = this.dn;
-    final encryptedPassword = this.encryptedPassword;
-    final password = this.password;
-    return {
-      'dn': ?dn,
-      'encryptedPassword': ?encryptedPassword,
-      'password': ?password,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - gkehub:v1 : IdentityServiceUserConfig
-/// - gkehub:v2 : IdentityServiceUserConfig
-class $IdentityServiceUserConfig {
-  /// The location of the subtree in the LDAP directory to search for user
-  /// entries.
-  ///
-  /// Required.
-  core.String? baseDn;
-
-  /// Filter to apply when searching for the user.
-  ///
-  /// This can be used to further restrict the user accounts which are allowed
-  /// to login. This defaults to "(objectClass=User)".
-  ///
-  /// Optional.
-  core.String? filter;
-
-  /// Determines which attribute to use as the user's identity after they are
-  /// authenticated.
-  ///
-  /// This is distinct from the loginAttribute field to allow users to login
-  /// with a username, but then have their actual identifier be an email address
-  /// or full Distinguished Name (DN). For example, setting loginAttribute to
-  /// "sAMAccountName" and identifierAttribute to "userPrincipalName" would
-  /// allow a user to login as "bsmith", but actual RBAC policies for the user
-  /// would be written as "bsmith@example.com". Using "userPrincipalName" is
-  /// recommended since this will be unique for each user. This defaults to
-  /// "userPrincipalName".
-  ///
-  /// Optional.
-  core.String? idAttribute;
-
-  /// The name of the attribute which matches against the input username.
-  ///
-  /// This is used to find the user in the LDAP database e.g. "(=)" and is
-  /// combined with the optional filter field. This defaults to
-  /// "userPrincipalName".
-  ///
-  /// Optional.
-  core.String? loginAttribute;
-
-  $IdentityServiceUserConfig({
-    this.baseDn,
-    this.filter,
-    this.idAttribute,
-    this.loginAttribute,
-  });
-
-  $IdentityServiceUserConfig.fromJson(core.Map json_)
-    : this(
-        baseDn: json_['baseDn'] as core.String?,
-        filter: json_['filter'] as core.String?,
-        idAttribute: json_['idAttribute'] as core.String?,
-        loginAttribute: json_['loginAttribute'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final baseDn = this.baseDn;
-    final filter = this.filter;
-    final idAttribute = this.idAttribute;
-    final loginAttribute = this.loginAttribute;
-    return {
-      'baseDn': ?baseDn,
-      'filter': ?filter,
-      'idAttribute': ?idAttribute,
-      'loginAttribute': ?loginAttribute,
-    };
   }
 }
 
@@ -14492,50 +6312,6 @@ class $IncrementalLoadMode {
   core.Map<core.String, core.dynamic> toJson() {
     final column = this.column;
     return {'column': ?column};
-  }
-}
-
-/// Used by:
-///
-/// - trafficdirector:v2 : InlineScopedRouteConfigs
-/// - trafficdirector:v3 : InlineScopedRouteConfigs
-class $InlineScopedRouteConfigs {
-  /// The timestamp when the scoped route config set was last updated.
-  core.String? lastUpdated;
-
-  /// The name assigned to the scoped route configurations.
-  core.String? name;
-
-  /// The scoped route configurations.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object?>>? scopedRouteConfigs;
-
-  $InlineScopedRouteConfigs({
-    this.lastUpdated,
-    this.name,
-    this.scopedRouteConfigs,
-  });
-
-  $InlineScopedRouteConfigs.fromJson(core.Map json_)
-    : this(
-        lastUpdated: json_['lastUpdated'] as core.String?,
-        name: json_['name'] as core.String?,
-        scopedRouteConfigs: (json_['scopedRouteConfigs'] as core.List?)
-            ?.map((value) => value as core.Map<core.String, core.dynamic>)
-            .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final lastUpdated = this.lastUpdated;
-    final name = this.name;
-    final scopedRouteConfigs = this.scopedRouteConfigs;
-    return {
-      'lastUpdated': ?lastUpdated,
-      'name': ?name,
-      'scopedRouteConfigs': ?scopedRouteConfigs,
-    };
   }
 }
 
@@ -15092,33 +6868,9 @@ class $InstanceGroupManagersSuspendInstancesRequest {
 
 /// Used by:
 ///
-/// - run:v1 : StartInstanceRequest
-/// - run:v1 : StopInstanceRequest
-class $InstanceRequest00 {
-  /// Indicates that the server should validate the request and populate default
-  /// values without persisting the request.
-  ///
-  /// Supported values: `all`
-  ///
-  /// Optional.
-  core.String? dryRun;
-
-  $InstanceRequest00({this.dryRun});
-
-  $InstanceRequest00.fromJson(core.Map json_)
-    : this(dryRun: json_['dryRun'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final dryRun = this.dryRun;
-    return {'dryRun': ?dryRun};
-  }
-}
-
-/// Used by:
-///
 /// - run:v2 : GoogleCloudRunV2StartInstanceRequest
 /// - run:v2 : GoogleCloudRunV2StopInstanceRequest
-class $InstanceRequest01 {
+class $InstanceRequest {
   /// A system-generated fingerprint for this version of the resource.
   ///
   /// This may be used to detect modification conflict during updates.
@@ -15132,9 +6884,9 @@ class $InstanceRequest01 {
   /// Optional.
   core.bool? validateOnly;
 
-  $InstanceRequest01({this.etag, this.validateOnly});
+  $InstanceRequest({this.etag, this.validateOnly});
 
-  $InstanceRequest01.fromJson(core.Map json_)
+  $InstanceRequest.fromJson(core.Map json_)
     : this(
         etag: json_['etag'] as core.String?,
         validateOnly: json_['validateOnly'] as core.bool?,
@@ -15167,271 +6919,6 @@ class $IntList {
   core.Map<core.String, core.dynamic> toJson() {
     final values = this.values;
     return {'values': ?values};
-  }
-}
-
-/// Used by:
-///
-/// - integrations:v1 : GoogleCloudIntegrationsV1alphaIntParameterArray
-/// - integrations:v2 : GoogleCloudIntegrationsV2DuetIntParameterArray
-class $IntParameterArray {
-  /// Integer array.
-  core.List<core.String>? intValues;
-
-  $IntParameterArray({this.intValues});
-
-  $IntParameterArray.fromJson(core.Map json_)
-    : this(
-        intValues: (json_['intValues'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final intValues = this.intValues;
-    return {'intValues': ?intValues};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v3 : IntegralAdScience
-/// - displayvideo:v4 : IntegralAdScience
-class $IntegralAdScience {
-  /// The custom segment ID provided by Integral Ad Science.
-  ///
-  /// The ID must be between `1000001` and `1999999` or `3000001` and `3999999`,
-  /// inclusive.
-  core.List<core.String>? customSegmentId;
-
-  /// Display Viewability section (applicable to display line items only).
-  /// Possible string values are:
-  /// - "PERFORMANCE_VIEWABILITY_UNSPECIFIED" : This enum is only a placeholder
-  /// and it doesn't specify any display viewability options.
-  /// - "PERFORMANCE_VIEWABILITY_40" : Target 40% Viewability or Higher.
-  /// - "PERFORMANCE_VIEWABILITY_50" : Target 50% Viewability or Higher.
-  /// - "PERFORMANCE_VIEWABILITY_60" : Target 60% Viewability or Higher.
-  /// - "PERFORMANCE_VIEWABILITY_70" : Target 70% Viewability or Higher.
-  core.String? displayViewability;
-
-  /// Brand Safety - **Unrateable**.
-  core.bool? excludeUnrateable;
-
-  /// Ad Fraud settings.
-  /// Possible string values are:
-  /// - "SUSPICIOUS_ACTIVITY_UNSPECIFIED" : This enum is only a placeholder and
-  /// it doesn't specify any ad fraud prevention options.
-  /// - "SUSPICIOUS_ACTIVITY_HR" : Ad Fraud - Exclude High Risk.
-  /// - "SUSPICIOUS_ACTIVITY_HMR" : Ad Fraud - Exclude High and Moderate Risk.
-  /// - "SUSPICIOUS_ACTIVITY_FD" : Ad Fraud - Exclude Fraudulent Device.
-  core.String? excludedAdFraudRisk;
-
-  /// Brand Safety - **Adult content**.
-  /// Possible string values are:
-  /// - "ADULT_UNSPECIFIED" : This enum is only a placeholder and it doesn't
-  /// specify any adult options.
-  /// - "ADULT_HR" : Adult - Exclude High Risk.
-  /// - "ADULT_HMR" : Adult - Exclude High and Moderate Risk.
-  core.String? excludedAdultRisk;
-
-  /// Brand Safety - **Alcohol**.
-  /// Possible string values are:
-  /// - "ALCOHOL_UNSPECIFIED" : This enum is only a placeholder and it doesn't
-  /// specify any alcohol options.
-  /// - "ALCOHOL_HR" : Alcohol - Exclude High Risk.
-  /// - "ALCOHOL_HMR" : Alcohol - Exclude High and Moderate Risk.
-  core.String? excludedAlcoholRisk;
-
-  /// Brand Safety - **Drugs**.
-  /// Possible string values are:
-  /// - "DRUGS_UNSPECIFIED" : This enum is only a placeholder and it doesn't
-  /// specify any drugs options.
-  /// - "DRUGS_HR" : Drugs - Exclude High Risk.
-  /// - "DRUGS_HMR" : Drugs - Exclude High and Moderate Risk.
-  core.String? excludedDrugsRisk;
-
-  /// Brand Safety - **Gambling**.
-  /// Possible string values are:
-  /// - "GAMBLING_UNSPECIFIED" : This enum is only a placeholder and it doesn't
-  /// specify any gambling options.
-  /// - "GAMBLING_HR" : Gambling - Exclude High Risk.
-  /// - "GAMBLING_HMR" : Gambling - Exclude High and Moderate Risk.
-  core.String? excludedGamblingRisk;
-
-  /// Brand Safety - **Hate speech**.
-  /// Possible string values are:
-  /// - "HATE_SPEECH_UNSPECIFIED" : This enum is only a placeholder and it
-  /// doesn't specify any hate speech options.
-  /// - "HATE_SPEECH_HR" : Hate Speech - Exclude High Risk.
-  /// - "HATE_SPEECH_HMR" : Hate Speech - Exclude High and Moderate Risk.
-  core.String? excludedHateSpeechRisk;
-
-  /// Brand Safety - **Illegal downloads**.
-  /// Possible string values are:
-  /// - "ILLEGAL_DOWNLOADS_UNSPECIFIED" : This enum is only a placeholder and it
-  /// doesn't specify any illegal downloads options.
-  /// - "ILLEGAL_DOWNLOADS_HR" : Illegal Downloads - Exclude High Risk.
-  /// - "ILLEGAL_DOWNLOADS_HMR" : Illegal Downloads - Exclude High and Moderate
-  /// Risk.
-  core.String? excludedIllegalDownloadsRisk;
-
-  /// Brand Safety - **Offensive language**.
-  /// Possible string values are:
-  /// - "OFFENSIVE_LANGUAGE_UNSPECIFIED" : This enum is only a placeholder and
-  /// it doesn't specify any language options.
-  /// - "OFFENSIVE_LANGUAGE_HR" : Offensive Language - Exclude High Risk.
-  /// - "OFFENSIVE_LANGUAGE_HMR" : Offensive Language - Exclude High and
-  /// Moderate Risk.
-  core.String? excludedOffensiveLanguageRisk;
-
-  /// Brand Safety - **Violence**.
-  /// Possible string values are:
-  /// - "VIOLENCE_UNSPECIFIED" : This enum is only a placeholder and it doesn't
-  /// specify any violence options.
-  /// - "VIOLENCE_HR" : Violence - Exclude High Risk.
-  /// - "VIOLENCE_HMR" : Violence - Exclude High and Moderate Risk.
-  core.String? excludedViolenceRisk;
-
-  /// The quality sync custom segment ID provided by Integral Ad Science.
-  ///
-  /// The ID must be between `3000000` and `4999999`, inclusive.
-  ///
-  /// Optional.
-  core.List<core.String>? qualitySyncCustomSegmentId;
-
-  /// True advertising quality (applicable to Display line items only).
-  /// Possible string values are:
-  /// - "TRAQ_UNSPECIFIED" : This enum is only a placeholder and it doesn't
-  /// specify any true advertising quality scores.
-  /// - "TRAQ_250" : TRAQ score 250-1000.
-  /// - "TRAQ_500" : TRAQ score 500-1000.
-  /// - "TRAQ_600" : TRAQ score 600-1000.
-  /// - "TRAQ_700" : TRAQ score 700-1000.
-  /// - "TRAQ_750" : TRAQ score 750-1000.
-  /// - "TRAQ_875" : TRAQ score 875-1000.
-  /// - "TRAQ_1000" : TRAQ score 1000.
-  core.String? traqScoreOption;
-
-  /// Video Viewability Section (applicable to video line items only).
-  /// Possible string values are:
-  /// - "VIDEO_VIEWABILITY_UNSPECIFIED" : This enum is only a placeholder and it
-  /// doesn't specify any video viewability options.
-  /// - "VIDEO_VIEWABILITY_40" : 40%+ in view (IAB video viewability standard).
-  /// - "VIDEO_VIEWABILITY_50" : 50%+ in view (IAB video viewability standard).
-  /// - "VIDEO_VIEWABILITY_60" : 60%+ in view (IAB video viewability standard).
-  /// - "VIDEO_VIEWABILITY_70" : 70%+ in view (IAB video viewability standard).
-  core.String? videoViewability;
-
-  $IntegralAdScience({
-    this.customSegmentId,
-    this.displayViewability,
-    this.excludeUnrateable,
-    this.excludedAdFraudRisk,
-    this.excludedAdultRisk,
-    this.excludedAlcoholRisk,
-    this.excludedDrugsRisk,
-    this.excludedGamblingRisk,
-    this.excludedHateSpeechRisk,
-    this.excludedIllegalDownloadsRisk,
-    this.excludedOffensiveLanguageRisk,
-    this.excludedViolenceRisk,
-    this.qualitySyncCustomSegmentId,
-    this.traqScoreOption,
-    this.videoViewability,
-  });
-
-  $IntegralAdScience.fromJson(core.Map json_)
-    : this(
-        customSegmentId: (json_['customSegmentId'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-        displayViewability: json_['displayViewability'] as core.String?,
-        excludeUnrateable: json_['excludeUnrateable'] as core.bool?,
-        excludedAdFraudRisk: json_['excludedAdFraudRisk'] as core.String?,
-        excludedAdultRisk: json_['excludedAdultRisk'] as core.String?,
-        excludedAlcoholRisk: json_['excludedAlcoholRisk'] as core.String?,
-        excludedDrugsRisk: json_['excludedDrugsRisk'] as core.String?,
-        excludedGamblingRisk: json_['excludedGamblingRisk'] as core.String?,
-        excludedHateSpeechRisk: json_['excludedHateSpeechRisk'] as core.String?,
-        excludedIllegalDownloadsRisk:
-            json_['excludedIllegalDownloadsRisk'] as core.String?,
-        excludedOffensiveLanguageRisk:
-            json_['excludedOffensiveLanguageRisk'] as core.String?,
-        excludedViolenceRisk: json_['excludedViolenceRisk'] as core.String?,
-        qualitySyncCustomSegmentId:
-            (json_['qualitySyncCustomSegmentId'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        traqScoreOption: json_['traqScoreOption'] as core.String?,
-        videoViewability: json_['videoViewability'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final customSegmentId = this.customSegmentId;
-    final displayViewability = this.displayViewability;
-    final excludeUnrateable = this.excludeUnrateable;
-    final excludedAdFraudRisk = this.excludedAdFraudRisk;
-    final excludedAdultRisk = this.excludedAdultRisk;
-    final excludedAlcoholRisk = this.excludedAlcoholRisk;
-    final excludedDrugsRisk = this.excludedDrugsRisk;
-    final excludedGamblingRisk = this.excludedGamblingRisk;
-    final excludedHateSpeechRisk = this.excludedHateSpeechRisk;
-    final excludedIllegalDownloadsRisk = this.excludedIllegalDownloadsRisk;
-    final excludedOffensiveLanguageRisk = this.excludedOffensiveLanguageRisk;
-    final excludedViolenceRisk = this.excludedViolenceRisk;
-    final qualitySyncCustomSegmentId = this.qualitySyncCustomSegmentId;
-    final traqScoreOption = this.traqScoreOption;
-    final videoViewability = this.videoViewability;
-    return {
-      'customSegmentId': ?customSegmentId,
-      'displayViewability': ?displayViewability,
-      'excludeUnrateable': ?excludeUnrateable,
-      'excludedAdFraudRisk': ?excludedAdFraudRisk,
-      'excludedAdultRisk': ?excludedAdultRisk,
-      'excludedAlcoholRisk': ?excludedAlcoholRisk,
-      'excludedDrugsRisk': ?excludedDrugsRisk,
-      'excludedGamblingRisk': ?excludedGamblingRisk,
-      'excludedHateSpeechRisk': ?excludedHateSpeechRisk,
-      'excludedIllegalDownloadsRisk': ?excludedIllegalDownloadsRisk,
-      'excludedOffensiveLanguageRisk': ?excludedOffensiveLanguageRisk,
-      'excludedViolenceRisk': ?excludedViolenceRisk,
-      'qualitySyncCustomSegmentId': ?qualitySyncCustomSegmentId,
-      'traqScoreOption': ?traqScoreOption,
-      'videoViewability': ?videoViewability,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : IntegrationDetails
-/// - displayvideo:v3 : IntegrationDetails
-/// - displayvideo:v4 : IntegrationDetails
-class $IntegrationDetails {
-  /// Additional details of the entry in string format.
-  ///
-  /// Must be UTF-8 encoded with a length of no more than 1000 characters.
-  core.String? details;
-
-  /// An external identifier to be associated with the entry.
-  ///
-  /// The integration code will show up together with the entry in many places
-  /// in the system, for example, reporting. Must be UTF-8 encoded with a length
-  /// of no more than 500 characters.
-  core.String? integrationCode;
-
-  $IntegrationDetails({this.details, this.integrationCode});
-
-  $IntegrationDetails.fromJson(core.Map json_)
-    : this(
-        details: json_['details'] as core.String?,
-        integrationCode: json_['integrationCode'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final details = this.details;
-    final integrationCode = this.integrationCode;
-    return {'details': ?details, 'integrationCode': ?integrationCode};
   }
 }
 
@@ -15505,138 +6992,6 @@ class $Interval {
 
 /// Used by:
 ///
-/// - displayvideo:v2 : InventorySourceAssignedTargetingOptionDetails
-/// - displayvideo:v3 : InventorySourceAssignedTargetingOptionDetails
-/// - displayvideo:v4 : InventorySourceAssignedTargetingOptionDetails
-class $InventorySourceAssignedTargetingOptionDetails {
-  /// ID of the inventory source.
-  ///
-  /// Should refer to the inventory_source_id field of an InventorySource
-  /// resource.
-  ///
-  /// Required.
-  core.String? inventorySourceId;
-
-  $InventorySourceAssignedTargetingOptionDetails({this.inventorySourceId});
-
-  $InventorySourceAssignedTargetingOptionDetails.fromJson(core.Map json_)
-    : this(inventorySourceId: json_['inventorySourceId'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final inventorySourceId = this.inventorySourceId;
-    return {'inventorySourceId': ?inventorySourceId};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : InventorySourceFilter
-/// - displayvideo:v3 : InventorySourceFilter
-/// - displayvideo:v4 : InventorySourceFilter
-class $InventorySourceFilter {
-  /// Inventory Sources to download by ID.
-  ///
-  /// All IDs must belong to the same Advertiser or Partner specified in
-  /// CreateSdfDownloadTaskRequest. Leave empty to download all Inventory
-  /// Sources for the selected Advertiser or Partner.
-  core.List<core.String>? inventorySourceIds;
-
-  $InventorySourceFilter({this.inventorySourceIds});
-
-  $InventorySourceFilter.fromJson(core.Map json_)
-    : this(
-        inventorySourceIds: (json_['inventorySourceIds'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final inventorySourceIds = this.inventorySourceIds;
-    return {'inventorySourceIds': ?inventorySourceIds};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : InventorySourceGroup
-/// - displayvideo:v3 : InventorySourceGroup
-/// - displayvideo:v4 : InventorySourceGroup
-class $InventorySourceGroup {
-  /// The display name of the inventory source group.
-  ///
-  /// Must be UTF-8 encoded with a maximum size of 240 bytes.
-  ///
-  /// Required.
-  core.String? displayName;
-
-  /// The unique ID of the inventory source group.
-  ///
-  /// Assigned by the system.
-  ///
-  /// Output only.
-  core.String? inventorySourceGroupId;
-
-  /// The resource name of the inventory source group.
-  ///
-  /// Output only.
-  core.String? name;
-
-  $InventorySourceGroup({
-    this.displayName,
-    this.inventorySourceGroupId,
-    this.name,
-  });
-
-  $InventorySourceGroup.fromJson(core.Map json_)
-    : this(
-        displayName: json_['displayName'] as core.String?,
-        inventorySourceGroupId: json_['inventorySourceGroupId'] as core.String?,
-        name: json_['name'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final displayName = this.displayName;
-    final inventorySourceGroupId = this.inventorySourceGroupId;
-    final name = this.name;
-    return {
-      'displayName': ?displayName,
-      'inventorySourceGroupId': ?inventorySourceGroupId,
-      'name': ?name,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : InventorySourceGroupAssignedTargetingOptionDetails
-/// - displayvideo:v3 : InventorySourceGroupAssignedTargetingOptionDetails
-/// - displayvideo:v4 : InventorySourceGroupAssignedTargetingOptionDetails
-class $InventorySourceGroupAssignedTargetingOptionDetails {
-  /// ID of the inventory source group.
-  ///
-  /// Should refer to the inventory_source_group_id field of an
-  /// InventorySourceGroup resource.
-  ///
-  /// Required.
-  core.String? inventorySourceGroupId;
-
-  $InventorySourceGroupAssignedTargetingOptionDetails({
-    this.inventorySourceGroupId,
-  });
-
-  $InventorySourceGroupAssignedTargetingOptionDetails.fromJson(core.Map json_)
-    : this(
-        inventorySourceGroupId: json_['inventorySourceGroupId'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final inventorySourceGroupId = this.inventorySourceGroupId;
-    return {'inventorySourceGroupId': ?inventorySourceGroupId};
-  }
-}
-
-/// Used by:
-///
 /// - containeranalysis:v1 : Justification
 /// - ondemandscanning:v1 : Justification
 class $Justification {
@@ -15698,43 +7053,6 @@ class $Jwt {
   core.Map<core.String, core.dynamic> toJson() {
     final compactJwt = this.compactJwt;
     return {'compactJwt': ?compactJwt};
-  }
-}
-
-/// Used by:
-///
-/// - connectors:v1 : JwtClaims
-/// - integrations:v1 : GoogleCloudConnectorsV1AuthConfigOauth2JwtBearerJwtClaims
-class $JwtClaims {
-  /// Value for the "aud" claim.
-  ///
-  /// Optional.
-  core.String? audience;
-
-  /// Value for the "iss" claim.
-  ///
-  /// Optional.
-  core.String? issuer;
-
-  /// Value for the "sub" claim.
-  ///
-  /// Optional.
-  core.String? subject;
-
-  $JwtClaims({this.audience, this.issuer, this.subject});
-
-  $JwtClaims.fromJson(core.Map json_)
-    : this(
-        audience: json_['audience'] as core.String?,
-        issuer: json_['issuer'] as core.String?,
-        subject: json_['subject'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final audience = this.audience;
-    final issuer = this.issuer;
-    final subject = this.subject;
-    return {'audience': ?audience, 'issuer': ?issuer, 'subject': ?subject};
   }
 }
 
@@ -15842,63 +7160,6 @@ class $KeyAccessJustificationsPolicy {
 
 /// Used by:
 ///
-/// - displayvideo:v2 : KeywordAssignedTargetingOptionDetails
-/// - displayvideo:v3 : KeywordAssignedTargetingOptionDetails
-/// - displayvideo:v4 : KeywordAssignedTargetingOptionDetails
-class $KeywordAssignedTargetingOptionDetails {
-  /// The policy names to exempt the keyword from.
-  ///
-  /// When attempting to target a keyword that violates a policy, the error
-  /// returned will include the name of the relevant policy. Use that name in
-  /// this field to exempt the targeted keyword from the policy. This field is
-  /// only applicable for positively-targeted keywords assigned to Demand Gen
-  /// resources. Retrieval and management of Demand Gen resources is currently
-  /// in beta. This field is only available to allowlisted users.
-  ///
-  /// Optional.
-  core.List<core.String>? exemptedPolicyNames;
-
-  /// The keyword, for example `car insurance`.
-  ///
-  /// Positive keyword cannot be offensive word. Must be UTF-8 encoded with a
-  /// maximum size of 255 bytes. Maximum number of characters is 80. Maximum
-  /// number of words is 10.
-  ///
-  /// Required.
-  core.String? keyword;
-
-  /// Indicates if this option is being negatively targeted.
-  core.bool? negative;
-
-  $KeywordAssignedTargetingOptionDetails({
-    this.exemptedPolicyNames,
-    this.keyword,
-    this.negative,
-  });
-
-  $KeywordAssignedTargetingOptionDetails.fromJson(core.Map json_)
-    : this(
-        exemptedPolicyNames: (json_['exemptedPolicyNames'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-        keyword: json_['keyword'] as core.String?,
-        negative: json_['negative'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final exemptedPolicyNames = this.exemptedPolicyNames;
-    final keyword = this.keyword;
-    final negative = this.negative;
-    return {
-      'exemptedPolicyNames': ?exemptedPolicyNames,
-      'keyword': ?keyword,
-      'negative': ?negative,
-    };
-  }
-}
-
-/// Used by:
-///
 /// - datastore:v1 : KindExpression
 /// - dlp:v2 : GooglePrivacyDlpV2KindExpression
 class $KindExpression {
@@ -15913,114 +7174,6 @@ class $KindExpression {
   core.Map<core.String, core.dynamic> toJson() {
     final name = this.name;
     return {'name': ?name};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v3 : Kpi
-/// - displayvideo:v4 : Kpi
-class $Kpi {
-  /// Custom Bidding Algorithm ID associated with
-  /// KPI_CUSTOM_IMPRESSION_VALUE_OVER_COST.
-  ///
-  /// This field is ignored if the proper KPI is not selected.
-  ///
-  /// Optional.
-  core.String? kpiAlgorithmId;
-
-  /// The goal amount, in micros of the advertiser's currency.
-  ///
-  /// Applicable when kpi_type is one of: * `KPI_TYPE_CPM` * `KPI_TYPE_CPC` *
-  /// `KPI_TYPE_CPA` * `KPI_TYPE_CPIAVC` * `KPI_TYPE_VCPM` For example: 1500000
-  /// represents 1.5 standard units of the currency.
-  core.String? kpiAmountMicros;
-
-  /// The decimal representation of the goal percentage in micros.
-  ///
-  /// Applicable when kpi_type is one of: * `KPI_TYPE_CTR` *
-  /// `KPI_TYPE_VIEWABILITY` * `KPI_TYPE_CLICK_CVR` * `KPI_TYPE_IMPRESSION_CVR`
-  /// * `KPI_TYPE_VTR` * `KPI_TYPE_AUDIO_COMPLETION_RATE` *
-  /// `KPI_TYPE_VIDEO_COMPLETION_RATE` For example: 70000 represents 7% (decimal
-  /// 0.07).
-  core.String? kpiPercentageMicros;
-
-  /// A KPI string, which can be empty.
-  ///
-  /// Must be UTF-8 encoded with a length of no more than 100 characters.
-  /// Applicable when kpi_type is `KPI_TYPE_OTHER`.
-  core.String? kpiString;
-
-  /// The type of KPI.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "KPI_TYPE_UNSPECIFIED" : KPI type is not specified or is unknown in this
-  /// version.
-  /// - "KPI_TYPE_CPM" : The KPI is CPM (cost per mille).
-  /// - "KPI_TYPE_CPC" : The KPI is CPC (cost per click).
-  /// - "KPI_TYPE_CPA" : The KPI is CPA (cost per action).
-  /// - "KPI_TYPE_CTR" : The KPI is CTR (click-through rate) percentage.
-  /// - "KPI_TYPE_VIEWABILITY" : The KPI is Viewability percentage.
-  /// - "KPI_TYPE_CPIAVC" : The KPI is CPIAVC (cost per impression audible and
-  /// visible at completion).
-  /// - "KPI_TYPE_CPE" : The KPI is CPE (cost per engagement).
-  /// - "KPI_TYPE_CPV" : The KPI is set in CPV (cost per view).
-  /// - "KPI_TYPE_CLICK_CVR" : The KPI is click conversion rate (conversions per
-  /// click) percentage.
-  /// - "KPI_TYPE_IMPRESSION_CVR" : The KPI is impression conversion rate
-  /// (conversions per impression) percentage.
-  /// - "KPI_TYPE_VCPM" : The KPI is VCPM (cost per thousand viewable
-  /// impressions).
-  /// - "KPI_TYPE_VTR" : The KPI is YouTube view rate (YouTube views per
-  /// impression) percentage.
-  /// - "KPI_TYPE_AUDIO_COMPLETION_RATE" : The KPI is audio completion rate
-  /// (complete audio listens per impression) percentage.
-  /// - "KPI_TYPE_VIDEO_COMPLETION_RATE" : The KPI is video completion rate
-  /// (complete video views per impression) percentage.
-  /// - "KPI_TYPE_CPCL" : The KPI is set in CPCL (cost per complete audio
-  /// listen).
-  /// - "KPI_TYPE_CPCV" : The KPI is set in CPCV (cost per complete video view).
-  /// - "KPI_TYPE_TOS10" : The KPI is set in rate of time on screen 10+ seconds
-  /// (Percentage of measurable, non-skippable impressions that were on the
-  /// screen for at least 10 seconds).
-  /// - "KPI_TYPE_MAXIMIZE_PACING" : The KPI is set to maximize brand impact
-  /// while prioritizing spending the full budget.
-  /// - "KPI_TYPE_CUSTOM_IMPRESSION_VALUE_OVER_COST" : The KPI is set in custom
-  /// impression value divided by cost.
-  /// - "KPI_TYPE_OTHER" : The KPI is some other value.
-  core.String? kpiType;
-
-  $Kpi({
-    this.kpiAlgorithmId,
-    this.kpiAmountMicros,
-    this.kpiPercentageMicros,
-    this.kpiString,
-    this.kpiType,
-  });
-
-  $Kpi.fromJson(core.Map json_)
-    : this(
-        kpiAlgorithmId: json_['kpiAlgorithmId'] as core.String?,
-        kpiAmountMicros: json_['kpiAmountMicros'] as core.String?,
-        kpiPercentageMicros: json_['kpiPercentageMicros'] as core.String?,
-        kpiString: json_['kpiString'] as core.String?,
-        kpiType: json_['kpiType'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final kpiAlgorithmId = this.kpiAlgorithmId;
-    final kpiAmountMicros = this.kpiAmountMicros;
-    final kpiPercentageMicros = this.kpiPercentageMicros;
-    final kpiString = this.kpiString;
-    final kpiType = this.kpiType;
-    return {
-      'kpiAlgorithmId': ?kpiAlgorithmId,
-      'kpiAmountMicros': ?kpiAmountMicros,
-      'kpiPercentageMicros': ?kpiPercentageMicros,
-      'kpiString': ?kpiString,
-      'kpiType': ?kpiType,
-    };
   }
 }
 
@@ -16062,32 +7215,6 @@ class $LabelDescriptor {
 
 /// Used by:
 ///
-/// - deploymentmanager:v2 : DeploymentLabelEntry
-/// - deploymentmanager:v2 : DeploymentUpdateLabelEntry
-class $LabelEntry {
-  /// Key of the label
-  core.String? key;
-
-  /// Value of the label
-  core.String? value;
-
-  $LabelEntry({this.key, this.value});
-
-  $LabelEntry.fromJson(core.Map json_)
-    : this(
-        key: json_['key'] as core.String?,
-        value: json_['value'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final key = this.key;
-    final value = this.value;
-    return {'key': ?key, 'value': ?value};
-  }
-}
-
-/// Used by:
-///
 /// - container:v1 : NodeLabels
 /// - container:v1 : ResourceLabels
 class $Labels {
@@ -16111,83 +7238,12 @@ class $Labels {
 
 /// Used by:
 ///
-/// - displayvideo:v2 : LanguageAssignedTargetingOptionDetails
-/// - displayvideo:v3 : LanguageAssignedTargetingOptionDetails
-/// - displayvideo:v4 : LanguageAssignedTargetingOptionDetails
-class $LanguageAssignedTargetingOptionDetails {
-  /// The display name of the language (e.g., "French").
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  /// Indicates if this option is being negatively targeted.
-  ///
-  /// All assigned language targeting options on the same resource must have the
-  /// same value for this field.
-  core.bool? negative;
-
-  /// The targeting_option_id of a TargetingOption of type
-  /// `TARGETING_TYPE_LANGUAGE`.
-  ///
-  /// Required.
-  core.String? targetingOptionId;
-
-  $LanguageAssignedTargetingOptionDetails({
-    this.displayName,
-    this.negative,
-    this.targetingOptionId,
-  });
-
-  $LanguageAssignedTargetingOptionDetails.fromJson(core.Map json_)
-    : this(
-        displayName: json_['displayName'] as core.String?,
-        negative: json_['negative'] as core.bool?,
-        targetingOptionId: json_['targetingOptionId'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final displayName = this.displayName;
-    final negative = this.negative;
-    final targetingOptionId = this.targetingOptionId;
-    return {
-      'displayName': ?displayName,
-      'negative': ?negative,
-      'targetingOptionId': ?targetingOptionId,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : LanguageTargetingOptionDetails
-/// - displayvideo:v3 : LanguageTargetingOptionDetails
-/// - displayvideo:v4 : LanguageTargetingOptionDetails
-class $LanguageTargetingOptionDetails {
-  /// The display name of the language (e.g., "French").
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  $LanguageTargetingOptionDetails({this.displayName});
-
-  $LanguageTargetingOptionDetails.fromJson(core.Map json_)
-    : this(displayName: json_['displayName'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final displayName = this.displayName;
-    return {'displayName': ?displayName};
-  }
-}
-
-/// Used by:
-///
 /// - addressvalidation:v1 : GoogleTypeLatLng
 /// - aiplatform:v1 : GoogleTypeLatLng
 /// - airquality:v1 : LatLng
 /// - areainsights:v1 : LatLng
 /// - datastore:v1 : LatLng
 /// - firestore:v1 : LatLng
-/// - jobs:v3 : LatLng
 /// - jobs:v4 : LatLng
 /// - merchantapi:accounts_v1 : LatLng
 /// - mybusinessbusinessinformation:v1 : LatLng
@@ -16407,78 +7463,6 @@ class $LifecycleGoalsResult {
 
 /// Used by:
 ///
-/// - displayvideo:v2 : LineItemBudget
-/// - displayvideo:v3 : LineItemBudget
-/// - displayvideo:v4 : LineItemBudget
-class $LineItemBudget {
-  /// The type of the budget allocation.
-  ///
-  /// `LINE_ITEM_BUDGET_ALLOCATION_TYPE_AUTOMATIC` is only applicable when
-  /// automatic budget allocation is enabled for the parent insertion order.
-  /// This field must be set to `LINE_ITEM_BUDGET_ALLOCATION_TYPE_FIXED` for
-  /// Demand Gen line items.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "LINE_ITEM_BUDGET_ALLOCATION_TYPE_UNSPECIFIED" : Type value is not
-  /// specified or is unknown in this version.
-  /// - "LINE_ITEM_BUDGET_ALLOCATION_TYPE_AUTOMATIC" : Automatic budget
-  /// allocation is enabled for the line item.
-  /// - "LINE_ITEM_BUDGET_ALLOCATION_TYPE_FIXED" : A fixed max budget amount is
-  /// allocated for the line item.
-  /// - "LINE_ITEM_BUDGET_ALLOCATION_TYPE_UNLIMITED" : No budget limit is
-  /// applied to the line item.
-  core.String? budgetAllocationType;
-
-  /// The budget unit specifies whether the budget is currency based or
-  /// impression based.
-  ///
-  /// This value is inherited from the parent insertion order.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "BUDGET_UNIT_UNSPECIFIED" : Type value is not specified or is unknown in
-  /// this version.
-  /// - "BUDGET_UNIT_CURRENCY" : Budgeting in currency amounts.
-  /// - "BUDGET_UNIT_IMPRESSIONS" : Budgeting in impression amounts.
-  core.String? budgetUnit;
-
-  /// The maximum budget amount the line item will spend.
-  ///
-  /// Must be greater than 0. When budget_allocation_type is: *
-  /// `LINE_ITEM_BUDGET_ALLOCATION_TYPE_AUTOMATIC`, this field is immutable and
-  /// is set by the system. * `LINE_ITEM_BUDGET_ALLOCATION_TYPE_FIXED`, if
-  /// budget_unit is: - `BUDGET_UNIT_CURRENCY`, this field represents maximum
-  /// budget amount to spend, in micros of the advertiser's currency. For
-  /// example, 1500000 represents 1.5 standard units of the currency. -
-  /// `BUDGET_UNIT_IMPRESSIONS`, this field represents the maximum number of
-  /// impressions to serve. * `LINE_ITEM_BUDGET_ALLOCATION_TYPE_UNLIMITED`, this
-  /// field is not applicable and will be ignored by the system.
-  core.String? maxAmount;
-
-  $LineItemBudget({this.budgetAllocationType, this.budgetUnit, this.maxAmount});
-
-  $LineItemBudget.fromJson(core.Map json_)
-    : this(
-        budgetAllocationType: json_['budgetAllocationType'] as core.String?,
-        budgetUnit: json_['budgetUnit'] as core.String?,
-        maxAmount: json_['maxAmount'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final budgetAllocationType = this.budgetAllocationType;
-    final budgetUnit = this.budgetUnit;
-    final maxAmount = this.maxAmount;
-    return {
-      'budgetAllocationType': ?budgetAllocationType,
-      'budgetUnit': ?budgetUnit,
-      'maxAmount': ?maxAmount,
-    };
-  }
-}
-
-/// Used by:
-///
 /// - logging:v2 : Linear
 /// - monitoring:v3 : Linear
 class $Linear {
@@ -16515,7 +7499,6 @@ class $Linear {
 /// Used by:
 ///
 /// - compute:v1 : HelpLink
-/// - deploymentmanager:v2 : HelpLink
 /// - vmmigration:v1 : Link
 class $Link {
   /// Describes what the link offers.
@@ -16696,89 +7679,18 @@ class $ListPolicy {
 
 /// Used by:
 ///
-/// - trafficdirector:v2 : Locality
-/// - trafficdirector:v3 : Locality
-class $Locality {
-  /// Region this :ref:`zone ` belongs to.
-  core.String? region;
-
-  /// When used for locality of upstream hosts, this field further splits zone
-  /// into smaller chunks of sub-zones so they can be load balanced
-  /// independently.
-  core.String? subZone;
-
-  /// Defines the local service zone where Envoy is running.
-  ///
-  /// Though optional, it should be set if discovery service routing is used and
-  /// the discovery service exposes :ref:`zone data `, either in this message or
-  /// via :option:`--service-zone`. The meaning of zone is context dependent,
-  /// e.g. `Availability Zone (AZ) `_ on AWS, `Zone `_ on GCP, etc.
-  core.String? zone;
-
-  $Locality({this.region, this.subZone, this.zone});
-
-  $Locality.fromJson(core.Map json_)
-    : this(
-        region: json_['region'] as core.String?,
-        subZone: json_['subZone'] as core.String?,
-        zone: json_['zone'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final region = this.region;
-    final subZone = this.subZone;
-    final zone = this.zone;
-    return {'region': ?region, 'subZone': ?subZone, 'zone': ?zone};
-  }
-}
-
-/// Used by:
-///
-/// - deploymentmanager:v2 : LocalizedMessage
-/// - vmmigration:v1 : LocalizedMessage
-class $LocalizedMessage {
-  /// The locale used following the specification defined at
-  /// https://www.rfc-editor.org/rfc/bcp/bcp47.txt.
-  ///
-  /// Examples are: "en-US", "fr-CH", "es-MX"
-  core.String? locale;
-
-  /// The localized error message in the above locale.
-  core.String? message;
-
-  $LocalizedMessage({this.locale, this.message});
-
-  $LocalizedMessage.fromJson(core.Map json_)
-    : this(
-        locale: json_['locale'] as core.String?,
-        message: json_['message'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final locale = this.locale;
-    final message = this.message;
-    return {'locale': ?locale, 'message': ?message};
-  }
-}
-
-/// Used by:
-///
-/// - agentidentity:v1 : Location
-/// - agentregistry:v1 : Location
 /// - aiplatform:v1 : GoogleCloudLocationLocation
 /// - alloydb:v1 : GoogleCloudLocationLocation
 /// - apigateway:v1 : ApigatewayLocation
 /// - apihub:v1 : GoogleCloudLocationLocation
 /// - apphub:v1 : Location
 /// - artifactregistry:v1 : Location
-/// - auditmanager:v1 : Location
 /// - backupdr:v1 : Location
 /// - baremetalsolution:v2 : Location
 /// - batch:v1 : Location
 /// - beyondcorp:v1 : GoogleCloudLocationLocation
 /// - bigquerydatatransfer:v1 : Location
 /// - bigtableadmin:v2 : Location
-/// - blockchainnodeengine:v1 : Location
 /// - certificatemanager:v1 : Location
 /// - ces:v1 : Location
 /// - cloudbuild:v2 : Location
@@ -16790,53 +7702,42 @@ class $LocalizedMessage {
 /// - cloudscheduler:v1 : Location
 /// - cloudtasks:v2 : Location
 /// - config:v1 : Location
-/// - connectors:v1 : Location
 /// - dataform:v1 : Location
 /// - datafusion:v1 : Location
 /// - datamigration:v1 : Location
 /// - datastream:v1 : Location
 /// - developerconnect:v1 : Location
-/// - devicerun:v1 : Location
 /// - documentai:v1 : GoogleCloudLocationLocation
-/// - domains:v1 : Location
 /// - eventarc:v1 : Location
 /// - file:v1 : Location
 /// - firebaseapphosting:v1 : Location
 /// - firebasedataconnect:v1 : Location
 /// - firestore:v1 : Location
-/// - ftp:v1 : Location
 /// - gkebackup:v1 : Location
-/// - gkehub:v1 : Location
 /// - gkehub:v2 : Location
 /// - gkeonprem:v1 : Location
 /// - healthcare:v1 : Location
-/// - hypercomputecluster:v1 : Location
 /// - ids:v1 : Location
 /// - looker:v1 : Location
 /// - managedidentities:v1 : Location
 /// - managedkafka:v1 : Location
-/// - memcache:v1 : Location
 /// - migrationcenter:v1 : Location
 /// - netapp:v1 : Location
 /// - networkconnectivity:v1 : Location
 /// - networkmanagement:v1 : Location
 /// - networksecurity:v1 : Location
 /// - networkservices:v1 : Location
-/// - notebooks:v1 : Location
 /// - notebooks:v2 : Location
 /// - observability:v1 : Location
 /// - oracledatabase:v1 : Location
 /// - parallelstore:v1 : Location
 /// - parametermanager:v1 : Location
 /// - privateca:v1 : Location
-/// - run:v1 : Location
 /// - saasservicemgmt:v1 : GoogleCloudLocationLocation
 /// - secretmanager:v1 : Location
 /// - securesourcemanager:v1 : Location
 /// - securityposture:v1 : Location
 /// - servicedirectory:v1 : Location
-/// - storagebatchoperations:v1 : Location
-/// - tpu:v1 : Location
 /// - tpu:v2 : Location
 /// - translate:v3 : Location
 /// - vmmigration:v1 : Location
@@ -16916,7 +7817,6 @@ class $Location00 {
 /// - appengine:v1 : Location
 /// - dataplex:v1 : GoogleCloudLocationLocation
 /// - logging:v2 : Location
-/// - metastore:v1 : Location
 class $Location01 {
   /// The friendly name for this location, typically a nearby city name.
   ///
@@ -17022,147 +7922,6 @@ class $Location02 {
 
 /// Used by:
 ///
-/// - displayvideo:v2 : LocationList
-/// - displayvideo:v3 : LocationList
-/// - displayvideo:v4 : LocationList
-class $LocationList {
-  /// The unique ID of the advertiser the location list belongs to.
-  ///
-  /// Required. Immutable.
-  core.String? advertiserId;
-
-  /// The display name of the location list.
-  ///
-  /// Must be UTF-8 encoded with a maximum size of 240 bytes.
-  ///
-  /// Required.
-  core.String? displayName;
-
-  /// The unique ID of the location list.
-  ///
-  /// Assigned by the system.
-  ///
-  /// Output only.
-  core.String? locationListId;
-
-  /// The type of location.
-  ///
-  /// All locations in the list will share this type.
-  ///
-  /// Required. Immutable.
-  /// Possible string values are:
-  /// - "TARGETING_LOCATION_TYPE_UNSPECIFIED" : Default value when type is not
-  /// specified or is unknown.
-  /// - "TARGETING_LOCATION_TYPE_PROXIMITY" : The type for proximity geo
-  /// location.
-  /// - "TARGETING_LOCATION_TYPE_REGIONAL" : The type for regional geo location.
-  core.String? locationType;
-
-  /// The resource name of the location list.
-  ///
-  /// Output only.
-  core.String? name;
-
-  $LocationList({
-    this.advertiserId,
-    this.displayName,
-    this.locationListId,
-    this.locationType,
-    this.name,
-  });
-
-  $LocationList.fromJson(core.Map json_)
-    : this(
-        advertiserId: json_['advertiserId'] as core.String?,
-        displayName: json_['displayName'] as core.String?,
-        locationListId: json_['locationListId'] as core.String?,
-        locationType: json_['locationType'] as core.String?,
-        name: json_['name'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final advertiserId = this.advertiserId;
-    final displayName = this.displayName;
-    final locationListId = this.locationListId;
-    final locationType = this.locationType;
-    final name = this.name;
-    return {
-      'advertiserId': ?advertiserId,
-      'displayName': ?displayName,
-      'locationListId': ?locationListId,
-      'locationType': ?locationType,
-      'name': ?name,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - connectors:v1 : LockConfig
-/// - integrations:v1 : GoogleCloudConnectorsV1LockConfig
-class $LockConfig {
-  /// Indicates whether or not the connection is locked.
-  ///
-  /// Optional.
-  core.bool? locked;
-
-  /// Describes why a connection is locked.
-  ///
-  /// Optional.
-  core.String? reason;
-
-  $LockConfig({this.locked, this.reason});
-
-  $LockConfig.fromJson(core.Map json_)
-    : this(
-        locked: json_['locked'] as core.bool?,
-        reason: json_['reason'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final locked = this.locked;
-    final reason = this.reason;
-    return {'locked': ?locked, 'reason': ?reason};
-  }
-}
-
-/// Used by:
-///
-/// - connectors:v1 : ConnectorsLogConfig
-/// - integrations:v1 : GoogleCloudConnectorsV1LogConfig
-class $LogConfig {
-  /// Enabled represents whether logging is enabled or not for a connection.
-  ///
-  /// Optional.
-  core.bool? enabled;
-
-  /// Log configuration level.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "LOG_LEVEL_UNSPECIFIED" : Log level unspecified.
-  /// - "ERROR" : Only error logs are enabled.
-  /// - "INFO" : Info and error logs are enabled.
-  /// - "DEBUG" : Debug and high verbosity logs are enabled.
-  core.String? level;
-
-  $LogConfig({this.enabled, this.level});
-
-  $LogConfig.fromJson(core.Map json_)
-    : this(
-        enabled: json_['enabled'] as core.bool?,
-        level: json_['level'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final enabled = this.enabled;
-    final level = this.level;
-    return {'enabled': ?enabled, 'level': ?level};
-  }
-}
-
-/// Used by:
-///
 /// - datamigration:v1 : LogFileDirectories
 /// - datastream:v1 : LogFileDirectories
 class $LogFileDirectories {
@@ -17191,55 +7950,6 @@ class $LogFileDirectories {
       'archivedLogDirectory': ?archivedLogDirectory,
       'onlineLogDirectory': ?onlineLogDirectory,
     };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : LookbackWindow
-/// - displayvideo:v3 : LookbackWindow
-/// - displayvideo:v4 : LookbackWindow
-class $LookbackWindow {
-  /// Lookback window, in days, from the last time a given user clicked on one
-  /// of your ads.
-  core.int? clickDays;
-
-  /// Lookback window, in days, from the last time a given user viewed one of
-  /// your ads.
-  core.int? impressionDays;
-
-  $LookbackWindow({this.clickDays, this.impressionDays});
-
-  $LookbackWindow.fromJson(core.Map json_)
-    : this(
-        clickDays: json_['clickDays'] as core.int?,
-        impressionDays: json_['impressionDays'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final clickDays = this.clickDays;
-    final impressionDays = this.impressionDays;
-    return {'clickDays': ?clickDays, 'impressionDays': ?impressionDays};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : LookupInvoiceCurrencyResponse
-/// - displayvideo:v3 : LookupInvoiceCurrencyResponse
-/// - displayvideo:v4 : LookupInvoiceCurrencyResponse
-class $LookupInvoiceCurrencyResponse {
-  /// Currency used by the advertiser in ISO 4217 format.
-  core.String? currencyCode;
-
-  $LookupInvoiceCurrencyResponse({this.currencyCode});
-
-  $LookupInvoiceCurrencyResponse.fromJson(core.Map json_)
-    : this(currencyCode: json_['currencyCode'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final currencyCode = this.currencyCode;
-    return {'currencyCode': ?currencyCode};
   }
 }
 
@@ -17355,123 +8065,8 @@ class $Material {
 
 /// Used by:
 ///
-/// - displayvideo:v2 : MaximizeSpendBidStrategy
-/// - displayvideo:v3 : MaximizeSpendBidStrategy
-class $MaximizeSpendBidStrategy {
-  /// The ID of the Custom Bidding Algorithm used by this strategy.
-  ///
-  /// Only applicable when performance_goal_type is set to
-  /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`. Assigning a custom
-  /// bidding algorithm that uses floodlight activities not identified in
-  /// floodlightActivityConfigs will return an error.
-  core.String? customBiddingAlgorithmId;
-
-  /// The maximum average CPM that may be bid, in micros of the advertiser's
-  /// currency.
-  ///
-  /// Must be greater than or equal to a billable unit of the given currency.
-  /// For example, 1500000 represents 1.5 standard units of the currency.
-  core.String? maxAverageCpmBidAmountMicros;
-
-  /// The type of the performance goal that the bidding strategy tries to
-  /// minimize while spending the full budget.
-  ///
-  /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM` is not supported for
-  /// this strategy.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_UNSPECIFIED" : Type value is not
-  /// specified or is unknown in this version.
-  /// - "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPA" : Cost per action.
-  /// - "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPC" : Cost per click.
-  /// - "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM" : Viewable CPM.
-  /// - "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO" : Custom bidding
-  /// algorithm.
-  /// - "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CIVA" : Completed inview and
-  /// audible views.
-  /// - "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_IVO_TEN" : Inview time over 10
-  /// secs views.
-  /// - "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_AV_VIEWED" : Viewable
-  /// impressions.
-  core.String? performanceGoalType;
-
-  /// Whether the strategy takes deal floor prices into account.
-  core.bool? raiseBidForDeals;
-
-  $MaximizeSpendBidStrategy({
-    this.customBiddingAlgorithmId,
-    this.maxAverageCpmBidAmountMicros,
-    this.performanceGoalType,
-    this.raiseBidForDeals,
-  });
-
-  $MaximizeSpendBidStrategy.fromJson(core.Map json_)
-    : this(
-        customBiddingAlgorithmId:
-            json_['customBiddingAlgorithmId'] as core.String?,
-        maxAverageCpmBidAmountMicros:
-            json_['maxAverageCpmBidAmountMicros'] as core.String?,
-        performanceGoalType: json_['performanceGoalType'] as core.String?,
-        raiseBidForDeals: json_['raiseBidForDeals'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final customBiddingAlgorithmId = this.customBiddingAlgorithmId;
-    final maxAverageCpmBidAmountMicros = this.maxAverageCpmBidAmountMicros;
-    final performanceGoalType = this.performanceGoalType;
-    final raiseBidForDeals = this.raiseBidForDeals;
-    return {
-      'customBiddingAlgorithmId': ?customBiddingAlgorithmId,
-      'maxAverageCpmBidAmountMicros': ?maxAverageCpmBidAmountMicros,
-      'performanceGoalType': ?performanceGoalType,
-      'raiseBidForDeals': ?raiseBidForDeals,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : MeasurementConfig
-/// - displayvideo:v3 : MeasurementConfig
-/// - displayvideo:v4 : MeasurementConfig
-class $MeasurementConfig {
-  /// Whether or not to report DV360 cost to CM360.
-  core.bool? dv360ToCmCostReportingEnabled;
-
-  /// Whether or not to include DV360 data in CM360 data transfer reports.
-  core.bool? dv360ToCmDataSharingEnabled;
-
-  $MeasurementConfig({
-    this.dv360ToCmCostReportingEnabled,
-    this.dv360ToCmDataSharingEnabled,
-  });
-
-  $MeasurementConfig.fromJson(core.Map json_)
-    : this(
-        dv360ToCmCostReportingEnabled:
-            json_['dv360ToCmCostReportingEnabled'] as core.bool?,
-        dv360ToCmDataSharingEnabled:
-            json_['dv360ToCmDataSharingEnabled'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final dv360ToCmCostReportingEnabled = this.dv360ToCmCostReportingEnabled;
-    final dv360ToCmDataSharingEnabled = this.dv360ToCmDataSharingEnabled;
-    return {
-      'dv360ToCmCostReportingEnabled': ?dv360ToCmCostReportingEnabled,
-      'dv360ToCmDataSharingEnabled': ?dv360ToCmDataSharingEnabled,
-    };
-  }
-}
-
-/// Used by:
-///
 /// - chat:v1 : Media
 /// - cloudsearch:v1 : Media
-/// - displayvideo:v2 : GoogleBytestreamMedia
-/// - displayvideo:v3 : GoogleBytestreamMedia
-/// - displayvideo:v4 : GoogleBytestreamMedia
 /// - displayvideo:v5 : GoogleBytestreamMedia
 class $Media {
   /// Name of the media resource.
@@ -17738,64 +8333,6 @@ class $Mixin {
 
 /// Used by:
 ///
-/// - displayvideo:v2 : MobileApp
-/// - displayvideo:v3 : MobileApp
-/// - displayvideo:v4 : MobileApp
-class $MobileApp {
-  /// The ID of the app provided by the platform store.
-  ///
-  /// Android apps are identified by the bundle ID used by Android's Play store,
-  /// such as `com.google.android.gm`. iOS apps are identified by a nine-digit
-  /// app ID used by Apple's App store, such as `422689480`.
-  ///
-  /// Required.
-  core.String? appId;
-
-  /// The app name.
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  /// The app platform.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "PLATFORM_UNSPECIFIED" : Platform is not specified.
-  /// - "IOS" : iOS platform.
-  /// - "ANDROID" : Android platform.
-  core.String? platform;
-
-  /// The app publisher.
-  ///
-  /// Output only.
-  core.String? publisher;
-
-  $MobileApp({this.appId, this.displayName, this.platform, this.publisher});
-
-  $MobileApp.fromJson(core.Map json_)
-    : this(
-        appId: json_['appId'] as core.String?,
-        displayName: json_['displayName'] as core.String?,
-        platform: json_['platform'] as core.String?,
-        publisher: json_['publisher'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final appId = this.appId;
-    final displayName = this.displayName;
-    final platform = this.platform;
-    final publisher = this.publisher;
-    return {
-      'appId': ?appId,
-      'displayName': ?displayName,
-      'platform': ?platform,
-      'publisher': ?publisher,
-    };
-  }
-}
-
-/// Used by:
-///
 /// - datamanager:v1 : IngestMobileDataStatus
 /// - datamanager:v1 : RemoveMobileDataStatus
 class $MobileDataStatus {
@@ -17872,44 +8409,6 @@ class $ModelMetadata {
 
 /// Used by:
 ///
-/// - aiplatform:v1 : GoogleCloudAiplatformV1ModelSourceInfo
-/// - datacatalog:v1 : GoogleCloudDatacatalogV1VertexModelSourceInfo
-class $ModelSourceInfo {
-  /// If this Model is copy of another Model.
-  ///
-  /// If true then source_type pertains to the original.
-  core.bool? copy;
-
-  /// Type of the model source.
-  /// Possible string values are:
-  /// - "MODEL_SOURCE_TYPE_UNSPECIFIED" : Should not be used.
-  /// - "AUTOML" : The Model is uploaded by automl training pipeline.
-  /// - "CUSTOM" : The Model is uploaded by user or custom training pipeline.
-  /// - "BQML" : The Model is registered and sync'ed from BigQuery ML.
-  /// - "MODEL_GARDEN" : The Model is saved or tuned from Model Garden.
-  /// - "GENIE" : The Model is saved or tuned from Genie.
-  /// - "CUSTOM_TEXT_EMBEDDING" : The Model is uploaded by text embedding
-  /// finetuning pipeline.
-  /// - "MARKETPLACE" : The Model is saved or tuned from Marketplace.
-  core.String? sourceType;
-
-  $ModelSourceInfo({this.copy, this.sourceType});
-
-  $ModelSourceInfo.fromJson(core.Map json_)
-    : this(
-        copy: json_['copy'] as core.bool?,
-        sourceType: json_['sourceType'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final copy = this.copy;
-    final sourceType = this.sourceType;
-    return {'copy': ?copy, 'sourceType': ?sourceType};
-  }
-}
-
-/// Used by:
-///
 /// - aiplatform:v1 : GoogleTypeMoney
 /// - androidpublisher:v3 : Money
 /// - apigee:v1 : GoogleTypeMoney
@@ -17920,17 +8419,13 @@ class $ModelSourceInfo {
 /// - contactcenterinsights:v1 : GoogleTypeMoney
 /// - curationpartners:v1 : Money
 /// - deepreview:v1 : Money
-/// - displayvideo:v4 : Money
 /// - documentai:v1 : GoogleTypeMoney
-/// - domains:v1 : Money
-/// - jobs:v3 : Money
 /// - jobs:v4 : Money
 /// - migrationcenter:v1 : Money
 /// - mybusinessbusinessinformation:v1 : Money
 /// - places:v1 : GoogleTypeMoney
 /// - recommender:v1 : GoogleTypeMoney
 /// - searchads360:v23 : GoogleType__Money
-/// - servicecontrol:v1 : Money
 /// - solar:v1 : Money
 class $Money {
   /// The three-letter currency code defined in ISO 4217.
@@ -18066,273 +8561,6 @@ class $MultipleNetworkInterfacesConfig {
 
 /// Used by:
 ///
-/// - displayvideo:v2 : NativeContentPositionAssignedTargetingOptionDetails
-/// - displayvideo:v3 : NativeContentPositionAssignedTargetingOptionDetails
-/// - displayvideo:v4 : NativeContentPositionAssignedTargetingOptionDetails
-class $NativeContentPositionAssignedTargetingOptionDetails {
-  /// The content position.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "NATIVE_CONTENT_POSITION_UNSPECIFIED" : Native content position is not
-  /// specified in this version. This enum is a place holder for a default value
-  /// and does not represent a real native content position.
-  /// - "NATIVE_CONTENT_POSITION_UNKNOWN" : The native content position is
-  /// unknown.
-  /// - "NATIVE_CONTENT_POSITION_IN_ARTICLE" : Native content position is
-  /// in-article, i.e., ads appear between the paragraphs of pages.
-  /// - "NATIVE_CONTENT_POSITION_IN_FEED" : Native content position is in-feed,
-  /// i.e., ads appear in a scrollable stream of content. A feed is typically
-  /// editorial (e.g. a list of articles or news) or listings (e.g. a list of
-  /// products or services).
-  /// - "NATIVE_CONTENT_POSITION_PERIPHERAL" : Native content position is
-  /// peripheral, i.e., ads appear outside of core content on pages, such as the
-  /// right- or left-hand side of the page.
-  /// - "NATIVE_CONTENT_POSITION_RECOMMENDATION" : Native content position is
-  /// recommendation, i.e., ads appear in sections for recommended content.
-  core.String? contentPosition;
-
-  $NativeContentPositionAssignedTargetingOptionDetails({this.contentPosition});
-
-  $NativeContentPositionAssignedTargetingOptionDetails.fromJson(core.Map json_)
-    : this(contentPosition: json_['contentPosition'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final contentPosition = this.contentPosition;
-    return {'contentPosition': ?contentPosition};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : NativeContentPositionTargetingOptionDetails
-/// - displayvideo:v3 : NativeContentPositionTargetingOptionDetails
-/// - displayvideo:v4 : NativeContentPositionTargetingOptionDetails
-class $NativeContentPositionTargetingOptionDetails {
-  /// The content position.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "NATIVE_CONTENT_POSITION_UNSPECIFIED" : Native content position is not
-  /// specified in this version. This enum is a place holder for a default value
-  /// and does not represent a real native content position.
-  /// - "NATIVE_CONTENT_POSITION_UNKNOWN" : The native content position is
-  /// unknown.
-  /// - "NATIVE_CONTENT_POSITION_IN_ARTICLE" : Native content position is
-  /// in-article, i.e., ads appear between the paragraphs of pages.
-  /// - "NATIVE_CONTENT_POSITION_IN_FEED" : Native content position is in-feed,
-  /// i.e., ads appear in a scrollable stream of content. A feed is typically
-  /// editorial (e.g. a list of articles or news) or listings (e.g. a list of
-  /// products or services).
-  /// - "NATIVE_CONTENT_POSITION_PERIPHERAL" : Native content position is
-  /// peripheral, i.e., ads appear outside of core content on pages, such as the
-  /// right- or left-hand side of the page.
-  /// - "NATIVE_CONTENT_POSITION_RECOMMENDATION" : Native content position is
-  /// recommendation, i.e., ads appear in sections for recommended content.
-  core.String? contentPosition;
-
-  $NativeContentPositionTargetingOptionDetails({this.contentPosition});
-
-  $NativeContentPositionTargetingOptionDetails.fromJson(core.Map json_)
-    : this(contentPosition: json_['contentPosition'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final contentPosition = this.contentPosition;
-    return {'contentPosition': ?contentPosition};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : NegativeKeyword
-/// - displayvideo:v3 : NegativeKeyword
-/// - displayvideo:v4 : NegativeKeyword
-class $NegativeKeyword {
-  /// The negatively targeted keyword, for example `car insurance`.
-  ///
-  /// Must be UTF-8 encoded with a maximum size of 255 bytes. Maximum number of
-  /// characters is 80. Maximum number of words is 10. Valid characters are
-  /// restricted to ASCII characters only. The only URL-escaping permitted is
-  /// for representing whitespace between words. Leading or trailing whitespace
-  /// is ignored.
-  ///
-  /// Required. Immutable.
-  core.String? keywordValue;
-
-  /// The resource name of the negative keyword.
-  ///
-  /// Output only.
-  core.String? name;
-
-  $NegativeKeyword({this.keywordValue, this.name});
-
-  $NegativeKeyword.fromJson(core.Map json_)
-    : this(
-        keywordValue: json_['keywordValue'] as core.String?,
-        name: json_['name'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final keywordValue = this.keywordValue;
-    final name = this.name;
-    return {'keywordValue': ?keywordValue, 'name': ?name};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : NegativeKeywordList
-/// - displayvideo:v3 : NegativeKeywordList
-/// - displayvideo:v4 : NegativeKeywordList
-class $NegativeKeywordList {
-  /// The unique ID of the advertiser the negative keyword list belongs to.
-  ///
-  /// Output only.
-  core.String? advertiserId;
-
-  /// The display name of the negative keyword list.
-  ///
-  /// Must be UTF-8 encoded with a maximum size of 255 bytes.
-  ///
-  /// Required.
-  core.String? displayName;
-
-  /// The resource name of the negative keyword list.
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// The unique ID of the negative keyword list.
-  ///
-  /// Assigned by the system.
-  ///
-  /// Output only.
-  core.String? negativeKeywordListId;
-
-  /// Number of line items that are directly targeting this negative keyword
-  /// list.
-  ///
-  /// Output only.
-  core.String? targetedLineItemCount;
-
-  $NegativeKeywordList({
-    this.advertiserId,
-    this.displayName,
-    this.name,
-    this.negativeKeywordListId,
-    this.targetedLineItemCount,
-  });
-
-  $NegativeKeywordList.fromJson(core.Map json_)
-    : this(
-        advertiserId: json_['advertiserId'] as core.String?,
-        displayName: json_['displayName'] as core.String?,
-        name: json_['name'] as core.String?,
-        negativeKeywordListId: json_['negativeKeywordListId'] as core.String?,
-        targetedLineItemCount: json_['targetedLineItemCount'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final advertiserId = this.advertiserId;
-    final displayName = this.displayName;
-    final name = this.name;
-    final negativeKeywordListId = this.negativeKeywordListId;
-    final targetedLineItemCount = this.targetedLineItemCount;
-    return {
-      'advertiserId': ?advertiserId,
-      'displayName': ?displayName,
-      'name': ?name,
-      'negativeKeywordListId': ?negativeKeywordListId,
-      'targetedLineItemCount': ?targetedLineItemCount,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : NegativeKeywordListAssignedTargetingOptionDetails
-/// - displayvideo:v3 : NegativeKeywordListAssignedTargetingOptionDetails
-/// - displayvideo:v4 : NegativeKeywordListAssignedTargetingOptionDetails
-class $NegativeKeywordListAssignedTargetingOptionDetails {
-  /// ID of the negative keyword list.
-  ///
-  /// Should refer to the negative_keyword_list_id field of a
-  /// NegativeKeywordList resource.
-  ///
-  /// Required.
-  core.String? negativeKeywordListId;
-
-  $NegativeKeywordListAssignedTargetingOptionDetails({
-    this.negativeKeywordListId,
-  });
-
-  $NegativeKeywordListAssignedTargetingOptionDetails.fromJson(core.Map json_)
-    : this(
-        negativeKeywordListId: json_['negativeKeywordListId'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final negativeKeywordListId = this.negativeKeywordListId;
-    return {'negativeKeywordListId': ?negativeKeywordListId};
-  }
-}
-
-/// Used by:
-///
-/// - integrations:v1 : GoogleCloudIntegrationsV1alphaNextTask
-/// - integrations:v2 : GoogleCloudIntegrationsV2DuetNextTask
-class $NextTask {
-  /// Standard filter expression for this task to become an eligible next task.
-  core.String? condition;
-
-  /// User-provided description intended to give additional business context
-  /// about the task.
-  core.String? description;
-
-  /// User-provided label that is attached to this edge in the UI.
-  core.String? displayName;
-
-  /// ID of the next task.
-  core.String? taskConfigId;
-
-  /// Task number of the next task.
-  core.String? taskId;
-
-  $NextTask({
-    this.condition,
-    this.description,
-    this.displayName,
-    this.taskConfigId,
-    this.taskId,
-  });
-
-  $NextTask.fromJson(core.Map json_)
-    : this(
-        condition: json_['condition'] as core.String?,
-        description: json_['description'] as core.String?,
-        displayName: json_['displayName'] as core.String?,
-        taskConfigId: json_['taskConfigId'] as core.String?,
-        taskId: json_['taskId'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final condition = this.condition;
-    final description = this.description;
-    final displayName = this.displayName;
-    final taskConfigId = this.taskConfigId;
-    final taskId = this.taskId;
-    return {
-      'condition': ?condition,
-      'description': ?description,
-      'displayName': ?displayName,
-      'taskConfigId': ?taskConfigId,
-      'taskId': ?taskId,
-    };
-  }
-}
-
-/// Used by:
-///
 /// - analyticshub:v1 : NoWrapper
 /// - pubsub:v1 : NoWrapper
 class $NoWrapper {
@@ -18352,36 +8580,6 @@ class $NoWrapper {
   core.Map<core.String, core.dynamic> toJson() {
     final writeMetadata = this.writeMetadata;
     return {'writeMetadata': ?writeMetadata};
-  }
-}
-
-/// Used by:
-///
-/// - connectors:v1 : NodeConfig
-/// - integrations:v1 : GoogleCloudConnectorsV1NodeConfig
-class $NodeConfig {
-  /// Maximum number of nodes in the runtime nodes.
-  ///
-  /// Optional.
-  core.int? maxNodeCount;
-
-  /// Minimum number of nodes in the runtime nodes.
-  ///
-  /// Optional.
-  core.int? minNodeCount;
-
-  $NodeConfig({this.maxNodeCount, this.minNodeCount});
-
-  $NodeConfig.fromJson(core.Map json_)
-    : this(
-        maxNodeCount: json_['maxNodeCount'] as core.int?,
-        minNodeCount: json_['minNodeCount'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final maxNodeCount = this.maxNodeCount;
-    final minNodeCount = this.minNodeCount;
-    return {'maxNodeCount': ?maxNodeCount, 'minNodeCount': ?minNodeCount};
   }
 }
 
@@ -18492,360 +8690,6 @@ class $OAuthRequirements {
 
 /// Used by:
 ///
-/// - osconfig:v1 : OSPolicyAssignmentLabelSet
-/// - osconfig:v2 : OSPolicyAssignmentLabelSet
-class $OSPolicyAssignmentLabelSet {
-  /// Labels are identified by key/value pairs in this map.
-  ///
-  /// A VM should contain all the key/value pairs specified in this map to be
-  /// selected.
-  core.Map<core.String, core.String>? labels;
-
-  $OSPolicyAssignmentLabelSet({this.labels});
-
-  $OSPolicyAssignmentLabelSet.fromJson(core.Map json_)
-    : this(
-        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-          (key, value) => core.MapEntry(key, value as core.String),
-        ),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final labels = this.labels;
-    return {'labels': ?labels};
-  }
-}
-
-/// Used by:
-///
-/// - osconfig:v1 : OSPolicyResourceFileGcs
-/// - osconfig:v2 : OSPolicyResourceFileGcs
-class $OSPolicyResourceFileGcs {
-  /// Bucket of the Cloud Storage object.
-  ///
-  /// Required.
-  core.String? bucket;
-
-  /// Generation number of the Cloud Storage object.
-  core.String? generation;
-
-  /// Name of the Cloud Storage object.
-  ///
-  /// Required.
-  core.String? object;
-
-  $OSPolicyResourceFileGcs({this.bucket, this.generation, this.object});
-
-  $OSPolicyResourceFileGcs.fromJson(core.Map json_)
-    : this(
-        bucket: json_['bucket'] as core.String?,
-        generation: json_['generation'] as core.String?,
-        object: json_['object'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final bucket = this.bucket;
-    final generation = this.generation;
-    final object = this.object;
-    return {'bucket': ?bucket, 'generation': ?generation, 'object': ?object};
-  }
-}
-
-/// Used by:
-///
-/// - osconfig:v1 : OSPolicyResourceFileRemote
-/// - osconfig:v2 : OSPolicyResourceFileRemote
-class $OSPolicyResourceFileRemote {
-  /// SHA256 checksum of the remote file.
-  core.String? sha256Checksum;
-
-  /// URI from which to fetch the object.
-  ///
-  /// It should contain both the protocol and path following the format
-  /// `{protocol}://{location}`.
-  ///
-  /// Required.
-  core.String? uri;
-
-  $OSPolicyResourceFileRemote({this.sha256Checksum, this.uri});
-
-  $OSPolicyResourceFileRemote.fromJson(core.Map json_)
-    : this(
-        sha256Checksum: json_['sha256Checksum'] as core.String?,
-        uri: json_['uri'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final sha256Checksum = this.sha256Checksum;
-    final uri = this.uri;
-    return {'sha256Checksum': ?sha256Checksum, 'uri': ?uri};
-  }
-}
-
-/// Used by:
-///
-/// - osconfig:v1 : OSPolicyResourceRepositoryResourceAptRepository
-/// - osconfig:v2 : OSPolicyResourceRepositoryResourceAptRepository
-class $OSPolicyResourceRepositoryResourceAptRepository {
-  /// Type of archive files in this repository.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "ARCHIVE_TYPE_UNSPECIFIED" : Unspecified is invalid.
-  /// - "DEB" : Deb indicates that the archive contains binary files.
-  /// - "DEB_SRC" : Deb-src indicates that the archive contains source files.
-  core.String? archiveType;
-
-  /// List of components for this repository.
-  ///
-  /// Must contain at least one item.
-  ///
-  /// Required.
-  core.List<core.String>? components;
-
-  /// Distribution of this repository.
-  ///
-  /// Required.
-  core.String? distribution;
-
-  /// URI of the key file for this repository.
-  ///
-  /// The agent maintains a keyring at
-  /// `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
-  core.String? gpgKey;
-
-  /// URI for this repository.
-  ///
-  /// Required.
-  core.String? uri;
-
-  $OSPolicyResourceRepositoryResourceAptRepository({
-    this.archiveType,
-    this.components,
-    this.distribution,
-    this.gpgKey,
-    this.uri,
-  });
-
-  $OSPolicyResourceRepositoryResourceAptRepository.fromJson(core.Map json_)
-    : this(
-        archiveType: json_['archiveType'] as core.String?,
-        components: (json_['components'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-        distribution: json_['distribution'] as core.String?,
-        gpgKey: json_['gpgKey'] as core.String?,
-        uri: json_['uri'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final archiveType = this.archiveType;
-    final components = this.components;
-    final distribution = this.distribution;
-    final gpgKey = this.gpgKey;
-    final uri = this.uri;
-    return {
-      'archiveType': ?archiveType,
-      'components': ?components,
-      'distribution': ?distribution,
-      'gpgKey': ?gpgKey,
-      'uri': ?uri,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - osconfig:v1 : OSPolicyResourceRepositoryResourceGooRepository
-/// - osconfig:v2 : OSPolicyResourceRepositoryResourceGooRepository
-class $OSPolicyResourceRepositoryResourceGooRepository {
-  /// The name of the repository.
-  ///
-  /// Required.
-  core.String? name;
-
-  /// The url of the repository.
-  ///
-  /// Required.
-  core.String? url;
-
-  $OSPolicyResourceRepositoryResourceGooRepository({this.name, this.url});
-
-  $OSPolicyResourceRepositoryResourceGooRepository.fromJson(core.Map json_)
-    : this(
-        name: json_['name'] as core.String?,
-        url: json_['url'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final name = this.name;
-    final url = this.url;
-    return {'name': ?name, 'url': ?url};
-  }
-}
-
-/// Used by:
-///
-/// - osconfig:v1 : OSPolicyResourceRepositoryResourceYumRepository
-/// - osconfig:v2 : OSPolicyResourceRepositoryResourceYumRepository
-class $OSPolicyResourceRepositoryResourceYumRepository {
-  /// The location of the repository directory.
-  ///
-  /// Required.
-  core.String? baseUrl;
-
-  /// The display name of the repository.
-  core.String? displayName;
-
-  /// URIs of GPG keys.
-  core.List<core.String>? gpgKeys;
-
-  /// A one word, unique name for this repository.
-  ///
-  /// This is the `repo id` in the yum config file and also the `display_name`
-  /// if `display_name` is omitted. This id is also used as the unique
-  /// identifier when checking for resource conflicts.
-  ///
-  /// Required.
-  core.String? id;
-
-  $OSPolicyResourceRepositoryResourceYumRepository({
-    this.baseUrl,
-    this.displayName,
-    this.gpgKeys,
-    this.id,
-  });
-
-  $OSPolicyResourceRepositoryResourceYumRepository.fromJson(core.Map json_)
-    : this(
-        baseUrl: json_['baseUrl'] as core.String?,
-        displayName: json_['displayName'] as core.String?,
-        gpgKeys: (json_['gpgKeys'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-        id: json_['id'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final baseUrl = this.baseUrl;
-    final displayName = this.displayName;
-    final gpgKeys = this.gpgKeys;
-    final id = this.id;
-    return {
-      'baseUrl': ?baseUrl,
-      'displayName': ?displayName,
-      'gpgKeys': ?gpgKeys,
-      'id': ?id,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - osconfig:v1 : OSPolicyResourceRepositoryResourceZypperRepository
-/// - osconfig:v2 : OSPolicyResourceRepositoryResourceZypperRepository
-class $OSPolicyResourceRepositoryResourceZypperRepository {
-  /// The location of the repository directory.
-  ///
-  /// Required.
-  core.String? baseUrl;
-
-  /// The display name of the repository.
-  core.String? displayName;
-
-  /// URIs of GPG keys.
-  core.List<core.String>? gpgKeys;
-
-  /// A one word, unique name for this repository.
-  ///
-  /// This is the `repo id` in the zypper config file and also the
-  /// `display_name` if `display_name` is omitted. This id is also used as the
-  /// unique identifier when checking for GuestPolicy conflicts.
-  ///
-  /// Required.
-  core.String? id;
-
-  $OSPolicyResourceRepositoryResourceZypperRepository({
-    this.baseUrl,
-    this.displayName,
-    this.gpgKeys,
-    this.id,
-  });
-
-  $OSPolicyResourceRepositoryResourceZypperRepository.fromJson(core.Map json_)
-    : this(
-        baseUrl: json_['baseUrl'] as core.String?,
-        displayName: json_['displayName'] as core.String?,
-        gpgKeys: (json_['gpgKeys'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-        id: json_['id'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final baseUrl = this.baseUrl;
-    final displayName = this.displayName;
-    final gpgKeys = this.gpgKeys;
-    final id = this.id;
-    return {
-      'baseUrl': ?baseUrl,
-      'displayName': ?displayName,
-      'gpgKeys': ?gpgKeys,
-      'id': ?id,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - connectors:v1 : Oauth2AuthCodeFlowGoogleManaged
-/// - integrations:v1 : GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlowGoogleManaged
-class $Oauth2AuthCodeFlowGoogleManaged {
-  /// Authorization code to be exchanged for access and refresh tokens.
-  ///
-  /// Optional.
-  core.String? authCode;
-
-  /// Redirect URI to be provided during the auth code exchange.
-  ///
-  /// Optional.
-  core.String? redirectUri;
-
-  /// Scopes the connection will request when the user performs the auth code
-  /// flow.
-  ///
-  /// Required.
-  core.List<core.String>? scopes;
-
-  $Oauth2AuthCodeFlowGoogleManaged({
-    this.authCode,
-    this.redirectUri,
-    this.scopes,
-  });
-
-  $Oauth2AuthCodeFlowGoogleManaged.fromJson(core.Map json_)
-    : this(
-        authCode: json_['authCode'] as core.String?,
-        redirectUri: json_['redirectUri'] as core.String?,
-        scopes: (json_['scopes'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final authCode = this.authCode;
-    final redirectUri = this.redirectUri;
-    final scopes = this.scopes;
-    return {
-      'authCode': ?authCode,
-      'redirectUri': ?redirectUri,
-      'scopes': ?scopes,
-    };
-  }
-}
-
-/// Used by:
-///
 /// - firebaseappdistribution:v1 : GdataObjectId
 /// - walletobjects:v1 : ObjectId
 class $ObjectId {
@@ -18917,29 +8761,6 @@ class $ObjectIdentifier {
 
 /// Used by:
 ///
-/// - dfareporting:v3.5 : OffsetPosition
-/// - dfareporting:v5 : OffsetPosition
-class $OffsetPosition {
-  /// Offset distance from left side of an asset or a window.
-  core.int? left;
-
-  /// Offset distance from top side of an asset or a window.
-  core.int? top;
-
-  $OffsetPosition({this.left, this.top});
-
-  $OffsetPosition.fromJson(core.Map json_)
-    : this(left: json_['left'] as core.int?, top: json_['top'] as core.int?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final left = this.left;
-    final top = this.top;
-    return {'left': ?left, 'top': ?top};
-  }
-}
-
-/// Used by:
-///
 /// - analyticshub:v1 : OidcToken
 /// - pubsub:v1 : OidcToken
 class $OidcToken {
@@ -18976,225 +8797,6 @@ class $OidcToken {
     final audience = this.audience;
     final serviceAccountEmail = this.serviceAccountEmail;
     return {'audience': ?audience, 'serviceAccountEmail': ?serviceAccountEmail};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : OmidAssignedTargetingOptionDetails
-/// - displayvideo:v3 : OmidAssignedTargetingOptionDetails
-/// - displayvideo:v4 : OmidAssignedTargetingOptionDetails
-class $OmidAssignedTargetingOptionDetails {
-  /// The type of Open Measurement enabled inventory.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "OMID_UNSPECIFIED" : Default value when omid targeting is not specified
-  /// in this version.
-  /// - "OMID_FOR_MOBILE_DISPLAY_ADS" : Open Measurement enabled mobile display
-  /// inventory.
-  core.String? omid;
-
-  $OmidAssignedTargetingOptionDetails({this.omid});
-
-  $OmidAssignedTargetingOptionDetails.fromJson(core.Map json_)
-    : this(omid: json_['omid'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final omid = this.omid;
-    return {'omid': ?omid};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : OmidTargetingOptionDetails
-/// - displayvideo:v3 : OmidTargetingOptionDetails
-/// - displayvideo:v4 : OmidTargetingOptionDetails
-class $OmidTargetingOptionDetails {
-  /// The type of Open Measurement enabled inventory.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "OMID_UNSPECIFIED" : Default value when omid targeting is not specified
-  /// in this version.
-  /// - "OMID_FOR_MOBILE_DISPLAY_ADS" : Open Measurement enabled mobile display
-  /// inventory.
-  core.String? omid;
-
-  $OmidTargetingOptionDetails({this.omid});
-
-  $OmidTargetingOptionDetails.fromJson(core.Map json_)
-    : this(omid: json_['omid'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final omid = this.omid;
-    return {'omid': ?omid};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : OnScreenPositionAssignedTargetingOptionDetails
-/// - displayvideo:v3 : OnScreenPositionAssignedTargetingOptionDetails
-/// - displayvideo:v4 : OnScreenPositionAssignedTargetingOptionDetails
-class $OnScreenPositionAssignedTargetingOptionDetails {
-  /// The ad type to target.
-  ///
-  /// Only applicable to insertion order targeting and new line items supporting
-  /// the specified ad type will inherit this targeting option by default.
-  /// Possible values are: * `AD_TYPE_DISPLAY`, the setting will be inherited by
-  /// new line item when line_item_type is `LINE_ITEM_TYPE_DISPLAY_DEFAULT`. *
-  /// `AD_TYPE_VIDEO`, the setting will be inherited by new line item when
-  /// line_item_type is `LINE_ITEM_TYPE_VIDEO_DEFAULT`.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "AD_TYPE_UNSPECIFIED" : Ad type is not specified or is unknown in this
-  /// version.
-  /// - "AD_TYPE_DISPLAY" : Display creatives, e.g. image and HTML5.
-  /// - "AD_TYPE_VIDEO" : Video creatives, e.g. video ads that play during
-  /// streaming content in video players.
-  /// - "AD_TYPE_AUDIO" : Audio creatives, e.g. audio ads that play during audio
-  /// content.
-  core.String? adType;
-
-  /// The on screen position.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "ON_SCREEN_POSITION_UNSPECIFIED" : On screen position is not specified
-  /// in this version. This enum is a place holder for a default value and does
-  /// not represent a real on screen position.
-  /// - "ON_SCREEN_POSITION_UNKNOWN" : The ad position is unknown on the screen.
-  /// - "ON_SCREEN_POSITION_ABOVE_THE_FOLD" : The ad is located above the fold.
-  /// - "ON_SCREEN_POSITION_BELOW_THE_FOLD" : The ad is located below the fold.
-  core.String? onScreenPosition;
-
-  /// The targeting_option_id field when targeting_type is
-  /// `TARGETING_TYPE_ON_SCREEN_POSITION`.
-  ///
-  /// Required.
-  core.String? targetingOptionId;
-
-  $OnScreenPositionAssignedTargetingOptionDetails({
-    this.adType,
-    this.onScreenPosition,
-    this.targetingOptionId,
-  });
-
-  $OnScreenPositionAssignedTargetingOptionDetails.fromJson(core.Map json_)
-    : this(
-        adType: json_['adType'] as core.String?,
-        onScreenPosition: json_['onScreenPosition'] as core.String?,
-        targetingOptionId: json_['targetingOptionId'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final adType = this.adType;
-    final onScreenPosition = this.onScreenPosition;
-    final targetingOptionId = this.targetingOptionId;
-    return {
-      'adType': ?adType,
-      'onScreenPosition': ?onScreenPosition,
-      'targetingOptionId': ?targetingOptionId,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : OnScreenPositionTargetingOptionDetails
-/// - displayvideo:v3 : OnScreenPositionTargetingOptionDetails
-/// - displayvideo:v4 : OnScreenPositionTargetingOptionDetails
-class $OnScreenPositionTargetingOptionDetails {
-  /// The on screen position.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "ON_SCREEN_POSITION_UNSPECIFIED" : On screen position is not specified
-  /// in this version. This enum is a place holder for a default value and does
-  /// not represent a real on screen position.
-  /// - "ON_SCREEN_POSITION_UNKNOWN" : The ad position is unknown on the screen.
-  /// - "ON_SCREEN_POSITION_ABOVE_THE_FOLD" : The ad is located above the fold.
-  /// - "ON_SCREEN_POSITION_BELOW_THE_FOLD" : The ad is located below the fold.
-  core.String? onScreenPosition;
-
-  $OnScreenPositionTargetingOptionDetails({this.onScreenPosition});
-
-  $OnScreenPositionTargetingOptionDetails.fromJson(core.Map json_)
-    : this(onScreenPosition: json_['onScreenPosition'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final onScreenPosition = this.onScreenPosition;
-    return {'onScreenPosition': ?onScreenPosition};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : OperatingSystemAssignedTargetingOptionDetails
-/// - displayvideo:v3 : OperatingSystemAssignedTargetingOptionDetails
-/// - displayvideo:v4 : OperatingSystemAssignedTargetingOptionDetails
-class $OperatingSystemAssignedTargetingOptionDetails {
-  /// The display name of the operating system.
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  /// Indicates if this option is being negatively targeted.
-  core.bool? negative;
-
-  /// The targeting option ID populated in targeting_option_id field when
-  /// targeting_type is `TARGETING_TYPE_OPERATING_SYSTEM`.
-  ///
-  /// Required.
-  core.String? targetingOptionId;
-
-  $OperatingSystemAssignedTargetingOptionDetails({
-    this.displayName,
-    this.negative,
-    this.targetingOptionId,
-  });
-
-  $OperatingSystemAssignedTargetingOptionDetails.fromJson(core.Map json_)
-    : this(
-        displayName: json_['displayName'] as core.String?,
-        negative: json_['negative'] as core.bool?,
-        targetingOptionId: json_['targetingOptionId'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final displayName = this.displayName;
-    final negative = this.negative;
-    final targetingOptionId = this.targetingOptionId;
-    return {
-      'displayName': ?displayName,
-      'negative': ?negative,
-      'targetingOptionId': ?targetingOptionId,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : OperatingSystemTargetingOptionDetails
-/// - displayvideo:v3 : OperatingSystemTargetingOptionDetails
-/// - displayvideo:v4 : OperatingSystemTargetingOptionDetails
-class $OperatingSystemTargetingOptionDetails {
-  /// The display name of the operating system.
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  $OperatingSystemTargetingOptionDetails({this.displayName});
-
-  $OperatingSystemTargetingOptionDetails.fromJson(core.Map json_)
-    : this(displayName: json_['displayName'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final displayName = this.displayName;
-    return {'displayName': ?displayName};
   }
 }
 
@@ -19298,85 +8900,6 @@ class $OsConstraint {
 
 /// Used by:
 ///
-/// - cloudasset:v1 : OsInfo
-/// - osconfig:v1 : InventoryOsInfo
-class $OsInfo {
-  /// The system architecture of the operating system.
-  core.String? architecture;
-
-  /// The VM hostname.
-  core.String? hostname;
-
-  /// The kernel release of the operating system.
-  core.String? kernelRelease;
-
-  /// The kernel version of the operating system.
-  core.String? kernelVersion;
-
-  /// The operating system long name.
-  ///
-  /// For example 'Debian GNU/Linux 9' or 'Microsoft Window Server 2019
-  /// Datacenter'.
-  core.String? longName;
-
-  /// The current version of the OS Config agent running on the VM.
-  core.String? osconfigAgentVersion;
-
-  /// The operating system short name.
-  ///
-  /// For example, 'windows' or 'debian'.
-  core.String? shortName;
-
-  /// The version of the operating system.
-  core.String? version;
-
-  $OsInfo({
-    this.architecture,
-    this.hostname,
-    this.kernelRelease,
-    this.kernelVersion,
-    this.longName,
-    this.osconfigAgentVersion,
-    this.shortName,
-    this.version,
-  });
-
-  $OsInfo.fromJson(core.Map json_)
-    : this(
-        architecture: json_['architecture'] as core.String?,
-        hostname: json_['hostname'] as core.String?,
-        kernelRelease: json_['kernelRelease'] as core.String?,
-        kernelVersion: json_['kernelVersion'] as core.String?,
-        longName: json_['longName'] as core.String?,
-        osconfigAgentVersion: json_['osconfigAgentVersion'] as core.String?,
-        shortName: json_['shortName'] as core.String?,
-        version: json_['version'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final architecture = this.architecture;
-    final hostname = this.hostname;
-    final kernelRelease = this.kernelRelease;
-    final kernelVersion = this.kernelVersion;
-    final longName = this.longName;
-    final osconfigAgentVersion = this.osconfigAgentVersion;
-    final shortName = this.shortName;
-    final version = this.version;
-    return {
-      'architecture': ?architecture,
-      'hostname': ?hostname,
-      'kernelRelease': ?kernelRelease,
-      'kernelVersion': ?kernelVersion,
-      'longName': ?longName,
-      'osconfigAgentVersion': ?osconfigAgentVersion,
-      'shortName': ?shortName,
-      'version': ?version,
-    };
-  }
-}
-
-/// Used by:
-///
 /// - dataproc:v1 : OutputMetrics
 /// - dataproc:v1 : StageOutputMetrics
 class $OutputMetrics {
@@ -19395,95 +8918,6 @@ class $OutputMetrics {
     final bytesWritten = this.bytesWritten;
     final recordsWritten = this.recordsWritten;
     return {'bytesWritten': ?bytesWritten, 'recordsWritten': ?recordsWritten};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : Pacing
-/// - displayvideo:v3 : Pacing
-/// - displayvideo:v4 : Pacing
-class $Pacing {
-  /// Maximum number of impressions to serve every day.
-  ///
-  /// Applicable when the budget is impression based. Must be greater than 0.
-  core.String? dailyMaxImpressions;
-
-  /// Maximum currency amount to spend every day in micros of advertiser's
-  /// currency.
-  ///
-  /// Applicable when the budget is currency based. Must be greater than 0. For
-  /// example, for 1.5 standard unit of the currency, set this field to 1500000.
-  /// The value assigned will be rounded to whole billable units for the
-  /// relevant currency by the following rules: any positive value less than a
-  /// single billable unit will be rounded up to one billable unit and any value
-  /// larger than a single billable unit will be rounded down to the nearest
-  /// billable value. For example, if the currency's billable unit is 0.01, and
-  /// this field is set to 10257770, it will round down to 10250000, a value of
-  /// 10.25. If set to 505, it will round up to 10000, a value of 0.01.
-  core.String? dailyMaxMicros;
-
-  /// The time period in which the pacing budget will be spent.
-  ///
-  /// When automatic budget allocation is enabled at the insertion order via
-  /// automationType, this field is output only and defaults to
-  /// `PACING_PERIOD_FLIGHT`.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "PACING_PERIOD_UNSPECIFIED" : Period value is not specified or is
-  /// unknown in this version.
-  /// - "PACING_PERIOD_DAILY" : The pacing setting will be applied on daily
-  /// basis.
-  /// - "PACING_PERIOD_FLIGHT" : The pacing setting will be applied to the whole
-  /// flight duration.
-  core.String? pacingPeriod;
-
-  /// The type of pacing that defines how the budget amount will be spent across
-  /// the pacing_period.
-  ///
-  /// `PACING_TYPE_ASAP` is not compatible with pacing_period
-  /// `PACING_PERIOD_FLIGHT` for insertion orders.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "PACING_TYPE_UNSPECIFIED" : Pacing mode value is not specified or is
-  /// unknown in this version.
-  /// - "PACING_TYPE_AHEAD" : Only applicable to `PACING_PERIOD_FLIGHT` pacing
-  /// period. Ahead pacing attempts to spend faster than evenly, to make sure
-  /// the entire budget is spent by the end of the flight.
-  /// - "PACING_TYPE_ASAP" : Spend all of pacing budget amount as quick as
-  /// possible.
-  /// - "PACING_TYPE_EVEN" : Spend a consistent budget amount every period of
-  /// time.
-  core.String? pacingType;
-
-  $Pacing({
-    this.dailyMaxImpressions,
-    this.dailyMaxMicros,
-    this.pacingPeriod,
-    this.pacingType,
-  });
-
-  $Pacing.fromJson(core.Map json_)
-    : this(
-        dailyMaxImpressions: json_['dailyMaxImpressions'] as core.String?,
-        dailyMaxMicros: json_['dailyMaxMicros'] as core.String?,
-        pacingPeriod: json_['pacingPeriod'] as core.String?,
-        pacingType: json_['pacingType'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final dailyMaxImpressions = this.dailyMaxImpressions;
-    final dailyMaxMicros = this.dailyMaxMicros;
-    final pacingPeriod = this.pacingPeriod;
-    final pacingType = this.pacingType;
-    return {
-      'dailyMaxImpressions': ?dailyMaxImpressions,
-      'dailyMaxMicros': ?dailyMaxMicros,
-      'pacingPeriod': ?pacingPeriod,
-      'pacingType': ?pacingType,
-    };
   }
 }
 
@@ -19680,342 +9114,6 @@ class $Params01 {
 
 /// Used by:
 ///
-/// - displayvideo:v3 : ParentEntityFilter
-/// - displayvideo:v4 : ParentEntityFilter
-class $ParentEntityFilter {
-  /// File types that will be returned.
-  ///
-  /// Required.
-  core.List<core.String>? fileType;
-
-  /// The IDs of the specified filter type.
-  ///
-  /// This is used to filter entities to fetch. If filter type is not
-  /// `FILTER_TYPE_NONE`, at least one ID must be specified.
-  core.List<core.String>? filterIds;
-
-  /// Filter type used to filter fetched entities.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "FILTER_TYPE_UNSPECIFIED" : Default value when type is unspecified or is
-  /// unknown in this version.
-  /// - "FILTER_TYPE_NONE" : If selected, no filter will be applied to the
-  /// download. Can only be used if an Advertiser is specified in
-  /// CreateSdfDownloadTaskRequest.
-  /// - "FILTER_TYPE_ADVERTISER_ID" : Advertiser ID. If selected, all filter IDs
-  /// must be Advertiser IDs that belong to the Partner specified in
-  /// CreateSdfDownloadTaskRequest.
-  /// - "FILTER_TYPE_CAMPAIGN_ID" : Campaign ID. If selected, all filter IDs
-  /// must be Campaign IDs that belong to the Advertiser or Partner specified in
-  /// CreateSdfDownloadTaskRequest.
-  /// - "FILTER_TYPE_MEDIA_PRODUCT_ID" : Media Product ID. If selected, all
-  /// filter IDs must be Media Product IDs that belong to the Advertiser or
-  /// Partner specified in CreateSdfDownloadTaskRequest. Can only be used for
-  /// downloading `FILE_TYPE_MEDIA_PRODUCT`.
-  /// - "FILTER_TYPE_INSERTION_ORDER_ID" : Insertion Order ID. If selected, all
-  /// filter IDs must be Insertion Order IDs that belong to the Advertiser or
-  /// Partner specified in CreateSdfDownloadTaskRequest. Can only be used for
-  /// downloading `FILE_TYPE_INSERTION_ORDER`, `FILE_TYPE_LINE_ITEM`,
-  /// `FILE_TYPE_LINE_ITEM_QA`, `FILE_TYPE_AD_GROUP`, `FILE_TYPE_AD_GROUP_QA`,
-  /// and `FILE_TYPE_AD`.
-  /// - "FILTER_TYPE_LINE_ITEM_ID" : Line Item ID. If selected, all filter IDs
-  /// must be Line Item IDs that belong to the Advertiser or Partner specified
-  /// in CreateSdfDownloadTaskRequest. Can only be used for downloading
-  /// `FILE_TYPE_LINE_ITEM`, `FILE_TYPE_LINE_ITEM_QA`,`FILE_TYPE_AD_GROUP`,
-  /// `FILE_TYPE_AD_GROUP_QA`, and `FILE_TYPE_AD`.
-  core.String? filterType;
-
-  $ParentEntityFilter({this.fileType, this.filterIds, this.filterType});
-
-  $ParentEntityFilter.fromJson(core.Map json_)
-    : this(
-        fileType: (json_['fileType'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-        filterIds: (json_['filterIds'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-        filterType: json_['filterType'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final fileType = this.fileType;
-    final filterIds = this.filterIds;
-    final filterType = this.filterType;
-    return {
-      'fileType': ?fileType,
-      'filterIds': ?filterIds,
-      'filterType': ?filterType,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : ParentalStatusAssignedTargetingOptionDetails
-/// - displayvideo:v3 : ParentalStatusAssignedTargetingOptionDetails
-/// - displayvideo:v4 : ParentalStatusAssignedTargetingOptionDetails
-class $ParentalStatusAssignedTargetingOptionDetails {
-  /// The parental status of the audience.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "PARENTAL_STATUS_UNSPECIFIED" : Default value when parental status is
-  /// not specified in this version. This enum is a place holder for default
-  /// value and does not represent a real parental status option.
-  /// - "PARENTAL_STATUS_PARENT" : The audience is a parent.
-  /// - "PARENTAL_STATUS_NOT_A_PARENT" : The audience is not a parent.
-  /// - "PARENTAL_STATUS_UNKNOWN" : The parental status of the audience is
-  /// unknown.
-  core.String? parentalStatus;
-
-  $ParentalStatusAssignedTargetingOptionDetails({this.parentalStatus});
-
-  $ParentalStatusAssignedTargetingOptionDetails.fromJson(core.Map json_)
-    : this(parentalStatus: json_['parentalStatus'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final parentalStatus = this.parentalStatus;
-    return {'parentalStatus': ?parentalStatus};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : ParentalStatusTargetingOptionDetails
-/// - displayvideo:v3 : ParentalStatusTargetingOptionDetails
-/// - displayvideo:v4 : ParentalStatusTargetingOptionDetails
-class $ParentalStatusTargetingOptionDetails {
-  /// The parental status of an audience.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "PARENTAL_STATUS_UNSPECIFIED" : Default value when parental status is
-  /// not specified in this version. This enum is a place holder for default
-  /// value and does not represent a real parental status option.
-  /// - "PARENTAL_STATUS_PARENT" : The audience is a parent.
-  /// - "PARENTAL_STATUS_NOT_A_PARENT" : The audience is not a parent.
-  /// - "PARENTAL_STATUS_UNKNOWN" : The parental status of the audience is
-  /// unknown.
-  core.String? parentalStatus;
-
-  $ParentalStatusTargetingOptionDetails({this.parentalStatus});
-
-  $ParentalStatusTargetingOptionDetails.fromJson(core.Map json_)
-    : this(parentalStatus: json_['parentalStatus'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final parentalStatus = this.parentalStatus;
-    return {'parentalStatus': ?parentalStatus};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v3 : PartnerBillingConfig
-/// - displayvideo:v4 : PartnerBillingConfig
-class $PartnerBillingConfig {
-  /// The ID of a partner default billing profile.
-  core.String? billingProfileId;
-
-  $PartnerBillingConfig({this.billingProfileId});
-
-  $PartnerBillingConfig.fromJson(core.Map json_)
-    : this(billingProfileId: json_['billingProfileId'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final billingProfileId = this.billingProfileId;
-    return {'billingProfileId': ?billingProfileId};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : PartnerCost
-/// - displayvideo:v4 : PartnerCost
-class $PartnerCost {
-  /// The type of the partner cost.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "PARTNER_COST_TYPE_UNSPECIFIED" : Type value is not specified or is
-  /// unknown in this version.
-  /// - "PARTNER_COST_TYPE_ADLOOX" : The cost is charged for using Scope3
-  /// (previously known as Adloox). Billed by the partner.
-  /// - "PARTNER_COST_TYPE_ADLOOX_PREBID" : The cost is charged for using Scope3
-  /// (previously known as Adloox) Pre-Bid. Billed through DV360.
-  /// - "PARTNER_COST_TYPE_ADSAFE" : The cost is charged for using AdSafe.
-  /// Billed by the partner.
-  /// - "PARTNER_COST_TYPE_ADXPOSE" : The cost is charged for using AdExpose.
-  /// Billed by the partner.
-  /// - "PARTNER_COST_TYPE_AGGREGATE_KNOWLEDGE" : The cost is charged for using
-  /// Aggregate Knowledge. Billed by the partner.
-  /// - "PARTNER_COST_TYPE_AGENCY_TRADING_DESK" : The cost is charged for using
-  /// an Agency Trading Desk. Billed by the partner.
-  /// - "PARTNER_COST_TYPE_DV360_FEE" : The cost is charged for using DV360.
-  /// Billed through DV360.
-  /// - "PARTNER_COST_TYPE_COMSCORE_VCE" : The cost is charged for using
-  /// comScore vCE. Billed through DV360.
-  /// - "PARTNER_COST_TYPE_DATA_MANAGEMENT_PLATFORM" : The cost is charged for
-  /// using a Data Management Platform. Billed by the partner.
-  /// - "PARTNER_COST_TYPE_DEFAULT" : The default cost type. Billed by the
-  /// partner.
-  /// - "PARTNER_COST_TYPE_DOUBLE_VERIFY" : The cost is charged for using
-  /// DoubleVerify. Billed by the partner.
-  /// - "PARTNER_COST_TYPE_DOUBLE_VERIFY_PREBID" : The cost is charged for using
-  /// DoubleVerify Pre-Bid. Billed through DV360.
-  /// - "PARTNER_COST_TYPE_EVIDON" : The cost is charged for using Evidon.
-  /// Billed by the partner.
-  /// - "PARTNER_COST_TYPE_INTEGRAL_AD_SCIENCE_VIDEO" : The cost is charged for
-  /// using Integral Ad Science Video. Billed by the partner.
-  /// - "PARTNER_COST_TYPE_INTEGRAL_AD_SCIENCE_PREBID" : The cost is charged for
-  /// using Integral Ad Science Pre-Bid. Billed through DV360.
-  /// - "PARTNER_COST_TYPE_MEDIA_COST_DATA" : The cost is charged for using
-  /// media cost data. Billed by the partner.
-  /// - "PARTNER_COST_TYPE_MOAT_VIDEO" : The cost is charged for using MOAT
-  /// Video. Billed by the partner.
-  /// - "PARTNER_COST_TYPE_NIELSEN_DAR" : The cost is charged for using Nielsen
-  /// Digital Ad Ratings. Billed through DV360.
-  /// - "PARTNER_COST_TYPE_SHOP_LOCAL" : The cost is charged for using
-  /// ShopLocal. Billed by the partner.
-  /// - "PARTNER_COST_TYPE_TERACENT" : The cost is charged for using Teracent.
-  /// Billed by the partner.
-  /// - "PARTNER_COST_TYPE_THIRD_PARTY_AD_SERVER" : The cost is charged for
-  /// using a third-party ad server. Billed by the partner.
-  /// - "PARTNER_COST_TYPE_TRUST_METRICS" : The cost is charged for using
-  /// TrustMetrics. Billed by the partner.
-  /// - "PARTNER_COST_TYPE_VIZU" : The cost is charged for using Vizu. Billed by
-  /// the partner.
-  /// - "PARTNER_COST_TYPE_CUSTOM_FEE_1" : The cost is charged as custom fee 1.
-  /// Billed by the partner.
-  /// - "PARTNER_COST_TYPE_CUSTOM_FEE_2" : The cost is charged as custom fee 2.
-  /// Billed by the partner.
-  /// - "PARTNER_COST_TYPE_CUSTOM_FEE_3" : The cost is charged as custom fee 3.
-  /// Billed by the partner.
-  /// - "PARTNER_COST_TYPE_CUSTOM_FEE_4" : The cost is charged as custom fee 4.
-  /// Billed by the partner.
-  /// - "PARTNER_COST_TYPE_CUSTOM_FEE_5" : The cost is charged as custom fee 5.
-  /// Billed by the partner.
-  /// - "PARTNER_COST_TYPE_SCIBIDS_FEE" : The cost is charged for using Scibids.
-  /// Billed through DV360. This type is currently only available to certain
-  /// customers. Other customers attempting to use this type will receive an
-  /// error.
-  core.String? costType;
-
-  /// The CPM fee amount in micros of advertiser's currency.
-  ///
-  /// Applicable when the fee_type is `PARTNER_FEE_TYPE_CPM_FEE`. Must be
-  /// greater than or equal to 0. For example, for 1.5 standard unit of the
-  /// advertiser's currency, set this field to 1500000.
-  core.String? feeAmount;
-
-  /// The media fee percentage in millis (1/1000 of a percent).
-  ///
-  /// Applicable when the fee_type is `PARTNER_FEE_TYPE_MEDIA_FEE`. Must be
-  /// greater than or equal to 0. For example: 100 represents 0.1%.
-  core.String? feePercentageMillis;
-
-  /// The fee type for this partner cost.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "PARTNER_COST_FEE_TYPE_UNSPECIFIED" : Value is not specified or is
-  /// unknown in this version.
-  /// - "PARTNER_COST_FEE_TYPE_CPM_FEE" : The partner cost is a fixed CPM fee.
-  /// Not applicable when the partner cost cost_type is one of: *
-  /// `PARTNER_COST_TYPE_MEDIA_COST_DATA` * `PARTNER_COST_TYPE_DV360_FEE`.
-  /// - "PARTNER_COST_FEE_TYPE_MEDIA_FEE" : The partner cost is a percentage
-  /// surcharge based on the media cost. Not applicable when the partner
-  /// cost_type is one of: * `PARTNER_COST_TYPE_SHOP_LOCAL` *
-  /// `PARTNER_COST_TYPE_TRUST_METRICS` *
-  /// `PARTNER_COST_TYPE_INTEGRAL_AD_SCIENCE_VIDEO` *
-  /// `PARTNER_COST_TYPE_MOAT_VIDEO`.
-  core.String? feeType;
-
-  /// The invoice type for this partner cost.
-  ///
-  /// * Required when cost_type is one of: - `PARTNER_COST_TYPE_PEER39` -
-  /// `PARTNER_COST_TYPE_DOUBLE_VERIFY` -
-  /// `PARTNER_COST_TYPE_INTEGRAL_AD_SCIENCE`. * Output only for other types.
-  /// Possible string values are:
-  /// - "PARTNER_COST_INVOICE_TYPE_UNSPECIFIED" : Type value is not specified or
-  /// is unknown in this version.
-  /// - "PARTNER_COST_INVOICE_TYPE_DV360" : Partner cost is billed through
-  /// DV360.
-  /// - "PARTNER_COST_INVOICE_TYPE_PARTNER" : Partner cost is billed by the
-  /// partner.
-  core.String? invoiceType;
-
-  $PartnerCost({
-    this.costType,
-    this.feeAmount,
-    this.feePercentageMillis,
-    this.feeType,
-    this.invoiceType,
-  });
-
-  $PartnerCost.fromJson(core.Map json_)
-    : this(
-        costType: json_['costType'] as core.String?,
-        feeAmount: json_['feeAmount'] as core.String?,
-        feePercentageMillis: json_['feePercentageMillis'] as core.String?,
-        feeType: json_['feeType'] as core.String?,
-        invoiceType: json_['invoiceType'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final costType = this.costType;
-    final feeAmount = this.feeAmount;
-    final feePercentageMillis = this.feePercentageMillis;
-    final feeType = this.feeType;
-    final invoiceType = this.invoiceType;
-    return {
-      'costType': ?costType,
-      'feeAmount': ?feeAmount,
-      'feePercentageMillis': ?feePercentageMillis,
-      'feeType': ?feeType,
-      'invoiceType': ?invoiceType,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : PartnerGeneralConfig
-/// - displayvideo:v3 : PartnerGeneralConfig
-/// - displayvideo:v4 : PartnerGeneralConfig
-class $PartnerGeneralConfig {
-  /// Partner's currency in ISO 4217 format.
-  ///
-  /// Immutable.
-  core.String? currencyCode;
-
-  /// The standard TZ database name of the partner's time zone.
-  ///
-  /// For example, `America/New_York`. See more at:
-  /// https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-  ///
-  /// Immutable.
-  core.String? timeZone;
-
-  $PartnerGeneralConfig({this.currencyCode, this.timeZone});
-
-  $PartnerGeneralConfig.fromJson(core.Map json_)
-    : this(
-        currencyCode: json_['currencyCode'] as core.String?,
-        timeZone: json_['timeZone'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final currencyCode = this.currencyCode;
-    final timeZone = this.timeZone;
-    return {'currencyCode': ?currencyCode, 'timeZone': ?timeZone};
-  }
-}
-
-/// Used by:
-///
 /// - datamanager:v1 : IngestPartnerProvidedIdDataStatus
 /// - datamanager:v1 : RemovePartnerProvidedIdDataStatus
 class $PartnerProvidedIdDataStatus {
@@ -20037,81 +9135,6 @@ class $PartnerProvidedIdDataStatus {
       'partnerProvidedIdCount': ?partnerProvidedIdCount,
       'recordCount': ?recordCount,
     };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : PartnerRevenueModel
-/// - displayvideo:v3 : PartnerRevenueModel
-/// - displayvideo:v4 : PartnerRevenueModel
-class $PartnerRevenueModel {
-  /// The markup amount of the partner revenue model.
-  ///
-  /// Must be greater than or equal to 0. * When the markup_type is set to be
-  /// `PARTNER_REVENUE_MODEL_MARKUP_TYPE_CPM`, this field represents the CPM
-  /// markup in micros of advertiser's currency. For example, 1500000 represents
-  /// 1.5 standard units of the currency. * When the markup_type is set to be
-  /// `PARTNER_REVENUE_MODEL_MARKUP_TYPE_MEDIA_COST_MARKUP`, this field
-  /// represents the media cost percent markup in millis. For example, 100
-  /// represents 0.1% (decimal 0.001). * When the markup_type is set to be
-  /// `PARTNER_REVENUE_MODEL_MARKUP_TYPE_TOTAL_MEDIA_COST_MARKUP`, this field
-  /// represents the total media cost percent markup in millis. For example, 100
-  /// represents 0.1% (decimal 0.001).
-  ///
-  /// Required.
-  core.String? markupAmount;
-
-  /// The markup type of the partner revenue model.
-  ///
-  /// This field must be set to
-  /// `PARTNER_REVENUE_MODEL_MARKUP_TYPE_TOTAL_MEDIA_COST_MARKUP` for Demand Gen
-  /// line items.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "PARTNER_REVENUE_MODEL_MARKUP_TYPE_UNSPECIFIED" : Type value is not
-  /// specified or is unknown in this version.
-  /// - "PARTNER_REVENUE_MODEL_MARKUP_TYPE_CPM" : Calculate the partner revenue
-  /// based on a fixed CPM.
-  /// - "PARTNER_REVENUE_MODEL_MARKUP_TYPE_MEDIA_COST_MARKUP" : Calculate the
-  /// partner revenue based on a percentage surcharge of its media cost.
-  /// - "PARTNER_REVENUE_MODEL_MARKUP_TYPE_TOTAL_MEDIA_COST_MARKUP" : Calculate
-  /// the partner revenue based on a percentage surcharge of its total media
-  /// cost, which includes all partner costs and data costs.
-  core.String? markupType;
-
-  $PartnerRevenueModel({this.markupAmount, this.markupType});
-
-  $PartnerRevenueModel.fromJson(core.Map json_)
-    : this(
-        markupAmount: json_['markupAmount'] as core.String?,
-        markupType: json_['markupType'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final markupAmount = this.markupAmount;
-    final markupType = this.markupType;
-    return {'markupAmount': ?markupAmount, 'markupType': ?markupType};
-  }
-}
-
-/// Used by:
-///
-/// - trafficdirector:v2 : PathSegment
-/// - trafficdirector:v3 : PathSegment
-class $PathSegment {
-  /// If specified, use the key to retrieve the value in a Struct.
-  core.String? key;
-
-  $PathSegment({this.key});
-
-  $PathSegment.fromJson(core.Map json_)
-    : this(key: json_['key'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final key = this.key;
-    return {'key': ?key};
   }
 }
 
@@ -20146,215 +9169,6 @@ class $PerformMaintenanceRequest {
 
 /// Used by:
 ///
-/// - displayvideo:v2 : PerformanceGoal
-/// - displayvideo:v3 : PerformanceGoal
-/// - displayvideo:v4 : PerformanceGoal
-class $PerformanceGoal {
-  /// The goal amount, in micros of the advertiser's currency.
-  ///
-  /// Applicable when performance_goal_type is one of: *
-  /// `PERFORMANCE_GOAL_TYPE_CPM` * `PERFORMANCE_GOAL_TYPE_CPC` *
-  /// `PERFORMANCE_GOAL_TYPE_CPA` * `PERFORMANCE_GOAL_TYPE_CPIAVC` *
-  /// `PERFORMANCE_GOAL_TYPE_VCPM` For example 1500000 represents 1.5 standard
-  /// units of the currency.
-  core.String? performanceGoalAmountMicros;
-
-  /// The decimal representation of the goal percentage in micros.
-  ///
-  /// Applicable when performance_goal_type is one of: *
-  /// `PERFORMANCE_GOAL_TYPE_CTR` * `PERFORMANCE_GOAL_TYPE_VIEWABILITY` *
-  /// `PERFORMANCE_GOAL_TYPE_CLICK_CVR` * `PERFORMANCE_GOAL_TYPE_IMPRESSION_CVR`
-  /// * `PERFORMANCE_GOAL_TYPE_VTR` *
-  /// `PERFORMANCE_GOAL_TYPE_AUDIO_COMPLETION_RATE` *
-  /// `PERFORMANCE_GOAL_TYPE_VIDEO_COMPLETION_RATE` For example, 70000
-  /// represents 7% (decimal 0.07).
-  core.String? performanceGoalPercentageMicros;
-
-  /// A key performance indicator (KPI) string, which can be empty.
-  ///
-  /// Must be UTF-8 encoded with a length of no more than 100 characters.
-  /// Applicable when performance_goal_type is set to
-  /// `PERFORMANCE_GOAL_TYPE_OTHER`.
-  core.String? performanceGoalString;
-
-  /// The type of the performance goal.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "PERFORMANCE_GOAL_TYPE_UNSPECIFIED" : Performance goal type is not
-  /// specified or is unknown in this version.
-  /// - "PERFORMANCE_GOAL_TYPE_CPM" : The performance goal is set in CPM (cost
-  /// per mille).
-  /// - "PERFORMANCE_GOAL_TYPE_CPC" : The performance goal is set in CPC (cost
-  /// per click).
-  /// - "PERFORMANCE_GOAL_TYPE_CPA" : The performance goal is set in CPA (cost
-  /// per action).
-  /// - "PERFORMANCE_GOAL_TYPE_CTR" : The performance goal is set in CTR
-  /// (click-through rate) percentage.
-  /// - "PERFORMANCE_GOAL_TYPE_VIEWABILITY" : The performance goal is set in
-  /// Viewability percentage.
-  /// - "PERFORMANCE_GOAL_TYPE_CPIAVC" : The performance goal is set as CPIAVC
-  /// (cost per impression audible and visible at completion).
-  /// - "PERFORMANCE_GOAL_TYPE_CPE" : The performance goal is set in CPE (cost
-  /// per engagement).
-  /// - "PERFORMANCE_GOAL_TYPE_CPV" : The performance goal is set in CPV (cost
-  /// per view).
-  /// - "PERFORMANCE_GOAL_TYPE_CLICK_CVR" : The performance goal is set in click
-  /// conversion rate (conversions per click) percentage.
-  /// - "PERFORMANCE_GOAL_TYPE_IMPRESSION_CVR" : The performance goal is set in
-  /// impression conversion rate (conversions per impression) percentage.
-  /// - "PERFORMANCE_GOAL_TYPE_VCPM" : The performance goal is set in VCPM (cost
-  /// per thousand viewable impressions).
-  /// - "PERFORMANCE_GOAL_TYPE_VTR" : The performance goal is set in YouTube
-  /// view rate (YouTube views per impression) percentage.
-  /// - "PERFORMANCE_GOAL_TYPE_AUDIO_COMPLETION_RATE" : The performance goal is
-  /// set in audio completion rate (complete audio listens per impression)
-  /// percentage.
-  /// - "PERFORMANCE_GOAL_TYPE_VIDEO_COMPLETION_RATE" : The performance goal is
-  /// set in video completion rate (complete video views per impression)
-  /// percentage.
-  /// - "PERFORMANCE_GOAL_TYPE_OTHER" : The performance goal is set to Other.
-  core.String? performanceGoalType;
-
-  $PerformanceGoal({
-    this.performanceGoalAmountMicros,
-    this.performanceGoalPercentageMicros,
-    this.performanceGoalString,
-    this.performanceGoalType,
-  });
-
-  $PerformanceGoal.fromJson(core.Map json_)
-    : this(
-        performanceGoalAmountMicros:
-            json_['performanceGoalAmountMicros'] as core.String?,
-        performanceGoalPercentageMicros:
-            json_['performanceGoalPercentageMicros'] as core.String?,
-        performanceGoalString: json_['performanceGoalString'] as core.String?,
-        performanceGoalType: json_['performanceGoalType'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final performanceGoalAmountMicros = this.performanceGoalAmountMicros;
-    final performanceGoalPercentageMicros =
-        this.performanceGoalPercentageMicros;
-    final performanceGoalString = this.performanceGoalString;
-    final performanceGoalType = this.performanceGoalType;
-    return {
-      'performanceGoalAmountMicros': ?performanceGoalAmountMicros,
-      'performanceGoalPercentageMicros': ?performanceGoalPercentageMicros,
-      'performanceGoalString': ?performanceGoalString,
-      'performanceGoalType': ?performanceGoalType,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : PerformanceGoalBidStrategy
-/// - displayvideo:v3 : PerformanceGoalBidStrategy
-class $PerformanceGoalBidStrategy {
-  /// The ID of the Custom Bidding Algorithm used by this strategy.
-  ///
-  /// Only applicable when performance_goal_type is set to
-  /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`. Assigning a custom
-  /// bidding algorithm that uses floodlight activities not identified in
-  /// floodlightActivityConfigs will return an error.
-  core.String? customBiddingAlgorithmId;
-
-  /// The maximum average CPM that may be bid, in micros of the advertiser's
-  /// currency.
-  ///
-  /// Must be greater than or equal to a billable unit of the given currency.
-  /// Not applicable when performance_goal_type is set to
-  /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM`. For example,
-  /// 1500000 represents 1.5 standard units of the currency.
-  core.String? maxAverageCpmBidAmountMicros;
-
-  /// The performance goal the bidding strategy will attempt to meet or beat, in
-  /// micros of the advertiser's currency or in micro of the ROAS (Return On
-  /// Advertising Spend) value which is also based on advertiser's currency.
-  ///
-  /// Must be greater than or equal to a billable unit of the given currency and
-  /// smaller or equal to upper bounds. Each performance_goal_type has its upper
-  /// bound: * when performance_goal_type is
-  /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPA`, upper bound is 10000.00 USD.
-  /// * when performance_goal_type is
-  /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPC`, upper bound is 1000.00 USD.
-  /// * when performance_goal_type is
-  /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM`, upper bound is
-  /// 1000.00 USD. * when performance_goal_type is
-  /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`, upper bound is
-  /// 1000.00 and lower bound is 0.01. Example: If set to
-  /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM`, the bid price will
-  /// be based on the probability that each available impression will be
-  /// viewable. For example, if viewable CPM target is $2 and an impression is
-  /// 40% likely to be viewable, the bid price will be $0.80 CPM (40% of $2).
-  /// For example, 1500000 represents 1.5 standard units of the currency or ROAS
-  /// value.
-  ///
-  /// Required.
-  core.String? performanceGoalAmountMicros;
-
-  /// The type of the performance goal that the bidding strategy will try to
-  /// meet or beat.
-  ///
-  /// For line item level usage, the value must be one of: *
-  /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPA` *
-  /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPC` *
-  /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM` *
-  /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_UNSPECIFIED" : Type value is not
-  /// specified or is unknown in this version.
-  /// - "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPA" : Cost per action.
-  /// - "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPC" : Cost per click.
-  /// - "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM" : Viewable CPM.
-  /// - "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO" : Custom bidding
-  /// algorithm.
-  /// - "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CIVA" : Completed inview and
-  /// audible views.
-  /// - "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_IVO_TEN" : Inview time over 10
-  /// secs views.
-  /// - "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_AV_VIEWED" : Viewable
-  /// impressions.
-  core.String? performanceGoalType;
-
-  $PerformanceGoalBidStrategy({
-    this.customBiddingAlgorithmId,
-    this.maxAverageCpmBidAmountMicros,
-    this.performanceGoalAmountMicros,
-    this.performanceGoalType,
-  });
-
-  $PerformanceGoalBidStrategy.fromJson(core.Map json_)
-    : this(
-        customBiddingAlgorithmId:
-            json_['customBiddingAlgorithmId'] as core.String?,
-        maxAverageCpmBidAmountMicros:
-            json_['maxAverageCpmBidAmountMicros'] as core.String?,
-        performanceGoalAmountMicros:
-            json_['performanceGoalAmountMicros'] as core.String?,
-        performanceGoalType: json_['performanceGoalType'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final customBiddingAlgorithmId = this.customBiddingAlgorithmId;
-    final maxAverageCpmBidAmountMicros = this.maxAverageCpmBidAmountMicros;
-    final performanceGoalAmountMicros = this.performanceGoalAmountMicros;
-    final performanceGoalType = this.performanceGoalType;
-    return {
-      'customBiddingAlgorithmId': ?customBiddingAlgorithmId,
-      'maxAverageCpmBidAmountMicros': ?maxAverageCpmBidAmountMicros,
-      'performanceGoalAmountMicros': ?performanceGoalAmountMicros,
-      'performanceGoalType': ?performanceGoalType,
-    };
-  }
-}
-
-/// Used by:
-///
 /// - identitytoolkit:v2 : GoogleCloudIdentitytoolkitAdminV2ClientPermissions
 /// - identitytoolkit:v2 : GoogleCloudIdentitytoolkitAdminV2Permissions
 class $Permissions {
@@ -20381,95 +9195,6 @@ class $Permissions {
       'disabledUserDeletion': ?disabledUserDeletion,
       'disabledUserSignup': ?disabledUserSignup,
     };
-  }
-}
-
-/// Used by:
-///
-/// - accesscontextmanager:v1 : TestIamPermissionsResponse
-/// - agentidentity:v1 : TestIamPermissionsResponse
-/// - agentregistry:v1 : GoogleIamV1TestIamPermissionsResponse
-/// - aiplatform:v1 : GoogleIamV1TestIamPermissionsResponse
-/// - analyticshub:v1 : TestIamPermissionsResponse
-/// - apigateway:v1 : ApigatewayTestIamPermissionsResponse
-/// - apigee:v1 : GoogleIamV1TestIamPermissionsResponse
-/// - apphub:v1 : TestIamPermissionsResponse
-/// - artifactregistry:v1 : TestIamPermissionsResponse
-/// - backupdr:v1 : TestIamPermissionsResponse
-/// - beyondcorp:v1 : GoogleIamV1TestIamPermissionsResponse
-/// - biglake:v1 : TestIamPermissionsResponse
-/// - bigquery:v2 : TestIamPermissionsResponse
-/// - bigqueryconnection:v1 : TestIamPermissionsResponse
-/// - bigquerydatapolicy:v1 : TestIamPermissionsResponse
-/// - bigquerydatapolicy:v2 : TestIamPermissionsResponse
-/// - bigqueryreservation:v1 : TestIamPermissionsResponse
-/// - bigtableadmin:v2 : TestIamPermissionsResponse
-/// - binaryauthorization:v1 : TestIamPermissionsResponse
-/// - cloudbilling:v1 : TestIamPermissionsResponse
-/// - cloudbuild:v2 : TestIamPermissionsResponse
-/// - clouddeploy:v1 : TestIamPermissionsResponse
-/// - cloudfunctions:v1 : TestIamPermissionsResponse
-/// - cloudfunctions:v2 : TestIamPermissionsResponse
-/// - cloudkms:v1 : TestIamPermissionsResponse
-/// - cloudresourcemanager:v1 : TestIamPermissionsResponse
-/// - cloudresourcemanager:v2 : TestIamPermissionsResponse
-/// - cloudresourcemanager:v3 : TestIamPermissionsResponse
-/// - cloudtasks:v2 : TestIamPermissionsResponse
-/// - config:v1 : TestIamPermissionsResponse
-/// - connectors:v1 : TestIamPermissionsResponse
-/// - contactcenterinsights:v1 : GoogleIamV1TestIamPermissionsResponse
-/// - containeranalysis:v1 : TestIamPermissionsResponse
-/// - datacatalog:v1 : TestIamPermissionsResponse
-/// - dataform:v1 : TestIamPermissionsResponse
-/// - datafusion:v1 : TestIamPermissionsResponse
-/// - datamigration:v1 : TestIamPermissionsResponse
-/// - deploymentmanager:v2 : TestPermissionsResponse
-/// - dns:v1 : GoogleIamV1TestIamPermissionsResponse
-/// - domains:v1 : TestIamPermissionsResponse
-/// - eventarc:v1 : TestIamPermissionsResponse
-/// - gkebackup:v1 : TestIamPermissionsResponse
-/// - gkehub:v1 : TestIamPermissionsResponse
-/// - gkeonprem:v1 : TestIamPermissionsResponse
-/// - healthcare:v1 : TestIamPermissionsResponse
-/// - iam:v1 : TestIamPermissionsResponse
-/// - iap:v1 : TestIamPermissionsResponse
-/// - identitytoolkit:v2 : GoogleIamV1TestIamPermissionsResponse
-/// - managedidentities:v1 : TestIamPermissionsResponse
-/// - ml:v1 : GoogleIamV1__TestIamPermissionsResponse
-/// - networkconnectivity:v1 : TestIamPermissionsResponse
-/// - networkmanagement:v1 : TestIamPermissionsResponse
-/// - networksecurity:v1 : GoogleIamV1TestIamPermissionsResponse
-/// - networkservices:v1 : TestIamPermissionsResponse
-/// - notebooks:v1 : TestIamPermissionsResponse
-/// - notebooks:v2 : TestIamPermissionsResponse
-/// - privateca:v1 : TestIamPermissionsResponse
-/// - pubsub:v1 : TestIamPermissionsResponse
-/// - run:v1 : TestIamPermissionsResponse
-/// - run:v2 : GoogleIamV1TestIamPermissionsResponse
-/// - secretmanager:v1 : TestIamPermissionsResponse
-/// - securesourcemanager:v1 : TestIamPermissionsResponse
-/// - servicedirectory:v1 : TestIamPermissionsResponse
-/// - servicemanagement:v1 : TestIamPermissionsResponse
-/// - spanner:v1 : TestIamPermissionsResponse
-/// - vmwareengine:v1 : TestIamPermissionsResponse
-/// - workstations:v1 : TestIamPermissionsResponse
-class $PermissionsResponse {
-  /// A subset of `TestPermissionsRequest.permissions` that the caller is
-  /// allowed.
-  core.List<core.String>? permissions;
-
-  $PermissionsResponse({this.permissions});
-
-  $PermissionsResponse.fromJson(core.Map json_)
-    : this(
-        permissions: (json_['permissions'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final permissions = this.permissions;
-    return {'permissions': ?permissions};
   }
 }
 
@@ -20512,38 +9237,6 @@ class $PhysicalTopology {
       'host': ?host,
       'subBlock': ?subBlock,
     };
-  }
-}
-
-/// Used by:
-///
-/// - trafficdirector:v2 : Pipe
-/// - trafficdirector:v3 : Pipe
-class $Pipe {
-  /// The mode for the Pipe.
-  ///
-  /// Not applicable for abstract sockets.
-  core.int? mode;
-
-  /// Unix Domain Socket path.
-  ///
-  /// On Linux, paths starting with '@' will use the abstract namespace. The
-  /// starting '@' is replaced by a null byte by Envoy. Paths starting with '@'
-  /// will result in an error in environments other than Linux.
-  core.String? path;
-
-  $Pipe({this.mode, this.path});
-
-  $Pipe.fromJson(core.Map json_)
-    : this(
-        mode: json_['mode'] as core.int?,
-        path: json_['path'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final mode = this.mode;
-    final path = this.path;
-    return {'mode': ?mode, 'path': ?path};
   }
 }
 
@@ -20608,265 +9301,6 @@ class $PlusCode {
 
 /// Used by:
 ///
-/// - displayvideo:v2 : PoiAssignedTargetingOptionDetails
-/// - displayvideo:v3 : PoiAssignedTargetingOptionDetails
-/// - displayvideo:v4 : PoiAssignedTargetingOptionDetails
-class $PoiAssignedTargetingOptionDetails {
-  /// The display name of a POI, e.g. "Times Square", "Space Needle", followed
-  /// by its full address if available.
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  /// Latitude of the POI rounding to 6th decimal place.
-  ///
-  /// Output only.
-  core.double? latitude;
-
-  /// Longitude of the POI rounding to 6th decimal place.
-  ///
-  /// Output only.
-  core.double? longitude;
-
-  /// The radius of the area around the POI that will be targeted.
-  ///
-  /// The units of the radius are specified by proximity_radius_unit. Must be 1
-  /// to 800 if unit is `DISTANCE_UNIT_KILOMETERS` and 1 to 500 if unit is
-  /// `DISTANCE_UNIT_MILES`.
-  ///
-  /// Required.
-  core.double? proximityRadiusAmount;
-
-  /// The unit of distance by which the targeting radius is measured.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "DISTANCE_UNIT_UNSPECIFIED" : Type value is not specified or is unknown
-  /// in this version.
-  /// - "DISTANCE_UNIT_MILES" : Miles.
-  /// - "DISTANCE_UNIT_KILOMETERS" : Kilometers.
-  core.String? proximityRadiusUnit;
-
-  /// The targeting_option_id of a TargetingOption of type `TARGETING_TYPE_POI`.
-  ///
-  /// Accepted POI targeting option IDs can be retrieved using
-  /// `targetingTypes.targetingOptions.search`. If targeting a specific
-  /// latitude/longitude coordinate removed from an address or POI name, you can
-  /// generate the necessary targeting option ID by rounding the desired
-  /// coordinate values to the 6th decimal place, removing the decimals, and
-  /// concatenating the string values separated by a semicolon. For example, you
-  /// can target the latitude/longitude pair of 40.7414691, -74.003387 using the
-  /// targeting option ID "40741469;-74003387". **Upon** **creation, this field
-  /// value will be updated to append a semicolon and** **alphanumerical hash
-  /// value if only latitude/longitude coordinates are** **provided.**
-  ///
-  /// Required.
-  core.String? targetingOptionId;
-
-  $PoiAssignedTargetingOptionDetails({
-    this.displayName,
-    this.latitude,
-    this.longitude,
-    this.proximityRadiusAmount,
-    this.proximityRadiusUnit,
-    this.targetingOptionId,
-  });
-
-  $PoiAssignedTargetingOptionDetails.fromJson(core.Map json_)
-    : this(
-        displayName: json_['displayName'] as core.String?,
-        latitude: (json_['latitude'] as core.num?)?.toDouble(),
-        longitude: (json_['longitude'] as core.num?)?.toDouble(),
-        proximityRadiusAmount: (json_['proximityRadiusAmount'] as core.num?)
-            ?.toDouble(),
-        proximityRadiusUnit: json_['proximityRadiusUnit'] as core.String?,
-        targetingOptionId: json_['targetingOptionId'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final displayName = this.displayName;
-    final latitude = this.latitude;
-    final longitude = this.longitude;
-    final proximityRadiusAmount = this.proximityRadiusAmount;
-    final proximityRadiusUnit = this.proximityRadiusUnit;
-    final targetingOptionId = this.targetingOptionId;
-    return {
-      'displayName': ?displayName,
-      'latitude': ?latitude,
-      'longitude': ?longitude,
-      'proximityRadiusAmount': ?proximityRadiusAmount,
-      'proximityRadiusUnit': ?proximityRadiusUnit,
-      'targetingOptionId': ?targetingOptionId,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : PoiSearchTerms
-/// - displayvideo:v3 : PoiSearchTerms
-/// - displayvideo:v4 : PoiSearchTerms
-class $PoiSearchTerms {
-  /// The search query for the desired POI name, street address, or coordinate
-  /// of the desired POI.
-  ///
-  /// The query can be a prefix, e.g. "Times squar", "40.7505045,-73.99562",
-  /// "315 W 44th St", etc.
-  core.String? poiQuery;
-
-  $PoiSearchTerms({this.poiQuery});
-
-  $PoiSearchTerms.fromJson(core.Map json_)
-    : this(poiQuery: json_['poiQuery'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final poiQuery = this.poiQuery;
-    return {'poiQuery': ?poiQuery};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : PoiTargetingOptionDetails
-/// - displayvideo:v3 : PoiTargetingOptionDetails
-/// - displayvideo:v4 : PoiTargetingOptionDetails
-class $PoiTargetingOptionDetails {
-  /// The display name of a POI(e.g. "Times Square", "Space Needle"), followed
-  /// by its full address if available.
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  /// Latitude of the POI rounding to 6th decimal place.
-  ///
-  /// Output only.
-  core.double? latitude;
-
-  /// Longitude of the POI rounding to 6th decimal place.
-  ///
-  /// Output only.
-  core.double? longitude;
-
-  $PoiTargetingOptionDetails({this.displayName, this.latitude, this.longitude});
-
-  $PoiTargetingOptionDetails.fromJson(core.Map json_)
-    : this(
-        displayName: json_['displayName'] as core.String?,
-        latitude: (json_['latitude'] as core.num?)?.toDouble(),
-        longitude: (json_['longitude'] as core.num?)?.toDouble(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final displayName = this.displayName;
-    final latitude = this.latitude;
-    final longitude = this.longitude;
-    return {
-      'displayName': ?displayName,
-      'latitude': ?latitude,
-      'longitude': ?longitude,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - gkehub:v1 : PolicyControllerResourceList
-/// - gkehub:v2 : PolicyControllerResourceList
-class $PolicyControllerResourceList {
-  /// CPU requirement expressed in Kubernetes resource units.
-  core.String? cpu;
-
-  /// Memory requirement expressed in Kubernetes resource units.
-  core.String? memory;
-
-  $PolicyControllerResourceList({this.cpu, this.memory});
-
-  $PolicyControllerResourceList.fromJson(core.Map json_)
-    : this(
-        cpu: json_['cpu'] as core.String?,
-        memory: json_['memory'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final cpu = this.cpu;
-    final memory = this.memory;
-    return {'cpu': ?cpu, 'memory': ?memory};
-  }
-}
-
-/// Used by:
-///
-/// - gkehub:v1 : PolicyControllerTemplateLibraryConfig
-/// - gkehub:v2 : PolicyControllerTemplateLibraryConfig
-class $PolicyControllerTemplateLibraryConfig {
-  /// Configures the manner in which the template library is installed on the
-  /// cluster.
-  /// Possible string values are:
-  /// - "INSTALLATION_UNSPECIFIED" : No installation strategy has been
-  /// specified.
-  /// - "NOT_INSTALLED" : Do not install the template library.
-  /// - "ALL" : Install the entire template library.
-  core.String? installation;
-
-  $PolicyControllerTemplateLibraryConfig({this.installation});
-
-  $PolicyControllerTemplateLibraryConfig.fromJson(core.Map json_)
-    : this(installation: json_['installation'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final installation = this.installation;
-    return {'installation': ?installation};
-  }
-}
-
-/// Used by:
-///
-/// - gkehub:v1 : PolicyControllerToleration
-/// - gkehub:v2 : PolicyControllerToleration
-class $PolicyControllerToleration {
-  /// Matches a taint effect.
-  core.String? effect;
-
-  /// Matches a taint key (not necessarily unique).
-  core.String? key;
-
-  /// Matches a taint operator.
-  core.String? operator;
-
-  /// Matches a taint value.
-  core.String? value;
-
-  $PolicyControllerToleration({
-    this.effect,
-    this.key,
-    this.operator,
-    this.value,
-  });
-
-  $PolicyControllerToleration.fromJson(core.Map json_)
-    : this(
-        effect: json_['effect'] as core.String?,
-        key: json_['key'] as core.String?,
-        operator: json_['operator'] as core.String?,
-        value: json_['value'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final effect = this.effect;
-    final key = this.key;
-    final operator = this.operator;
-    final value = this.value;
-    return {
-      'effect': ?effect,
-      'key': ?key,
-      'operator': ?operator,
-      'value': ?value,
-    };
-  }
-}
-
-/// Used by:
-///
 /// - gkeonprem:v1 : BareMetalAdminPortConfig
 /// - gkeonprem:v1 : BareMetalPortConfig
 class $PortConfig {
@@ -20892,8 +9326,6 @@ class $PortConfig {
 /// - addressvalidation:v1 : GoogleTypePostalAddress
 /// - cloudchannel:v1 : GoogleTypePostalAddress
 /// - documentai:v1 : GoogleTypePostalAddress
-/// - domains:v1 : PostalAddress
-/// - jobs:v3 : PostalAddress
 /// - jobs:v4 : PostalAddress
 /// - merchantapi:accounts_v1 : PostalAddress
 /// - mybusinessaccountmanagement:v1 : PostalAddress
@@ -21179,46 +9611,6 @@ class $Price {
 
 /// Used by:
 ///
-/// - displayvideo:v2 : PrismaCpeCode
-/// - displayvideo:v3 : PrismaCpeCode
-/// - displayvideo:v4 : PrismaCpeCode
-class $PrismaCpeCode {
-  /// The Prisma client code.
-  core.String? prismaClientCode;
-
-  /// The Prisma estimate code.
-  core.String? prismaEstimateCode;
-
-  /// The Prisma product code.
-  core.String? prismaProductCode;
-
-  $PrismaCpeCode({
-    this.prismaClientCode,
-    this.prismaEstimateCode,
-    this.prismaProductCode,
-  });
-
-  $PrismaCpeCode.fromJson(core.Map json_)
-    : this(
-        prismaClientCode: json_['prismaClientCode'] as core.String?,
-        prismaEstimateCode: json_['prismaEstimateCode'] as core.String?,
-        prismaProductCode: json_['prismaProductCode'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final prismaClientCode = this.prismaClientCode;
-    final prismaEstimateCode = this.prismaEstimateCode;
-    final prismaProductCode = this.prismaProductCode;
-    return {
-      'prismaClientCode': ?prismaClientCode,
-      'prismaEstimateCode': ?prismaEstimateCode,
-      'prismaProductCode': ?prismaProductCode,
-    };
-  }
-}
-
-/// Used by:
-///
 /// - accesscontextmanager:v1 : PrivateServiceConnectEndpoint
 /// - cloudasset:v1 : GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint
 class $PrivateServiceConnectEndpoint {
@@ -21452,97 +9844,6 @@ class $ProxiesSetProxyHeaderRequest {
   core.Map<core.String, core.dynamic> toJson() {
     final proxyHeader = this.proxyHeader;
     return {'proxyHeader': ?proxyHeader};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : ProximityLocationListAssignedTargetingOptionDetails
-/// - displayvideo:v3 : ProximityLocationListAssignedTargetingOptionDetails
-/// - displayvideo:v4 : ProximityLocationListAssignedTargetingOptionDetails
-class $ProximityLocationListAssignedTargetingOptionDetails {
-  /// ID of the proximity location list.
-  ///
-  /// Should refer to the location_list_id field of a LocationList resource
-  /// whose type is `TARGETING_LOCATION_TYPE_PROXIMITY`.
-  ///
-  /// Required.
-  core.String? proximityLocationListId;
-
-  /// Radius expressed in the distance units set in proximity_radius_unit.
-  ///
-  /// This represents the size of the area around a chosen location that will be
-  /// targeted. Radius should be between 1 and 500 miles or 800 kilometers.
-  ///
-  /// Required.
-  core.double? proximityRadius;
-
-  /// Radius distance units.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "PROXIMITY_RADIUS_UNIT_UNSPECIFIED" : Default value when distance units
-  /// is not specified in this version. This enum is a place holder for default
-  /// value and does not represent a real distance unit.
-  /// - "PROXIMITY_RADIUS_UNIT_MILES" : Radius distance unit in miles.
-  /// - "PROXIMITY_RADIUS_UNIT_KILOMETERS" : Radius distance unit in kilometeres
-  core.String? proximityRadiusUnit;
-
-  $ProximityLocationListAssignedTargetingOptionDetails({
-    this.proximityLocationListId,
-    this.proximityRadius,
-    this.proximityRadiusUnit,
-  });
-
-  $ProximityLocationListAssignedTargetingOptionDetails.fromJson(core.Map json_)
-    : this(
-        proximityLocationListId:
-            json_['proximityLocationListId'] as core.String?,
-        proximityRadius: (json_['proximityRadius'] as core.num?)?.toDouble(),
-        proximityRadiusUnit: json_['proximityRadiusUnit'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final proximityLocationListId = this.proximityLocationListId;
-    final proximityRadius = this.proximityRadius;
-    final proximityRadiusUnit = this.proximityRadiusUnit;
-    return {
-      'proximityLocationListId': ?proximityLocationListId,
-      'proximityRadius': ?proximityRadius,
-      'proximityRadiusUnit': ?proximityRadiusUnit,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : PublisherReviewStatus
-/// - displayvideo:v3 : PublisherReviewStatus
-class $PublisherReviewStatus {
-  /// The publisher reviewing the creative.
-  core.String? publisherName;
-
-  /// Status of the publisher review.
-  /// Possible string values are:
-  /// - "REVIEW_STATUS_UNSPECIFIED" : Type value is not specified or is unknown
-  /// in this version.
-  /// - "REVIEW_STATUS_APPROVED" : The creative is approved.
-  /// - "REVIEW_STATUS_REJECTED" : The creative is rejected.
-  /// - "REVIEW_STATUS_PENDING" : The creative is pending review.
-  core.String? status;
-
-  $PublisherReviewStatus({this.publisherName, this.status});
-
-  $PublisherReviewStatus.fromJson(core.Map json_)
-    : this(
-        publisherName: json_['publisherName'] as core.String?,
-        status: json_['status'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final publisherName = this.publisherName;
-    final status = this.status;
-    return {'publisherName': ?publisherName, 'status': ?status};
   }
 }
 
@@ -21908,29 +10209,6 @@ class $RagRetrievalConfigFilter {
 
 /// Used by:
 ///
-/// - safebrowsing:v4 : GoogleSecuritySafebrowsingV4RawIndices
-/// - webrisk:v1 : GoogleCloudWebriskV1RawIndices
-class $RawIndices {
-  /// The indices to remove from a lexicographically-sorted local list.
-  core.List<core.int>? indices;
-
-  $RawIndices({this.indices});
-
-  $RawIndices.fromJson(core.Map json_)
-    : this(
-        indices: (json_['indices'] as core.List?)
-            ?.map((value) => value as core.int)
-            .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final indices = this.indices;
-    return {'indices': ?indices};
-  }
-}
-
-/// Used by:
-///
 /// - containeranalysis:v1 : Recipe
 /// - ondemandscanning:v1 : Recipe
 class $Recipe {
@@ -22020,44 +10298,6 @@ class $Recipe {
 
 /// Used by:
 ///
-/// - displayvideo:v2 : RegionalLocationListAssignedTargetingOptionDetails
-/// - displayvideo:v3 : RegionalLocationListAssignedTargetingOptionDetails
-/// - displayvideo:v4 : RegionalLocationListAssignedTargetingOptionDetails
-class $RegionalLocationListAssignedTargetingOptionDetails {
-  /// Indicates if this option is being negatively targeted.
-  core.bool? negative;
-
-  /// ID of the regional location list.
-  ///
-  /// Should refer to the location_list_id field of a LocationList resource
-  /// whose type is `TARGETING_LOCATION_TYPE_REGIONAL`.
-  ///
-  /// Required.
-  core.String? regionalLocationListId;
-
-  $RegionalLocationListAssignedTargetingOptionDetails({
-    this.negative,
-    this.regionalLocationListId,
-  });
-
-  $RegionalLocationListAssignedTargetingOptionDetails.fromJson(core.Map json_)
-    : this(
-        negative: json_['negative'] as core.bool?,
-        regionalLocationListId: json_['regionalLocationListId'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final negative = this.negative;
-    final regionalLocationListId = this.regionalLocationListId;
-    return {
-      'negative': ?negative,
-      'regionalLocationListId': ?regionalLocationListId,
-    };
-  }
-}
-
-/// Used by:
-///
 /// - containeranalysis:v1 : RelatedUrl
 /// - ondemandscanning:v1 : RelatedUrl
 class $RelatedUrl {
@@ -22079,41 +10319,6 @@ class $RelatedUrl {
     final label = this.label;
     final url = this.url;
     return {'label': ?label, 'url': ?url};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : RemarketingConfig
-/// - displayvideo:v3 : RemarketingConfig
-/// - displayvideo:v4 : RemarketingConfig
-class $RemarketingConfig {
-  /// The ID of the advertiser.
-  ///
-  /// Output only.
-  core.String? advertiserId;
-
-  /// Whether the Floodlight activity remarketing user list is available to the
-  /// identified advertiser.
-  ///
-  /// Output only.
-  core.bool? remarketingEnabled;
-
-  $RemarketingConfig({this.advertiserId, this.remarketingEnabled});
-
-  $RemarketingConfig.fromJson(core.Map json_)
-    : this(
-        advertiserId: json_['advertiserId'] as core.String?,
-        remarketingEnabled: json_['remarketingEnabled'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final advertiserId = this.advertiserId;
-    final remarketingEnabled = this.remarketingEnabled;
-    return {
-      'advertiserId': ?advertiserId,
-      'remarketingEnabled': ?remarketingEnabled,
-    };
   }
 }
 
@@ -22248,18 +10453,20 @@ class $Request01 {
 
 /// Used by:
 ///
-/// - agentidentity:v1 : DisableAuthProviderRequest
-/// - agentidentity:v1 : EnableAuthProviderRequest
-/// - agentidentity:v1 : UndeleteAuthProviderRequest
-/// - backupdr:v1 : TriggerRestoreCleanupRequest
+/// - cloudchannel:v1 : GoogleCloudChannelV1ActivateEntitlementRequest
+/// - cloudchannel:v1 : GoogleCloudChannelV1CancelEntitlementRequest
+/// - cloudchannel:v1 : GoogleCloudChannelV1StartPaidServiceRequest
+/// - cloudchannel:v1 : GoogleCloudChannelV1SuspendEntitlementRequest
 class $Request02 {
-  /// An optional request ID to identify requests.
+  /// You can specify an optional unique request ID, and if you need to retry
+  /// your request, the server will know to ignore the request if it's complete.
   ///
-  /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes after the first
-  /// request. The request ID must be a valid UUID with the exception that zero
-  /// UUID is not supported (00000000-0000-0000-0000-000000000000).
+  /// For example, you make an initial request and the request times out. If you
+  /// make the request again with the same request ID, the server can check if
+  /// it received the original operation with the same request ID. If it did, it
+  /// will ignore the second request. The request ID must be a valid
+  /// [UUID](https://tools.ietf.org/html/rfc4122) with the exception that zero
+  /// UUID is not supported (`00000000-0000-0000-0000-000000000000`).
   ///
   /// Optional.
   core.String? requestId;
@@ -22277,50 +10484,19 @@ class $Request02 {
 
 /// Used by:
 ///
-/// - cloudchannel:v1 : GoogleCloudChannelV1ActivateEntitlementRequest
-/// - cloudchannel:v1 : GoogleCloudChannelV1CancelEntitlementRequest
-/// - cloudchannel:v1 : GoogleCloudChannelV1StartPaidServiceRequest
-/// - cloudchannel:v1 : GoogleCloudChannelV1SuspendEntitlementRequest
-class $Request03 {
-  /// You can specify an optional unique request ID, and if you need to retry
-  /// your request, the server will know to ignore the request if it's complete.
-  ///
-  /// For example, you make an initial request and the request times out. If you
-  /// make the request again with the same request ID, the server can check if
-  /// it received the original operation with the same request ID. If it did, it
-  /// will ignore the second request. The request ID must be a valid
-  /// [UUID](https://tools.ietf.org/html/rfc4122) with the exception that zero
-  /// UUID is not supported (`00000000-0000-0000-0000-000000000000`).
-  ///
-  /// Optional.
-  core.String? requestId;
-
-  $Request03({this.requestId});
-
-  $Request03.fromJson(core.Map json_)
-    : this(requestId: json_['requestId'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final requestId = this.requestId;
-    return {'requestId': ?requestId};
-  }
-}
-
-/// Used by:
-///
 /// - searchads360:v23 : GoogleAdsSearchads360V23Services__EndExperimentRequest
 /// - searchads360:v23 : GoogleAdsSearchads360V23Services__PromoteExperimentRequest
 /// - searchads360:v23 : GoogleAdsSearchads360V23Services__RunOfflineUserDataJobRequest
 /// - searchads360:v23 : GoogleAdsSearchads360V23Services__ScheduleExperimentRequest
-class $Request04 {
+class $Request03 {
   /// If true, the request is validated but not executed.
   ///
   /// Only errors are returned, not results.
   core.bool? validateOnly;
 
-  $Request04({this.validateOnly});
+  $Request03({this.validateOnly});
 
-  $Request04.fromJson(core.Map json_)
+  $Request03.fromJson(core.Map json_)
     : this(validateOnly: json_['validateOnly'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -22334,7 +10510,7 @@ class $Request04 {
 /// - privateca:v1 : EnableCertificateAuthorityRequest
 /// - privateca:v1 : FetchCaCertsRequest
 /// - privateca:v1 : UndeleteCertificateAuthorityRequest
-class $Request05 {
+class $Request04 {
   /// An ID to identify requests.
   ///
   /// Specify a unique request ID so that if you must retry your request, the
@@ -22351,9 +10527,9 @@ class $Request05 {
   /// Optional.
   core.String? requestId;
 
-  $Request05({this.requestId});
+  $Request04({this.requestId});
 
-  $Request05.fromJson(core.Map json_)
+  $Request04.fromJson(core.Map json_)
     : this(requestId: json_['requestId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -22367,7 +10543,7 @@ class $Request05 {
 /// - recommender:v1 : GoogleCloudRecommenderV1MarkRecommendationClaimedRequest
 /// - recommender:v1 : GoogleCloudRecommenderV1MarkRecommendationFailedRequest
 /// - recommender:v1 : GoogleCloudRecommenderV1MarkRecommendationSucceededRequest
-class $Request06 {
+class $Request05 {
   /// Fingerprint of the Recommendation.
   ///
   /// Provides optimistic locking.
@@ -22382,9 +10558,9 @@ class $Request06 {
   /// `/^[a-zA-Z0-9_./-]{0,255}$/`.
   core.Map<core.String, core.String>? stateMetadata;
 
-  $Request06({this.etag, this.stateMetadata});
+  $Request05({this.etag, this.stateMetadata});
 
-  $Request06.fromJson(core.Map json_)
+  $Request05.fromJson(core.Map json_)
     : this(
         etag: json_['etag'] as core.String?,
         stateMetadata:
@@ -22403,7 +10579,7 @@ class $Request06 {
 ///
 /// - alloydb:v1 : FailoverInstanceRequest
 /// - alloydb:v1 : SwitchoverClusterRequest
-class $Request07 {
+class $Request06 {
   /// An optional request ID to identify requests.
   ///
   /// Specify a unique request ID so that if you must retry your request, the
@@ -22427,9 +10603,9 @@ class $Request07 {
   /// Optional.
   core.bool? validateOnly;
 
-  $Request07({this.requestId, this.validateOnly});
+  $Request06({this.requestId, this.validateOnly});
 
-  $Request07.fromJson(core.Map json_)
+  $Request06.fromJson(core.Map json_)
     : this(
         requestId: json_['requestId'] as core.String?,
         validateOnly: json_['validateOnly'] as core.bool?,
@@ -22446,7 +10622,7 @@ class $Request07 {
 ///
 /// - clouddeploy:v1 : CancelRolloutRequest
 /// - clouddeploy:v1 : TerminateJobRunRequest
-class $Request08 {
+class $Request07 {
   /// Deploy policies to override.
   ///
   /// Format is
@@ -22455,9 +10631,9 @@ class $Request08 {
   /// Optional.
   core.List<core.String>? overrideDeployPolicy;
 
-  $Request08({this.overrideDeployPolicy});
+  $Request07({this.overrideDeployPolicy});
 
-  $Request08.fromJson(core.Map json_)
+  $Request07.fromJson(core.Map json_)
     : this(
         overrideDeployPolicy: (json_['overrideDeployPolicy'] as core.List?)
             ?.map((value) => value as core.String)
@@ -22474,7 +10650,7 @@ class $Request08 {
 ///
 /// - cloudresourcemanager:v1 : ListAvailableOrgPolicyConstraintsRequest
 /// - cloudresourcemanager:v1 : ListOrgPoliciesRequest
-class $Request09 {
+class $Request08 {
   /// Size of the pages to be returned.
   ///
   /// This is currently unsupported and will be ignored. The server may at any
@@ -22487,9 +10663,9 @@ class $Request09 {
   /// point start using this field.
   core.String? pageToken;
 
-  $Request09({this.pageSize, this.pageToken});
+  $Request08({this.pageSize, this.pageToken});
 
-  $Request09.fromJson(core.Map json_)
+  $Request08.fromJson(core.Map json_)
     : this(
         pageSize: json_['pageSize'] as core.int?,
         pageToken: json_['pageToken'] as core.String?,
@@ -22506,16 +10682,16 @@ class $Request09 {
 ///
 /// - compute:v1 : InstanceGroupManagersRecreateInstancesRequest
 /// - compute:v1 : RegionInstanceGroupManagersRecreateRequest
-class $Request10 {
+class $Request09 {
   /// The URLs of one or more instances to recreate.
   ///
   /// This can be a full URL or
   /// a partial URL, such as zones/\[ZONE\]/instances/\[INSTANCE_NAME\].
   core.List<core.String>? instances;
 
-  $Request10({this.instances});
+  $Request09({this.instances});
 
-  $Request10.fromJson(core.Map json_)
+  $Request09.fromJson(core.Map json_)
     : this(
         instances: (json_['instances'] as core.List?)
             ?.map((value) => value as core.String)
@@ -22532,7 +10708,7 @@ class $Request10 {
 ///
 /// - firebasedataconnect:v1 : ExecuteMutationRequest
 /// - firebasedataconnect:v1 : ExecuteQueryRequest
-class $Request11 {
+class $Request10 {
   /// The name of the GraphQL operation name.
   ///
   /// Required because all Connector operations must be named. See
@@ -22549,9 +10725,9 @@ class $Request11 {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? variables;
 
-  $Request11({this.operationName, this.variables});
+  $Request10({this.operationName, this.variables});
 
-  $Request11.fromJson(core.Map json_)
+  $Request10.fromJson(core.Map json_)
     : this(
         operationName: json_['operationName'] as core.String?,
         variables: json_.containsKey('variables')
@@ -22570,7 +10746,7 @@ class $Request11 {
 ///
 /// - netapp:v1 : ExecuteOntapPatchRequest
 /// - netapp:v1 : ExecuteOntapPostRequest
-class $Request12 {
+class $Request11 {
   /// The raw `JSON` body of the request.
   ///
   /// The body should be in the format of the ONTAP resource. For example: ``` {
@@ -22582,9 +10758,9 @@ class $Request12 {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? body;
 
-  $Request12({this.body});
+  $Request11({this.body});
 
-  $Request12.fromJson(core.Map json_)
+  $Request11.fromJson(core.Map json_)
     : this(
         body: json_.containsKey('body')
             ? json_['body'] as core.Map<core.String, core.dynamic>
@@ -22594,29 +10770,6 @@ class $Request12 {
   core.Map<core.String, core.dynamic> toJson() {
     final body = this.body;
     return {'body': ?body};
-  }
-}
-
-/// Used by:
-///
-/// - notebooks:v1 : RefreshRuntimeTokenInternalRequest
-/// - notebooks:v2 : UpgradeInstanceSystemRequest
-class $Request13 {
-  /// The VM hardware token for authenticating the VM.
-  ///
-  /// https://cloud.google.com/compute/docs/instances/verifying-instance-identity
-  ///
-  /// Required.
-  core.String? vmId;
-
-  $Request13({this.vmId});
-
-  $Request13.fromJson(core.Map json_)
-    : this(vmId: json_['vmId'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final vmId = this.vmId;
-    return {'vmId': ?vmId};
   }
 }
 
@@ -22740,36 +10893,6 @@ class $ResourceDescriptor {
 
 /// Used by:
 ///
-/// - connectors:v1 : ResourceLimits
-/// - integrations:v1 : GoogleCloudConnectorsV1ResourceLimits
-class $ResourceLimits {
-  /// CPU limit.
-  ///
-  /// Output only.
-  core.String? cpu;
-
-  /// Memory limit.
-  ///
-  /// Output only.
-  core.String? memory;
-
-  $ResourceLimits({this.cpu, this.memory});
-
-  $ResourceLimits.fromJson(core.Map json_)
-    : this(
-        cpu: json_['cpu'] as core.String?,
-        memory: json_['memory'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final cpu = this.cpu;
-    final memory = this.memory;
-    return {'cpu': ?cpu, 'memory': ?memory};
-  }
-}
-
-/// Used by:
-///
 /// - parametermanager:v1 : ResourcePolicyMember
 /// - secretmanager:v1 : ResourcePolicyMember
 class $ResourcePolicyMember {
@@ -22811,36 +10934,6 @@ class $ResourcePolicyMember {
       'iamPolicyNamePrincipal': ?iamPolicyNamePrincipal,
       'iamPolicyUidPrincipal': ?iamPolicyUidPrincipal,
     };
-  }
-}
-
-/// Used by:
-///
-/// - connectors:v1 : ResourceRequests
-/// - integrations:v1 : GoogleCloudConnectorsV1ResourceRequests
-class $ResourceRequests {
-  /// CPU request.
-  ///
-  /// Output only.
-  core.String? cpu;
-
-  /// Memory request.
-  ///
-  /// Output only.
-  core.String? memory;
-
-  $ResourceRequests({this.cpu, this.memory});
-
-  $ResourceRequests.fromJson(core.Map json_)
-    : this(
-        cpu: json_['cpu'] as core.String?,
-        memory: json_['memory'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final cpu = this.cpu;
-    final memory = this.memory;
-    return {'cpu': ?cpu, 'memory': ?memory};
   }
 }
 
@@ -22939,58 +11032,6 @@ class $Response03 {
 
 /// Used by:
 ///
-/// - notebooks:v1 : IsInstanceUpgradeableResponse
-/// - notebooks:v2 : CheckInstanceUpgradabilityResponse
-class $Response04 {
-  /// The new image self link this instance will be upgraded to if calling the
-  /// upgrade endpoint.
-  ///
-  /// This field will only be populated if field upgradeable is true.
-  core.String? upgradeImage;
-
-  /// Additional information about upgrade.
-  core.String? upgradeInfo;
-
-  /// The version this instance will be upgraded to if calling the upgrade
-  /// endpoint.
-  ///
-  /// This field will only be populated if field upgradeable is true.
-  core.String? upgradeVersion;
-
-  /// If an instance is upgradeable.
-  core.bool? upgradeable;
-
-  $Response04({
-    this.upgradeImage,
-    this.upgradeInfo,
-    this.upgradeVersion,
-    this.upgradeable,
-  });
-
-  $Response04.fromJson(core.Map json_)
-    : this(
-        upgradeImage: json_['upgradeImage'] as core.String?,
-        upgradeInfo: json_['upgradeInfo'] as core.String?,
-        upgradeVersion: json_['upgradeVersion'] as core.String?,
-        upgradeable: json_['upgradeable'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final upgradeImage = this.upgradeImage;
-    final upgradeInfo = this.upgradeInfo;
-    final upgradeVersion = this.upgradeVersion;
-    final upgradeable = this.upgradeable;
-    return {
-      'upgradeImage': ?upgradeImage,
-      'upgradeInfo': ?upgradeInfo,
-      'upgradeVersion': ?upgradeVersion,
-      'upgradeable': ?upgradeable,
-    };
-  }
-}
-
-/// Used by:
-///
 /// - aiplatform:v1 : GoogleCloudAiplatformV1BatchEmbedContentsResponseEmbedding
 /// - aiplatform:v1 : GoogleCloudAiplatformV1EmbedContentResponseEmbedding
 class $ResponseEmbedding {
@@ -23009,27 +11050,6 @@ class $ResponseEmbedding {
   core.Map<core.String, core.dynamic> toJson() {
     final values = this.values;
     return {'values': ?values};
-  }
-}
-
-/// Used by:
-///
-/// - jobs:v3 : ResponseMetadata
-/// - jobs:v4 : ResponseMetadata
-class $ResponseMetadata {
-  /// A unique id associated with this call.
-  ///
-  /// This id is logged for tracking purposes.
-  core.String? requestId;
-
-  $ResponseMetadata({this.requestId});
-
-  $ResponseMetadata.fromJson(core.Map json_)
-    : this(requestId: json_['requestId'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final requestId = this.requestId;
-    return {'requestId': ?requestId};
   }
 }
 
@@ -23333,27 +11353,6 @@ class $RouteStatefulSessionAffinityPolicy {
 
 /// Used by:
 ///
-/// - notebooks:v1 : ResetRuntimeRequest
-/// - notebooks:v1 : StartRuntimeRequest
-/// - notebooks:v1 : StopRuntimeRequest
-/// - notebooks:v1 : UpgradeRuntimeRequest
-class $RuntimeRequest {
-  /// Idempotent request UUID.
-  core.String? requestId;
-
-  $RuntimeRequest({this.requestId});
-
-  $RuntimeRequest.fromJson(core.Map json_)
-    : this(requestId: json_['requestId'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final requestId = this.requestId;
-    return {'requestId': ?requestId};
-  }
-}
-
-/// Used by:
-///
 /// - containeranalysis:v1 : SBOMStatus
 /// - ondemandscanning:v1 : SBOMStatus
 class $SBOMStatus {
@@ -23433,116 +11432,6 @@ class $SbomReferenceIntotoPredicate {
 
 /// Used by:
 ///
-/// - displayvideo:v2 : ScriptError
-/// - displayvideo:v3 : ScriptError
-/// - displayvideo:v4 : ScriptError
-class $ScriptError {
-  /// The column number in the script where the error was thrown.
-  core.String? column;
-
-  /// The type of error.
-  /// Possible string values are:
-  /// - "ERROR_CODE_UNSPECIFIED" : The script error is not specified or is
-  /// unknown in this version.
-  /// - "SYNTAX_ERROR" : The script has a syntax error.
-  /// - "DEPRECATED_SYNTAX" : The script uses deprecated syntax.
-  /// - "INTERNAL_ERROR" : Internal errors were thrown while processing the
-  /// script.
-  core.String? errorCode;
-
-  /// The detailed error message.
-  core.String? errorMessage;
-
-  /// The line number in the script where the error was thrown.
-  core.String? line;
-
-  $ScriptError({this.column, this.errorCode, this.errorMessage, this.line});
-
-  $ScriptError.fromJson(core.Map json_)
-    : this(
-        column: json_['column'] as core.String?,
-        errorCode: json_['errorCode'] as core.String?,
-        errorMessage: json_['errorMessage'] as core.String?,
-        line: json_['line'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final column = this.column;
-    final errorCode = this.errorCode;
-    final errorMessage = this.errorMessage;
-    final line = this.line;
-    return {
-      'column': ?column,
-      'errorCode': ?errorCode,
-      'errorMessage': ?errorMessage,
-      'line': ?line,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : SdfConfig
-/// - displayvideo:v3 : SdfConfig
-class $SdfConfig {
-  /// An administrator email address to which the SDF processing status reports
-  /// will be sent.
-  core.String? adminEmail;
-
-  /// The version of SDF being used.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "SDF_VERSION_UNSPECIFIED" : SDF version value is not specified or is
-  /// unknown in this version.
-  /// - "SDF_VERSION_9" : SDF version 9. Read the \[v9 migration
-  /// guide\](/display-video/api/structured-data-file/v9-migration-guide) before
-  /// migrating to this version.
-  /// - "SDF_VERSION_9_1" : SDF version 9.1.
-  /// - "SDF_VERSION_9_2" : SDF version 9.2.
-  /// - "SDF_VERSION_10" : SDF version 10.
-  /// - "SDF_VERSION_10_1" : SDF version 10.1.
-  core.String? version;
-
-  $SdfConfig({this.adminEmail, this.version});
-
-  $SdfConfig.fromJson(core.Map json_)
-    : this(
-        adminEmail: json_['adminEmail'] as core.String?,
-        version: json_['version'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final adminEmail = this.adminEmail;
-    final version = this.version;
-    return {'adminEmail': ?adminEmail, 'version': ?version};
-  }
-}
-
-/// Used by:
-///
-/// - connectors:v1 : Secret
-/// - integrations:v1 : GoogleCloudConnectorsV1Secret
-class $Secret {
-  /// The resource name of the secret version in the format, format as:
-  /// `projects / * /secrets / * /versions / * `.
-  ///
-  /// Optional.
-  core.String? secretVersion;
-
-  $Secret({this.secretVersion});
-
-  $Secret.fromJson(core.Map json_)
-    : this(secretVersion: json_['secretVersion'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final secretVersion = this.secretVersion;
-    return {'secretVersion': ?secretVersion};
-  }
-}
-
-/// Used by:
-///
 /// - containeranalysis:v1 : SecretStatus
 /// - ondemandscanning:v1 : SecretStatus
 class $SecretStatus {
@@ -23610,163 +11499,6 @@ class $SecretVersionRequest {
 
 /// Used by:
 ///
-/// - displayvideo:v3 : SelectedInventories
-/// - displayvideo:v4 : SelectedInventories
-class $SelectedInventories {
-  /// Whether the ad group is opted-in to Discover inventory.
-  core.bool? allowDiscover;
-
-  /// Whether the ad group is opted-in to Gmail inventory.
-  core.bool? allowGmail;
-
-  /// Whether the ad group is opted-in to Google Display Network inventory.
-  core.bool? allowGoogleDisplayNetwork;
-
-  /// Whether the ad group is opted-in to YouTube in-feed inventory.
-  core.bool? allowYoutubeFeed;
-
-  /// Whether the ad group is opted-in to YouTube shorts inventory.
-  core.bool? allowYoutubeShorts;
-
-  /// Whether the ad group is opted-in to YouTube in-stream inventory.
-  core.bool? allowYoutubeStream;
-
-  $SelectedInventories({
-    this.allowDiscover,
-    this.allowGmail,
-    this.allowGoogleDisplayNetwork,
-    this.allowYoutubeFeed,
-    this.allowYoutubeShorts,
-    this.allowYoutubeStream,
-  });
-
-  $SelectedInventories.fromJson(core.Map json_)
-    : this(
-        allowDiscover: json_['allowDiscover'] as core.bool?,
-        allowGmail: json_['allowGmail'] as core.bool?,
-        allowGoogleDisplayNetwork:
-            json_['allowGoogleDisplayNetwork'] as core.bool?,
-        allowYoutubeFeed: json_['allowYoutubeFeed'] as core.bool?,
-        allowYoutubeShorts: json_['allowYoutubeShorts'] as core.bool?,
-        allowYoutubeStream: json_['allowYoutubeStream'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final allowDiscover = this.allowDiscover;
-    final allowGmail = this.allowGmail;
-    final allowGoogleDisplayNetwork = this.allowGoogleDisplayNetwork;
-    final allowYoutubeFeed = this.allowYoutubeFeed;
-    final allowYoutubeShorts = this.allowYoutubeShorts;
-    final allowYoutubeStream = this.allowYoutubeStream;
-    return {
-      'allowDiscover': ?allowDiscover,
-      'allowGmail': ?allowGmail,
-      'allowGoogleDisplayNetwork': ?allowGoogleDisplayNetwork,
-      'allowYoutubeFeed': ?allowYoutubeFeed,
-      'allowYoutubeShorts': ?allowYoutubeShorts,
-      'allowYoutubeStream': ?allowYoutubeStream,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - trafficdirector:v2 : SemanticVersion
-/// - trafficdirector:v3 : SemanticVersion
-class $SemanticVersion {
-  core.int? majorNumber;
-  core.int? minorNumber;
-  core.int? patch;
-
-  $SemanticVersion({this.majorNumber, this.minorNumber, this.patch});
-
-  $SemanticVersion.fromJson(core.Map json_)
-    : this(
-        majorNumber: json_['majorNumber'] as core.int?,
-        minorNumber: json_['minorNumber'] as core.int?,
-        patch: json_['patch'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final majorNumber = this.majorNumber;
-    final minorNumber = this.minorNumber;
-    final patch = this.patch;
-    return {
-      'majorNumber': ?majorNumber,
-      'minorNumber': ?minorNumber,
-      'patch': ?patch,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : SensitiveCategoryAssignedTargetingOptionDetails
-/// - displayvideo:v3 : SensitiveCategoryAssignedTargetingOptionDetails
-class $SensitiveCategoryAssignedTargetingOptionDetails {
-  /// An enum for the Display & Video 360 Sensitive category content classified
-  /// to be EXCLUDED.
-  ///
-  /// This field only accepts the following values: *
-  /// `SENSITIVE_CATEGORY_EMBEDDED_VIDEO` *
-  /// `SENSITIVE_CATEGORY_LIVE_STREAMING_VIDEO`
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "SENSITIVE_CATEGORY_UNSPECIFIED" : Serves as a placeholder and doesn't
-  /// specify a Display & Video 360 sensitive category.
-  /// - "SENSITIVE_CATEGORY_EMBEDDED_VIDEO" : YouTube videos embedded on
-  /// websites outside of YouTube.com.
-  /// - "SENSITIVE_CATEGORY_LIVE_STREAMING_VIDEO" : Video of live events
-  /// streamed over the internet.
-  core.String? excludedSensitiveCategory;
-
-  $SensitiveCategoryAssignedTargetingOptionDetails({
-    this.excludedSensitiveCategory,
-  });
-
-  $SensitiveCategoryAssignedTargetingOptionDetails.fromJson(core.Map json_)
-    : this(
-        excludedSensitiveCategory:
-            json_['excludedSensitiveCategory'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final excludedSensitiveCategory = this.excludedSensitiveCategory;
-    return {'excludedSensitiveCategory': ?excludedSensitiveCategory};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : SensitiveCategoryTargetingOptionDetails
-/// - displayvideo:v3 : SensitiveCategoryTargetingOptionDetails
-class $SensitiveCategoryTargetingOptionDetails {
-  /// An enum for the Display & Video 360 Sensitive category content classifier.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "SENSITIVE_CATEGORY_UNSPECIFIED" : Serves as a placeholder and doesn't
-  /// specify a Display & Video 360 sensitive category.
-  /// - "SENSITIVE_CATEGORY_EMBEDDED_VIDEO" : YouTube videos embedded on
-  /// websites outside of YouTube.com.
-  /// - "SENSITIVE_CATEGORY_LIVE_STREAMING_VIDEO" : Video of live events
-  /// streamed over the internet.
-  core.String? sensitiveCategory;
-
-  $SensitiveCategoryTargetingOptionDetails({this.sensitiveCategory});
-
-  $SensitiveCategoryTargetingOptionDetails.fromJson(core.Map json_)
-    : this(sensitiveCategory: json_['sensitiveCategory'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final sensitiveCategory = this.sensitiveCategory;
-    return {'sensitiveCategory': ?sensitiveCategory};
-  }
-}
-
-/// Used by:
-///
 /// - dialogflow:v3 : GoogleCloudDialogflowCxV3ToolAuthenticationServiceAccountAuthConfig
 /// - dialogflow:v3 : GoogleCloudDialogflowCxV3WebhookGenericWebServiceServiceAccountAuthConfig
 class $ServiceAccountAuthConfig {
@@ -23804,223 +11536,6 @@ class $ServiceDirectoryConfig {
   core.Map<core.String, core.dynamic> toJson() {
     final service = this.service;
     return {'service': ?service};
-  }
-}
-
-/// Used by:
-///
-/// - gkehub:v1 : ServiceMeshCondition
-/// - gkehub:v2 : ServiceMeshCondition
-class $ServiceMeshCondition {
-  /// Unique identifier of the condition which describes the condition
-  /// recognizable to the user.
-  /// Possible string values are:
-  /// - "CODE_UNSPECIFIED" : Default Unspecified code
-  /// - "MESH_IAM_PERMISSION_DENIED" : Mesh IAM permission denied error code
-  /// - "MESH_IAM_CROSS_PROJECT_PERMISSION_DENIED" : Permission denied error
-  /// code for cross-project
-  /// - "CNI_CONFIG_UNSUPPORTED" : CNI config unsupported error code
-  /// - "GKE_SANDBOX_UNSUPPORTED" : GKE sandbox unsupported error code
-  /// - "NODEPOOL_WORKLOAD_IDENTITY_FEDERATION_REQUIRED" : Nodepool workload
-  /// identity federation required error code
-  /// - "CNI_INSTALLATION_FAILED" : CNI installation failed error code
-  /// - "CNI_POD_UNSCHEDULABLE" : CNI pod unschedulable error code
-  /// - "CLUSTER_HAS_ZERO_NODES" : Cluster has zero node code
-  /// - "CANONICAL_SERVICE_ERROR" : Failure to reconcile CanonicalServices
-  /// - "UNSUPPORTED_MULTIPLE_CONTROL_PLANES" : Multiple control planes
-  /// unsupported error code
-  /// - "VPCSC_GA_SUPPORTED" : VPC-SC GA is supported for this control plane.
-  /// - "DEPRECATED_SPEC_CONTROL_PLANE_MANAGEMENT" : User is using deprecated
-  /// ControlPlaneManagement and they have not yet set Management.
-  /// - "DEPRECATED_SPEC_CONTROL_PLANE_MANAGEMENT_SAFE" : User is using
-  /// deprecated ControlPlaneManagement and they have already set Management.
-  /// - "CONFIG_APPLY_INTERNAL_ERROR" : Configuration (Istio/k8s resources)
-  /// failed to apply due to internal error.
-  /// - "CONFIG_VALIDATION_ERROR" : Configuration failed to be applied due to
-  /// being invalid.
-  /// - "CONFIG_VALIDATION_WARNING" : Encountered configuration(s) with possible
-  /// unintended behavior or invalid configuration. These configs may not have
-  /// been applied.
-  /// - "QUOTA_EXCEEDED_BACKEND_SERVICES" : BackendService quota exceeded error
-  /// code.
-  /// - "QUOTA_EXCEEDED_HEALTH_CHECKS" : HealthCheck quota exceeded error code.
-  /// - "QUOTA_EXCEEDED_HTTP_ROUTES" : HTTPRoute quota exceeded error code.
-  /// - "QUOTA_EXCEEDED_TCP_ROUTES" : TCPRoute quota exceeded error code.
-  /// - "QUOTA_EXCEEDED_TLS_ROUTES" : TLS routes quota exceeded error code.
-  /// - "QUOTA_EXCEEDED_TRAFFIC_POLICIES" : TrafficPolicy quota exceeded error
-  /// code.
-  /// - "QUOTA_EXCEEDED_ENDPOINT_POLICIES" : EndpointPolicy quota exceeded error
-  /// code.
-  /// - "QUOTA_EXCEEDED_GATEWAYS" : Gateway quota exceeded error code.
-  /// - "QUOTA_EXCEEDED_MESHES" : Mesh quota exceeded error code.
-  /// - "QUOTA_EXCEEDED_SERVER_TLS_POLICIES" : ServerTLSPolicy quota exceeded
-  /// error code.
-  /// - "QUOTA_EXCEEDED_CLIENT_TLS_POLICIES" : ClientTLSPolicy quota exceeded
-  /// error code.
-  /// - "QUOTA_EXCEEDED_SERVICE_LB_POLICIES" : ServiceLBPolicy quota exceeded
-  /// error code.
-  /// - "QUOTA_EXCEEDED_HTTP_FILTERS" : HTTPFilter quota exceeded error code.
-  /// - "QUOTA_EXCEEDED_TCP_FILTERS" : TCPFilter quota exceeded error code.
-  /// - "QUOTA_EXCEEDED_NETWORK_ENDPOINT_GROUPS" : NetworkEndpointGroup quota
-  /// exceeded error code.
-  /// - "CONFIG_APPLY_BLOCKED" : Configuration failed to apply due to fleet
-  /// being blocked.
-  /// - "LEGACY_MC_SECRETS" : Legacy istio secrets found for multicluster error
-  /// code
-  /// - "WORKLOAD_IDENTITY_REQUIRED" : Workload identity required error code
-  /// - "NON_STANDARD_BINARY_USAGE" : Non-standard binary usage error code
-  /// - "UNSUPPORTED_GATEWAY_CLASS" : Unsupported gateway class error code
-  /// - "MANAGED_CNI_NOT_ENABLED" : Managed CNI not enabled error code
-  /// - "MISSING_CONTROL_PLANE_CONFIG" : Missing control plane configuration
-  /// error code
-  /// - "SHARED_VPC_MISSING_PERMISSIONS" : Shared VPC missing permissions error
-  /// code
-  /// - "REQUIRED_ORG_POLICY_DISABLED" : Required org policy disabled error code
-  /// - "MODERNIZATION_INCOMPATIBLE_POD_ANNOTATION" : One or more Pods have
-  /// unsupported annotations.
-  /// - "MODERNIZATION_INCOMPATIBLE_CONFIG" : Incompatible config found in the
-  /// cluster.
-  /// - "MODERNIZATION_INCOMPATIBLE_GATEWAY_POD_SCALE" : Gateway pods per
-  /// cluster limit exceeded.
-  /// - "MODERNIZATION_REQUIRES_MANUAL_WORKLOAD_RESTART" : Cluster contains
-  /// workloads that will require manual restart during modernization.
-  /// - "MODERNIZATION_SCHEDULED" : Modernization is scheduled for a cluster.
-  /// - "MODERNIZATION_IN_PROGRESS" : Modernization is in progress for a
-  /// cluster.
-  /// - "MODERNIZATION_COMPLETED" : Modernization is completed for a cluster.
-  /// - "MODERNIZATION_ABORTED" : Modernization is aborted for a cluster.
-  /// - "MODERNIZATION_PREPARING" : Preparing cluster so that its workloads can
-  /// be migrated.
-  /// - "MODERNIZATION_STALLED" : Modernization is stalled for a cluster.
-  /// - "MODERNIZATION_PREPARED" : Cluster has been prepared for its workloads
-  /// to be migrated.
-  /// - "MODERNIZATION_MIGRATING_WORKLOADS" : Migrating the cluster's workloads
-  /// to the new implementation.
-  /// - "MODERNIZATION_ROLLING_BACK_CLUSTER" : Rollback is in progress for
-  /// modernization of a cluster.
-  /// - "MODERNIZATION_AWAITING_MANUAL_WORKLOAD_RESTART" : Modernization of a
-  /// cluster is awaiting manual restart of workloads. The customer must restart
-  /// these workloads to complete modernization.
-  /// - "MODERNIZATION_WILL_BE_SCHEDULED" : Modernization will be scheduled for
-  /// a fleet.
-  /// - "MODERNIZATION_MANUAL" : Fleet is opted out from automated
-  /// modernization.
-  /// - "MODERNIZATION_ELIGIBLE" : Fleet is eligible for modernization.
-  /// - "MODERNIZATION_MODERNIZING" : Modernization of one or more clusters in a
-  /// fleet is in progress.
-  /// - "MODERNIZATION_MODERNIZED_SOAKING" : Modernization of all the fleet's
-  /// clusters is complete. Soaking before finalizing the modernization.
-  /// - "MODERNIZATION_FINALIZED" : Modernization is finalized for all clusters
-  /// in a fleet. Rollback is no longer allowed.
-  /// - "MODERNIZATION_ROLLING_BACK_FLEET" : Rollback is in progress for
-  /// modernization of all clusters in a fleet.
-  /// - "MODERNIZATION_MODERNIZED" : Modernization of all the fleet's clusters
-  /// is complete. Soaking before finalizing the modernization.
-  /// - "MODERNIZATION_REQUIRES_CUSTOMER_TRIGGER" : Fleet modernization must be
-  /// Customer-Triggered, and cannot be Google-driven. Specific details may be
-  /// reported via another fleet/cluster condition.
-  /// - "MODERNIZATION_COMPATIBLE" : Fleet is compatible for modernization.
-  /// - "MODERNIZATION_INCOMPATIBLE" : Fleet is not yet compatible for
-  /// modernization.
-  /// - "MODERNIZATION_INCOMPATIBLE_FLEET_SCALE" : Fleet exceeds service mesh
-  /// fleet-level scalability limits.
-  /// - "MODERNIZATION_INCOMPATIBLE_FLEET_QUOTA" : Fleet exceeds service mesh
-  /// fleet-level quota limits.
-  core.String? code;
-
-  /// A short summary about the issue.
-  core.String? details;
-
-  /// Links contains actionable information.
-  core.String? documentationLink;
-
-  /// Severity level of the condition.
-  /// Possible string values are:
-  /// - "SEVERITY_UNSPECIFIED" : Unspecified severity
-  /// - "ERROR" : Indicates an issue that prevents the mesh from operating
-  /// correctly
-  /// - "WARNING" : Indicates a setting is likely wrong, but the mesh is still
-  /// able to operate
-  /// - "INFO" : An informational message, not requiring any action
-  core.String? severity;
-
-  $ServiceMeshCondition({
-    this.code,
-    this.details,
-    this.documentationLink,
-    this.severity,
-  });
-
-  $ServiceMeshCondition.fromJson(core.Map json_)
-    : this(
-        code: json_['code'] as core.String?,
-        details: json_['details'] as core.String?,
-        documentationLink: json_['documentationLink'] as core.String?,
-        severity: json_['severity'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final code = this.code;
-    final details = this.details;
-    final documentationLink = this.documentationLink;
-    final severity = this.severity;
-    return {
-      'code': ?code,
-      'details': ?details,
-      'documentationLink': ?documentationLink,
-      'severity': ?severity,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - gkehub:v1 : ServiceMeshStatusDetails
-/// - gkehub:v2 : ServiceMeshStatusDetails
-class $ServiceMeshStatusDetails {
-  /// A machine-readable code that further describes a broad status.
-  core.String? code;
-
-  /// Human-readable explanation of code.
-  core.String? details;
-
-  $ServiceMeshStatusDetails({this.code, this.details});
-
-  $ServiceMeshStatusDetails.fromJson(core.Map json_)
-    : this(
-        code: json_['code'] as core.String?,
-        details: json_['details'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final code = this.code;
-    final details = this.details;
-    return {'code': ?code, 'details': ?details};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : SessionPositionAssignedTargetingOptionDetails
-/// - displayvideo:v3 : SessionPositionAssignedTargetingOptionDetails
-/// - displayvideo:v4 : SessionPositionAssignedTargetingOptionDetails
-class $SessionPositionAssignedTargetingOptionDetails {
-  /// The position where the ad will show in a session.
-  /// Possible string values are:
-  /// - "SESSION_POSITION_UNSPECIFIED" : This is a placeholder, does not
-  /// indicate any positions.
-  /// - "SESSION_POSITION_FIRST_IMPRESSION" : The first impression of the
-  /// session.
-  core.String? sessionPosition;
-
-  $SessionPositionAssignedTargetingOptionDetails({this.sessionPosition});
-
-  $SessionPositionAssignedTargetingOptionDetails.fromJson(core.Map json_)
-    : this(sessionPosition: json_['sessionPosition'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final sessionPosition = this.sessionPosition;
-    return {'sessionPosition': ?sessionPosition};
   }
 }
 
@@ -24066,96 +11581,6 @@ class $SetLabelsRequest {
     final labelFingerprint = this.labelFingerprint;
     final labels = this.labels;
     return {'labelFingerprint': ?labelFingerprint, 'labels': ?labels};
-  }
-}
-
-/// Used by:
-///
-/// - gkebackup:v1 : SetTagsRequest
-/// - memcache:v1 : SetTagsRequest
-class $SetTagsRequest {
-  /// A checksum based on the current bindings which can be passed to prevent
-  /// race conditions.
-  ///
-  /// If not passed, etag check would be skipped.
-  ///
-  /// Optional.
-  core.String? etag;
-
-  /// The full resource name of the service resource.
-  ///
-  /// Required.
-  core.String? name;
-
-  /// A unique identifier for this request.
-  ///
-  /// Must be a valid UUID. This request is only idempotent if a `request_id` is
-  /// provided.
-  ///
-  /// Optional.
-  core.String? requestId;
-
-  /// These bindings will override any bindings previously set and will be
-  /// effective immediately.
-  ///
-  /// Each item in the map must be expressed as " : ". For example:
-  /// "123/environment" : "production", "123/costCenter" : "marketing"
-  ///
-  /// Required.
-  core.Map<core.String, core.String>? tags;
-
-  $SetTagsRequest({this.etag, this.name, this.requestId, this.tags});
-
-  $SetTagsRequest.fromJson(core.Map json_)
-    : this(
-        etag: json_['etag'] as core.String?,
-        name: json_['name'] as core.String?,
-        requestId: json_['requestId'] as core.String?,
-        tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
-          (key, value) => core.MapEntry(key, value as core.String),
-        ),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final etag = this.etag;
-    final name = this.name;
-    final requestId = this.requestId;
-    final tags = this.tags;
-    return {
-      'etag': ?etag,
-      'name': ?name,
-      'requestId': ?requestId,
-      'tags': ?tags,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - tagmanager:v1 : SetupTag
-/// - tagmanager:v2 : SetupTag
-class $SetupTag {
-  /// If true, fire the main tag if and only if the setup tag fires
-  /// successfully.
-  ///
-  /// If false, fire the main tag regardless of setup tag firing status.
-  core.bool? stopOnSetupFailure;
-
-  /// The name of the setup tag.
-  core.String? tagName;
-
-  $SetupTag({this.stopOnSetupFailure, this.tagName});
-
-  $SetupTag.fromJson(core.Map json_)
-    : this(
-        stopOnSetupFailure: json_['stopOnSetupFailure'] as core.bool?,
-        tagName: json_['tagName'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final stopOnSetupFailure = this.stopOnSetupFailure;
-    final tagName = this.tagName;
-    return {'stopOnSetupFailure': ?stopOnSetupFailure, 'tagName': ?tagName};
   }
 }
 
@@ -24207,28 +11632,6 @@ class $Shared00 {
 
 /// Used by:
 ///
-/// - aiplatform:v1 : GoogleCloudAiplatformV1AudioTranscriptionConfigLanguageAuto
-/// - androidpublisher:v3 : ArchiveSubscriptionRequest
-/// - bigtableadmin:v2 : GoogleBigtableAdminV2TypeStringEncodingUtf8Raw
-/// - cloudchannel:v1 : GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity
-/// - domains:v1 : ExportRegistrationRequest
-/// - driveactivity:v2 : File
-/// - run:v2 : Proto2BridgeMessageSet
-/// - tpu:v1 : StartNodeRequest
-/// - tpu:v1 : StopNodeRequest
-class $Shared01 {
-  $Shared01();
-
-  $Shared01.fromJson(
-    // ignore: avoid_unused_constructor_parameters
-    core.Map json_,
-  );
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
-
-/// Used by:
-///
 /// - aiplatform:v1 : GenaiVertexV1TextDelta
 /// - chat:v1 : TextParagraph
 /// - dialogflow:v2 : GoogleCloudDialogflowV2FreeFormContext
@@ -24237,12 +11640,12 @@ class $Shared01 {
 /// - dialogflow:v3 : GoogleCloudDialogflowCxV3Phrase
 /// - dialogflow:v3 : GoogleCloudDialogflowCxV3TextInput
 /// - dialogflow:v3 : GoogleCloudDialogflowCxV3UserUtterance
-class $Shared02 {
+class $Shared01 {
   core.String? text;
 
-  $Shared02({this.text});
+  $Shared01({this.text});
 
-  $Shared02.fromJson(core.Map json_)
+  $Shared01.fromJson(core.Map json_)
     : this(text: json_['text'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -24261,12 +11664,12 @@ class $Shared02 {
 /// - ondemandscanning:v1 : SlsaBuilder
 /// - securitycenter:v1 : AwsOrganization
 /// - youtube:v3 : AbuseType
-class $Shared03 {
+class $Shared02 {
   core.String? id;
 
-  $Shared03({this.id});
+  $Shared02({this.id});
 
-  $Shared03.fromJson(core.Map json_) : this(id: json_['id'] as core.String?);
+  $Shared02.fromJson(core.Map json_) : this(id: json_['id'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() {
     final id = this.id;
@@ -24276,54 +11679,21 @@ class $Shared03 {
 
 /// Used by:
 ///
-/// - osconfig:v1 : OSPolicyResourcePackageResourceAPT
-/// - osconfig:v1 : OSPolicyResourcePackageResourceGooGet
-/// - osconfig:v1 : OSPolicyResourcePackageResourceYUM
-/// - osconfig:v1 : OSPolicyResourcePackageResourceZypper
-/// - osconfig:v2 : OSPolicyResourcePackageResourceAPT
-/// - osconfig:v2 : OSPolicyResourcePackageResourceGooGet
-/// - osconfig:v2 : OSPolicyResourcePackageResourceYUM
-/// - osconfig:v2 : OSPolicyResourcePackageResourceZypper
-class $Shared04 {
-  /// Package name.
-  ///
-  /// Required.
-  core.String? name;
+/// - aiplatform:v1 : GoogleCloudAiplatformV1AudioTranscriptionConfigLanguageAuto
+/// - androidpublisher:v3 : ArchiveSubscriptionRequest
+/// - bigtableadmin:v2 : GoogleBigtableAdminV2TypeStringEncodingUtf8Raw
+/// - cloudchannel:v1 : GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity
+/// - driveactivity:v2 : File
+/// - run:v2 : Proto2BridgeMessageSet
+class $Shared03 {
+  $Shared03();
 
-  $Shared04({this.name});
+  $Shared03.fromJson(
+    // ignore: avoid_unused_constructor_parameters
+    core.Map json_,
+  );
 
-  $Shared04.fromJson(core.Map json_)
-    : this(name: json_['name'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final name = this.name;
-    return {'name': ?name};
-  }
-}
-
-/// Used by:
-///
-/// - apigee:v1 : GoogleCloudApigeeV1AccessGet
-/// - dialogflow:v2 : GoogleCloudDialogflowV2ConversationTelephonyConnectionInfoSipHeader
-/// - integrations:v1 : EnterpriseCrmEventbusProtoToken
-/// - securitycenter:v1 : Label
-class $Shared05 {
-  core.String? name;
-  core.String? value;
-
-  $Shared05({this.name, this.value});
-
-  $Shared05.fromJson(core.Map json_)
-    : this(
-        name: json_['name'] as core.String?,
-        value: json_['value'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final name = this.name;
-    final value = this.value;
-    return {'name': ?name, 'value': ?value};
-  }
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Used by:
@@ -24332,13 +11702,13 @@ class $Shared05 {
 /// - securitycenter:v1 : AwsAccount
 /// - securitycenter:v1 : AwsOrganizationalUnit
 /// - securitycenter:v1 : AzureResourceGroup
-class $Shared06 {
+class $Shared04 {
   core.String? id;
   core.String? name;
 
-  $Shared06({this.id, this.name});
+  $Shared04({this.id, this.name});
 
-  $Shared06.fromJson(core.Map json_)
+  $Shared04.fromJson(core.Map json_)
     : this(
         id: json_['id'] as core.String?,
         name: json_['name'] as core.String?,
@@ -24353,63 +11723,24 @@ class $Shared06 {
 
 /// Used by:
 ///
-/// - gkehub:v1 : ConfigManagementPolicyControllerMonitoring
-/// - gkehub:v1 : PolicyControllerMonitoringConfig
-/// - gkehub:v2 : ConfigManagementPolicyControllerMonitoring
-/// - gkehub:v2 : PolicyControllerMonitoringConfig
-class $Shared07 {
-  /// Specifies the list of backends Policy Controller will export to.
-  ///
-  /// An empty list would effectively disable metrics export.
-  core.List<core.String>? backends;
-
-  $Shared07({this.backends});
-
-  $Shared07.fromJson(core.Map json_)
-    : this(
-        backends: (json_['backends'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final backends = this.backends;
-    return {'backends': ?backends};
-  }
-}
-
-/// Used by:
-///
-/// - osconfig:v1 : OSPolicyAssignmentInstanceFilterInventory
-/// - osconfig:v1 : OSPolicyInventoryFilter
-/// - osconfig:v2 : OSPolicyAssignmentInstanceFilterInventory
-/// - osconfig:v2 : OSPolicyInventoryFilter
-class $Shared08 {
-  /// The OS short name
+/// - osconfig:v2 : OSPolicyResourcePackageResourceAPT
+/// - osconfig:v2 : OSPolicyResourcePackageResourceGooGet
+/// - osconfig:v2 : OSPolicyResourcePackageResourceYUM
+/// - osconfig:v2 : OSPolicyResourcePackageResourceZypper
+class $Shared05 {
+  /// Package name.
   ///
   /// Required.
-  core.String? osShortName;
+  core.String? name;
 
-  /// The OS version Prefix matches are supported if asterisk(*) is provided as
-  /// the last character.
-  ///
-  /// For example, to match all versions with a major version of `7`, specify
-  /// the following value for this field `7.*` An empty string matches all OS
-  /// versions.
-  core.String? osVersion;
+  $Shared05({this.name});
 
-  $Shared08({this.osShortName, this.osVersion});
-
-  $Shared08.fromJson(core.Map json_)
-    : this(
-        osShortName: json_['osShortName'] as core.String?,
-        osVersion: json_['osVersion'] as core.String?,
-      );
+  $Shared05.fromJson(core.Map json_)
+    : this(name: json_['name'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() {
-    final osShortName = this.osShortName;
-    final osVersion = this.osVersion;
-    return {'osShortName': ?osShortName, 'osVersion': ?osVersion};
+    final name = this.name;
+    return {'name': ?name};
   }
 }
 
@@ -24419,13 +11750,13 @@ class $Shared08 {
 /// - securitycenter:v1 : AzureManagementGroup
 /// - securitycenter:v1 : AzureSubscription
 /// - securitycenter:v1 : AzureTenant
-class $Shared09 {
+class $Shared06 {
   core.String? displayName;
   core.String? id;
 
-  $Shared09({this.displayName, this.id});
+  $Shared06({this.displayName, this.id});
 
-  $Shared09.fromJson(core.Map json_)
+  $Shared06.fromJson(core.Map json_)
     : this(
         displayName: json_['displayName'] as core.String?,
         id: json_['id'] as core.String?,
@@ -24440,15 +11771,39 @@ class $Shared09 {
 
 /// Used by:
 ///
+/// - apigee:v1 : GoogleCloudApigeeV1AccessGet
+/// - dialogflow:v2 : GoogleCloudDialogflowV2ConversationTelephonyConnectionInfoSipHeader
+/// - securitycenter:v1 : Label
+class $Shared07 {
+  core.String? name;
+  core.String? value;
+
+  $Shared07({this.name, this.value});
+
+  $Shared07.fromJson(core.Map json_)
+    : this(
+        name: json_['name'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final value = this.value;
+    return {'name': ?name, 'value': ?value};
+  }
+}
+
+/// Used by:
+///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2ConversationInfo
 /// - dialogflow:v3 : GoogleCloudDialogflowCxV3ValidateAgentRequest
 /// - dialogflow:v3 : GoogleCloudDialogflowCxV3ValidateFlowRequest
-class $Shared10 {
+class $Shared08 {
   core.String? languageCode;
 
-  $Shared10({this.languageCode});
+  $Shared08({this.languageCode});
 
-  $Shared10.fromJson(core.Map json_)
+  $Shared08.fromJson(core.Map json_)
     : this(languageCode: json_['languageCode'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -24462,12 +11817,12 @@ class $Shared10 {
 /// - dialogflow:v2 : GoogleCloudDialogflowV2GcsDestination
 /// - dialogflow:v2 : GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction
 /// - dialogflow:v3 : GoogleCloudDialogflowCxV3GcsDestination
-class $Shared11 {
+class $Shared09 {
   core.String? uri;
 
-  $Shared11({this.uri});
+  $Shared09({this.uri});
 
-  $Shared11.fromJson(core.Map json_) : this(uri: json_['uri'] as core.String?);
+  $Shared09.fromJson(core.Map json_) : this(uri: json_['uri'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() {
     final uri = this.uri;
@@ -24480,16 +11835,16 @@ class $Shared11 {
 /// - dialogflow:v2 : GoogleCloudDialogflowV2ResponseMessageLiveAgentHandoff
 /// - dialogflow:v3 : GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess
 /// - dialogflow:v3 : GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff
-class $Shared12 {
+class $Shared10 {
   ///
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? metadata;
 
-  $Shared12({this.metadata});
+  $Shared10({this.metadata});
 
-  $Shared12.fromJson(core.Map json_)
+  $Shared10.fromJson(core.Map json_)
     : this(
         metadata: json_.containsKey('metadata')
             ? json_['metadata'] as core.Map<core.String, core.dynamic>
@@ -24506,13 +11861,13 @@ class $Shared12 {
 ///
 /// - aiplatform:v1 : GenaiVertexV1GoogleSearchResultContentGoogleSearchResult
 /// - aiplatform:v1 : GenaiVertexV1GoogleSearchResultStepGoogleSearchResultItem
-class $Shared13 {
+class $Shared11 {
   /// Web content snippet that can be embedded in a web page or an app webview.
   core.String? searchSuggestions;
 
-  $Shared13({this.searchSuggestions});
+  $Shared11({this.searchSuggestions});
 
-  $Shared13.fromJson(core.Map json_)
+  $Shared11.fromJson(core.Map json_)
     : this(searchSuggestions: json_['searchSuggestions'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -24525,13 +11880,13 @@ class $Shared13 {
 ///
 /// - aiplatform:v1 : GenaiVertexV1RetrievalResultDelta
 /// - aiplatform:v1 : GenaiVertexV1RetrievalResultStep
-class $Shared14 {
+class $Shared12 {
   /// Whether the retrieval resulted in an error.
   core.bool? isError;
 
-  $Shared14({this.isError});
+  $Shared12({this.isError});
 
-  $Shared14.fromJson(core.Map json_)
+  $Shared12.fromJson(core.Map json_)
     : this(isError: json_['isError'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -24542,62 +11897,18 @@ class $Shared14 {
 
 /// Used by:
 ///
-/// - cloudsearch:v1 : DoubleValues
-/// - integrations:v1 : EnterpriseCrmEventbusProtoDoubleArray
-class $Shared15 {
-  core.List<core.double>? values;
-
-  $Shared15({this.values});
-
-  $Shared15.fromJson(core.Map json_)
-    : this(
-        values: (json_['values'] as core.List?)
-            ?.map((value) => (value as core.num).toDouble())
-            .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final values = this.values;
-    return {'values': ?values};
-  }
-}
-
-/// Used by:
-///
-/// - cloudsearch:v1 : IntegerValues
-/// - integrations:v1 : EnterpriseCrmEventbusProtoIntArray
-class $Shared16 {
-  core.List<core.String>? values;
-
-  $Shared16({this.values});
-
-  $Shared16.fromJson(core.Map json_)
-    : this(
-        values: (json_['values'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final values = this.values;
-    return {'values': ?values};
-  }
-}
-
-/// Used by:
-///
 /// - compute:v1 : InstancesSetServiceAccountRequest
 /// - compute:v1 : ServiceAccount
-class $Shared17 {
+class $Shared13 {
   /// Email address of the service account.
   core.String? email;
 
   /// The list of scopes to be made available for this service account.
   core.List<core.String>? scopes;
 
-  $Shared17({this.email, this.scopes});
+  $Shared13({this.email, this.scopes});
 
-  $Shared17.fromJson(core.Map json_)
+  $Shared13.fromJson(core.Map json_)
     : this(
         email: json_['email'] as core.String?,
         scopes: (json_['scopes'] as core.List?)
@@ -24616,15 +11927,15 @@ class $Shared17 {
 ///
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1ImportIssueModelRequestGcsSource
-class $Shared18 {
+class $Shared14 {
   /// Format: `gs:///`
   ///
   /// Required.
   core.String? objectUri;
 
-  $Shared18({this.objectUri});
+  $Shared14({this.objectUri});
 
-  $Shared18.fromJson(core.Map json_)
+  $Shared14.fromJson(core.Map json_)
     : this(objectUri: json_['objectUri'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -24637,7 +11948,7 @@ class $Shared18 {
 ///
 /// - dataform:v1 : ReadRepositoryFileResponse
 /// - dataform:v1 : WriteFile
-class $Shared19 {
+class $Shared15 {
   /// The file's contents.
   core.String? contents;
   core.List<core.int> get contentsAsBytes => convert.base64.decode(contents!);
@@ -24649,9 +11960,9 @@ class $Shared19 {
         .replaceAll('+', '-');
   }
 
-  $Shared19({this.contents});
+  $Shared15({this.contents});
 
-  $Shared19.fromJson(core.Map json_)
+  $Shared15.fromJson(core.Map json_)
     : this(contents: json_['contents'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -24664,12 +11975,12 @@ class $Shared19 {
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2GeneratorEvaluationConfigDatasetInputDataConfig
 /// - dialogflow:v2 : GoogleCloudDialogflowV2InputDataset
-class $Shared20 {
+class $Shared16 {
   core.String? dataset;
 
-  $Shared20({this.dataset});
+  $Shared16({this.dataset});
 
-  $Shared20.fromJson(core.Map json_)
+  $Shared16.fromJson(core.Map json_)
     : this(dataset: json_['dataset'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -24682,13 +11993,13 @@ class $Shared20 {
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2Sentiment
 /// - dialogflow:v3 : GoogleCloudDialogflowCxV3SentimentAnalysisResult
-class $Shared21 {
+class $Shared17 {
   core.double? magnitude;
   core.double? score;
 
-  $Shared21({this.magnitude, this.score});
+  $Shared17({this.magnitude, this.score});
 
-  $Shared21.fromJson(core.Map json_)
+  $Shared17.fromJson(core.Map json_)
     : this(
         magnitude: (json_['magnitude'] as core.num?)?.toDouble(),
         score: (json_['score'] as core.num?)?.toDouble(),
@@ -24705,13 +12016,13 @@ class $Shared21 {
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2TextInput
 /// - dialogflow:v3 : GoogleCloudDialogflowCxV3SafetySettingsPhrase
-class $Shared22 {
+class $Shared18 {
   core.String? languageCode;
   core.String? text;
 
-  $Shared22({this.languageCode, this.text});
+  $Shared18({this.languageCode, this.text});
 
-  $Shared22.fromJson(core.Map json_)
+  $Shared18.fromJson(core.Map json_)
     : this(
         languageCode: json_['languageCode'] as core.String?,
         text: json_['text'] as core.String?,
@@ -24728,12 +12039,12 @@ class $Shared22 {
 ///
 /// - dialogflow:v3 : GoogleCloudDialogflowCxV3EntityTypeExcludedPhrase
 /// - youtube:v3 : LanguageTag
-class $Shared23 {
+class $Shared19 {
   core.String? value;
 
-  $Shared23({this.value});
+  $Shared19({this.value});
 
-  $Shared23.fromJson(core.Map json_)
+  $Shared19.fromJson(core.Map json_)
     : this(value: json_['value'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -24746,13 +12057,13 @@ class $Shared23 {
 ///
 /// - dialogflow:v3 : GoogleCloudDialogflowCxV3FlowTraceMetadata
 /// - dialogflow:v3 : GoogleCloudDialogflowCxV3FlowTransition
-class $Shared24 {
+class $Shared20 {
   core.String? displayName;
   core.String? flow;
 
-  $Shared24({this.displayName, this.flow});
+  $Shared20({this.displayName, this.flow});
 
-  $Shared24.fromJson(core.Map json_)
+  $Shared20.fromJson(core.Map json_)
     : this(
         displayName: json_['displayName'] as core.String?,
         flow: json_['flow'] as core.String?,
@@ -24769,13 +12080,13 @@ class $Shared24 {
 ///
 /// - dialogflow:v3 : GoogleCloudDialogflowCxV3PlaybookTraceMetadata
 /// - dialogflow:v3 : GoogleCloudDialogflowCxV3PlaybookTransition
-class $Shared25 {
+class $Shared21 {
   core.String? displayName;
   core.String? playbook;
 
-  $Shared25({this.displayName, this.playbook});
+  $Shared21({this.displayName, this.playbook});
 
-  $Shared25.fromJson(core.Map json_)
+  $Shared21.fromJson(core.Map json_)
     : this(
         displayName: json_['displayName'] as core.String?,
         playbook: json_['playbook'] as core.String?,
@@ -24792,13 +12103,13 @@ class $Shared25 {
 ///
 /// - dialogflow:v3 : GoogleCloudDialogflowCxV3ResourceName
 /// - securitycenter:v1 : Pipeline
-class $Shared26 {
+class $Shared22 {
   core.String? displayName;
   core.String? name;
 
-  $Shared26({this.displayName, this.name});
+  $Shared22({this.displayName, this.name});
 
-  $Shared26.fromJson(core.Map json_)
+  $Shared22.fromJson(core.Map json_)
     : this(
         displayName: json_['displayName'] as core.String?,
         name: json_['name'] as core.String?,
@@ -24813,15 +12124,73 @@ class $Shared26 {
 
 /// Used by:
 ///
+/// - gkehub:v2 : ConfigManagementPolicyControllerMonitoring
+/// - gkehub:v2 : PolicyControllerMonitoringConfig
+class $Shared23 {
+  /// Specifies the list of backends Policy Controller will export to.
+  ///
+  /// An empty list would effectively disable metrics export.
+  core.List<core.String>? backends;
+
+  $Shared23({this.backends});
+
+  $Shared23.fromJson(core.Map json_)
+    : this(
+        backends: (json_['backends'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final backends = this.backends;
+    return {'backends': ?backends};
+  }
+}
+
+/// Used by:
+///
+/// - osconfig:v2 : OSPolicyAssignmentInstanceFilterInventory
+/// - osconfig:v2 : OSPolicyInventoryFilter
+class $Shared24 {
+  /// The OS short name
+  ///
+  /// Required.
+  core.String? osShortName;
+
+  /// The OS version Prefix matches are supported if asterisk(*) is provided as
+  /// the last character.
+  ///
+  /// For example, to match all versions with a major version of `7`, specify
+  /// the following value for this field `7.*` An empty string matches all OS
+  /// versions.
+  core.String? osVersion;
+
+  $Shared24({this.osShortName, this.osVersion});
+
+  $Shared24.fromJson(core.Map json_)
+    : this(
+        osShortName: json_['osShortName'] as core.String?,
+        osVersion: json_['osVersion'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final osShortName = this.osShortName;
+    final osVersion = this.osVersion;
+    return {'osShortName': ?osShortName, 'osVersion': ?osVersion};
+  }
+}
+
+/// Used by:
+///
 /// - searchads360:v23 : GoogleAdsSearchads360V23Common__ProductBrandInfo
 /// - searchads360:v23 : GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_ProductBrand
-class $Shared27 {
+class $Shared25 {
   /// String value of the product brand.
   core.String? value;
 
-  $Shared27({this.value});
+  $Shared25({this.value});
 
-  $Shared27.fromJson(core.Map json_)
+  $Shared25.fromJson(core.Map json_)
     : this(value: json_['value'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -24834,7 +12203,7 @@ class $Shared27 {
 ///
 /// - searchads360:v23 : GoogleAdsSearchads360V23Common__ProductChannelInfo
 /// - searchads360:v23 : GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_ProductChannel
-class $Shared28 {
+class $Shared26 {
   /// Value of the locality.
   /// Possible string values are:
   /// - "UNSPECIFIED" : Not specified.
@@ -24844,9 +12213,9 @@ class $Shared28 {
   /// - "LOCAL" : The item is sold in local stores.
   core.String? channel;
 
-  $Shared28({this.channel});
+  $Shared26({this.channel});
 
-  $Shared28.fromJson(core.Map json_)
+  $Shared26.fromJson(core.Map json_)
     : this(channel: json_['channel'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -24859,7 +12228,7 @@ class $Shared28 {
 ///
 /// - searchads360:v23 : GoogleAdsSearchads360V23Common__ProductConditionInfo
 /// - searchads360:v23 : GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_ProductCondition
-class $Shared29 {
+class $Shared27 {
   /// Value of the condition.
   /// Possible string values are:
   /// - "UNSPECIFIED" : Not specified.
@@ -24870,9 +12239,9 @@ class $Shared29 {
   /// - "USED" : The product condition is used.
   core.String? condition;
 
-  $Shared29({this.condition});
+  $Shared27({this.condition});
 
-  $Shared29.fromJson(core.Map json_)
+  $Shared27.fromJson(core.Map json_)
     : this(condition: json_['condition'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -24885,13 +12254,13 @@ class $Shared29 {
 ///
 /// - searchads360:v23 : GoogleAdsSearchads360V23Common__ProductItemIdInfo
 /// - searchads360:v23 : GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_ProductItemId
-class $Shared30 {
+class $Shared28 {
   /// Value of the id.
   core.String? value;
 
-  $Shared30({this.value});
+  $Shared28({this.value});
 
-  $Shared30.fromJson(core.Map json_)
+  $Shared28.fromJson(core.Map json_)
     : this(value: json_['value'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -24904,7 +12273,7 @@ class $Shared30 {
 ///
 /// - searchads360:v23 : GoogleAdsSearchads360V23Common__ProductTypeInfo
 /// - searchads360:v23 : GoogleAdsSearchads360V23Resources_ListingGroupFilterDimension_ProductType
-class $Shared31 {
+class $Shared29 {
   /// Level of the type.
   /// Possible string values are:
   /// - "UNSPECIFIED" : Not specified.
@@ -24920,9 +12289,9 @@ class $Shared31 {
   /// Value of the type.
   core.String? value;
 
-  $Shared31({this.level, this.value});
+  $Shared29({this.level, this.value});
 
-  $Shared31.fromJson(core.Map json_)
+  $Shared29.fromJson(core.Map json_)
     : this(
         level: json_['level'] as core.String?,
         value: json_['value'] as core.String?,
@@ -24939,12 +12308,12 @@ class $Shared31 {
 ///
 /// - securitycenter:v1 : Contact
 /// - securitycenter:v1 : GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo
-class $Shared32 {
+class $Shared30 {
   core.String? email;
 
-  $Shared32({this.email});
+  $Shared30({this.email});
 
-  $Shared32.fromJson(core.Map json_)
+  $Shared30.fromJson(core.Map json_)
     : this(email: json_['email'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -24957,12 +12326,12 @@ class $Shared32 {
 ///
 /// - securitycenter:v1 : TestIamPermissionsRequest
 /// - securitycenter:v1 : TestIamPermissionsResponse
-class $Shared33 {
+class $Shared31 {
   core.List<core.String>? permissions;
 
-  $Shared33({this.permissions});
+  $Shared31({this.permissions});
 
-  $Shared33.fromJson(core.Map json_)
+  $Shared31.fromJson(core.Map json_)
     : this(
         permissions: (json_['permissions'] as core.List?)
             ?.map((value) => value as core.String)
@@ -24979,7 +12348,7 @@ class $Shared33 {
 ///
 /// - vmwareengine:v1 : Nsx
 /// - vmwareengine:v1 : Vcenter
-class $Shared34 {
+class $Shared32 {
   /// Fully qualified domain name of the appliance.
   core.String? fqdn;
 
@@ -24999,9 +12368,9 @@ class $Shared34 {
   /// Version of the appliance.
   core.String? version;
 
-  $Shared34({this.fqdn, this.internalIp, this.state, this.version});
+  $Shared32({this.fqdn, this.internalIp, this.state, this.version});
 
-  $Shared34.fromJson(core.Map json_)
+  $Shared32.fromJson(core.Map json_)
     : this(
         fqdn: json_['fqdn'] as core.String?,
         internalIp: json_['internalIp'] as core.String?,
@@ -25027,7 +12396,7 @@ class $Shared34 {
 ///
 /// - workloadmanager:v1 : Product
 /// - workloadmanager:v1 : SapDiscoveryWorkloadPropertiesProductVersion
-class $Shared35 {
+class $Shared33 {
   /// Name of the product.
   ///
   /// Optional.
@@ -25038,9 +12407,9 @@ class $Shared35 {
   /// Optional.
   core.String? version;
 
-  $Shared35({this.name, this.version});
+  $Shared33({this.name, this.version});
 
-  $Shared35.fromJson(core.Map json_)
+  $Shared33.fromJson(core.Map json_)
     : this(
         name: json_['name'] as core.String?,
         version: json_['version'] as core.String?,
@@ -25050,57 +12419,6 @@ class $Shared35 {
     final name = this.name;
     final version = this.version;
     return {'name': ?name, 'version': ?version};
-  }
-}
-
-/// Used by:
-///
-/// - notebooks:v1 : RuntimeShieldedInstanceConfig
-/// - notebooks:v1 : ShieldedInstanceConfig
-class $ShieldedInstanceConfig {
-  /// Defines whether the instance has integrity monitoring enabled.
-  ///
-  /// Enables monitoring and attestation of the boot integrity of the instance.
-  /// The attestation is performed against the integrity policy baseline. This
-  /// baseline is initially derived from the implicitly trusted boot image when
-  /// the instance is created. Enabled by default.
-  core.bool? enableIntegrityMonitoring;
-
-  /// Defines whether the instance has Secure Boot enabled.
-  ///
-  /// Secure Boot helps ensure that the system only runs authentic software by
-  /// verifying the digital signature of all boot components, and halting the
-  /// boot process if signature verification fails. Disabled by default.
-  core.bool? enableSecureBoot;
-
-  /// Defines whether the instance has the vTPM enabled.
-  ///
-  /// Enabled by default.
-  core.bool? enableVtpm;
-
-  $ShieldedInstanceConfig({
-    this.enableIntegrityMonitoring,
-    this.enableSecureBoot,
-    this.enableVtpm,
-  });
-
-  $ShieldedInstanceConfig.fromJson(core.Map json_)
-    : this(
-        enableIntegrityMonitoring:
-            json_['enableIntegrityMonitoring'] as core.bool?,
-        enableSecureBoot: json_['enableSecureBoot'] as core.bool?,
-        enableVtpm: json_['enableVtpm'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final enableIntegrityMonitoring = this.enableIntegrityMonitoring;
-    final enableSecureBoot = this.enableSecureBoot;
-    final enableVtpm = this.enableVtpm;
-    return {
-      'enableIntegrityMonitoring': ?enableIntegrityMonitoring,
-      'enableSecureBoot': ?enableSecureBoot,
-      'enableVtpm': ?enableVtpm,
-    };
   }
 }
 
@@ -25258,96 +12576,6 @@ class $Signature {
     final publicKeyId = this.publicKeyId;
     final signature = this.signature;
     return {'publicKeyId': ?publicKeyId, 'signature': ?signature};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : Site
-/// - displayvideo:v3 : Site
-/// - displayvideo:v4 : Site
-class $Site {
-  /// The resource name of the site.
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// The app ID or URL of the site.
-  ///
-  /// Must be UTF-8 encoded with a maximum length of 240 bytes.
-  ///
-  /// Required.
-  core.String? urlOrAppId;
-
-  $Site({this.name, this.urlOrAppId});
-
-  $Site.fromJson(core.Map json_)
-    : this(
-        name: json_['name'] as core.String?,
-        urlOrAppId: json_['urlOrAppId'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final name = this.name;
-    final urlOrAppId = this.urlOrAppId;
-    return {'name': ?name, 'urlOrAppId': ?urlOrAppId};
-  }
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.5 : Size
-/// - dfareporting:v5 : Size
-class $Size {
-  /// Height of this size.
-  ///
-  /// Acceptable values are 0 to 32767, inclusive.
-  core.int? height;
-
-  /// IAB standard size.
-  ///
-  /// This is a read-only, auto-generated field.
-  core.bool? iab;
-
-  /// ID of this size.
-  ///
-  /// This is a read-only, auto-generated field.
-  core.String? id;
-
-  /// Identifies what kind of resource this is.
-  ///
-  /// Value: the fixed string "dfareporting#size".
-  core.String? kind;
-
-  /// Width of this size.
-  ///
-  /// Acceptable values are 0 to 32767, inclusive.
-  core.int? width;
-
-  $Size({this.height, this.iab, this.id, this.kind, this.width});
-
-  $Size.fromJson(core.Map json_)
-    : this(
-        height: json_['height'] as core.int?,
-        iab: json_['iab'] as core.bool?,
-        id: json_['id'] as core.String?,
-        kind: json_['kind'] as core.String?,
-        width: json_['width'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final height = this.height;
-    final iab = this.iab;
-    final id = this.id;
-    final kind = this.kind;
-    final width = this.width;
-    return {
-      'height': ?height,
-      'iab': ?iab,
-      'id': ?id,
-      'kind': ?kind,
-      'width': ?width,
-    };
   }
 }
 
@@ -25597,103 +12825,9 @@ class $StateError {
 
 /// Used by:
 ///
-/// - trafficdirector:v2 : StaticCluster
-/// - trafficdirector:v3 : StaticCluster
-class $StaticCluster {
-  /// The cluster config.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object?>? cluster;
-
-  /// The timestamp when the Cluster was last updated.
-  core.String? lastUpdated;
-
-  $StaticCluster({this.cluster, this.lastUpdated});
-
-  $StaticCluster.fromJson(core.Map json_)
-    : this(
-        cluster: json_.containsKey('cluster')
-            ? json_['cluster'] as core.Map<core.String, core.dynamic>
-            : null,
-        lastUpdated: json_['lastUpdated'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final cluster = this.cluster;
-    final lastUpdated = this.lastUpdated;
-    return {'cluster': ?cluster, 'lastUpdated': ?lastUpdated};
-  }
-}
-
-/// Used by:
-///
-/// - trafficdirector:v2 : StaticListener
-/// - trafficdirector:v3 : StaticListener
-class $StaticListener {
-  /// The timestamp when the Listener was last successfully updated.
-  core.String? lastUpdated;
-
-  /// The listener config.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object?>? listener;
-
-  $StaticListener({this.lastUpdated, this.listener});
-
-  $StaticListener.fromJson(core.Map json_)
-    : this(
-        lastUpdated: json_['lastUpdated'] as core.String?,
-        listener: json_.containsKey('listener')
-            ? json_['listener'] as core.Map<core.String, core.dynamic>
-            : null,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final lastUpdated = this.lastUpdated;
-    final listener = this.listener;
-    return {'lastUpdated': ?lastUpdated, 'listener': ?listener};
-  }
-}
-
-/// Used by:
-///
-/// - trafficdirector:v2 : StaticRouteConfig
-/// - trafficdirector:v3 : StaticRouteConfig
-class $StaticRouteConfig {
-  /// The timestamp when the Route was last updated.
-  core.String? lastUpdated;
-
-  /// The route config.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object?>? routeConfig;
-
-  $StaticRouteConfig({this.lastUpdated, this.routeConfig});
-
-  $StaticRouteConfig.fromJson(core.Map json_)
-    : this(
-        lastUpdated: json_['lastUpdated'] as core.String?,
-        routeConfig: json_.containsKey('routeConfig')
-            ? json_['routeConfig'] as core.Map<core.String, core.dynamic>
-            : null,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final lastUpdated = this.lastUpdated;
-    final routeConfig = this.routeConfig;
-    return {'lastUpdated': ?lastUpdated, 'routeConfig': ?routeConfig};
-  }
-}
-
-/// Used by:
-///
 /// - accesscontextmanager:v1 : Status
 /// - admin:directory_v1 : Status
 /// - agenciesandbrands:v1 : Status
-/// - agentregistry:v1 : Status
 /// - aiplatform:v1 : GoogleRpcStatus
 /// - alloydb:v1 : Status
 /// - analyticshub:v1 : Status
@@ -25707,7 +12841,6 @@ class $StaticRouteConfig {
 /// - apphub:v1 : Status
 /// - artifactregistry:v1 : Status
 /// - assuredworkloads:v1 : GoogleRpcStatus
-/// - auditmanager:v1 : Status
 /// - backupdr:v1 : Status
 /// - baremetalsolution:v2 : Status
 /// - batch:v1 : Status
@@ -25715,7 +12848,6 @@ class $StaticRouteConfig {
 /// - bigquerydatatransfer:v1 : Status
 /// - bigqueryreservation:v1 : Status
 /// - bigtableadmin:v2 : Status
-/// - blockchainnodeengine:v1 : Status
 /// - certificatemanager:v1 : Status
 /// - ces:v1 : Status
 /// - chromemanagement:v1 : GoogleRpcStatus
@@ -25729,22 +12861,18 @@ class $StaticRouteConfig {
 /// - cloudidentity:v1 : Status
 /// - cloudkms:v1 : Status
 /// - cloudresourcemanager:v1 : Status
-/// - cloudresourcemanager:v2 : Status
 /// - cloudresourcemanager:v3 : Status
 /// - cloudscheduler:v1 : Status
 /// - cloudsearch:v1 : Status
 /// - cloudshell:v1 : Status
 /// - cloudtasks:v2 : Status
 /// - cloudtrace:v2 : Status
-/// - colaboratory:v1 : Status
 /// - composer:v1 : Status
 /// - config:v1 : Status
-/// - connectors:v1 : Status
 /// - contactcenterinsights:v1 : GoogleRpcStatus
 /// - container:v1 : Status
 /// - containeranalysis:v1 : Status
 /// - curationpartners:v1 : Status
-/// - datacatalog:v1 : Status
 /// - dataform:v1 : Status
 /// - datafusion:v1 : Status
 /// - datalineage:v1 : GoogleRpcStatus
@@ -25755,16 +12883,10 @@ class $StaticRouteConfig {
 /// - datastore:v1 : Status
 /// - datastream:v1 : Status
 /// - deepreview:v1 : Status
-/// - deploymentmanager:v2 : Status
 /// - developerconnect:v1 : Status
-/// - devicerun:v1 : GoogleRpcStatus
-/// - displayvideo:v2 : Status
-/// - displayvideo:v3 : Status
-/// - displayvideo:v4 : Status
 /// - displayvideo:v5 : Status
 /// - dlp:v2 : GoogleRpcStatus
 /// - documentai:v1 : GoogleRpcStatus
-/// - domains:v1 : Status
 /// - drive:v3 : Status
 /// - eventarc:v1 : GoogleRpcStatus
 /// - file:v1 : Status
@@ -25772,18 +12894,14 @@ class $StaticRouteConfig {
 /// - firebaseapphosting:v1 : Status
 /// - firebasedataconnect:v1 : Status
 /// - firebasehosting:v1 : Status
-/// - firebaseml:v1 : Status
 /// - firestore:v1 : Status
-/// - ftp:v1 : Status
 /// - games:v1 : Status
 /// - gkebackup:v1 : GoogleRpcStatus
-/// - gkehub:v1 : GoogleRpcStatus
 /// - gkehub:v2 : GoogleRpcStatus
 /// - gkeonprem:v1 : Status
 /// - gmailpostmastertools:v2 : Status
 /// - health:v4 : Status
 /// - healthcare:v1 : Status
-/// - hypercomputecluster:v1 : Status
 /// - iam:v1 : Status
 /// - iam:v2 : GoogleRpcStatus
 /// - ids:v1 : Status
@@ -25792,34 +12910,26 @@ class $StaticRouteConfig {
 /// - looker:v1 : Status
 /// - managedidentities:v1 : Status
 /// - managedkafka:v1 : Status
-/// - memcache:v1 : Status
-/// - metastore:v1 : Status
 /// - migrationcenter:v1 : Status
-/// - ml:v1 : GoogleRpc__Status
 /// - monitoring:v3 : Status
 /// - netapp:v1 : Status
 /// - networkconnectivity:v1 : GoogleRpcStatus
 /// - networkmanagement:v1 : Status
 /// - networksecurity:v1 : Status
 /// - networkservices:v1 : Status
-/// - notebooks:v1 : Status
 /// - notebooks:v2 : Status
 /// - observability:v1 : Status
 /// - ondemandscanning:v1 : Status
 /// - oracledatabase:v1 : Status
-/// - osconfig:v1 : Status
 /// - osconfig:v2 : Status
 /// - parallelstore:v1 : Status
 /// - people:v1 : Status
 /// - policysimulator:v1 : GoogleRpcStatus
-/// - policytroubleshooter:v1 : GoogleRpcStatus
 /// - policytroubleshooter:v3 : GoogleRpcStatus
 /// - privateca:v1 : Status
-/// - pubsublite:v1 : Status
 /// - recaptchaenterprise:v1 : GoogleRpcStatus
 /// - redis:v1 : Status
 /// - retail:v2 : GoogleRpcStatus
-/// - run:v1 : GoogleRpcStatus
 /// - run:v2 : GoogleRpcStatus
 /// - runtimeconfig:v1 : Status
 /// - saasservicemgmt:v1 : Status
@@ -25828,7 +12938,6 @@ class $StaticRouteConfig {
 /// - securesourcemanager:v1 : Status
 /// - securityposture:v1 : Status
 /// - serviceconsumermanagement:v1 : Status
-/// - servicecontrol:v1 : Status
 /// - servicecontrol:v2 : Status
 /// - servicemanagement:v1 : Status
 /// - servicenetworking:v1 : Status
@@ -25836,16 +12945,13 @@ class $StaticRouteConfig {
 /// - spanner:v1 : Status
 /// - speech:v1 : Status
 /// - sqladmin:v1 : Status
-/// - storagebatchoperations:v1 : Status
 /// - storagetransfer:v1 : Status
 /// - streetviewpublish:v1 : Status
 /// - texttospeech:v1 : Status
-/// - tpu:v1 : Status
 /// - tpu:v2 : Status
 /// - transcoder:v1 : Status
 /// - translate:v3 : Status
 /// - vault:v1 : Status
-/// - videointelligence:v1 : GoogleRpc_Status
 /// - vision:v1 : Status
 /// - vmmigration:v1 : Status
 /// - vmwareengine:v1 : Status
@@ -25928,41 +13034,6 @@ class $Status01 {
 
 /// Used by:
 ///
-/// - gkehub:v1 : Status
-/// - gkehub:v2 : AppDevExperienceStatus
-class $Status02 {
-  /// Code specifies AppDevExperienceFeature's subcomponent ready state.
-  /// Possible string values are:
-  /// - "CODE_UNSPECIFIED" : Not set.
-  /// - "OK" : AppDevExperienceFeature's specified subcomponent is ready.
-  /// - "FAILED" : AppDevExperienceFeature's specified subcomponent ready state
-  /// is false. This means AppDevExperienceFeature has encountered an issue that
-  /// blocks all, or a portion, of its normal operation. See the `description`
-  /// for more details.
-  /// - "UNKNOWN" : AppDevExperienceFeature's specified subcomponent has a
-  /// pending or unknown state.
-  core.String? code;
-
-  /// Description is populated if Code is Failed, explaining why it has failed.
-  core.String? description;
-
-  $Status02({this.code, this.description});
-
-  $Status02.fromJson(core.Map json_)
-    : this(
-        code: json_['code'] as core.String?,
-        description: json_['description'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final code = this.code;
-    final description = this.description;
-    return {'code': ?code, 'description': ?description};
-  }
-}
-
-/// Used by:
-///
 /// - admob:v1 : StringList
 /// - gmailpostmastertools:v2 : StringList
 class $StringList00 {
@@ -26009,79 +13080,6 @@ class $StringList01 {
 
 /// Used by:
 ///
-/// - assuredworkloads:v1 : GoogleCloudAssuredworkloadsV1StringList
-/// - auditmanager:v1 : StringList
-class $StringList02 {
-  /// The strings in the list.
-  ///
-  /// Required.
-  core.List<core.String>? values;
-
-  $StringList02({this.values});
-
-  $StringList02.fromJson(core.Map json_)
-    : this(
-        values: (json_['values'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final values = this.values;
-    return {'values': ?values};
-  }
-}
-
-/// Used by:
-///
-/// - connectors:v1 : StringListValues
-/// - integrations:v1 : GoogleCloudConnectorsV1AdminFiltersStringListValues
-class $StringListValues {
-  /// The list of string values.
-  ///
-  /// Required.
-  core.List<core.String>? listValues;
-
-  $StringListValues({this.listValues});
-
-  $StringListValues.fromJson(core.Map json_)
-    : this(
-        listValues: (json_['listValues'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final listValues = this.listValues;
-    return {'listValues': ?listValues};
-  }
-}
-
-/// Used by:
-///
-/// - integrations:v1 : GoogleCloudIntegrationsV1alphaStringParameterArray
-/// - integrations:v2 : GoogleCloudIntegrationsV2DuetStringParameterArray
-class $StringParameterArray {
-  /// String array.
-  core.List<core.String>? stringValues;
-
-  $StringParameterArray({this.stringValues});
-
-  $StringParameterArray.fromJson(core.Map json_)
-    : this(
-        stringValues: (json_['stringValues'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final stringValues = this.stringValues;
-    return {'stringValues': ?stringValues};
-  }
-}
-
-/// Used by:
-///
 /// - assuredworkloads:v1 : GoogleCloudAssuredworkloadsV1OrgPolicyPolicyRuleStringValues
 /// - cloudasset:v1 : GoogleCloudAssetV1StringValues
 /// - orgpolicy:v2 : GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues
@@ -26109,51 +13107,6 @@ class $StringValues {
     final allowedValues = this.allowedValues;
     final deniedValues = this.deniedValues;
     return {'allowedValues': ?allowedValues, 'deniedValues': ?deniedValues};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : SubExchangeAssignedTargetingOptionDetails
-/// - displayvideo:v3 : SubExchangeAssignedTargetingOptionDetails
-/// - displayvideo:v4 : SubExchangeAssignedTargetingOptionDetails
-class $SubExchangeAssignedTargetingOptionDetails {
-  /// The targeting_option_id of a TargetingOption of type
-  /// `TARGETING_TYPE_SUB_EXCHANGE`.
-  ///
-  /// Required.
-  core.String? targetingOptionId;
-
-  $SubExchangeAssignedTargetingOptionDetails({this.targetingOptionId});
-
-  $SubExchangeAssignedTargetingOptionDetails.fromJson(core.Map json_)
-    : this(targetingOptionId: json_['targetingOptionId'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final targetingOptionId = this.targetingOptionId;
-    return {'targetingOptionId': ?targetingOptionId};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : SubExchangeTargetingOptionDetails
-/// - displayvideo:v3 : SubExchangeTargetingOptionDetails
-/// - displayvideo:v4 : SubExchangeTargetingOptionDetails
-class $SubExchangeTargetingOptionDetails {
-  /// The display name of the sub-exchange.
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  $SubExchangeTargetingOptionDetails({this.displayName});
-
-  $SubExchangeTargetingOptionDetails.fromJson(core.Map json_)
-    : this(displayName: json_['displayName'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final displayName = this.displayName;
-    return {'displayName': ?displayName};
   }
 }
 
@@ -26208,8 +13161,6 @@ class $SuggestionRequest {
 ///
 /// - gkebackup:v1 : GetTagsResponse
 /// - gkebackup:v1 : SetTagsResponse
-/// - memcache:v1 : GetTagsResponse
-/// - memcache:v1 : SetTagsResponse
 class $TagsResponse {
   /// A checksum based on the current bindings.
   ///
@@ -26245,96 +13196,6 @@ class $TagsResponse {
     final name = this.name;
     final tags = this.tags;
     return {'etag': ?etag, 'name': ?name, 'tags': ?tags};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : TargetFrequency
-/// - displayvideo:v3 : TargetFrequency
-/// - displayvideo:v4 : TargetFrequency
-class $TargetFrequency {
-  /// The target number of times, on average, the ads will be shown to the same
-  /// person in the timespan dictated by time_unit and time_unit_count.
-  core.String? targetCount;
-
-  /// The unit of time in which the target frequency will be applied.
-  ///
-  /// The following time unit is applicable: * `TIME_UNIT_WEEKS` *
-  /// `TIME_UNIT_MONTHS`
-  /// Possible string values are:
-  /// - "TIME_UNIT_UNSPECIFIED" : Time unit value is not specified or is unknown
-  /// in this version.
-  /// - "TIME_UNIT_LIFETIME" : The frequency cap will be applied to the whole
-  /// life time of the line item.
-  /// - "TIME_UNIT_MONTHS" : The frequency cap will be applied to a number of
-  /// months.
-  /// - "TIME_UNIT_WEEKS" : The frequency cap will be applied to a number of
-  /// weeks.
-  /// - "TIME_UNIT_DAYS" : The frequency cap will be applied to a number of
-  /// days.
-  /// - "TIME_UNIT_HOURS" : The frequency cap will be applied to a number of
-  /// hours.
-  /// - "TIME_UNIT_MINUTES" : The frequency cap will be applied to a number of
-  /// minutes.
-  core.String? timeUnit;
-
-  /// The number of time_unit the target frequency will last.
-  ///
-  /// The following restrictions apply based on the value of time_unit: *
-  /// `TIME_UNIT_WEEKS` - must be 1 * `TIME_UNIT_MONTHS` - must be 1
-  core.int? timeUnitCount;
-
-  $TargetFrequency({this.targetCount, this.timeUnit, this.timeUnitCount});
-
-  $TargetFrequency.fromJson(core.Map json_)
-    : this(
-        targetCount: json_['targetCount'] as core.String?,
-        timeUnit: json_['timeUnit'] as core.String?,
-        timeUnitCount: json_['timeUnitCount'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final targetCount = this.targetCount;
-    final timeUnit = this.timeUnit;
-    final timeUnitCount = this.timeUnitCount;
-    return {
-      'targetCount': ?targetCount,
-      'timeUnit': ?timeUnit,
-      'timeUnitCount': ?timeUnitCount,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - tagmanager:v1 : TeardownTag
-/// - tagmanager:v2 : TeardownTag
-class $TeardownTag {
-  /// If true, fire the teardown tag if and only if the main tag fires
-  /// successfully.
-  ///
-  /// If false, fire the teardown tag regardless of main tag firing status.
-  core.bool? stopTeardownOnFailure;
-
-  /// The name of the teardown tag.
-  core.String? tagName;
-
-  $TeardownTag({this.stopTeardownOnFailure, this.tagName});
-
-  $TeardownTag.fromJson(core.Map json_)
-    : this(
-        stopTeardownOnFailure: json_['stopTeardownOnFailure'] as core.bool?,
-        tagName: json_['tagName'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final stopTeardownOnFailure = this.stopTeardownOnFailure;
-    final tagName = this.tagName;
-    return {
-      'stopTeardownOnFailure': ?stopTeardownOnFailure,
-      'tagName': ?tagName,
-    };
   }
 }
 
@@ -26387,8 +13248,6 @@ class $TerraformVariable {
 /// Used by:
 ///
 /// - accesscontextmanager:v1 : TestIamPermissionsRequest
-/// - agentidentity:v1 : TestIamPermissionsRequest
-/// - agentregistry:v1 : GoogleIamV1TestIamPermissionsRequest
 /// - analyticshub:v1 : TestIamPermissionsRequest
 /// - apigateway:v1 : ApigatewayTestIamPermissionsRequest
 /// - apigee:v1 : GoogleIamV1TestIamPermissionsRequest
@@ -26411,38 +13270,30 @@ class $TerraformVariable {
 /// - cloudfunctions:v2 : TestIamPermissionsRequest
 /// - cloudkms:v1 : TestIamPermissionsRequest
 /// - cloudresourcemanager:v1 : TestIamPermissionsRequest
-/// - cloudresourcemanager:v2 : TestIamPermissionsRequest
 /// - cloudresourcemanager:v3 : TestIamPermissionsRequest
 /// - cloudtasks:v2 : TestIamPermissionsRequest
 /// - config:v1 : TestIamPermissionsRequest
-/// - connectors:v1 : TestIamPermissionsRequest
 /// - contactcenterinsights:v1 : GoogleIamV1TestIamPermissionsRequest
 /// - containeranalysis:v1 : TestIamPermissionsRequest
-/// - datacatalog:v1 : TestIamPermissionsRequest
 /// - dataform:v1 : TestIamPermissionsRequest
 /// - datafusion:v1 : TestIamPermissionsRequest
 /// - datamigration:v1 : TestIamPermissionsRequest
 /// - dns:v1 : GoogleIamV1TestIamPermissionsRequest
-/// - domains:v1 : TestIamPermissionsRequest
 /// - eventarc:v1 : TestIamPermissionsRequest
 /// - gkebackup:v1 : TestIamPermissionsRequest
-/// - gkehub:v1 : TestIamPermissionsRequest
 /// - gkeonprem:v1 : TestIamPermissionsRequest
 /// - healthcare:v1 : TestIamPermissionsRequest
 /// - iam:v1 : TestIamPermissionsRequest
 /// - iap:v1 : TestIamPermissionsRequest
 /// - identitytoolkit:v2 : GoogleIamV1TestIamPermissionsRequest
 /// - managedidentities:v1 : TestIamPermissionsRequest
-/// - ml:v1 : GoogleIamV1__TestIamPermissionsRequest
 /// - networkconnectivity:v1 : TestIamPermissionsRequest
 /// - networkmanagement:v1 : TestIamPermissionsRequest
 /// - networksecurity:v1 : GoogleIamV1TestIamPermissionsRequest
 /// - networkservices:v1 : TestIamPermissionsRequest
-/// - notebooks:v1 : TestIamPermissionsRequest
 /// - notebooks:v2 : TestIamPermissionsRequest
 /// - privateca:v1 : TestIamPermissionsRequest
 /// - pubsub:v1 : TestIamPermissionsRequest
-/// - run:v1 : TestIamPermissionsRequest
 /// - run:v2 : GoogleIamV1TestIamPermissionsRequest
 /// - secretmanager:v1 : TestIamPermissionsRequest
 /// - securesourcemanager:v1 : TestIamPermissionsRequest
@@ -26478,7 +13329,6 @@ class $TestIamPermissionsRequest00 {
 /// - dataplex:v1 : GoogleIamV1TestIamPermissionsRequest
 /// - dataproc:v1 : TestIamPermissionsRequest
 /// - logging:v2 : TestIamPermissionsRequest
-/// - metastore:v1 : TestIamPermissionsRequest
 class $TestIamPermissionsRequest01 {
   /// The set of permissions to check for the resource.
   ///
@@ -26504,17 +13354,70 @@ class $TestIamPermissionsRequest01 {
 
 /// Used by:
 ///
-/// - dataplex:v1 : GoogleIamV1TestIamPermissionsResponse
-/// - dataproc:v1 : TestIamPermissionsResponse
-/// - logging:v2 : TestIamPermissionsResponse
-/// - metastore:v1 : TestIamPermissionsResponse
-class $TestIamPermissionsResponse {
-  /// A subset of TestPermissionsRequest.permissions that the caller is allowed.
+/// - accesscontextmanager:v1 : TestIamPermissionsResponse
+/// - aiplatform:v1 : GoogleIamV1TestIamPermissionsResponse
+/// - analyticshub:v1 : TestIamPermissionsResponse
+/// - apigateway:v1 : ApigatewayTestIamPermissionsResponse
+/// - apigee:v1 : GoogleIamV1TestIamPermissionsResponse
+/// - apphub:v1 : TestIamPermissionsResponse
+/// - artifactregistry:v1 : TestIamPermissionsResponse
+/// - backupdr:v1 : TestIamPermissionsResponse
+/// - beyondcorp:v1 : GoogleIamV1TestIamPermissionsResponse
+/// - biglake:v1 : TestIamPermissionsResponse
+/// - bigquery:v2 : TestIamPermissionsResponse
+/// - bigqueryconnection:v1 : TestIamPermissionsResponse
+/// - bigquerydatapolicy:v1 : TestIamPermissionsResponse
+/// - bigquerydatapolicy:v2 : TestIamPermissionsResponse
+/// - bigqueryreservation:v1 : TestIamPermissionsResponse
+/// - bigtableadmin:v2 : TestIamPermissionsResponse
+/// - binaryauthorization:v1 : TestIamPermissionsResponse
+/// - cloudbilling:v1 : TestIamPermissionsResponse
+/// - cloudbuild:v2 : TestIamPermissionsResponse
+/// - clouddeploy:v1 : TestIamPermissionsResponse
+/// - cloudfunctions:v1 : TestIamPermissionsResponse
+/// - cloudfunctions:v2 : TestIamPermissionsResponse
+/// - cloudkms:v1 : TestIamPermissionsResponse
+/// - cloudresourcemanager:v1 : TestIamPermissionsResponse
+/// - cloudresourcemanager:v3 : TestIamPermissionsResponse
+/// - cloudtasks:v2 : TestIamPermissionsResponse
+/// - config:v1 : TestIamPermissionsResponse
+/// - contactcenterinsights:v1 : GoogleIamV1TestIamPermissionsResponse
+/// - containeranalysis:v1 : TestIamPermissionsResponse
+/// - dataform:v1 : TestIamPermissionsResponse
+/// - datafusion:v1 : TestIamPermissionsResponse
+/// - datamigration:v1 : TestIamPermissionsResponse
+/// - dns:v1 : GoogleIamV1TestIamPermissionsResponse
+/// - eventarc:v1 : TestIamPermissionsResponse
+/// - gkebackup:v1 : TestIamPermissionsResponse
+/// - gkeonprem:v1 : TestIamPermissionsResponse
+/// - healthcare:v1 : TestIamPermissionsResponse
+/// - iam:v1 : TestIamPermissionsResponse
+/// - iap:v1 : TestIamPermissionsResponse
+/// - identitytoolkit:v2 : GoogleIamV1TestIamPermissionsResponse
+/// - managedidentities:v1 : TestIamPermissionsResponse
+/// - networkconnectivity:v1 : TestIamPermissionsResponse
+/// - networkmanagement:v1 : TestIamPermissionsResponse
+/// - networksecurity:v1 : GoogleIamV1TestIamPermissionsResponse
+/// - networkservices:v1 : TestIamPermissionsResponse
+/// - notebooks:v2 : TestIamPermissionsResponse
+/// - privateca:v1 : TestIamPermissionsResponse
+/// - pubsub:v1 : TestIamPermissionsResponse
+/// - run:v2 : GoogleIamV1TestIamPermissionsResponse
+/// - secretmanager:v1 : TestIamPermissionsResponse
+/// - securesourcemanager:v1 : TestIamPermissionsResponse
+/// - servicedirectory:v1 : TestIamPermissionsResponse
+/// - servicemanagement:v1 : TestIamPermissionsResponse
+/// - spanner:v1 : TestIamPermissionsResponse
+/// - vmwareengine:v1 : TestIamPermissionsResponse
+/// - workstations:v1 : TestIamPermissionsResponse
+class $TestIamPermissionsResponse00 {
+  /// A subset of `TestPermissionsRequest.permissions` that the caller is
+  /// allowed.
   core.List<core.String>? permissions;
 
-  $TestIamPermissionsResponse({this.permissions});
+  $TestIamPermissionsResponse00({this.permissions});
 
-  $TestIamPermissionsResponse.fromJson(core.Map json_)
+  $TestIamPermissionsResponse00.fromJson(core.Map json_)
     : this(
         permissions: (json_['permissions'] as core.List?)
             ?.map((value) => value as core.String)
@@ -26529,25 +13432,25 @@ class $TestIamPermissionsResponse {
 
 /// Used by:
 ///
-/// - displayvideo:v3 : AdPolicyTopicEvidenceTextList
-/// - displayvideo:v4 : AdPolicyTopicEvidenceTextList
-/// - searchads360:v23 : GoogleAdsSearchads360V23Common_PolicyTopicEvidence_TextList
-class $TextList {
-  /// The fragments of text from the resource that caused the policy finding.
-  core.List<core.String>? texts;
+/// - dataplex:v1 : GoogleIamV1TestIamPermissionsResponse
+/// - dataproc:v1 : TestIamPermissionsResponse
+/// - logging:v2 : TestIamPermissionsResponse
+class $TestIamPermissionsResponse01 {
+  /// A subset of TestPermissionsRequest.permissions that the caller is allowed.
+  core.List<core.String>? permissions;
 
-  $TextList({this.texts});
+  $TestIamPermissionsResponse01({this.permissions});
 
-  $TextList.fromJson(core.Map json_)
+  $TestIamPermissionsResponse01.fromJson(core.Map json_)
     : this(
-        texts: (json_['texts'] as core.List?)
+        permissions: (json_['permissions'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() {
-    final texts = this.texts;
-    return {'texts': ?texts};
+    final permissions = this.permissions;
+    return {'permissions': ?permissions};
   }
 }
 
@@ -26580,151 +13483,6 @@ class $TextSpan {
 
 /// Used by:
 ///
-/// - displayvideo:v2 : ThirdPartyOnlyConfig
-/// - displayvideo:v3 : ThirdPartyOnlyConfig
-/// - displayvideo:v4 : ThirdPartyOnlyConfig
-class $ThirdPartyOnlyConfig {
-  /// Whether or not order ID reporting for pixels is enabled.
-  ///
-  /// This value cannot be changed once set to `true`.
-  core.bool? pixelOrderIdReportingEnabled;
-
-  $ThirdPartyOnlyConfig({this.pixelOrderIdReportingEnabled});
-
-  $ThirdPartyOnlyConfig.fromJson(core.Map json_)
-    : this(
-        pixelOrderIdReportingEnabled:
-            json_['pixelOrderIdReportingEnabled'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final pixelOrderIdReportingEnabled = this.pixelOrderIdReportingEnabled;
-    return {'pixelOrderIdReportingEnabled': ?pixelOrderIdReportingEnabled};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : ThirdPartyUrl
-/// - displayvideo:v3 : ThirdPartyUrl
-/// - displayvideo:v4 : ThirdPartyUrl
-class $ThirdPartyUrl {
-  /// The type of interaction needs to be tracked by the tracking URL
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "THIRD_PARTY_URL_TYPE_UNSPECIFIED" : The type of third-party URL is
-  /// unspecified or is unknown in this version.
-  /// - "THIRD_PARTY_URL_TYPE_IMPRESSION" : Used to count impressions of the
-  /// creative after the audio or video buffering is complete.
-  /// - "THIRD_PARTY_URL_TYPE_CLICK_TRACKING" : Used to track user clicks on the
-  /// audio or video.
-  /// - "THIRD_PARTY_URL_TYPE_AUDIO_VIDEO_START" : Used to track the number of
-  /// times a user starts the audio or video.
-  /// - "THIRD_PARTY_URL_TYPE_AUDIO_VIDEO_FIRST_QUARTILE" : Used to track the
-  /// number of times the audio or video plays to 25% of its length.
-  /// - "THIRD_PARTY_URL_TYPE_AUDIO_VIDEO_MIDPOINT" : Used to track the number
-  /// of times the audio or video plays to 50% of its length.
-  /// - "THIRD_PARTY_URL_TYPE_AUDIO_VIDEO_THIRD_QUARTILE" : Used to track the
-  /// number of times the audio or video plays to 75% of its length.
-  /// - "THIRD_PARTY_URL_TYPE_AUDIO_VIDEO_COMPLETE" : Used to track the number
-  /// of times the audio or video plays to the end.
-  /// - "THIRD_PARTY_URL_TYPE_AUDIO_VIDEO_MUTE" : Used to track the number of
-  /// times a user mutes the audio or video.
-  /// - "THIRD_PARTY_URL_TYPE_AUDIO_VIDEO_PAUSE" : Used to track the number of
-  /// times a user pauses the audio or video.
-  /// - "THIRD_PARTY_URL_TYPE_AUDIO_VIDEO_REWIND" : Used to track the number of
-  /// times a user replays the audio or video.
-  /// - "THIRD_PARTY_URL_TYPE_AUDIO_VIDEO_FULLSCREEN" : Used to track the number
-  /// of times a user expands the player to full-screen size.
-  /// - "THIRD_PARTY_URL_TYPE_AUDIO_VIDEO_STOP" : Used to track the number of
-  /// times a user stops the audio or video.
-  /// - "THIRD_PARTY_URL_TYPE_AUDIO_VIDEO_CUSTOM" : Used to track the number of
-  /// times a user performs a custom click, such as clicking on a video hot
-  /// spot.
-  /// - "THIRD_PARTY_URL_TYPE_AUDIO_VIDEO_SKIP" : Used to track the number of
-  /// times the audio or video was skipped.
-  /// - "THIRD_PARTY_URL_TYPE_AUDIO_VIDEO_PROGRESS" : Used to track the number
-  /// of times the audio or video plays to an offset determined by the
-  /// progress_offset.
-  core.String? type;
-
-  /// Tracking URL used to track the interaction.
-  ///
-  /// Provide a URL with optional path or query string, beginning with `https:`.
-  /// For example, `https://www.example.com/path`
-  ///
-  /// Optional.
-  core.String? url;
-
-  $ThirdPartyUrl({this.type, this.url});
-
-  $ThirdPartyUrl.fromJson(core.Map json_)
-    : this(
-        type: json_['type'] as core.String?,
-        url: json_['url'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final type = this.type;
-    final url = this.url;
-    return {'type': ?type, 'url': ?url};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : ThirdPartyVendorConfig
-/// - displayvideo:v3 : ThirdPartyVendorConfig
-/// - displayvideo:v4 : ThirdPartyVendorConfig
-class $ThirdPartyVendorConfig {
-  /// The ID used by the platform of the third-party vendor to identify the line
-  /// item.
-  core.String? placementId;
-
-  /// The third-party measurement vendor.
-  /// Possible string values are:
-  /// - "THIRD_PARTY_VENDOR_UNSPECIFIED" : Unknown third-party vendor.
-  /// - "THIRD_PARTY_VENDOR_MOAT" : Moat.
-  /// - "THIRD_PARTY_VENDOR_DOUBLE_VERIFY" : DoubleVerify.
-  /// - "THIRD_PARTY_VENDOR_INTEGRAL_AD_SCIENCE" : Integral Ad Science.
-  /// - "THIRD_PARTY_VENDOR_COMSCORE" : Comscore.
-  /// - "THIRD_PARTY_VENDOR_TELEMETRY" : Telemetry.
-  /// - "THIRD_PARTY_VENDOR_MEETRICS" : Meetrics.
-  /// - "THIRD_PARTY_VENDOR_ZEFR" : ZEFR.
-  /// - "THIRD_PARTY_VENDOR_NIELSEN" : Nielsen.
-  /// - "THIRD_PARTY_VENDOR_KANTAR" : Kantar.
-  /// - "THIRD_PARTY_VENDOR_DYNATA" : Dynata.
-  /// - "THIRD_PARTY_VENDOR_TRANSUNION" : Transunion.
-  /// - "THIRD_PARTY_VENDOR_ORIGIN" : Origin.
-  /// - "THIRD_PARTY_VENDOR_GEMIUS" : Gemius.
-  /// - "THIRD_PARTY_VENDOR_MEDIA_SCOPE" : MediaScope.
-  /// - "THIRD_PARTY_VENDOR_AUDIENCE_PROJECT" : Audience Project.
-  /// - "THIRD_PARTY_VENDOR_VIDEO_AMP" : Video Amp.
-  /// - "THIRD_PARTY_VENDOR_ISPOT_TV" : Ispot TV.
-  /// - "THIRD_PARTY_VENDOR_INTAGE" : Intage.
-  /// - "THIRD_PARTY_VENDOR_MACROMILL" : Macromill.
-  /// - "THIRD_PARTY_VENDOR_VIDEO_RESEARCH" : Video Research.
-  /// - "THIRD_PARTY_VENDOR_AQUILA" : Aquila.
-  core.String? vendor;
-
-  $ThirdPartyVendorConfig({this.placementId, this.vendor});
-
-  $ThirdPartyVendorConfig.fromJson(core.Map json_)
-    : this(
-        placementId: json_['placementId'] as core.String?,
-        vendor: json_['vendor'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final placementId = this.placementId;
-    final vendor = this.vendor;
-    return {'placementId': ?placementId, 'vendor': ?vendor};
-  }
-}
-
-/// Used by:
-///
 /// - alloydb:v1 : GoogleTypeTimeOfDay
 /// - androidmanagement:v1 : TimeOfDay
 /// - apigee:v1 : GoogleTypeTimeOfDay
@@ -26736,16 +13494,13 @@ class $ThirdPartyVendorConfig {
 /// - dlp:v2 : GoogleTypeTimeOfDay
 /// - gkebackup:v1 : TimeOfDay
 /// - health:v4 : TimeOfDay
-/// - jobs:v3 : TimeOfDay
 /// - jobs:v4 : TimeOfDay
 /// - looker:v1 : TimeOfDay
-/// - memcache:v1 : TimeOfDay
 /// - merchantapi:datasources_v1 : TimeOfDay
 /// - monitoring:v3 : TimeOfDay
 /// - mybusinessbusinessinformation:v1 : TimeOfDay
 /// - mybusinesslodging:v1 : TimeOfDay
 /// - oracledatabase:v1 : TimeOfDay
-/// - osconfig:v1 : TimeOfDay
 /// - redis:v1 : TimeOfDay
 /// - sheets:v4 : TimeOfDay
 /// - storagetransfer:v1 : TimeOfDay
@@ -26810,7 +13565,6 @@ class $TimeOfDay {
 /// - merchantapi:accounts_v1 : TimeZone
 /// - merchantapi:ordertracking_v1 : TimeZone
 /// - oracledatabase:v1 : TimeZone
-/// - osconfig:v1 : TimeZone
 /// - places:v1 : GoogleTypeTimeZone
 class $TimeZone {
   /// IANA Time Zone Database time zone.
@@ -26837,37 +13591,6 @@ class $TimeZone {
     final id = this.id;
     final version = this.version;
     return {'id': ?id, 'version': ?version};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : TimerEvent
-/// - displayvideo:v3 : TimerEvent
-/// - displayvideo:v4 : TimerEvent
-class $TimerEvent {
-  /// The name of the timer event.
-  ///
-  /// Required.
-  core.String? name;
-
-  /// The name used to identify this timer event in reports.
-  ///
-  /// Required.
-  core.String? reportingName;
-
-  $TimerEvent({this.name, this.reportingName});
-
-  $TimerEvent.fromJson(core.Map json_)
-    : this(
-        name: json_['name'] as core.String?,
-        reportingName: json_['reportingName'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final name = this.name;
-    final reportingName = this.reportingName;
-    return {'name': ?name, 'reportingName': ?reportingName};
   }
 }
 
@@ -27294,171 +14017,6 @@ class $TraceSamplingConfig {
 
 /// Used by:
 ///
-/// - displayvideo:v2 : TrackingFloodlightActivityConfig
-/// - displayvideo:v3 : TrackingFloodlightActivityConfig
-/// - displayvideo:v4 : TrackingFloodlightActivityConfig
-class $TrackingFloodlightActivityConfig {
-  /// The ID of the Floodlight activity.
-  ///
-  /// Required.
-  core.String? floodlightActivityId;
-
-  /// The number of days after an ad has been clicked in which a conversion may
-  /// be counted.
-  ///
-  /// Must be between 0 and 90 inclusive.
-  ///
-  /// Required.
-  core.int? postClickLookbackWindowDays;
-
-  /// The number of days after an ad has been viewed in which a conversion may
-  /// be counted.
-  ///
-  /// Must be between 0 and 90 inclusive.
-  ///
-  /// Required.
-  core.int? postViewLookbackWindowDays;
-
-  $TrackingFloodlightActivityConfig({
-    this.floodlightActivityId,
-    this.postClickLookbackWindowDays,
-    this.postViewLookbackWindowDays,
-  });
-
-  $TrackingFloodlightActivityConfig.fromJson(core.Map json_)
-    : this(
-        floodlightActivityId: json_['floodlightActivityId'] as core.String?,
-        postClickLookbackWindowDays:
-            json_['postClickLookbackWindowDays'] as core.int?,
-        postViewLookbackWindowDays:
-            json_['postViewLookbackWindowDays'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final floodlightActivityId = this.floodlightActivityId;
-    final postClickLookbackWindowDays = this.postClickLookbackWindowDays;
-    final postViewLookbackWindowDays = this.postViewLookbackWindowDays;
-    return {
-      'floodlightActivityId': ?floodlightActivityId,
-      'postClickLookbackWindowDays': ?postClickLookbackWindowDays,
-      'postViewLookbackWindowDays': ?postViewLookbackWindowDays,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - connectors:v1 : TrafficShapingConfig
-/// - integrations:v1 : GoogleCloudConnectorsV1TrafficShapingConfig
-class $TrafficShapingConfig {
-  /// Specifies the duration over which the API call quota limits are
-  /// calculated.
-  ///
-  /// This duration is used to define the time window for evaluating if the
-  /// number of API calls made by a user is within the allowed quota limits. For
-  /// example: - To define a quota sampled over 16 seconds, set `seconds` to 16
-  /// - To define a quota sampled over 5 minutes, set `seconds` to 300 (5 * 60)
-  /// - To define a quota sampled over 1 day, set `seconds` to 86400 (24 * 60 *
-  /// 60) and so on. It is important to note that this duration is not the time
-  /// the quota is valid for, but rather the time window over which the quota is
-  /// evaluated. For example, if the quota is 100 calls per 10 seconds, then
-  /// this duration field would be set to 10 seconds.
-  ///
-  /// Required.
-  core.String? duration;
-
-  /// Maximum number of api calls allowed.
-  ///
-  /// Required.
-  core.String? quotaLimit;
-
-  $TrafficShapingConfig({this.duration, this.quotaLimit});
-
-  $TrafficShapingConfig.fromJson(core.Map json_)
-    : this(
-        duration: json_['duration'] as core.String?,
-        quotaLimit: json_['quotaLimit'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final duration = this.duration;
-    final quotaLimit = this.quotaLimit;
-    return {'duration': ?duration, 'quotaLimit': ?quotaLimit};
-  }
-}
-
-/// Used by:
-///
-/// - integrations:v1 : EnterpriseCrmFrontendsEventbusProtoTriggerConfigVariables
-/// - integrations:v1 : GoogleCloudIntegrationsV1alphaTriggerConfigVariables
-/// - integrations:v2 : GoogleCloudIntegrationsV2DuetTriggerConfigVariables
-class $TriggerConfigVariables {
-  /// List of variable names.
-  ///
-  /// Optional.
-  core.List<core.String>? names;
-
-  $TriggerConfigVariables({this.names});
-
-  $TriggerConfigVariables.fromJson(core.Map json_)
-    : this(
-        names: (json_['names'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final names = this.names;
-    return {'names': ?names};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : UniversalAdId
-/// - displayvideo:v3 : UniversalAdId
-/// - displayvideo:v4 : UniversalAdId
-class $UniversalAdId {
-  /// The unique creative identifier.
-  ///
-  /// Optional.
-  core.String? id;
-
-  /// The registry provides unique creative identifiers.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "UNIVERSAL_AD_REGISTRY_UNSPECIFIED" : The Universal Ad registry is
-  /// unspecified or is unknown in this version.
-  /// - "UNIVERSAL_AD_REGISTRY_OTHER" : Use a custom provider to provide the
-  /// Universal Ad ID.
-  /// - "UNIVERSAL_AD_REGISTRY_AD_ID" : Use Ad-ID to provide the Universal Ad
-  /// ID.
-  /// - "UNIVERSAL_AD_REGISTRY_CLEARCAST" : Use clearcast.co.uk to provide the
-  /// Universal Ad ID.
-  /// - "UNIVERSAL_AD_REGISTRY_DV360" : Use Display & Video 360 to provide the
-  /// Universal Ad ID.
-  /// - "UNIVERSAL_AD_REGISTRY_CM" : Use Campaign Manager 360 to provide the
-  /// Universal Ad ID.
-  core.String? registry;
-
-  $UniversalAdId({this.id, this.registry});
-
-  $UniversalAdId.fromJson(core.Map json_)
-    : this(
-        id: json_['id'] as core.String?,
-        registry: json_['registry'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final id = this.id;
-    final registry = this.registry;
-    return {'id': ?id, 'registry': ?registry};
-  }
-}
-
-/// Used by:
-///
 /// - analyticshub:v1 : UnstructuredInference
 /// - pubsub:v1 : UnstructuredInference
 class $UnstructuredInference {
@@ -27544,39 +14102,6 @@ class $UpgradeDistribution {
 
 /// Used by:
 ///
-/// - displayvideo:v2 : UrlAssignedTargetingOptionDetails
-/// - displayvideo:v3 : UrlAssignedTargetingOptionDetails
-/// - displayvideo:v4 : UrlAssignedTargetingOptionDetails
-class $UrlAssignedTargetingOptionDetails {
-  /// Indicates if this option is being negatively targeted.
-  core.bool? negative;
-
-  /// The URL, for example `example.com`.
-  ///
-  /// DV360 supports two levels of subdirectory targeting, for example
-  /// `www.example.com/one-subdirectory-level/second-level`, and five levels of
-  /// subdomain targeting, for example `five.four.three.two.one.example.com`.
-  ///
-  /// Required.
-  core.String? url;
-
-  $UrlAssignedTargetingOptionDetails({this.negative, this.url});
-
-  $UrlAssignedTargetingOptionDetails.fromJson(core.Map json_)
-    : this(
-        negative: json_['negative'] as core.bool?,
-        url: json_['url'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final negative = this.negative;
-    final url = this.url;
-    return {'negative': ?negative, 'url': ?url};
-  }
-}
-
-/// Used by:
-///
 /// - servicemanagement:v1 : UsageRule
 /// - serviceusage:v1 : UsageRule
 class $UsageRule {
@@ -27646,137 +14171,6 @@ class $UserIdDataStatus {
     final recordCount = this.recordCount;
     final userIdCount = this.userIdCount;
     return {'recordCount': ?recordCount, 'userIdCount': ?userIdCount};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : UserRewardedContentAssignedTargetingOptionDetails
-/// - displayvideo:v3 : UserRewardedContentAssignedTargetingOptionDetails
-/// - displayvideo:v4 : UserRewardedContentAssignedTargetingOptionDetails
-class $UserRewardedContentAssignedTargetingOptionDetails {
-  /// The targeting_option_id field when targeting_type is
-  /// `TARGETING_TYPE_USER_REWARDED_CONTENT`.
-  ///
-  /// Required.
-  core.String? targetingOptionId;
-
-  /// User rewarded content status for video ads.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "USER_REWARDED_CONTENT_UNSPECIFIED" : User rewarded content is not
-  /// specified or is unknown in this version.
-  /// - "USER_REWARDED_CONTENT_USER_REWARDED" : Represents ads where the user
-  /// will see a reward after viewing.
-  /// - "USER_REWARDED_CONTENT_NOT_USER_REWARDED" : Represents all other ads
-  /// besides user-rewarded.
-  core.String? userRewardedContent;
-
-  $UserRewardedContentAssignedTargetingOptionDetails({
-    this.targetingOptionId,
-    this.userRewardedContent,
-  });
-
-  $UserRewardedContentAssignedTargetingOptionDetails.fromJson(core.Map json_)
-    : this(
-        targetingOptionId: json_['targetingOptionId'] as core.String?,
-        userRewardedContent: json_['userRewardedContent'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final targetingOptionId = this.targetingOptionId;
-    final userRewardedContent = this.userRewardedContent;
-    return {
-      'targetingOptionId': ?targetingOptionId,
-      'userRewardedContent': ?userRewardedContent,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : UserRewardedContentTargetingOptionDetails
-/// - displayvideo:v3 : UserRewardedContentTargetingOptionDetails
-/// - displayvideo:v4 : UserRewardedContentTargetingOptionDetails
-class $UserRewardedContentTargetingOptionDetails {
-  /// User rewarded content status for video ads.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "USER_REWARDED_CONTENT_UNSPECIFIED" : User rewarded content is not
-  /// specified or is unknown in this version.
-  /// - "USER_REWARDED_CONTENT_USER_REWARDED" : Represents ads where the user
-  /// will see a reward after viewing.
-  /// - "USER_REWARDED_CONTENT_NOT_USER_REWARDED" : Represents all other ads
-  /// besides user-rewarded.
-  core.String? userRewardedContent;
-
-  $UserRewardedContentTargetingOptionDetails({this.userRewardedContent});
-
-  $UserRewardedContentTargetingOptionDetails.fromJson(core.Map json_)
-    : this(userRewardedContent: json_['userRewardedContent'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final userRewardedContent = this.userRewardedContent;
-    return {'userRewardedContent': ?userRewardedContent};
-  }
-}
-
-/// Used by:
-///
-/// - policysimulator:v1 : GoogleCloudPolicysimulatorV1AccessTuple
-/// - policytroubleshooter:v1 : GoogleCloudPolicytroubleshooterV1AccessTuple
-class $V1AccessTuple {
-  /// The full resource name that identifies the resource.
-  ///
-  /// For example,
-  /// `//compute.googleapis.com/projects/my-project/zones/us-central1-a/instances/my-instance`.
-  /// For examples of full resource names for Google Cloud services, see
-  /// https://cloud.google.com/iam/help/troubleshooter/full-resource-names.
-  ///
-  /// Required.
-  core.String? fullResourceName;
-
-  /// The IAM permission to check for the specified principal and resource.
-  ///
-  /// For a complete list of IAM permissions, see
-  /// https://cloud.google.com/iam/help/permissions/reference. For a complete
-  /// list of predefined IAM roles and the permissions in each role, see
-  /// https://cloud.google.com/iam/help/roles/reference.
-  ///
-  /// Required.
-  core.String? permission;
-
-  /// The principal whose access you want to check, in the form of the email
-  /// address that represents that principal.
-  ///
-  /// For example, `alice@example.com` or
-  /// `my-service-account@my-project.iam.gserviceaccount.com`. The principal
-  /// must be a Google Account or a service account. Other types of principals
-  /// are not supported.
-  ///
-  /// Required.
-  core.String? principal;
-
-  $V1AccessTuple({this.fullResourceName, this.permission, this.principal});
-
-  $V1AccessTuple.fromJson(core.Map json_)
-    : this(
-        fullResourceName: json_['fullResourceName'] as core.String?,
-        permission: json_['permission'] as core.String?,
-        principal: json_['principal'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final fullResourceName = this.fullResourceName;
-    final permission = this.permission;
-    final principal = this.principal;
-    return {
-      'fullResourceName': ?fullResourceName,
-      'permission': ?permission,
-      'principal': ?principal,
-    };
   }
 }
 
@@ -27928,41 +14322,6 @@ class $Version {
 
 /// Used by:
 ///
-/// - cloudasset:v1 : VersionedPackage
-/// - osconfig:v1 : InventoryVersionedPackage
-class $VersionedPackage {
-  /// The system architecture this package is intended for.
-  core.String? architecture;
-
-  /// The name of the package.
-  core.String? packageName;
-
-  /// The version of the package.
-  core.String? version;
-
-  $VersionedPackage({this.architecture, this.packageName, this.version});
-
-  $VersionedPackage.fromJson(core.Map json_)
-    : this(
-        architecture: json_['architecture'] as core.String?,
-        packageName: json_['packageName'] as core.String?,
-        version: json_['version'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final architecture = this.architecture;
-    final packageName = this.packageName;
-    final version = this.version;
-    return {
-      'architecture': ?architecture,
-      'packageName': ?packageName,
-      'version': ?version,
-    };
-  }
-}
-
-/// Used by:
-///
 /// - aiplatform:v1 : GoogleCloudAiplatformV1RetrieveContextsRequestVertexRagStoreRagResource
 /// - aiplatform:v1 : GoogleCloudAiplatformV1VertexRagStoreRagResource
 class $VertexRagStoreRagResource {
@@ -27994,280 +14353,6 @@ class $VertexRagStoreRagResource {
     final ragCorpus = this.ragCorpus;
     final ragFileIds = this.ragFileIds;
     return {'ragCorpus': ?ragCorpus, 'ragFileIds': ?ragFileIds};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : VideoAdInventoryControl
-/// - displayvideo:v3 : VideoAdInventoryControl
-/// - displayvideo:v4 : VideoAdInventoryControl
-class $VideoAdInventoryControl {
-  /// Whether ads can serve as in-feed format.
-  ///
-  /// Optional.
-  core.bool? allowInFeed;
-
-  /// Whether ads can serve as in-stream format.
-  ///
-  /// Optional.
-  core.bool? allowInStream;
-
-  /// Indicates whether ads can serve as non-skippable in-stream format.
-  ///
-  /// Optional.
-  core.bool? allowNonSkippableInStream;
-
-  /// Whether ads can serve as shorts format.
-  ///
-  /// Optional.
-  core.bool? allowShorts;
-
-  $VideoAdInventoryControl({
-    this.allowInFeed,
-    this.allowInStream,
-    this.allowNonSkippableInStream,
-    this.allowShorts,
-  });
-
-  $VideoAdInventoryControl.fromJson(core.Map json_)
-    : this(
-        allowInFeed: json_['allowInFeed'] as core.bool?,
-        allowInStream: json_['allowInStream'] as core.bool?,
-        allowNonSkippableInStream:
-            json_['allowNonSkippableInStream'] as core.bool?,
-        allowShorts: json_['allowShorts'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final allowInFeed = this.allowInFeed;
-    final allowInStream = this.allowInStream;
-    final allowNonSkippableInStream = this.allowNonSkippableInStream;
-    final allowShorts = this.allowShorts;
-    return {
-      'allowInFeed': ?allowInFeed,
-      'allowInStream': ?allowInStream,
-      'allowNonSkippableInStream': ?allowNonSkippableInStream,
-      'allowShorts': ?allowShorts,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : VideoAdSequenceStep
-/// - displayvideo:v3 : VideoAdSequenceStep
-/// - displayvideo:v4 : VideoAdSequenceStep
-class $VideoAdSequenceStep {
-  /// The ID of the corresponding ad group of the step.
-  core.String? adGroupId;
-
-  /// The interaction on the previous step that will lead the viewer to this
-  /// step.
-  ///
-  /// The first step does not have interaction_type.
-  /// Possible string values are:
-  /// - "INTERACTION_TYPE_UNSPECIFIED" : Unspecified or unknown
-  /// - "INTERACTION_TYPE_PAID_VIEW" : A paid view.
-  /// - "INTERACTION_TYPE_SKIP" : Skipped by the viewer.
-  /// - "INTERACTION_TYPE_IMPRESSION" : A (viewed) ad impression.
-  /// - "INTERACTION_TYPE_ENGAGED_IMPRESSION" : An ad impression that was not
-  /// immediately skipped by the viewer, but didn't reach the billable event
-  /// either.
-  core.String? interactionType;
-
-  /// The ID of the previous step.
-  ///
-  /// The first step does not have previous step.
-  core.String? previousStepId;
-
-  /// The ID of the step.
-  core.String? stepId;
-
-  $VideoAdSequenceStep({
-    this.adGroupId,
-    this.interactionType,
-    this.previousStepId,
-    this.stepId,
-  });
-
-  $VideoAdSequenceStep.fromJson(core.Map json_)
-    : this(
-        adGroupId: json_['adGroupId'] as core.String?,
-        interactionType: json_['interactionType'] as core.String?,
-        previousStepId: json_['previousStepId'] as core.String?,
-        stepId: json_['stepId'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final adGroupId = this.adGroupId;
-    final interactionType = this.interactionType;
-    final previousStepId = this.previousStepId;
-    final stepId = this.stepId;
-    return {
-      'adGroupId': ?adGroupId,
-      'interactionType': ?interactionType,
-      'previousStepId': ?previousStepId,
-      'stepId': ?stepId,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : VideoPlayerSizeAssignedTargetingOptionDetails
-/// - displayvideo:v3 : VideoPlayerSizeAssignedTargetingOptionDetails
-/// - displayvideo:v4 : VideoPlayerSizeAssignedTargetingOptionDetails
-class $VideoPlayerSizeAssignedTargetingOptionDetails {
-  /// The video player size.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "VIDEO_PLAYER_SIZE_UNSPECIFIED" : Video player size is not specified in
-  /// this version. This enum is a place holder for a default value and does not
-  /// represent a real video player size.
-  /// - "VIDEO_PLAYER_SIZE_SMALL" : The dimensions of the video player are less
-  /// than 400×300 (desktop), or up to 20% of screen covered (mobile).
-  /// - "VIDEO_PLAYER_SIZE_LARGE" : The dimensions of the video player are
-  /// between 400x300 and 1280x720 pixels (desktop), or 20% to 90% of the screen
-  /// covered (mobile).
-  /// - "VIDEO_PLAYER_SIZE_HD" : The dimensions of the video player are 1280×720
-  /// or greater (desktop), or over 90% of the screen covered (mobile).
-  /// - "VIDEO_PLAYER_SIZE_UNKNOWN" : The dimensions of the video player are
-  /// unknown.
-  core.String? videoPlayerSize;
-
-  $VideoPlayerSizeAssignedTargetingOptionDetails({this.videoPlayerSize});
-
-  $VideoPlayerSizeAssignedTargetingOptionDetails.fromJson(core.Map json_)
-    : this(videoPlayerSize: json_['videoPlayerSize'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final videoPlayerSize = this.videoPlayerSize;
-    return {'videoPlayerSize': ?videoPlayerSize};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : VideoPlayerSizeTargetingOptionDetails
-/// - displayvideo:v3 : VideoPlayerSizeTargetingOptionDetails
-/// - displayvideo:v4 : VideoPlayerSizeTargetingOptionDetails
-class $VideoPlayerSizeTargetingOptionDetails {
-  /// The video player size.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "VIDEO_PLAYER_SIZE_UNSPECIFIED" : Video player size is not specified in
-  /// this version. This enum is a place holder for a default value and does not
-  /// represent a real video player size.
-  /// - "VIDEO_PLAYER_SIZE_SMALL" : The dimensions of the video player are less
-  /// than 400×300 (desktop), or up to 20% of screen covered (mobile).
-  /// - "VIDEO_PLAYER_SIZE_LARGE" : The dimensions of the video player are
-  /// between 400x300 and 1280x720 pixels (desktop), or 20% to 90% of the screen
-  /// covered (mobile).
-  /// - "VIDEO_PLAYER_SIZE_HD" : The dimensions of the video player are 1280×720
-  /// or greater (desktop), or over 90% of the screen covered (mobile).
-  /// - "VIDEO_PLAYER_SIZE_UNKNOWN" : The dimensions of the video player are
-  /// unknown.
-  core.String? videoPlayerSize;
-
-  $VideoPlayerSizeTargetingOptionDetails({this.videoPlayerSize});
-
-  $VideoPlayerSizeTargetingOptionDetails.fromJson(core.Map json_)
-    : this(videoPlayerSize: json_['videoPlayerSize'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final videoPlayerSize = this.videoPlayerSize;
-    return {'videoPlayerSize': ?videoPlayerSize};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : ViewabilityAssignedTargetingOptionDetails
-/// - displayvideo:v3 : ViewabilityAssignedTargetingOptionDetails
-/// - displayvideo:v4 : ViewabilityAssignedTargetingOptionDetails
-class $ViewabilityAssignedTargetingOptionDetails {
-  /// The predicted viewability percentage.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "VIEWABILITY_UNSPECIFIED" : Default value when viewability is not
-  /// specified in this version. This enum is a placeholder for default value
-  /// and does not represent a real viewability option.
-  /// - "VIEWABILITY_10_PERCENT_OR_MORE" : Bid only on impressions that are at
-  /// least 10% likely to be viewable.
-  /// - "VIEWABILITY_20_PERCENT_OR_MORE" : Bid only on impressions that are at
-  /// least 20% likely to be viewable.
-  /// - "VIEWABILITY_30_PERCENT_OR_MORE" : Bid only on impressions that are at
-  /// least 30% likely to be viewable.
-  /// - "VIEWABILITY_40_PERCENT_OR_MORE" : Bid only on impressions that are at
-  /// least 40% likely to be viewable.
-  /// - "VIEWABILITY_50_PERCENT_OR_MORE" : Bid only on impressions that are at
-  /// least 50% likely to be viewable.
-  /// - "VIEWABILITY_60_PERCENT_OR_MORE" : Bid only on impressions that are at
-  /// least 60% likely to be viewable.
-  /// - "VIEWABILITY_70_PERCENT_OR_MORE" : Bid only on impressions that are at
-  /// least 70% likely to be viewable.
-  /// - "VIEWABILITY_80_PERCENT_OR_MORE" : Bid only on impressions that are at
-  /// least 80% likely to be viewable.
-  /// - "VIEWABILITY_90_PERCENT_OR_MORE" : Bid only on impressions that are at
-  /// least 90% likely to be viewable.
-  core.String? viewability;
-
-  $ViewabilityAssignedTargetingOptionDetails({this.viewability});
-
-  $ViewabilityAssignedTargetingOptionDetails.fromJson(core.Map json_)
-    : this(viewability: json_['viewability'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final viewability = this.viewability;
-    return {'viewability': ?viewability};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : ViewabilityTargetingOptionDetails
-/// - displayvideo:v3 : ViewabilityTargetingOptionDetails
-/// - displayvideo:v4 : ViewabilityTargetingOptionDetails
-class $ViewabilityTargetingOptionDetails {
-  /// The predicted viewability percentage.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "VIEWABILITY_UNSPECIFIED" : Default value when viewability is not
-  /// specified in this version. This enum is a placeholder for default value
-  /// and does not represent a real viewability option.
-  /// - "VIEWABILITY_10_PERCENT_OR_MORE" : Bid only on impressions that are at
-  /// least 10% likely to be viewable.
-  /// - "VIEWABILITY_20_PERCENT_OR_MORE" : Bid only on impressions that are at
-  /// least 20% likely to be viewable.
-  /// - "VIEWABILITY_30_PERCENT_OR_MORE" : Bid only on impressions that are at
-  /// least 30% likely to be viewable.
-  /// - "VIEWABILITY_40_PERCENT_OR_MORE" : Bid only on impressions that are at
-  /// least 40% likely to be viewable.
-  /// - "VIEWABILITY_50_PERCENT_OR_MORE" : Bid only on impressions that are at
-  /// least 50% likely to be viewable.
-  /// - "VIEWABILITY_60_PERCENT_OR_MORE" : Bid only on impressions that are at
-  /// least 60% likely to be viewable.
-  /// - "VIEWABILITY_70_PERCENT_OR_MORE" : Bid only on impressions that are at
-  /// least 70% likely to be viewable.
-  /// - "VIEWABILITY_80_PERCENT_OR_MORE" : Bid only on impressions that are at
-  /// least 80% likely to be viewable.
-  /// - "VIEWABILITY_90_PERCENT_OR_MORE" : Bid only on impressions that are at
-  /// least 90% likely to be viewable.
-  core.String? viewability;
-
-  $ViewabilityTargetingOptionDetails({this.viewability});
-
-  $ViewabilityTargetingOptionDetails.fromJson(core.Map json_)
-    : this(viewability: json_['viewability'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final viewability = this.viewability;
-    return {'viewability': ?viewability};
   }
 }
 
@@ -28371,7 +14456,6 @@ class $VpcSubNetwork {
 /// Used by:
 ///
 /// - firebaseappdistribution:v1 : GoogleLongrunningWaitOperationRequest
-/// - run:v1 : GoogleLongrunningWaitOperationRequest
 /// - run:v2 : GoogleLongrunningWaitOperationRequest
 /// - translate:v3 : WaitOperationRequest
 class $WaitOperationRequest {
@@ -28418,137 +14502,6 @@ class $WebAppIcon {
 
 /// Used by:
 ///
-/// - displayvideo:v3 : AdPolicyTopicEvidenceWebsiteList
-/// - displayvideo:v4 : AdPolicyTopicEvidenceWebsiteList
-/// - searchads360:v23 : GoogleAdsSearchads360V23Common_PolicyTopicEvidence_WebsiteList
-class $WebsiteList {
-  /// Websites that caused the policy finding.
-  core.List<core.String>? websites;
-
-  $WebsiteList({this.websites});
-
-  $WebsiteList.fromJson(core.Map json_)
-    : this(
-        websites: (json_['websites'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final websites = this.websites;
-    return {'websites': ?websites};
-  }
-}
-
-/// Used by:
-///
-/// - cloudasset:v1 : WindowsQuickFixEngineeringPackage
-/// - osconfig:v1 : InventoryWindowsQuickFixEngineeringPackage
-class $WindowsQuickFixEngineeringPackage {
-  /// A short textual description of the QFE update.
-  core.String? caption;
-
-  /// A textual description of the QFE update.
-  core.String? description;
-
-  /// Unique identifier associated with a particular QFE update.
-  core.String? hotFixId;
-
-  /// Date that the QFE update was installed.
-  ///
-  /// Mapped from installed_on field.
-  core.String? installTime;
-
-  $WindowsQuickFixEngineeringPackage({
-    this.caption,
-    this.description,
-    this.hotFixId,
-    this.installTime,
-  });
-
-  $WindowsQuickFixEngineeringPackage.fromJson(core.Map json_)
-    : this(
-        caption: json_['caption'] as core.String?,
-        description: json_['description'] as core.String?,
-        hotFixId: json_['hotFixId'] as core.String?,
-        installTime: json_['installTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final caption = this.caption;
-    final description = this.description;
-    final hotFixId = this.hotFixId;
-    final installTime = this.installTime;
-    return {
-      'caption': ?caption,
-      'description': ?description,
-      'hotFixId': ?hotFixId,
-      'installTime': ?installTime,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - cloudasset:v1 : WindowsUpdateCategory
-/// - osconfig:v1 : InventoryWindowsUpdatePackageWindowsUpdateCategory
-class $WindowsUpdateCategory {
-  /// The identifier of the windows update category.
-  core.String? id;
-
-  /// The name of the windows update category.
-  core.String? name;
-
-  $WindowsUpdateCategory({this.id, this.name});
-
-  $WindowsUpdateCategory.fromJson(core.Map json_)
-    : this(
-        id: json_['id'] as core.String?,
-        name: json_['name'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final id = this.id;
-    final name = this.name;
-    return {'id': ?id, 'name': ?name};
-  }
-}
-
-/// Used by:
-///
-/// - gkehub:v1 : WorkloadIdentityIdentityProviderStateDetail
-/// - gkehub:v2 : WorkloadIdentityIdentityProviderStateDetail
-class $WorkloadIdentityIdentityProviderStateDetail {
-  /// The state of the Identity Provider.
-  /// Possible string values are:
-  /// - "IDENTITY_PROVIDER_STATE_UNSPECIFIED" : Unknown state.
-  /// - "IDENTITY_PROVIDER_STATE_OK" : The Identity Provider was created/updated
-  /// successfully.
-  /// - "IDENTITY_PROVIDER_STATE_ERROR" : The Identity Provider was not
-  /// created/updated successfully. The error message is in the description
-  /// field.
-  core.String? code;
-
-  /// A human-readable description of the current state or returned error.
-  core.String? description;
-
-  $WorkloadIdentityIdentityProviderStateDetail({this.code, this.description});
-
-  $WorkloadIdentityIdentityProviderStateDetail.fromJson(core.Map json_)
-    : this(
-        code: json_['code'] as core.String?,
-        description: json_['description'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final code = this.code;
-    final description = this.description;
-    return {'code': ?code, 'description': ?description};
-  }
-}
-
-/// Used by:
-///
 /// - workstations:v1 : StopWorkstationRequest
 /// - workstations:v1 : SuspendWorkstationRequest
 class $WorkstationRequest {
@@ -28576,333 +14529,5 @@ class $WorkstationRequest {
     final etag = this.etag;
     final validateOnly = this.validateOnly;
     return {'etag': ?etag, 'validateOnly': ?validateOnly};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : YoutubeAndPartnersBiddingStrategy
-/// - displayvideo:v3 : YoutubeAndPartnersBiddingStrategy
-/// - displayvideo:v4 : YoutubeAndPartnersBiddingStrategy
-class $YoutubeAndPartnersBiddingStrategy {
-  /// Source of the effective target CPA value for ad group.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "BIDDING_SOURCE_UNSPECIFIED" : Bidding source is not specified or
-  /// unknown.
-  /// - "BIDDING_SOURCE_LINE_ITEM" : Bidding value is inherited from the line
-  /// item.
-  /// - "BIDDING_SOURCE_AD_GROUP" : Bidding value is defined in the ad group.
-  core.String? adGroupEffectiveTargetCpaSource;
-
-  /// The effective target CPA for ad group, in micros of advertiser's currency.
-  ///
-  /// Output only.
-  core.String? adGroupEffectiveTargetCpaValue;
-
-  /// The type of the bidding strategy.
-  /// Possible string values are:
-  /// - "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_UNSPECIFIED" : Type is not
-  /// specified or unknown.
-  /// - "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MANUAL_CPV" : A bidding
-  /// strategy that pays a configurable amount per video view.
-  /// - "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MANUAL_CPM" : A bidding
-  /// strategy that pays a configurable amount per impression.
-  /// - "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPA" : A bidding
-  /// strategy that automatically optimizes conversions per dollar.
-  /// - "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPM" : A bidding
-  /// strategy that pays a configurable amount per impression.
-  /// - "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_RESERVE_CPM" : A bidding
-  /// strategy for YouTube Instant Reserve line items that pays a fixed amount
-  /// per impression.
-  /// - "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MAXIMIZE_LIFT" : An
-  /// automated bidding strategy that sets bids to achieve maximum lift.
-  /// - "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MAXIMIZE_CONVERSIONS" : A
-  /// bidding strategy that automatically maximizes number of conversions given
-  /// a daily budget.
-  /// - "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPV" : A bidding
-  /// strategy that automatically optimizes cost per video view.
-  /// - "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_ROAS" : A bidding
-  /// strategy that automatically maximizes revenue while averaging a specific
-  /// target Return On Ad Spend (ROAS).
-  /// - "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MAXIMIZE_CONVERSION_VALUE" :
-  /// A bidding strategy that automatically sets bids to maximize revenue while
-  /// spending your budget.
-  core.String? type;
-
-  /// The value used by the bidding strategy.
-  ///
-  /// When the bidding strategy is assigned at the line item level, this field
-  /// is only applicable for the following strategy types: *
-  /// `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPA` *
-  /// `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_ROAS` When the bidding
-  /// strategy is assigned at the ad group level, this field is only applicable
-  /// for the following strategy types: *
-  /// `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MANUAL_CPM` *
-  /// `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MANUAL_CPV` *
-  /// `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPA` *
-  /// `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPM` *
-  /// `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_RESERVE_CPM` *
-  /// `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_ROAS` If not using an
-  /// applicable strategy, the value of this field will be 0.
-  core.String? value;
-
-  $YoutubeAndPartnersBiddingStrategy({
-    this.adGroupEffectiveTargetCpaSource,
-    this.adGroupEffectiveTargetCpaValue,
-    this.type,
-    this.value,
-  });
-
-  $YoutubeAndPartnersBiddingStrategy.fromJson(core.Map json_)
-    : this(
-        adGroupEffectiveTargetCpaSource:
-            json_['adGroupEffectiveTargetCpaSource'] as core.String?,
-        adGroupEffectiveTargetCpaValue:
-            json_['adGroupEffectiveTargetCpaValue'] as core.String?,
-        type: json_['type'] as core.String?,
-        value: json_['value'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final adGroupEffectiveTargetCpaSource =
-        this.adGroupEffectiveTargetCpaSource;
-    final adGroupEffectiveTargetCpaValue = this.adGroupEffectiveTargetCpaValue;
-    final type = this.type;
-    final value = this.value;
-    return {
-      'adGroupEffectiveTargetCpaSource': ?adGroupEffectiveTargetCpaSource,
-      'adGroupEffectiveTargetCpaValue': ?adGroupEffectiveTargetCpaValue,
-      'type': ?type,
-      'value': ?value,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v3 : YoutubeAndPartnersInventorySourceConfig
-/// - displayvideo:v4 : YoutubeAndPartnersInventorySourceConfig
-class $YoutubeAndPartnersInventorySourceConfig {
-  /// Whether to target inventory in video apps available with Google TV.
-  ///
-  /// Optional.
-  core.bool? includeGoogleTv;
-
-  /// Whether to target inventory on YouTube.
-  ///
-  /// This includes both search, channels and videos.
-  ///
-  /// Optional.
-  core.bool? includeYoutube;
-
-  /// Whether to target inventory on a collection of partner sites and apps that
-  /// follow the same brand safety standards as YouTube.
-  core.bool? includeYoutubeVideoPartners;
-
-  $YoutubeAndPartnersInventorySourceConfig({
-    this.includeGoogleTv,
-    this.includeYoutube,
-    this.includeYoutubeVideoPartners,
-  });
-
-  $YoutubeAndPartnersInventorySourceConfig.fromJson(core.Map json_)
-    : this(
-        includeGoogleTv: json_['includeGoogleTv'] as core.bool?,
-        includeYoutube: json_['includeYoutube'] as core.bool?,
-        includeYoutubeVideoPartners:
-            json_['includeYoutubeVideoPartners'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final includeGoogleTv = this.includeGoogleTv;
-    final includeYoutube = this.includeYoutube;
-    final includeYoutubeVideoPartners = this.includeYoutubeVideoPartners;
-    return {
-      'includeGoogleTv': ?includeGoogleTv,
-      'includeYoutube': ?includeYoutube,
-      'includeYoutubeVideoPartners': ?includeYoutubeVideoPartners,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : YoutubeChannelAssignedTargetingOptionDetails
-/// - displayvideo:v3 : YoutubeChannelAssignedTargetingOptionDetails
-/// - displayvideo:v4 : YoutubeChannelAssignedTargetingOptionDetails
-class $YoutubeChannelAssignedTargetingOptionDetails {
-  /// The YouTube uploader channel id or the channel code of a YouTube channel.
-  core.String? channelId;
-
-  /// Indicates if this option is being negatively targeted.
-  core.bool? negative;
-
-  $YoutubeChannelAssignedTargetingOptionDetails({
-    this.channelId,
-    this.negative,
-  });
-
-  $YoutubeChannelAssignedTargetingOptionDetails.fromJson(core.Map json_)
-    : this(
-        channelId: json_['channelId'] as core.String?,
-        negative: json_['negative'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final channelId = this.channelId;
-    final negative = this.negative;
-    return {'channelId': ?channelId, 'negative': ?negative};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : YoutubeChannelPackAssignedTargetingOptionDetails
-/// - displayvideo:v3 : YoutubeChannelPackAssignedTargetingOptionDetails
-/// - displayvideo:v4 : YoutubeChannelPackAssignedTargetingOptionDetails
-class $YoutubeChannelPackAssignedTargetingOptionDetails {
-  /// The ID of the YouTube channel pack.
-  ///
-  /// Required.
-  core.String? channelPackId;
-
-  /// Indicates if this option is being negatively targeted.
-  ///
-  /// Optional.
-  core.bool? negative;
-
-  $YoutubeChannelPackAssignedTargetingOptionDetails({
-    this.channelPackId,
-    this.negative,
-  });
-
-  $YoutubeChannelPackAssignedTargetingOptionDetails.fromJson(core.Map json_)
-    : this(
-        channelPackId: json_['channelPackId'] as core.String?,
-        negative: json_['negative'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final channelPackId = this.channelPackId;
-    final negative = this.negative;
-    return {'channelPackId': ?channelPackId, 'negative': ?negative};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : YoutubeVideoAssignedTargetingOptionDetails
-/// - displayvideo:v3 : YoutubeVideoAssignedTargetingOptionDetails
-/// - displayvideo:v4 : YoutubeVideoAssignedTargetingOptionDetails
-class $YoutubeVideoAssignedTargetingOptionDetails {
-  /// Indicates if this option is being negatively targeted.
-  core.bool? negative;
-
-  /// YouTube video id as it appears on the YouTube watch page.
-  core.String? videoId;
-
-  $YoutubeVideoAssignedTargetingOptionDetails({this.negative, this.videoId});
-
-  $YoutubeVideoAssignedTargetingOptionDetails.fromJson(core.Map json_)
-    : this(
-        negative: json_['negative'] as core.bool?,
-        videoId: json_['videoId'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final negative = this.negative;
-    final videoId = this.videoId;
-    return {'negative': ?negative, 'videoId': ?videoId};
-  }
-}
-
-/// Used by:
-///
-/// - displayvideo:v2 : YoutubeVideoDetails
-/// - displayvideo:v3 : YoutubeVideoDetails
-/// - displayvideo:v4 : YoutubeVideoDetails
-class $YoutubeVideoDetails {
-  /// The YouTube video ID which can be searched on YouTube webpage.
-  ///
-  /// Output only.
-  core.String? id;
-
-  /// The reason why the video data is not available.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "VIDEO_UNAVAILABLE_REASON_UNSPECIFIED" : Unknown or unspecified.
-  /// - "VIDEO_UNAVAILABLE_REASON_PRIVATE" : The video is private.
-  /// - "VIDEO_UNAVAILABLE_REASON_DELETED" : The video is deleted.
-  core.String? unavailableReason;
-
-  /// The YouTube video asset id.
-  ///
-  /// This is the adAssetId of an AdAsset resource.
-  ///
-  /// Required.
-  core.String? videoAssetId;
-
-  $YoutubeVideoDetails({this.id, this.unavailableReason, this.videoAssetId});
-
-  $YoutubeVideoDetails.fromJson(core.Map json_)
-    : this(
-        id: json_['id'] as core.String?,
-        unavailableReason: json_['unavailableReason'] as core.String?,
-        videoAssetId: json_['videoAssetId'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final id = this.id;
-    final unavailableReason = this.unavailableReason;
-    final videoAssetId = this.videoAssetId;
-    return {
-      'id': ?id,
-      'unavailableReason': ?unavailableReason,
-      'videoAssetId': ?videoAssetId,
-    };
-  }
-}
-
-/// Used by:
-///
-/// - cloudasset:v1 : ZypperPatch
-/// - osconfig:v1 : InventoryZypperPatch
-class $ZypperPatch {
-  /// The category of the patch.
-  core.String? category;
-
-  /// The name of the patch.
-  core.String? patchName;
-
-  /// The severity specified for this patch
-  core.String? severity;
-
-  /// Any summary information provided about this patch.
-  core.String? summary;
-
-  $ZypperPatch({this.category, this.patchName, this.severity, this.summary});
-
-  $ZypperPatch.fromJson(core.Map json_)
-    : this(
-        category: json_['category'] as core.String?,
-        patchName: json_['patchName'] as core.String?,
-        severity: json_['severity'] as core.String?,
-        summary: json_['summary'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final category = this.category;
-    final patchName = this.patchName;
-    final severity = this.severity;
-    final summary = this.summary;
-    return {
-      'category': ?category,
-      'patchName': ?patchName,
-      'severity': ?severity,
-      'summary': ?summary,
-    };
   }
 }

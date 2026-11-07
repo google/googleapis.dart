@@ -3354,7 +3354,7 @@ class StorageSource {
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
-typedef TestIamPermissionsResponse = $PermissionsResponse;
+typedef TestIamPermissionsResponse = $TestIamPermissionsResponse00;
 
 /// Information related to: * A function's eligibility for 1st Gen to 2nd Gen
 /// migration.

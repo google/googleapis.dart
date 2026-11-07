@@ -7611,7 +7611,7 @@ class GoogleCloudDialogflowCxV3AgentPersonalizationSettings {
   }
 }
 
-typedef GoogleCloudDialogflowCxV3AgentUtterance = $Shared02;
+typedef GoogleCloudDialogflowCxV3AgentUtterance = $Shared01;
 
 class GoogleCloudDialogflowCxV3AgentValidationResult {
   core.List<GoogleCloudDialogflowCxV3FlowValidationResult>?
@@ -8987,7 +8987,7 @@ class GoogleCloudDialogflowCxV3EntityType {
 }
 
 typedef GoogleCloudDialogflowCxV3EntityTypeEntity = $EntityTypeEntity;
-typedef GoogleCloudDialogflowCxV3EntityTypeExcludedPhrase = $Shared23;
+typedef GoogleCloudDialogflowCxV3EntityTypeExcludedPhrase = $Shared19;
 
 class GoogleCloudDialogflowCxV3Environment {
   core.String? description;
@@ -10067,8 +10067,8 @@ class GoogleCloudDialogflowCxV3FlowMultiLanguageSettings {
   }
 }
 
-typedef GoogleCloudDialogflowCxV3FlowTraceMetadata = $Shared24;
-typedef GoogleCloudDialogflowCxV3FlowTransition = $Shared24;
+typedef GoogleCloudDialogflowCxV3FlowTraceMetadata = $Shared20;
+typedef GoogleCloudDialogflowCxV3FlowTransition = $Shared20;
 
 class GoogleCloudDialogflowCxV3FlowValidationResult {
   core.String? name;
@@ -10578,7 +10578,7 @@ class GoogleCloudDialogflowCxV3FulfillmentSetParameterAction {
   }
 }
 
-typedef GoogleCloudDialogflowCxV3GcsDestination = $Shared11;
+typedef GoogleCloudDialogflowCxV3GcsDestination = $Shared09;
 
 class GoogleCloudDialogflowCxV3GenerativeSettings {
   GoogleCloudDialogflowCxV3GenerativeSettingsFallbackSettings? fallbackSettings;
@@ -10860,7 +10860,7 @@ class GoogleCloudDialogflowCxV3GeneratorModelParameter {
   }
 }
 
-typedef GoogleCloudDialogflowCxV3GeneratorPlaceholder = $Shared06;
+typedef GoogleCloudDialogflowCxV3GeneratorPlaceholder = $Shared04;
 
 class GoogleCloudDialogflowCxV3Handler {
   GoogleCloudDialogflowCxV3HandlerEventHandler? eventHandler;
@@ -12718,7 +12718,7 @@ class GoogleCloudDialogflowCxV3ParameterDefinition {
   }
 }
 
-typedef GoogleCloudDialogflowCxV3Phrase = $Shared02;
+typedef GoogleCloudDialogflowCxV3Phrase = $Shared01;
 
 class GoogleCloudDialogflowCxV3Playbook {
   GoogleCloudDialogflowCxV3CodeBlock? codeBlock;
@@ -13067,8 +13067,8 @@ class GoogleCloudDialogflowCxV3PlaybookStep {
   }
 }
 
-typedef GoogleCloudDialogflowCxV3PlaybookTraceMetadata = $Shared25;
-typedef GoogleCloudDialogflowCxV3PlaybookTransition = $Shared25;
+typedef GoogleCloudDialogflowCxV3PlaybookTraceMetadata = $Shared21;
+typedef GoogleCloudDialogflowCxV3PlaybookTransition = $Shared21;
 
 class GoogleCloudDialogflowCxV3PlaybookVersion {
   core.String? description;
@@ -13552,7 +13552,7 @@ class GoogleCloudDialogflowCxV3QueryResult {
   }
 }
 
-typedef GoogleCloudDialogflowCxV3ResourceName = $Shared26;
+typedef GoogleCloudDialogflowCxV3ResourceName = $Shared22;
 
 class GoogleCloudDialogflowCxV3ResponseMessage {
   core.String? channel;
@@ -13694,10 +13694,10 @@ class GoogleCloudDialogflowCxV3ResponseMessage {
   }
 }
 
-typedef GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess = $Shared12;
+typedef GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess = $Shared10;
 typedef GoogleCloudDialogflowCxV3ResponseMessageEndInteraction = $Empty;
 typedef GoogleCloudDialogflowCxV3ResponseMessageKnowledgeInfoCard = $Empty;
-typedef GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff = $Shared12;
+typedef GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff = $Shared10;
 
 class GoogleCloudDialogflowCxV3ResponseMessageMixedAudio {
   core.List<GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegment>?
@@ -14159,7 +14159,7 @@ class GoogleCloudDialogflowCxV3SafetySettings {
   }
 }
 
-typedef GoogleCloudDialogflowCxV3SafetySettingsPhrase = $Shared22;
+typedef GoogleCloudDialogflowCxV3SafetySettingsPhrase = $Shared18;
 
 class GoogleCloudDialogflowCxV3SafetySettingsPromptSecuritySettings {
   core.bool? enablePromptSecurity;
@@ -14435,7 +14435,7 @@ class GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings {
   }
 }
 
-typedef GoogleCloudDialogflowCxV3SentimentAnalysisResult = $Shared21;
+typedef GoogleCloudDialogflowCxV3SentimentAnalysisResult = $Shared17;
 
 class GoogleCloudDialogflowCxV3SessionEntityType {
   core.List<GoogleCloudDialogflowCxV3EntityTypeEntity>? entities;
@@ -14777,7 +14777,7 @@ class GoogleCloudDialogflowCxV3TestRunDifference {
   }
 }
 
-typedef GoogleCloudDialogflowCxV3TextInput = $Shared02;
+typedef GoogleCloudDialogflowCxV3TextInput = $Shared01;
 
 class GoogleCloudDialogflowCxV3TextToSpeechSettings {
   core.Map<core.String, GoogleCloudDialogflowCxV3SynthesizeSpeechConfig>?
@@ -15764,9 +15764,9 @@ class GoogleCloudDialogflowCxV3TypeSchemaSchemaReference {
   }
 }
 
-typedef GoogleCloudDialogflowCxV3UserUtterance = $Shared02;
-typedef GoogleCloudDialogflowCxV3ValidateAgentRequest = $Shared10;
-typedef GoogleCloudDialogflowCxV3ValidateFlowRequest = $Shared10;
+typedef GoogleCloudDialogflowCxV3UserUtterance = $Shared01;
+typedef GoogleCloudDialogflowCxV3ValidateAgentRequest = $Shared08;
+typedef GoogleCloudDialogflowCxV3ValidateFlowRequest = $Shared08;
 
 class GoogleCloudDialogflowCxV3ValidationMessage {
   core.String? detail;

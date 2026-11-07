@@ -6261,7 +6261,7 @@ class AbuseReport {
   }
 }
 
-typedef AbuseType = $Shared03;
+typedef AbuseType = $Shared02;
 
 /// Rights management policy for YouTube resources.
 class AccessPolicy {
@@ -11910,7 +11910,7 @@ class InvideoTiming {
   }
 }
 
-typedef LanguageTag = $Shared23;
+typedef LanguageTag = $Shared19;
 
 class LevelDetails {
   /// The name that should be used when referring to this level.

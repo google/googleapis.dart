@@ -639,7 +639,30 @@ class GoogleCloudWebriskV1ComputeThreatListDiffResponse {
 }
 
 /// The expected state of a client's local database.
-typedef GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum = $Checksum;
+class GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum {
+  /// The SHA256 hash of the client state; that is, of the sorted list of all
+  /// hashes present in the database.
+  core.String? sha256;
+  core.List<core.int> get sha256AsBytes => convert.base64.decode(sha256!);
+
+  set sha256AsBytes(core.List<core.int> bytes_) {
+    sha256 = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum({this.sha256});
+
+  GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum.fromJson(
+    core.Map json_,
+  ) : this(sha256: json_['sha256'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final sha256 = this.sha256;
+    return {'sha256': ?sha256};
+  }
+}
 
 /// The uncompressed threat entries in hash format.
 ///
@@ -686,7 +709,24 @@ class GoogleCloudWebriskV1RawHashes {
 }
 
 /// A set of raw indices to remove from a local list.
-typedef GoogleCloudWebriskV1RawIndices = $RawIndices;
+class GoogleCloudWebriskV1RawIndices {
+  /// The indices to remove from a lexicographically-sorted local list.
+  core.List<core.int>? indices;
+
+  GoogleCloudWebriskV1RawIndices({this.indices});
+
+  GoogleCloudWebriskV1RawIndices.fromJson(core.Map json_)
+    : this(
+        indices: (json_['indices'] as core.List?)
+            ?.map((value) => value as core.int)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final indices = this.indices;
+    return {'indices': ?indices};
+  }
+}
 
 /// The Rice-Golomb encoded data.
 ///

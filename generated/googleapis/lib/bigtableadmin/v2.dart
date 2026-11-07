@@ -6645,7 +6645,7 @@ class GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes {
 }
 
 /// Deprecated: prefer the equivalent `Utf8Bytes`.
-typedef GoogleBigtableAdminV2TypeStringEncodingUtf8Raw = $Shared01;
+typedef GoogleBigtableAdminV2TypeStringEncodingUtf8Raw = $Shared03;
 
 /// A structured data value, consisting of fields which map to dynamically typed
 /// values.
@@ -8856,7 +8856,7 @@ class TableStats {
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
-typedef TestIamPermissionsResponse = $PermissionsResponse;
+typedef TestIamPermissionsResponse = $TestIamPermissionsResponse00;
 
 /// Config for tiered storage.
 ///

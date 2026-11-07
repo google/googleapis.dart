@@ -2305,7 +2305,7 @@ typedef Lien = $Lien;
 
 /// The request sent to the `ListAvailableOrgPolicyConstraints` method on the
 /// project, folder, or organization.
-typedef ListAvailableOrgPolicyConstraintsRequest = $Request09;
+typedef ListAvailableOrgPolicyConstraintsRequest = $Request08;
 
 /// The response returned from the `ListAvailableOrgPolicyConstraints` method.
 ///
@@ -2406,7 +2406,7 @@ class ListLiensResponse {
 }
 
 /// The request sent to the ListOrgPolicies method.
-typedef ListOrgPoliciesRequest = $Request09;
+typedef ListOrgPoliciesRequest = $Request08;
 
 /// The response returned from the `ListOrgPolicies` method.
 ///
@@ -3277,7 +3277,7 @@ typedef Status = $Status00;
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
-typedef TestIamPermissionsResponse = $PermissionsResponse;
+typedef TestIamPermissionsResponse = $TestIamPermissionsResponse00;
 
 /// The request sent to the UndeleteProject method.
 typedef UndeleteProjectRequest = $Empty;
