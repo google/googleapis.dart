@@ -2743,57 +2743,10 @@ class Boundary {
 typedef CancelOperationRequest = $Empty;
 
 /// Contact information of stakeholders.
-class ContactInfo {
-  /// Contact's name.
-  ///
-  /// Can have a maximum length of 63 characters.
-  ///
-  /// Optional.
-  core.String? displayName;
-
-  /// Email address of the contacts.
-  ///
-  /// Required.
-  core.String? email;
-
-  ContactInfo({this.displayName, this.email});
-
-  ContactInfo.fromJson(core.Map json_)
-    : this(
-        displayName: json_['displayName'] as core.String?,
-        email: json_['email'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final displayName = this.displayName;
-    final email = this.email;
-    return {'displayName': ?displayName, 'email': ?email};
-  }
-}
+typedef ContactInfo = $ContactInfo;
 
 /// Criticality of the Application, Service, or Workload
-class Criticality {
-  /// Criticality Type.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "TYPE_UNSPECIFIED" : Unspecified type.
-  /// - "MISSION_CRITICAL" : Mission critical service, application or workload.
-  /// - "HIGH" : High impact.
-  /// - "MEDIUM" : Medium impact.
-  /// - "LOW" : Low impact.
-  core.String? type;
-
-  Criticality({this.type});
-
-  Criticality.fromJson(core.Map json_)
-    : this(type: json_['type'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final type = this.type;
-    return {'type': ?type};
-  }
-}
+typedef Criticality = $Criticality;
 
 /// Request for DetachServiceProjectAttachment.
 typedef DetachServiceProjectAttachmentRequest = $Empty;
@@ -2928,28 +2881,7 @@ class DiscoveredWorkload {
 typedef Empty = $Empty;
 
 /// Environment of the Application, Service, or Workload
-class Environment {
-  /// Environment Type.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "TYPE_UNSPECIFIED" : Unspecified type.
-  /// - "PRODUCTION" : Production environment.
-  /// - "STAGING" : Staging environment.
-  /// - "TEST" : Test environment.
-  /// - "DEVELOPMENT" : Development environment.
-  core.String? type;
-
-  Environment({this.type});
-
-  Environment.fromJson(core.Map json_)
-    : this(type: json_['type'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final type = this.type;
-    return {'type': ?type};
-  }
-}
+typedef Environment = $Environment;
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
@@ -2972,29 +2904,7 @@ class Environment {
 typedef Expr = $Expr;
 
 /// Additional metadata for a Service or Workload.
-class ExtendedMetadata {
-  /// The metadata contents.
-  ///
-  /// Output only.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object?>? metadataStruct;
-
-  ExtendedMetadata({this.metadataStruct});
-
-  ExtendedMetadata.fromJson(core.Map json_)
-    : this(
-        metadataStruct: json_.containsKey('metadataStruct')
-            ? json_['metadataStruct'] as core.Map<core.String, core.dynamic>
-            : null,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final metadataStruct = this.metadataStruct;
-    return {'metadataStruct': ?metadataStruct};
-  }
-}
+typedef ExtendedMetadata = $ExtendedMetadata;
 
 /// ExtendedMetadataSchema represents a schema for extended metadata of a
 /// service or workload.

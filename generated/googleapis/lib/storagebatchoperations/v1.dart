@@ -1,0 +1,2566 @@
+// Copyright 2025 Google LLC
+//
+// Use of this source code is governed by a BSD-style
+// license that can be found in the LICENSE file or at
+// https://developers.google.com/open-source/licenses/bsd
+
+// This is a generated file (see the discoveryapis_generator project).
+
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: deprecated_member_use_from_same_package
+// ignore_for_file: doc_directive_unknown
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: unintended_html_in_doc_comment
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_string_interpolations
+
+/// Storage Batch Operations API - v1
+///
+/// For more information, see
+/// <https://cloud.google.com/storage/docs/batch-operations/overview>
+///
+/// Create an instance of [StorageBatchOperationsApi] to access these resources:
+///
+/// - [ProjectsResource]
+///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsJobsResource]
+///       - [ProjectsLocationsJobsBucketOperationsResource]
+///     - [ProjectsLocationsOperationsResource]
+library;
+
+import 'dart:async' as async;
+import 'dart:convert' as convert;
+import 'dart:core' as core;
+
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:http/http.dart' as http;
+
+import '../shared.dart';
+import '../src/user_agent.dart';
+
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
+    show ApiRequestError, DetailedApiRequestError;
+
+class StorageBatchOperationsApi {
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
+  static const cloudPlatformScope =
+      'https://www.googleapis.com/auth/cloud-platform';
+
+  final commons.ApiRequester _requester;
+
+  ProjectsResource get projects => ProjectsResource(_requester);
+
+  StorageBatchOperationsApi(
+    http.Client client, {
+    core.String rootUrl = 'https://storagebatchoperations.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
+}
+
+class ProjectsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
+
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsLocationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsJobsResource get jobs =>
+      ProjectsLocationsJobsResource(_requester);
+  ProjectsLocationsOperationsResource get operations =>
+      ProjectsLocationsOperationsResource(_requester);
+
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Gets information about a location.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Resource name for the location.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Location].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Location> get(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Location.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists information about the supported locations for this service.
+  ///
+  /// This method lists locations based on the resource scope provided in the
+  /// ListLocationsRequest.name field: * **Global locations**: If `name` is
+  /// empty, the method lists the public locations available to all projects. *
+  /// **Project-specific locations**: If `name` follows the format
+  /// `projects/{project}`, the method lists locations visible to that specific
+  /// project. This includes public, private, or other project-specific
+  /// locations enabled for the project. For gRPC and client library
+  /// implementations, the resource name is passed as the `name` field. For
+  /// direct service calls, the resource name is incorporated into the request
+  /// path based on the specific service implementation and version.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource that owns the locations collection, if applicable.
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
+  ///
+  /// [filter] - A filter to narrow down results to a preferred subset. The
+  /// filtering language accepts strings like `"displayName=tokyo"`, and is
+  /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
+  ///
+  /// [pageSize] - The maximum number of results to return. If not set, the
+  /// service selects a default.
+  ///
+  /// [pageToken] - A page token received from the `next_page_token` field in
+  /// the response. Send that page token to receive the subsequent page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListLocationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListLocationsResponse> list(
+    core.String name, {
+    core.List<core.String>? extraLocationTypes,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'extraLocationTypes': ?extraLocationTypes,
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/locations';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListLocationsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsJobsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsJobsBucketOperationsResource get bucketOperations =>
+      ProjectsLocationsJobsBucketOperationsResource(_requester);
+
+  ProjectsLocationsJobsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Cancels a batch job.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The `name` of the job to cancel. Format:
+  /// `projects/{project_id}/locations/global/jobs/{job_id}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/jobs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CancelJobResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CancelJobResponse> cancel(
+    CancelJobRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return CancelJobResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Creates a batch job.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The value for parent.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [jobId] - Required. A unique identifier for the job. `job_id` must be up
+  /// to 128 characters and must include only characters available in DNS names,
+  /// as defined by RFC-1123.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID in case you need to retry your request.
+  /// Requests with same `request_id` are ignored for at least 60 minutes since
+  /// the first request. The request ID must be a valid UUID with the exception
+  /// that zero UUID isn't supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    Job request,
+    core.String parent, {
+    core.String? jobId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'jobId': ?jobId == null ? null : [jobId],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/jobs';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a batch job.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The `name` of the job to delete. Format:
+  /// `projects/{project_id}/locations/global/jobs/{job_id}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/jobs/\[^/\]+$`.
+  ///
+  /// [force] - Optional. If set to true, any child bucket operations of the job
+  /// are deleted. We recommend setting this to `true`. You can't mutate bucket
+  /// operations directly, so only the `jobs.delete` permission is required to
+  /// delete a job (and its child bucket operations).
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID in case you need to retry your request.
+  /// Requests with same `request_id` are ignored for at least 60 minutes since
+  /// the first request. The request ID must be a valid UUID with the exception
+  /// that zero UUID isn't supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.bool? force,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'force': ?force == null ? null : ['${force}'],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a batch job.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The `name` of the job to retrieve. Format:
+  /// `projects/{project_id}/locations/global/jobs/{job_id}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/jobs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Job].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Job> get(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Job.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists Jobs in a given project.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Format: projects/{project_id}/locations/global.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filters results as defined by
+  /// https://google.aip.dev/160.
+  ///
+  /// [orderBy] - Optional. Field to sort by. Supported fields are `name` and
+  /// `create_time`.
+  ///
+  /// [pageSize] - Optional. The list page size. The default page size is 100.
+  ///
+  /// [pageToken] - Optional. The list page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListJobsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListJobsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/jobs';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListJobsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsJobsBucketOperationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsJobsBucketOperationsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Gets a BucketOperation.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The `name` of the bucket operation to retrieve. Format:
+  /// `projects/{project_id}/locations/global/jobs/{job_id}/bucketOperations/{bucket_operation_id}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/jobs/\[^/\]+/bucketOperations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BucketOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BucketOperation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return BucketOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists BucketOperations in a given project and job.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Format:
+  /// `projects/{project_id}/locations/global/jobs/{job_id}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/jobs/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filters results as defined by
+  /// https://google.aip.dev/160.
+  ///
+  /// [orderBy] - Optional. Field to sort by. Supported fields are `name` and
+  /// `create_time`.
+  ///
+  /// [pageSize] - Optional. The list page size. Default page size is 100.
+  ///
+  /// [pageToken] - Optional. The list page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListBucketOperationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListBucketOperationsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/bucketOperations';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListBucketOperationsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsOperationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsOperationsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Starts asynchronous cancellation on a long-running operation.
+  ///
+  /// The server makes a best effort to cancel the operation, but success is not
+  /// guaranteed. If the server doesn't support this method, it returns
+  /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
+  /// or other methods to check whether the cancellation succeeded or whether
+  /// the operation completed despite cancellation. On successful cancellation,
+  /// the operation is not deleted; instead, it becomes an operation with an
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be cancelled.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> cancel(
+    CancelOperationRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a long-running operation.
+  ///
+  /// This method indicates that the client is no longer interested in the
+  /// operation result. It does not cancel the operation. If the server doesn't
+  /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be deleted.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists operations that match the specified filter in the request.
+  ///
+  /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation's parent resource.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - The standard list filter.
+  ///
+  /// [pageSize] - The standard list page size.
+  ///
+  /// [pageToken] - The standard list page token.
+  ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListOperationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListOperationsResponse> list(
+    core.String name, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.bool? returnPartialSuccess,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/operations';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListOperationsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+/// Represents updates to existing access-control entries on an object.
+class AccessControlsUpdates {
+  /// Grants to add or update.
+  ///
+  /// If a grant for same entity exists, its role is updated.
+  ///
+  /// Optional.
+  core.List<ObjectAccessControl>? grants;
+
+  /// Entities for which all grants should be removed.
+  ///
+  /// An entity can't be in both `grants` and `remove_entities`.
+  ///
+  /// Optional.
+  core.List<core.String>? removeEntities;
+
+  AccessControlsUpdates({this.grants, this.removeEntities});
+
+  AccessControlsUpdates.fromJson(core.Map json_)
+    : this(
+        grants: (json_['grants'] as core.List?)
+            ?.map(
+              (value) => ObjectAccessControl.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        removeEntities: (json_['removeEntities'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final grants = this.grants;
+    final removeEntities = this.removeEntities;
+    return {'grants': ?grants, 'removeEntities': ?removeEntities};
+  }
+}
+
+/// Describes configuration of a single bucket and its objects to be
+/// transformed.
+class Bucket {
+  /// Bucket name for the objects to be transformed.
+  ///
+  /// Required.
+  core.String? bucket;
+
+  /// Specifies objects in a manifest file.
+  Manifest? manifest;
+
+  /// Specifies objects matching a prefix set.
+  PrefixList? prefixList;
+
+  Bucket({this.bucket, this.manifest, this.prefixList});
+
+  Bucket.fromJson(core.Map json_)
+    : this(
+        bucket: json_['bucket'] as core.String?,
+        manifest: json_.containsKey('manifest')
+            ? Manifest.fromJson(
+                json_['manifest'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        prefixList: json_.containsKey('prefixList')
+            ? PrefixList.fromJson(
+                json_['prefixList'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final bucket = this.bucket;
+    final manifest = this.manifest;
+    final prefixList = this.prefixList;
+    return {
+      'bucket': ?bucket,
+      'manifest': ?manifest,
+      'prefixList': ?prefixList,
+    };
+  }
+}
+
+/// Describes list of buckets and their objects to be transformed.
+class BucketList {
+  /// List of buckets and their objects to be transformed.
+  ///
+  /// You can specify only one bucket per job. If multiple buckets are
+  /// specified, an error occurs.
+  ///
+  /// Required.
+  core.List<Bucket>? buckets;
+
+  BucketList({this.buckets});
+
+  BucketList.fromJson(core.Map json_)
+    : this(
+        buckets: (json_['buckets'] as core.List?)
+            ?.map(
+              (value) =>
+                  Bucket.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final buckets = this.buckets;
+    return {'buckets': ?buckets};
+  }
+}
+
+/// BucketOperation represents a bucket-level breakdown of a Job.
+class BucketOperation {
+  /// The bucket name of the objects to be transformed in the BucketOperation.
+  core.String? bucketName;
+
+  /// The time that the BucketOperation was completed.
+  ///
+  /// Output only.
+  core.String? completeTime;
+
+  /// Information about the progress of the bucket operation.
+  ///
+  /// Output only.
+  Counters? counters;
+
+  /// The time that the BucketOperation was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Delete objects.
+  DeleteObject? deleteObject;
+
+  /// Summarizes errors encountered with sample error log entries.
+  ///
+  /// Output only.
+  core.List<ErrorSummary>? errorSummaries;
+
+  /// Specifies objects in a manifest file.
+  Manifest? manifest;
+
+  /// Identifier.
+  ///
+  /// The resource name of the BucketOperation. This is defined by the service.
+  /// Format:
+  /// `projects/{project_id}/locations/global/jobs/{job_id}/bucketOperations/{bucket_operation}`.
+  core.String? name;
+
+  /// Specifies objects matching a prefix set.
+  PrefixList? prefixList;
+
+  /// Specifies objects matching the object filters in a project source.
+  ProjectSource? projectSource;
+
+  /// Updates object metadata.
+  ///
+  /// Allows updating fixed-key and custom metadata and fixed-key metadata i.e.
+  /// Cache-Control, Content-Disposition, Content-Encoding, Content-Language,
+  /// Content-Type, Custom-Time.
+  PutMetadata? putMetadata;
+
+  /// Changes object hold status.
+  PutObjectHold? putObjectHold;
+
+  /// Rewrite the object and updates metadata like KMS key.
+  RewriteObject? rewriteObject;
+
+  /// Updates object ACLs.
+  SetObjectAcls? setObjectAcls;
+
+  /// The time that the BucketOperation was started.
+  ///
+  /// Output only.
+  core.String? startTime;
+
+  /// State of the BucketOperation.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "QUEUED" : Created but not yet started.
+  /// - "RUNNING" : In progress.
+  /// - "SUCCEEDED" : Completed successfully.
+  /// - "CANCELED" : Cancelled by the user.
+  /// - "FAILED" : Terminated due to an unrecoverable failure.
+  core.String? state;
+
+  /// Update object custom context.
+  UpdateObjectCustomContext? updateObjectCustomContext;
+
+  BucketOperation({
+    this.bucketName,
+    this.completeTime,
+    this.counters,
+    this.createTime,
+    this.deleteObject,
+    this.errorSummaries,
+    this.manifest,
+    this.name,
+    this.prefixList,
+    this.projectSource,
+    this.putMetadata,
+    this.putObjectHold,
+    this.rewriteObject,
+    this.setObjectAcls,
+    this.startTime,
+    this.state,
+    this.updateObjectCustomContext,
+  });
+
+  BucketOperation.fromJson(core.Map json_)
+    : this(
+        bucketName: json_['bucketName'] as core.String?,
+        completeTime: json_['completeTime'] as core.String?,
+        counters: json_.containsKey('counters')
+            ? Counters.fromJson(
+                json_['counters'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        createTime: json_['createTime'] as core.String?,
+        deleteObject: json_.containsKey('deleteObject')
+            ? DeleteObject.fromJson(
+                json_['deleteObject'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        errorSummaries: (json_['errorSummaries'] as core.List?)
+            ?.map(
+              (value) => ErrorSummary.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        manifest: json_.containsKey('manifest')
+            ? Manifest.fromJson(
+                json_['manifest'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        name: json_['name'] as core.String?,
+        prefixList: json_.containsKey('prefixList')
+            ? PrefixList.fromJson(
+                json_['prefixList'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        projectSource: json_.containsKey('projectSource')
+            ? ProjectSource.fromJson(
+                json_['projectSource'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        putMetadata: json_.containsKey('putMetadata')
+            ? PutMetadata.fromJson(
+                json_['putMetadata'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        putObjectHold: json_.containsKey('putObjectHold')
+            ? PutObjectHold.fromJson(
+                json_['putObjectHold'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        rewriteObject: json_.containsKey('rewriteObject')
+            ? RewriteObject.fromJson(
+                json_['rewriteObject'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        setObjectAcls: json_.containsKey('setObjectAcls')
+            ? SetObjectAcls.fromJson(
+                json_['setObjectAcls'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        startTime: json_['startTime'] as core.String?,
+        state: json_['state'] as core.String?,
+        updateObjectCustomContext:
+            json_.containsKey('updateObjectCustomContext')
+            ? UpdateObjectCustomContext.fromJson(
+                json_['updateObjectCustomContext']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final bucketName = this.bucketName;
+    final completeTime = this.completeTime;
+    final counters = this.counters;
+    final createTime = this.createTime;
+    final deleteObject = this.deleteObject;
+    final errorSummaries = this.errorSummaries;
+    final manifest = this.manifest;
+    final name = this.name;
+    final prefixList = this.prefixList;
+    final projectSource = this.projectSource;
+    final putMetadata = this.putMetadata;
+    final putObjectHold = this.putObjectHold;
+    final rewriteObject = this.rewriteObject;
+    final setObjectAcls = this.setObjectAcls;
+    final startTime = this.startTime;
+    final state = this.state;
+    final updateObjectCustomContext = this.updateObjectCustomContext;
+    return {
+      'bucketName': ?bucketName,
+      'completeTime': ?completeTime,
+      'counters': ?counters,
+      'createTime': ?createTime,
+      'deleteObject': ?deleteObject,
+      'errorSummaries': ?errorSummaries,
+      'manifest': ?manifest,
+      'name': ?name,
+      'prefixList': ?prefixList,
+      'projectSource': ?projectSource,
+      'putMetadata': ?putMetadata,
+      'putObjectHold': ?putObjectHold,
+      'rewriteObject': ?rewriteObject,
+      'setObjectAcls': ?setObjectAcls,
+      'startTime': ?startTime,
+      'state': ?state,
+      'updateObjectCustomContext': ?updateObjectCustomContext,
+    };
+  }
+}
+
+/// Message for Job to Cancel
+class CancelJobRequest {
+  /// An optional request ID to identify requests.
+  ///
+  /// Specify a unique request ID in case you need to retry your request.
+  /// Requests with same `request_id` are ignored for at least 60 minutes since
+  /// the first request. The request ID must be a valid UUID with the exception
+  /// that zero UUID isn't supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// Optional.
+  core.String? requestId;
+
+  CancelJobRequest({this.requestId});
+
+  CancelJobRequest.fromJson(core.Map json_)
+    : this(requestId: json_['requestId'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final requestId = this.requestId;
+    return {'requestId': ?requestId};
+  }
+}
+
+/// Message for response to cancel Job.
+typedef CancelJobResponse = $Empty;
+
+/// The request message for Operations.CancelOperation.
+typedef CancelOperationRequest = $Empty;
+
+/// Describes details about the progress of the job.
+class Counters {
+  /// The number of objects that failed due to user errors or service errors.
+  ///
+  /// Output only.
+  core.String? failedObjectCount;
+
+  /// Number of object custom contexts created.
+  ///
+  /// This field is only populated for jobs with the UpdateObjectCustomContext
+  /// transformation.
+  ///
+  /// Output only.
+  core.String? objectCustomContextsCreated;
+
+  /// Number of object custom contexts deleted.
+  ///
+  /// This field is only populated for jobs with the UpdateObjectCustomContext
+  /// transformation.
+  ///
+  /// Output only.
+  core.String? objectCustomContextsDeleted;
+
+  /// Number of object custom contexts updated.
+  ///
+  /// This counter tracks custom contexts where the key already existed, but the
+  /// payload was modified. This field is only populated for jobs with the
+  /// UpdateObjectCustomContext transformation.
+  ///
+  /// Output only.
+  core.String? objectCustomContextsUpdated;
+
+  /// Number of objects completed.
+  ///
+  /// Output only.
+  core.String? succeededObjectCount;
+
+  /// Number of bytes found from source.
+  ///
+  /// This field is only populated for jobs with a prefix list object
+  /// configuration.
+  ///
+  /// Output only.
+  core.String? totalBytesFound;
+
+  /// The total number of bytes affected by the transformation.
+  ///
+  /// For example, this counts bytes deleted for `DeleteObject` operations and
+  /// bytes rewritten for `RewriteObject` operations.
+  ///
+  /// Output only.
+  core.String? totalBytesTransformed;
+
+  /// Number of objects listed.
+  ///
+  /// Output only.
+  core.String? totalObjectCount;
+
+  Counters({
+    this.failedObjectCount,
+    this.objectCustomContextsCreated,
+    this.objectCustomContextsDeleted,
+    this.objectCustomContextsUpdated,
+    this.succeededObjectCount,
+    this.totalBytesFound,
+    this.totalBytesTransformed,
+    this.totalObjectCount,
+  });
+
+  Counters.fromJson(core.Map json_)
+    : this(
+        failedObjectCount: json_['failedObjectCount'] as core.String?,
+        objectCustomContextsCreated:
+            json_['objectCustomContextsCreated'] as core.String?,
+        objectCustomContextsDeleted:
+            json_['objectCustomContextsDeleted'] as core.String?,
+        objectCustomContextsUpdated:
+            json_['objectCustomContextsUpdated'] as core.String?,
+        succeededObjectCount: json_['succeededObjectCount'] as core.String?,
+        totalBytesFound: json_['totalBytesFound'] as core.String?,
+        totalBytesTransformed: json_['totalBytesTransformed'] as core.String?,
+        totalObjectCount: json_['totalObjectCount'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final failedObjectCount = this.failedObjectCount;
+    final objectCustomContextsCreated = this.objectCustomContextsCreated;
+    final objectCustomContextsDeleted = this.objectCustomContextsDeleted;
+    final objectCustomContextsUpdated = this.objectCustomContextsUpdated;
+    final succeededObjectCount = this.succeededObjectCount;
+    final totalBytesFound = this.totalBytesFound;
+    final totalBytesTransformed = this.totalBytesTransformed;
+    final totalObjectCount = this.totalObjectCount;
+    return {
+      'failedObjectCount': ?failedObjectCount,
+      'objectCustomContextsCreated': ?objectCustomContextsCreated,
+      'objectCustomContextsDeleted': ?objectCustomContextsDeleted,
+      'objectCustomContextsUpdated': ?objectCustomContextsUpdated,
+      'succeededObjectCount': ?succeededObjectCount,
+      'totalBytesFound': ?totalBytesFound,
+      'totalBytesTransformed': ?totalBytesTransformed,
+      'totalObjectCount': ?totalObjectCount,
+    };
+  }
+}
+
+/// Describes a collection of updates to apply to custom contexts identified by
+/// key.
+class CustomContextUpdates {
+  /// Custom contexts to clear by key.
+  ///
+  /// A key can't be present in both `updates` and `keys_to_clear`.
+  ///
+  /// Optional.
+  core.List<core.String>? keysToClear;
+
+  /// Insert or update the existing custom contexts.
+  ///
+  /// Optional.
+  core.Map<core.String, ObjectCustomContextPayload>? updates;
+
+  CustomContextUpdates({this.keysToClear, this.updates});
+
+  CustomContextUpdates.fromJson(core.Map json_)
+    : this(
+        keysToClear: (json_['keysToClear'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        updates: (json_['updates'] as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                ObjectCustomContextPayload.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
+            ),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final keysToClear = this.keysToClear;
+    final updates = this.updates;
+    return {'keysToClear': ?keysToClear, 'updates': ?updates};
+  }
+}
+
+/// Describes options to delete an object.
+class DeleteObject {
+  /// Controls deletion behavior when versioning is enabled for the object's
+  /// bucket.
+  ///
+  /// If true, both live and noncurrent objects will be permanently deleted.
+  /// Otherwise live objects in versioned buckets will become noncurrent and
+  /// objects that were already noncurrent will be skipped. This setting doesn't
+  /// have any impact on the Soft Delete feature. All objects deleted by this
+  /// service can be be restored for the duration of the Soft Delete retention
+  /// duration if enabled. If enabled and the manifest doesn't specify an
+  /// object's generation, a `GetObjectMetadata` call is made to determine the
+  /// live object generation.
+  ///
+  /// Required.
+  core.bool? permanentObjectDeletionEnabled;
+
+  DeleteObject({this.permanentObjectDeletionEnabled});
+
+  DeleteObject.fromJson(core.Map json_)
+    : this(
+        permanentObjectDeletionEnabled:
+            json_['permanentObjectDeletionEnabled'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final permanentObjectDeletionEnabled = this.permanentObjectDeletionEnabled;
+    return {'permanentObjectDeletionEnabled': ?permanentObjectDeletionEnabled};
+  }
+}
+
+/// A generic empty message that you can re-use to avoid defining duplicated
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); }
+typedef Empty = $Empty;
+
+/// An entry describing an error that has occurred.
+class ErrorLogEntry {
+  /// At most 5 error log entries are recorded for a given error code for a job.
+  ///
+  /// Optional. Output only.
+  core.List<core.String>? errorDetails;
+
+  /// Object URL.
+  ///
+  /// e.g. gs://my_bucket/object.txt
+  ///
+  /// Required. Output only.
+  core.String? objectUri;
+
+  ErrorLogEntry({this.errorDetails, this.objectUri});
+
+  ErrorLogEntry.fromJson(core.Map json_)
+    : this(
+        errorDetails: (json_['errorDetails'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        objectUri: json_['objectUri'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final errorDetails = this.errorDetails;
+    final objectUri = this.objectUri;
+    return {'errorDetails': ?errorDetails, 'objectUri': ?objectUri};
+  }
+}
+
+/// A summary of errors by error code, plus a count and sample error log
+/// entries.
+class ErrorSummary {
+  /// The canonical error code.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "OK" : Not an error; returned on success. HTTP Mapping: 200 OK
+  /// - "CANCELLED" : The operation was cancelled, typically by the caller. HTTP
+  /// Mapping: 499 Client Closed Request
+  /// - "UNKNOWN" : Unknown error. For example, this error may be returned when
+  /// a `Status` value received from another address space belongs to an error
+  /// space that is not known in this address space. Also errors raised by APIs
+  /// that do not return enough error information may be converted to this
+  /// error. HTTP Mapping: 500 Internal Server Error
+  /// - "INVALID_ARGUMENT" : The client specified an invalid argument. Note that
+  /// this differs from `FAILED_PRECONDITION`. `INVALID_ARGUMENT` indicates
+  /// arguments that are problematic regardless of the state of the system
+  /// (e.g., a malformed file name). HTTP Mapping: 400 Bad Request
+  /// - "DEADLINE_EXCEEDED" : The deadline expired before the operation could
+  /// complete. For operations that change the state of the system, this error
+  /// may be returned even if the operation has completed successfully. For
+  /// example, a successful response from a server could have been delayed long
+  /// enough for the deadline to expire. HTTP Mapping: 504 Gateway Timeout
+  /// - "NOT_FOUND" : Some requested entity (e.g., file or directory) was not
+  /// found. Note to server developers: if a request is denied for an entire
+  /// class of users, such as gradual feature rollout or undocumented allowlist,
+  /// `NOT_FOUND` may be used. If a request is denied for some users within a
+  /// class of users, such as user-based access control, `PERMISSION_DENIED`
+  /// must be used. HTTP Mapping: 404 Not Found
+  /// - "ALREADY_EXISTS" : The entity that a client attempted to create (e.g.,
+  /// file or directory) already exists. HTTP Mapping: 409 Conflict
+  /// - "PERMISSION_DENIED" : The caller does not have permission to execute the
+  /// specified operation. `PERMISSION_DENIED` must not be used for rejections
+  /// caused by exhausting some resource (use `RESOURCE_EXHAUSTED` instead for
+  /// those errors). `PERMISSION_DENIED` must not be used if the caller can not
+  /// be identified (use `UNAUTHENTICATED` instead for those errors). This error
+  /// code does not imply the request is valid or the requested entity exists or
+  /// satisfies other pre-conditions. HTTP Mapping: 403 Forbidden
+  /// - "UNAUTHENTICATED" : The request does not have valid authentication
+  /// credentials for the operation. HTTP Mapping: 401 Unauthorized
+  /// - "RESOURCE_EXHAUSTED" : Some resource has been exhausted, perhaps a
+  /// per-user quota, or perhaps the entire file system is out of space. HTTP
+  /// Mapping: 429 Too Many Requests
+  /// - "FAILED_PRECONDITION" : The operation was rejected because the system is
+  /// not in a state required for the operation's execution. For example, the
+  /// directory to be deleted is non-empty, an rmdir operation is applied to a
+  /// non-directory, etc. Service implementors can use the following guidelines
+  /// to decide between `FAILED_PRECONDITION`, `ABORTED`, and `UNAVAILABLE`: (a)
+  /// Use `UNAVAILABLE` if the client can retry just the failing call. (b) Use
+  /// `ABORTED` if the client should retry at a higher level. For example, when
+  /// a client-specified test-and-set fails, indicating the client should
+  /// restart a read-modify-write sequence. (c) Use `FAILED_PRECONDITION` if the
+  /// client should not retry until the system state has been explicitly fixed.
+  /// For example, if an "rmdir" fails because the directory is non-empty,
+  /// `FAILED_PRECONDITION` should be returned since the client should not retry
+  /// unless the files are deleted from the directory. HTTP Mapping: 400 Bad
+  /// Request
+  /// - "ABORTED" : The operation was aborted, typically due to a concurrency
+  /// issue such as a sequencer check failure or transaction abort. See the
+  /// guidelines above for deciding between `FAILED_PRECONDITION`, `ABORTED`,
+  /// and `UNAVAILABLE`. HTTP Mapping: 409 Conflict
+  /// - "OUT_OF_RANGE" : The operation was attempted past the valid range. E.g.,
+  /// seeking or reading past end-of-file. Unlike `INVALID_ARGUMENT`, this error
+  /// indicates a problem that may be fixed if the system state changes. For
+  /// example, a 32-bit file system will generate `INVALID_ARGUMENT` if asked to
+  /// read at an offset that is not in the range \[0,2^32-1\], but it will
+  /// generate `OUT_OF_RANGE` if asked to read from an offset past the current
+  /// file size. There is a fair bit of overlap between `FAILED_PRECONDITION`
+  /// and `OUT_OF_RANGE`. We recommend using `OUT_OF_RANGE` (the more specific
+  /// error) when it applies so that callers who are iterating through a space
+  /// can easily look for an `OUT_OF_RANGE` error to detect when they are done.
+  /// HTTP Mapping: 400 Bad Request
+  /// - "UNIMPLEMENTED" : The operation is not implemented or is not
+  /// supported/enabled in this service. HTTP Mapping: 501 Not Implemented
+  /// - "INTERNAL" : Internal errors. This means that some invariants expected
+  /// by the underlying system have been broken. This error code is reserved for
+  /// serious errors. HTTP Mapping: 500 Internal Server Error
+  /// - "UNAVAILABLE" : The service is currently unavailable. This is most
+  /// likely a transient condition, which can be corrected by retrying with a
+  /// backoff. Note that it is not always safe to retry non-idempotent
+  /// operations. See the guidelines above for deciding between
+  /// `FAILED_PRECONDITION`, `ABORTED`, and `UNAVAILABLE`. HTTP Mapping: 503
+  /// Service Unavailable
+  /// - "DATA_LOSS" : Unrecoverable data loss or corruption. HTTP Mapping: 500
+  /// Internal Server Error
+  core.String? errorCode;
+
+  /// Number of errors encountered per `error_code`.
+  ///
+  /// Required.
+  core.String? errorCount;
+
+  /// Sample error logs.
+  ///
+  /// Required.
+  core.List<ErrorLogEntry>? errorLogEntries;
+
+  ErrorSummary({this.errorCode, this.errorCount, this.errorLogEntries});
+
+  ErrorSummary.fromJson(core.Map json_)
+    : this(
+        errorCode: json_['errorCode'] as core.String?,
+        errorCount: json_['errorCount'] as core.String?,
+        errorLogEntries: (json_['errorLogEntries'] as core.List?)
+            ?.map(
+              (value) => ErrorLogEntry.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final errorCode = this.errorCode;
+    final errorCount = this.errorCount;
+    final errorLogEntries = this.errorLogEntries;
+    return {
+      'errorCode': ?errorCode,
+      'errorCount': ?errorCount,
+      'errorLogEntries': ?errorLogEntries,
+    };
+  }
+}
+
+/// Represents a textual expression in the Common Expression Language (CEL)
+/// syntax.
+///
+/// CEL is a C-like expression language. The syntax and semantics of CEL are
+/// documented at https://github.com/google/cel-spec. Example (Comparison):
+/// title: "Summary size limit" description: "Determines if a summary is less
+/// than 100 chars" expression: "document.summary.size() \< 100" Example
+/// (Equality): title: "Requestor is owner" description: "Determines if
+/// requestor is the document owner" expression: "document.owner ==
+/// request.auth.claims.email" Example (Logic): title: "Public documents"
+/// description: "Determine whether the document should be publicly visible"
+/// expression: "document.type != 'private' && document.type != 'internal'"
+/// Example (Data Manipulation): title: "Notification string" description:
+/// "Create a notification string with a timestamp." expression: "'New message
+/// received at ' + string(document.create_time)" The exact variables and
+/// functions that may be referenced within an expression are determined by the
+/// service that evaluates it. See the service documentation for additional
+/// information.
+typedef Expr = $Expr;
+
+/// The storage batch operations job description.
+class Job {
+  /// Specifies a list of buckets and their objects to be transformed.
+  BucketList? bucketList;
+
+  /// The time that the job was completed.
+  ///
+  /// Output only.
+  core.String? completeTime;
+
+  /// Information about the progress of the job.
+  ///
+  /// Output only.
+  Counters? counters;
+
+  /// The time that the job was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Delete objects.
+  DeleteObject? deleteObject;
+
+  /// A user-provided description for the job.
+  ///
+  /// Maximum length: 1024 bytes when unicode-encoded.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// If true, the job runs in dry run mode, returning the total object count
+  /// and, if the object configuration is a prefix list, the bytes found from
+  /// source.
+  ///
+  /// No transformations are performed.
+  ///
+  /// Optional.
+  core.bool? dryRun;
+
+  /// Summarizes errors encountered with sample error log entries.
+  ///
+  /// Output only.
+  core.List<ErrorSummary>? errorSummaries;
+
+  /// If true, this job operates on multiple buckets.
+  ///
+  /// Multi-bucket jobs are subject to different quota limits than single-bucket
+  /// jobs.
+  ///
+  /// Output only.
+  core.bool? isMultiBucketJob;
+
+  /// Logging configuration.
+  ///
+  /// Optional.
+  LoggingConfig? loggingConfig;
+
+  /// Identifier.
+  ///
+  /// The resource name of the job. Format:
+  /// `projects/{project_id}/locations/global/jobs/{job_id}`. For example:
+  /// `projects/123456/locations/global/jobs/job01`. `job_id` is unique in a
+  /// given project.
+  core.String? name;
+
+  /// Specifies a project source and filters to identify objects to be
+  /// transformed.
+  ProjectSource? projectSource;
+
+  /// Updates object metadata.
+  ///
+  /// Allows updating fixed-key and custom metadata. For example,
+  /// `Cache-Control`, `Content-Disposition`, `Content-Encoding`,
+  /// `Content-Language`, `Content-Type`, `Custom-Time`, and `Retention
+  /// configuration`.
+  PutMetadata? putMetadata;
+
+  /// Changes object hold status.
+  PutObjectHold? putObjectHold;
+
+  /// Rewrite the object and updates metadata like KMS key.
+  RewriteObject? rewriteObject;
+
+  /// The time that the job was scheduled.
+  ///
+  /// Output only.
+  core.String? scheduleTime;
+
+  /// Updates object ACLs.
+  SetObjectAcls? setObjectAcls;
+
+  /// State of the job.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "RUNNING" : In progress.
+  /// - "SUCCEEDED" : Completed successfully.
+  /// - "CANCELED" : Cancelled by the user.
+  /// - "FAILED" : Terminated due to an unrecoverable failure.
+  /// - "QUEUED" : Queued but not yet started.
+  core.String? state;
+
+  /// Update object custom context.
+  UpdateObjectCustomContext? updateObjectCustomContext;
+
+  Job({
+    this.bucketList,
+    this.completeTime,
+    this.counters,
+    this.createTime,
+    this.deleteObject,
+    this.description,
+    this.dryRun,
+    this.errorSummaries,
+    this.isMultiBucketJob,
+    this.loggingConfig,
+    this.name,
+    this.projectSource,
+    this.putMetadata,
+    this.putObjectHold,
+    this.rewriteObject,
+    this.scheduleTime,
+    this.setObjectAcls,
+    this.state,
+    this.updateObjectCustomContext,
+  });
+
+  Job.fromJson(core.Map json_)
+    : this(
+        bucketList: json_.containsKey('bucketList')
+            ? BucketList.fromJson(
+                json_['bucketList'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        completeTime: json_['completeTime'] as core.String?,
+        counters: json_.containsKey('counters')
+            ? Counters.fromJson(
+                json_['counters'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        createTime: json_['createTime'] as core.String?,
+        deleteObject: json_.containsKey('deleteObject')
+            ? DeleteObject.fromJson(
+                json_['deleteObject'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        description: json_['description'] as core.String?,
+        dryRun: json_['dryRun'] as core.bool?,
+        errorSummaries: (json_['errorSummaries'] as core.List?)
+            ?.map(
+              (value) => ErrorSummary.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        isMultiBucketJob: json_['isMultiBucketJob'] as core.bool?,
+        loggingConfig: json_.containsKey('loggingConfig')
+            ? LoggingConfig.fromJson(
+                json_['loggingConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        name: json_['name'] as core.String?,
+        projectSource: json_.containsKey('projectSource')
+            ? ProjectSource.fromJson(
+                json_['projectSource'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        putMetadata: json_.containsKey('putMetadata')
+            ? PutMetadata.fromJson(
+                json_['putMetadata'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        putObjectHold: json_.containsKey('putObjectHold')
+            ? PutObjectHold.fromJson(
+                json_['putObjectHold'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        rewriteObject: json_.containsKey('rewriteObject')
+            ? RewriteObject.fromJson(
+                json_['rewriteObject'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        scheduleTime: json_['scheduleTime'] as core.String?,
+        setObjectAcls: json_.containsKey('setObjectAcls')
+            ? SetObjectAcls.fromJson(
+                json_['setObjectAcls'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        state: json_['state'] as core.String?,
+        updateObjectCustomContext:
+            json_.containsKey('updateObjectCustomContext')
+            ? UpdateObjectCustomContext.fromJson(
+                json_['updateObjectCustomContext']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final bucketList = this.bucketList;
+    final completeTime = this.completeTime;
+    final counters = this.counters;
+    final createTime = this.createTime;
+    final deleteObject = this.deleteObject;
+    final description = this.description;
+    final dryRun = this.dryRun;
+    final errorSummaries = this.errorSummaries;
+    final isMultiBucketJob = this.isMultiBucketJob;
+    final loggingConfig = this.loggingConfig;
+    final name = this.name;
+    final projectSource = this.projectSource;
+    final putMetadata = this.putMetadata;
+    final putObjectHold = this.putObjectHold;
+    final rewriteObject = this.rewriteObject;
+    final scheduleTime = this.scheduleTime;
+    final setObjectAcls = this.setObjectAcls;
+    final state = this.state;
+    final updateObjectCustomContext = this.updateObjectCustomContext;
+    return {
+      'bucketList': ?bucketList,
+      'completeTime': ?completeTime,
+      'counters': ?counters,
+      'createTime': ?createTime,
+      'deleteObject': ?deleteObject,
+      'description': ?description,
+      'dryRun': ?dryRun,
+      'errorSummaries': ?errorSummaries,
+      'isMultiBucketJob': ?isMultiBucketJob,
+      'loggingConfig': ?loggingConfig,
+      'name': ?name,
+      'projectSource': ?projectSource,
+      'putMetadata': ?putMetadata,
+      'putObjectHold': ?putObjectHold,
+      'rewriteObject': ?rewriteObject,
+      'scheduleTime': ?scheduleTime,
+      'setObjectAcls': ?setObjectAcls,
+      'state': ?state,
+      'updateObjectCustomContext': ?updateObjectCustomContext,
+    };
+  }
+}
+
+/// Message for response to listing BucketOperations
+class ListBucketOperationsResponse {
+  /// A list of storage batch bucket operations.
+  core.List<BucketOperation>? bucketOperations;
+
+  /// A token identifying a page of results.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListBucketOperationsResponse({
+    this.bucketOperations,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListBucketOperationsResponse.fromJson(core.Map json_)
+    : this(
+        bucketOperations: (json_['bucketOperations'] as core.List?)
+            ?.map(
+              (value) => BucketOperation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final bucketOperations = this.bucketOperations;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'bucketOperations': ?bucketOperations,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
+  }
+}
+
+/// Message for response to listing Jobs
+class ListJobsResponse {
+  /// A list of storage batch jobs.
+  core.List<Job>? jobs;
+
+  /// A token identifying a page of results.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListJobsResponse({this.jobs, this.nextPageToken, this.unreachable});
+
+  ListJobsResponse.fromJson(core.Map json_)
+    : this(
+        jobs: (json_['jobs'] as core.List?)
+            ?.map(
+              (value) =>
+                  Job.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final jobs = this.jobs;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'jobs': ?jobs,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
+  }
+}
+
+/// The response message for Locations.ListLocations.
+class ListLocationsResponse {
+  /// A list of locations that matches the specified filter in the request.
+  core.List<Location>? locations;
+
+  /// The standard List next-page token.
+  core.String? nextPageToken;
+
+  ListLocationsResponse({this.locations, this.nextPageToken});
+
+  ListLocationsResponse.fromJson(core.Map json_)
+    : this(
+        locations: (json_['locations'] as core.List?)
+            ?.map(
+              (value) => Location.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final locations = this.locations;
+    final nextPageToken = this.nextPageToken;
+    return {'locations': ?locations, 'nextPageToken': ?nextPageToken};
+  }
+}
+
+/// The response message for Operations.ListOperations.
+class ListOperationsResponse {
+  /// The standard List next-page token.
+  core.String? nextPageToken;
+
+  /// A list of operations that matches the specified filter in the request.
+  core.List<Operation>? operations;
+
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+    this.unreachable,
+  });
+
+  ListOperationsResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        operations: (json_['operations'] as core.List?)
+            ?.map(
+              (value) => Operation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final operations = this.operations;
+    final unreachable = this.unreachable;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'operations': ?operations,
+      'unreachable': ?unreachable,
+    };
+  }
+}
+
+/// A resource that represents a Google Cloud location.
+typedef Location = $Location00;
+
+/// Specifies the Cloud Logging behavior.
+class LoggingConfig {
+  /// States in which Action are logged.If empty, no logs are generated.
+  ///
+  /// Required.
+  core.List<core.String>? logActionStates;
+
+  /// Specifies the actions to be logged.
+  ///
+  /// Required.
+  core.List<core.String>? logActions;
+
+  LoggingConfig({this.logActionStates, this.logActions});
+
+  LoggingConfig.fromJson(core.Map json_)
+    : this(
+        logActionStates: (json_['logActionStates'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        logActions: (json_['logActions'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final logActionStates = this.logActionStates;
+    final logActions = this.logActions;
+    return {'logActionStates': ?logActionStates, 'logActions': ?logActions};
+  }
+}
+
+/// Describes list of objects to be transformed.
+class Manifest {
+  /// Specify the manifest file location.
+  ///
+  /// The format of manifest location can be an absolute path to the object in
+  /// the format of `gs://bucket_name/path/object_name`. For example,
+  /// `gs://bucket_name/path/object_name.csv`. Alternatively, you can specify an
+  /// absolute path with a single wildcard character in the file name, for
+  /// example `gs://bucket_name/path/file_name*.csv`. If the manifest location
+  /// is specified with a wildcard, objects in all manifest files matching the
+  /// pattern will be acted upon. The manifest is a CSV file, uploaded to Cloud
+  /// Storage, that contains one object or a list of objects that you want to
+  /// process. Each row in the manifest must include the `bucket` and `name` of
+  /// the object. You can optionally specify the `generation` of the object. If
+  /// you don't specify the `generation`, the current version of the object is
+  /// used. You can optionally include a header row with the following format:
+  /// `bucket,name,generation`. For example, bucket,name,generation
+  /// bucket_1,object_1,generation_1 bucket_1,object_2,generation_2
+  /// bucket_1,object_3,generation_3 Note: The manifest file must specify only
+  /// objects within the bucket provided to the job. Rows referencing objects in
+  /// other buckets are ignored.
+  ///
+  /// Required.
+  core.String? manifestLocation;
+
+  Manifest({this.manifestLocation});
+
+  Manifest.fromJson(core.Map json_)
+    : this(manifestLocation: json_['manifestLocation'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final manifestLocation = this.manifestLocation;
+    return {'manifestLocation': ?manifestLocation};
+  }
+}
+
+/// Represents an access control entry on an object.
+class ObjectAccessControl {
+  /// The entity holding the permission, in one of the following forms: *
+  /// `allUsers` * `allAuthenticatedUsers`
+  ///
+  /// Required.
+  core.String? entity;
+
+  /// The role to grant.
+  ///
+  /// Acceptable values are: * `READER` - gives read access to the object. *
+  /// `OWNER` - gives owner access to the object.
+  ///
+  /// Required.
+  core.String? role;
+
+  ObjectAccessControl({this.entity, this.role});
+
+  ObjectAccessControl.fromJson(core.Map json_)
+    : this(
+        entity: json_['entity'] as core.String?,
+        role: json_['role'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final entity = this.entity;
+    final role = this.role;
+    return {'entity': ?entity, 'role': ?role};
+  }
+}
+
+/// Describes the payload of a user-defined object custom context.
+class ObjectCustomContextPayload {
+  /// The value of the object custom context.
+  ///
+  /// If set, `value` can't be an empty string because it is a required field in
+  /// custom context. If unset, `value` is ignored and no changes are made to
+  /// the `value` field of the custom context payload.
+  core.String? value;
+
+  ObjectCustomContextPayload({this.value});
+
+  ObjectCustomContextPayload.fromJson(core.Map json_)
+    : this(value: json_['value'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final value = this.value;
+    return {'value': ?value};
+  }
+}
+
+/// Describes options for object retention update.
+class ObjectRetention {
+  /// The object's retention expiration time, during which, the object is
+  /// protected from being deleted or overwritten.
+  ///
+  /// The time must be specified in RFC 3339 format, for example
+  /// `YYYY-MM-DD'T'HH:MM:SS'Z'` or `YYYY-MM-DD'T'HH:MM:SS.SS'Z'`. To clear an
+  /// object's retention, both `retentionMode` and `retainUntilTime` must be
+  /// left unset (omitted). Setting `retentionMode` to
+  /// `RETENTION_MODE_UNSPECIFIED` is treated as a no-op. Unlike an unset field,
+  /// it doesn't modify or clear the retention settings.
+  ///
+  /// Required.
+  core.String? retainUntilTime;
+
+  /// The retention mode.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "RETENTION_MODE_UNSPECIFIED" : The retention mode isn't specified.
+  /// - "LOCKED" : When the retention mode is `LOCKED`, the `retainUntilTime`
+  /// can't be removed or reduced.
+  /// - "UNLOCKED" : When the retention mode is `UNLOCKED`, the
+  /// `retainUntilTime` can be removed or modified.
+  core.String? retentionMode;
+
+  ObjectRetention({this.retainUntilTime, this.retentionMode});
+
+  ObjectRetention.fromJson(core.Map json_)
+    : this(
+        retainUntilTime: json_['retainUntilTime'] as core.String?,
+        retentionMode: json_['retentionMode'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final retainUntilTime = this.retainUntilTime;
+    final retentionMode = this.retentionMode;
+    return {
+      'retainUntilTime': ?retainUntilTime,
+      'retentionMode': ?retentionMode,
+    };
+  }
+}
+
+/// This resource represents a long-running operation that is the result of a
+/// network API call.
+class Operation {
+  /// If the value is `false`, it means the operation is still in progress.
+  ///
+  /// If `true`, the operation is completed, and either `error` or `response` is
+  /// available.
+  core.bool? done;
+
+  /// The error result of the operation in case of failure or cancellation.
+  Status? error;
+
+  /// Service-specific metadata associated with the operation.
+  ///
+  /// It typically contains progress information and common metadata such as
+  /// create time. Some services might not provide such metadata. Any method
+  /// that returns a long-running operation should document the metadata type,
+  /// if any.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? metadata;
+
+  /// The server-assigned name, which is only unique within the same service
+  /// that originally returns it.
+  ///
+  /// If you use the default HTTP mapping, the `name` should be a resource name
+  /// ending with `operations/{unique_id}`.
+  core.String? name;
+
+  /// The normal, successful response of the operation.
+  ///
+  /// If the original method returns no data on success, such as `Delete`, the
+  /// response is `google.protobuf.Empty`. If the original method is standard
+  /// `Get`/`Create`/`Update`, the response should be the resource. For other
+  /// methods, the response should have the type `XxxResponse`, where `Xxx` is
+  /// the original method name. For example, if the original method name is
+  /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? response;
+
+  Operation({this.done, this.error, this.metadata, this.name, this.response});
+
+  Operation.fromJson(core.Map json_)
+    : this(
+        done: json_['done'] as core.bool?,
+        error: json_.containsKey('error')
+            ? Status.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
+        name: json_['name'] as core.String?,
+        response: json_.containsKey('response')
+            ? json_['response'] as core.Map<core.String, core.dynamic>
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final done = this.done;
+    final error = this.error;
+    final metadata = this.metadata;
+    final name = this.name;
+    final response = this.response;
+    return {
+      'done': ?done,
+      'error': ?error,
+      'metadata': ?metadata,
+      'name': ?name,
+      'response': ?response,
+    };
+  }
+}
+
+/// Describes prefixes of objects to be transformed.
+class PrefixList {
+  /// Specify one or more object prefixes.
+  ///
+  /// For example: * To match one object, use a single prefix, `prefix1`. * To
+  /// match multiple objects, use comma-separated prefixes, `prefix1, prefix2`.
+  /// * To match all objects, use an empty prefix, `''`
+  ///
+  /// Optional.
+  core.List<core.String>? includedObjectPrefixes;
+
+  PrefixList({this.includedObjectPrefixes});
+
+  PrefixList.fromJson(core.Map json_)
+    : this(
+        includedObjectPrefixes: (json_['includedObjectPrefixes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final includedObjectPrefixes = this.includedObjectPrefixes;
+    return {'includedObjectPrefixes': ?includedObjectPrefixes};
+  }
+}
+
+/// Describes the project source where the objects satisfying the filters will
+/// be transformed.
+class ProjectSource {
+  /// Filters expressed in Common Expression Language (CEL) to apply to buckets
+  /// to identify buckets with objects to be transformed.
+  ///
+  /// Optional.
+  Expr? bucketFilters;
+
+  /// The unique identifier of a dry run job to use as the baseline for the
+  /// current job.
+  ///
+  /// Specifying this ID ensures the job is executed against the same set of
+  /// objects validated during the dry run. The value corresponds to the
+  /// {job_id} segment of the resource name:
+  /// `projects/{project_id}/locations/{location}/jobs/{job_id}`.
+  ///
+  /// Optional.
+  core.String? dryRunJobId;
+
+  /// The resource identifier of the Storage Insights dataset configuration.
+  ///
+  /// Storage batch operations uses the latest snapshot from this dataset as the
+  /// source to list and filter target objects. Format:
+  /// `projects/{project_id}/locations/{location}/datasetConfigs/{dataset_config}`.
+  ///
+  /// Required.
+  core.String? insightsDatasetConfig;
+
+  /// Filters expressed in Common Expression Language (CEL) to apply to objects
+  /// to identify objects to be transformed.
+  ///
+  /// Optional.
+  Expr? objectFilters;
+
+  /// Project name of the objects to be transformed.
+  ///
+  /// e.g. projects/my-project or projects/123456.
+  ///
+  /// Required.
+  core.String? project;
+
+  /// The snapshot time used by the job to read the Storage Insights dataset for
+  /// bucket and object discovery.
+  ///
+  /// This field is populated by the service and reflects the exact timestamp of
+  /// the dataset snapshot used.
+  ///
+  /// Output only.
+  core.String? snapshotTime;
+
+  /// Specifies the Cloud Storage locations to include in the job.
+  ///
+  /// If provided, only buckets and objects within these locations will be
+  /// discovered from the Storage Insights dataset as configured in the
+  /// `insights_dataset_config`. If omitted, the job will discover buckets and
+  /// objects from all locations configured in the `insights_dataset_config`.
+  ///
+  /// Optional.
+  TargetLocations? targetLocations;
+
+  ProjectSource({
+    this.bucketFilters,
+    this.dryRunJobId,
+    this.insightsDatasetConfig,
+    this.objectFilters,
+    this.project,
+    this.snapshotTime,
+    this.targetLocations,
+  });
+
+  ProjectSource.fromJson(core.Map json_)
+    : this(
+        bucketFilters: json_.containsKey('bucketFilters')
+            ? Expr.fromJson(
+                json_['bucketFilters'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        dryRunJobId: json_['dryRunJobId'] as core.String?,
+        insightsDatasetConfig: json_['insightsDatasetConfig'] as core.String?,
+        objectFilters: json_.containsKey('objectFilters')
+            ? Expr.fromJson(
+                json_['objectFilters'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        project: json_['project'] as core.String?,
+        snapshotTime: json_['snapshotTime'] as core.String?,
+        targetLocations: json_.containsKey('targetLocations')
+            ? TargetLocations.fromJson(
+                json_['targetLocations'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final bucketFilters = this.bucketFilters;
+    final dryRunJobId = this.dryRunJobId;
+    final insightsDatasetConfig = this.insightsDatasetConfig;
+    final objectFilters = this.objectFilters;
+    final project = this.project;
+    final snapshotTime = this.snapshotTime;
+    final targetLocations = this.targetLocations;
+    return {
+      'bucketFilters': ?bucketFilters,
+      'dryRunJobId': ?dryRunJobId,
+      'insightsDatasetConfig': ?insightsDatasetConfig,
+      'objectFilters': ?objectFilters,
+      'project': ?project,
+      'snapshotTime': ?snapshotTime,
+      'targetLocations': ?targetLocations,
+    };
+  }
+}
+
+/// Describes options for object metadata update.
+class PutMetadata {
+  /// Updates the objects `Cache-Control` fixed metadata.
+  ///
+  /// Unset values in the request are ignored. To clear the metadata, set an
+  /// empty value. Additionally, the value for `Custom-Time` can't decrease. For
+  /// details, see
+  /// \[Cache-Control\](https://cloud.google.com/storage/docs/metadata#caching_data).
+  ///
+  /// Optional.
+  core.String? cacheControl;
+
+  /// Updates objects `Content-Disposition` fixed metadata.
+  ///
+  /// Unset values in the request are ignored. To clear the metadata, set an
+  /// empty value. For details, see
+  /// \[Content-Disposition\](https://cloud.google.com/storage/docs/metadata#content-disposition).
+  ///
+  /// Optional.
+  core.String? contentDisposition;
+
+  /// Updates the objects `Content-Encoding` fixed metadata.
+  ///
+  /// Unset values in the request are ignored. To clear the metadata, set an
+  /// empty value. For details, see
+  /// \[Content-Encoding\](https://cloud.google.com/storage/docs/metadata#content-encoding).
+  ///
+  /// Optional.
+  core.String? contentEncoding;
+
+  /// Updates the objects `Content-Language` fixed metadata.
+  ///
+  /// Metadata values must use ISO 639-1 language codes. The maximum length for
+  /// metadata values is 100 characters. Unset values in the request are
+  /// ignored. To clear the metadata, set an empty value. For details, see
+  /// \[Content-Language\](https://cloud.google.com/storage/docs/metadata#content-language).
+  ///
+  /// Optional.
+  core.String? contentLanguage;
+
+  /// Updates objects `Content-Type` fixed metadata.
+  ///
+  /// Unset values in the request are ignored. To clear the metadata, set an
+  /// empty value. For details, see
+  /// \[Content-Type\](https://cloud.google.com/storage/docs/metadata#content-type).
+  ///
+  /// Optional.
+  core.String? contentType;
+
+  /// Updates the object's custom metadata.
+  ///
+  /// This operation adds or sets individual custom metadata key-value pairs.
+  /// Keys specified with empty values have their values cleared. Existing
+  /// custom metadata keys not included in the request remain unchanged. For
+  /// details, see
+  /// [Custom metadata](https://cloud.google.com/storage/docs/metadata#custom-metadata).
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? customMetadata;
+
+  /// Updates the objects `Custom-Time` fixed metadata.
+  ///
+  /// Unset values in the request are ignored. To clear the metadata, set an
+  /// empty value. The time must be specified in RFC 3339 format, for example
+  /// `YYYY-MM-DD'T'HH:MM:SS'Z'` or `YYYY-MM-DD'T'HH:MM:SS.SS'Z'`. For details,
+  /// see
+  /// \[Custom-Time\](https://cloud.google.com/storage/docs/metadata#custom-time).
+  ///
+  /// Optional.
+  core.String? customTime;
+
+  /// Updates an object's retention configuration.
+  ///
+  /// To clear an object's retention, both `retentionMode` and `retainUntilTime`
+  /// must be left unset (omitted). Setting `retentionMode` to
+  /// `RETENTION_MODE_UNSPECIFIED` is treated as a no-op. Unlike an unset field,
+  /// it doesn't modify or clear the retention settings. An object with `LOCKED`
+  /// retention mode can't have its retention cleared or its `retainUntilTime`
+  /// reduced. For more information, see
+  /// [Object retention](https://cloud.google.com/storage/docs/batch-operations/create-manage-batch-operation-jobs#retain-until-time).
+  ///
+  /// Optional.
+  ObjectRetention? objectRetention;
+
+  PutMetadata({
+    this.cacheControl,
+    this.contentDisposition,
+    this.contentEncoding,
+    this.contentLanguage,
+    this.contentType,
+    this.customMetadata,
+    this.customTime,
+    this.objectRetention,
+  });
+
+  PutMetadata.fromJson(core.Map json_)
+    : this(
+        cacheControl: json_['cacheControl'] as core.String?,
+        contentDisposition: json_['contentDisposition'] as core.String?,
+        contentEncoding: json_['contentEncoding'] as core.String?,
+        contentLanguage: json_['contentLanguage'] as core.String?,
+        contentType: json_['contentType'] as core.String?,
+        customMetadata:
+            (json_['customMetadata'] as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        customTime: json_['customTime'] as core.String?,
+        objectRetention: json_.containsKey('objectRetention')
+            ? ObjectRetention.fromJson(
+                json_['objectRetention'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final cacheControl = this.cacheControl;
+    final contentDisposition = this.contentDisposition;
+    final contentEncoding = this.contentEncoding;
+    final contentLanguage = this.contentLanguage;
+    final contentType = this.contentType;
+    final customMetadata = this.customMetadata;
+    final customTime = this.customTime;
+    final objectRetention = this.objectRetention;
+    return {
+      'cacheControl': ?cacheControl,
+      'contentDisposition': ?contentDisposition,
+      'contentEncoding': ?contentEncoding,
+      'contentLanguage': ?contentLanguage,
+      'contentType': ?contentType,
+      'customMetadata': ?customMetadata,
+      'customTime': ?customTime,
+      'objectRetention': ?objectRetention,
+    };
+  }
+}
+
+/// Describes options to update object hold.
+class PutObjectHold {
+  /// Updates object event based holds state.
+  ///
+  /// When object event based hold is set, object can't be deleted or replaced.
+  /// Resets object's time in the bucket for the purposes of the retention
+  /// period.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "HOLD_STATUS_UNSPECIFIED" : Default value, Object hold status isn't
+  /// changed.
+  /// - "SET" : Places the hold.
+  /// - "UNSET" : Releases the hold.
+  core.String? eventBasedHold;
+
+  /// Updates object temporary holds state.
+  ///
+  /// When object temporary hold is set, object can't be deleted or replaced.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "HOLD_STATUS_UNSPECIFIED" : Default value, Object hold status isn't
+  /// changed.
+  /// - "SET" : Places the hold.
+  /// - "UNSET" : Releases the hold.
+  core.String? temporaryHold;
+
+  PutObjectHold({this.eventBasedHold, this.temporaryHold});
+
+  PutObjectHold.fromJson(core.Map json_)
+    : this(
+        eventBasedHold: json_['eventBasedHold'] as core.String?,
+        temporaryHold: json_['temporaryHold'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final eventBasedHold = this.eventBasedHold;
+    final temporaryHold = this.temporaryHold;
+    return {'eventBasedHold': ?eventBasedHold, 'temporaryHold': ?temporaryHold};
+  }
+}
+
+/// Describes options for object rewrite.
+class RewriteObject {
+  /// Resource name of the Cloud KMS key that is used to encrypt the object.
+  ///
+  /// The Cloud KMS key must be located in same location as the object. For
+  /// details, see
+  /// https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys#add-object-key
+  /// Format:
+  /// `projects/{project_id}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}`
+  /// For example:
+  /// `projects/123456/locations/us-central1/keyRings/my-keyring/cryptoKeys/my-key`.
+  /// The object will be rewritten and set with the specified KMS key.
+  ///
+  /// Optional.
+  core.String? kmsKey;
+
+  /// Rewrites the object to the specified storage class.
+  ///
+  /// Setting this field will perform a full byte copy of the object if the
+  /// storage class is different from the object's current storage class. If
+  /// Autoclass is enabled on the bucket, storage class changes are ignored by
+  /// Cloud Storage.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "STORAGE_CLASS_UNSPECIFIED" : The storage class is not specified.
+  /// - "STANDARD" : Standard storage class.
+  /// - "NEARLINE" : Nearline storage class.
+  /// - "COLDLINE" : Coldline storage class.
+  /// - "ARCHIVE" : Archive storage class.
+  core.String? storageClass;
+
+  RewriteObject({this.kmsKey, this.storageClass});
+
+  RewriteObject.fromJson(core.Map json_)
+    : this(
+        kmsKey: json_['kmsKey'] as core.String?,
+        storageClass: json_['storageClass'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final kmsKey = this.kmsKey;
+    final storageClass = this.storageClass;
+    return {'kmsKey': ?kmsKey, 'storageClass': ?storageClass};
+  }
+}
+
+/// Describes options for setting object ACLs.
+class SetObjectAcls {
+  /// Add, update, or remove grants from the object's existing ACLs.
+  ///
+  /// Required.
+  AccessControlsUpdates? accessControlsUpdates;
+
+  SetObjectAcls({this.accessControlsUpdates});
+
+  SetObjectAcls.fromJson(core.Map json_)
+    : this(
+        accessControlsUpdates: json_.containsKey('accessControlsUpdates')
+            ? AccessControlsUpdates.fromJson(
+                json_['accessControlsUpdates']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final accessControlsUpdates = this.accessControlsUpdates;
+    return {'accessControlsUpdates': ?accessControlsUpdates};
+  }
+}
+
+/// The `Status` type defines a logical error model that is suitable for
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
+typedef Status = $Status00;
+
+/// Describes the Cloud Storage locations to include in a ProjectSource job.
+class TargetLocations {
+  /// A list of Cloud Storage locations (e.g., `us-central1`) to include in the
+  /// job.
+  ///
+  /// If `snapshot_time` is omitted, the job automatically defaults to the most
+  /// recent snapshot timestamp that is successfully populated in BOTH the
+  /// `object_attributes_view` and `bucket_attributes_view` across ALL specified
+  /// locations. For details on Storage Insights dataset snapshots and views,
+  /// see:
+  /// https://docs.cloud.google.com/storage/docs/insights/dataset-tables-and-schemas#schema
+  ///
+  /// Required.
+  core.List<core.String>? locations;
+
+  /// The exact Storage Insights snapshot timestamp to use for the job
+  /// compatible with the RFC 3339 format (e.g., `2024-01-02T03:04:05Z`).
+  ///
+  /// If specified, this exact snapshot must exist in BOTH the
+  /// `object_attributes_view` and `bucket_attributes_view` for every location
+  /// listed in `locations`. If the snapshot is missing from either view in any
+  /// of the locations, the job fails.
+  ///
+  /// Optional.
+  core.String? snapshotTime;
+
+  TargetLocations({this.locations, this.snapshotTime});
+
+  TargetLocations.fromJson(core.Map json_)
+    : this(
+        locations: (json_['locations'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        snapshotTime: json_['snapshotTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final locations = this.locations;
+    final snapshotTime = this.snapshotTime;
+    return {'locations': ?locations, 'snapshotTime': ?snapshotTime};
+  }
+}
+
+/// Describes options to update object custom contexts.
+class UpdateObjectCustomContext {
+  /// If set, must be set to true and all existing object custom contexts are
+  /// deleted.
+  core.bool? clearAll;
+
+  /// A collection of updates to apply to specific custom contexts.
+  ///
+  /// Use this to add, update or delete individual contexts by key.
+  CustomContextUpdates? customContextUpdates;
+
+  UpdateObjectCustomContext({this.clearAll, this.customContextUpdates});
+
+  UpdateObjectCustomContext.fromJson(core.Map json_)
+    : this(
+        clearAll: json_['clearAll'] as core.bool?,
+        customContextUpdates: json_.containsKey('customContextUpdates')
+            ? CustomContextUpdates.fromJson(
+                json_['customContextUpdates']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final clearAll = this.clearAll;
+    final customContextUpdates = this.customContextUpdates;
+    return {
+      'clearAll': ?clearAll,
+      'customContextUpdates': ?customContextUpdates,
+    };
+  }
+}

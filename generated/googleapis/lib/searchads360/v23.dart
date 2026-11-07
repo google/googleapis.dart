@@ -72238,7 +72238,7 @@ class GoogleAdsSearchads360V23ServicesEnablementResult {
 }
 
 /// Request message for ExperimentService.EndExperiment.
-typedef GoogleAdsSearchads360V23ServicesEndExperimentRequest = $Request03;
+typedef GoogleAdsSearchads360V23ServicesEndExperimentRequest = $Request04;
 
 /// A single operation on an experiment arm.
 class GoogleAdsSearchads360V23ServicesExperimentArmOperation {
@@ -90059,7 +90059,7 @@ class GoogleAdsSearchads360V23ServicesPromoteCampaignDraftRequest {
 }
 
 /// Request message for ExperimentService.PromoteExperiment.
-typedef GoogleAdsSearchads360V23ServicesPromoteExperimentRequest = $Request03;
+typedef GoogleAdsSearchads360V23ServicesPromoteExperimentRequest = $Request04;
 
 /// Request message for LocalServicesLeadService.ProvideLeadFeedback.
 class GoogleAdsSearchads360V23ServicesProvideLeadFeedbackRequest {
@@ -90850,10 +90850,10 @@ typedef GoogleAdsSearchads360V23ServicesRunBatchJobRequest = $Empty;
 
 /// Request message for OfflineUserDataJobService.RunOfflineUserDataJob.
 typedef GoogleAdsSearchads360V23ServicesRunOfflineUserDataJobRequest =
-    $Request03;
+    $Request04;
 
 /// Request message for ExperimentService.ScheduleExperiment.
-typedef GoogleAdsSearchads360V23ServicesScheduleExperimentRequest = $Request03;
+typedef GoogleAdsSearchads360V23ServicesScheduleExperimentRequest = $Request04;
 
 /// A single operation (update) on a Search Ads 360 campaign.
 class GoogleAdsSearchads360V23ServicesSearchAds360CampaignOperation {

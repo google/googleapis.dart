@@ -109,6 +109,25 @@ Agencies and brands API is an externally available HTTP API for ad agencies and 
 - [Original documentation](https://developers.google.com/authorized-buyers/agencies-and-brands/get-started/start)
 - [Dart package details](https://pub.dev/documentation/googleapis/19.0.0-wip/agenciesandbrands_v1/agenciesandbrands_v1-library.html)
 
+#### Agent Identity API - `agentidentity/v1`
+
+- [Original documentation](https://cloud.google.com/iam/docs/)
+- [Dart package details](https://pub.dev/documentation/googleapis/19.0.0-wip/agentidentity_v1/agentidentity_v1-library.html)
+
+#### Agent Identity Credentials API - `agentidentitycredentials/v1`
+
+The Agent Identity Credentials API retrieves and finalizes authorization credentials for auth providers.
+
+- [Original documentation](https://cloud.google.com/iam/docs/)
+- [Dart package details](https://pub.dev/documentation/googleapis/19.0.0-wip/agentidentitycredentials_v1/agentidentitycredentials_v1-library.html)
+
+#### Agent Registry API - `agentregistry/v1`
+
+Agent Registry is a centralized, unified catalog that lets you store, discover, and govern Model Context Protocol (MCP) servers, tools, and AI agents within Google Cloud.
+
+- [Original documentation](https://docs.cloud.google.com/agent-registry/overview)
+- [Dart package details](https://pub.dev/documentation/googleapis/19.0.0-wip/agentregistry_v1/agentregistry_v1-library.html)
+
 #### Agent Platform API - `aiplatform/v1`
 
 Build, scale, govern, and optimize sophisticated agents and models.
@@ -235,6 +254,13 @@ Store and manage build artifacts in a scalable and integrated service built on G
 
 - [Original documentation](https://cloud.google.com/learnmoreurl)
 - [Dart package details](https://pub.dev/documentation/googleapis/19.0.0-wip/assuredworkloads_v1/assuredworkloads_v1-library.html)
+
+#### Audit Manager API - `auditmanager/v1`
+
+The Audit Manager API allows customers to manage compliance audits.
+
+- [Original documentation](https://cloud.google.com/assured-workloads/docs/audit-manager)
+- [Dart package details](https://pub.dev/documentation/googleapis/19.0.0-wip/auditmanager_v1/auditmanager_v1-library.html)
 
 #### Authorized Buyers Marketplace API - `authorizedbuyersmarketplace/v1`
 
@@ -523,6 +549,13 @@ Manages keys and performs cryptographic operations in a central cloud service, f
 - [Original documentation](https://cloud.google.com/location-finder/docs)
 - [Dart package details](https://pub.dev/documentation/googleapis/19.0.0-wip/cloudlocationfinder_v1/cloudlocationfinder_v1-library.html)
 
+#### Cloud Product Registry API - `cloudproductregistry/v1`
+
+Cloud Product Registry API provides capabilities to access all first Google Cloud products.
+
+- [Original documentation](https://docs.cloud.google.com/product-registry)
+- [Dart package details](https://pub.dev/documentation/googleapis/19.0.0-wip/cloudproductregistry_v1/cloudproductregistry_v1-library.html)
+
 #### Cloud Profiler API - `cloudprofiler/v2`
 
 Manages continuous profiling information.
@@ -590,6 +623,13 @@ Sends application trace data to Cloud Trace for viewing. Trace data is collected
 
 - [Original documentation](https://cloud.google.com/trace/)
 - [Dart package details](https://pub.dev/documentation/googleapis/19.0.0-wip/cloudtrace_v2/cloudtrace_v2-library.html)
+
+#### Colab API - `colaboratory/v1`
+
+The Colab API lets you programmatically manage Colab runtimes.
+
+- [Original documentation](https://developers.google.com/colab/api/reference/rest)
+- [Dart package details](https://pub.dev/documentation/googleapis/19.0.0-wip/colaboratory_v1/colaboratory_v1-library.html)
 
 #### Cloud Composer API - `composer/v1`
 
@@ -758,6 +798,13 @@ The Developer Knowledge API provides access to Google's developer knowledge.
 - [Original documentation](https://developers.google.com/knowledge)
 - [Dart package details](https://pub.dev/documentation/googleapis/19.0.0-wip/developerknowledge_v1/developerknowledge_v1-library.html)
 
+#### Device Run API - `devicerun/v1`
+
+The Device Run API allows management, scheduling, and execution of automated sessions and workloads across device catalogs.
+
+- [Original documentation](https://docs.cloud.google.com/developer-device-platform/device-run)
+- [Dart package details](https://pub.dev/documentation/googleapis/19.0.0-wip/devicerun_v1/devicerun_v1-library.html)
+
 #### Campaign Manager 360 API - `dfareporting/v5`
 
 Build applications to efficiently manage large or complex trafficking, reporting, and attribution workflows for Campaign Manager 360.
@@ -785,6 +832,13 @@ Discovers relationships between online assets such as websites or mobile apps.
 
 - [Original documentation](https://developers.google.com/digital-asset-links/)
 - [Dart package details](https://pub.dev/documentation/googleapis/19.0.0-wip/digitalassetlinks_v1/digitalassetlinks_v1-library.html)
+
+#### API Discovery Service - `discovery/v1`
+
+Provides information about other Google APIs, such as what APIs are available, the resource, and method details for each API.
+
+- [Original documentation](https://developers.google.com/discovery/)
+- [Dart package details](https://pub.dev/documentation/googleapis/19.0.0-wip/discovery_v1/discovery_v1-library.html)
 
 #### Display & Video 360 API - `displayvideo/v5`
 
@@ -939,6 +993,13 @@ Reads and writes Google Forms and responses.
 - [Original documentation](https://developers.google.com/workspace/forms/api)
 - [Dart package details](https://pub.dev/documentation/googleapis/19.0.0-wip/forms_v1/forms_v1-library.html)
 
+#### Cloud FTP API - `ftp/v1`
+
+A managed, cloud-native solution to move data in and out of Google Cloud by using SSH File Transfer Protocol (SFTP).
+
+- [Original documentation](https://docs.cloud.google.com/cloud-ftp)
+- [Dart package details](https://pub.dev/documentation/googleapis/19.0.0-wip/ftp_v1/ftp_v1-library.html)
+
 #### Google Play Games Services API - `games/v1`
 
 The Google Play Games Service allows developers to enhance games with social leaderboards, achievements, game state, sign-in with Google, and more.
@@ -1024,6 +1085,13 @@ Manage, store, and access healthcare data in Google Cloud Platform.
 - [Original documentation](https://developers.home.google.com/cloud-to-cloud/get-started)
 - [Dart package details](https://pub.dev/documentation/googleapis/19.0.0-wip/homegraph_v1/homegraph_v1-library.html)
 
+#### Cluster Director API - `hypercomputecluster/v1`
+
+The Cluster Director API lets you deploy, manage, and monitor clusters that run artificial intelligence (AI), machine learning (ML), or high performance computing (HPC) workloads.
+
+- [Original documentation](https://docs.cloud.google.com/cluster-director/docs)
+- [Dart package details](https://pub.dev/documentation/googleapis/19.0.0-wip/hypercomputecluster_v1/hypercomputecluster_v1-library.html)
+
 #### Identity and Access Management (IAM) API - `iam/v1`
 
 > [!WARNING]
@@ -1094,6 +1162,11 @@ Notifies Google Web Search when your web pages change.
 
 - [Original documentation](https://developers.google.com/search/apis/indexing-api/)
 - [Dart package details](https://pub.dev/documentation/googleapis/19.0.0-wip/indexing_v3/indexing_v3-library.html)
+
+#### Application Integration API - `integrations/v2`
+
+- [Original documentation](https://cloud.google.com/application-integration)
+- [Dart package details](https://pub.dev/documentation/googleapis/19.0.0-wip/integrations_v2/integrations_v2-library.html)
 
 #### Cloud Talent Solution API - `jobs/v4`
 
@@ -1771,6 +1844,11 @@ Stores and retrieves potentially large, immutable data objects.
 
 - [Original documentation](https://developers.google.com/storage/docs/json_api/)
 - [Dart package details](https://pub.dev/documentation/googleapis/19.0.0-wip/storage_v1/storage_v1-library.html)
+
+#### Storage Batch Operations API - `storagebatchoperations/v1`
+
+- [Original documentation](https://cloud.google.com/storage/docs/batch-operations/overview)
+- [Dart package details](https://pub.dev/documentation/googleapis/19.0.0-wip/storagebatchoperations_v1/storagebatchoperations_v1-library.html)
 
 #### Storage Transfer API - `storagetransfer/v1`
 

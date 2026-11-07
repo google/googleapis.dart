@@ -4400,7 +4400,7 @@ class ExportClusterRequest {
 }
 
 /// Message for triggering failover on an Instance
-typedef FailoverInstanceRequest = $Request06;
+typedef FailoverInstanceRequest = $Request07;
 
 /// Destination for Export.
 ///
@@ -7313,7 +7313,7 @@ class SupportedDatabaseFlag {
 }
 
 /// Message for switching over to a cluster
-typedef SwitchoverClusterRequest = $Request06;
+typedef SwitchoverClusterRequest = $Request07;
 
 /// A time based retention policy specifies that all backups within a certain
 /// time period should be retained.

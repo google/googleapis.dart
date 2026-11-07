@@ -27,6 +27,9 @@ packages:
       - adsenseplatform:v1
       - advisorynotifications:v1
       - agenciesandbrands:v1
+      - agentidentity:v1
+      - agentidentitycredentials:v1
+      - agentregistry:v1
       - aiplatform:v1
       - airquality:v1
       - alloydb:v1
@@ -46,6 +49,7 @@ packages:
       - areainsights:v1
       - artifactregistry:v1
       - assuredworkloads:v1
+      - auditmanager:v1
       - authorizedbuyersmarketplace:v1
       - backupdr:v1
       - baremetalsolution:v2
@@ -87,6 +91,7 @@ packages:
       - cloudidentity:v1
       - cloudkms:v1
       - cloudlocationfinder:v1
+      - cloudproductregistry:v1
       - cloudprofiler:v2
       - cloudresourcemanager:v1
       - cloudresourcemanager:v3
@@ -96,6 +101,7 @@ packages:
       - cloudsupport:v2
       - cloudtasks:v2
       - cloudtrace:v2
+      - colaboratory:v1
       - composer:v1
       - compute:v1
       - config:v1
@@ -120,10 +126,12 @@ packages:
       - deepreview:v1
       - developerconnect:v1
       - developerknowledge:v1
+      - devicerun:v1
       - dfareporting:v5
       - dialogflow:v2
       - dialogflow:v3
       - digitalassetlinks:v1
+      - discovery:v1
       - displayvideo:v5
       - dlp:v2
       - dns:v1
@@ -146,6 +154,7 @@ packages:
       - firebaserules:v1
       - firestore:v1
       - forms:v1
+      - ftp:v1
       - games:v1
       - gamesConfiguration:v1configuration
       - gamesManagement:v1management
@@ -159,6 +168,7 @@ packages:
       - health:v4
       - healthcare:v1
       - homegraph:v1
+      - hypercomputecluster:v1
       - iam:v1
       - iam:v2
       - iamcredentials:v1
@@ -167,6 +177,7 @@ packages:
       - identitytoolkit:v2
       - ids:v1
       - indexing:v3
+      - integrations:v2
       - jobs:v4
       - keep:v1
       - kgsearch:v1
@@ -263,6 +274,7 @@ packages:
       - speech:v1
       - sqladmin:v1
       - storage:v1
+      - storagebatchoperations:v1
       - storagetransfer:v1
       - streetviewpublish:v1
       - sts:v1
@@ -348,13 +360,10 @@ skip_tests:
 skipped_apis:
   - admob:v1beta
   - adsenseplatform:v1alpha
-  - agentidentity:v1
   - agentidentity:v1alpha
   - agentidentity:v1beta
-  - agentidentitycredentials:v1
   - agentidentitycredentials:v1alpha
   - agentidentitycredentials:v1beta
-  - agentregistry:v1
   - agentregistry:v1alpha
   - aiplatform:v1beta1
   - alloydb:v1alpha
@@ -368,7 +377,6 @@ skipped_apis:
   - artifactregistry:v1beta1
   - artifactregistry:v1beta2
   - assuredworkloads:v1beta1
-  - auditmanager:v1
   - authorizedbuyersmarketplace:v1alpha
   - authorizedbuyersmarketplace:v1beta
   - backupdr:v1beta
@@ -390,7 +398,6 @@ skipped_apis:
   - cloudidentity:v1beta1
   - cloudlocationfinder:v1alpha
   - cloudnumberregistry:v1alpha
-  - cloudproductregistry:v1
   - cloudresourcemanager:v1beta1
   - cloudresourcemanager:v2
   - cloudresourcemanager:v2beta1
@@ -399,7 +406,6 @@ skipped_apis:
   - cloudtasks:v2beta3
   - cloudtrace:v1
   - cloudtrace:v2beta1
-  - colaboratory:v1
   - colaboratory:v1beta
   - composer:v1beta1
   - compute:alpha
@@ -423,12 +429,10 @@ skipped_apis:
   - deploymentmanager:v2
   - deploymentmanager:v2beta
   - developerknowledge:v1alpha
-  - devicerun:v1
   - devicerun:v1alpha
   - dfareporting:v3.5
   - dialogflow:v2beta1
   - dialogflow:v3beta1
-  - discovery:v1
   - discoveryengine:v1
   - discoveryengine:v1alpha
   - discoveryengine:v1beta
@@ -455,7 +459,6 @@ skipped_apis:
   - firestore:v1beta1
   - firestore:v1beta2
   - fitness:v1
-  - ftp:v1
   - ftp:v1alpha
   - gkehub:v1
   - gkehub:v1alpha
@@ -466,12 +469,10 @@ skipped_apis:
   - gmailpostmastertools:v1beta1
   - health:v4beta
   - healthcare:v1beta1
-  - hypercomputecluster:v1
   - iam:v2beta
   - iap:v1beta1
   - identitytoolkit:v3
   - integrations:v1
-  - integrations:v2
   - jobs:v3
   - jobs:v3p1beta1
   - language:v1beta2
@@ -536,7 +537,6 @@ skipped_apis:
   - serviceusage:v1beta1
   - speech:v1p1beta1
   - sqladmin:v1beta4
-  - storagebatchoperations:v1
   - sts:v1beta
   - tagmanager:v1
   - texttospeech:v1beta1

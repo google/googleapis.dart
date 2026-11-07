@@ -610,6 +610,8 @@ class $ArtifactsGcsSource {
 /// Used by:
 ///
 /// - accesscontextmanager:v1 : AuditLogConfig
+/// - agentidentity:v1 : AuditLogConfig
+/// - agentregistry:v1 : GoogleIamV1AuditLogConfig
 /// - analyticshub:v1 : AuditLogConfig
 /// - apigateway:v1 : ApigatewayAuditLogConfig
 /// - apigee:v1 : GoogleIamV1AuditLogConfig
@@ -2128,6 +2130,38 @@ class $Config01 {
 
 /// Used by:
 ///
+/// - agentregistry:v1 : ContactInfo
+/// - apphub:v1 : ContactInfo
+class $ContactInfo {
+  /// Contact's name.
+  ///
+  /// Can have a maximum length of 63 characters.
+  ///
+  /// Optional.
+  core.String? displayName;
+
+  /// Email address of the contacts.
+  ///
+  /// Required.
+  core.String? email;
+
+  $ContactInfo({this.displayName, this.email});
+
+  $ContactInfo.fromJson(core.Map json_)
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        email: json_['email'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    final email = this.email;
+    return {'displayName': ?displayName, 'email': ?email};
+  }
+}
+
+/// Used by:
+///
 /// - firebaseappdistribution:v1 : GdataContentTypeInfo
 /// - walletobjects:v1 : ContentTypeInfo
 class $ContentTypeInfo {
@@ -2268,6 +2302,33 @@ class $CriteriaTargeting {
       'excludedCriteriaIds': ?excludedCriteriaIds,
       'targetedCriteriaIds': ?targetedCriteriaIds,
     };
+  }
+}
+
+/// Used by:
+///
+/// - agentregistry:v1 : Criticality
+/// - apphub:v1 : Criticality
+class $Criticality {
+  /// Criticality Type.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Unspecified type.
+  /// - "MISSION_CRITICAL" : Mission critical service, application or workload.
+  /// - "HIGH" : High impact.
+  /// - "MEDIUM" : Medium impact.
+  /// - "LOW" : Low impact.
+  core.String? type;
+
+  $Criticality({this.type});
+
+  $Criticality.fromJson(core.Map json_)
+    : this(type: json_['type'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final type = this.type;
+    return {'type': ?type};
   }
 }
 
@@ -2487,6 +2548,7 @@ class $DataLinkResponse {
 /// - container:v1 : Date
 /// - curationpartners:v1 : Date
 /// - deepreview:v1 : Date
+/// - devicerun:v1 : Date
 /// - dlp:v2 : GoogleTypeDate
 /// - documentai:v1 : GoogleTypeDate
 /// - doubleclickbidmanager:v2 : Date
@@ -3298,6 +3360,18 @@ class $DrainingMachine {
 /// - adsenseplatform:v1 : RequestSiteReviewResponse
 /// - agenciesandbrands:v1 : Empty
 /// - agenciesandbrands:v1 : RunReportRequest
+/// - agentidentity:v1 : AgentIdentityPool
+/// - agentidentity:v1 : DirectIdJagInput
+/// - agentidentity:v1 : Empty
+/// - agentidentity:v1 : GeminiEnterpriseAuthProviderParams
+/// - agentidentity:v1 : GoogleAccount
+/// - agentidentity:v1 : RevokeAuthorizationResponse
+/// - agentidentity:v1 : WorkforceIdentityFederation
+/// - agentidentitycredentials:v1 : GoogleCloudAgentidentitycredentialsV1_ConsentRejected
+/// - agentidentitycredentials:v1 : GoogleCloudAgentidentitycredentialsV1_FinalizeCredentialsResponse
+/// - agentidentitycredentials:v1 : GoogleCloudAgentidentitycredentialsV1_Pending
+/// - agentregistry:v1 : CancelOperationRequest
+/// - agentregistry:v1 : Empty
 /// - aiplatform:v1 : GenaiVertexV1CodeExecution
 /// - aiplatform:v1 : GenaiVertexV1DeleteInteractionResponse
 /// - aiplatform:v1 : GenaiVertexV1FileSearchCallDelta
@@ -3477,6 +3551,8 @@ class $DrainingMachine {
 /// - assuredworkloads:v1 : GoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse
 /// - assuredworkloads:v1 : GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse
 /// - assuredworkloads:v1 : GoogleProtobufEmpty
+/// - auditmanager:v1 : CancelOperationRequest
+/// - auditmanager:v1 : Empty
 /// - authorizedbuyersmarketplace:v1 : ActivateClientRequest
 /// - authorizedbuyersmarketplace:v1 : ActivateClientUserRequest
 /// - authorizedbuyersmarketplace:v1 : CancelNegotiationRequest
@@ -3788,6 +3864,11 @@ class $DrainingMachine {
 /// - developerconnect:v1 : FetchAccessTokenRequest
 /// - developerconnect:v1 : FetchReadTokenRequest
 /// - developerconnect:v1 : FetchReadWriteTokenRequest
+/// - devicerun:v1 : CatalogAndroidxTestOrchestratorDetails
+/// - devicerun:v1 : CatalogAutomationSupport
+/// - devicerun:v1 : CatalogIosDeviceDetails
+/// - devicerun:v1 : Empty
+/// - devicerun:v1 : GoogleLongrunningCancelOperationRequest
 /// - dialogflow:v2 : GoogleCloudDialogflowV2AgentAssistantFeedbackCompanionFeedback
 /// - dialogflow:v2 : GoogleCloudDialogflowV2CompanionAgentKnowledgeSource
 /// - dialogflow:v2 : GoogleCloudDialogflowV2CompleteConversationRequest
@@ -3905,6 +3986,10 @@ class $DrainingMachine {
 /// - forms:v1 : PageBreakItem
 /// - forms:v1 : RenewWatchRequest
 /// - forms:v1 : TextItem
+/// - ftp:v1 : CancelOperationRequest
+/// - ftp:v1 : Empty
+/// - ftp:v1 : StartServerRequest
+/// - ftp:v1 : StopServerRequest
 /// - gkebackup:v1 : Empty
 /// - gkebackup:v1 : GoogleLongrunningCancelOperationRequest
 /// - gkehub:v2 : CancelOperationRequest
@@ -3928,6 +4013,8 @@ class $DrainingMachine {
 /// - healthcare:v1 : SchemaJSON
 /// - homegraph:v1 : Empty
 /// - homegraph:v1 : RequestSyncDevicesResponse
+/// - hypercomputecluster:v1 : CancelOperationRequest
+/// - hypercomputecluster:v1 : Empty
 /// - iam:v1 : DisableServiceAccountKeyRequest
 /// - iam:v1 : DisableServiceAccountRequest
 /// - iam:v1 : Empty
@@ -4191,6 +4278,9 @@ class $DrainingMachine {
 /// - sqladmin:v1 : Empty
 /// - sqladmin:v1 : StopWorkloadReplayContext
 /// - sqladmin:v1 : SwitchoverBlueGreenDeploymentRequest
+/// - storagebatchoperations:v1 : CancelJobResponse
+/// - storagebatchoperations:v1 : CancelOperationRequest
+/// - storagebatchoperations:v1 : Empty
 /// - storagetransfer:v1 : CancelOperationRequest
 /// - storagetransfer:v1 : Empty
 /// - storagetransfer:v1 : PauseTransferOperationRequest
@@ -4537,6 +4627,33 @@ class $EnvelopeSignature {
 
 /// Used by:
 ///
+/// - agentregistry:v1 : Environment
+/// - apphub:v1 : Environment
+class $Environment {
+  /// Environment Type.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Unspecified type.
+  /// - "PRODUCTION" : Production environment.
+  /// - "STAGING" : Staging environment.
+  /// - "TEST" : Test environment.
+  /// - "DEVELOPMENT" : Development environment.
+  core.String? type;
+
+  $Environment({this.type});
+
+  $Environment.fromJson(core.Map json_)
+    : this(type: json_['type'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final type = this.type;
+    return {'type': ?type};
+  }
+}
+
+/// Used by:
+///
 /// - backupdr:v1 : BindingEvaluationSummary
 /// - backupdr:v1 : PolicyEvaluationSummary
 class $EvaluationSummary {
@@ -4837,6 +4954,8 @@ class $ExportOptions01 {
 /// Used by:
 ///
 /// - accesscontextmanager:v1 : Expr
+/// - agentidentity:v1 : Expr
+/// - agentregistry:v1 : Expr
 /// - aiplatform:v1 : GoogleTypeExpr
 /// - analyticshub:v1 : Expr
 /// - apigateway:v1 : ApigatewayExpr
@@ -4899,6 +5018,7 @@ class $ExportOptions01 {
 /// - servicedirectory:v1 : Expr
 /// - servicemanagement:v1 : Expr
 /// - spanner:v1 : Expr
+/// - storagebatchoperations:v1 : Expr
 /// - vmwareengine:v1 : Expr
 /// - workstations:v1 : Expr
 class $Expr {
@@ -4948,6 +5068,34 @@ class $Expr {
       'location': ?location,
       'title': ?title,
     };
+  }
+}
+
+/// Used by:
+///
+/// - agentregistry:v1 : ExtendedMetadata
+/// - apphub:v1 : ExtendedMetadata
+class $ExtendedMetadata {
+  /// The metadata contents.
+  ///
+  /// Output only.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? metadataStruct;
+
+  $ExtendedMetadata({this.metadataStruct});
+
+  $ExtendedMetadata.fromJson(core.Map json_)
+    : this(
+        metadataStruct: json_.containsKey('metadataStruct')
+            ? json_['metadataStruct'] as core.Map<core.String, core.dynamic>
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final metadataStruct = this.metadataStruct;
+    return {'metadataStruct': ?metadataStruct};
   }
 }
 
@@ -6125,6 +6273,7 @@ class $Header {
 /// - firebasedataconnect:v1 : HttpBody
 /// - health:v4 : HttpBody
 /// - healthcare:v1 : HttpBody
+/// - integrations:v2 : GoogleApiHttpBody
 /// - managedkafka:v1 : HttpBody
 /// - networkmanagement:v1 : HttpBody
 /// - pollen:v1 : HttpBody
@@ -7679,12 +7828,15 @@ class $ListPolicy {
 
 /// Used by:
 ///
+/// - agentidentity:v1 : Location
+/// - agentregistry:v1 : Location
 /// - aiplatform:v1 : GoogleCloudLocationLocation
 /// - alloydb:v1 : GoogleCloudLocationLocation
 /// - apigateway:v1 : ApigatewayLocation
 /// - apihub:v1 : GoogleCloudLocationLocation
 /// - apphub:v1 : Location
 /// - artifactregistry:v1 : Location
+/// - auditmanager:v1 : Location
 /// - backupdr:v1 : Location
 /// - baremetalsolution:v2 : Location
 /// - batch:v1 : Location
@@ -7707,16 +7859,19 @@ class $ListPolicy {
 /// - datamigration:v1 : Location
 /// - datastream:v1 : Location
 /// - developerconnect:v1 : Location
+/// - devicerun:v1 : Location
 /// - documentai:v1 : GoogleCloudLocationLocation
 /// - eventarc:v1 : Location
 /// - file:v1 : Location
 /// - firebaseapphosting:v1 : Location
 /// - firebasedataconnect:v1 : Location
 /// - firestore:v1 : Location
+/// - ftp:v1 : Location
 /// - gkebackup:v1 : Location
 /// - gkehub:v2 : Location
 /// - gkeonprem:v1 : Location
 /// - healthcare:v1 : Location
+/// - hypercomputecluster:v1 : Location
 /// - ids:v1 : Location
 /// - looker:v1 : Location
 /// - managedidentities:v1 : Location
@@ -7738,6 +7893,7 @@ class $ListPolicy {
 /// - securesourcemanager:v1 : Location
 /// - securityposture:v1 : Location
 /// - servicedirectory:v1 : Location
+/// - storagebatchoperations:v1 : Location
 /// - tpu:v2 : Location
 /// - translate:v3 : Location
 /// - vmmigration:v1 : Location
@@ -10453,20 +10609,18 @@ class $Request01 {
 
 /// Used by:
 ///
-/// - cloudchannel:v1 : GoogleCloudChannelV1ActivateEntitlementRequest
-/// - cloudchannel:v1 : GoogleCloudChannelV1CancelEntitlementRequest
-/// - cloudchannel:v1 : GoogleCloudChannelV1StartPaidServiceRequest
-/// - cloudchannel:v1 : GoogleCloudChannelV1SuspendEntitlementRequest
+/// - agentidentity:v1 : DisableAuthProviderRequest
+/// - agentidentity:v1 : EnableAuthProviderRequest
+/// - agentidentity:v1 : UndeleteAuthProviderRequest
+/// - backupdr:v1 : TriggerRestoreCleanupRequest
 class $Request02 {
-  /// You can specify an optional unique request ID, and if you need to retry
-  /// your request, the server will know to ignore the request if it's complete.
+  /// An optional request ID to identify requests.
   ///
-  /// For example, you make an initial request and the request times out. If you
-  /// make the request again with the same request ID, the server can check if
-  /// it received the original operation with the same request ID. If it did, it
-  /// will ignore the second request. The request ID must be a valid
-  /// [UUID](https://tools.ietf.org/html/rfc4122) with the exception that zero
-  /// UUID is not supported (`00000000-0000-0000-0000-000000000000`).
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes after the first
+  /// request. The request ID must be a valid UUID with the exception that zero
+  /// UUID is not supported (00000000-0000-0000-0000-000000000000).
   ///
   /// Optional.
   core.String? requestId;
@@ -10484,19 +10638,50 @@ class $Request02 {
 
 /// Used by:
 ///
+/// - cloudchannel:v1 : GoogleCloudChannelV1ActivateEntitlementRequest
+/// - cloudchannel:v1 : GoogleCloudChannelV1CancelEntitlementRequest
+/// - cloudchannel:v1 : GoogleCloudChannelV1StartPaidServiceRequest
+/// - cloudchannel:v1 : GoogleCloudChannelV1SuspendEntitlementRequest
+class $Request03 {
+  /// You can specify an optional unique request ID, and if you need to retry
+  /// your request, the server will know to ignore the request if it's complete.
+  ///
+  /// For example, you make an initial request and the request times out. If you
+  /// make the request again with the same request ID, the server can check if
+  /// it received the original operation with the same request ID. If it did, it
+  /// will ignore the second request. The request ID must be a valid
+  /// [UUID](https://tools.ietf.org/html/rfc4122) with the exception that zero
+  /// UUID is not supported (`00000000-0000-0000-0000-000000000000`).
+  ///
+  /// Optional.
+  core.String? requestId;
+
+  $Request03({this.requestId});
+
+  $Request03.fromJson(core.Map json_)
+    : this(requestId: json_['requestId'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final requestId = this.requestId;
+    return {'requestId': ?requestId};
+  }
+}
+
+/// Used by:
+///
 /// - searchads360:v23 : GoogleAdsSearchads360V23Services__EndExperimentRequest
 /// - searchads360:v23 : GoogleAdsSearchads360V23Services__PromoteExperimentRequest
 /// - searchads360:v23 : GoogleAdsSearchads360V23Services__RunOfflineUserDataJobRequest
 /// - searchads360:v23 : GoogleAdsSearchads360V23Services__ScheduleExperimentRequest
-class $Request03 {
+class $Request04 {
   /// If true, the request is validated but not executed.
   ///
   /// Only errors are returned, not results.
   core.bool? validateOnly;
 
-  $Request03({this.validateOnly});
+  $Request04({this.validateOnly});
 
-  $Request03.fromJson(core.Map json_)
+  $Request04.fromJson(core.Map json_)
     : this(validateOnly: json_['validateOnly'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -10510,7 +10695,7 @@ class $Request03 {
 /// - privateca:v1 : EnableCertificateAuthorityRequest
 /// - privateca:v1 : FetchCaCertsRequest
 /// - privateca:v1 : UndeleteCertificateAuthorityRequest
-class $Request04 {
+class $Request05 {
   /// An ID to identify requests.
   ///
   /// Specify a unique request ID so that if you must retry your request, the
@@ -10527,9 +10712,9 @@ class $Request04 {
   /// Optional.
   core.String? requestId;
 
-  $Request04({this.requestId});
+  $Request05({this.requestId});
 
-  $Request04.fromJson(core.Map json_)
+  $Request05.fromJson(core.Map json_)
     : this(requestId: json_['requestId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -10543,7 +10728,7 @@ class $Request04 {
 /// - recommender:v1 : GoogleCloudRecommenderV1MarkRecommendationClaimedRequest
 /// - recommender:v1 : GoogleCloudRecommenderV1MarkRecommendationFailedRequest
 /// - recommender:v1 : GoogleCloudRecommenderV1MarkRecommendationSucceededRequest
-class $Request05 {
+class $Request06 {
   /// Fingerprint of the Recommendation.
   ///
   /// Provides optimistic locking.
@@ -10558,9 +10743,9 @@ class $Request05 {
   /// `/^[a-zA-Z0-9_./-]{0,255}$/`.
   core.Map<core.String, core.String>? stateMetadata;
 
-  $Request05({this.etag, this.stateMetadata});
+  $Request06({this.etag, this.stateMetadata});
 
-  $Request05.fromJson(core.Map json_)
+  $Request06.fromJson(core.Map json_)
     : this(
         etag: json_['etag'] as core.String?,
         stateMetadata:
@@ -10579,7 +10764,7 @@ class $Request05 {
 ///
 /// - alloydb:v1 : FailoverInstanceRequest
 /// - alloydb:v1 : SwitchoverClusterRequest
-class $Request06 {
+class $Request07 {
   /// An optional request ID to identify requests.
   ///
   /// Specify a unique request ID so that if you must retry your request, the
@@ -10603,9 +10788,9 @@ class $Request06 {
   /// Optional.
   core.bool? validateOnly;
 
-  $Request06({this.requestId, this.validateOnly});
+  $Request07({this.requestId, this.validateOnly});
 
-  $Request06.fromJson(core.Map json_)
+  $Request07.fromJson(core.Map json_)
     : this(
         requestId: json_['requestId'] as core.String?,
         validateOnly: json_['validateOnly'] as core.bool?,
@@ -10622,7 +10807,7 @@ class $Request06 {
 ///
 /// - clouddeploy:v1 : CancelRolloutRequest
 /// - clouddeploy:v1 : TerminateJobRunRequest
-class $Request07 {
+class $Request08 {
   /// Deploy policies to override.
   ///
   /// Format is
@@ -10631,9 +10816,9 @@ class $Request07 {
   /// Optional.
   core.List<core.String>? overrideDeployPolicy;
 
-  $Request07({this.overrideDeployPolicy});
+  $Request08({this.overrideDeployPolicy});
 
-  $Request07.fromJson(core.Map json_)
+  $Request08.fromJson(core.Map json_)
     : this(
         overrideDeployPolicy: (json_['overrideDeployPolicy'] as core.List?)
             ?.map((value) => value as core.String)
@@ -10650,7 +10835,7 @@ class $Request07 {
 ///
 /// - cloudresourcemanager:v1 : ListAvailableOrgPolicyConstraintsRequest
 /// - cloudresourcemanager:v1 : ListOrgPoliciesRequest
-class $Request08 {
+class $Request09 {
   /// Size of the pages to be returned.
   ///
   /// This is currently unsupported and will be ignored. The server may at any
@@ -10663,9 +10848,9 @@ class $Request08 {
   /// point start using this field.
   core.String? pageToken;
 
-  $Request08({this.pageSize, this.pageToken});
+  $Request09({this.pageSize, this.pageToken});
 
-  $Request08.fromJson(core.Map json_)
+  $Request09.fromJson(core.Map json_)
     : this(
         pageSize: json_['pageSize'] as core.int?,
         pageToken: json_['pageToken'] as core.String?,
@@ -10682,16 +10867,16 @@ class $Request08 {
 ///
 /// - compute:v1 : InstanceGroupManagersRecreateInstancesRequest
 /// - compute:v1 : RegionInstanceGroupManagersRecreateRequest
-class $Request09 {
+class $Request10 {
   /// The URLs of one or more instances to recreate.
   ///
   /// This can be a full URL or
   /// a partial URL, such as zones/\[ZONE\]/instances/\[INSTANCE_NAME\].
   core.List<core.String>? instances;
 
-  $Request09({this.instances});
+  $Request10({this.instances});
 
-  $Request09.fromJson(core.Map json_)
+  $Request10.fromJson(core.Map json_)
     : this(
         instances: (json_['instances'] as core.List?)
             ?.map((value) => value as core.String)
@@ -10708,7 +10893,7 @@ class $Request09 {
 ///
 /// - firebasedataconnect:v1 : ExecuteMutationRequest
 /// - firebasedataconnect:v1 : ExecuteQueryRequest
-class $Request10 {
+class $Request11 {
   /// The name of the GraphQL operation name.
   ///
   /// Required because all Connector operations must be named. See
@@ -10725,9 +10910,9 @@ class $Request10 {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? variables;
 
-  $Request10({this.operationName, this.variables});
+  $Request11({this.operationName, this.variables});
 
-  $Request10.fromJson(core.Map json_)
+  $Request11.fromJson(core.Map json_)
     : this(
         operationName: json_['operationName'] as core.String?,
         variables: json_.containsKey('variables')
@@ -10746,7 +10931,7 @@ class $Request10 {
 ///
 /// - netapp:v1 : ExecuteOntapPatchRequest
 /// - netapp:v1 : ExecuteOntapPostRequest
-class $Request11 {
+class $Request12 {
   /// The raw `JSON` body of the request.
   ///
   /// The body should be in the format of the ONTAP resource. For example: ``` {
@@ -10758,9 +10943,9 @@ class $Request11 {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? body;
 
-  $Request11({this.body});
+  $Request12({this.body});
 
-  $Request11.fromJson(core.Map json_)
+  $Request12.fromJson(core.Map json_)
     : this(
         body: json_.containsKey('body')
             ? json_['body'] as core.Map<core.String, core.dynamic>
@@ -12828,6 +13013,7 @@ class $StateError {
 /// - accesscontextmanager:v1 : Status
 /// - admin:directory_v1 : Status
 /// - agenciesandbrands:v1 : Status
+/// - agentregistry:v1 : Status
 /// - aiplatform:v1 : GoogleRpcStatus
 /// - alloydb:v1 : Status
 /// - analyticshub:v1 : Status
@@ -12841,6 +13027,7 @@ class $StateError {
 /// - apphub:v1 : Status
 /// - artifactregistry:v1 : Status
 /// - assuredworkloads:v1 : GoogleRpcStatus
+/// - auditmanager:v1 : Status
 /// - backupdr:v1 : Status
 /// - baremetalsolution:v2 : Status
 /// - batch:v1 : Status
@@ -12867,6 +13054,7 @@ class $StateError {
 /// - cloudshell:v1 : Status
 /// - cloudtasks:v2 : Status
 /// - cloudtrace:v2 : Status
+/// - colaboratory:v1 : Status
 /// - composer:v1 : Status
 /// - config:v1 : Status
 /// - contactcenterinsights:v1 : GoogleRpcStatus
@@ -12884,6 +13072,7 @@ class $StateError {
 /// - datastream:v1 : Status
 /// - deepreview:v1 : Status
 /// - developerconnect:v1 : Status
+/// - devicerun:v1 : GoogleRpcStatus
 /// - displayvideo:v5 : Status
 /// - dlp:v2 : GoogleRpcStatus
 /// - documentai:v1 : GoogleRpcStatus
@@ -12895,6 +13084,7 @@ class $StateError {
 /// - firebasedataconnect:v1 : Status
 /// - firebasehosting:v1 : Status
 /// - firestore:v1 : Status
+/// - ftp:v1 : Status
 /// - games:v1 : Status
 /// - gkebackup:v1 : GoogleRpcStatus
 /// - gkehub:v2 : GoogleRpcStatus
@@ -12902,6 +13092,7 @@ class $StateError {
 /// - gmailpostmastertools:v2 : Status
 /// - health:v4 : Status
 /// - healthcare:v1 : Status
+/// - hypercomputecluster:v1 : Status
 /// - iam:v1 : Status
 /// - iam:v2 : GoogleRpcStatus
 /// - ids:v1 : Status
@@ -12945,6 +13136,7 @@ class $StateError {
 /// - spanner:v1 : Status
 /// - speech:v1 : Status
 /// - sqladmin:v1 : Status
+/// - storagebatchoperations:v1 : Status
 /// - storagetransfer:v1 : Status
 /// - streetviewpublish:v1 : Status
 /// - texttospeech:v1 : Status
@@ -13066,6 +13258,31 @@ class $StringList01 {
   $StringList01({this.values});
 
   $StringList01.fromJson(core.Map json_)
+    : this(
+        values: (json_['values'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final values = this.values;
+    return {'values': ?values};
+  }
+}
+
+/// Used by:
+///
+/// - assuredworkloads:v1 : GoogleCloudAssuredworkloadsV1StringList
+/// - auditmanager:v1 : StringList
+class $StringList02 {
+  /// The strings in the list.
+  ///
+  /// Required.
+  core.List<core.String>? values;
+
+  $StringList02({this.values});
+
+  $StringList02.fromJson(core.Map json_)
     : this(
         values: (json_['values'] as core.List?)
             ?.map((value) => value as core.String)
@@ -13248,6 +13465,8 @@ class $TerraformVariable {
 /// Used by:
 ///
 /// - accesscontextmanager:v1 : TestIamPermissionsRequest
+/// - agentidentity:v1 : TestIamPermissionsRequest
+/// - agentregistry:v1 : GoogleIamV1TestIamPermissionsRequest
 /// - analyticshub:v1 : TestIamPermissionsRequest
 /// - apigateway:v1 : ApigatewayTestIamPermissionsRequest
 /// - apigee:v1 : GoogleIamV1TestIamPermissionsRequest
@@ -13355,6 +13574,8 @@ class $TestIamPermissionsRequest01 {
 /// Used by:
 ///
 /// - accesscontextmanager:v1 : TestIamPermissionsResponse
+/// - agentidentity:v1 : TestIamPermissionsResponse
+/// - agentregistry:v1 : GoogleIamV1TestIamPermissionsResponse
 /// - aiplatform:v1 : GoogleIamV1TestIamPermissionsResponse
 /// - analyticshub:v1 : TestIamPermissionsResponse
 /// - apigateway:v1 : ApigatewayTestIamPermissionsResponse

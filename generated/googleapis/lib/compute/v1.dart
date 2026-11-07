@@ -126714,7 +126714,7 @@ class InstanceGroupManagersPatchPerInstanceConfigsReq {
   }
 }
 
-typedef InstanceGroupManagersRecreateInstancesRequest = $Request09;
+typedef InstanceGroupManagersRecreateInstancesRequest = $Request10;
 typedef InstanceGroupManagersResumeInstancesRequest =
     $InstanceGroupManagersResumeInstancesRequest;
 
@@ -162317,7 +162317,7 @@ class RegionInstanceGroupManagersListInstancesResponse {
   }
 }
 
-typedef RegionInstanceGroupManagersRecreateRequest = $Request09;
+typedef RegionInstanceGroupManagersRecreateRequest = $Request10;
 typedef RegionInstanceGroupManagersResumeInstancesRequest =
     $InstanceGroupManagersResumeInstancesRequest;
 

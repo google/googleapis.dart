@@ -5452,13 +5452,13 @@ typedef ExecuteOntapDeleteResponse = $Response01;
 typedef ExecuteOntapGetResponse = $Response01;
 
 /// Request message for `ExecuteOntapPatch` API.
-typedef ExecuteOntapPatchRequest = $Request11;
+typedef ExecuteOntapPatchRequest = $Request12;
 
 /// Response message for `ExecuteOntapPatch` API.
 typedef ExecuteOntapPatchResponse = $Response01;
 
 /// Request message for `ExecuteOntapPost` API.
-typedef ExecuteOntapPostRequest = $Request11;
+typedef ExecuteOntapPostRequest = $Request12;
 
 /// Response message for `ExecuteOntapPost` API.
 typedef ExecuteOntapPostResponse = $Response01;

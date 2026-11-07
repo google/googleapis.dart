@@ -2,21 +2,13 @@
 
 ### APIs
 
-- `agentidentity` - **REMOVED**
-- `agentidentitycredentials` - **REMOVED**
-- `agentregistry` - **REMOVED**
-- `auditmanager` - **REMOVED**
 - `blockchainnodeengine` - **REMOVED**
 - `chromewebstore` - **REMOVED** `v1.1`
-- `cloudproductregistry` - **REMOVED**
 - `cloudresourcemanager` - **REMOVED** `v2`
-- `colaboratory` - **REMOVED**
 - `connectors` - **REMOVED** `v1`
 - `datacatalog` - **REMOVED**
 - `deploymentmanager` - **REMOVED**
-- `devicerun` - **REMOVED**
 - `dfareporting` - **REMOVED** `v3.5`
-- `discovery` - **REMOVED**
 - `displayvideo` - **REMOVED** `v2`
 - `displayvideo` - **REMOVED** `v3`
 - `displayvideo` - **REMOVED** `v4`
@@ -25,12 +17,10 @@
 - `firebasedynamiclinks` - **REMOVED**
 - `firebaseml` - **REMOVED**
 - `fitness` - **REMOVED**
-- `ftp` - **REMOVED**
 - `gkehub` - **REMOVED** `v1`
 - `gmailpostmastertools` - **REMOVED** `v1`
-- `hypercomputecluster` - **REMOVED**
 - `identitytoolkit` - **REMOVED** `v3`
-- `integrations` - **REMOVED**
+- `integrations` - **REMOVED** `v1`
 - `jobs` - **REMOVED** `v3`
 - `libraryagent` - **REMOVED**
 - `memcache` - **REMOVED**
@@ -43,7 +33,6 @@
 - `run` - **REMOVED** `v1`
 - `safebrowsing` - **REMOVED** `v4`
 - `servicecontrol` - **REMOVED** `v1`
-- `storagebatchoperations` - **REMOVED**
 - `tagmanager` - **REMOVED** `v1`
 - `tpu` - **REMOVED** `v1`
 - `trafficdirector` - **REMOVED** `v2`

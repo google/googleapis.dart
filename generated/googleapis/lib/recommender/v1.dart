@@ -3474,7 +3474,7 @@ class GoogleCloudRecommenderV1MarkInsightAcceptedRequest {
 }
 
 /// Request for the `MarkRecommendationClaimed` Method.
-typedef GoogleCloudRecommenderV1MarkRecommendationClaimedRequest = $Request05;
+typedef GoogleCloudRecommenderV1MarkRecommendationClaimedRequest = $Request06;
 
 /// Request for the `MarkRecommendationDismissed` Method.
 class GoogleCloudRecommenderV1MarkRecommendationDismissedRequest {
@@ -3496,10 +3496,10 @@ class GoogleCloudRecommenderV1MarkRecommendationDismissedRequest {
 }
 
 /// Request for the `MarkRecommendationFailed` Method.
-typedef GoogleCloudRecommenderV1MarkRecommendationFailedRequest = $Request05;
+typedef GoogleCloudRecommenderV1MarkRecommendationFailedRequest = $Request06;
 
 /// Request for the `MarkRecommendationSucceeded` Method.
-typedef GoogleCloudRecommenderV1MarkRecommendationSucceededRequest = $Request05;
+typedef GoogleCloudRecommenderV1MarkRecommendationSucceededRequest = $Request06;
 
 /// Contains an operation for a resource loosely based on the JSON-PATCH format
 /// with support for: * Custom filters for describing partial array patch.
