@@ -1,3 +1,7 @@
+## 2.3.7
+
+- Fix Markdown warning alert formatting in README.
+
 ## 2.3.6
 
 - Reorganize and update README examples and Cloud Console setup instructions.
