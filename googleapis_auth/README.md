@@ -4,7 +4,9 @@ clients to access Google APIs.
 This package also provides convenience functionality for automatically
 refreshing OAuth 2.0 credentials.
 
-> [!WARNING] Do _**NOT**_ use this package (`package:googleapis_auth`) with a
+> [!WARNING]
+>
+> Do _**NOT**_ use this package (`package:googleapis_auth`) with a
 > [Flutter](https://flutter.dev/) application.
 >
 > Use
