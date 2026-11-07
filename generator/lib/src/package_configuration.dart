@@ -89,6 +89,7 @@ class DiscoveryPackagesConfiguration {
   /// relative to the configuration file.
   DiscoveryPackagesConfiguration(this.configFile) {
     yaml = loadYaml(File(configFile).readAsStringSync()) as Map;
+    _validateConfiguration();
   }
 
   /// Downloads discovery documents from the configuration.
@@ -286,6 +287,7 @@ class DiscoveryPackagesConfiguration {
   /// Initializes the missingApis/excessApis/packages properties from a list
   /// of [RestDescription]s.
   void _initialize(List<RestDescription> allApis) {
+    _validateConfiguration();
     packages = _packagesFromYaml(
       yaml['packages'] as YamlMap,
       configFile,
@@ -510,6 +512,78 @@ package.
       monoPkg,
       deprecationMap,
     );
+  }
+
+  /// Validates that no API is listed more than once across `packages.*.apis`
+  /// and `skipped_apis`, and that `deprecation_map` and `skip_tests` only
+  /// reference configured package APIs.
+  void _validateConfiguration() {
+    final errors = <String>[];
+    final apiLocations = <String, List<String>>{};
+
+    void recordApi(String api, String location) {
+      apiLocations.putIfAbsent(api, () => []).add(location);
+    }
+
+    final skippedApis = _listFromYaml(yaml['skipped_apis'] as YamlList?);
+    for (var api in skippedApis) {
+      recordApi(api, 'skipped_apis');
+    }
+
+    final allPackageApis = <String>{};
+    final configPackages = yaml['packages'] as YamlMap;
+    for (var entry in configPackages.entries) {
+      final name = entry.key as String;
+      final values = entry.value as YamlMap;
+      final apis = _listFromYaml(values['apis'] as YamlList?);
+      final packageApiSet = <String>{};
+      for (var api in apis) {
+        recordApi(api, 'packages.$name.apis');
+        packageApiSet.add(api);
+        allPackageApis.add(api);
+      }
+
+      if (values.containsKey('deprecation_map')) {
+        final deprecationMap = values['deprecation_map'] as YamlMap;
+        for (var deprecatedApi in deprecationMap.keys.cast<String>()) {
+          if (!packageApiSet.contains(deprecatedApi)) {
+            errors.add(
+              'API `$deprecatedApi` in `packages.$name.deprecation_map` is '
+              'not listed in `packages.$name.apis`.',
+            );
+          }
+        }
+      }
+    }
+
+    for (var entry in apiLocations.entries) {
+      if (entry.value.length > 1) {
+        errors.add(
+          'API `${entry.key}` is listed more than once: '
+          '${entry.value.join(', ')}.',
+        );
+      }
+    }
+
+    final skipTestsList = _listFromYaml(yaml['skip_tests'] as YamlList?);
+    final seenSkipTests = <String>{};
+    for (var api in skipTestsList) {
+      if (!seenSkipTests.add(api)) {
+        errors.add('API `$api` is listed more than once in `skip_tests`.');
+      }
+      if (!allPackageApis.contains(api)) {
+        errors.add(
+          'API `$api` in `skip_tests` is not listed in any package `apis`.',
+        );
+      }
+    }
+
+    if (errors.isNotEmpty) {
+      throw StateError(
+        'Invalid configuration in $configFile:\n'
+        '${errors.map((e) => '  - $e').join('\n')}',
+      );
+    }
   }
 
   /// The known APIs are the APis mentioned in each package together with

@@ -1,4 +1,8 @@
 # See https://pub.dev/packages/mono_repo
+sdk:
+- pubspec
+- dev
+
 stages:
 - analyze_and_format:
   - group:
@@ -8,3 +12,5 @@ stages:
   - group:
     - analyze
     sdk: pubspec
+- unittest:
+  - test:
