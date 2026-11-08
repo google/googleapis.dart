@@ -89,8 +89,8 @@ class JwksResource {
   JwksResource(commons.ApiRequester client) : _requester = client;
 
   /// Returns a public JWK set as specified by
-  /// [RFC 7517](https://www.rfc-editor.org/info/rfc7517/) that can be used to
-  /// verify App Check tokens.
+  /// [RFC 7517](https://tools.ietf.org/html/rfc7517) that can be used to verify
+  /// App Check tokens.
   ///
   /// Exactly one of the public keys in the returned set will successfully
   /// validate any App Check token that is currently valid.
@@ -2569,10 +2569,10 @@ class GoogleFirebaseAppcheckV1AppAttestConfig {
 class GoogleFirebaseAppcheckV1AppCheckToken {
   /// The App Check token.
   ///
-  /// App Check tokens are signed
-  /// [JWTs](https://www.rfc-editor.org/info/rfc7519/) containing claims that
-  /// identify the attested app and GCP project. This token is used to access
-  /// Google services protected by App Check. These tokens can also be
+  /// App Check tokens are signed [JWTs](https://tools.ietf.org/html/rfc7519)
+  /// containing claims that identify the attested app and GCP project. This
+  /// token is used to access Google services protected by App Check. These
+  /// tokens can also be
   /// [verified by your own custom backends](https://firebase.google.com/docs/app-check/custom-resource-backend)
   /// using the Firebase Admin SDK or third-party libraries.
   core.String? token;
@@ -4023,32 +4023,31 @@ class GoogleFirebaseAppcheckV1PlayIntegrityConfigDeviceIntegrity {
 }
 
 /// A JWK as specified by
-/// [section 4 of RFC 7517](https://www.rfc-editor.org/info/rfc7517/#section-4)
-/// and
-/// [section 6.3.1 of RFC 7518](https://www.rfc-editor.org/info/rfc7518/#section-6.3.1).
+/// [section 4 of RFC 7517](https://tools.ietf.org/html/rfc7517#section-4) and
+/// [section 6.3.1 of RFC 7518](https://tools.ietf.org/html/rfc7518#section-6.3.1).
 class GoogleFirebaseAppcheckV1PublicJwk {
   /// See
-  /// [section 4.4 of RFC 7517](https://www.rfc-editor.org/info/rfc7517/#section-4.4).
+  /// [section 4.4 of RFC 7517](https://tools.ietf.org/html/rfc7517#section-4.4).
   core.String? alg;
 
   /// See
-  /// [section 6.3.1.2 of RFC 7518](https://www.rfc-editor.org/info/rfc7518/#section-6.3.1.2).
+  /// [section 6.3.1.2 of RFC 7518](https://tools.ietf.org/html/rfc7518#section-6.3.1.2).
   core.String? e;
 
   /// See
-  /// [section 4.5 of RFC 7517](https://www.rfc-editor.org/info/rfc7517/#section-4.5).
+  /// [section 4.5 of RFC 7517](https://tools.ietf.org/html/rfc7517#section-4.5).
   core.String? kid;
 
   /// See
-  /// [section 4.1 of RFC 7517](https://www.rfc-editor.org/info/rfc7517/#section-4.1).
+  /// [section 4.1 of RFC 7517](https://tools.ietf.org/html/rfc7517#section-4.1).
   core.String? kty;
 
   /// See
-  /// [section 6.3.1.1 of RFC 7518](https://www.rfc-editor.org/info/rfc7518/#section-6.3.1.1).
+  /// [section 6.3.1.1 of RFC 7518](https://tools.ietf.org/html/rfc7518#section-6.3.1.1).
   core.String? n;
 
   /// See
-  /// [section 4.2 of RFC 7517](https://www.rfc-editor.org/info/rfc7517/#section-4.2).
+  /// [section 4.2 of RFC 7517](https://tools.ietf.org/html/rfc7517#section-4.2).
   core.String? use;
 
   GoogleFirebaseAppcheckV1PublicJwk({
@@ -4092,13 +4091,13 @@ class GoogleFirebaseAppcheckV1PublicJwk {
 /// tokens.
 ///
 /// This object is a JWK set as specified by
-/// [section 5 of RFC 7517](https://www.rfc-editor.org/info/rfc7517#section-5).
-/// For security, the response **must not** be cached for longer than six hours.
+/// [section 5 of RFC 7517](https://tools.ietf.org/html/rfc7517#section-5). For
+/// security, the response **must not** be cached for longer than six hours.
 class GoogleFirebaseAppcheckV1PublicJwkSet {
   /// The set of public keys.
   ///
   /// See
-  /// [section 5.1 of RFC 7517](https://www.rfc-editor.org/info/rfc7517#section-5).
+  /// [section 5.1 of RFC 7517](https://tools.ietf.org/html/rfc7517#section-5).
   core.List<GoogleFirebaseAppcheckV1PublicJwk>? keys;
 
   GoogleFirebaseAppcheckV1PublicJwkSet({this.keys});

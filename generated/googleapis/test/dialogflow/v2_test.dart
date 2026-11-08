@@ -5519,7 +5519,6 @@ buildGoogleCloudDialogflowV2InputAudioConfig() {
     o.optOutConformerModelMigration = true;
     o.phraseHints = buildUnnamed81();
     o.phraseSets = buildUnnamed82();
-    o.profanityFilter = true;
     o.sampleRateHertz = 42;
     o.singleUtterance = true;
     o.speechContexts = buildUnnamed83();
@@ -5550,7 +5549,6 @@ void checkGoogleCloudDialogflowV2InputAudioConfig(
     unittest.expect(o.optOutConformerModelMigration!, unittest.isTrue);
     checkUnnamed81(o.phraseHints!);
     checkUnnamed82(o.phraseSets!);
-    unittest.expect(o.profanityFilter!, unittest.isTrue);
     unittest.expect(o.sampleRateHertz!, unittest.equals(42));
     unittest.expect(o.singleUtterance!, unittest.isTrue);
     checkUnnamed83(o.speechContexts!);
@@ -10508,7 +10506,6 @@ buildGoogleCloudDialogflowV2SpeechToTextConfig() {
     o.languageCode = 'foo';
     o.model = 'foo';
     o.phraseSets = buildUnnamed175();
-    o.profanityFilter = true;
     o.sampleRateHertz = 42;
     o.speechModelVariant = 'foo';
     o.useGeminiAsr = true;
@@ -10533,7 +10530,6 @@ void checkGoogleCloudDialogflowV2SpeechToTextConfig(
     unittest.expect(o.languageCode!, unittest.equals('foo'));
     unittest.expect(o.model!, unittest.equals('foo'));
     checkUnnamed175(o.phraseSets!);
-    unittest.expect(o.profanityFilter!, unittest.isTrue);
     unittest.expect(o.sampleRateHertz!, unittest.equals(42));
     unittest.expect(o.speechModelVariant!, unittest.equals('foo'));
     unittest.expect(o.useGeminiAsr!, unittest.isTrue);

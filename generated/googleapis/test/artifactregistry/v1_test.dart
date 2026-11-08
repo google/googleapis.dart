@@ -1895,12 +1895,8 @@ api.PrewarmedArtifact buildPrewarmedArtifact() {
   final o = api.PrewarmedArtifact();
   buildCounterPrewarmedArtifact++;
   if (buildCounterPrewarmedArtifact < 3) {
-    o.createTime = 'foo';
-    o.errorMessage = 'foo';
     o.expirationTime = 'foo';
     o.location = 'foo';
-    o.sizeBytes = 'foo';
-    o.state = 'foo';
     o.uri = 'foo';
   }
   buildCounterPrewarmedArtifact--;
@@ -1910,12 +1906,8 @@ api.PrewarmedArtifact buildPrewarmedArtifact() {
 void checkPrewarmedArtifact(api.PrewarmedArtifact o) {
   buildCounterPrewarmedArtifact++;
   if (buildCounterPrewarmedArtifact < 3) {
-    unittest.expect(o.createTime!, unittest.equals('foo'));
-    unittest.expect(o.errorMessage!, unittest.equals('foo'));
     unittest.expect(o.expirationTime!, unittest.equals('foo'));
     unittest.expect(o.location!, unittest.equals('foo'));
-    unittest.expect(o.sizeBytes!, unittest.equals('foo'));
-    unittest.expect(o.state!, unittest.equals('foo'));
     unittest.expect(o.uri!, unittest.equals('foo'));
   }
   buildCounterPrewarmedArtifact--;

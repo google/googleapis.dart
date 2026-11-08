@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20261106",
+    "revision": "20261012",
     "rootUrl": "https://merchantapi.googleapis.com/",
     "servicePath": "",
     "title": "Merchant API",
@@ -2908,7 +2908,7 @@
             "type": "object"
         },
         "ProductMinimumOrderValue": {
-            "description": "[Minimum order value](https://support.google.com/merchants/answer/16989009) in the cart before the checkout is permitted.",
+            "description": "The minimum order value in the cart before the checkout is permitted.",
             "id": "ProductMinimumOrderValue",
             "properties": {
                 "country": {
@@ -2932,10 +2932,10 @@
                         "ONLINE_LOCAL"
                     ],
                     "enumDescriptions": [
-                        "Indicates that the surface is unspecified. Defaults to `ONLINE_LOCAL`.",
-                        "Applies exclusively to delivery/shipping orders (all delivery routes).",
-                        "Applies exclusively to local in-store pickup (buy online, pickup in store). See [in-store pickup](https://support.google.com/merchants/answer/14634021).",
-                        "Applies to both delivery/shipping and local in-store pickup."
+                        "Surface is unspecified.",
+                        "Surface value to indicate online purchases.",
+                        "Surface value to indicate local purchases.",
+                        "Surface value to indicate online and local purchases."
                     ],
                     "type": "string"
                 }

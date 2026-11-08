@@ -18467,7 +18467,6 @@ class GoogleCloudDialogflowV2InputAudioConfig {
   )
   core.List<core.String>? phraseHints;
   core.List<core.String>? phraseSets;
-  core.bool? profanityFilter;
   core.int? sampleRateHertz;
   core.bool? singleUtterance;
   core.List<GoogleCloudDialogflowV2SpeechContext>? speechContexts;
@@ -18488,7 +18487,6 @@ class GoogleCloudDialogflowV2InputAudioConfig {
     this.optOutConformerModelMigration,
     this.phraseHints,
     this.phraseSets,
-    this.profanityFilter,
     this.sampleRateHertz,
     this.singleUtterance,
     this.speechContexts,
@@ -18527,7 +18525,6 @@ class GoogleCloudDialogflowV2InputAudioConfig {
         phraseSets: (json_['phraseSets'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
-        profanityFilter: json_['profanityFilter'] as core.bool?,
         sampleRateHertz: json_['sampleRateHertz'] as core.int?,
         singleUtterance: json_['singleUtterance'] as core.bool?,
         speechContexts: (json_['speechContexts'] as core.List?)
@@ -18555,7 +18552,6 @@ class GoogleCloudDialogflowV2InputAudioConfig {
     final optOutConformerModelMigration = this.optOutConformerModelMigration;
     final phraseHints = this.phraseHints;
     final phraseSets = this.phraseSets;
-    final profanityFilter = this.profanityFilter;
     final sampleRateHertz = this.sampleRateHertz;
     final singleUtterance = this.singleUtterance;
     final speechContexts = this.speechContexts;
@@ -18575,7 +18571,6 @@ class GoogleCloudDialogflowV2InputAudioConfig {
       'optOutConformerModelMigration': ?optOutConformerModelMigration,
       'phraseHints': ?phraseHints,
       'phraseSets': ?phraseSets,
-      'profanityFilter': ?profanityFilter,
       'sampleRateHertz': ?sampleRateHertz,
       'singleUtterance': ?singleUtterance,
       'speechContexts': ?speechContexts,
@@ -23272,7 +23267,6 @@ class GoogleCloudDialogflowV2SpeechToTextConfig {
   core.String? languageCode;
   core.String? model;
   core.List<core.String>? phraseSets;
-  core.bool? profanityFilter;
   core.int? sampleRateHertz;
 
   ///
@@ -23294,7 +23288,6 @@ class GoogleCloudDialogflowV2SpeechToTextConfig {
     this.languageCode,
     this.model,
     this.phraseSets,
-    this.profanityFilter,
     this.sampleRateHertz,
     this.speechModelVariant,
     this.useGeminiAsr,
@@ -23321,7 +23314,6 @@ class GoogleCloudDialogflowV2SpeechToTextConfig {
         phraseSets: (json_['phraseSets'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
-        profanityFilter: json_['profanityFilter'] as core.bool?,
         sampleRateHertz: json_['sampleRateHertz'] as core.int?,
         speechModelVariant: json_['speechModelVariant'] as core.String?,
         useGeminiAsr: json_['useGeminiAsr'] as core.bool?,
@@ -23338,7 +23330,6 @@ class GoogleCloudDialogflowV2SpeechToTextConfig {
     final languageCode = this.languageCode;
     final model = this.model;
     final phraseSets = this.phraseSets;
-    final profanityFilter = this.profanityFilter;
     final sampleRateHertz = this.sampleRateHertz;
     final speechModelVariant = this.speechModelVariant;
     final useGeminiAsr = this.useGeminiAsr;
@@ -23352,7 +23343,6 @@ class GoogleCloudDialogflowV2SpeechToTextConfig {
       'languageCode': ?languageCode,
       'model': ?model,
       'phraseSets': ?phraseSets,
-      'profanityFilter': ?profanityFilter,
       'sampleRateHertz': ?sampleRateHertz,
       'speechModelVariant': ?speechModelVariant,
       'useGeminiAsr': ?useGeminiAsr,

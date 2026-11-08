@@ -4168,8 +4168,7 @@ class ProductInstallment {
   }
 }
 
-/// [Minimum order value](https://support.google.com/merchants/answer/16989009)
-/// in the cart before the checkout is permitted.
+/// The minimum order value in the cart before the checkout is permitted.
 class ProductMinimumOrderValue {
   /// The
   /// [CLDR territory code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml)
@@ -4193,15 +4192,10 @@ class ProductMinimumOrderValue {
   ///
   /// Defaults to `ONLINE_LOCAL` if not configured.
   /// Possible string values are:
-  /// - "SURFACE_UNSPECIFIED" : Indicates that the surface is unspecified.
-  /// Defaults to `ONLINE_LOCAL`.
-  /// - "ONLINE" : Applies exclusively to delivery/shipping orders (all delivery
-  /// routes).
-  /// - "LOCAL" : Applies exclusively to local in-store pickup (buy online,
-  /// pickup in store). See \[in-store
-  /// pickup\](https://support.google.com/merchants/answer/14634021).
-  /// - "ONLINE_LOCAL" : Applies to both delivery/shipping and local in-store
-  /// pickup.
+  /// - "SURFACE_UNSPECIFIED" : Surface is unspecified.
+  /// - "ONLINE" : Surface value to indicate online purchases.
+  /// - "LOCAL" : Surface value to indicate local purchases.
+  /// - "ONLINE_LOCAL" : Surface value to indicate online and local purchases.
   core.String? surface;
 
   ProductMinimumOrderValue({
