@@ -2784,7 +2784,7 @@ typedef ApigatewayStatus = $Status00;
 typedef ApigatewayTestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
-typedef ApigatewayTestIamPermissionsResponse = $PermissionsResponse;
+typedef ApigatewayTestIamPermissionsResponse = $TestIamPermissionsResponse00;
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.

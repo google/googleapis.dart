@@ -6616,7 +6616,7 @@ class SystemParameters {
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
-typedef TestIamPermissionsResponse = $PermissionsResponse;
+typedef TestIamPermissionsResponse = $TestIamPermissionsResponse00;
 
 /// Strategy that specifies how clients of Google Service Controller want to
 /// send traffic to use different config versions.

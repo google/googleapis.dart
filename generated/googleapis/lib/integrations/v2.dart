@@ -649,19 +649,143 @@ class GoogleCloudIntegrationsV2AttemptStats {
 }
 
 /// Cloud Logging details for execution info
-typedef GoogleCloudIntegrationsV2CloudLoggingDetails = $CloudLoggingDetails;
+class GoogleCloudIntegrationsV2CloudLoggingDetails {
+  /// Severity selected by the customer for the logs to be sent to Cloud
+  /// Logging, for the integration version getting executed.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "CLOUD_LOGGING_SEVERITY_UNSPECIFIED" : Unspecified
+  /// - "INFO" : If Severity selected is `INFO`, then all the Integration
+  /// Execution States (`IN_PROCESS`, `ON_HOLD`, `SUCCEEDED`, `SUSPENDED`,
+  /// `ERROR`, `CANCELLED`) will be sent to Cloud Logging.
+  /// - "ERROR" : If Severity selected is `ERROR`, then only the following
+  /// Integration Execution States (`ERROR`, `CANCELLED`) will be sent to Cloud
+  /// Logging.
+  /// - "WARNING" : If Severity selected is `WARNING`, then only the following
+  /// Integration Execution States (`ERROR`, `CANCELLED`) will be sent to Cloud
+  /// Logging.
+  core.String? cloudLoggingSeverity;
+
+  /// Status of whether Cloud Logging is enabled or not for the integration
+  /// version getting executed.
+  ///
+  /// Optional.
+  core.bool? enableCloudLogging;
+
+  GoogleCloudIntegrationsV2CloudLoggingDetails({
+    this.cloudLoggingSeverity,
+    this.enableCloudLogging,
+  });
+
+  GoogleCloudIntegrationsV2CloudLoggingDetails.fromJson(core.Map json_)
+    : this(
+        cloudLoggingSeverity: json_['cloudLoggingSeverity'] as core.String?,
+        enableCloudLogging: json_['enableCloudLogging'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final cloudLoggingSeverity = this.cloudLoggingSeverity;
+    final enableCloudLogging = this.enableCloudLogging;
+    return {
+      'cloudLoggingSeverity': ?cloudLoggingSeverity,
+      'enableCloudLogging': ?enableCloudLogging,
+    };
+  }
+}
 
 /// This message only contains a field of boolean array.
-typedef GoogleCloudIntegrationsV2DuetBooleanParameterArray =
-    $BooleanParameterArray;
+class GoogleCloudIntegrationsV2DuetBooleanParameterArray {
+  /// Boolean array.
+  core.List<core.bool>? booleanValues;
+
+  GoogleCloudIntegrationsV2DuetBooleanParameterArray({this.booleanValues});
+
+  GoogleCloudIntegrationsV2DuetBooleanParameterArray.fromJson(core.Map json_)
+    : this(
+        booleanValues: (json_['booleanValues'] as core.List?)
+            ?.map((value) => value as core.bool)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final booleanValues = this.booleanValues;
+    return {'booleanValues': ?booleanValues};
+  }
+}
 
 /// Cloud Scheduler Trigger configuration
-typedef GoogleCloudIntegrationsV2DuetCloudSchedulerConfig =
-    $CloudSchedulerConfig;
+class GoogleCloudIntegrationsV2DuetCloudSchedulerConfig {
+  /// The cron tab of cloud scheduler trigger.
+  ///
+  /// Required.
+  core.String? cronTab;
+
+  /// When the job was deleted from Pantheon UI, error_message will be populated
+  /// when Get/List integrations
+  ///
+  /// Optional.
+  core.String? errorMessage;
+
+  /// The location where associated cloud scheduler job will be created
+  ///
+  /// Required.
+  core.String? location;
+
+  /// Service account used by Cloud Scheduler to trigger the integration at
+  /// scheduled time
+  ///
+  /// Required.
+  core.String? serviceAccountEmail;
+
+  GoogleCloudIntegrationsV2DuetCloudSchedulerConfig({
+    this.cronTab,
+    this.errorMessage,
+    this.location,
+    this.serviceAccountEmail,
+  });
+
+  GoogleCloudIntegrationsV2DuetCloudSchedulerConfig.fromJson(core.Map json_)
+    : this(
+        cronTab: json_['cronTab'] as core.String?,
+        errorMessage: json_['errorMessage'] as core.String?,
+        location: json_['location'] as core.String?,
+        serviceAccountEmail: json_['serviceAccountEmail'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final cronTab = this.cronTab;
+    final errorMessage = this.errorMessage;
+    final location = this.location;
+    final serviceAccountEmail = this.serviceAccountEmail;
+    return {
+      'cronTab': ?cronTab,
+      'errorMessage': ?errorMessage,
+      'location': ?location,
+      'serviceAccountEmail': ?serviceAccountEmail,
+    };
+  }
+}
 
 /// This message only contains a field of double number array.
-typedef GoogleCloudIntegrationsV2DuetDoubleParameterArray =
-    $DoubleParameterArray;
+class GoogleCloudIntegrationsV2DuetDoubleParameterArray {
+  /// Double number array.
+  core.List<core.double>? doubleValues;
+
+  GoogleCloudIntegrationsV2DuetDoubleParameterArray({this.doubleValues});
+
+  GoogleCloudIntegrationsV2DuetDoubleParameterArray.fromJson(core.Map json_)
+    : this(
+        doubleValues: (json_['doubleValues'] as core.List?)
+            ?.map((value) => (value as core.num).toDouble())
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final doubleValues = this.doubleValues;
+    return {'doubleValues': ?doubleValues};
+  }
+}
 
 /// Configuration detail of a error catch task
 class GoogleCloudIntegrationsV2DuetErrorCatcherConfig {
@@ -1013,7 +1137,24 @@ class GoogleCloudIntegrationsV2DuetGenerateJavascriptResponse {
 }
 
 /// This message only contains a field of integer array.
-typedef GoogleCloudIntegrationsV2DuetIntParameterArray = $IntParameterArray;
+class GoogleCloudIntegrationsV2DuetIntParameterArray {
+  /// Integer array.
+  core.List<core.String>? intValues;
+
+  GoogleCloudIntegrationsV2DuetIntParameterArray({this.intValues});
+
+  GoogleCloudIntegrationsV2DuetIntParameterArray.fromJson(core.Map json_)
+    : this(
+        intValues: (json_['intValues'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final intValues = this.intValues;
+    return {'intValues': ?intValues};
+  }
+}
 
 /// An integration branch skeleton containing basic fields which can be used to
 /// create an integration branch on the UI.
@@ -1650,7 +1791,55 @@ class GoogleCloudIntegrationsV2DuetJavascriptRequest {
 
 /// The task that is next in line to be executed, if the condition specified
 /// evaluated to true.
-typedef GoogleCloudIntegrationsV2DuetNextTask = $NextTask;
+class GoogleCloudIntegrationsV2DuetNextTask {
+  /// Standard filter expression for this task to become an eligible next task.
+  core.String? condition;
+
+  /// User-provided description intended to give additional business context
+  /// about the task.
+  core.String? description;
+
+  /// User-provided label that is attached to this edge in the UI.
+  core.String? displayName;
+
+  /// ID of the next task.
+  core.String? taskConfigId;
+
+  /// Task number of the next task.
+  core.String? taskId;
+
+  GoogleCloudIntegrationsV2DuetNextTask({
+    this.condition,
+    this.description,
+    this.displayName,
+    this.taskConfigId,
+    this.taskId,
+  });
+
+  GoogleCloudIntegrationsV2DuetNextTask.fromJson(core.Map json_)
+    : this(
+        condition: json_['condition'] as core.String?,
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        taskConfigId: json_['taskConfigId'] as core.String?,
+        taskId: json_['taskId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final condition = this.condition;
+    final description = this.description;
+    final displayName = this.displayName;
+    final taskConfigId = this.taskConfigId;
+    final taskId = this.taskId;
+    return {
+      'condition': ?condition,
+      'description': ?description,
+      'displayName': ?displayName,
+      'taskConfigId': ?taskConfigId,
+      'taskId': ?taskId,
+    };
+  }
+}
 
 /// Request message for recommending tasks to replace a selected task.
 class GoogleCloudIntegrationsV2DuetRecommendTasksRequest {
@@ -1777,8 +1966,24 @@ class GoogleCloudIntegrationsV2DuetReplaceTaskRequest {
 }
 
 /// This message only contains a field of string array.
-typedef GoogleCloudIntegrationsV2DuetStringParameterArray =
-    $StringParameterArray;
+class GoogleCloudIntegrationsV2DuetStringParameterArray {
+  /// String array.
+  core.List<core.String>? stringValues;
+
+  GoogleCloudIntegrationsV2DuetStringParameterArray({this.stringValues});
+
+  GoogleCloudIntegrationsV2DuetStringParameterArray.fromJson(core.Map json_)
+    : this(
+        stringValues: (json_['stringValues'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final stringValues = this.stringValues;
+    return {'stringValues': ?stringValues};
+  }
+}
 
 /// The task configuration details.
 ///
@@ -2113,8 +2318,26 @@ class GoogleCloudIntegrationsV2DuetTriggerConfig {
 }
 
 /// Variables names mapped to api trigger.
-typedef GoogleCloudIntegrationsV2DuetTriggerConfigVariables =
-    $TriggerConfigVariables;
+class GoogleCloudIntegrationsV2DuetTriggerConfigVariables {
+  /// List of variable names.
+  ///
+  /// Optional.
+  core.List<core.String>? names;
+
+  GoogleCloudIntegrationsV2DuetTriggerConfigVariables({this.names});
+
+  GoogleCloudIntegrationsV2DuetTriggerConfigVariables.fromJson(core.Map json_)
+    : this(
+        names: (json_['names'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final names = this.names;
+    return {'names': ?names};
+  }
+}
 
 /// Response for troubleshooting an integration execution.
 class GoogleCloudIntegrationsV2DuetTroubleshootExecutionResponse {

@@ -7223,7 +7223,80 @@ class OrgPolicyResult {
 }
 
 /// Operating system information for the VM.
-typedef OsInfo = $OsInfo;
+class OsInfo {
+  /// The system architecture of the operating system.
+  core.String? architecture;
+
+  /// The VM hostname.
+  core.String? hostname;
+
+  /// The kernel release of the operating system.
+  core.String? kernelRelease;
+
+  /// The kernel version of the operating system.
+  core.String? kernelVersion;
+
+  /// The operating system long name.
+  ///
+  /// For example 'Debian GNU/Linux 9' or 'Microsoft Window Server 2019
+  /// Datacenter'.
+  core.String? longName;
+
+  /// The current version of the OS Config agent running on the VM.
+  core.String? osconfigAgentVersion;
+
+  /// The operating system short name.
+  ///
+  /// For example, 'windows' or 'debian'.
+  core.String? shortName;
+
+  /// The version of the operating system.
+  core.String? version;
+
+  OsInfo({
+    this.architecture,
+    this.hostname,
+    this.kernelRelease,
+    this.kernelVersion,
+    this.longName,
+    this.osconfigAgentVersion,
+    this.shortName,
+    this.version,
+  });
+
+  OsInfo.fromJson(core.Map json_)
+    : this(
+        architecture: json_['architecture'] as core.String?,
+        hostname: json_['hostname'] as core.String?,
+        kernelRelease: json_['kernelRelease'] as core.String?,
+        kernelVersion: json_['kernelVersion'] as core.String?,
+        longName: json_['longName'] as core.String?,
+        osconfigAgentVersion: json_['osconfigAgentVersion'] as core.String?,
+        shortName: json_['shortName'] as core.String?,
+        version: json_['version'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final architecture = this.architecture;
+    final hostname = this.hostname;
+    final kernelRelease = this.kernelRelease;
+    final kernelVersion = this.kernelVersion;
+    final longName = this.longName;
+    final osconfigAgentVersion = this.osconfigAgentVersion;
+    final shortName = this.shortName;
+    final version = this.version;
+    return {
+      'architecture': ?architecture,
+      'hostname': ?hostname,
+      'kernelRelease': ?kernelRelease,
+      'kernelVersion': ?kernelVersion,
+      'longName': ?longName,
+      'osconfigAgentVersion': ?osconfigAgentVersion,
+      'shortName': ?shortName,
+      'version': ?version,
+    };
+  }
+}
 
 /// Output configuration for export assets destination.
 class OutputConfig {
@@ -9179,7 +9252,36 @@ class UpdateFeedRequest {
 ///
 /// This includes package info for APT, Yum, Zypper, and Googet package
 /// managers.
-typedef VersionedPackage = $VersionedPackage;
+class VersionedPackage {
+  /// The system architecture this package is intended for.
+  core.String? architecture;
+
+  /// The name of the package.
+  core.String? packageName;
+
+  /// The version of the package.
+  core.String? version;
+
+  VersionedPackage({this.architecture, this.packageName, this.version});
+
+  VersionedPackage.fromJson(core.Map json_)
+    : this(
+        architecture: json_['architecture'] as core.String?,
+        packageName: json_['packageName'] as core.String?,
+        version: json_['version'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final architecture = this.architecture;
+    final packageName = this.packageName;
+    final version = this.version;
+    return {
+      'architecture': ?architecture,
+      'packageName': ?packageName,
+      'version': ?version,
+    };
+  }
+}
 
 /// Resource representation as defined by the corresponding service providing
 /// the resource for a given API version.
@@ -9306,10 +9408,72 @@ class WindowsApplication {
 /// Fields are taken from Windows QuickFixEngineering Interface and match the
 /// source names:
 /// https://docs.microsoft.com/en-us/windows/win32/cimwin32prov/win32-quickfixengineering
-typedef WindowsQuickFixEngineeringPackage = $WindowsQuickFixEngineeringPackage;
+class WindowsQuickFixEngineeringPackage {
+  /// A short textual description of the QFE update.
+  core.String? caption;
+
+  /// A textual description of the QFE update.
+  core.String? description;
+
+  /// Unique identifier associated with a particular QFE update.
+  core.String? hotFixId;
+
+  /// Date that the QFE update was installed.
+  ///
+  /// Mapped from installed_on field.
+  core.String? installTime;
+
+  WindowsQuickFixEngineeringPackage({
+    this.caption,
+    this.description,
+    this.hotFixId,
+    this.installTime,
+  });
+
+  WindowsQuickFixEngineeringPackage.fromJson(core.Map json_)
+    : this(
+        caption: json_['caption'] as core.String?,
+        description: json_['description'] as core.String?,
+        hotFixId: json_['hotFixId'] as core.String?,
+        installTime: json_['installTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final caption = this.caption;
+    final description = this.description;
+    final hotFixId = this.hotFixId;
+    final installTime = this.installTime;
+    return {
+      'caption': ?caption,
+      'description': ?description,
+      'hotFixId': ?hotFixId,
+      'installTime': ?installTime,
+    };
+  }
+}
 
 /// Categories specified by the Windows Update.
-typedef WindowsUpdateCategory = $WindowsUpdateCategory;
+class WindowsUpdateCategory {
+  /// The identifier of the windows update category.
+  core.String? id;
+
+  /// The name of the windows update category.
+  core.String? name;
+
+  WindowsUpdateCategory({this.id, this.name});
+
+  WindowsUpdateCategory.fromJson(core.Map json_)
+    : this(
+        id: json_['id'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final id = this.id;
+    final name = this.name;
+    return {'id': ?id, 'name': ?name};
+  }
+}
 
 /// Details related to a Windows Update package.
 ///
@@ -9410,4 +9574,39 @@ class WindowsUpdatePackage {
 }
 
 /// Details related to a Zypper Patch.
-typedef ZypperPatch = $ZypperPatch;
+class ZypperPatch {
+  /// The category of the patch.
+  core.String? category;
+
+  /// The name of the patch.
+  core.String? patchName;
+
+  /// The severity specified for this patch
+  core.String? severity;
+
+  /// Any summary information provided about this patch.
+  core.String? summary;
+
+  ZypperPatch({this.category, this.patchName, this.severity, this.summary});
+
+  ZypperPatch.fromJson(core.Map json_)
+    : this(
+        category: json_['category'] as core.String?,
+        patchName: json_['patchName'] as core.String?,
+        severity: json_['severity'] as core.String?,
+        summary: json_['summary'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final category = this.category;
+    final patchName = this.patchName;
+    final severity = this.severity;
+    final summary = this.summary;
+    return {
+      'category': ?category,
+      'patchName': ?patchName,
+      'severity': ?severity,
+      'summary': ?summary,
+    };
+  }
+}

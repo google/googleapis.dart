@@ -4859,7 +4859,7 @@ class Pacemaker {
 }
 
 /// Contains the details of a product.
-typedef Product = $Shared35;
+typedef Product = $Shared33;
 
 /// Resource in execution result.
 class Resource {
@@ -6273,7 +6273,7 @@ class SapDiscoveryWorkloadProperties {
 }
 
 /// A product name and version.
-typedef SapDiscoveryWorkloadPropertiesProductVersion = $Shared35;
+typedef SapDiscoveryWorkloadPropertiesProductVersion = $Shared33;
 
 /// A SAP software component name, version, and type.
 class SapDiscoveryWorkloadPropertiesSoftwareComponentProperties {

@@ -5424,7 +5424,7 @@ typedef Status = $Status00;
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
-typedef TestIamPermissionsResponse = $PermissionsResponse;
+typedef TestIamPermissionsResponse = $TestIamPermissionsResponse00;
 
 /// Represents an entry within a tree structure (like a Git tree).
 class TreeEntry {

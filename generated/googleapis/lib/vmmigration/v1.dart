@@ -8605,7 +8605,30 @@ typedef LoadingImageSourceFilesStep = $Empty;
 
 /// Provides a localized error message that is safe to return to the user which
 /// can be attached to an RPC error.
-typedef LocalizedMessage = $LocalizedMessage;
+class LocalizedMessage {
+  /// The locale used following the specification defined at
+  /// https://www.rfc-editor.org/rfc/bcp/bcp47.txt.
+  ///
+  /// Examples are: "en-US", "fr-CH", "es-MX"
+  core.String? locale;
+
+  /// The localized error message in the above locale.
+  core.String? message;
+
+  LocalizedMessage({this.locale, this.message});
+
+  LocalizedMessage.fromJson(core.Map json_)
+    : this(
+        locale: json_['locale'] as core.String?,
+        message: json_['message'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final locale = this.locale;
+    final message = this.message;
+    return {'locale': ?locale, 'message': ?message};
+  }
+}
 
 /// A resource that represents a Google Cloud location.
 typedef Location = $Location00;

@@ -1,3 +1,44 @@
+## 19.0.0-wip
+
+### APIs
+
+- `blockchainnodeengine` - **REMOVED**
+- `chromewebstore` - **REMOVED** `v1.1`
+- `cloudresourcemanager` - **REMOVED** `v2`
+- `connectors` - **REMOVED** `v1`
+- `datacatalog` - **REMOVED**
+- `deploymentmanager` - **REMOVED**
+- `dfareporting` - **REMOVED** `v3.5`
+- `displayvideo` - **REMOVED** `v2`
+- `displayvideo` - **REMOVED** `v3`
+- `displayvideo` - **REMOVED** `v4`
+- `domains` - **REMOVED**
+- `drive` - **REMOVED** `v2`
+- `firebasedynamiclinks` - **REMOVED**
+- `firebaseml` - **REMOVED**
+- `fitness` - **REMOVED**
+- `gkehub` - **REMOVED** `v1`
+- `gmailpostmastertools` - **REMOVED** `v1`
+- `identitytoolkit` - **REMOVED** `v3`
+- `integrations` - **REMOVED** `v1`
+- `jobs` - **REMOVED** `v3`
+- `libraryagent` - **REMOVED**
+- `memcache` - **REMOVED**
+- `metastore` - **REMOVED**
+- `ml` - **REMOVED**
+- `notebooks` - **REMOVED** `v1`
+- `osconfig` - **REMOVED** `v1`
+- `policytroubleshooter` - **REMOVED** `v1`
+- `pubsublite` - **REMOVED**
+- `run` - **REMOVED** `v1`
+- `safebrowsing` - **REMOVED** `v4`
+- `servicecontrol` - **REMOVED** `v1`
+- `tagmanager` - **REMOVED** `v1`
+- `tpu` - **REMOVED** `v1`
+- `trafficdirector` - **REMOVED** `v2`
+- `verifiedaccess` - **REMOVED** `v1`
+- `videointelligence` - **REMOVED**
+
 ## 18.0.0
 
 - Mark APIs as `@Deprecated` with references to replacement

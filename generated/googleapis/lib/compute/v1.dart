@@ -130389,7 +130389,7 @@ class InstancesSetSecurityPolicyRequest {
   }
 }
 
-typedef InstancesSetServiceAccountRequest = $Shared17;
+typedef InstancesSetServiceAccountRequest = $Shared13;
 
 class InstancesStartWithEncryptionKeyRequest {
   /// Array of disks associated with this instance that are protected with
@@ -178710,7 +178710,7 @@ class ServerBinding {
 }
 
 /// A service account.
-typedef ServiceAccount = $Shared17;
+typedef ServiceAccount = $Shared13;
 
 /// Represents a ServiceAttachment resource.
 ///

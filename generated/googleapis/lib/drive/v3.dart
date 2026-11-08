@@ -5216,7 +5216,106 @@ class ChangeList {
 }
 
 /// A notification channel used to watch for resource changes.
-typedef Channel = $Channel01;
+class Channel {
+  /// The address where notifications are delivered for this channel.
+  core.String? address;
+
+  /// Date and time of notification channel expiration, expressed as a Unix
+  /// timestamp, in milliseconds.
+  ///
+  /// Optional.
+  core.String? expiration;
+
+  /// A UUID or similar unique string that identifies this channel.
+  core.String? id;
+
+  /// Identifies this as a notification channel used to watch for changes to a
+  /// resource, which is `api#channel`.
+  core.String? kind;
+
+  /// Additional parameters controlling delivery channel behavior.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? params;
+
+  /// A Boolean value to indicate whether payload is wanted.
+  ///
+  /// Optional.
+  core.bool? payload;
+
+  /// An opaque ID that identifies the resource being watched on this channel.
+  ///
+  /// Stable across different API versions.
+  core.String? resourceId;
+
+  /// A version-specific identifier for the watched resource.
+  core.String? resourceUri;
+
+  /// An arbitrary string delivered to the target address with each notification
+  /// delivered over this channel.
+  ///
+  /// Optional.
+  core.String? token;
+
+  /// The type of delivery mechanism used for this channel.
+  ///
+  /// Valid values are "web_hook" or "webhook".
+  core.String? type;
+
+  Channel({
+    this.address,
+    this.expiration,
+    this.id,
+    this.kind,
+    this.params,
+    this.payload,
+    this.resourceId,
+    this.resourceUri,
+    this.token,
+    this.type,
+  });
+
+  Channel.fromJson(core.Map json_)
+    : this(
+        address: json_['address'] as core.String?,
+        expiration: json_['expiration'] as core.String?,
+        id: json_['id'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        params: (json_['params'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        payload: json_['payload'] as core.bool?,
+        resourceId: json_['resourceId'] as core.String?,
+        resourceUri: json_['resourceUri'] as core.String?,
+        token: json_['token'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final address = this.address;
+    final expiration = this.expiration;
+    final id = this.id;
+    final kind = this.kind;
+    final params = this.params;
+    final payload = this.payload;
+    final resourceId = this.resourceId;
+    final resourceUri = this.resourceUri;
+    final token = this.token;
+    final type = this.type;
+    return {
+      'address': ?address,
+      'expiration': ?expiration,
+      'id': ?id,
+      'kind': ?kind,
+      'params': ?params,
+      'payload': ?payload,
+      'resourceId': ?resourceId,
+      'resourceUri': ?resourceUri,
+      'token': ?token,
+      'type': ?type,
+    };
+  }
+}
 
 /// Details about the client-side encryption applied to the file.
 class ClientEncryptionDetails {
@@ -5626,7 +5725,80 @@ class ContentRestriction {
 typedef DeclineApprovalRequest = $ApprovalRequest;
 
 /// Representation of the CSE DecryptionMetadata.
-typedef DecryptionMetadata = $DecryptionMetadata;
+class DecryptionMetadata {
+  /// Chunk size used if content was encrypted with the AES 256 GCM Cipher.
+  ///
+  /// Possible values are: - default - small
+  core.String? aes256GcmChunkSize;
+
+  /// The URL-safe Base64 encoded HMAC-SHA256 digest of the resource metadata
+  /// with its DEK (Data Encryption Key); see
+  /// https://developers.google.com/workspace/cse/reference
+  core.String? encryptionResourceKeyHash;
+
+  /// The signed JSON Web Token (JWT) which can be used to authorize the
+  /// requesting user with the Key ACL Service (KACLS).
+  ///
+  /// The JWT asserts that the requesting user has at least read permissions on
+  /// the file.
+  core.String? jwt;
+
+  /// The ID of the KACLS (Key ACL Service) used to encrypt the file.
+  core.String? kaclsId;
+
+  /// The name of the KACLS (Key ACL Service) used to encrypt the file.
+  core.String? kaclsName;
+
+  /// Key format for the unwrapped key.
+  ///
+  /// Must be `tinkAesGcmKey`.
+  core.String? keyFormat;
+
+  /// The URL-safe Base64 encoded wrapped key used to encrypt the contents of
+  /// the file.
+  core.String? wrappedKey;
+
+  DecryptionMetadata({
+    this.aes256GcmChunkSize,
+    this.encryptionResourceKeyHash,
+    this.jwt,
+    this.kaclsId,
+    this.kaclsName,
+    this.keyFormat,
+    this.wrappedKey,
+  });
+
+  DecryptionMetadata.fromJson(core.Map json_)
+    : this(
+        aes256GcmChunkSize: json_['aes256GcmChunkSize'] as core.String?,
+        encryptionResourceKeyHash:
+            json_['encryptionResourceKeyHash'] as core.String?,
+        jwt: json_['jwt'] as core.String?,
+        kaclsId: json_['kaclsId'] as core.String?,
+        kaclsName: json_['kaclsName'] as core.String?,
+        keyFormat: json_['keyFormat'] as core.String?,
+        wrappedKey: json_['wrappedKey'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final aes256GcmChunkSize = this.aes256GcmChunkSize;
+    final encryptionResourceKeyHash = this.encryptionResourceKeyHash;
+    final jwt = this.jwt;
+    final kaclsId = this.kaclsId;
+    final kaclsName = this.kaclsName;
+    final keyFormat = this.keyFormat;
+    final wrappedKey = this.wrappedKey;
+    return {
+      'aes256GcmChunkSize': ?aes256GcmChunkSize,
+      'encryptionResourceKeyHash': ?encryptionResourceKeyHash,
+      'jwt': ?jwt,
+      'kaclsId': ?kaclsId,
+      'kaclsName': ?kaclsName,
+      'keyFormat': ?keyFormat,
+      'wrappedKey': ?wrappedKey,
+    };
+  }
+}
 
 /// A restriction for copy and download of the file.
 class DownloadRestriction {
@@ -8146,7 +8318,58 @@ class FileList {
 }
 
 /// JWT and associated metadata used to generate CSE files.
-typedef GenerateCseTokenResponse = $GenerateCseTokenResponse;
+class GenerateCseTokenResponse {
+  /// The current Key ACL Service (KACLS) ID associated with the JWT.
+  core.String? currentKaclsId;
+
+  /// Name of the KACLs that the returned KACLs ID points to.
+  core.String? currentKaclsName;
+
+  /// The fileId for which the JWT was generated.
+  core.String? fileId;
+
+  /// The signed JSON Web Token (JWT) for the file.
+  core.String? jwt;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string `"drive#generateCseTokenResponse"`.
+  ///
+  /// Output only.
+  core.String? kind;
+
+  GenerateCseTokenResponse({
+    this.currentKaclsId,
+    this.currentKaclsName,
+    this.fileId,
+    this.jwt,
+    this.kind,
+  });
+
+  GenerateCseTokenResponse.fromJson(core.Map json_)
+    : this(
+        currentKaclsId: json_['currentKaclsId'] as core.String?,
+        currentKaclsName: json_['currentKaclsName'] as core.String?,
+        fileId: json_['fileId'] as core.String?,
+        jwt: json_['jwt'] as core.String?,
+        kind: json_['kind'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final currentKaclsId = this.currentKaclsId;
+    final currentKaclsName = this.currentKaclsName;
+    final fileId = this.fileId;
+    final jwt = this.jwt;
+    final kind = this.kind;
+    return {
+      'currentKaclsId': ?currentKaclsId,
+      'currentKaclsName': ?currentKaclsName,
+      'fileId': ?fileId,
+      'jwt': ?jwt,
+      'kind': ?kind,
+    };
+  }
+}
 
 /// A list of generated file IDs which can be provided in create requests.
 class GeneratedIds {

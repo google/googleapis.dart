@@ -3579,7 +3579,40 @@ class GoogleCloudRunV2BuildInfo {
 }
 
 /// BuildStatus holds the status of a build.
-typedef GoogleCloudRunV2BuildStatus = $BuildStatus;
+class GoogleCloudRunV2BuildStatus {
+  /// The log URL for the Cloud Build execution.
+  core.String? cloudBuildLogUrl;
+
+  /// The message details of the build.
+  core.String? message;
+
+  /// The status of the build.
+  core.String? status;
+
+  GoogleCloudRunV2BuildStatus({
+    this.cloudBuildLogUrl,
+    this.message,
+    this.status,
+  });
+
+  GoogleCloudRunV2BuildStatus.fromJson(core.Map json_)
+    : this(
+        cloudBuildLogUrl: json_['cloudBuildLogUrl'] as core.String?,
+        message: json_['message'] as core.String?,
+        status: json_['status'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final cloudBuildLogUrl = this.cloudBuildLogUrl;
+    final message = this.message;
+    final status = this.status;
+    return {
+      'cloudBuildLogUrl': ?cloudBuildLogUrl,
+      'message': ?message,
+      'status': ?status,
+    };
+  }
+}
 
 /// Build the source using Buildpacks.
 class GoogleCloudRunV2BuildpacksBuild {
@@ -5111,7 +5144,25 @@ class GoogleCloudRunV2ExportStatusResponse {
 }
 
 /// Represents a volume backed by a Filestore instance.
-typedef GoogleCloudRunV2FilestoreVolumeSource = $FilestoreVolumeSource;
+class GoogleCloudRunV2FilestoreVolumeSource {
+  /// The resource name of the Filestore volume.
+  ///
+  /// Format:
+  /// `projects/{project}/locations/{location}/volumePools/{volume_pool}/volumes/{volume}`
+  ///
+  /// Required.
+  core.String? volume;
+
+  GoogleCloudRunV2FilestoreVolumeSource({this.volume});
+
+  GoogleCloudRunV2FilestoreVolumeSource.fromJson(core.Map json_)
+    : this(volume: json_['volume'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final volume = this.volume;
+    return {'volume': ?volume};
+  }
+}
 
 /// Represents a volume backed by a Cloud Storage bucket (mounted via Cloud
 /// Storage FUSE or as a block device disk).
@@ -8852,10 +8903,10 @@ class GoogleCloudRunV2SourceFile {
 }
 
 /// Request message for starting an Instance.
-typedef GoogleCloudRunV2StartInstanceRequest = $InstanceRequest01;
+typedef GoogleCloudRunV2StartInstanceRequest = $InstanceRequest;
 
 /// Request message for deleting an Instance.
-typedef GoogleCloudRunV2StopInstanceRequest = $InstanceRequest01;
+typedef GoogleCloudRunV2StopInstanceRequest = $InstanceRequest;
 
 /// Location of the source in an archive file in Google Cloud Storage.
 class GoogleCloudRunV2StorageSource {
@@ -11285,7 +11336,7 @@ class GoogleIamV1SetIamPolicyRequest {
 typedef GoogleIamV1TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
-typedef GoogleIamV1TestIamPermissionsResponse = $PermissionsResponse;
+typedef GoogleIamV1TestIamPermissionsResponse = $TestIamPermissionsResponse00;
 
 /// The response message for Operations.ListOperations.
 class GoogleLongrunningListOperationsResponse {
@@ -11471,7 +11522,7 @@ typedef GoogleTypeExpr = $Expr;
 /// to proto2. This schema has been open-sourced only to facilitate the
 /// migration of Google products with MessageSet-bearing messages to open-source
 /// environments.
-typedef Proto2BridgeMessageSet = $Shared01;
+typedef Proto2BridgeMessageSet = $Shared03;
 
 /// Wire-format for a Status object
 class UtilStatusProto {

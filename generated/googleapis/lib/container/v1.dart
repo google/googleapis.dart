@@ -8374,7 +8374,20 @@ class CompliancePostureConfig {
 }
 
 /// Defines the details of a compliance standard.
-typedef ComplianceStandard = $ComplianceStandard;
+class ComplianceStandard {
+  /// Name of the compliance standard.
+  core.String? standard;
+
+  ComplianceStandard({this.standard});
+
+  ComplianceStandard.fromJson(core.Map json_)
+    : this(standard: json_['standard'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final standard = this.standard;
+    return {'standard': ?standard};
+  }
+}
 
 /// ConfidentialNodes is configuration for the confidential nodes feature, which
 /// makes nodes run on confidential VMs.

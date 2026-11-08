@@ -10500,7 +10500,7 @@ class NodeTypeConfig {
 }
 
 /// Details about a NSX Manager appliance.
-typedef Nsx = $Shared34;
+typedef Nsx = $Shared32;
 
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
@@ -11684,7 +11684,7 @@ class Subnet {
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
-typedef TestIamPermissionsResponse = $PermissionsResponse;
+typedef TestIamPermissionsResponse = $TestIamPermissionsResponse00;
 
 /// Third party file service configuration
 class ThirdPartyFileService {
@@ -12078,7 +12078,7 @@ class Upgrade {
 }
 
 /// Details about a vCenter Server management appliance.
-typedef Vcenter = $Shared34;
+typedef Vcenter = $Shared32;
 
 /// VMware Engine network resource that provides connectivity for VMware Engine
 /// private clouds.

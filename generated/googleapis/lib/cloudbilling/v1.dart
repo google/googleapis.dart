@@ -4525,7 +4525,7 @@ class TaskStatusUpdateEvent {
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
-typedef TestIamPermissionsResponse = $PermissionsResponse;
+typedef TestIamPermissionsResponse = $TestIamPermissionsResponse00;
 
 /// The price rate indicating starting usage and its corresponding price.
 class TierRate {

@@ -18442,7 +18442,7 @@ class SummaryField {
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest01;
 
 /// Response message for TestIamPermissions method.
-typedef TestIamPermissionsResponse = $TestIamPermissionsResponse;
+typedef TestIamPermissionsResponse = $TestIamPermissionsResponse01;
 
 /// The parameters to UndeleteBucket.
 typedef UndeleteBucketRequest = $Empty;

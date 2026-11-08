@@ -172,7 +172,7 @@ class DiscoveryPackagesConfiguration {
         final list = (editor.parseAt(path) as YamlList).cast<String>().toList();
         list.add(apiId);
         list.sort();
-        editor.update(path, list);
+        editor.insertIntoList(path, list.indexOf(apiId), apiId);
         changed = true;
       }
     }
@@ -193,8 +193,9 @@ class DiscoveryPackagesConfiguration {
             final node = editor.parseAt(path);
             if (node is YamlList) {
               final list = node.cast<String>().toList();
-              if (list.remove(apiId)) {
-                editor.update(path, list);
+              final index = list.indexOf(apiId);
+              if (index != -1) {
+                editor.remove([...path, index]);
                 changed = true;
               }
             }

@@ -7665,7 +7665,62 @@ class SetIamPolicyRequest {
 }
 
 /// Request message for SetTags.
-typedef SetTagsRequest = $SetTagsRequest;
+class SetTagsRequest {
+  /// A checksum based on the current bindings which can be passed to prevent
+  /// race conditions.
+  ///
+  /// If not passed, etag check would be skipped.
+  ///
+  /// Optional.
+  core.String? etag;
+
+  /// The full resource name of the service resource.
+  ///
+  /// Required.
+  core.String? name;
+
+  /// A unique identifier for this request.
+  ///
+  /// Must be a valid UUID. This request is only idempotent if a `request_id` is
+  /// provided.
+  ///
+  /// Optional.
+  core.String? requestId;
+
+  /// These bindings will override any bindings previously set and will be
+  /// effective immediately.
+  ///
+  /// Each item in the map must be expressed as " : ". For example:
+  /// "123/environment" : "production", "123/costCenter" : "marketing"
+  ///
+  /// Required.
+  core.Map<core.String, core.String>? tags;
+
+  SetTagsRequest({this.etag, this.name, this.requestId, this.tags});
+
+  SetTagsRequest.fromJson(core.Map json_)
+    : this(
+        etag: json_['etag'] as core.String?,
+        name: json_['name'] as core.String?,
+        requestId: json_['requestId'] as core.String?,
+        tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final name = this.name;
+    final requestId = this.requestId;
+    final tags = this.tags;
+    return {
+      'etag': ?etag,
+      'name': ?name,
+      'requestId': ?requestId,
+      'tags': ?tags,
+    };
+  }
+}
 
 /// Response message for SetTags.
 typedef SetTagsResponse = $TagsResponse;
@@ -7777,7 +7832,7 @@ class SubstitutionRule {
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
-typedef TestIamPermissionsResponse = $PermissionsResponse;
+typedef TestIamPermissionsResponse = $TestIamPermissionsResponse00;
 
 /// Represents a time of day.
 ///

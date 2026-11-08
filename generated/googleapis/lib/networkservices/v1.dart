@@ -13998,7 +13998,7 @@ class TcpRouteRouteRule {
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
-typedef TestIamPermissionsResponse = $PermissionsResponse;
+typedef TestIamPermissionsResponse = $TestIamPermissionsResponse00;
 
 /// TlsRoute defines how traffic should be routed based on SNI and other
 /// matching L3 attributes.

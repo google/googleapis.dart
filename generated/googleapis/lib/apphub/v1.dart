@@ -4082,7 +4082,7 @@ typedef Status = $Status00;
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
-typedef TestIamPermissionsResponse = $PermissionsResponse;
+typedef TestIamPermissionsResponse = $TestIamPermissionsResponse00;
 
 /// Workload is an App Hub data model that contains a discovered workload, which
 /// represents a binary deployment (such as managed instance groups (MIGs) and

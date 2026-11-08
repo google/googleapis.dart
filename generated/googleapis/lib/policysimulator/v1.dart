@@ -2136,7 +2136,62 @@ class GoogleCloudPolicysimulatorV1AccessStateDiff {
 }
 
 /// Information about the principal, resource, and permission to check.
-typedef GoogleCloudPolicysimulatorV1AccessTuple = $V1AccessTuple;
+class GoogleCloudPolicysimulatorV1AccessTuple {
+  /// The full resource name that identifies the resource.
+  ///
+  /// For example,
+  /// `//compute.googleapis.com/projects/my-project/zones/us-central1-a/instances/my-instance`.
+  /// For examples of full resource names for Google Cloud services, see
+  /// https://cloud.google.com/iam/help/troubleshooter/full-resource-names.
+  ///
+  /// Required.
+  core.String? fullResourceName;
+
+  /// The IAM permission to check for the specified principal and resource.
+  ///
+  /// For a complete list of IAM permissions, see
+  /// https://cloud.google.com/iam/help/permissions/reference. For a complete
+  /// list of predefined IAM roles and the permissions in each role, see
+  /// https://cloud.google.com/iam/help/roles/reference.
+  ///
+  /// Required.
+  core.String? permission;
+
+  /// The principal whose access you want to check, in the form of the email
+  /// address that represents that principal.
+  ///
+  /// For example, `alice@example.com` or
+  /// `my-service-account@my-project.iam.gserviceaccount.com`. The principal
+  /// must be a Google Account or a service account. Other types of principals
+  /// are not supported.
+  ///
+  /// Required.
+  core.String? principal;
+
+  GoogleCloudPolicysimulatorV1AccessTuple({
+    this.fullResourceName,
+    this.permission,
+    this.principal,
+  });
+
+  GoogleCloudPolicysimulatorV1AccessTuple.fromJson(core.Map json_)
+    : this(
+        fullResourceName: json_['fullResourceName'] as core.String?,
+        permission: json_['permission'] as core.String?,
+        principal: json_['principal'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final fullResourceName = this.fullResourceName;
+    final permission = this.permission;
+    final principal = this.principal;
+    return {
+      'fullResourceName': ?fullResourceName,
+      'permission': ?permission,
+      'principal': ?principal,
+    };
+  }
+}
 
 /// Details about how a binding in a policy affects a principal's ability to use
 /// a permission.

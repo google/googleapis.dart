@@ -22442,7 +22442,7 @@ class TerminateSessionRequest {
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest01;
 
 /// Response message for TestIamPermissions method.
-typedef TestIamPermissionsResponse = $TestIamPermissionsResponse;
+typedef TestIamPermissionsResponse = $TestIamPermissionsResponse01;
 
 /// A Dataproc job for running Trino (https://trino.io/) queries.
 ///

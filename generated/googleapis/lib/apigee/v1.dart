@@ -19578,7 +19578,7 @@ class GoogleCloudApigeeV1Access {
 /// Get action.
 ///
 /// For example, "Get" : { "name" : "target.name", "value" : "default" }
-typedef GoogleCloudApigeeV1AccessGet = $Shared05;
+typedef GoogleCloudApigeeV1AccessGet = $Shared07;
 
 /// Access logging configuration enables customers to ship the access logs from
 /// the tenant projects to their own project's cloud logging.
@@ -38190,7 +38190,7 @@ class GoogleIamV1SetIamPolicyRequest {
 typedef GoogleIamV1TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
-typedef GoogleIamV1TestIamPermissionsResponse = $PermissionsResponse;
+typedef GoogleIamV1TestIamPermissionsResponse = $TestIamPermissionsResponse00;
 
 /// The response message for Operations.ListOperations.
 class GoogleLongrunningListOperationsResponse {

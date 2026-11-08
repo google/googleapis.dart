@@ -16250,7 +16250,7 @@ class TagFilterList {
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
-typedef TestIamPermissionsResponse = $PermissionsResponse;
+typedef TestIamPermissionsResponse = $TestIamPermissionsResponse00;
 
 class TextConfig {
   /// Transformations to apply to the detected data, overridden by

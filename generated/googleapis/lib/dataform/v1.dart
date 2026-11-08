@@ -8177,7 +8177,7 @@ class ReadFileResponse {
 }
 
 /// `ReadRepositoryFile` response message.
-typedef ReadRepositoryFileResponse = $Shared19;
+typedef ReadRepositoryFileResponse = $Shared15;
 
 /// Represents a database relation.
 class Relation {
@@ -9331,7 +9331,7 @@ class TeamFolderSearchResult {
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
-typedef TestIamPermissionsResponse = $PermissionsResponse;
+typedef TestIamPermissionsResponse = $TestIamPermissionsResponse00;
 
 /// Represents the Git state of a file with uncommitted changes.
 class UncommittedFileChange {
@@ -9958,7 +9958,7 @@ class WorkspaceCompilationOverrides {
 }
 
 /// Represents the write file operation (for files added or modified).
-typedef WriteFile = $Shared19;
+typedef WriteFile = $Shared15;
 
 /// `WriteFile` request message.
 class WriteFileRequest {
