@@ -1,5 +1,9 @@
 ## 1.1.0-wip
 
+- Support inline `type: "object"` schemas with `additionalProperties` on
+  `RestMethod.request` and `RestMethod.response` when `$ref` is omitted.
+- Warn and skip non-primitive `location: "query"` parameters instead of throwing
+  during code generation.
 - Allow latest `package:http`.
 - Generate `@Deprecated` annotations for associated members.
 - Support `deprecationMap` to emit `@Deprecated` annotations and markdown
