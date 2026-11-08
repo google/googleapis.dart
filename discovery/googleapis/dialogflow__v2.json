@@ -35,7 +35,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20261101",
+    "revision": "20261106",
     "rootUrl": "https://dialogflow.googleapis.com/",
     "servicePath": "",
     "title": "Dialogflow API",
@@ -16825,6 +16825,9 @@
                     },
                     "type": "array"
                 },
+                "profanityFilter": {
+                    "type": "boolean"
+                },
                 "sampleRateHertz": {
                     "format": "int32",
                     "type": "integer"
@@ -19790,6 +19793,9 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "profanityFilter": {
+                    "type": "boolean"
                 },
                 "sampleRateHertz": {
                     "format": "int32",

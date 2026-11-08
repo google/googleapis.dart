@@ -754,33 +754,37 @@ class OrganizationsLocationsFirewallEndpointsResource {
   OrganizationsLocationsFirewallEndpointsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Creates a new FirewallEndpoint in a given organization and location.
+  /// Creates a new firewall endpoint in a given organization and location.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Value for parent.
+  /// [parent] - Required. The parent resource where this firewall endpoint is
+  /// created. Format: `organizations/{organization}/locations/{location}` or
+  /// `projects/{project}/locations/{location}`.
   /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [firewallEndpointId] - Required. Id of the requesting object. If
-  /// auto-generating Id server-side, remove this field and firewall_endpoint_id
-  /// from the method_signature of Create RPC.
+  /// [firewallEndpointId] - Required. The ID to use for the firewall endpoint,
+  /// which becomes the final component of the endpoint's resource name. This
+  /// value must be 1-63 characters long, start with a lowercase letter, contain
+  /// only lowercase letters, numbers, and hyphens, and cannot end with a
+  /// hyphen.
   ///
   /// [requestId] - Optional. An optional request ID to identify requests.
   /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes since the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and the request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
+  /// server knows to ignore the request if it has already been completed. The
+  /// server guarantees that for at least 60 minutes since the first request.
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if the original operation with the same request
+  /// ID was received, and if so, ignores the second request. This prevents
+  /// clients from accidentally creating duplicate commitments. The request ID
+  /// must be a valid UUID with the exception that zero UUID is not supported
+  /// (`00000000-0000-0000-0000-000000000000`).
   ///
-  /// [validateOnly] - Optional. If set, validate the request and preview the
-  /// endpoint, but do not actually create it.
+  /// [validateOnly] - Optional. If set, validates the request and previews the
+  /// endpoint, but does not actually create it.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -821,25 +825,25 @@ class OrganizationsLocationsFirewallEndpointsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes a single org Endpoint.
+  /// Deletes a single organization endpoint.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the resource
+  /// [name] - Required. The name of the resource.
   /// Value must have pattern
   /// `^organizations/\[^/\]+/locations/\[^/\]+/firewallEndpoints/\[^/\]+$`.
   ///
   /// [requestId] - Optional. An optional request ID to identify requests.
   /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes after the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and the request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
+  /// server knows to ignore the request if it has already been completed. The
+  /// server guarantees that for at least 60 minutes after the first request.
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if the original operation with the same request
+  /// ID was received, and if so, ignores the second request. This prevents
+  /// clients from accidentally creating duplicate commitments. The request ID
+  /// must be a valid UUID with the exception that zero UUID is not supported
+  /// (`00000000-0000-0000-0000-000000000000`).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -871,11 +875,11 @@ class OrganizationsLocationsFirewallEndpointsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets details of a single org Endpoint.
+  /// Gets details of a single organization endpoint.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the resource
+  /// [name] - Required. The name of the resource.
   /// Value must have pattern
   /// `^organizations/\[^/\]+/locations/\[^/\]+/firewallEndpoints/\[^/\]+$`.
   ///
@@ -909,22 +913,27 @@ class OrganizationsLocationsFirewallEndpointsResource {
     );
   }
 
-  /// Lists FirewallEndpoints in a given organization and location.
+  /// Lists firewall endpoints in a given organization and location.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Parent value for ListEndpointsRequest
+  /// [parent] - Required. The parent resource from which the firewall endpoints
+  /// are listed. Format: `organizations/{organization}/locations/{location}` or
+  /// `projects/{project}/locations/{location}`.
   /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - Optional. Filtering results
+  /// [filter] - Optional. Filtering results.
   ///
-  /// [orderBy] - Hint for how to order the results
+  /// [orderBy] - Optional. Hint for how to order the results.
   ///
-  /// [pageSize] - Optional. Requested page size. Server may return fewer items
-  /// than requested. If unspecified, server will pick an appropriate default.
+  /// [pageSize] - Optional. Requested page size. The server might return fewer
+  /// items than requested. The maximum value is 1000; values above 1000 are
+  /// coerced to 1000. If unspecified, the server picks an appropriate default.
   ///
-  /// [pageToken] - A token identifying a page of results the server should
-  /// return.
+  /// [pageToken] - A page token, received from a previous
+  /// `ListFirewallEndpoints` call. Provide this to retrieve the subsequent
+  /// page. When paginating, all other parameters provided to
+  /// `ListFirewallEndpoints` must match the call that provided the page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -964,33 +973,33 @@ class OrganizationsLocationsFirewallEndpointsResource {
     );
   }
 
-  /// Update a single org Endpoint.
+  /// Updates a single organization endpoint.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Immutable. Identifier. Name of resource.
+  /// [name] - Immutable. Identifier. The name of the resource.
   /// Value must have pattern
   /// `^organizations/\[^/\]+/locations/\[^/\]+/firewallEndpoints/\[^/\]+$`.
   ///
   /// [requestId] - Optional. An optional request ID to identify requests.
   /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes since the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and the request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
+  /// server knows to ignore the request if it has already been completed. The
+  /// server guarantees that for at least 60 minutes since the first request.
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if the original operation with the same request
+  /// ID was received, and if so, ignores the second request. This prevents
+  /// clients from accidentally creating duplicate commitments. The request ID
+  /// must be a valid UUID with the exception that zero UUID is not supported
+  /// (`00000000-0000-0000-0000-000000000000`).
   ///
-  /// [updateMask] - Required. Field mask is used to specify the fields to be
-  /// overwritten in the Endpoint resource by the update. The fields specified
-  /// in the update_mask are relative to the resource, not the full request. A
-  /// field will be overwritten if it is in the mask. If the user does not
-  /// provide a mask then all fields will be overwritten.
+  /// [updateMask] - Required. Field mask used to specify the fields to be
+  /// overwritten in the `FirewallEndpoint` resource by the update. The fields
+  /// specified in the `update_mask` are relative to the resource, not the full
+  /// request. A field is overwritten if it is in the mask. If the user does not
+  /// provide a mask, then all fields present in the request are overwritten.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1035,17 +1044,19 @@ class OrganizationsLocationsFirewallEndpointsWildfireVerdictChangeRequestsResour
     commons.ApiRequester client,
   ) : _requester = client;
 
-  /// Create WildfireVerdictChangeRequest in a given Firewall Endpoint in an
-  /// organization and location.
+  /// Creates an Advanced malware sandbox verdict change request in a given
+  /// firewall endpoint in an organization and location.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. Parent value for
-  /// CreateWildfireVerdictChangeRequestRequest. The parent is a firewall
+  /// `CreateWildfireVerdictChangeRequestRequest`. The parent is a firewall
   /// endpoint resource. Format:
-  /// organizations|projects/{project_or_organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}
+  /// `organizations/{organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}`
+  /// or
+  /// `projects/{project}/locations/{location}/firewallEndpoints/{firewall_endpoint}`.
   /// Value must have pattern
   /// `^organizations/\[^/\]+/locations/\[^/\]+/firewallEndpoints/\[^/\]+$`.
   ///
@@ -1085,16 +1096,18 @@ class OrganizationsLocationsFirewallEndpointsWildfireVerdictChangeRequestsResour
     );
   }
 
-  /// Get WildfireVerdictChangeRequest in a given Firewall Endpoint in an
-  /// organization and location.
+  /// Gets an Advanced malware sandbox verdict change request in a given
+  /// firewall endpoint in an organization and location.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the WildfireVerdictChangeRequest to retrieve.
-  /// Format:
-  /// organizations|projects/{project_or_organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}/wildfireVerdictChangeRequests/{wildfire_verdict_change_request_id}
-  /// Where {wildfire_verdict_change_request_id} is the ID in the format:
-  /// ^\[0-9a-fA-F\]{8}-\[0-9a-fA-F\]{4}-\[0-9a-fA-F\]{4}-\[0-9a-fA-F\]{4}-\[0-9a-fA-F\]{12}$
+  /// [name] - Required. The name of the `WildfireVerdictChangeRequest` to
+  /// retrieve. Format:
+  /// `organizations/{organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}/wildfireVerdictChangeRequests/{wildfire_verdict_change_request_id}`
+  /// or
+  /// `projects/{project}/locations/{location}/firewallEndpoints/{firewall_endpoint}/wildfireVerdictChangeRequests/{wildfire_verdict_change_request_id}`.
+  /// Where `{wildfire_verdict_change_request_id}` is an ID in the format
+  /// `^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$`.
   /// Value must have pattern
   /// `^organizations/\[^/\]+/locations/\[^/\]+/firewallEndpoints/\[^/\]+/wildfireVerdictChangeRequests/\[^/\]+$`.
   ///
@@ -1128,29 +1141,39 @@ class OrganizationsLocationsFirewallEndpointsWildfireVerdictChangeRequestsResour
     );
   }
 
-  /// Lists WildfireVerdictChangeRequests in a given Firewall Endpoint in an
-  /// organization and location.
+  /// Lists the Advanced malware sandbox (WildFire) verdict change requests in a
+  /// given firewall endpoint in an organization and location.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. Parent value for
-  /// ListWildfireVerdictChangeRequestsRequest. The parent is a firewall
+  /// `ListWildfireVerdictChangeRequestsRequest`. The parent is a firewall
   /// endpoint resource. Format:
-  /// organizations|projects/{project_or_organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}
+  /// `organizations/{organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}`
+  /// or
+  /// `projects/{project}/locations/{location}/firewallEndpoints/{firewall_endpoint}`.
   /// Value must have pattern
   /// `^organizations/\[^/\]+/locations/\[^/\]+/firewallEndpoints/\[^/\]+$`.
   ///
-  /// [filter] - Optional. Filter expression to filter the results. See AIP-160
-  /// for filtering syntax. Supported fields are: - `sha256` (string, equality
-  /// only, e.g. `sha256 = "..."`) - `state` (enum, equality only, e.g. `state =
-  /// "ACTIVE"`) - `create_time` (timestamp, comparisons, e.g. `create_time >
-  /// "2026-01-01T00:00:00Z"`)
+  /// [filter] - Optional. Filter expression to filter the results. Supported
+  /// fields are: - `sha256` (string, equality only, for example, `sha256 =
+  /// "..."`) - `state` (enum, equality only, valid values are `OPEN`, `CLOSED`,
+  /// or `PENDING`, for example, `state = "PENDING"`) - `create_time`
+  /// (timestamp, comparisons, for example, `create_time >=
+  /// "2026-01-01T00:00:00Z" AND create_time <= "2026-01-31T23:59:59Z"`). If
+  /// filtering by `create_time`, you must specify both a start time and an end
+  /// time. If `create_time` is not specified, the query defaults to the past 30
+  /// days.
   ///
-  /// [pageSize] - Optional. Requested page size. Server may return fewer items
-  /// than requested. If unspecified, server will pick an appropriate default.
+  /// [pageSize] - Optional. Requested page size. The server might return fewer
+  /// items than requested. If unspecified, the server picks an appropriate
+  /// default.
   ///
-  /// [pageToken] - Optional. A token identifying a page of results the server
-  /// should return.
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListWildfireVerdictChangeRequests` call. Provide this to retrieve the
+  /// subsequent page. When paginating, all other parameters provided to
+  /// `ListWildfireVerdictChangeRequests` must match the call that provided the
+  /// page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1392,21 +1415,21 @@ class OrganizationsLocationsSecurityProfileGroupsResource {
     commons.ApiRequester client,
   ) : _requester = client;
 
-  /// Creates a new SecurityProfileGroup in a given organization and location.
+  /// Creates a new security profile group in a given organization and location.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent resource of the SecurityProfileGroup. Must
-  /// be in the format `projects|organizations / * /locations/{location}`.
+  /// [parent] - Required. The parent resource of the `SecurityProfileGroup`.
+  /// Format: `organizations/{organization}/locations/{location}` or
+  /// `projects/{project}/locations/{location}`.
   /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [securityProfileGroupId] - Required. Short name of the
-  /// SecurityProfileGroup resource to be created. This value should be 1-63
-  /// characters long, containing only letters, numbers, hyphens, and
-  /// underscores, and should not start with a number. E.g.
-  /// "security_profile_group1".
+  /// `SecurityProfileGroup` resource to be created. This value must be 1 to 63
+  /// characters long, contain only lowercase letters, numbers, and hyphens, and
+  /// must not start with a number. For example, `security-profile-group1`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1444,18 +1467,20 @@ class OrganizationsLocationsSecurityProfileGroupsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes a single SecurityProfileGroup.
+  /// Deletes a single security profile group.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. A name of the SecurityProfileGroup to delete. Must be
-  /// in the format `projects|organizations / *
-  /// /locations/{location}/securityProfileGroups/{security_profile_group}`.
+  /// [name] - Required. The name of the `SecurityProfileGroup` to delete.
+  /// Format:
+  /// `organizations/{organization}/locations/{location}/securityProfileGroups/{security_profile_group}`
+  /// or
+  /// `projects/{project}/locations/{location}/securityProfileGroups/{security_profile_group}`.
   /// Value must have pattern
   /// `^organizations/\[^/\]+/locations/\[^/\]+/securityProfileGroups/\[^/\]+$`.
   ///
-  /// [etag] - Optional. If client provided etag is out of date, delete will
-  /// return FAILED_PRECONDITION error.
+  /// [etag] - Optional. If the client-provided `etag` is out of date, the
+  /// delete request returns an `ABORTED` error.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1487,13 +1512,14 @@ class OrganizationsLocationsSecurityProfileGroupsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets details of a single SecurityProfileGroup.
+  /// Gets details of a single security profile group.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. A name of the SecurityProfileGroup to get. Must be in
-  /// the format `projects|organizations / *
-  /// /locations/{location}/securityProfileGroups/{security_profile_group}`.
+  /// [name] - Required. The name of the `SecurityProfileGroup` to get. Format:
+  /// `organizations/{organization}/locations/{location}/securityProfileGroups/{security_profile_group}`
+  /// or
+  /// `projects/{project}/locations/{location}/securityProfileGroups/{security_profile_group}`.
   /// Value must have pattern
   /// `^organizations/\[^/\]+/locations/\[^/\]+/securityProfileGroups/\[^/\]+$`.
   ///
@@ -1527,22 +1553,26 @@ class OrganizationsLocationsSecurityProfileGroupsResource {
     );
   }
 
-  /// Lists SecurityProfileGroups in a given organization and location.
+  /// Lists security profile group resources in a given organization and
+  /// location.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The project or organization and location from which
-  /// the SecurityProfileGroups should be listed, specified in the format
-  /// `projects|organizations / * /locations/{location}`.
+  /// the `SecurityProfileGroup` resources are listed. Format:
+  /// `organizations/{organization}/locations/{location}` or
+  /// `projects/{project}/locations/{location}`.
   /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [pageSize] - Optional. Maximum number of SecurityProfileGroups to return
-  /// per call.
+  /// [pageSize] - Optional. Maximum number of `SecurityProfileGroup` resources
+  /// to return per call. The maximum value is 1000; values above 1000 are
+  /// coerced to 1000. If unspecified, the server picks an appropriate default.
   ///
-  /// [pageToken] - Optional. The value returned by the last
-  /// `ListSecurityProfileGroupsResponse` Indicates that this is a continuation
-  /// of a prior `ListSecurityProfileGroups` call, and that the system should
-  /// return the next page of data.
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListSecurityProfileGroups` call. Provide this to retrieve the subsequent
+  /// page. When paginating, all other parameters provided to
+  /// `ListSecurityProfileGroups` must match the call that provided the page
+  /// token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1579,22 +1609,24 @@ class OrganizationsLocationsSecurityProfileGroupsResource {
     );
   }
 
-  /// Updates the parameters of a single SecurityProfileGroup.
+  /// Updates the parameters of a single security profile group.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Immutable. Identifier. Name of the SecurityProfileGroup resource.
-  /// It matches pattern `projects|organizations / *
-  /// /locations/{location}/securityProfileGroups/{security_profile_group}`.
+  /// [name] - Immutable. Identifier. Name of the `SecurityProfileGroup`
+  /// resource. Format:
+  /// `organizations/{organization}/locations/{location}/securityProfileGroups/{security_profile_group}`
+  /// or
+  /// `projects/{project}/locations/{location}/securityProfileGroups/{security_profile_group}`.
   /// Value must have pattern
   /// `^organizations/\[^/\]+/locations/\[^/\]+/securityProfileGroups/\[^/\]+$`.
   ///
   /// [updateMask] - Required. Field mask is used to specify the fields to be
-  /// overwritten in the SecurityProfileGroup resource by the update. The fields
-  /// specified in the update_mask are relative to the resource, not the full
-  /// request. A field will be overwritten if it is in the mask.
+  /// overwritten in the `SecurityProfileGroup` resource by the update. The
+  /// fields specified in the `update_mask` are relative to the resource, not
+  /// the full request. A field is overwritten if it is in the mask.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1636,20 +1668,21 @@ class OrganizationsLocationsSecurityProfilesResource {
   OrganizationsLocationsSecurityProfilesResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Creates a new SecurityProfile in a given organization and location.
+  /// Creates a new security profile in a given organization and location.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent resource of the SecurityProfile. Must be
-  /// in the format `projects|organizations / * /locations/{location}`.
+  /// [parent] - Required. The parent resource of the `SecurityProfile`. Format:
+  /// `organizations/{organization}/locations/{location}` or
+  /// `projects/{project}/locations/{location}`.
   /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [securityProfileId] - Required. Short name of the SecurityProfile resource
-  /// to be created. This value should be 1-63 characters long, containing only
-  /// letters, numbers, hyphens, and underscores, and should not start with a
-  /// number. E.g. "security_profile1".
+  /// [securityProfileId] - Required. Short name of the `SecurityProfile`
+  /// resource to be created. This value must be 1 to 63 characters long,
+  /// contain only lowercase letters, numbers, and hyphens, and must not start
+  /// with a number. For example, `security-profile1`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1686,18 +1719,19 @@ class OrganizationsLocationsSecurityProfilesResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes a single SecurityProfile.
+  /// Deletes a single security profile.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. A name of the SecurityProfile to delete. Must be in the
-  /// format `projects|organizations / *
-  /// /locations/{location}/securityProfiles/{security_profile_id}`.
+  /// [name] - Required. The name of the `SecurityProfile` to delete. Format:
+  /// `organizations/{organization}/locations/{location}/securityProfiles/{security_profile}`
+  /// or
+  /// `projects/{project}/locations/{location}/securityProfiles/{security_profile}`.
   /// Value must have pattern
   /// `^organizations/\[^/\]+/locations/\[^/\]+/securityProfiles/\[^/\]+$`.
   ///
-  /// [etag] - Optional. If client provided etag is out of date, delete will
-  /// return FAILED_PRECONDITION error.
+  /// [etag] - Optional. If the client-provided `etag` is out of date, the
+  /// delete request returns an `ABORTED` error.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1729,13 +1763,14 @@ class OrganizationsLocationsSecurityProfilesResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets details of a single SecurityProfile.
+  /// Gets details of a single security profile.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. A name of the SecurityProfile to get. Must be in the
-  /// format `projects|organizations / *
-  /// /locations/{location}/securityProfiles/{security_profile_id}`.
+  /// [name] - Required. The name of the `SecurityProfile` to get. Format:
+  /// `organizations/{organization}/locations/{location}/securityProfiles/{security_profile}`
+  /// or
+  /// `projects/{project}/locations/{location}/securityProfiles/{security_profile}`.
   /// Value must have pattern
   /// `^organizations/\[^/\]+/locations/\[^/\]+/securityProfiles/\[^/\]+$`.
   ///
@@ -1769,22 +1804,24 @@ class OrganizationsLocationsSecurityProfilesResource {
     );
   }
 
-  /// Lists SecurityProfiles in a given organization and location.
+  /// Lists security profile resources in a given organization and location.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The project or organization and location from which
-  /// the SecurityProfiles should be listed, specified in the format
-  /// `projects|organizations / * /locations/{location}`.
+  /// the `SecurityProfile` resources are listed. Format:
+  /// `organizations/{organization}/locations/{location}` or
+  /// `projects/{project}/locations/{location}`.
   /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [pageSize] - Optional. Maximum number of SecurityProfiles to return per
-  /// call.
+  /// [pageSize] - Optional. Maximum number of `SecurityProfile` resources to
+  /// return per call. The maximum value is 1000; values above 1000 are coerced
+  /// to 1000. If unspecified, the server picks an appropriate default.
   ///
-  /// [pageToken] - Optional. The value returned by the last
-  /// `ListSecurityProfilesResponse` Indicates that this is a continuation of a
-  /// prior `ListSecurityProfiles` call, and that the system should return the
-  /// next page of data.
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListSecurityProfiles` call. Provide this to retrieve the subsequent page.
+  /// When paginating, all other parameters provided to `ListSecurityProfiles`
+  /// must match the call that provided the page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1820,22 +1857,24 @@ class OrganizationsLocationsSecurityProfilesResource {
     );
   }
 
-  /// Updates the parameters of a single SecurityProfile.
+  /// Updates the parameters of a single security profile.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Immutable. Identifier. Name of the SecurityProfile resource. It
-  /// matches pattern `projects|organizations / *
-  /// /locations/{location}/securityProfiles/{security_profile}`.
+  /// [name] - Immutable. Identifier. Name of the `SecurityProfile` resource.
+  /// Format:
+  /// `organizations/{organization}/locations/{location}/securityProfiles/{security_profile}`
+  /// or
+  /// `projects/{project}/locations/{location}/securityProfiles/{security_profile}`.
   /// Value must have pattern
   /// `^organizations/\[^/\]+/locations/\[^/\]+/securityProfiles/\[^/\]+$`.
   ///
   /// [updateMask] - Required. Field mask is used to specify the fields to be
-  /// overwritten in the SecurityProfile resource by the update. The fields
-  /// specified in the update_mask are relative to the resource, not the full
-  /// request. A field will be overwritten if it is in the mask.
+  /// overwritten in the `SecurityProfile` resource by the update. The fields
+  /// specified in the `update_mask` are relative to the resource, not the full
+  /// request. A field is overwritten if it is in the mask.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4395,30 +4434,34 @@ class ProjectsLocationsFirewallEndpointAssociationsResource {
     commons.ApiRequester client,
   ) : _requester = client;
 
-  /// Creates a new FirewallEndpointAssociation in a given project and location.
+  /// Creates a new firewall endpoint association in a given project and
+  /// location.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Value for parent.
+  /// [parent] - Required. The parent resource where this firewall endpoint
+  /// association is created. Format: `projects/{project}/locations/{location}`.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [firewallEndpointAssociationId] - Optional. Id of the requesting object.
-  /// If auto-generating Id server-side, remove this field and
-  /// firewall_endpoint_association_id from the method_signature of Create RPC.
+  /// [firewallEndpointAssociationId] - Optional. The ID to use for the firewall
+  /// endpoint association, which becomes the final component of the
+  /// association's resource name. This value must be 1-63 characters long,
+  /// start with a lowercase letter, contain only lowercase letters, numbers,
+  /// and hyphens, and cannot end with a hyphen.
   ///
   /// [requestId] - Optional. An optional request ID to identify requests.
   /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes since the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and the request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
+  /// server knows to ignore the request if it has already been completed. The
+  /// server guarantees that for at least 60 minutes since the first request.
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if the original operation with the same request
+  /// ID was received, and if so, ignores the second request. This prevents
+  /// clients from accidentally creating duplicate commitments. The request ID
+  /// must be a valid UUID with the exception that zero UUID is not supported
+  /// (`00000000-0000-0000-0000-000000000000`).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4460,25 +4503,25 @@ class ProjectsLocationsFirewallEndpointAssociationsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes a single FirewallEndpointAssociation.
+  /// Deletes a single firewall endpoint association.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the resource
+  /// [name] - Required. The name of the resource.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/firewallEndpointAssociations/\[^/\]+$`.
   ///
   /// [requestId] - Optional. An optional request ID to identify requests.
   /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes after the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and the request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
+  /// server knows to ignore the request if it has already been completed. The
+  /// server guarantees that for at least 60 minutes after the first request.
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if the original operation with the same request
+  /// ID was received, and if so, ignores the second request. This prevents
+  /// clients from accidentally creating duplicate commitments. The request ID
+  /// must be a valid UUID with the exception that zero UUID is not supported
+  /// (`00000000-0000-0000-0000-000000000000`).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4510,11 +4553,11 @@ class ProjectsLocationsFirewallEndpointAssociationsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets details of a single FirewallEndpointAssociation.
+  /// Gets details of a single firewall endpoint association.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the resource
+  /// [name] - Required. The name of the resource.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/firewallEndpointAssociations/\[^/\]+$`.
   ///
@@ -4548,22 +4591,28 @@ class ProjectsLocationsFirewallEndpointAssociationsResource {
     );
   }
 
-  /// Lists Associations in a given project and location.
+  /// Lists associations in a given project and location.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Parent value for ListAssociationsRequest
+  /// [parent] - Required. The parent resource from which the firewall endpoint
+  /// associations are listed. Format:
+  /// `projects/{project}/locations/{location}`.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - Optional. Filtering results
+  /// [filter] - Optional. Filtering results.
   ///
-  /// [orderBy] - Hint for how to order the results
+  /// [orderBy] - Hint for how to order the results.
   ///
-  /// [pageSize] - Optional. Requested page size. Server may return fewer items
-  /// than requested. If unspecified, server will pick an appropriate default.
+  /// [pageSize] - Optional. Requested page size. The server might return fewer
+  /// items than requested. The maximum value is 1000; values above 1000 are
+  /// coerced to 1000. If unspecified, the server picks an appropriate default.
   ///
-  /// [pageToken] - A token identifying a page of results the server should
-  /// return.
+  /// [pageToken] - A page token, received from a previous
+  /// `ListFirewallEndpointAssociations` call. Provide this to retrieve the
+  /// subsequent page. When paginating, all other parameters provided to
+  /// `ListFirewallEndpointAssociations` must match the call that provided the
+  /// page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4606,33 +4655,34 @@ class ProjectsLocationsFirewallEndpointAssociationsResource {
     );
   }
 
-  /// Update a single FirewallEndpointAssociation.
+  /// Updates a single firewall endpoint association.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Immutable. Identifier. name of resource
+  /// [name] - Immutable. Identifier. The name of the resource.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/firewallEndpointAssociations/\[^/\]+$`.
   ///
   /// [requestId] - Optional. An optional request ID to identify requests.
   /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes since the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and the request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
+  /// server knows to ignore the request if it has already been completed. The
+  /// server guarantees that for at least 60 minutes since the first request.
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if the original operation with the same request
+  /// ID was received, and if so, ignores the second request. This prevents
+  /// clients from accidentally creating duplicate commitments. The request ID
+  /// must be a valid UUID with the exception that zero UUID is not supported
+  /// (`00000000-0000-0000-0000-000000000000`).
   ///
-  /// [updateMask] - Required. Field mask is used to specify the fields to be
-  /// overwritten in the Association resource by the update. The fields
-  /// specified in the update_mask are relative to the resource, not the full
-  /// request. A field will be overwritten if it is in the mask. If the user
-  /// does not provide a mask then all fields will be overwritten.
+  /// [updateMask] - Required. Field mask used to specify the fields to be
+  /// overwritten in the `FirewallEndpointAssociation` resource by the update.
+  /// The fields specified in the `update_mask` are relative to the resource,
+  /// not the full request. A field is overwritten if it is in the mask. If the
+  /// user does not provide a mask, then all fields present in the request are
+  /// overwritten.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4682,33 +4732,37 @@ class ProjectsLocationsFirewallEndpointsResource {
   ProjectsLocationsFirewallEndpointsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Creates a new FirewallEndpoint in a given project and location.
+  /// Creates a new firewall endpoint in a given project and location.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Value for parent.
+  /// [parent] - Required. The parent resource where this firewall endpoint is
+  /// created. Format: `organizations/{organization}/locations/{location}` or
+  /// `projects/{project}/locations/{location}`.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [firewallEndpointId] - Required. Id of the requesting object. If
-  /// auto-generating Id server-side, remove this field and firewall_endpoint_id
-  /// from the method_signature of Create RPC.
+  /// [firewallEndpointId] - Required. The ID to use for the firewall endpoint,
+  /// which becomes the final component of the endpoint's resource name. This
+  /// value must be 1-63 characters long, start with a lowercase letter, contain
+  /// only lowercase letters, numbers, and hyphens, and cannot end with a
+  /// hyphen.
   ///
   /// [requestId] - Optional. An optional request ID to identify requests.
   /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes since the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and the request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
+  /// server knows to ignore the request if it has already been completed. The
+  /// server guarantees that for at least 60 minutes since the first request.
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if the original operation with the same request
+  /// ID was received, and if so, ignores the second request. This prevents
+  /// clients from accidentally creating duplicate commitments. The request ID
+  /// must be a valid UUID with the exception that zero UUID is not supported
+  /// (`00000000-0000-0000-0000-000000000000`).
   ///
-  /// [validateOnly] - Optional. If set, validate the request and preview the
-  /// endpoint, but do not actually create it.
+  /// [validateOnly] - Optional. If set, validates the request and previews the
+  /// endpoint, but does not actually create it.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4749,25 +4803,25 @@ class ProjectsLocationsFirewallEndpointsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes a single project Endpoint.
+  /// Deletes a single project endpoint.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the resource
+  /// [name] - Required. The name of the resource.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/firewallEndpoints/\[^/\]+$`.
   ///
   /// [requestId] - Optional. An optional request ID to identify requests.
   /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes after the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and the request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
+  /// server knows to ignore the request if it has already been completed. The
+  /// server guarantees that for at least 60 minutes after the first request.
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if the original operation with the same request
+  /// ID was received, and if so, ignores the second request. This prevents
+  /// clients from accidentally creating duplicate commitments. The request ID
+  /// must be a valid UUID with the exception that zero UUID is not supported
+  /// (`00000000-0000-0000-0000-000000000000`).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4799,11 +4853,11 @@ class ProjectsLocationsFirewallEndpointsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets details of a single project Endpoint.
+  /// Gets details of a single project endpoint.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the resource
+  /// [name] - Required. The name of the resource.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/firewallEndpoints/\[^/\]+$`.
   ///
@@ -4837,22 +4891,27 @@ class ProjectsLocationsFirewallEndpointsResource {
     );
   }
 
-  /// Lists FirewallEndpoints in a given project and location.
+  /// Lists firewall endpoints in a given project and location.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Parent value for ListEndpointsRequest
+  /// [parent] - Required. The parent resource from which the firewall endpoints
+  /// are listed. Format: `organizations/{organization}/locations/{location}` or
+  /// `projects/{project}/locations/{location}`.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - Optional. Filtering results
+  /// [filter] - Optional. Filtering results.
   ///
-  /// [orderBy] - Hint for how to order the results
+  /// [orderBy] - Optional. Hint for how to order the results.
   ///
-  /// [pageSize] - Optional. Requested page size. Server may return fewer items
-  /// than requested. If unspecified, server will pick an appropriate default.
+  /// [pageSize] - Optional. Requested page size. The server might return fewer
+  /// items than requested. The maximum value is 1000; values above 1000 are
+  /// coerced to 1000. If unspecified, the server picks an appropriate default.
   ///
-  /// [pageToken] - A token identifying a page of results the server should
-  /// return.
+  /// [pageToken] - A page token, received from a previous
+  /// `ListFirewallEndpoints` call. Provide this to retrieve the subsequent
+  /// page. When paginating, all other parameters provided to
+  /// `ListFirewallEndpoints` must match the call that provided the page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4892,33 +4951,33 @@ class ProjectsLocationsFirewallEndpointsResource {
     );
   }
 
-  /// Update a single project Endpoint.
+  /// Updates a single project endpoint.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Immutable. Identifier. Name of resource.
+  /// [name] - Immutable. Identifier. The name of the resource.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/firewallEndpoints/\[^/\]+$`.
   ///
   /// [requestId] - Optional. An optional request ID to identify requests.
   /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes since the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and the request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
+  /// server knows to ignore the request if it has already been completed. The
+  /// server guarantees that for at least 60 minutes since the first request.
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if the original operation with the same request
+  /// ID was received, and if so, ignores the second request. This prevents
+  /// clients from accidentally creating duplicate commitments. The request ID
+  /// must be a valid UUID with the exception that zero UUID is not supported
+  /// (`00000000-0000-0000-0000-000000000000`).
   ///
-  /// [updateMask] - Required. Field mask is used to specify the fields to be
-  /// overwritten in the Endpoint resource by the update. The fields specified
-  /// in the update_mask are relative to the resource, not the full request. A
-  /// field will be overwritten if it is in the mask. If the user does not
-  /// provide a mask then all fields will be overwritten.
+  /// [updateMask] - Required. Field mask used to specify the fields to be
+  /// overwritten in the `FirewallEndpoint` resource by the update. The fields
+  /// specified in the `update_mask` are relative to the resource, not the full
+  /// request. A field is overwritten if it is in the mask. If the user does not
+  /// provide a mask, then all fields present in the request are overwritten.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4963,17 +5022,19 @@ class ProjectsLocationsFirewallEndpointsWildfireVerdictChangeRequestsResource {
     commons.ApiRequester client,
   ) : _requester = client;
 
-  /// Create WildfireVerdictChangeRequest in a given Firewall Endpoint in a
-  /// project and location.
+  /// Creates an Advanced malware sandbox verdict change request in a given
+  /// firewall endpoint in a project and location.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. Parent value for
-  /// CreateWildfireVerdictChangeRequestRequest. The parent is a firewall
+  /// `CreateWildfireVerdictChangeRequestRequest`. The parent is a firewall
   /// endpoint resource. Format:
-  /// organizations|projects/{project_or_organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}
+  /// `organizations/{organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}`
+  /// or
+  /// `projects/{project}/locations/{location}/firewallEndpoints/{firewall_endpoint}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/firewallEndpoints/\[^/\]+$`.
   ///
@@ -5013,16 +5074,18 @@ class ProjectsLocationsFirewallEndpointsWildfireVerdictChangeRequestsResource {
     );
   }
 
-  /// Get WildfireVerdictChangeRequest in a given Firewall Endpoint in a project
-  /// and location.
+  /// Gets an Advanced malware sandbox verdict change request in a given
+  /// firewall endpoint in a project and location.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the WildfireVerdictChangeRequest to retrieve.
-  /// Format:
-  /// organizations|projects/{project_or_organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}/wildfireVerdictChangeRequests/{wildfire_verdict_change_request_id}
-  /// Where {wildfire_verdict_change_request_id} is the ID in the format:
-  /// ^\[0-9a-fA-F\]{8}-\[0-9a-fA-F\]{4}-\[0-9a-fA-F\]{4}-\[0-9a-fA-F\]{4}-\[0-9a-fA-F\]{12}$
+  /// [name] - Required. The name of the `WildfireVerdictChangeRequest` to
+  /// retrieve. Format:
+  /// `organizations/{organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}/wildfireVerdictChangeRequests/{wildfire_verdict_change_request_id}`
+  /// or
+  /// `projects/{project}/locations/{location}/firewallEndpoints/{firewall_endpoint}/wildfireVerdictChangeRequests/{wildfire_verdict_change_request_id}`.
+  /// Where `{wildfire_verdict_change_request_id}` is an ID in the format
+  /// `^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/firewallEndpoints/\[^/\]+/wildfireVerdictChangeRequests/\[^/\]+$`.
   ///
@@ -5056,29 +5119,39 @@ class ProjectsLocationsFirewallEndpointsWildfireVerdictChangeRequestsResource {
     );
   }
 
-  /// Lists WildfireVerdictChangeRequests in a given Firewall Endpoint in a
-  /// project and location.
+  /// Lists the Advanced malware sandbox verdict change requests in a given
+  /// firewall endpoint in a project and location.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. Parent value for
-  /// ListWildfireVerdictChangeRequestsRequest. The parent is a firewall
+  /// `ListWildfireVerdictChangeRequestsRequest`. The parent is a firewall
   /// endpoint resource. Format:
-  /// organizations|projects/{project_or_organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}
+  /// `organizations/{organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}`
+  /// or
+  /// `projects/{project}/locations/{location}/firewallEndpoints/{firewall_endpoint}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/firewallEndpoints/\[^/\]+$`.
   ///
-  /// [filter] - Optional. Filter expression to filter the results. See AIP-160
-  /// for filtering syntax. Supported fields are: - `sha256` (string, equality
-  /// only, e.g. `sha256 = "..."`) - `state` (enum, equality only, e.g. `state =
-  /// "ACTIVE"`) - `create_time` (timestamp, comparisons, e.g. `create_time >
-  /// "2026-01-01T00:00:00Z"`)
+  /// [filter] - Optional. Filter expression to filter the results. Supported
+  /// fields are: - `sha256` (string, equality only, for example, `sha256 =
+  /// "..."`) - `state` (enum, equality only, valid values are `OPEN`, `CLOSED`,
+  /// or `PENDING`, for example, `state = "PENDING"`) - `create_time`
+  /// (timestamp, comparisons, for example, `create_time >=
+  /// "2026-01-01T00:00:00Z" AND create_time <= "2026-01-31T23:59:59Z"`). If
+  /// filtering by `create_time`, you must specify both a start time and an end
+  /// time. If `create_time` is not specified, the query defaults to the past 30
+  /// days.
   ///
-  /// [pageSize] - Optional. Requested page size. Server may return fewer items
-  /// than requested. If unspecified, server will pick an appropriate default.
+  /// [pageSize] - Optional. Requested page size. The server might return fewer
+  /// items than requested. If unspecified, the server picks an appropriate
+  /// default.
   ///
-  /// [pageToken] - Optional. A token identifying a page of results the server
-  /// should return.
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListWildfireVerdictChangeRequests` call. Provide this to retrieve the
+  /// subsequent page. When paginating, all other parameters provided to
+  /// `ListWildfireVerdictChangeRequests` must match the call that provided the
+  /// page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8447,21 +8520,21 @@ class ProjectsLocationsSecurityProfileGroupsResource {
   ProjectsLocationsSecurityProfileGroupsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Creates a new SecurityProfileGroup in a given project and location.
+  /// Creates a new security profile group in a given project and location.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent resource of the SecurityProfileGroup. Must
-  /// be in the format `projects|organizations / * /locations/{location}`.
+  /// [parent] - Required. The parent resource of the `SecurityProfileGroup`.
+  /// Format: `organizations/{organization}/locations/{location}` or
+  /// `projects/{project}/locations/{location}`.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [securityProfileGroupId] - Required. Short name of the
-  /// SecurityProfileGroup resource to be created. This value should be 1-63
-  /// characters long, containing only letters, numbers, hyphens, and
-  /// underscores, and should not start with a number. E.g.
-  /// "security_profile_group1".
+  /// `SecurityProfileGroup` resource to be created. This value must be 1 to 63
+  /// characters long, contain only lowercase letters, numbers, and hyphens, and
+  /// must not start with a number. For example, `security-profile-group1`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8499,18 +8572,20 @@ class ProjectsLocationsSecurityProfileGroupsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes a single SecurityProfileGroup.
+  /// Deletes a single security profile group.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. A name of the SecurityProfileGroup to delete. Must be
-  /// in the format `projects|organizations / *
-  /// /locations/{location}/securityProfileGroups/{security_profile_group}`.
+  /// [name] - Required. The name of the `SecurityProfileGroup` to delete.
+  /// Format:
+  /// `organizations/{organization}/locations/{location}/securityProfileGroups/{security_profile_group}`
+  /// or
+  /// `projects/{project}/locations/{location}/securityProfileGroups/{security_profile_group}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/securityProfileGroups/\[^/\]+$`.
   ///
-  /// [etag] - Optional. If client provided etag is out of date, delete will
-  /// return FAILED_PRECONDITION error.
+  /// [etag] - Optional. If the client-provided `etag` is out of date, the
+  /// delete request returns an `ABORTED` error.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8542,13 +8617,14 @@ class ProjectsLocationsSecurityProfileGroupsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets details of a single SecurityProfileGroup.
+  /// Gets details of a single security profile group.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. A name of the SecurityProfileGroup to get. Must be in
-  /// the format `projects|organizations / *
-  /// /locations/{location}/securityProfileGroups/{security_profile_group}`.
+  /// [name] - Required. The name of the `SecurityProfileGroup` to get. Format:
+  /// `organizations/{organization}/locations/{location}/securityProfileGroups/{security_profile_group}`
+  /// or
+  /// `projects/{project}/locations/{location}/securityProfileGroups/{security_profile_group}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/securityProfileGroups/\[^/\]+$`.
   ///
@@ -8582,22 +8658,25 @@ class ProjectsLocationsSecurityProfileGroupsResource {
     );
   }
 
-  /// Lists SecurityProfileGroups in a given project and location.
+  /// Lists security profile group resources in a given project and location.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The project or organization and location from which
-  /// the SecurityProfileGroups should be listed, specified in the format
-  /// `projects|organizations / * /locations/{location}`.
+  /// the `SecurityProfileGroup` resources are listed. Format:
+  /// `organizations/{organization}/locations/{location}` or
+  /// `projects/{project}/locations/{location}`.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [pageSize] - Optional. Maximum number of SecurityProfileGroups to return
-  /// per call.
+  /// [pageSize] - Optional. Maximum number of `SecurityProfileGroup` resources
+  /// to return per call. The maximum value is 1000; values above 1000 are
+  /// coerced to 1000. If unspecified, the server picks an appropriate default.
   ///
-  /// [pageToken] - Optional. The value returned by the last
-  /// `ListSecurityProfileGroupsResponse` Indicates that this is a continuation
-  /// of a prior `ListSecurityProfileGroups` call, and that the system should
-  /// return the next page of data.
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListSecurityProfileGroups` call. Provide this to retrieve the subsequent
+  /// page. When paginating, all other parameters provided to
+  /// `ListSecurityProfileGroups` must match the call that provided the page
+  /// token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8634,22 +8713,24 @@ class ProjectsLocationsSecurityProfileGroupsResource {
     );
   }
 
-  /// Updates the parameters of a single SecurityProfileGroup.
+  /// Updates the parameters of a single security profile group.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Immutable. Identifier. Name of the SecurityProfileGroup resource.
-  /// It matches pattern `projects|organizations / *
-  /// /locations/{location}/securityProfileGroups/{security_profile_group}`.
+  /// [name] - Immutable. Identifier. Name of the `SecurityProfileGroup`
+  /// resource. Format:
+  /// `organizations/{organization}/locations/{location}/securityProfileGroups/{security_profile_group}`
+  /// or
+  /// `projects/{project}/locations/{location}/securityProfileGroups/{security_profile_group}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/securityProfileGroups/\[^/\]+$`.
   ///
   /// [updateMask] - Required. Field mask is used to specify the fields to be
-  /// overwritten in the SecurityProfileGroup resource by the update. The fields
-  /// specified in the update_mask are relative to the resource, not the full
-  /// request. A field will be overwritten if it is in the mask.
+  /// overwritten in the `SecurityProfileGroup` resource by the update. The
+  /// fields specified in the `update_mask` are relative to the resource, not
+  /// the full request. A field is overwritten if it is in the mask.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8691,20 +8772,21 @@ class ProjectsLocationsSecurityProfilesResource {
   ProjectsLocationsSecurityProfilesResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Creates a new SecurityProfile in a given project and location.
+  /// Creates a new security profile in a given project and location.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent resource of the SecurityProfile. Must be
-  /// in the format `projects|organizations / * /locations/{location}`.
+  /// [parent] - Required. The parent resource of the `SecurityProfile`. Format:
+  /// `organizations/{organization}/locations/{location}` or
+  /// `projects/{project}/locations/{location}`.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [securityProfileId] - Required. Short name of the SecurityProfile resource
-  /// to be created. This value should be 1-63 characters long, containing only
-  /// letters, numbers, hyphens, and underscores, and should not start with a
-  /// number. E.g. "security_profile1".
+  /// [securityProfileId] - Required. Short name of the `SecurityProfile`
+  /// resource to be created. This value must be 1 to 63 characters long,
+  /// contain only lowercase letters, numbers, and hyphens, and must not start
+  /// with a number. For example, `security-profile1`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8741,18 +8823,19 @@ class ProjectsLocationsSecurityProfilesResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes a single SecurityProfile.
+  /// Deletes a single security profile.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. A name of the SecurityProfile to delete. Must be in the
-  /// format `projects|organizations / *
-  /// /locations/{location}/securityProfiles/{security_profile_id}`.
+  /// [name] - Required. The name of the `SecurityProfile` to delete. Format:
+  /// `organizations/{organization}/locations/{location}/securityProfiles/{security_profile}`
+  /// or
+  /// `projects/{project}/locations/{location}/securityProfiles/{security_profile}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/securityProfiles/\[^/\]+$`.
   ///
-  /// [etag] - Optional. If client provided etag is out of date, delete will
-  /// return FAILED_PRECONDITION error.
+  /// [etag] - Optional. If the client-provided `etag` is out of date, the
+  /// delete request returns an `ABORTED` error.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8784,13 +8867,14 @@ class ProjectsLocationsSecurityProfilesResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets details of a single SecurityProfile.
+  /// Gets details of a single security profile.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. A name of the SecurityProfile to get. Must be in the
-  /// format `projects|organizations / *
-  /// /locations/{location}/securityProfiles/{security_profile_id}`.
+  /// [name] - Required. The name of the `SecurityProfile` to get. Format:
+  /// `organizations/{organization}/locations/{location}/securityProfiles/{security_profile}`
+  /// or
+  /// `projects/{project}/locations/{location}/securityProfiles/{security_profile}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/securityProfiles/\[^/\]+$`.
   ///
@@ -8824,22 +8908,24 @@ class ProjectsLocationsSecurityProfilesResource {
     );
   }
 
-  /// Lists SecurityProfiles in a given project and location.
+  /// Lists security profiles in a given project and location.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The project or organization and location from which
-  /// the SecurityProfiles should be listed, specified in the format
-  /// `projects|organizations / * /locations/{location}`.
+  /// the `SecurityProfile` resources are listed. Format:
+  /// `organizations/{organization}/locations/{location}` or
+  /// `projects/{project}/locations/{location}`.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [pageSize] - Optional. Maximum number of SecurityProfiles to return per
-  /// call.
+  /// [pageSize] - Optional. Maximum number of `SecurityProfile` resources to
+  /// return per call. The maximum value is 1000; values above 1000 are coerced
+  /// to 1000. If unspecified, the server picks an appropriate default.
   ///
-  /// [pageToken] - Optional. The value returned by the last
-  /// `ListSecurityProfilesResponse` Indicates that this is a continuation of a
-  /// prior `ListSecurityProfiles` call, and that the system should return the
-  /// next page of data.
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListSecurityProfiles` call. Provide this to retrieve the subsequent page.
+  /// When paginating, all other parameters provided to `ListSecurityProfiles`
+  /// must match the call that provided the page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8875,22 +8961,24 @@ class ProjectsLocationsSecurityProfilesResource {
     );
   }
 
-  /// Updates the parameters of a single SecurityProfile.
+  /// Updates the parameters of a single security profile.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Immutable. Identifier. Name of the SecurityProfile resource. It
-  /// matches pattern `projects|organizations / *
-  /// /locations/{location}/securityProfiles/{security_profile}`.
+  /// [name] - Immutable. Identifier. Name of the `SecurityProfile` resource.
+  /// Format:
+  /// `organizations/{organization}/locations/{location}/securityProfiles/{security_profile}`
+  /// or
+  /// `projects/{project}/locations/{location}/securityProfiles/{security_profile}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/securityProfiles/\[^/\]+$`.
   ///
   /// [updateMask] - Required. Field mask is used to specify the fields to be
-  /// overwritten in the SecurityProfile resource by the update. The fields
-  /// specified in the update_mask are relative to the resource, not the full
-  /// request. A field will be overwritten if it is in the mask.
+  /// overwritten in the `SecurityProfile` resource by the update. The fields
+  /// specified in the `update_mask` are relative to the resource, not the full
+  /// request. A field is overwritten if it is in the mask.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -11718,14 +11806,15 @@ typedef Empty = $Empty;
 /// information.
 typedef Expr = $Expr;
 
-/// Message describing Endpoint object.
+/// Message describing a firewall endpoint.
 class FirewallEndpoint {
-  /// Deprecated: List of networks that are associated with this endpoint in the
-  /// local zone.
+  /// Deprecated: Use the `network` field in the `associations` message instead.
   ///
-  /// This is a projection of the FirewallEndpointAssociations pointing at this
-  /// endpoint. A network will only appear in this list after traffic routing is
-  /// fully configured. Format: projects/{project}/global/networks/{name}.
+  /// List of networks that are associated with this endpoint in the local zone.
+  /// This is a projection of the firewall endpoint association resources
+  /// pointing at this endpoint. A network only appears in this list after
+  /// traffic routing is fully configured. Format:
+  /// `projects/{project}/global/networks/{name}`.
   ///
   /// Output only.
   @core.Deprecated(
@@ -11733,10 +11822,11 @@ class FirewallEndpoint {
   )
   core.List<core.String>? associatedNetworks;
 
-  /// List of FirewallEndpointAssociations that are associated to this endpoint.
+  /// List of firewall endpoint association resources that are associated with
+  /// this endpoint.
   ///
-  /// An association will only appear in this list after traffic routing is
-  /// fully configured.
+  /// An association only appears in this list after traffic routing is fully
+  /// configured.
   ///
   /// Output only.
   core.List<FirewallEndpointAssociationReference>? associations;
@@ -11749,14 +11839,14 @@ class FirewallEndpoint {
   /// Optional.
   core.String? billingProjectId;
 
-  /// Create time stamp.
+  /// Create timestamp.
   ///
   /// Output only.
   core.String? createTime;
 
   /// Description of the firewall endpoint.
   ///
-  /// Max length 2048 characters.
+  /// The maximum length is 2048 characters.
   ///
   /// Optional.
   core.String? description;
@@ -11766,14 +11856,14 @@ class FirewallEndpoint {
   /// Optional.
   FirewallEndpointEndpointSettings? endpointSettings;
 
-  /// Labels as key value pairs
+  /// Labels as key-value pairs.
   ///
   /// Optional.
   core.Map<core.String, core.String>? labels;
 
   /// Identifier.
   ///
-  /// Name of resource.
+  /// The name of the resource.
   ///
   /// Immutable.
   core.String? name;
@@ -11805,12 +11895,12 @@ class FirewallEndpoint {
   /// - "INACTIVE" : Down or in an error state.
   core.String? state;
 
-  /// Update time stamp
+  /// Update timestamp.
   ///
   /// Output only.
   core.String? updateTime;
 
-  /// Settings for WildFire analysis.
+  /// Settings for Advanced malware sandbox (WildFire) analysis.
   ///
   /// Optional.
   FirewallEndpointWildfireSettings? wildfireSettings;
@@ -11904,33 +11994,34 @@ class FirewallEndpoint {
   }
 }
 
-/// Message describing Association object
+/// Message describing a firewall endpoint association.
 class FirewallEndpointAssociation {
-  /// Create time stamp
+  /// Create timestamp.
   ///
   /// Output only.
   core.String? createTime;
 
   /// Whether the association is disabled.
   ///
-  /// True indicates that traffic won't be intercepted
+  /// Setting this to `true` indicates that traffic isn't intercepted. The
+  /// default value is `false`.
   ///
   /// Optional.
   core.bool? disabled;
 
-  /// The URL of the FirewallEndpoint that is being associated.
+  /// The URL of the `FirewallEndpoint` that is being associated.
   ///
   /// Required.
   core.String? firewallEndpoint;
 
-  /// Labels as key value pairs
+  /// Labels as key-value pairs.
   ///
   /// Optional.
   core.Map<core.String, core.String>? labels;
 
   /// Identifier.
   ///
-  /// name of resource
+  /// The name of the resource.
   ///
   /// Immutable.
   core.String? name;
@@ -11940,8 +12031,7 @@ class FirewallEndpointAssociation {
   /// Required.
   core.String? network;
 
-  /// Whether reconciling is in progress, recommended per
-  /// https://google.aip.dev/128.
+  /// Whether reconciliation is in progress.
   ///
   /// Output only.
   core.bool? reconciling;
@@ -11958,12 +12048,12 @@ class FirewallEndpointAssociation {
   /// - "ORPHAN" : The project that housed the association has been deleted.
   core.String? state;
 
-  /// The URL of the TlsInspectionPolicy that is being associated.
+  /// The URL of the `TlsInspectionPolicy` that is being associated.
   ///
   /// Optional.
   core.String? tlsInspectionPolicy;
 
-  /// Update time stamp
+  /// Update timestamp.
   ///
   /// Output only.
   core.String? updateTime;
@@ -12023,20 +12113,20 @@ class FirewallEndpointAssociation {
   }
 }
 
-/// This is a subset of the FirewallEndpointAssociation message, containing
-/// fields to be used by the consumer.
+/// A subset of the `FirewallEndpointAssociation` message, containing fields to
+/// be used by the consumer.
 class FirewallEndpointAssociationReference {
-  /// The resource name of the FirewallEndpointAssociation.
+  /// The resource name of the `FirewallEndpointAssociation`.
   ///
   /// Format:
-  /// projects/{project}/locations/{location}/firewallEndpointAssociations/{id}
+  /// `projects/{project}/locations/{location}/firewallEndpointAssociations/{id}`.
   ///
   /// Output only.
   core.String? name;
 
-  /// The VPC network associated.
+  /// The associated VPC network.
   ///
-  /// Format: projects/{project}/global/networks/{name}.
+  /// Format: `projects/{project}/global/networks/{name}`.
   ///
   /// Output only.
   core.String? network;
@@ -12064,53 +12154,54 @@ class FirewallEndpointEndpointSettings {
   /// Possible string values are:
   /// - "CONTENT_CLOUD_REGION_UNSPECIFIED" : Palo Alto Networks content cloud
   /// region not specified.
-  /// - "US_CENTRAL" : us.hawkeye.services-edge.paloaltonetworks.com
+  /// - "US_CENTRAL" : US Central content cloud portal:
+  /// `us.hawkeye.services-edge.paloaltonetworks.com`.
   /// - "APAC" : APAC content cloud portal:
-  /// apac.hawkeye.services-edge.paloaltonetworks.com
+  /// `apac.hawkeye.services-edge.paloaltonetworks.com`.
   /// - "INDIA" : India content cloud portal:
-  /// in.hawkeye.services-edge.paloaltonetworks.com
+  /// `in.hawkeye.services-edge.paloaltonetworks.com`.
   /// - "UK" : UK content cloud portal:
-  /// uk.hawkeye.services-edge.paloaltonetworks.com
+  /// `uk.hawkeye.services-edge.paloaltonetworks.com`.
   /// - "FRANCE" : France content cloud portal:
-  /// fr.hawkeye.services-edge.paloaltonetworks.com
+  /// `fr.hawkeye.services-edge.paloaltonetworks.com`.
   /// - "JAPAN" : Japan content cloud portal:
-  /// jp.hawkeye.services-edge.paloaltonetworks.com
+  /// `jp.hawkeye.services-edge.paloaltonetworks.com`.
   /// - "AUSTRALIA" : Australia content cloud portal:
-  /// au.hawkeye.services-edge.paloaltonetworks.com
+  /// `au.hawkeye.services-edge.paloaltonetworks.com`.
   /// - "CANADA" : Canada content cloud portal:
-  /// ca.hawkeye.services-edge.paloaltonetworks.com
+  /// `ca.hawkeye.services-edge.paloaltonetworks.com`.
   /// - "SWITZERLAND" : Switzerland content cloud portal:
-  /// ch.hawkeye.services-edge.paloaltonetworks.com
+  /// `ch.hawkeye.services-edge.paloaltonetworks.com`.
   /// - "NETHERLANDS" : Netherlands content cloud portal:
-  /// nl.hawkeye.services-edge.paloaltonetworks.com
+  /// `nl.hawkeye.services-edge.paloaltonetworks.com`.
   /// - "INDONESIA" : Indonesia content cloud portal:
-  /// id.hawkeye.services-edge.paloaltonetworks.com
+  /// `id.hawkeye.services-edge.paloaltonetworks.com`.
   /// - "QATAR" : Qatar content cloud portal:
-  /// qa.hawkeye.services-edge.paloaltonetworks.com
+  /// `qa.hawkeye.services-edge.paloaltonetworks.com`.
   /// - "TAIWAN" : Taiwan content cloud portal:
-  /// tw.hawkeye.services-edge.paloaltonetworks.com
+  /// `tw.hawkeye.services-edge.paloaltonetworks.com`.
   /// - "POLAND" : Poland content cloud portal:
-  /// pl.hawkeye.services-edge.paloaltonetworks.com
+  /// `pl.hawkeye.services-edge.paloaltonetworks.com`.
   /// - "SOUTH_KOREA" : South Korea content cloud portal:
-  /// kr.hawkeye.services-edge.paloaltonetworks.com
+  /// `kr.hawkeye.services-edge.paloaltonetworks.com`.
   /// - "SAUDI_ARABIA" : Saudi Arabia content cloud portal:
-  /// sa.hawkeye.services-edge.paloaltonetworks.com
+  /// `sa.hawkeye.services-edge.paloaltonetworks.com`.
   /// - "ITALY" : Italy content cloud portal:
-  /// it.hawkeye.services-edge.paloaltonetworks.com
+  /// `it.hawkeye.services-edge.paloaltonetworks.com`.
   core.String? contentCloudRegion;
 
   /// Whether to block HTTP partial responses for the endpoint.
   ///
-  /// When this is true, resumption of blocked malicious HTTP file downloads
-  /// will be blocked by the firewall. False provides maximum availability, true
-  /// provides maximum security.
+  /// When set to `true`, the firewall blocks the resumption of HTTP file
+  /// downloads. Setting this to `false` provides maximum availability, while
+  /// `true` provides maximum security.
   ///
   /// Optional.
   core.bool? httpPartialResponseBlocked;
 
-  /// Indicates whether Jumbo Frames are enabled.
+  /// Indicates whether jumbo frames are enabled.
   ///
-  /// Default value is false.
+  /// The default value is `false`.
   ///
   /// Optional. Immutable.
   core.bool? jumboFramesEnabled;
@@ -12141,47 +12232,51 @@ class FirewallEndpointEndpointSettings {
   }
 }
 
-/// Settings for WildFire analysis.
+/// Settings for Advanced malware sandbox analysis.
 class FirewallEndpointWildfireSettings {
-  /// Indicates whether WildFire analysis is enabled.
+  /// Indicates whether Advanced malware sandbox analysis is enabled.
   ///
-  /// Default value is false.
+  /// The default value is `false`.
   ///
   /// Optional.
   core.bool? enabled;
 
-  /// Settings for WildFire inline cloud analysis.
+  /// Settings for Advanced malware sandbox inline cloud analysis.
   ///
   /// Optional.
   FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings?
   wildfireInlineCloudAnalysisSettings;
 
-  /// Duration in milliseconds on a file being held while the WildFire real time
-  /// signature cloud performs a signature lookup.
+  /// The duration that a file is held while the Advanced malware sandbox
+  /// real-time signature cloud performs a signature lookup.
   ///
-  /// Value between 1 to 5000 is valid. Default value is 1000.
+  /// Valid values are from 1 to 5000 milliseconds. In canonical JSON encoding,
+  /// this is represented as a string ending in `s` (for example, `"0.001s"` to
+  /// `"5s"`). The default value is `1000` milliseconds (`"1s"` in JSON).
   ///
   /// Optional.
   core.String? wildfireRealtimeLookupDuration;
 
-  /// Action to take on WildFire real time signature lookup timeout.
+  /// The action to take on an Advanced malware sandbox real-time signature
+  /// lookup timeout.
   ///
-  /// Default value is ALLOW.
+  /// The default value is `ALLOW`.
   ///
   /// Optional.
   /// Possible string values are:
   /// - "WILDFIRE_REALTIME_SIGNATURE_LOOKUP_TIMEOUT_ACTION_UNSPECIFIED" :
-  /// WildFire real time signature lookup timeout action not specified.
-  /// - "ALLOW" : The files that timed out in the signature lookup will be
-  /// allowed to transmit.
-  /// - "DENY" : The files that timed out in the signature lookup will be denied
+  /// Advanced malware sandbox real-time signature lookup timeout action not
+  /// specified.
+  /// - "ALLOW" : Files that time out during the signature lookup are allowed to
+  /// transmit.
+  /// - "DENY" : Files that time out during the signature lookup are not allowed
   /// to transmit.
   core.String? wildfireRealtimeLookupTimeoutAction;
 
-  /// The region where WildFire analysis will be performed.
+  /// The region where Advanced malware sandbox analysis is performed.
   ///
-  /// Palo Alto Networks supports regions:
-  /// https://docs.paloaltonetworks.com/advanced-wildfire/administration/advanced-wildfire-overview/advanced-wildfire-deployments/advanced-wildfire-global-cloud
+  /// For a list of Palo Alto Networks supported regions, see
+  /// [Advanced WildFire global cloud](https://docs.paloaltonetworks.com/advanced-wildfire/administration/advanced-wildfire-overview/advanced-wildfire-deployments/advanced-wildfire-global-cloud).
   ///
   /// Optional.
   /// Possible string values are:
@@ -12256,32 +12351,36 @@ class FirewallEndpointWildfireSettings {
   }
 }
 
-/// Settings for WildFire inline cloud analysis.
+/// Settings for Advanced malware sandbox inline cloud analysis.
 class FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings {
-  /// Timeout in milliseconds on a file being held while WildFire inline cloud
-  /// analysis is performed.
+  /// The timeout that a file is held while Advanced malware sandbox inline
+  /// cloud analysis is performed.
   ///
-  /// Value between 1 to 240000 is valid. Default value is 30000.
+  /// Valid values are from 1 to 240000 milliseconds. In canonical JSON
+  /// encoding, this is represented as a string ending in `s` (for example,
+  /// `"0.001s"` to `"240s"`). The default value is `30000` milliseconds
+  /// (`"30s"` in JSON).
   ///
   /// Optional.
   core.String? maxAnalysisDuration;
 
-  /// Whether to disable WildFire submission log generation for files that
-  /// timeout during WildFire inline cloud analysis.
+  /// Whether to disable Advanced malware sandbox submission log generation for
+  /// files that time out during Advanced malware sandbox inline cloud analysis.
   ///
   /// Optional.
   core.bool? submissionTimeoutLoggingDisabled;
 
-  /// Action to take when WildFire inline cloud analysis times out.
+  /// The action to take when Advanced malware sandbox inline cloud analysis
+  /// times out.
   ///
-  /// Default value is ALLOW.
+  /// The default value is `ALLOW`.
   ///
   /// Optional.
   /// Possible string values are:
-  /// - "WILDFIRE_INLINE_CLOUD_ANALYSIS_TIMEOUT_ACTION_UNSPECIFIED" : WildFire
-  /// inline cloud analysis timeout action not specified.
-  /// - "ALLOW" : The files that timed out will be allowed to transmit.
-  /// - "DENY" : The files that timed out will be denied to transmit.
+  /// - "WILDFIRE_INLINE_CLOUD_ANALYSIS_TIMEOUT_ACTION_UNSPECIFIED" : Advanced
+  /// malware sandbox inline cloud analysis timeout action not specified.
+  /// - "ALLOW" : Files that time out are allowed to transmit.
+  /// - "DENY" : Files that time out are not allowed to transmit.
   core.String? timeoutAction;
 
   FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings({
@@ -14082,15 +14181,19 @@ class ListDnsThreatDetectorsResponse {
   }
 }
 
-/// Message for response to listing Associations
+/// Message for response to listing associations.
 class ListFirewallEndpointAssociationsResponse {
-  /// The list of Association
+  /// The list of associations.
   core.List<FirewallEndpointAssociation>? firewallEndpointAssociations;
 
-  /// A token identifying a page of results the server should return.
+  /// A token that can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
   /// Locations that could not be reached.
+  ///
+  /// The list of unreachable locations might expand in the future.
   core.List<core.String>? unreachable;
 
   ListFirewallEndpointAssociationsResponse({
@@ -14127,15 +14230,19 @@ class ListFirewallEndpointAssociationsResponse {
   }
 }
 
-/// Message for response to listing Endpoints
+/// Message for response to listing endpoints.
 class ListFirewallEndpointsResponse {
-  /// The list of Endpoint
+  /// The list of endpoints.
   core.List<FirewallEndpoint>? firewallEndpoints;
 
-  /// A token identifying a page of results the server should return.
+  /// A token that can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
   /// Locations that could not be reached.
+  ///
+  /// The list of unreachable locations might expand in the future.
   core.List<core.String>? unreachable;
 
   ListFirewallEndpointsResponse({
@@ -14766,16 +14873,14 @@ class ListSACRealmsResponse {
   }
 }
 
-/// Response returned by the ListSecurityProfileGroups method.
+/// Response returned by the `ListSecurityProfileGroups` method.
 class ListSecurityProfileGroupsResponse {
-  /// If there might be more results than those appearing in this response, then
-  /// `next_page_token` is included.
+  /// A token that can be sent as `page_token` to retrieve the next page.
   ///
-  /// To get the next set of results, call this method again using the value of
-  /// `next_page_token` as `page_token`.
+  /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
-  /// List of SecurityProfileGroups resources.
+  /// List of `SecurityProfileGroup` resources.
   core.List<SecurityProfileGroup>? securityProfileGroups;
 
   ListSecurityProfileGroupsResponse({
@@ -14805,16 +14910,14 @@ class ListSecurityProfileGroupsResponse {
   }
 }
 
-/// Response returned by the ListSecurityProfiles method.
+/// Response returned by the `ListSecurityProfiles` method.
 class ListSecurityProfilesResponse {
-  /// If there might be more results than those appearing in this response, then
-  /// `next_page_token` is included.
+  /// A token that can be sent as `page_token` to retrieve the next page.
   ///
-  /// To get the next set of results, call this method again using the value of
-  /// `next_page_token` as `page_token`.
+  /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
-  /// List of SecurityProfile resources.
+  /// List of `SecurityProfile` resources.
   core.List<SecurityProfile>? securityProfiles;
 
   ListSecurityProfilesResponse({this.nextPageToken, this.securityProfiles});
@@ -14985,9 +15088,11 @@ class ListUrlListsResponse {
   }
 }
 
-/// Message for response to listing WildfireVerdictChangeRequests.
+/// Message for response to listing `WildfireVerdictChangeRequest` resources.
 class ListWildfireVerdictChangeRequestsResponse {
-  /// A token identifying a page of results the server should return.
+  /// A token that can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
   /// Unordered list.
@@ -14995,7 +15100,7 @@ class ListWildfireVerdictChangeRequestsResponse {
   /// Locations that could not be reached.
   core.List<core.String>? unreachable;
 
-  /// The list of WildfireVerdictChangeRequests
+  /// The list of `WildfireVerdictChangeRequest` resources.
   core.List<WildfireVerdictChangeRequest>? wildfireVerdictChangeRequests;
 
   ListWildfireVerdictChangeRequestsResponse({
@@ -16349,23 +16454,24 @@ class SACRealmPairingKey {
   }
 }
 
-/// SecurityProfile is a resource that defines the behavior for one of many
-/// ProfileTypes.
+/// A resource that defines the behavior for one of many `ProfileType` values.
 class SecurityProfile {
   /// Resource creation timestamp.
   ///
   /// Output only.
   core.String? createTime;
 
-  /// The custom TPPI configuration for the SecurityProfile.
+  /// The custom network security in-band integration configuration for the
+  /// `SecurityProfile`.
   CustomInterceptProfile? customInterceptProfile;
 
-  /// The custom Packet Mirroring v2 configuration for the SecurityProfile.
+  /// The custom network security out-of-band integration configuration for the
+  /// `SecurityProfile`.
   CustomMirroringProfile? customMirroringProfile;
 
   /// An optional description of the profile.
   ///
-  /// Max length 512 characters.
+  /// The maximum length is 512 characters.
   ///
   /// Optional.
   core.String? description;
@@ -16377,33 +16483,37 @@ class SecurityProfile {
   /// Output only.
   core.String? etag;
 
-  /// Labels as key value pairs.
+  /// Labels as key-value pairs.
   ///
   /// Optional.
   core.Map<core.String, core.String>? labels;
 
   /// Identifier.
   ///
-  /// Name of the SecurityProfile resource. It matches pattern
-  /// `projects|organizations / *
-  /// /locations/{location}/securityProfiles/{security_profile}`.
+  /// Name of the `SecurityProfile` resource. Format:
+  /// `organizations/{organization}/locations/{location}/securityProfiles/{security_profile}`
+  /// or
+  /// `projects/{project}/locations/{location}/securityProfiles/{security_profile}`.
   ///
   /// Immutable.
   core.String? name;
 
-  /// The threat prevention configuration for the SecurityProfile.
+  /// The threat prevention configuration for the `SecurityProfile`.
   ThreatPreventionProfile? threatPreventionProfile;
 
-  /// The single ProfileType that the SecurityProfile resource configures.
+  /// The single `ProfileType` that the `SecurityProfile` resource configures.
   ///
   /// Immutable.
   /// Possible string values are:
   /// - "PROFILE_TYPE_UNSPECIFIED" : Profile type not specified.
   /// - "THREAT_PREVENTION" : Profile type for threat prevention.
-  /// - "CUSTOM_MIRRORING" : Profile type for packet mirroring v2
-  /// - "CUSTOM_INTERCEPT" : Profile type for TPPI.
+  /// - "CUSTOM_MIRRORING" : Profile type for network security out-of-band
+  /// integration.
+  /// - "CUSTOM_INTERCEPT" : Profile type for network security in-band
+  /// integration.
   /// - "URL_FILTERING" : Profile type for URL filtering.
-  /// - "WILDFIRE_ANALYSIS" : Profile type for WildFire Analysis.
+  /// - "WILDFIRE_ANALYSIS" : Profile type for Advanced malware sandbox
+  /// (WildFire) analysis.
   core.String? type;
 
   /// Last resource update timestamp.
@@ -16411,10 +16521,11 @@ class SecurityProfile {
   /// Output only.
   core.String? updateTime;
 
-  /// The URL filtering configuration for the SecurityProfile.
+  /// The URL filtering configuration for the `SecurityProfile`.
   UrlFilteringProfile? urlFilteringProfile;
 
-  /// The WildFire Analysis configurations for SecurityProfile.
+  /// The Advanced malware sandbox analysis configuration for the
+  /// `SecurityProfile`.
   WildfireAnalysisProfile? wildfireAnalysisProfile;
 
   SecurityProfile({
@@ -16505,25 +16616,24 @@ class SecurityProfile {
   }
 }
 
-/// SecurityProfileGroup is a resource that defines the behavior for various
-/// ProfileTypes.
+/// A resource that defines the behavior for various `ProfileType` values.
 class SecurityProfileGroup {
   /// Resource creation timestamp.
   ///
   /// Output only.
   core.String? createTime;
 
-  /// Reference to a SecurityProfile with the CustomIntercept configuration.
+  /// Reference to a `SecurityProfile` with the custom intercept configuration.
   ///
   /// Optional.
   core.String? customInterceptProfile;
 
-  /// Reference to a SecurityProfile with the CustomMirroring configuration.
+  /// Reference to a `SecurityProfile` with the custom mirroring configuration.
   ///
   /// Optional.
   core.String? customMirroringProfile;
 
-  /// Identifier used by the data-path.
+  /// Identifier used by the data path.
   ///
   /// Unique within `{container, location}`.
   ///
@@ -16532,7 +16642,7 @@ class SecurityProfileGroup {
 
   /// An optional description of the profile group.
   ///
-  /// Max length 2048 characters.
+  /// The maximum length is 2048 characters.
   ///
   /// Optional.
   core.String? description;
@@ -16544,21 +16654,22 @@ class SecurityProfileGroup {
   /// Output only.
   core.String? etag;
 
-  /// Labels as key value pairs.
+  /// Labels as key-value pairs.
   ///
   /// Optional.
   core.Map<core.String, core.String>? labels;
 
   /// Identifier.
   ///
-  /// Name of the SecurityProfileGroup resource. It matches pattern
-  /// `projects|organizations / *
-  /// /locations/{location}/securityProfileGroups/{security_profile_group}`.
+  /// Name of the `SecurityProfileGroup` resource. Format:
+  /// `organizations/{organization}/locations/{location}/securityProfileGroups/{security_profile_group}`
+  /// or
+  /// `projects/{project}/locations/{location}/securityProfileGroups/{security_profile_group}`.
   ///
   /// Immutable.
   core.String? name;
 
-  /// Reference to a SecurityProfile with the ThreatPrevention configuration.
+  /// Reference to a `SecurityProfile` with the threat prevention configuration.
   ///
   /// Optional.
   core.String? threatPreventionProfile;
@@ -16568,12 +16679,13 @@ class SecurityProfileGroup {
   /// Output only.
   core.String? updateTime;
 
-  /// Reference to a SecurityProfile with the UrlFiltering configuration.
+  /// Reference to a `SecurityProfile` with the URL filtering configuration.
   ///
   /// Optional.
   core.String? urlFilteringProfile;
 
-  /// Reference to a SecurityProfile with the WildFire configuration.
+  /// Reference to a `SecurityProfile` with the Advanced malware sandbox
+  /// (WildFire) configuration.
   ///
   /// Optional.
   core.String? wildfireAnalysisProfile;
@@ -17366,24 +17478,27 @@ class ValidationCA {
   }
 }
 
-/// WildfireAnalysisProfile defines Palo Alto Networks WildFire behavior.
+/// `WildfireAnalysisProfile` defines Palo Alto Networks WildFire behavior.
 class WildfireAnalysisProfile {
-  /// Configuration for WildFire inline cloud analysis.
+  /// Configuration for Advanced malware sandbox inline cloud analysis.
   ///
   /// Optional.
   core.List<WildfireInlineCloudAnalysisRule>? wildfireInlineCloudAnalysisRules;
 
-  /// Configuration for overriding inline ML WildFire actions per protocol.
+  /// Configuration for overriding inline ML Advanced malware sandbox actions
+  /// per protocol.
   ///
   /// Optional.
   core.List<WildfireInlineMlOverride>? wildfireInlineMlOverrides;
 
-  /// Settings for WildFire Inline ML analysis.
+  /// Settings for Advanced malware sandbox inline ML analysis.
   ///
   /// Optional.
   WildfireInlineMlSettings? wildfireInlineMlSetting;
 
-  /// Settings for WildFire Inline ML analysis.
+  /// Deprecated: Use `wildfire_inline_ml_setting` instead.
+  ///
+  /// Settings for Advanced malware sandbox inline ML analysis.
   ///
   /// Optional.
   @core.Deprecated(
@@ -17391,25 +17506,27 @@ class WildfireAnalysisProfile {
   )
   core.List<WildfireInlineMlSettings>? wildfireInlineMlSettings;
 
-  /// Configuration for overriding WildFire actions per protocol.
+  /// Configuration for overriding Advanced malware sandbox actions per
+  /// protocol.
   ///
   /// Optional.
   core.List<WildfireOverride>? wildfireOverrides;
 
-  /// Whether to hold the transfer of a file while the WildFire real-time
-  /// signature cloud performs a signature lookup.
+  /// Whether to hold the transfer of a file while the Advanced malware sandbox
+  /// real-time signature cloud performs a signature lookup.
   ///
-  /// Default value is false.
+  /// The default value is `false`.
   ///
   /// Optional.
   core.bool? wildfireRealtimeLookup;
 
-  /// Configurations for WildFire file submissions.
+  /// Configurations for Advanced malware sandbox (WildFire) file submissions.
   ///
   /// Optional.
   core.List<WildfireSubmissionRule>? wildfireSubmissionRules;
 
-  /// Configuration for overriding WildFire threats action by threat_id match.
+  /// Configuration for overriding the Advanced malware sandbox threat action by
+  /// `threat_id` match.
   ///
   /// Optional.
   core.List<WildfireThreatOverride>? wildfireThreatOverrides;
@@ -17506,31 +17623,33 @@ class WildfireAnalysisProfile {
   }
 }
 
-/// The list of file type configurations to be scanned by WildFire Inline Cloud
-/// Analysis.
+/// The list of file type configurations to be scanned by Advanced malware
+/// sandbox inline cloud analysis.
 class WildfireInlineCloudAnalysisRule {
-  /// Action to take when a threat is detected using WildFire Inline Cloud
-  /// Analysis.
+  /// Action to take when a threat is detected using Advanced malware sandbox
+  /// inline cloud analysis.
   ///
-  /// The default Value is DENY.
+  /// The default value is `DENY`.
   ///
   /// Required.
   /// Possible string values are:
-  /// - "WILDFIRE_INLINE_CLOUD_ANALYSIS_ACTION_UNSPECIFIED" : WildFire Inline
-  /// Cloud Analysis action not specified.
-  /// - "ALLOW" : The files caught by WildFire Inline Cloud Analysis will be
-  /// allowed to transmit.
-  /// - "DENY" : The files caught by WildFire Inline Cloud Analysis will be
-  /// denied to transmit.
-  /// - "ALERT" : The files caught by WildFire Inline Cloud Analysis will be
-  /// allowed to transmit, but a wildfire_submission_log entry will be sent to
-  /// the consumer project.
+  /// - "WILDFIRE_INLINE_CLOUD_ANALYSIS_ACTION_UNSPECIFIED" : Advanced malware
+  /// sandbox inline cloud analysis action not specified.
+  /// - "ALLOW" : Files detected by Advanced malware sandbox inline cloud
+  /// analysis are allowed to transmit.
+  /// - "DENY" : Files detected by Advanced malware sandbox inline cloud
+  /// analysis are not allowed to transmit.
+  /// - "ALERT" : Files detected by Advanced malware sandbox inline cloud
+  /// analysis are allowed to transmit, and a `wildfire_submission_log` entry is
+  /// sent to the consumer project.
   core.String? action;
 
-  /// Submit a custom list of file types for WildFire analysis.
+  /// Submit a custom list of file types for Advanced malware sandbox inline
+  /// cloud analysis.
   WildfireInlineCloudAnalysisRuleCustomFileTypes? customFileTypes;
 
-  /// Direction for the file to be analyzed by WildFire Inline Cloud Analysis.
+  /// Direction for the files to be analyzed by Advanced malware sandbox inline
+  /// cloud analysis.
   ///
   /// Required.
   /// Possible string values are:
@@ -17540,13 +17659,13 @@ class WildfireInlineCloudAnalysisRule {
   /// - "BOTH" : Both upload and download directions.
   core.String? direction;
 
-  /// File selection mode for WildFire inline cloud analysis.
+  /// File selection mode for Advanced malware sandbox inline cloud analysis.
   ///
   /// Required.
   /// Possible string values are:
   /// - "FILE_SELECTION_MODE_UNSPECIFIED" : File selection mode not specified.
-  /// - "ALL_FILE_TYPES" : Submit all the file types for scan.
-  /// - "CUSTOM_FILE_TYPES" : Submit a custom list of file types for scan.
+  /// - "ALL_FILE_TYPES" : Submit all file types for scanning.
+  /// - "CUSTOM_FILE_TYPES" : Submit a custom list of file types for scanning.
   core.String? fileSelectionMode;
 
   WildfireInlineCloudAnalysisRule({
@@ -17582,9 +17701,10 @@ class WildfireInlineCloudAnalysisRule {
   }
 }
 
-/// The options to submit a custom list of file types for scan.
+/// The options to submit a custom list of file types for scanning.
 class WildfireInlineCloudAnalysisRuleCustomFileTypes {
-  /// File types to be submitted for WildFire inline cloud analysis.
+  /// File types to be submitted for Advanced malware sandbox inline cloud
+  /// analysis.
   ///
   /// Required.
   core.List<core.String>? fileTypes;
@@ -17604,15 +17724,17 @@ class WildfireInlineCloudAnalysisRuleCustomFileTypes {
   }
 }
 
-/// Defines the file to exclude from WildFire Inline ML analysis.
+/// Defines the file to exclude from Advanced malware sandbox inline ML
+/// analysis.
 class WildfireInlineMlFileException {
-  /// Name of the file to exclude from WildFire Inline ML analysis.
+  /// Name of the file to exclude from Advanced malware sandbox inline ML
+  /// analysis.
   ///
   /// Optional.
   core.String? filename;
 
-  /// Machine learning partial hash of the file to exclude from WildFire Inline
-  /// ML analysis.
+  /// Machine learning partial hash of the file to exclude from Advanced malware
+  /// sandbox inline ML analysis.
   ///
   /// Required.
   core.String? partialHash;
@@ -17632,35 +17754,35 @@ class WildfireInlineMlFileException {
   }
 }
 
-/// Defines what action to take for WildFire Inline ML threats per protocol.
+/// Defines what action to take for Advanced malware sandbox inline ML threats
+/// per protocol.
 class WildfireInlineMlOverride {
-  /// The action to take for WildFire Inline ML override.
+  /// The action to take for Advanced malware sandbox inline ML override.
   ///
   /// Required.
   /// Possible string values are:
   /// - "WILDFIRE_THREAT_ACTION_UNSPECIFIED" : Threat action not specified.
   /// - "WILDFIRE_DEFAULT_ACTION" : The default action (as specified by the
   /// vendor) is taken.
-  /// - "WILDFIRE_ALLOW" : The packet matching this rule will be allowed to
-  /// transmit.
-  /// - "WILDFIRE_ALERT" : The packet matching this rule will be allowed to
-  /// transmit, but a threat_log entry will be sent to the consumer project.
-  /// - "WILDFIRE_DENY" : The packet matching this rule will be dropped, and a
-  /// threat_log entry will be sent to the consumer project.
+  /// - "WILDFIRE_ALLOW" : Packets matching this rule are allowed to transmit.
+  /// - "WILDFIRE_ALERT" : Packets matching this rule are allowed to transmit,
+  /// and a `threat_log` entry is sent to the consumer project.
+  /// - "WILDFIRE_DENY" : Packets matching this rule are dropped, and a
+  /// `threat_log` entry is sent to the consumer project.
   core.String? action;
 
-  /// Protocol to match for WildFire Inline ML override.
+  /// Protocol to match for Advanced malware sandbox inline ML override.
   ///
   /// Required.
   /// Possible string values are:
   /// - "WILDFIRE_PROTOCOL_UNSPECIFIED" : Protocol not specified.
-  /// - "WILDFIRE_SMTP" : SMTP protocol
-  /// - "WILDFIRE_SMB" : SMB protocol
-  /// - "WILDFIRE_POP3" : POP3 protocol
-  /// - "WILDFIRE_IMAP" : IMAP protocol
-  /// - "WILDFIRE_HTTP2" : HTTP2 protocol
-  /// - "WILDFIRE_HTTP" : HTTP protocol
-  /// - "WILDFIRE_FTP" : FTP protocol
+  /// - "WILDFIRE_SMTP" : SMTP protocol.
+  /// - "WILDFIRE_SMB" : SMB protocol.
+  /// - "WILDFIRE_POP3" : POP3 protocol.
+  /// - "WILDFIRE_IMAP" : IMAP protocol.
+  /// - "WILDFIRE_HTTP2" : HTTP2 protocol.
+  /// - "WILDFIRE_HTTP" : HTTP protocol.
+  /// - "WILDFIRE_FTP" : FTP protocol.
   core.String? protocol;
 
   WildfireInlineMlOverride({this.action, this.protocol});
@@ -17678,14 +17800,15 @@ class WildfireInlineMlOverride {
   }
 }
 
-/// Defines the settings for WildFire Inline ML analysis.
+/// Defines the settings for Advanced malware sandbox inline ML analysis.
 class WildfireInlineMlSettings {
-  /// List of files to exclude from WildFire Inline ML analysis.
+  /// List of files to exclude from Advanced malware sandbox inline ML analysis.
   ///
   /// Optional.
   core.List<WildfireInlineMlFileException>? fileExceptions;
 
-  /// List of Inline ML configs to enable in WildFire Inline ML analysis.
+  /// List of inline ML configurations to enable in Advanced malware sandbox
+  /// inline ML analysis.
   ///
   /// Optional.
   core.List<WildfireInlineMlSettingsInlineMlConfig>? inlineMlConfigs;
@@ -17720,43 +17843,44 @@ class WildfireInlineMlSettings {
   }
 }
 
-/// Configuration for WildFire Inline ML analysis per file type.
+/// Configuration for Advanced malware sandbox inline ML analysis per file type.
 class WildfireInlineMlSettingsInlineMlConfig {
-  /// Action to take when a threat is detected using Inline ML.
+  /// Action to take when a threat is detected using inline ML.
   ///
   /// Required.
   /// Possible string values are:
   /// - "INLINE_ML_ACTION_UNSPECIFIED" : Inline ML threat action not specified.
-  /// - "DISABLE" : Disable WildFire Inline ML for the associated file type.
-  /// - "ALERT" : Enable WildFire Inline ML for the associated file type.
-  /// Overrides any protocol level settings with action stricter than ALERT to
-  /// ALERT so that the malicious files detected generate a threat log to the
-  /// consumer project but are not blocked.
-  /// - "ENABLE" : Enable WildFire Inline ML for the associated file type,
-  /// malicious files detected will be blocked.
+  /// - "DISABLE" : Disables Advanced malware sandbox inline ML for the
+  /// associated file type.
+  /// - "ALERT" : Enables Advanced malware sandbox inline ML for the associated
+  /// file type. Overrides any protocol-level settings with an action stricter
+  /// than `ALERT` to `ALERT` so that detected malicious files generate a threat
+  /// log in the consumer project without being blocked.
+  /// - "ENABLE" : Enables Advanced malware sandbox inline ML for the associated
+  /// file type. Detected malicious files are blocked.
   core.String? action;
 
-  /// File type to configure Inline ML for.
+  /// File type to configure inline ML for.
   ///
   /// Required.
   /// Possible string values are:
-  /// - "INLINE_ML_CONFIG_UNSPECIFIED" : Inline ML config not specified.
-  /// - "WINDOWS_EXECUTABLE" : Enable machine learning engine to dynamically
-  /// detect malicious PE files.
-  /// - "POWERSHELL_SCRIPT1" : Enable machine learning engine to dynamically
-  /// identify malicious PowerShell scripts with known length.
-  /// - "POWERSHELL_SCRIPT2" : Enable machine learning engine to dynamically
-  /// identify malicious PowerShell script without known length.
-  /// - "ELF" : Enable machine learning engine to dynamically detect malicious
-  /// ELF files.
-  /// - "MS_OFFICE" : Enable machine learning engine to dynamically detect
-  /// malicious MSOffice (97-03) files.
-  /// - "SHELL" : Enable machine learning engine to dynamically detect malicious
-  /// Shell files.
-  /// - "OOXML" : Enable machine learning engine to dynamically detect malicious
-  /// Open Office XML files.
-  /// - "MACHO" : Enable machine learning engine to dynamically detect malicious
-  /// Mach-O files.
+  /// - "INLINE_ML_CONFIG_UNSPECIFIED" : Inline ML configuration not specified.
+  /// - "WINDOWS_EXECUTABLE" : Enables the machine learning engine to
+  /// dynamically detect malicious PE files.
+  /// - "POWERSHELL_SCRIPT1" : Enables the machine learning engine to
+  /// dynamically identify malicious PowerShell scripts with a known length.
+  /// - "POWERSHELL_SCRIPT2" : Enables the machine learning engine to
+  /// dynamically identify malicious PowerShell scripts without a known length.
+  /// - "ELF" : Enables the machine learning engine to dynamically detect
+  /// malicious ELF files.
+  /// - "MS_OFFICE" : Enables the machine learning engine to dynamically detect
+  /// malicious Microsoft Office (97-2003) files.
+  /// - "SHELL" : Enables the machine learning engine to dynamically detect
+  /// malicious shell files.
+  /// - "OOXML" : Enables the machine learning engine to dynamically detect
+  /// malicious Office Open XML (OOXML) files.
+  /// - "MACHO" : Enables the machine learning engine to dynamically detect
+  /// malicious Mach-O files.
   core.String? fileType;
 
   WildfireInlineMlSettingsInlineMlConfig({this.action, this.fileType});
@@ -17774,7 +17898,8 @@ class WildfireInlineMlSettingsInlineMlConfig {
   }
 }
 
-/// Defines what action to take for WildFire threats per protocol.
+/// Defines what action to take for Advanced malware sandbox threats per
+/// protocol.
 class WildfireOverride {
   /// Threat action override.
   ///
@@ -17785,12 +17910,11 @@ class WildfireOverride {
   /// - "WILDFIRE_THREAT_ACTION_UNSPECIFIED" : Threat action not specified.
   /// - "WILDFIRE_DEFAULT_ACTION" : The default action (as specified by the
   /// vendor) is taken.
-  /// - "WILDFIRE_ALLOW" : The packet matching this rule will be allowed to
-  /// transmit.
-  /// - "WILDFIRE_ALERT" : The packet matching this rule will be allowed to
-  /// transmit, but a threat_log entry will be sent to the consumer project.
-  /// - "WILDFIRE_DENY" : The packet matching this rule will be dropped, and a
-  /// threat_log entry will be sent to the consumer project.
+  /// - "WILDFIRE_ALLOW" : Packets matching this rule are allowed to transmit.
+  /// - "WILDFIRE_ALERT" : Packets matching this rule are allowed to transmit,
+  /// and a `threat_log` entry is sent to the consumer project.
+  /// - "WILDFIRE_DENY" : Packets matching this rule are dropped, and a
+  /// `threat_log` entry is sent to the consumer project.
   core.String? action;
 
   /// Protocol to match.
@@ -17798,13 +17922,13 @@ class WildfireOverride {
   /// Required.
   /// Possible string values are:
   /// - "WILDFIRE_PROTOCOL_UNSPECIFIED" : Protocol not specified.
-  /// - "WILDFIRE_SMTP" : SMTP protocol
-  /// - "WILDFIRE_SMB" : SMB protocol
-  /// - "WILDFIRE_POP3" : POP3 protocol
-  /// - "WILDFIRE_IMAP" : IMAP protocol
-  /// - "WILDFIRE_HTTP2" : HTTP2 protocol
-  /// - "WILDFIRE_HTTP" : HTTP protocol
-  /// - "WILDFIRE_FTP" : FTP protocol
+  /// - "WILDFIRE_SMTP" : SMTP protocol.
+  /// - "WILDFIRE_SMB" : SMB protocol.
+  /// - "WILDFIRE_POP3" : POP3 protocol.
+  /// - "WILDFIRE_IMAP" : IMAP protocol.
+  /// - "WILDFIRE_HTTP2" : HTTP2 protocol.
+  /// - "WILDFIRE_HTTP" : HTTP protocol.
+  /// - "WILDFIRE_FTP" : FTP protocol.
   core.String? protocol;
 
   WildfireOverride({this.action, this.protocol});
@@ -17822,13 +17946,13 @@ class WildfireOverride {
   }
 }
 
-/// Defines the file types to be submitted for WildFire analysis and the
-/// direction of the traffic.
+/// Defines the file types to be submitted for Advanced malware sandbox analysis
+/// and the direction of the traffic.
 class WildfireSubmissionRule {
-  /// Submit a custom list of file types for WildFire analysis.
+  /// Submit a custom list of file types for Advanced malware sandbox analysis.
   WildfireSubmissionRuleCustomFileTypes? customFileTypes;
 
-  /// Direction for the files to be analyzed by WildFire.
+  /// Direction for the files to be analyzed by Advanced malware sandbox.
   ///
   /// Required.
   /// Possible string values are:
@@ -17838,13 +17962,13 @@ class WildfireSubmissionRule {
   /// - "BOTH" : Both upload and download directions.
   core.String? direction;
 
-  /// File selection mode for WildFire analysis.
+  /// File selection mode for Advanced malware sandbox analysis.
   ///
   /// Required.
   /// Possible string values are:
   /// - "FILE_SELECTION_MODE_UNSPECIFIED" : File selection mode not specified.
-  /// - "ALL_FILE_TYPES" : Submit all the file types for scan.
-  /// - "CUSTOM_FILE_TYPES" : Submit a custom list of file types for scan.
+  /// - "ALL_FILE_TYPES" : Submit all file types for scanning.
+  /// - "CUSTOM_FILE_TYPES" : Submit a custom list of file types for scanning.
   core.String? fileSelectionMode;
 
   WildfireSubmissionRule({
@@ -17876,9 +18000,9 @@ class WildfireSubmissionRule {
   }
 }
 
-/// The options to submit a custom list of file types for scan.
+/// The options to submit a custom list of file types for scanning.
 class WildfireSubmissionRuleCustomFileTypes {
-  /// File types to be submitted for WildFire analysis.
+  /// File types to be submitted for Advanced malware sandbox analysis.
   ///
   /// Required.
   core.List<core.String>? fileTypes;
@@ -17898,7 +18022,8 @@ class WildfireSubmissionRuleCustomFileTypes {
   }
 }
 
-/// Defines what action to take for a specific WildFire threat_id match.
+/// Defines what action to take for a specific Advanced malware sandbox
+/// `threat_id` match.
 class WildfireThreatOverride {
   /// Threat action override.
   ///
@@ -17907,12 +18032,11 @@ class WildfireThreatOverride {
   /// - "WILDFIRE_THREAT_ACTION_UNSPECIFIED" : Threat action not specified.
   /// - "WILDFIRE_DEFAULT_ACTION" : The default action (as specified by the
   /// vendor) is taken.
-  /// - "WILDFIRE_ALLOW" : The packet matching this rule will be allowed to
-  /// transmit.
-  /// - "WILDFIRE_ALERT" : The packet matching this rule will be allowed to
-  /// transmit, but a threat_log entry will be sent to the consumer project.
-  /// - "WILDFIRE_DENY" : The packet matching this rule will be dropped, and a
-  /// threat_log entry will be sent to the consumer project.
+  /// - "WILDFIRE_ALLOW" : Packets matching this rule are allowed to transmit.
+  /// - "WILDFIRE_ALERT" : Packets matching this rule are allowed to transmit,
+  /// and a `threat_log` entry is sent to the consumer project.
+  /// - "WILDFIRE_DENY" : Packets matching this rule are dropped, and a
+  /// `threat_log` entry is sent to the consumer project.
   core.String? action;
 
   /// Threat ID to match.
@@ -17935,36 +18059,37 @@ class WildfireThreatOverride {
   }
 }
 
-/// Message for a WildfireVerdictChangeRequest.
+/// Message for an Advanced malware sandbox verdict change request
+/// (`WildfireVerdictChangeRequest`).
 class WildfireVerdictChangeRequest {
   /// The justification for the verdict change request.
   ///
-  /// Max length 2048 characters.
+  /// The maximum length is 2048 characters.
   ///
   /// Required.
   core.String? comment;
 
-  /// The timestamp when the WildfireVerdictChangeRequest was created.
+  /// The timestamp when the `WildfireVerdictChangeRequest` was created.
   ///
   /// Output only.
   core.String? createTime;
 
-  /// The file name of the Malware Sample.
+  /// The file name of the malware sample.
   ///
   /// Output only.
   core.String? fileName;
 
-  /// The file type of the Malware Sample.
+  /// The file type of the malware sample.
   ///
   /// Output only.
   core.String? fileType;
 
-  /// The final verdict of the Malware Sample.
+  /// The final verdict of the malware sample.
   ///
   /// Output only.
   /// Possible string values are:
-  /// - "WILDFIRE_SAMPLE_VERDICT_UNKNOWN" : Default value. Malware is not yet
-  /// classified.
+  /// - "WILDFIRE_SAMPLE_VERDICT_UNKNOWN" : Default value. The malware sample is
+  /// not yet classified.
   /// - "BENIGN" : Sample is safe and does not exhibit malicious behavior.
   /// - "MALWARE" : Sample is malware and poses a security threat.
   /// - "GRAYWARE" : Sample does not pose a direct security threat, but might
@@ -17975,21 +18100,23 @@ class WildfireVerdictChangeRequest {
 
   /// Identifier.
   ///
-  /// The relative name of the WildfireVerdictChangeRequest. Output only. This
-  /// is a unique identifier generated by the third party API. Format:
-  /// organizations|projects/{project_or_organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}/wildfireVerdictChangeRequests/{wildfire_verdict_change_request_id}
-  /// Where {wildfire_verdict_change_request_id} is the ID in the format:
-  /// ^\[0-9a-fA-F\]{8}-\[0-9a-fA-F\]{4}-\[0-9a-fA-F\]{4}-\[0-9a-fA-F\]{4}-\[0-9a-fA-F\]{12}$
+  /// The relative name of the `WildfireVerdictChangeRequest`. This is a unique
+  /// identifier generated by the third-party API. Format:
+  /// `organizations/{organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}/wildfireVerdictChangeRequests/{wildfire_verdict_change_request_id}`
+  /// or
+  /// `projects/{project}/locations/{location}/firewallEndpoints/{firewall_endpoint}/wildfireVerdictChangeRequests/{wildfire_verdict_change_request_id}`.
+  /// Where `{wildfire_verdict_change_request_id}` is an ID in the format
+  /// `^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$`.
   ///
   /// Output only.
   core.String? name;
 
-  /// The suggested verdict to apply to the Malware Sample.
+  /// The suggested verdict to apply to the malware sample.
   ///
   /// Required.
   /// Possible string values are:
-  /// - "WILDFIRE_SAMPLE_VERDICT_UNKNOWN" : Default value. Malware is not yet
-  /// classified.
+  /// - "WILDFIRE_SAMPLE_VERDICT_UNKNOWN" : Default value. The malware sample is
+  /// not yet classified.
   /// - "BENIGN" : Sample is safe and does not exhibit malicious behavior.
   /// - "MALWARE" : Sample is malware and poses a security threat.
   /// - "GRAYWARE" : Sample does not pose a direct security threat, but might
@@ -17998,12 +18125,12 @@ class WildfireVerdictChangeRequest {
   /// threat.
   core.String? newVerdict;
 
-  /// The original verdict of the Malware Sample.
+  /// The original verdict of the malware sample.
   ///
   /// Output only.
   /// Possible string values are:
-  /// - "WILDFIRE_SAMPLE_VERDICT_UNKNOWN" : Default value. Malware is not yet
-  /// classified.
+  /// - "WILDFIRE_SAMPLE_VERDICT_UNKNOWN" : Default value. The malware sample is
+  /// not yet classified.
   /// - "BENIGN" : Sample is safe and does not exhibit malicious behavior.
   /// - "MALWARE" : Sample is malware and poses a security threat.
   /// - "GRAYWARE" : Sample does not pose a direct security threat, but might
@@ -18012,42 +18139,44 @@ class WildfireVerdictChangeRequest {
   /// threat.
   core.String? oldVerdict;
 
-  /// The timestamp when the WildfireVerdictChangeRequest was resolved.
+  /// The timestamp when the `WildfireVerdictChangeRequest` was resolved.
   ///
   /// Output only.
   core.String? resolutionTime;
 
-  /// The SHA256 hash of the Malware Sample to change the verdict of.
+  /// The SHA256 hash (\[FIPS
+  /// 180-4\](https://csrc.nist.gov/publications/detail/fips/180/4/final)) of
+  /// the malware sample that requires a verdict change.
   ///
   /// Required.
   core.String? sha256;
 
-  /// The region of the file associated with the Malware Sample.
+  /// The region of the file associated with the malware sample.
   ///
   /// Output only.
   core.String? sourceRegion;
 
-  /// The review state of the WildfireVerdictChangeRequest.
+  /// The review state of the `WildfireVerdictChangeRequest`.
   ///
   /// Output only.
   /// Possible string values are:
-  /// - "VERDICT_CHANGE_REQUEST_STATE_UNSPECIFIED" : Default value. Request does
-  /// not have a state. This value is unused.
-  /// - "OPEN" : Request has been created and review has not started.
-  /// - "CLOSED" : Malware Sample has been reviewed and the final verdict has
-  /// been updated.
-  /// - "PENDING" : Malware Sample is currently being reviewed.
+  /// - "VERDICT_CHANGE_REQUEST_STATE_UNSPECIFIED" : Default value. The request
+  /// does not have a state. This value is unused.
+  /// - "OPEN" : The request has been created and review has not started.
+  /// - "CLOSED" : The malware sample has been reviewed and the final verdict
+  /// has been updated.
+  /// - "PENDING" : The malware sample is being reviewed.
   core.String? state;
 
-  /// The timestamp when the WildfireVerdictChangeRequest was last updated.
+  /// The timestamp when the `WildfireVerdictChangeRequest` was last updated.
   ///
   /// Output only.
   core.String? updateTime;
 
-  /// The ID of the WildfireVerdictChangeRequest.
+  /// The ID of the `WildfireVerdictChangeRequest`.
   ///
-  /// This is a unique identifier generated by the third party API. Format:
-  /// ^\[0-9a-fA-F\]{8}-\[0-9a-fA-F\]{4}-\[0-9a-fA-F\]{4}-\[0-9a-fA-F\]{4}-\[0-9a-fA-F\]{12}$
+  /// This is a unique identifier generated by the third-party API. Format:
+  /// `^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$`.
   ///
   /// Output only.
   core.String? wildfireVerdictChangeRequestId;

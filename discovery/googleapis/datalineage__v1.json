@@ -547,7 +547,13 @@
                                 }
                             },
                             "path": "v1/{+parent}:processOpenLineageRunEvent",
-                            "request": {},
+                            "request": {
+                                "additionalProperties": {
+                                    "description": "Properties of the object.",
+                                    "type": "any"
+                                },
+                                "type": "object"
+                            },
                             "response": {
                                 "$ref": "GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse"
                             },

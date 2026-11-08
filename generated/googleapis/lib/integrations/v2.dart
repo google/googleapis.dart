@@ -149,6 +149,8 @@ class ProjectsLocationsIntegrationsResource {
   /// need to be set.) {"variable1": "hello world", "variable2": 1, "variable3":
   /// {"my_json_key": "my json string value" }
   ///
+  /// [request] - The metadata request object.
+  ///
   /// Request parameters:
   ///
   /// [parent] - Required. The integration resource name.
@@ -174,11 +176,13 @@ class ProjectsLocationsIntegrationsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleApiHttpBody> execute(
+    core.Map<core.String, core.Object?> request,
     core.String parent, {
     core.String? requestId,
     core.String? triggerId,
     core.String? $fields,
   }) async {
+    final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       'requestId': ?requestId == null ? null : [requestId],
       'triggerId': ?triggerId == null ? null : [triggerId],
@@ -190,6 +194,7 @@ class ProjectsLocationsIntegrationsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
+      body: body_,
       queryParams: queryParams_,
     );
     return GoogleApiHttpBody.fromJson(
@@ -384,6 +389,8 @@ class ProjectsLocationsIntegrationsResource {
 
   /// Schedules an integration for execution.
   ///
+  /// [request] - The metadata request object.
+  ///
   /// Request parameters:
   ///
   /// [parent] - Required. The integration resource name.
@@ -413,12 +420,14 @@ class ProjectsLocationsIntegrationsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleApiHttpBody> schedule(
+    core.Map<core.String, core.Object?> request,
     core.String parent, {
     core.String? requestId,
     core.String? scheduleTime,
     core.String? triggerId,
     core.String? $fields,
   }) async {
+    final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       'requestId': ?requestId == null ? null : [requestId],
       'scheduleTime': ?scheduleTime == null ? null : [scheduleTime],
@@ -431,6 +440,7 @@ class ProjectsLocationsIntegrationsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
+      body: body_,
       queryParams: queryParams_,
     );
     return GoogleApiHttpBody.fromJson(

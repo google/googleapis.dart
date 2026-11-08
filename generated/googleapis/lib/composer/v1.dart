@@ -412,6 +412,54 @@ class ProjectsLocationsEnvironmentsResource {
     );
   }
 
+  /// Hibernates (pauses) a running environment.
+  ///
+  /// It requests the environment to switch to the `HIBERNATED` state, keeping
+  /// its data and minimizing cost, but not running any DAGs. This method is
+  /// supported for Cloud Composer environments in development mode in versions
+  /// composer-3-airflow-*.*.*-build.* and newer.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the environment to hibernate, in
+  /// the form:
+  /// "projects/{project}/locations/{location}/environments/{environment}"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/environments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> hibernate(
+    HibernateEnvironmentRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':hibernate';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// List environments.
   ///
   /// Request parameters:
@@ -706,6 +754,53 @@ class ProjectsLocationsEnvironmentsResource {
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':restartWebServer';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Resumes (unpauses) a hibernated environment.
+  ///
+  /// It requests the environment to switch to the `RUNNING` state, so that it
+  /// is ready to use and run DAGs. This method is supported for Cloud Composer
+  /// environments in development mode in versions
+  /// composer-3-airflow-*.*.*-build.* and newer.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the environment to resume, in the
+  /// form: "projects/{project}/locations/{location}/environments/{environment}"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/environments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> resume(
+    ResumeEnvironmentRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':resume';
 
     final response_ = await _requester.request(
       url_,
@@ -2189,6 +2284,8 @@ class EnvironmentConfig {
   /// - "ENVIRONMENT_SIZE_MEDIUM" : The environment size is medium.
   /// - "ENVIRONMENT_SIZE_LARGE" : The environment size is large.
   /// - "ENVIRONMENT_SIZE_EXTRA_LARGE" : The environment size is extra large.
+  /// - "ENVIRONMENT_SIZE_X_EXTRA_LARGE" : The environment size is double extra
+  /// large.
   core.String? environmentSize;
 
   /// The Kubernetes Engine cluster used to run this environment.
@@ -2584,6 +2681,9 @@ class FetchDatabasePropertiesResponse {
     };
   }
 }
+
+/// Request to hibernate a Composer environment.
+typedef HibernateEnvironmentRequest = $Empty;
 
 /// Configuration for controlling how IPs are allocated in the GKE cluster
 /// running the Apache Airflow software.
@@ -3836,6 +3936,9 @@ class RecoveryConfig {
 
 /// Restart Airflow web server.
 typedef RestartWebServerRequest = $Empty;
+
+/// Request to resume a Composer environment.
+typedef ResumeEnvironmentRequest = $Empty;
 
 /// Request to create a snapshot of a Cloud Composer environment.
 class SaveSnapshotRequest {

@@ -528,6 +528,21 @@ void checkFetchDatabasePropertiesResponse(
   buildCounterFetchDatabasePropertiesResponse--;
 }
 
+core.int buildCounterHibernateEnvironmentRequest = 0;
+api.HibernateEnvironmentRequest buildHibernateEnvironmentRequest() {
+  final o = api.HibernateEnvironmentRequest();
+  buildCounterHibernateEnvironmentRequest++;
+  if (buildCounterHibernateEnvironmentRequest < 3) {}
+  buildCounterHibernateEnvironmentRequest--;
+  return o;
+}
+
+void checkHibernateEnvironmentRequest(api.HibernateEnvironmentRequest o) {
+  buildCounterHibernateEnvironmentRequest++;
+  if (buildCounterHibernateEnvironmentRequest < 3) {}
+  buildCounterHibernateEnvironmentRequest--;
+}
+
 core.int buildCounterIPAllocationPolicy = 0;
 api.IPAllocationPolicy buildIPAllocationPolicy() {
   final o = api.IPAllocationPolicy();
@@ -1243,6 +1258,21 @@ void checkRestartWebServerRequest(api.RestartWebServerRequest o) {
   buildCounterRestartWebServerRequest++;
   if (buildCounterRestartWebServerRequest < 3) {}
   buildCounterRestartWebServerRequest--;
+}
+
+core.int buildCounterResumeEnvironmentRequest = 0;
+api.ResumeEnvironmentRequest buildResumeEnvironmentRequest() {
+  final o = api.ResumeEnvironmentRequest();
+  buildCounterResumeEnvironmentRequest++;
+  if (buildCounterResumeEnvironmentRequest < 3) {}
+  buildCounterResumeEnvironmentRequest--;
+  return o;
+}
+
+void checkResumeEnvironmentRequest(api.ResumeEnvironmentRequest o) {
+  buildCounterResumeEnvironmentRequest++;
+  if (buildCounterResumeEnvironmentRequest < 3) {}
+  buildCounterResumeEnvironmentRequest--;
 }
 
 core.int buildCounterSaveSnapshotRequest = 0;
@@ -1967,6 +1997,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-HibernateEnvironmentRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildHibernateEnvironmentRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.HibernateEnvironmentRequest.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkHibernateEnvironmentRequest(od);
+    });
+  });
+
   unittest.group('obj-schema-IPAllocationPolicy', () {
     unittest.test('to-json--from-json', () async {
       final o = buildIPAllocationPolicy();
@@ -2206,6 +2247,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkRestartWebServerRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-ResumeEnvironmentRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildResumeEnvironmentRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ResumeEnvironmentRequest.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkResumeEnvironmentRequest(od);
     });
   });
 
@@ -2819,6 +2871,69 @@ void main() {
       checkEnvironment(response as api.Environment);
     });
 
+    unittest.test('method--hibernate', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudComposerApi(mock).projects.locations.environments;
+      final arg_request = buildHibernateEnvironmentRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.HibernateEnvironmentRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkHibernateEnvironmentRequest(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.hibernate(
+        arg_request,
+        arg_name,
+        $fields: arg_$fields,
+      );
+      checkOperation(response as api.Operation);
+    });
+
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.CloudComposerApi(mock).projects.locations.environments;
@@ -3140,6 +3255,69 @@ void main() {
         true,
       );
       final response = await res.restartWebServer(
+        arg_request,
+        arg_name,
+        $fields: arg_$fields,
+      );
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--resume', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudComposerApi(mock).projects.locations.environments;
+      final arg_request = buildResumeEnvironmentRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.ResumeEnvironmentRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkResumeEnvironmentRequest(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.resume(
         arg_request,
         arg_name,
         $fields: arg_$fields,

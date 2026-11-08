@@ -11999,10 +11999,6 @@ class ProjectsLocationsAgentsResource {
   /// in. Format: `projects/{project}/locations/{location}`.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [idpNonce] - Optional. Optional. One-time cryptographic nonce issued by
-  /// the trusted IdP provisioning iframe for session and device
-  /// non-repudiation.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -12016,12 +12012,10 @@ class ProjectsLocationsAgentsResource {
   async.Future<GoogleLongrunningOperation> create(
     GoogleCloudAiplatformV1Agent request,
     core.String parent, {
-    core.String? idpNonce,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      'idpNonce': ?idpNonce == null ? null : [idpNonce],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -34912,6 +34906,54 @@ class ProjectsLocationsNotebookRuntimeTemplatesResource {
     );
   }
 
+  /// Sets the default NotebookRuntimeTemplate for a Location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the Location to set the default
+  /// NotebookRuntimeTemplate. Format: `projects/{project}/locations/{location}`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudAiplatformV1SetDefaultNotebookRuntimeTemplateResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAiplatformV1SetDefaultNotebookRuntimeTemplateResponse>
+  setDefault(
+    GoogleCloudAiplatformV1SetDefaultNotebookRuntimeTemplateRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/notebookRuntimeTemplates:setDefault';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAiplatformV1SetDefaultNotebookRuntimeTemplateResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Sets the access control policy on the specified resource.
   ///
   /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
@@ -38085,10 +38127,6 @@ class ProjectsLocationsPublishersFilesResource {
   ///
   /// [publishersId] - null
   ///
-  /// [ids] - Optional. Batch fetch: return only these files, up to 100 IDs
-  /// after de-duplication. Mutually exclusive with both `page` and `limit`.
-  /// Serialised as a repeated `ids` query parameter, one occurrence per ID.
-  ///
   /// [limit] - Optional. The number of files to return per page. Defaults to 20
   /// if unset, maximum 1000. Mutually exclusive with `ids`.
   ///
@@ -38108,13 +38146,11 @@ class ProjectsLocationsPublishersFilesResource {
   async.Future<GoogleCloudAiplatformV1ListFilesResponse> list(
     core.String parent,
     core.String publishersId, {
-    core.List<core.String>? ids,
     core.int? limit,
     core.String? page,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      'ids': ?ids,
       'limit': ?limit == null ? null : ['${limit}'],
       'page': ?page == null ? null : [page],
       'fields': ?$fields == null ? null : [$fields],
@@ -60525,6 +60561,10 @@ class GenaiVertexV1Function {
   core.String? name;
 
   /// The JSON Schema for the function's parameters.
+  ///
+  /// Supports a subset of JSON Schema. `minLength`, `maxLength`,
+  /// `minProperties`, `maxProperties`, `uniqueItems`, `contains`,
+  /// `minContains`, and `maxContains` are ignored and not enforced.
   GenaiVertexV1Value? parameters;
 
   GenaiVertexV1Function({this.description, this.name, this.parameters});
@@ -61502,6 +61542,9 @@ class GenaiVertexV1Interaction {
   /// results (e.g. hitting max_tokens).
   /// - "QUEUED" : The interaction is queued, waiting for processing (e.g.
   /// waiting for off-peak capacity).
+  /// - "REQUIRES_CONTINUATION" : The interaction requires at least one more
+  /// request for it to be completed. The next request should set the
+  /// continuation_token to the one returned by this request.
   core.String? status;
 
   /// Input only.
@@ -61760,6 +61803,9 @@ class GenaiVertexV1InteractionStatusUpdate {
   /// results (e.g. hitting max_tokens).
   /// - "QUEUED" : The interaction is queued, waiting for processing (e.g.
   /// waiting for off-peak capacity).
+  /// - "REQUIRES_CONTINUATION" : The interaction requires at least one more
+  /// request for it to be completed. The next request should set the
+  /// continuation_token to the one returned by this request.
   core.String? status;
 
   /// Model usage statistics up to this checkpoint.
@@ -61917,6 +61963,9 @@ class GenaiVertexV1InteractionUsage {
   core.List<GenaiVertexV1InteractionUsageGroundingToolCount>?
   groundingToolCount;
 
+  /// Number of input tokens used in the first turn of this interaction.
+  core.int? initialInputTokens;
+
   /// A breakdown of input token usage by modality.
   core.List<GenaiVertexV1InteractionUsageModalityTokens>? inputTokensByModality;
 
@@ -61950,6 +61999,7 @@ class GenaiVertexV1InteractionUsage {
   GenaiVertexV1InteractionUsage({
     this.cachedTokensByModality,
     this.groundingToolCount,
+    this.initialInputTokens,
     this.inputTokensByModality,
     this.outputTokensByModality,
     this.toolUseTokensByModality,
@@ -61978,6 +62028,7 @@ class GenaiVertexV1InteractionUsage {
                   ),
             )
             .toList(),
+        initialInputTokens: json_['initialInputTokens'] as core.int?,
         inputTokensByModality: (json_['inputTokensByModality'] as core.List?)
             ?.map(
               (value) => GenaiVertexV1InteractionUsageModalityTokens.fromJson(
@@ -62012,6 +62063,7 @@ class GenaiVertexV1InteractionUsage {
   core.Map<core.String, core.dynamic> toJson() {
     final cachedTokensByModality = this.cachedTokensByModality;
     final groundingToolCount = this.groundingToolCount;
+    final initialInputTokens = this.initialInputTokens;
     final inputTokensByModality = this.inputTokensByModality;
     final outputTokensByModality = this.outputTokensByModality;
     final toolUseTokensByModality = this.toolUseTokensByModality;
@@ -62024,6 +62076,7 @@ class GenaiVertexV1InteractionUsage {
     return {
       'cachedTokensByModality': ?cachedTokensByModality,
       'groundingToolCount': ?groundingToolCount,
+      'initialInputTokens': ?initialInputTokens,
       'inputTokensByModality': ?inputTokensByModality,
       'outputTokensByModality': ?outputTokensByModality,
       'toolUseTokensByModality': ?toolUseTokensByModality,
@@ -63651,7 +63704,13 @@ class GenaiVertexV1TextResponseFormat {
 
   /// The JSON schema that the output should conform to.
   ///
-  /// Only applicable when mime_type is application/json.
+  /// Only applicable when mime_type is application/json. Supports a subset of
+  /// JSON Schema. `minLength`, `maxLength`, `minProperties`, `maxProperties`,
+  /// `uniqueItems`, `contains`, `minContains`, and `maxContains` are ignored
+  /// and not enforced; validate these in your application. `minItems` and
+  /// `maxItems` are enforced. Schemas that are too complex to enforce (for
+  /// example, large `maxItems` on nested arrays) return a 400 INVALID_ARGUMENT
+  /// error.
   GenaiVertexV1Struct? schema;
 
   GenaiVertexV1TextResponseFormat({this.mimeType, this.schema});
@@ -64567,6 +64626,7 @@ class GenaiVertexV1VideoConfig {
   /// images, audio, or video).
   /// - "EDIT" : Modifies an existing input video.
   /// - "EXTEND" : Extends an existing input video.
+  /// - "UPSCALE" : Increases the resolution of an existing input video.
   core.String? task;
 
   GenaiVertexV1VideoConfig({this.task});
@@ -65108,6 +65168,15 @@ class GoogleCloudAiplatformV1AddTrialMeasurementRequest {
 /// A Vertex agent contains instructions and configurations for the LLM to
 /// execute a certain task.
 class GoogleCloudAiplatformV1Agent {
+  /// The identity configuration of the agent.
+  ///
+  /// Immutable: the agent's own identity determines the A2 (CoWorker) archetype
+  /// and the minted SPIFFE, so it cannot change after creation (no A1\<-\>A2
+  /// transition).
+  ///
+  /// Optional. Immutable.
+  GoogleCloudAiplatformV1AgentIdentity? agentIdentity;
+
   /// The resource name of the AI Application provisioned for this agent.
   ///
   /// Format:
@@ -65115,6 +65184,15 @@ class GoogleCloudAiplatformV1Agent {
   ///
   /// Output only.
   core.String? aiApplication;
+
+  /// The identities this agent is allowed to contact outbound (for example over
+  /// Gmail or Chat).
+  ///
+  /// Stored on the agent and always returned by `GetAgent`; see the field
+  /// comments on `AllowedTeammates`.
+  ///
+  /// Optional.
+  GoogleCloudAiplatformV1AllowedTeammates? allowedTeammates;
 
   /// The base agent for the agent.
   ///
@@ -65153,6 +65231,15 @@ class GoogleCloudAiplatformV1Agent {
   /// Output only.
   core.String? effectiveIdentity;
 
+  /// Customer-managed encryption key spec for an Agent.
+  ///
+  /// If set, this agent's user data will be secured by this key; if not set, it
+  /// is secured by a Google-managed key. Cannot be changed after the agent is
+  /// created.
+  ///
+  /// Optional. Immutable.
+  GoogleCloudAiplatformV1EncryptionSpec? encryptionSpec;
+
   /// The user-specified ID for the agent.
   ///
   /// This ID becomes the final component of the agent resource name. If not
@@ -65162,6 +65249,11 @@ class GoogleCloudAiplatformV1Agent {
   ///
   /// Immutable.
   core.String? id;
+
+  /// Memory settings for the agent.
+  ///
+  /// Optional.
+  GoogleCloudAiplatformV1AgentMemoryConfig? memoryConfig;
 
   /// The metadata for the agent.
   ///
@@ -65194,6 +65286,37 @@ class GoogleCloudAiplatformV1Agent {
   /// Optional.
   GoogleCloudAiplatformV1ObservabilityConfig? observabilityConfig;
 
+  /// The human owner (principal) the agent acts on behalf of (A1 Personal).
+  ///
+  /// Mutable by design: ownership is meant to be reassignable (e.g. by an
+  /// admin). On create an A1 (Personal) agent may omit it and the control plane
+  /// defaults it to the caller; an A2 (CoWorker) agent must set it explicitly.
+  /// `owner.id` must be an *obfuscated* Gaia id. A raw Gaia id is rejected with
+  /// INVALID_ARGUMENT naming the rule -- both forms are strings of decimal
+  /// digits, so the surface would otherwise have two indistinguishable
+  /// spellings of one identity. Not yet: `UpdateAgent` currently rejects a
+  /// change to this field. The control plane authorizes every agent method
+  /// against the owner Gaia id it persists internally at create time, and the
+  /// update path does not maintain that copy — so a field write here would move
+  /// the reported owner without moving the one access control uses. The guard
+  /// comes out once reassignment moves both, along with the Workspace identity
+  /// provisioned under the owner.
+  ///
+  /// Optional.
+  GoogleCloudAiplatformV1Principal? owner;
+
+  /// The persona (presentation) of the agent.
+  ///
+  /// Mutable: presentation only, not an archetype-derivation signal.
+  ///
+  /// Optional.
+  GoogleCloudAiplatformV1Persona? persona;
+
+  /// The current operational state of the agent.
+  ///
+  /// Output only.
+  GoogleCloudAiplatformV1AgentStatus? status;
+
   /// The instructions for the agent to follow.
   ///
   /// These instructions are passed to the LLM as a system instruction.
@@ -65212,18 +65335,25 @@ class GoogleCloudAiplatformV1Agent {
   core.String? updated;
 
   GoogleCloudAiplatformV1Agent({
+    this.agentIdentity,
     this.aiApplication,
+    this.allowedTeammates,
     this.baseAgent,
     this.baseEnvironment,
     this.created,
     this.description,
     this.effectiveIdentity,
+    this.encryptionSpec,
     this.id,
+    this.memoryConfig,
     this.metadata,
     this.modelConfig,
     this.name,
     this.object,
     this.observabilityConfig,
+    this.owner,
+    this.persona,
+    this.status,
     this.systemInstruction,
     this.tools,
     this.updated,
@@ -65231,13 +65361,34 @@ class GoogleCloudAiplatformV1Agent {
 
   GoogleCloudAiplatformV1Agent.fromJson(core.Map json_)
     : this(
+        agentIdentity: json_.containsKey('agentIdentity')
+            ? GoogleCloudAiplatformV1AgentIdentity.fromJson(
+                json_['agentIdentity'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         aiApplication: json_['aiApplication'] as core.String?,
+        allowedTeammates: json_.containsKey('allowedTeammates')
+            ? GoogleCloudAiplatformV1AllowedTeammates.fromJson(
+                json_['allowedTeammates']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         baseAgent: json_['base_agent'] as core.String?,
         baseEnvironment: json_['base_environment'],
         created: json_['created'] as core.String?,
         description: json_['description'] as core.String?,
         effectiveIdentity: json_['effectiveIdentity'] as core.String?,
+        encryptionSpec: json_.containsKey('encryptionSpec')
+            ? GoogleCloudAiplatformV1EncryptionSpec.fromJson(
+                json_['encryptionSpec'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         id: json_['id'] as core.String?,
+        memoryConfig: json_.containsKey('memoryConfig')
+            ? GoogleCloudAiplatformV1AgentMemoryConfig.fromJson(
+                json_['memoryConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         metadata: (json_['metadata'] as core.Map<core.String, core.dynamic>?)
             ?.map((key, value) => core.MapEntry(key, value as core.String)),
         modelConfig: json_.containsKey('modelConfig')
@@ -65253,6 +65404,21 @@ class GoogleCloudAiplatformV1Agent {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        owner: json_.containsKey('owner')
+            ? GoogleCloudAiplatformV1Principal.fromJson(
+                json_['owner'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        persona: json_.containsKey('persona')
+            ? GoogleCloudAiplatformV1Persona.fromJson(
+                json_['persona'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        status: json_.containsKey('status')
+            ? GoogleCloudAiplatformV1AgentStatus.fromJson(
+                json_['status'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         systemInstruction: json_['system_instruction'] as core.String?,
         tools: (json_['tools'] as core.List?)
             ?.map(
@@ -65265,34 +65431,48 @@ class GoogleCloudAiplatformV1Agent {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final agentIdentity = this.agentIdentity;
     final aiApplication = this.aiApplication;
+    final allowedTeammates = this.allowedTeammates;
     final baseAgent = this.baseAgent;
     final baseEnvironment = this.baseEnvironment;
     final created = this.created;
     final description = this.description;
     final effectiveIdentity = this.effectiveIdentity;
+    final encryptionSpec = this.encryptionSpec;
     final id = this.id;
+    final memoryConfig = this.memoryConfig;
     final metadata = this.metadata;
     final modelConfig = this.modelConfig;
     final name = this.name;
     final object = this.object;
     final observabilityConfig = this.observabilityConfig;
+    final owner = this.owner;
+    final persona = this.persona;
+    final status = this.status;
     final systemInstruction = this.systemInstruction;
     final tools = this.tools;
     final updated = this.updated;
     return {
+      'agentIdentity': ?agentIdentity,
       'aiApplication': ?aiApplication,
+      'allowedTeammates': ?allowedTeammates,
       'base_agent': ?baseAgent,
       'base_environment': ?baseEnvironment,
       'created': ?created,
       'description': ?description,
       'effectiveIdentity': ?effectiveIdentity,
+      'encryptionSpec': ?encryptionSpec,
       'id': ?id,
+      'memoryConfig': ?memoryConfig,
       'metadata': ?metadata,
       'modelConfig': ?modelConfig,
       'name': ?name,
       'object': ?object,
       'observabilityConfig': ?observabilityConfig,
+      'owner': ?owner,
+      'persona': ?persona,
+      'status': ?status,
       'system_instruction': ?systemInstruction,
       'tools': ?tools,
       'updated': ?updated,
@@ -65520,6 +65700,94 @@ class GoogleCloudAiplatformV1AgentEvent {
   }
 }
 
+/// Identity configuration for an agent.
+class GoogleCloudAiplatformV1AgentIdentity {
+  /// The email address representing the agent's principal identity.
+  ///
+  /// For Google Workspace agents, the email should be on a verified customer
+  /// domain.
+  ///
+  /// Optional.
+  core.String? email;
+
+  /// The agent's own obfuscated Gaia id.
+  ///
+  /// Set only for an A2 (CoWorker) agent, which is the only kind that has a
+  /// first-class Gaia account of its own. An A1 (Personal) agent has no
+  /// `AgentIdentity` at all: it acts on behalf of its owner, so the identity it
+  /// runs as is `Agent.owner`, and there is no separate Gaia account to name.
+  /// Populated asynchronously once the agent identity is provisioned, so it may
+  /// be absent from the `CreateAgent` LRO response and present on
+  /// `GetAgent`/`ListAgents`.
+  ///
+  /// Output only.
+  core.String? gaiaId;
+
+  /// The tenant / customer context under which this agent runs.
+  ///
+  /// For Google Workspace , this is the obfuscated Customer ID (e.g.
+  /// "C0123abcd").
+  ///
+  /// Optional.
+  GoogleCloudAiplatformV1Tenant? tenant;
+
+  GoogleCloudAiplatformV1AgentIdentity({this.email, this.gaiaId, this.tenant});
+
+  GoogleCloudAiplatformV1AgentIdentity.fromJson(core.Map json_)
+    : this(
+        email: json_['email'] as core.String?,
+        gaiaId: json_['gaiaId'] as core.String?,
+        tenant: json_.containsKey('tenant')
+            ? GoogleCloudAiplatformV1Tenant.fromJson(
+                json_['tenant'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final email = this.email;
+    final gaiaId = this.gaiaId;
+    final tenant = this.tenant;
+    return {'email': ?email, 'gaiaId': ?gaiaId, 'tenant': ?tenant};
+  }
+}
+
+/// Agent-level memory settings.
+///
+/// These apply across every task the agent runs and every user of the agent:
+/// this is an agent-wide control, not a per-user one. To turn memory off for a
+/// single end user of a shared agent, the calling surface sets
+/// `TaskSpec.scope.memory_config.disable_memory` on that user's tasks.
+class GoogleCloudAiplatformV1AgentMemoryConfig {
+  /// If true, memory is disabled for the agent as a whole: across every task it
+  /// runs, the agent neither reads existing memories into the prompt nor forms
+  /// new ones.
+  ///
+  /// Memory is on by default, and this is the setting that wins. A task may
+  /// turn memory off for itself alone with
+  /// `TaskSpec.scope.memory_config.disable_memory`, but cannot turn it back on
+  /// while this is true; the two are OR'ed. This level wins because it is the
+  /// mutable one. Turning it on has to cover the tasks that already exist,
+  /// whose stored specs still say whatever they were created with, so the
+  /// agent's current value is re-applied every time a session opens, including
+  /// on a resume. Memories already stored are retained and stay readable by the
+  /// agent's users; this governs only whether the agent can access and modify
+  /// them.
+  ///
+  /// Optional.
+  core.bool? disableMemory;
+
+  GoogleCloudAiplatformV1AgentMemoryConfig({this.disableMemory});
+
+  GoogleCloudAiplatformV1AgentMemoryConfig.fromJson(core.Map json_)
+    : this(disableMemory: json_['disableMemory'] as core.bool?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final disableMemory = this.disableMemory;
+    return {'disableMemory': ?disableMemory};
+  }
+}
+
 /// Selects the model configuration for an agent.
 ///
 /// Starts with just the model id/alias; extensible with further model
@@ -65580,6 +65848,96 @@ class GoogleCloudAiplatformV1AgentResponseCustomization {
   }
 }
 
+/// Operational state of the agent.
+class GoogleCloudAiplatformV1AgentStatus {
+  /// The time at which the agent was soft-deleted.
+  ///
+  /// Output only.
+  core.String? deleteTime;
+
+  /// The current state of the agent.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Unspecified agent state.
+  /// - "ACTIVE" : The agent is active and ready to process requests.
+  /// - "SUSPENDED" : The agent is suspended.
+  /// - "ARCHIVED" : The agent is archived (read-only).
+  /// - "DELETED" : The agent is soft-deleted.
+  core.String? state;
+
+  /// Context about the current active suspension.
+  ///
+  /// Output only.
+  GoogleCloudAiplatformV1AgentStatusSuspensionReason? suspensionReason;
+
+  GoogleCloudAiplatformV1AgentStatus({
+    this.deleteTime,
+    this.state,
+    this.suspensionReason,
+  });
+
+  GoogleCloudAiplatformV1AgentStatus.fromJson(core.Map json_)
+    : this(
+        deleteTime: json_['deleteTime'] as core.String?,
+        state: json_['state'] as core.String?,
+        suspensionReason: json_.containsKey('suspensionReason')
+            ? GoogleCloudAiplatformV1AgentStatusSuspensionReason.fromJson(
+                json_['suspensionReason']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final deleteTime = this.deleteTime;
+    final state = this.state;
+    final suspensionReason = this.suspensionReason;
+    return {
+      'deleteTime': ?deleteTime,
+      'state': ?state,
+      'suspensionReason': ?suspensionReason,
+    };
+  }
+}
+
+/// Details about the active suspension.
+///
+/// This message is only populated if the state is SUSPENDED.
+class GoogleCloudAiplatformV1AgentStatusSuspensionReason {
+  /// The reason for the current suspension.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "REASON_UNSPECIFIED" : Unspecified suspension reason.
+  /// - "ABUSE" : Suspended due to abuse or terms of service violations.
+  /// - "ADMIN" : Suspended by a domain administrator.
+  /// - "USER_INITIATED" : Suspended by the owner/user.
+  core.String? reason;
+
+  /// The time when the current suspension was applied.
+  ///
+  /// Output only.
+  core.String? suspensionTime;
+
+  GoogleCloudAiplatformV1AgentStatusSuspensionReason({
+    this.reason,
+    this.suspensionTime,
+  });
+
+  GoogleCloudAiplatformV1AgentStatusSuspensionReason.fromJson(core.Map json_)
+    : this(
+        reason: json_['reason'] as core.String?,
+        suspensionTime: json_['suspensionTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final reason = this.reason;
+    final suspensionTime = this.suspensionTime;
+    return {'reason': ?reason, 'suspensionTime': ?suspensionTime};
+  }
+}
+
 /// A tool provides a list of actions available to the Agent during the process
 /// of executing a task.
 ///
@@ -65606,8 +65964,9 @@ class GoogleCloudAiplatformV1AgentTool {
 
   /// The type of the tool.
   ///
-  /// Supported types: * `code_execution` * `endpoint` * `filesystem` *
-  /// `google_search` * `mcp_server` * `url_context`
+  /// Supported types: * `audio_generation` * `code_execution` * `endpoint` *
+  /// `filesystem` * `google_search` * `image_generation` * `mcp_server` *
+  /// `speech_generation` * `url_context` * `video_generation`
   ///
   /// Required.
   core.String? type;
@@ -65795,6 +66154,43 @@ class GoogleCloudAiplatformV1AggregationResult {
       'pointwiseMetricResult': ?pointwiseMetricResult,
       'rougeMetricValue': ?rougeMetricValue,
     };
+  }
+}
+
+/// The set of identities an agent is allowed to contact outbound -- who the
+/// agent may talk to, not who may talk to the agent (that is IAM's job).
+///
+/// The membership is stored on the agent, so the Agents API is authoritative
+/// for what this field reports.
+class GoogleCloudAiplatformV1AllowedTeammates {
+  /// The teammates the agent is permitted to contact.
+  ///
+  /// At most 500. OUTPUT: always returned. An empty list means the agent has no
+  /// teammates, not that the field went unread. INPUT: the complete desired
+  /// set, not a delta -- teammates absent from it are removed. The backing
+  /// roster is updated asynchronously and best-effort after the write returns,
+  /// so it may briefly lag what `GetAgent` reports. What the agent is actually
+  /// able to reach follows the roster, not this field, until the two converge.
+  ///
+  /// Optional.
+  core.List<GoogleCloudAiplatformV1Teammate>? teammates;
+
+  GoogleCloudAiplatformV1AllowedTeammates({this.teammates});
+
+  GoogleCloudAiplatformV1AllowedTeammates.fromJson(core.Map json_)
+    : this(
+        teammates: (json_['teammates'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudAiplatformV1Teammate.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final teammates = this.teammates;
+    return {'teammates': ?teammates};
   }
 }
 
@@ -66704,6 +67100,15 @@ class GoogleCloudAiplatformV1AudioTranscriptionConfig {
   /// - "SMART" : Smart transcription mode.
   core.String? mode;
 
+  /// The source text to be edited or rewritten via voice instructions.
+  ///
+  /// When provided in `SMART` mode, the model evaluates the audio input against
+  /// this text and emits the complete replacement text in the candidate
+  /// response rather than appending to it.
+  ///
+  /// Optional.
+  core.String? sourceText;
+
   /// Configures word-level timestamp generation.
   ///
   /// Optional.
@@ -66717,6 +67122,7 @@ class GoogleCloudAiplatformV1AudioTranscriptionConfig {
     this.languageCodes,
     this.languageHints,
     this.mode,
+    this.sourceText,
     this.wordTimestamp,
   });
 
@@ -66743,6 +67149,7 @@ class GoogleCloudAiplatformV1AudioTranscriptionConfig {
               )
             : null,
         mode: json_['mode'] as core.String?,
+        sourceText: json_['sourceText'] as core.String?,
         wordTimestamp: json_['wordTimestamp'] as core.bool?,
       );
 
@@ -66754,6 +67161,7 @@ class GoogleCloudAiplatformV1AudioTranscriptionConfig {
     final languageCodes = this.languageCodes;
     final languageHints = this.languageHints;
     final mode = this.mode;
+    final sourceText = this.sourceText;
     final wordTimestamp = this.wordTimestamp;
     return {
       'adaptationPhrases': ?adaptationPhrases,
@@ -66763,6 +67171,7 @@ class GoogleCloudAiplatformV1AudioTranscriptionConfig {
       'languageCodes': ?languageCodes,
       'languageHints': ?languageHints,
       'mode': ?mode,
+      'sourceText': ?sourceText,
       'wordTimestamp': ?wordTimestamp,
     };
   }
@@ -69670,6 +70079,9 @@ class GoogleCloudAiplatformV1Candidate {
   /// reached the per-request token limit, but generation is not yet complete.
   /// The model response can be continued via a subsequent request using the
   /// returned `continuation_token`.
+  /// - "TOO_MANY_TOOL_CALLS" : The model made too many tool calls in a single
+  /// request, so the server-side tool loop stopped before the model returned a
+  /// final answer.
   core.String? finishReason;
 
   /// Metadata returned when grounding is enabled.
@@ -72663,6 +73075,27 @@ class GoogleCloudAiplatformV1CustomOutputFormatConfig {
   core.Map<core.String, core.dynamic> toJson() {
     final returnRawOutput = this.returnRawOutput;
     return {'returnRawOutput': ?returnRawOutput};
+  }
+}
+
+/// Config for scraping a Gemini Data Analytics data agent.
+class GoogleCloudAiplatformV1DataAgentConfig {
+  /// The resource name of the Gemini Data Analytics data agent.
+  ///
+  /// Format: `projects/{project}/locations/{location}/dataAgents/{data_agent}`.
+  /// For example: `projects/123/locations/us-central1/dataAgents/my-agent`.
+  ///
+  /// Required.
+  core.String? dataAgent;
+
+  GoogleCloudAiplatformV1DataAgentConfig({this.dataAgent});
+
+  GoogleCloudAiplatformV1DataAgentConfig.fromJson(core.Map json_)
+    : this(dataAgent: json_['dataAgent'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final dataAgent = this.dataAgent;
+    return {'dataAgent': ?dataAgent};
   }
 }
 
@@ -76576,6 +77009,17 @@ class GoogleCloudAiplatformV1EvaluateDatasetRun {
 
 /// Request message for EvaluationService.EvaluateInstances.
 class GoogleCloudAiplatformV1EvaluateInstancesRequest {
+  /// Allows the evaluation run to use cross region models.
+  ///
+  /// When this flag is set, the service may route traffic to other regions if a
+  /// model is unavailable in the current region (e.g., to a `global` endpoint).
+  /// If a fully-qualified model endpoint resource name with a different region
+  /// than the request location is provided elsewhere in the request, this flag
+  /// must be set to true or the request will fail.
+  ///
+  /// Optional.
+  core.bool? allowCrossRegionModel;
+
   /// Autorater config used for evaluation.
   ///
   /// Not applicable for predefined metrics (PredefinedMetricSpec); the server
@@ -76727,6 +77171,7 @@ class GoogleCloudAiplatformV1EvaluateInstancesRequest {
   trajectorySingleToolUseInput;
 
   GoogleCloudAiplatformV1EvaluateInstancesRequest({
+    this.allowCrossRegionModel,
     this.autoraterConfig,
     this.bleuInput,
     this.coherenceInput,
@@ -76768,6 +77213,7 @@ class GoogleCloudAiplatformV1EvaluateInstancesRequest {
 
   GoogleCloudAiplatformV1EvaluateInstancesRequest.fromJson(core.Map json_)
     : this(
+        allowCrossRegionModel: json_['allowCrossRegionModel'] as core.bool?,
         autoraterConfig: json_.containsKey('autoraterConfig')
             ? GoogleCloudAiplatformV1AutoraterConfig.fromJson(
                 json_['autoraterConfig'] as core.Map<core.String, core.dynamic>,
@@ -76996,6 +77442,7 @@ class GoogleCloudAiplatformV1EvaluateInstancesRequest {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final allowCrossRegionModel = this.allowCrossRegionModel;
     final autoraterConfig = this.autoraterConfig;
     final bleuInput = this.bleuInput;
     final coherenceInput = this.coherenceInput;
@@ -77040,6 +77487,7 @@ class GoogleCloudAiplatformV1EvaluateInstancesRequest {
     final trajectoryRecallInput = this.trajectoryRecallInput;
     final trajectorySingleToolUseInput = this.trajectorySingleToolUseInput;
     return {
+      'allowCrossRegionModel': ?allowCrossRegionModel,
       'autoraterConfig': ?autoraterConfig,
       'bleuInput': ?bleuInput,
       'coherenceInput': ?coherenceInput,
@@ -79383,6 +79831,21 @@ class GoogleCloudAiplatformV1EvaluationRun {
   /// `projects/{project}/locations/{location}/evaluationRuns/{evaluation_run}`
   core.String? name;
 
+  /// The service account to run the evaluation run as.
+  ///
+  /// If set, the run uses this service account to access Google Cloud
+  /// resources. Access is limited to the IAM permissions that you grant to the
+  /// service account. Must be provided if an inference config sets
+  /// `harbor_run_config`, `data_agent_config`. If no inference config requires
+  /// this field, setting it returns an error. The caller must have the
+  /// `iam.serviceAccounts.actAs` permission on this service account, and the
+  /// project's
+  /// [Vertex AI Service Agent](https://cloud.google.com/vertex-ai/docs/general/access-control#service-agents)
+  /// must have the `roles/iam.serviceAccountTokenCreator` role on it.
+  ///
+  /// Optional.
+  core.String? serviceAccount;
+
   /// The state of the evaluation run.
   ///
   /// Output only.
@@ -79414,6 +79877,7 @@ class GoogleCloudAiplatformV1EvaluationRun {
     this.labels,
     this.metadata,
     this.name,
+    this.serviceAccount,
     this.state,
   });
 
@@ -79465,6 +79929,7 @@ class GoogleCloudAiplatformV1EvaluationRun {
         ),
         metadata: json_['metadata'],
         name: json_['name'] as core.String?,
+        serviceAccount: json_['serviceAccount'] as core.String?,
         state: json_['state'] as core.String?,
       );
 
@@ -79482,6 +79947,7 @@ class GoogleCloudAiplatformV1EvaluationRun {
     final labels = this.labels;
     final metadata = this.metadata;
     final name = this.name;
+    final serviceAccount = this.serviceAccount;
     final state = this.state;
     return {
       'completionTime': ?completionTime,
@@ -79497,6 +79963,7 @@ class GoogleCloudAiplatformV1EvaluationRun {
       'labels': ?labels,
       'metadata': ?metadata,
       'name': ?name,
+      'serviceAccount': ?serviceAccount,
       'state': ?state,
     };
   }
@@ -79954,6 +80421,14 @@ class GoogleCloudAiplatformV1EvaluationRunInferenceConfigAgentRunConfig {
   /// Optional.
   core.String? agentEngine;
 
+  /// Config for scraping a Gemini Data Analytics data agent.
+  ///
+  /// The scraping service runs the agent via the DataChatService Chat API and
+  /// returns the resulting trajectory for evaluation.
+  ///
+  /// Optional.
+  GoogleCloudAiplatformV1DataAgentConfig? dataAgentConfig;
+
   /// Config for scraping a Gemini Agent via the Interactions API.
   ///
   /// The scraping service creates interactions against the agent and returns
@@ -79974,6 +80449,7 @@ class GoogleCloudAiplatformV1EvaluationRunInferenceConfigAgentRunConfig {
 
   GoogleCloudAiplatformV1EvaluationRunInferenceConfigAgentRunConfig({
     this.agentEngine,
+    this.dataAgentConfig,
     this.geminiAgentConfig,
     this.sessionInput,
     this.userSimulatorConfig,
@@ -79983,6 +80459,11 @@ class GoogleCloudAiplatformV1EvaluationRunInferenceConfigAgentRunConfig {
     core.Map json_,
   ) : this(
         agentEngine: json_['agentEngine'] as core.String?,
+        dataAgentConfig: json_.containsKey('dataAgentConfig')
+            ? GoogleCloudAiplatformV1DataAgentConfig.fromJson(
+                json_['dataAgentConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         geminiAgentConfig: json_.containsKey('geminiAgentConfig')
             ? GoogleCloudAiplatformV1GeminiAgentConfig.fromJson(
                 json_['geminiAgentConfig']
@@ -80004,11 +80485,13 @@ class GoogleCloudAiplatformV1EvaluationRunInferenceConfigAgentRunConfig {
 
   core.Map<core.String, core.dynamic> toJson() {
     final agentEngine = this.agentEngine;
+    final dataAgentConfig = this.dataAgentConfig;
     final geminiAgentConfig = this.geminiAgentConfig;
     final sessionInput = this.sessionInput;
     final userSimulatorConfig = this.userSimulatorConfig;
     return {
       'agentEngine': ?agentEngine,
+      'dataAgentConfig': ?dataAgentConfig,
       'geminiAgentConfig': ?geminiAgentConfig,
       'sessionInput': ?sessionInput,
       'userSimulatorConfig': ?userSimulatorConfig,
@@ -91057,7 +91540,9 @@ class GoogleCloudAiplatformV1ImportEvaluationSetRequest {
   /// The Cloud Storage location where the resulting EvaluationItem payloads
   /// will be stored.
   ///
-  /// Required.
+  /// Required for every source except `harbor_dataset`, which must not set it.
+  ///
+  /// Optional.
   GoogleCloudAiplatformV1GcsDestination? gcsDestination;
 
   /// Google Cloud Storage location.
@@ -106415,6 +106900,57 @@ class GoogleCloudAiplatformV1PersistentResource {
   }
 }
 
+/// The persona (presentation) of an agent.
+class GoogleCloudAiplatformV1Persona {
+  /// The URL of the agent's avatar.
+  ///
+  /// Optional.
+  core.String? avatarUrl;
+
+  /// The display name of the agent.
+  ///
+  /// Required.
+  core.String? displayName;
+
+  /// The personality style or behavioral trait of the agent.
+  ///
+  /// Optional.
+  core.String? personality;
+
+  /// The role of the agent (e.g., "Financial Analyst").
+  ///
+  /// Optional.
+  core.String? role;
+
+  GoogleCloudAiplatformV1Persona({
+    this.avatarUrl,
+    this.displayName,
+    this.personality,
+    this.role,
+  });
+
+  GoogleCloudAiplatformV1Persona.fromJson(core.Map json_)
+    : this(
+        avatarUrl: json_['avatarUrl'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        personality: json_['personality'] as core.String?,
+        role: json_['role'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final avatarUrl = this.avatarUrl;
+    final displayName = this.displayName;
+    final personality = this.personality;
+    final role = this.role;
+    return {
+      'avatarUrl': ?avatarUrl,
+      'displayName': ?displayName,
+      'personality': ?personality,
+      'role': ?role,
+    };
+  }
+}
+
 /// An instance of a machine learning PipelineJob.
 class GoogleCloudAiplatformV1PipelineJob {
   /// Pipeline creation time.
@@ -108385,6 +108921,36 @@ class GoogleCloudAiplatformV1Presets {
     final modality = this.modality;
     final query = this.query;
     return {'modality': ?modality, 'query': ?query};
+  }
+}
+
+/// Represents an identity principal (user or service).
+class GoogleCloudAiplatformV1Principal {
+  /// The system unique identifier of the principal.
+  ///
+  /// Optional.
+  core.String? id;
+
+  /// The type of the principal.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Unspecified principal type.
+  /// - "USER" : A standard human user principal.
+  core.String? type;
+
+  GoogleCloudAiplatformV1Principal({this.id, this.type});
+
+  GoogleCloudAiplatformV1Principal.fromJson(core.Map json_)
+    : this(
+        id: json_['id'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final id = this.id;
+    final type = this.type;
+    return {'id': ?id, 'type': ?type};
   }
 }
 
@@ -113544,6 +114110,9 @@ class GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpec {
   GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpecDeveloperConnectSource?
   developerConnectSource;
 
+  /// Source code is in a public Git repository.
+  GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpecGitSource? gitSource;
+
   /// Configuration for building an image with custom config file.
   ///
   /// Optional.
@@ -113560,6 +114129,7 @@ class GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpec {
   GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpec({
     this.agentConfigSource,
     this.developerConnectSource,
+    this.gitSource,
     this.imageSpec,
     this.inlineSource,
     this.pythonSpec,
@@ -113578,6 +114148,11 @@ class GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpec {
             ? GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpecDeveloperConnectSource.fromJson(
                 json_['developerConnectSource']
                     as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        gitSource: json_.containsKey('gitSource')
+            ? GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpecGitSource.fromJson(
+                json_['gitSource'] as core.Map<core.String, core.dynamic>,
               )
             : null,
         imageSpec: json_.containsKey('imageSpec')
@@ -113600,12 +114175,14 @@ class GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpec {
   core.Map<core.String, core.dynamic> toJson() {
     final agentConfigSource = this.agentConfigSource;
     final developerConnectSource = this.developerConnectSource;
+    final gitSource = this.gitSource;
     final imageSpec = this.imageSpec;
     final inlineSource = this.inlineSource;
     final pythonSpec = this.pythonSpec;
     return {
       'agentConfigSource': ?agentConfigSource,
       'developerConnectSource': ?developerConnectSource,
+      'gitSource': ?gitSource,
       'imageSpec': ?imageSpec,
       'inlineSource': ?inlineSource,
       'pythonSpec': ?pythonSpec,
@@ -113721,6 +114298,48 @@ class GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpecDeveloperConnectSo
   core.Map<core.String, core.dynamic> toJson() {
     final config = this.config;
     return {'config': ?config};
+  }
+}
+
+/// Specifies source code to be fetched from a public Git repository.
+class GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpecGitSource {
+  /// Directory, relative to the source root, in which to run the build.
+  ///
+  /// Optional.
+  core.String? dir;
+
+  /// The revision to fetch from the Git repository: a branch, a tag, or a full
+  /// commit SHA.
+  ///
+  /// Abbreviated commit SHAs are not supported.
+  ///
+  /// Required.
+  core.String? revision;
+
+  /// The HTTPS URL of the public Git repository to clone.
+  ///
+  /// Required.
+  core.String? url;
+
+  GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpecGitSource({
+    this.dir,
+    this.revision,
+    this.url,
+  });
+
+  GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpecGitSource.fromJson(
+    core.Map json_,
+  ) : this(
+        dir: json_['dir'] as core.String?,
+        revision: json_['revision'] as core.String?,
+        url: json_['url'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final dir = this.dir;
+    final revision = this.revision;
+    final url = this.url;
+    return {'dir': ?dir, 'revision': ?revision, 'url': ?url};
   }
 }
 
@@ -118871,6 +119490,54 @@ class GoogleCloudAiplatformV1SessionEvent {
   }
 }
 
+/// Request message for NotebookService.SetDefaultNotebookRuntimeTemplate.
+class GoogleCloudAiplatformV1SetDefaultNotebookRuntimeTemplateRequest {
+  /// The resource name of the NotebookRuntimeTemplate to set as default.
+  ///
+  /// Format:
+  /// `projects/{project}/locations/{location}/notebookRuntimeTemplates/{notebook_runtime_template}`
+  ///
+  /// Required.
+  core.String? name;
+
+  GoogleCloudAiplatformV1SetDefaultNotebookRuntimeTemplateRequest({this.name});
+
+  GoogleCloudAiplatformV1SetDefaultNotebookRuntimeTemplateRequest.fromJson(
+    core.Map json_,
+  ) : this(name: json_['name'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    return {'name': ?name};
+  }
+}
+
+/// Response message for NotebookService.SetDefaultNotebookRuntimeTemplate.
+class GoogleCloudAiplatformV1SetDefaultNotebookRuntimeTemplateResponse {
+  /// The NotebookRuntimeTemplate that was set as default.
+  GoogleCloudAiplatformV1NotebookRuntimeTemplate? notebookRuntimeTemplate;
+
+  GoogleCloudAiplatformV1SetDefaultNotebookRuntimeTemplateResponse({
+    this.notebookRuntimeTemplate,
+  });
+
+  GoogleCloudAiplatformV1SetDefaultNotebookRuntimeTemplateResponse.fromJson(
+    core.Map json_,
+  ) : this(
+        notebookRuntimeTemplate: json_.containsKey('notebookRuntimeTemplate')
+            ? GoogleCloudAiplatformV1NotebookRuntimeTemplate.fromJson(
+                json_['notebookRuntimeTemplate']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final notebookRuntimeTemplate = this.notebookRuntimeTemplate;
+    return {'notebookRuntimeTemplate': ?notebookRuntimeTemplate};
+  }
+}
+
 /// The SharePointSources to pass to ImportRagFiles.
 class GoogleCloudAiplatformV1SharePointSources {
   /// The SharePoint sources.
@@ -121950,6 +122617,97 @@ class GoogleCloudAiplatformV1TaskDescriptionStrategy {
   core.Map<core.String, core.dynamic> toJson() {
     final taskDescription = this.taskDescription;
     return {'taskDescription': ?taskDescription};
+  }
+}
+
+/// One identity an agent is allowed to contact.
+///
+/// A message rather than a bare string so a teammate can carry more than an
+/// address -- a display name, a group rather than a person, a scope limiting
+/// which surfaces the agent may reach them on -- without a breaking change to
+/// `AllowedTeammates`. Every field is optional, but a teammate identifying
+/// nobody is meaningless: at least one identifier must be set, and
+/// `UpdateAgent` rejects a teammate with none.
+class GoogleCloudAiplatformV1Teammate {
+  /// Email address of the teammate.
+  ///
+  /// Optional.
+  core.String? email;
+
+  /// Expansion mode for group or space teammates.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "EXPANSION_MODE_UNSPECIFIED" : Unspecified expansion mode.
+  /// - "INFER" : Infer whether to expand based on roster type (e.g., expand
+  /// Google Groups, do not expand Chat Spaces).
+  /// - "EXPANDED" : Transitive expansion: the agent can contact individual
+  /// members of the group.
+  /// - "NON_EXPANDED" : Non-expanded: the agent can contact the group or space
+  /// as a channel, without expanding to individual members.
+  core.String? expansionMode;
+
+  /// Obfuscated Gaia id of the teammate.
+  ///
+  /// OBFUSCATED, never a raw Gaia id -- the same form as `Principal.id` and
+  /// every other Gaia id this API surfaces, so the two are comparable. A string
+  /// rather than an int64 for that reason: the obfuscated form is not a number.
+  ///
+  /// Optional.
+  core.String? gaiaId;
+
+  GoogleCloudAiplatformV1Teammate({
+    this.email,
+    this.expansionMode,
+    this.gaiaId,
+  });
+
+  GoogleCloudAiplatformV1Teammate.fromJson(core.Map json_)
+    : this(
+        email: json_['email'] as core.String?,
+        expansionMode: json_['expansionMode'] as core.String?,
+        gaiaId: json_['gaiaId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final email = this.email;
+    final expansionMode = this.expansionMode;
+    final gaiaId = this.gaiaId;
+    return {
+      'email': ?email,
+      'expansionMode': ?expansionMode,
+      'gaiaId': ?gaiaId,
+    };
+  }
+}
+
+/// Represents an enterprise tenant.
+class GoogleCloudAiplatformV1Tenant {
+  /// The unique raw ID of the tenant.
+  ///
+  /// Optional.
+  core.String? id;
+
+  /// The type of the tenant.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Unspecified tenant type.
+  /// - "WORKSPACE_CUSTOMER" : Workspace customer domain tenant.
+  core.String? type;
+
+  GoogleCloudAiplatformV1Tenant({this.id, this.type});
+
+  GoogleCloudAiplatformV1Tenant.fromJson(core.Map json_)
+    : this(
+        id: json_['id'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final id = this.id;
+    final type = this.type;
+    return {'id': ?id, 'type': ?type};
   }
 }
 

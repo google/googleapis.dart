@@ -707,7 +707,9 @@ api.RestMethodRequest buildRestMethodRequest() {
   buildCounterRestMethodRequest++;
   if (buildCounterRestMethodRequest < 3) {
     o.P_ref = 'foo';
+    o.additionalProperties = buildJsonSchema();
     o.parameterName = 'foo';
+    o.type = 'foo';
   }
   buildCounterRestMethodRequest--;
   return o;
@@ -717,7 +719,9 @@ void checkRestMethodRequest(api.RestMethodRequest o) {
   buildCounterRestMethodRequest++;
   if (buildCounterRestMethodRequest < 3) {
     unittest.expect(o.P_ref!, unittest.equals('foo'));
+    checkJsonSchema(o.additionalProperties!);
     unittest.expect(o.parameterName!, unittest.equals('foo'));
+    unittest.expect(o.type!, unittest.equals('foo'));
   }
   buildCounterRestMethodRequest--;
 }
@@ -728,6 +732,8 @@ api.RestMethodResponse buildRestMethodResponse() {
   buildCounterRestMethodResponse++;
   if (buildCounterRestMethodResponse < 3) {
     o.P_ref = 'foo';
+    o.additionalProperties = buildJsonSchema();
+    o.type = 'foo';
   }
   buildCounterRestMethodResponse--;
   return o;
@@ -737,6 +743,8 @@ void checkRestMethodResponse(api.RestMethodResponse o) {
   buildCounterRestMethodResponse++;
   if (buildCounterRestMethodResponse < 3) {
     unittest.expect(o.P_ref!, unittest.equals('foo'));
+    checkJsonSchema(o.additionalProperties!);
+    unittest.expect(o.type!, unittest.equals('foo'));
   }
   buildCounterRestMethodResponse--;
 }

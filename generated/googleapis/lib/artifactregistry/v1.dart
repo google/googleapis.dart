@@ -6099,15 +6099,39 @@ class PrewarmPlatform {
 }
 
 /// PrewarmedArtifact represents a streamed artifact.
-///
-/// This is not a request message, so field_behavior annotations are not
-/// required.
 class PrewarmedArtifact {
+  /// The time the artifact was first prewarmed.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The error message if the state is `FAILED`.
+  ///
+  /// Output only.
+  core.String? errorMessage;
+
   /// The expiration time of the prewarmed artifact.
   core.String? expirationTime;
 
   /// The location of the prewarmed artifact.
   core.String? location;
+
+  /// The compressed size of the prewarmed artifact in bytes.
+  ///
+  /// This is the size counted against the prewarm storage quota.
+  ///
+  /// Output only.
+  core.String? sizeBytes;
+
+  /// The caching state of the prewarmed artifact.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : State not specified.
+  /// - "CACHING" : The artifact is currently being cached.
+  /// - "ACTIVE" : The artifact is cached and ready for streaming.
+  /// - "FAILED" : Caching the artifact failed. See `error_message` for details.
+  core.String? state;
 
   /// URL to access the image.
   ///
@@ -6115,22 +6139,42 @@ class PrewarmedArtifact {
   /// us-west4-docker.pkg.dev/test-project/test-repo/nginx@sha256:e9954c1fc875017be1c3e36eca16be2d9e9bccc4bf072163515467d6a823c7cf
   core.String? uri;
 
-  PrewarmedArtifact({this.expirationTime, this.location, this.uri});
+  PrewarmedArtifact({
+    this.createTime,
+    this.errorMessage,
+    this.expirationTime,
+    this.location,
+    this.sizeBytes,
+    this.state,
+    this.uri,
+  });
 
   PrewarmedArtifact.fromJson(core.Map json_)
     : this(
+        createTime: json_['createTime'] as core.String?,
+        errorMessage: json_['errorMessage'] as core.String?,
         expirationTime: json_['expirationTime'] as core.String?,
         location: json_['location'] as core.String?,
+        sizeBytes: json_['sizeBytes'] as core.String?,
+        state: json_['state'] as core.String?,
         uri: json_['uri'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final errorMessage = this.errorMessage;
     final expirationTime = this.expirationTime;
     final location = this.location;
+    final sizeBytes = this.sizeBytes;
+    final state = this.state;
     final uri = this.uri;
     return {
+      'createTime': ?createTime,
+      'errorMessage': ?errorMessage,
       'expirationTime': ?expirationTime,
       'location': ?location,
+      'sizeBytes': ?sizeBytes,
+      'state': ?state,
       'uri': ?uri,
     };
   }

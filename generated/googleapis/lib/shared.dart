@@ -452,6 +452,7 @@ class $Arguments00 {
   /// - "LANGUAGE_UNSPECIFIED" : Unspecified language. This value should not be
   /// used.
   /// - "PYTHON" : Python \>= 3.10, with numpy and simpy available.
+  /// - "BASH" : Bash. Only available for Gemini 3.0 model or above.
   core.String? language;
 
   $Arguments00({this.code, this.language});
@@ -3730,7 +3731,9 @@ class $DrainingMachine {
 /// - cloudtrace:v2 : Empty
 /// - composer:v1 : DatabaseFailoverRequest
 /// - composer:v1 : Empty
+/// - composer:v1 : HibernateEnvironmentRequest
 /// - composer:v1 : RestartWebServerRequest
+/// - composer:v1 : ResumeEnvironmentRequest
 /// - compute:v1 : InterconnectApplicationAwareInterconnectStrictPriorityPolicy
 /// - compute:v1 : ResourcePolicyDiskConsistencyGroupPolicy
 /// - config:v1 : CancelOperationRequest

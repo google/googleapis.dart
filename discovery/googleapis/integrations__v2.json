@@ -173,7 +173,13 @@
                                         }
                                     },
                                     "path": "v2/{+parent}:execute",
-                                    "request": {},
+                                    "request": {
+                                        "additionalProperties": {
+                                            "description": "Properties of the object.",
+                                            "type": "any"
+                                        },
+                                        "type": "object"
+                                    },
                                     "response": {
                                         "$ref": "GoogleApiHttpBody"
                                     },
@@ -327,7 +333,13 @@
                                         }
                                     },
                                     "path": "v2/{+parent}:schedule",
-                                    "request": {},
+                                    "request": {
+                                        "additionalProperties": {
+                                            "description": "Properties of the object.",
+                                            "type": "any"
+                                        },
+                                        "type": "object"
+                                    },
                                     "response": {
                                         "$ref": "GoogleApiHttpBody"
                                     },

@@ -2527,6 +2527,33 @@ void checkGoogleCloudIdentitytoolkitV1VerifyIosClientResponse(
   buildCounterGoogleCloudIdentitytoolkitV1VerifyIosClientResponse--;
 }
 
+core.Map<core.String, core.Object?> buildUnnamed33() => {
+  'x': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+  'y': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+};
+
+void checkUnnamed33(core.Map<core.String, core.Object?> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  var casted1 = (o['x']!) as core.Map;
+  unittest.expect(casted1, unittest.hasLength(3));
+  unittest.expect(casted1['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted1['bool'], unittest.equals(true));
+  unittest.expect(casted1['string'], unittest.equals('foo'));
+  var casted2 = (o['y']!) as core.Map;
+  unittest.expect(casted2, unittest.hasLength(3));
+  unittest.expect(casted2['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted2['bool'], unittest.equals(true));
+  unittest.expect(casted2['string'], unittest.equals('foo'));
+}
+
 void main() {
   unittest.group('obj-schema-GoogleCloudIdentitytoolkitV1Argon2Parameters', () {
     unittest.test('to-json--from-json', () async {
@@ -6075,12 +6102,13 @@ void main() {
           );
 
           final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = '';
+          final resp = convert.json.encode(buildUnnamed33());
           return async.Future.value(stringResponse(200, h, resp));
         }),
         true,
       );
-      await res.getPublicKeys($fields: arg_$fields);
+      final response = await res.getPublicKeys($fields: arg_$fields);
+      checkUnnamed33(response as core.Map<core.String, core.Object?>);
     });
 
     unittest.test('method--getRecaptchaParams', () async {

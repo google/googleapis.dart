@@ -18,6 +18,13 @@
     "description": "Builds conversational interfaces (for example, chatbots, and voice-powered apps and devices).",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/dialogflow/",
+    "endpoints": [
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://dialogflow.us.rep.googleapis.com/",
+            "location": "us"
+        }
+    ],
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -28,7 +35,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20261018",
+    "revision": "20261106",
     "rootUrl": "https://dialogflow.googleapis.com/",
     "servicePath": "",
     "title": "Dialogflow API",
