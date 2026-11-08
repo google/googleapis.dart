@@ -122,5 +122,43 @@ skipped_apis: []
         ),
       );
     });
+
+    test(
+      'updateConfigurationFile preserves inline YAML comments when adding and '
+      'removing APIs',
+      () {
+        final configPath = writeConfig('''
+packages:
+  googleapis:
+    apis:
+      - alpha_keep:v1 # keep comment
+      - old_remove:v1 # remove comment
+      - zeta_keep:v1
+skipped_apis:
+  - beta_keep:v1 # sunset (2026-12-15)
+  - old_skip:v1beta # obsolete beta
+  - omega_keep:v2 # superseded by omega_keep:v3
+''');
+
+        final config = DiscoveryPackagesConfiguration(configPath)
+          ..missingApis = ['middle_new:v1', 'middle_skip:v1alpha']
+          ..excessApis = {'old_remove:v1', 'old_skip:v1beta'};
+
+        expect(config.updateConfigurationFile(), isTrue);
+
+        expect(File(configPath).readAsStringSync(), '''
+packages:
+  googleapis:
+    apis:
+      - alpha_keep:v1 # keep comment
+      - middle_new:v1
+      - zeta_keep:v1
+skipped_apis:
+  - beta_keep:v1 # sunset (2026-12-15)
+  - middle_skip:v1alpha
+  - omega_keep:v2 # superseded by omega_keep:v3
+''');
+      },
+    );
   });
 }
