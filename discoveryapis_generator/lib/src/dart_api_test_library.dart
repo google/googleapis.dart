@@ -45,11 +45,17 @@ class DartApiTestLibrary extends TestHelper {
       // Method parameters might have more types we need to register
       // (e.g. List<String>):
       for (var method in resource.methods) {
+        if (method.requestParameter != null) {
+          handleType(method.requestParameter!.type);
+        }
         for (var p in method.parameters) {
           handleType(p.type);
         }
         for (var p in method.namedParameters) {
           handleType(p.type);
+        }
+        if (method.returnType != null) {
+          handleType(method.returnType!);
         }
       }
 
@@ -367,11 +373,7 @@ class ResourceTest extends TestHelper {
             );
 
             final t = apiTestLibrary.schemaTests[method.returnType]!;
-            sb.writeln(
-              t.checkSchemaStatement(
-                'response as api.${t.schema.className!.name}',
-              ),
-            );
+            sb.writeln(t.checkSchemaStatement('response as ${t.declaration}'));
           }
         });
         sb.writeln();

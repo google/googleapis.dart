@@ -1,0 +1,37 @@
+diff --git a/discovery/googleapis/discovery__v1.json b/discovery/googleapis/discovery__v1.json
+index b44ca9f20..f2a51a116 100644
+--- a/discovery/googleapis/discovery__v1.json
++++ b/discovery/googleapis/discovery__v1.json
+@@ -665,9 +665,17 @@
+                             "description": "Schema ID for the request schema.",
+                             "type": "string"
+                         },
++                        "additionalProperties": {
++                            "$ref": "JsonSchema",
++                            "description": "If this is a schema for an object, list the schema for each property of this object."
++                        },
+                         "parameterName": {
+                             "description": "parameter name.",
+                             "type": "string"
++                        },
++                        "type": {
++                            "description": "The value type for this schema. A list of values can be found here: http://tools.ietf.org/html/draft-zyp-json-schema-03#section-5.1",
++                            "type": "string"
+                         }
+                     },
+                     "type": "object"
+@@ -678,6 +686,14 @@
+                         "$ref": {
+                             "description": "Schema ID for the response schema.",
+                             "type": "string"
++                        },
++                        "additionalProperties": {
++                            "$ref": "JsonSchema",
++                            "description": "If this is a schema for an object, list the schema for each property of this object."
++                        },
++                        "type": {
++                            "description": "The value type for this schema. A list of values can be found here: http://tools.ietf.org/html/draft-zyp-json-schema-03#section-5.1",
++                            "type": "string"
+                         }
+                     },
+                     "type": "object"

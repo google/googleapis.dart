@@ -76,13 +76,23 @@ extension on RestMethod {
     }
 
     final request = this.request;
-    if (request != null && request.P_ref != null) {
-      yield request.P_ref!;
+    if (request != null) {
+      if (request.P_ref != null) {
+        yield request.P_ref!;
+      }
+      if (request.additionalProperties != null) {
+        yield* request.additionalProperties!.referencedTypeIds();
+      }
     }
 
     final response = this.response;
-    if (response != null && response.P_ref != null) {
-      yield response.P_ref!;
+    if (response != null) {
+      if (response.P_ref != null) {
+        yield response.P_ref!;
+      }
+      if (response.additionalProperties != null) {
+        yield* response.additionalProperties!.referencedTypeIds();
+      }
     }
   }
 }

@@ -1050,20 +1050,44 @@ class RestMethodRequest {
   /// Schema ID for the request schema.
   core.String? P_ref;
 
+  /// If this is a schema for an object, list the schema for each property of
+  /// this object.
+  JsonSchema? additionalProperties;
+
   /// parameter name.
   core.String? parameterName;
 
-  RestMethodRequest({this.P_ref, this.parameterName});
+  /// The value type for this schema.
+  ///
+  /// A list of values can be found here:
+  /// http://tools.ietf.org/html/draft-zyp-json-schema-03#section-5.1
+  core.String? type;
+
+  RestMethodRequest({
+    this.P_ref,
+    this.additionalProperties,
+    this.parameterName,
+    this.type,
+  });
 
   RestMethodRequest.fromJson(core.Map json_)
     : this(
         P_ref: json_[r'$ref'] as core.String?,
+        additionalProperties: json_.containsKey('additionalProperties')
+            ? JsonSchema.fromJson(
+                json_['additionalProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         parameterName: json_['parameterName'] as core.String?,
+        type: json_['type'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     r'$ref': ?P_ref,
+    'additionalProperties': ?additionalProperties,
     'parameterName': ?parameterName,
+    'type': ?type,
   };
 }
 
@@ -1072,12 +1096,35 @@ class RestMethodResponse {
   /// Schema ID for the response schema.
   core.String? P_ref;
 
-  RestMethodResponse({this.P_ref});
+  /// If this is a schema for an object, list the schema for each property of
+  /// this object.
+  JsonSchema? additionalProperties;
+
+  /// The value type for this schema.
+  ///
+  /// A list of values can be found here:
+  /// http://tools.ietf.org/html/draft-zyp-json-schema-03#section-5.1
+  core.String? type;
+
+  RestMethodResponse({this.P_ref, this.additionalProperties, this.type});
 
   RestMethodResponse.fromJson(core.Map json_)
-    : this(P_ref: json_[r'$ref'] as core.String?);
+    : this(
+        P_ref: json_[r'$ref'] as core.String?,
+        additionalProperties: json_.containsKey('additionalProperties')
+            ? JsonSchema.fromJson(
+                json_['additionalProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        type: json_['type'] as core.String?,
+      );
 
-  core.Map<core.String, core.dynamic> toJson() => {r'$ref': ?P_ref};
+  core.Map<core.String, core.dynamic> toJson() => {
+    r'$ref': ?P_ref,
+    'additionalProperties': ?additionalProperties,
+    'type': ?type,
+  };
 }
 
 class RestMethod {

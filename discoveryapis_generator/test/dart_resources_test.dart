@@ -5,12 +5,14 @@
 // https://developers.google.com/open-source/licenses/bsd
 
 import 'package:discoveryapis_generator/src/dart_api_library.dart';
+import 'package:discoveryapis_generator/src/dart_api_test_library.dart';
 import 'package:discoveryapis_generator/src/dart_resources.dart';
 import 'package:discoveryapis_generator/src/dart_schema_types.dart';
 import 'package:discoveryapis_generator/src/dart_schemas.dart';
 import 'package:discoveryapis_generator/src'
     '/generated_googleapis/discovery/v1.dart';
 import 'package:discoveryapis_generator/src/namer.dart';
+import 'package:discoveryapis_generator/src/unused_logic.dart';
 import 'package:discoveryapis_generator/src/uri_template.dart';
 import 'package:test/test.dart';
 
@@ -303,6 +305,145 @@ void main() {
             checkResources('6', '', apiClass.subResources);
           },
         );
+      });
+
+      test('inline-object-request-and-response', () {
+        final json = {
+          'name': 'inlineapi',
+          'version': 'v1',
+          'rootUrl': 'https://www.googleapis.com/',
+          'servicePath': 'inline/v1/',
+          'schemas': {
+            'KeptSchema': {
+              'id': 'KeptSchema',
+              'type': 'object',
+              'properties': {
+                'value': {'type': 'string'},
+              },
+            },
+            'PrunedSchema': {
+              'id': 'PrunedSchema',
+              'type': 'object',
+              'properties': {
+                'unused': {'type': 'string'},
+              },
+            },
+          },
+          'methods': {
+            'processRunEvent': {
+              'id': 'inlineapi.processRunEvent',
+              'path': 'events:process',
+              'httpMethod': 'POST',
+              'request': {
+                'type': 'object',
+                'additionalProperties': {
+                  'description': 'Properties of the object.',
+                  'type': 'any',
+                },
+              },
+              'response': {
+                'type': 'object',
+                'additionalProperties': {r'$ref': 'KeptSchema'},
+              },
+            },
+          },
+        };
+
+        final description = RestDescription.fromJson(json);
+        expect(description.pruneUnused(), equals(1));
+        expect(description.schemas!.keys, contains('KeptSchema'));
+        expect(description.schemas!.keys, isNot(contains('PrunedSchema')));
+
+        final apiLibrary = DartApiLibrary.build(description, isPackage: false);
+        expect(apiLibrary.apiClass.methods, hasLength(1));
+        final method = apiLibrary.apiClass.methods.single;
+
+        expect(method.requestParameter, isNotNull);
+        expect(method.requestParameter!.type, isA<UnnamedMapType>());
+        expect(
+          method.requestParameter!.type.declaration,
+          equals('core.Map<core.String, core.Object?>'),
+        );
+
+        expect(method.returnType, isNotNull);
+        expect(method.returnType, isA<UnnamedMapType>());
+        expect(
+          method.returnType!.declaration,
+          equals('core.Map<core.String, core.Object?>'),
+        );
+
+        final source = apiLibrary.librarySource;
+        expect(
+          source,
+          contains('Completes with a [core.Map<core.String, core.Object?>].'),
+        );
+
+        final testLibrary = DartApiTestLibrary.build(
+          apiLibrary,
+          'package:googleapis/inlineapi/v1.dart',
+          'googleapis',
+          skip: false,
+        );
+        expect(
+          testLibrary.librarySource,
+          contains("unittest.test('method--processRunEvent'"),
+        );
+        expect(
+          testLibrary.librarySource,
+          contains(
+            'checkUnnamed1(response as core.Map<core.String, core.Object?>);',
+          ),
+        );
+      });
+
+      test('skips-non-primitive-query-parameters', () {
+        final json = buildApi(
+          '7',
+          methods: <String, dynamic>{
+            'mcp': <String, dynamic>{
+              'id': 'apiname7.mcp',
+              'path': 'v1/{+name}:mcp',
+              'httpMethod': 'GET',
+              'parameterOrder': ['name', 'extensions'],
+              'parameters': <String, dynamic>{
+                'name': <String, dynamic>{
+                  'type': 'string',
+                  'required': true,
+                  'location': 'path',
+                },
+                'filter': <String, dynamic>{
+                  'type': 'string',
+                  'location': 'query',
+                },
+                'extensions': <String, dynamic>{
+                  'type': 'object',
+                  'repeated': true,
+                  'location': 'query',
+                  'additionalProperties': <String, dynamic>{'type': 'any'},
+                },
+                'extraArray': <String, dynamic>{
+                  'type': 'array',
+                  'location': 'query',
+                  'items': <String, dynamic>{'type': 'string'},
+                },
+                'extraRef': <String, dynamic>{
+                  r'$ref': 'Task',
+                  'location': 'query',
+                },
+              },
+            },
+          },
+        );
+
+        withParsedApiResource(db, json, (DartApiClass apiClass) {
+          expect(apiClass.methods, hasLength(1));
+          final mcp = apiClass.methods.single;
+          expect(mcp.parameters.map((p) => p.name.name), equals(['name']));
+          expect(
+            mcp.namedParameters.map((p) => p.name.name),
+            equals(['filter']),
+          );
+        });
       });
     });
   });
