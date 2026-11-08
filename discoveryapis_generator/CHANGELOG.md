@@ -1,32 +1,40 @@
 ## 1.1.0-wip
 
+- Support inline `type: "object"` schemas with `additionalProperties` on
+  `RestMethod.request` and `RestMethod.response` when `$ref` is omitted.
+- Warn and skip non-primitive `location: "query"` parameters instead of throwing
+  during code generation.
 - Allow latest `package:http`.
 - Generate `@Deprecated` annotations for associated members.
 - Support `deprecationMap` to emit `@Deprecated` annotations and markdown
   deprecation notices for deprecated API libraries.
-- Replace Javadoc `{@code ...}` tags containing qualified identifiers and numbers.
+- Replace Javadoc `{@code ...}` tags containing qualified identifiers and
+  numbers.
 - Add positional parameters to all schema types.
 - Package version must be provided or default is to set `publish_to: none`.
 - Added `Function` to the set of reserved names.
 - Remove extra parenthesis from date encoding.
-- Generate much smaller code for trivial types: `String`, `bool`, `int`, `double`.
+- Generate much smaller code for trivial types: `String`, `bool`, `int`,
+  `double`.
 - Require `sdk: ^3.9.0`
 - Require `_discoveryapis_commons: ^1.0.8`.
 
 ## 1.0.0
 
-- Generates null-safe code.
-  *Note: the code in this package is not null-safe (yet) due to dependencies.*
+- Generates null-safe code. _Note: the code in this package is not null-safe
+  (yet) due to dependencies._
 - Require Dart `2.12` or greater.
 - Optional, named parameters are now sorted by name.
-- `generate` command: added `[--no]--delete-existing` flag. 
+- `generate` command: added `[--no]--delete-existing` flag.
 
 ## v0.9.15
- - Add support for scopes defined in
-   [openid-connect 1.0](https://openid.net/specs/openid-connect-core-1_0.html).
+
+- Add support for scopes defined in
+  [openid-connect 1.0](https://openid.net/specs/openid-connect-core-1_0.html).
 
 ## v0.9.14
- - Bumped `_discoveryapis_commons` to allow `0.2.x`.
+
+- Bumped `_discoveryapis_commons` to allow `0.2.x`.
 
 ## v0.9.12
 
@@ -51,8 +59,8 @@
 
 ## v0.9.7
 
-- Support data-wrapping of response bodies. This is a deprecated feature, but it is being used by
-  the Translate v2 API.
+- Support data-wrapping of response bodies. This is a deprecated feature, but it
+  is being used by the Translate v2 API.
 - Ignore unnecessary_cast lint in generated files.
 - Add .toDouble() conversion where necessary.
 
@@ -111,8 +119,8 @@
 
 ## v0.8.0
 
-- Remove crypto dependency from generated libraries and upgrade sdk
-  dependency to dart 1.13
+- Remove crypto dependency from generated libraries and upgrade sdk dependency
+  to dart 1.13
 
 ## v0.7.2
 
@@ -134,8 +142,8 @@
 
 - Add support for generating API files inside an existing package instead of
   generating an entirely new package.
-- Changed the generators command names to 'package' and 'files' respectively
-  to make it clear what is being generated.
+- Changed the generators command names to 'package' and 'files' respectively to
+  make it clear what is being generated.
 - Added support for generating a client stub API using the same message classes
   as used on the server.
 
