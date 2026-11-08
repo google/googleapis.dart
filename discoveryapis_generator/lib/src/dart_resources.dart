@@ -614,31 +614,12 @@ DartResourceMethod _parseMethod(
     parameterScope.newIdentifier(reserved);
   }
 
-  bool isUnsupportedQueryParameter(String jsonName, JsonSchema parameter) {
-    if (parameter.location == 'query' &&
-        (parameter.type == 'object' ||
-            parameter.type == 'array' ||
-            parameter.P_ref != null)) {
-      print(
-        'WARNING: Skipping non-primitive query parameter "$jsonName" '
-        '(type: ${parameter.type ?? parameter.P_ref}) on method '
-        '${method.id ?? jsonName} in '
-        '${description.name}:${description.version}.',
-      );
-      return true;
-    }
-    return false;
-  }
-
   // This set will be reduced to all optional parameters.
-  final pendingParameterNames = SplayTreeSet<String>();
-  if (method.parameters != null) {
-    for (var entry in method.parameters!.entries) {
-      if (!isUnsupportedQueryParameter(entry.key, entry.value)) {
-        pendingParameterNames.add(entry.key);
-      }
-    }
-  }
+  final pendingParameterNames = _pendingParameterNames(
+    description,
+    jsonName,
+    method,
+  );
 
   final positionalParameters = <MethodParameter>[];
   void tryEnqueuePositionalParameter(
@@ -708,9 +689,6 @@ DartResourceMethod _parseMethod(
     return Comment(sb.toString());
   }
 
-  DartSchemaType getValidReference(String ref) =>
-      DartSchemaForwardRef(imports, ref).resolve(db);
-
   // Enqueue positional parameters with a given order first.
   if (method.parameterOrder != null) {
     for (var jsonName in method.parameterOrder!) {
@@ -762,50 +740,33 @@ DartResourceMethod _parseMethod(
     }
   }
 
-  DartSchemaType? parseMethodObjectType(
-    String? ref,
-    String? type,
-    JsonSchema? additionalProperties,
-  ) {
-    if (ref != null) {
-      return getValidReference(ref);
-    }
-    if (type == 'object' && additionalProperties != null) {
-      return db.register(UnnamedMapType(imports, db.anyType)..resolve(db));
-    }
-    return null;
-  }
-
   // Check if we have a request object, if so parse it's type.
   MethodParameter? dartRequestParameter;
-  if (method.request != null) {
-    final type = parseMethodObjectType(
-      method.request!.P_ref,
-      method.request!.type,
-      method.request!.additionalProperties,
+  final requestType = _parseMethodObjectType(
+    db,
+    method.request?.P_ref,
+    method.request?.type,
+    method.request?.additionalProperties,
+  );
+  if (requestType != null) {
+    final requestName = parameterScope.newIdentifier('request');
+    final comment = Comment('The metadata request object.');
+    dartRequestParameter = MethodParameter(
+      requestName,
+      comment,
+      true,
+      requestType,
+      null,
+      null,
     );
-    if (type != null) {
-      final requestName = parameterScope.newIdentifier('request');
-      final comment = Comment('The metadata request object.');
-      dartRequestParameter = MethodParameter(
-        requestName,
-        comment,
-        true,
-        type,
-        null,
-        null,
-      );
-    }
   }
 
-  DartSchemaType? dartResponseType;
-  if (method.response != null) {
-    dartResponseType = parseMethodObjectType(
-      method.response!.P_ref,
-      method.response!.type,
-      method.response!.additionalProperties,
-    );
-  }
+  final dartResponseType = _parseMethodObjectType(
+    db,
+    method.response?.P_ref,
+    method.response?.type,
+    method.response?.additionalProperties,
+  );
 
   final comment = Comment.header(method.description, true);
 
@@ -1076,6 +1037,71 @@ DartSchemaType _parseResolved(
   if (schema.repeated != null && schema.repeated!) {
     final innerType = parsePrimitive(imports, db, schema);
     return UnnamedArrayType(imports, innerType);
+  }
+  return parsePrimitive(imports, db, schema);
+}
+
+SplayTreeSet<String> _pendingParameterNames(
+  RestDescription description,
+  String methodJsonName,
+  RestMethod method,
+) {
+  final pending = SplayTreeSet<String>();
+  final parameters = method.parameters;
+  if (parameters == null) return pending;
+
+  for (var entry in parameters.entries) {
+    final jsonName = entry.key;
+    final parameter = entry.value;
+    if (parameter.location == 'query' &&
+        (parameter.type == 'object' ||
+            parameter.type == 'array' ||
+            parameter.P_ref != null)) {
+      print(
+        'WARNING: Skipping non-primitive query parameter "$jsonName" '
+        '(type: ${parameter.type ?? parameter.P_ref}) on method '
+        '${method.id ?? methodJsonName} in '
+        '${description.name}:${description.version}.',
+      );
+      continue;
+    }
+    pending.add(jsonName);
+  }
+  return pending;
+}
+
+DartSchemaType? _parseMethodObjectType(
+  DartSchemaTypeDB db,
+  String? ref,
+  String? type,
+  JsonSchema? additionalProperties,
+) {
+  final imports = db.anyType.imports;
+  if (ref != null) {
+    return DartSchemaForwardRef(imports, ref).resolve(db);
+  }
+  if (type == 'object' && additionalProperties != null) {
+    final valueType = _parseInlineValueSchema(db, additionalProperties);
+    return db.register(UnnamedMapType(imports, valueType)..resolve(db));
+  }
+  return null;
+}
+
+DartSchemaType _parseInlineValueSchema(DartSchemaTypeDB db, JsonSchema schema) {
+  final imports = db.anyType.imports;
+  if (schema.P_ref != null) {
+    return DartSchemaForwardRef(imports, schema.P_ref!).resolve(db);
+  }
+  if (schema.type == 'any' || schema.type == null) {
+    return db.anyType;
+  }
+  if (schema.type == 'array' && schema.items != null) {
+    final itemType = _parseInlineValueSchema(db, schema.items!);
+    return db.register(UnnamedArrayType(imports, itemType)..resolve(db));
+  }
+  if (schema.type == 'object' && schema.additionalProperties != null) {
+    final valueType = _parseInlineValueSchema(db, schema.additionalProperties!);
+    return db.register(UnnamedMapType(imports, valueType)..resolve(db));
   }
   return parsePrimitive(imports, db, schema);
 }

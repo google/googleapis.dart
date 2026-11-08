@@ -346,6 +346,15 @@ void main() {
                 'additionalProperties': {r'$ref': 'KeptSchema'},
               },
             },
+            'getPublicKeys': {
+              'id': 'inlineapi.getPublicKeys',
+              'path': 'publicKeys',
+              'httpMethod': 'GET',
+              'response': {
+                'type': 'object',
+                'additionalProperties': {'type': 'string'},
+              },
+            },
           },
         };
 
@@ -355,8 +364,18 @@ void main() {
         expect(description.schemas!.keys, isNot(contains('PrunedSchema')));
 
         final apiLibrary = DartApiLibrary.build(description, isPackage: false);
-        expect(apiLibrary.apiClass.methods, hasLength(1));
-        final method = apiLibrary.apiClass.methods.single;
+        expect(apiLibrary.apiClass.methods, hasLength(2));
+
+        final getPublicKeys = apiLibrary.apiClass.methods[0];
+        expect(getPublicKeys.name.name, equals('getPublicKeys'));
+        expect(getPublicKeys.requestParameter, isNull);
+        expect(
+          getPublicKeys.returnType!.declaration,
+          equals('core.Map<core.String, core.String>'),
+        );
+
+        final method = apiLibrary.apiClass.methods[1];
+        expect(method.name.name, equals('processRunEvent'));
 
         expect(method.requestParameter, isNotNull);
         expect(method.requestParameter!.type, isA<UnnamedMapType>());
@@ -369,14 +388,15 @@ void main() {
         expect(method.returnType, isA<UnnamedMapType>());
         expect(
           method.returnType!.declaration,
-          equals('core.Map<core.String, core.Object?>'),
+          equals('core.Map<core.String, KeptSchema>'),
         );
 
         final source = apiLibrary.librarySource;
         expect(
           source,
-          contains('Completes with a [core.Map<core.String, core.Object?>].'),
+          contains('Completes with a [core.Map<core.String, KeptSchema>].'),
         );
+        expect(source, contains('KeptSchema.fromJson('));
 
         final testLibrary = DartApiTestLibrary.build(
           apiLibrary,
@@ -391,7 +411,7 @@ void main() {
         expect(
           testLibrary.librarySource,
           contains(
-            'checkUnnamed1(response as core.Map<core.String, core.Object?>);',
+            'checkUnnamed2(response as core.Map<core.String, api.KeptSchema>);',
           ),
         );
       });
@@ -417,6 +437,7 @@ void main() {
                 },
                 'extensions': <String, dynamic>{
                   'type': 'object',
+                  'required': true,
                   'repeated': true,
                   'location': 'query',
                   'additionalProperties': <String, dynamic>{'type': 'any'},

@@ -33,60 +33,57 @@ class DartApiTestLibrary extends TestHelper {
     this.packageName, {
     required this.skip,
   }) {
-    void handleType(DartSchemaType schema) {
-      schemaTests.putIfAbsent(schema, () => testFromSchema(this, schema));
-    }
-
-    void traverseResource(
-      DartResourceClass resource,
-      ResourceTest? parent,
-      Identifier? nameInParent,
-    ) {
-      // Method parameters might have more types we need to register
-      // (e.g. List<String>):
-      for (var method in resource.methods) {
-        if (method.requestParameter != null) {
-          handleType(method.requestParameter!.type);
-        }
-        for (var p in method.parameters) {
-          handleType(p.type);
-        }
-        for (var p in method.namedParameters) {
-          handleType(p.type);
-        }
-        if (method.returnType != null) {
-          handleType(method.returnType!);
-        }
-      }
-
-      // Register resource tests.
-      final test = ResourceTest(this, resource, parent, nameInParent);
-      if (resource.methods.isNotEmpty) {
-        resourceTests.add(test);
-      }
-      for (var i = 0; i < resource.subResources.length; i++) {
-        final subResource = resource.subResources[i];
-        final subResourceName = resource.subResourceIdentifiers[i];
-        traverseResource(subResource, test, subResourceName);
-      }
-    }
-
     // Build up [schemaTests] and [resourceTests].
     final db = apiLibrary.schemaDB;
-    handleType(db.integerType);
-    handleType(db.doubleType);
-    handleType(db.booleanType);
-    handleType(db.stringType);
-    handleType(db.nullableStringType);
-    handleType(db.dateType);
-    handleType(db.dateTimeType);
-    handleType(db.anyType);
+    _handleType(db.integerType);
+    _handleType(db.doubleType);
+    _handleType(db.booleanType);
+    _handleType(db.stringType);
+    _handleType(db.nullableStringType);
+    _handleType(db.dateType);
+    _handleType(db.dateTimeType);
+    _handleType(db.anyType);
 
-    apiLibrary.schemaDB.dartTypes.forEach(handleType);
+    apiLibrary.schemaDB.dartTypes.forEach(_handleType);
 
-    traverseResource(apiLibrary.apiClass, null, null);
+    _traverseResource(apiLibrary.apiClass, null, null);
 
     UnnamedSchemaTest.resetCounter();
+  }
+
+  void _handleType(DartSchemaType? schema) {
+    if (schema == null) return;
+    schemaTests.putIfAbsent(schema, () => testFromSchema(this, schema));
+  }
+
+  void _traverseResource(
+    DartResourceClass resource,
+    ResourceTest? parent,
+    Identifier? nameInParent,
+  ) {
+    // Method parameters might have more types we need to register
+    // (e.g. List<String>):
+    for (var method in resource.methods) {
+      _handleType(method.requestParameter?.type);
+      for (var p in method.parameters) {
+        _handleType(p.type);
+      }
+      for (var p in method.namedParameters) {
+        _handleType(p.type);
+      }
+      _handleType(method.returnType);
+    }
+
+    // Register resource tests.
+    final test = ResourceTest(this, resource, parent, nameInParent);
+    if (resource.methods.isNotEmpty) {
+      resourceTests.add(test);
+    }
+    for (var i = 0; i < resource.subResources.length; i++) {
+      final subResource = resource.subResources[i];
+      final subResourceName = resource.subResourceIdentifiers[i];
+      _traverseResource(subResource, test, subResourceName);
+    }
   }
 
   String get librarySource {
