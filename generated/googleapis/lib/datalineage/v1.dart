@@ -395,6 +395,8 @@ class ProjectsLocationsResource {
   /// Lineage specification:
   /// https://github.com/OpenLineage/OpenLineage/blob/main/spec/OpenLineage.json.
   ///
+  /// [request] - The metadata request object.
+  ///
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the project and its location that should
@@ -420,10 +422,12 @@ class ProjectsLocationsResource {
     GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse
   >
   processOpenLineageRunEvent(
+    core.Map<core.String, core.Object?> request,
     core.String parent, {
     core.String? requestId,
     core.String? $fields,
   }) async {
+    final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       'requestId': ?requestId == null ? null : [requestId],
       'fields': ?$fields == null ? null : [$fields],
@@ -435,6 +439,7 @@ class ProjectsLocationsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
+      body: body_,
       queryParams: queryParams_,
     );
     return GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse.fromJson(

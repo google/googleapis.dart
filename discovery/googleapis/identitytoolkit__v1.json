@@ -1202,7 +1202,13 @@
                     "parameterOrder": [],
                     "parameters": {},
                     "path": "v1/publicKeys",
-                    "response": {},
+                    "response": {
+                        "additionalProperties": {
+                            "description": "Properties of the object.",
+                            "type": "any"
+                        },
+                        "type": "object"
+                    },
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform"
                     ]

@@ -1487,6 +1487,33 @@ void checkGoogleTypeInterval(api.GoogleTypeInterval o) {
   buildCounterGoogleTypeInterval--;
 }
 
+core.Map<core.String, core.Object?> buildUnnamed28() => {
+  'x': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+  'y': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+};
+
+void checkUnnamed28(core.Map<core.String, core.Object?> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  var casted11 = (o['x']!) as core.Map;
+  unittest.expect(casted11, unittest.hasLength(3));
+  unittest.expect(casted11['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted11['bool'], unittest.equals(true));
+  unittest.expect(casted11['string'], unittest.equals('foo'));
+  var casted12 = (o['y']!) as core.Map;
+  unittest.expect(casted12, unittest.hasLength(3));
+  unittest.expect(casted12['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted12['bool'], unittest.equals(true));
+  unittest.expect(casted12['string'], unittest.equals('foo'));
+}
+
 void main() {
   unittest.group(
     'obj-schema-GoogleCloudDatacatalogLineageConfigmanagementV1Config',
@@ -2376,11 +2403,15 @@ void main() {
     unittest.test('method--processOpenLineageRunEvent', () async {
       final mock = HttpServerMock();
       final res = api.DatalineageApi(mock).projects.locations;
+      final arg_request = buildUnnamed28();
       final arg_parent = 'foo';
       final arg_requestId = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = json as core.Map<core.String, core.dynamic>;
+          checkUnnamed28(obj);
+
           final path = req.url.path;
           var pathOffset = 0;
           core.int index;
@@ -2430,6 +2461,7 @@ void main() {
         true,
       );
       final response = await res.processOpenLineageRunEvent(
+        arg_request,
         arg_parent,
         requestId: arg_requestId,
         $fields: arg_$fields,

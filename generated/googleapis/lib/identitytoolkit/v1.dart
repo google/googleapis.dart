@@ -2121,24 +2121,28 @@ class V1Resource {
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
+  /// Completes with a [core.Map<core.String, core.Object?>].
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<void> getPublicKeys({core.String? $fields}) async {
+  async.Future<core.Map<core.String, core.Object?>> getPublicKeys({
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       'fields': ?$fields == null ? null : [$fields],
     };
 
     const url_ = 'v1/publicKeys';
 
-    await _requester.request(
+    final response_ = await _requester.request(
       url_,
       'GET',
       queryParams: queryParams_,
-      downloadOptions: null,
     );
+    return response_ as core.Map<core.String, core.dynamic>;
   }
 
   /// Gets parameters needed for generating a reCAPTCHA challenge.

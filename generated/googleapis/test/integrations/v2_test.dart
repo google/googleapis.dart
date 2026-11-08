@@ -1739,6 +1739,60 @@ void checkGoogleCloudIntegrationsV2TaskExecutionTaskExecutionMetadata(
   buildCounterGoogleCloudIntegrationsV2TaskExecutionTaskExecutionMetadata--;
 }
 
+core.Map<core.String, core.Object?> buildUnnamed38() => {
+  'x': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+  'y': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+};
+
+void checkUnnamed38(core.Map<core.String, core.Object?> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  var casted9 = (o['x']!) as core.Map;
+  unittest.expect(casted9, unittest.hasLength(3));
+  unittest.expect(casted9['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted9['bool'], unittest.equals(true));
+  unittest.expect(casted9['string'], unittest.equals('foo'));
+  var casted10 = (o['y']!) as core.Map;
+  unittest.expect(casted10, unittest.hasLength(3));
+  unittest.expect(casted10['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted10['bool'], unittest.equals(true));
+  unittest.expect(casted10['string'], unittest.equals('foo'));
+}
+
+core.Map<core.String, core.Object?> buildUnnamed39() => {
+  'x': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+  'y': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+};
+
+void checkUnnamed39(core.Map<core.String, core.Object?> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  var casted11 = (o['x']!) as core.Map;
+  unittest.expect(casted11, unittest.hasLength(3));
+  unittest.expect(casted11['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted11['bool'], unittest.equals(true));
+  unittest.expect(casted11['string'], unittest.equals('foo'));
+  var casted12 = (o['y']!) as core.Map;
+  unittest.expect(casted12, unittest.hasLength(3));
+  unittest.expect(casted12['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted12['bool'], unittest.equals(true));
+  unittest.expect(casted12['string'], unittest.equals('foo'));
+}
+
 void main() {
   unittest.group('obj-schema-GoogleApiHttpBody', () {
     unittest.test('to-json--from-json', () async {
@@ -2423,12 +2477,16 @@ void main() {
     unittest.test('method--execute', () async {
       final mock = HttpServerMock();
       final res = api.IntegrationsApi(mock).projects.locations.integrations;
+      final arg_request = buildUnnamed38();
       final arg_parent = 'foo';
       final arg_requestId = 'foo';
       final arg_triggerId = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = json as core.Map<core.String, core.dynamic>;
+          checkUnnamed38(obj);
+
           final path = req.url.path;
           var pathOffset = 0;
           core.int index;
@@ -2480,6 +2538,7 @@ void main() {
         true,
       );
       final response = await res.execute(
+        arg_request,
         arg_parent,
         requestId: arg_requestId,
         triggerId: arg_triggerId,
@@ -2773,6 +2832,7 @@ void main() {
     unittest.test('method--schedule', () async {
       final mock = HttpServerMock();
       final res = api.IntegrationsApi(mock).projects.locations.integrations;
+      final arg_request = buildUnnamed39();
       final arg_parent = 'foo';
       final arg_requestId = 'foo';
       final arg_scheduleTime = 'foo';
@@ -2780,6 +2840,9 @@ void main() {
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = json as core.Map<core.String, core.dynamic>;
+          checkUnnamed39(obj);
+
           final path = req.url.path;
           var pathOffset = 0;
           core.int index;
@@ -2835,6 +2898,7 @@ void main() {
         true,
       );
       final response = await res.schedule(
+        arg_request,
         arg_parent,
         requestId: arg_requestId,
         scheduleTime: arg_scheduleTime,

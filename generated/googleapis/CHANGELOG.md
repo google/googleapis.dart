@@ -1,5 +1,10 @@
 ## 19.0.0-wip
 
+- Generate `core.Map<core.String, core.Object?>` request and response bodies for
+  methods with inline `google.protobuf.Struct` schemas (`datalineage:v1`
+  `processOpenLineageRunEvent`, `integrations:v2` `execute` and `schedule`, and
+  `identitytoolkit:v1` `getPublicKeys`).
+
 ### APIs
 
 - `blockchainnodeengine` - **REMOVED**
