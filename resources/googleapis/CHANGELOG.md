@@ -1,4 +1,4 @@
-## 19.0.0-wip
+## 19.0.0
 
 - Generate `core.Map<core.String, core.Object?>` request and response bodies for
   methods with inline `google.protobuf.Struct` schemas (`datalineage:v1`
