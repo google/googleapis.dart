@@ -152,3 +152,30 @@ class GeneratorError implements Exception {
   @override
   String toString() => 'Error while generating API for $api/$version: $message';
 }
+
+final _validSegmentPattern = RegExp(r'^[a-zA-Z0-9_-]+(?:\.[a-zA-Z0-9_-]+)*$');
+
+String validatePathSegment(String? value, String fieldName) {
+  if (value == null) {
+    throw ArgumentError.notNull(fieldName);
+  }
+  if (!_validSegmentPattern.hasMatch(value)) {
+    throw ArgumentError.value(
+      value,
+      fieldName,
+      'Must match ${_validSegmentPattern.pattern}.',
+    );
+  }
+  return value;
+}
+
+String resolveOutputPath(String rootDir, List<String> segments) {
+  final canonicalRoot = canonicalize(rootDir);
+  final targetPath = canonicalize(joinAll([canonicalRoot, ...segments]));
+  if (!isWithin(canonicalRoot, targetPath)) {
+    throw ArgumentError(
+      'Output path "$targetPath" escapes root directory "$canonicalRoot".',
+    );
+  }
+  return targetPath;
+}

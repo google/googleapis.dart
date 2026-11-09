@@ -283,9 +283,13 @@ class AbstractVariantType extends ComplexDartSchemaType {
     fromJsonString.writeln(
       '  factory $className.fromJson(${imports.core.ref()}Map json) {',
     );
-    fromJsonString.writeln("    var discriminant = json['$discriminant'];");
+    fromJsonString.writeln(
+      '    var discriminant = json[${escapeDartString(discriminant!)}];',
+    );
     map.forEach((String? name, DartSchemaType type) {
-      fromJsonString.writeln('    if (discriminant == "$name") {');
+      fromJsonString.writeln(
+        '    if (discriminant == ${escapeDartString(name!)}) {',
+      );
       fromJsonString.writeln(
         '      return ${type.declaration}'
         '.fromJson(json);',

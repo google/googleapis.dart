@@ -81,6 +81,8 @@ String _rewriteCodeTags(String? input) {
   return input.replaceAllMapped(_codeRegExp, (match) => '`${match[1]}`');
 }
 
+final _lineTerminators = RegExp(r'\r\n?|[\u2028\u2029]');
+
 /// Represents a comment of a dart element (e.g. class, method, ...)
 class Comment {
   static final empty = Comment('');
@@ -166,12 +168,13 @@ class Comment {
   String asDartDoc(int indentationLevel) {
     if (rawComment.isEmpty) return '';
 
-    final commentString = _escapeComment(rawComment);
+    final commentString = _escapeComment(
+      rawComment,
+    ).replaceAll(_lineTerminators, '\n');
     final spaces = ' ' * indentationLevel;
 
     if (!commentString.contains('\n')) {
-      final onelineComment =
-          '$spaces${'/// ${_escapeComment(commentString)}\n'}';
+      final onelineComment = '$spaces/// $commentString\n';
       if (onelineComment.length <= 80) {
         return onelineComment;
       }

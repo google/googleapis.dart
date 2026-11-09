@@ -9,6 +9,8 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:discoveryapis_generator/discoveryapis_generator.dart';
+// ignore: implementation_imports
+import 'package:discoveryapis_generator/src/utils.dart';
 
 import 'src/fetch_core.dart';
 import 'src/package_configuration.dart';
@@ -23,6 +25,14 @@ Future<List<RestDescription>> downloadDiscoveryDocuments(
 }
 
 void writeDiscoveryDocuments(String outputDir, List<RestDescription> apis) {
+  final filesToWrite = <(String, RestDescription)>[
+    for (final description in apis)
+      (
+        resolveOutputPath(outputDir, [_discoveryDocFileName(description)]),
+        description,
+      ),
+  ];
+
   final directory = Directory(outputDir);
   if (directory.existsSync()) {
     print('Deleting directory $outputDir.');
@@ -30,13 +40,21 @@ void writeDiscoveryDocuments(String outputDir, List<RestDescription> apis) {
   }
   directory.createSync(recursive: true);
 
-  for (var description in apis) {
-    final name = '$outputDir/${description.name}__${description.version}.json';
-    final file = File(name);
+  for (final (filePath, description) in filesToWrite) {
+    final file = File(filePath);
     const encoder = JsonEncoder.withIndent('    ');
     file.writeAsStringSync('${encoder.convert(description.toJsonSorted())}\n');
   }
   print('Wrote ${apis.length} APIs to $outputDir.');
+}
+
+String _discoveryDocFileName(RestDescription description) {
+  final name = validatePathSegment(description.name, 'description.name');
+  final version = validatePathSegment(
+    description.version,
+    'description.version',
+  );
+  return '${name}__$version.json';
 }
 
 List<RestDescription> loadDiscoveryDocuments(String directory) =>

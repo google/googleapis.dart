@@ -76,9 +76,12 @@ class ApisFilesGenerator {
         json.decode(diPair.apiDescription) as Map,
       );
       description.pruneUnused();
-      final name = description.name!.toLowerCase();
+      final name = validatePathSegment(
+        description.name,
+        'description.name',
+      ).toLowerCase();
       final version = description.version!.toLowerCase();
-      final apiFile = path.join(clientFolderPath, '$name.dart');
+      final apiFile = resolveOutputPath(clientFolderPath, ['$name.dart']);
       try {
         BaseApiLibrary lib;
         if (diPair.importMap == null) {

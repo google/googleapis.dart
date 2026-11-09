@@ -944,7 +944,7 @@ class NestedResponseFactory {
 
   static core.Map<core.String, core.dynamic> toJson(NestedResponse message) {
     final nestedResult = message.nestedResult;
-    return {"'nestedResult'": ?nestedResult};
+    return {'nestedResult': ?nestedResult};
   }
 }
 
@@ -959,7 +959,7 @@ class ToyAgeRequestFactory {
 
   static core.Map<core.String, core.dynamic> toJson(ToyAgeRequest message) {
     final age = message.age;
-    return {"'age'": ?age};
+    return {'age': ?age};
   }
 }
 
@@ -1008,14 +1008,14 @@ class ToyMapResponseFactory {
     final result = message.result;
     final v = message.v;
     return {
-      "'mapResult'": ?mapResult?.map(
+      'mapResult': ?mapResult?.map(
         (key, item) => core.MapEntry(key, NestedResponseFactory.toJson(item)),
       ),
-      "'msgValue'": ?msgValue,
-      "'nullValue'": ?nullValue,
-      "'properties'": ?properties,
-      "'result'": ?result,
-      "'v'": ?v,
+      'msgValue': ?msgValue,
+      'nullValue': ?nullValue,
+      'properties': ?properties,
+      'result': ?result,
+      'v': ?v,
     };
   }
 }
@@ -1035,7 +1035,7 @@ class ToyRequestFactory {
   static core.Map<core.String, core.dynamic> toJson(ToyRequest message) {
     final age = message.age;
     final name = message.name;
-    return {"'age'": ?age, "'name'": ?name};
+    return {'age': ?age, 'name': ?name};
   }
 }
 
@@ -1052,7 +1052,7 @@ class ToyResourceResponseFactory {
     ToyResourceResponse message,
   ) {
     final result = message.result;
-    return {"'result'": ?result};
+    return {'result': ?result};
   }
 }
 
@@ -1067,6 +1067,6 @@ class ToyResponseFactory {
 
   static core.Map<core.String, core.dynamic> toJson(ToyResponse message) {
     final result = message.result;
-    return {"'result'": ?result};
+    return {'result': ?result};
   }
 }
