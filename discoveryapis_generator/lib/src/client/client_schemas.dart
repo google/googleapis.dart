@@ -72,7 +72,7 @@ class ClientObjectType extends ObjectType {
       toJsonString.writeln('    return {');
       for (var property in properties) {
         toJsonString.writeln(
-          '      "${escapeDartString(property.jsonName)}": '
+          '      ${escapeDartString(property.jsonName)}: '
           '?${property.type.jsonEncodeNullable(property.name.toString())},',
         );
       }

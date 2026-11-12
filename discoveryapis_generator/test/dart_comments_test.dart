@@ -5,6 +5,7 @@
 // https://developers.google.com/open-source/licenses/bsd
 
 import 'package:discoveryapis_generator/src/dart_comments.dart';
+import 'package:discoveryapis_generator/src/utils.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -83,6 +84,79 @@ void main() {
         /// A A
 '''),
       );
+    });
+
+    group('line-terminators', () {
+      const terminators = {
+        'CR': '\r',
+        'CRLF': '\r\n',
+        'LF': '\n',
+        'LS (U+2028)': '\u2028',
+        'PS (U+2029)': '\u2029',
+      };
+
+      for (final entry in terminators.entries) {
+        final label = entry.key;
+        final sep = entry.value;
+
+        test('$label short comment (<=80 chars)', () {
+          final comment = Comment('First${sep}void injected() {}');
+          expect(
+            comment.asDartDoc(0),
+            equals('/// First\n/// void injected() {}\n'),
+          );
+          expect(
+            comment.asDartDoc(2),
+            equals('  /// First\n  /// void injected() {}\n'),
+          );
+        });
+
+        test('$label long wrapped comment (>80 chars)', () {
+          final longPrefix = List.filled(18, 'word').join(' ');
+          final comment = Comment('$longPrefix${sep}void injected() {}');
+
+          for (final indent in [0, 4]) {
+            final output = comment.asDartDoc(indent);
+            final prefix = '${' ' * indent}///';
+            expect(output, isNot(contains('\r')));
+            expect(output, isNot(contains('\u2028')));
+            expect(output, isNot(contains('\u2029')));
+
+            final lines = output.trimRight().split('\n');
+            expect(lines.length, greaterThanOrEqualTo(3));
+            for (final line in lines) {
+              expect(line, startsWith(prefix));
+            }
+            expect(lines.last, equals('$prefix void injected() {}'));
+          }
+        });
+
+        test('$label in Comment.header and DartFormatter safety', () {
+          final inputs = [
+            'Hello${sep}void injected() {}$sep//',
+            '${List.filled(18, 'word').join(' ')}${sep}void injected() {}$sep//',
+            'See [link](https://example.com)${sep}void injected() {}',
+            '/* block${sep}void injected() {} */',
+          ];
+
+          for (final raw in inputs) {
+            for (final comment in [Comment(raw), Comment.header(raw, true)]) {
+              final doc = comment.asDartDoc(0);
+              expect(doc, isNot(contains('\r')));
+              expect(doc, isNot(contains('\u2028')));
+              expect(doc, isNot(contains('\u2029')));
+
+              final source = '${doc}class Foo {}\n';
+              final formatted = formatSource(source);
+              final lines = formatted.trimRight().split('\n');
+              expect(lines.last, equals('class Foo {}'));
+              for (final docLine in lines.take(lines.length - 1)) {
+                expect(docLine, startsWith('///'));
+              }
+            }
+          }
+        });
+      }
     });
   });
 

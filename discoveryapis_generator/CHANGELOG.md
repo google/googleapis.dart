@@ -1,5 +1,9 @@
 ## 1.1.0-wip
 
+- Harden Discovery document handling by validating API `name`/`version` path
+  segments, normalizing doc-comment line terminators, and escaping generated
+  string literals and identifiers.
+- Fix `ClientObjectType.toJson` property key quoting in generated client stubs.
 - Support inline `type: "object"` schemas with `additionalProperties` on
   `RestMethod.request` and `RestMethod.response` when `$ref` is omitted.
 - Warn and skip non-primitive `location: "query"` parameters instead of throwing

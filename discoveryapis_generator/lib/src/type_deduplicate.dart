@@ -12,6 +12,7 @@ import 'package:collection/collection.dart';
 
 import 'dart_schema_types.dart';
 import 'generated_googleapis/discovery/v1.dart';
+import 'namer.dart';
 import 'unused_logic.dart';
 
 const sharedLibraryName = 'shared.dart';
@@ -181,6 +182,11 @@ class _PackageZoneData {
   _PackageZoneData(this.candidates);
 }
 
+final _lineTerminators = RegExp(r'\r\n?|[\n\u2028\u2029]');
+
+String _sanitizeCommentSegment(String value) =>
+    value.replaceAll(_lineTerminators, ' ').trim();
+
 class DuplicateItem implements Comparable<DuplicateItem> {
   final String desiredClassName;
   final Set<_Replacement> _replacements;
@@ -195,7 +201,7 @@ class DuplicateItem implements Comparable<DuplicateItem> {
       '''
 /// Used by:
 ///
-${_replacements.map((e) => '/// - $e').join('\n')}
+${_replacements.map((e) => '/// - ${_sanitizeCommentSegment(e.library)} : ${_sanitizeCommentSegment(e.classname)}').join('\n')}
 $_definition''';
 
   DuplicateItem._({
@@ -277,6 +283,15 @@ extension on JsonSchema {
 }
 
 String _bestName(Set<String> allKeys) {
+  final candidate = _rawBestName(allKeys);
+  final sanitized = Scope.toValidIdentifier(
+    candidate,
+    removeUnderscores: false,
+  );
+  return sanitized.isEmpty ? 'Shared' : sanitized;
+}
+
+String _rawBestName(Set<String> allKeys) {
   if (allKeys.contains('Empty')) {
     return 'Empty';
   }

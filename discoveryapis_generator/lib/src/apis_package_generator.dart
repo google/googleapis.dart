@@ -57,10 +57,20 @@ class ApisPackageGenerator with DedupeMixin {
   /// If the output directory already exists it will delete everything in it
   /// except ".git" folders.
   List<GenerateResult> generateApiPackage() {
-    final libFolderPath = '$packageFolderPath/lib';
-    final testFolderPath = '$packageFolderPath/test';
-    final pubspecYamlPath = '$packageFolderPath/pubspec.yaml';
-    final gitIgnorePath = '$packageFolderPath/.gitignore';
+    final libFolderPath = p.join(packageFolderPath, 'lib');
+    final testFolderPath = p.join(packageFolderPath, 'test');
+    final pubspecYamlPath = p.join(packageFolderPath, 'pubspec.yaml');
+    final gitIgnorePath = p.join(packageFolderPath, '.gitignore');
+
+    for (final description in descriptions) {
+      final name = validatePathSegment(
+        description.name,
+        'description.name',
+      ).toLowerCase();
+      final version = _normalizeAndValidateVersion(description.version);
+      resolveOutputPath(libFolderPath, [name, '$version.dart']);
+      resolveOutputPath(testFolderPath, [name, '${version}_test.dart']);
+    }
 
     // Clean contents of directory (except for .git folder)
     final packageDirectory = Directory(packageFolderPath);
@@ -82,7 +92,7 @@ class ApisPackageGenerator with DedupeMixin {
     _writeFile(pubspecYamlPath, _writePubspec);
     writeString(gitIgnorePath, _gitIgnore);
 
-    writeDartSource('$libFolderPath/$userAgentDartFilePath', """
+    writeDartSource(p.join(libFolderPath, userAgentDartFilePath), """
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 
 ${requestHeadersField(pubspec.version)}
@@ -90,26 +100,30 @@ ${requestHeadersField(pubspec.version)}
 
     // Test utility
     writeDartSource(
-      '$testFolderPath/$testSharedDartFileName',
+      p.join(testFolderPath, testSharedDartFileName),
       testHelperLibraryContent,
     );
 
     final results = <GenerateResult>[];
 
     final duplicateItems = wrapPackageDeduplicateLogic(() {
-      for (var description in descriptions) {
-        final name = description.name!.toLowerCase();
-        final version = description.version!
-            .toLowerCase()
-            .replaceAll('.', '_')
-            .replaceAll('-', '_');
+      for (final description in descriptions) {
+        final name = validatePathSegment(
+          description.name,
+          'description.name',
+        ).toLowerCase();
+        final version = _normalizeAndValidateVersion(description.version);
 
-        final apiFolderPath = '$libFolderPath/$name';
-        final apiTestFolderPath = '$testFolderPath/$name';
-
-        final apiVersionFile = '$libFolderPath/$name/$version.dart';
-        final apiTestVersionFile = '$testFolderPath/$name/${version}_test.dart';
-
+        final apiFolderPath = resolveOutputPath(libFolderPath, [name]);
+        final apiTestFolderPath = resolveOutputPath(testFolderPath, [name]);
+        final apiVersionFile = resolveOutputPath(libFolderPath, [
+          name,
+          '$version.dart',
+        ]);
+        final apiTestVersionFile = resolveOutputPath(testFolderPath, [
+          name,
+          '${version}_test.dart',
+        ]);
         final packagePath = 'package:${pubspec.name}/$name/$version.dart';
 
         try {
@@ -154,7 +168,7 @@ ${requestHeadersField(pubspec.version)}
         "import 'dart:core' as core;",
       ];
 
-      writeDartSource('$libFolderPath/$sharedLibraryName', '''
+      writeDartSource(p.join(libFolderPath, sharedLibraryName), '''
 /// Shared types to minimize the package size. Do not use directly.
 @core.Deprecated('Avoid importing this library. '
 'Use the members defined in the target API library instead.',)
@@ -307,4 +321,12 @@ String _yamlFormatValue(String value) {
     value = '"$value"';
   }
   return value;
+}
+
+String _normalizeAndValidateVersion(String? rawVersion) {
+  final version = validatePathSegment(
+    rawVersion,
+    'description.version',
+  ).toLowerCase().replaceAll('.', '_').replaceAll('-', '_');
+  return validatePathSegment(version, 'description.version');
 }

@@ -66,7 +66,7 @@ class Identifier {
 /// Allocate [Identifier]s for a lexical scope.
 class Scope {
   static final RegExp _startsWithDigit = RegExp('^[0-9]');
-  static final RegExp _nonAscii = RegExp('[^a-zA-z0-9]');
+  static final RegExp _nonAscii = RegExp('[^a-zA-Z0-9]');
 
   final Scope? parentScope;
   final List<Scope> childScopes = <Scope>[];
