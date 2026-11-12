@@ -35,7 +35,8 @@ OAuth 2.0 authentication helpers.
    [package:googleapis_beta](https://pub.dev/packages/googleapis_beta).
 2. **Set up a Google Cloud project**: Create a project in the
    [Google Cloud console](https://console.cloud.google.com/) and enable each API
-   your application calls under **APIs & Services > Library**.
+   your application calls under
+   [**APIs & Services > Library**](https://console.cloud.google.com/apis/library).
 3. **Authenticate requests**:
    - **Dart CLI, server, and web applications**: Refer to
      [googleapis_auth/README.md](googleapis_auth/README.md) for Application
@@ -48,6 +49,12 @@ OAuth 2.0 authentication helpers.
      [Flutter Google APIs guide](https://docs.flutter.dev/data-and-backend/google-apis).
 
 ### Example
+
+Add `googleapis` and `googleapis_auth` to your package:
+
+```console
+$ dart pub add googleapis googleapis_auth
+```
 
 ```dart
 import 'package:googleapis/drive/v3.dart';
@@ -97,6 +104,13 @@ $ dart format --output=none --set-exit-if-changed .
 $ dart test
 ```
 
+When changing browser authentication flows in `googleapis_auth`, also run the
+Chrome test matrix:
+
+```console
+$ dart test -p chrome --compiler dart2js,dart2wasm
+```
+
 If you modify `discoveryapis_generator`, also regenerate the test fixture
 package from the repository root and verify there are no unexpected diffs:
 
@@ -138,11 +152,12 @@ $ git diff
 ### Discovery document overrides
 
 To patch an upstream discovery document in `discovery/` (for example, to work
-around an upstream schema bug), edit the JSON file under `discovery/` and write
-the unified diff to `overrides/`:
+around an upstream schema bug in `discovery/googleapis/places__v1.json`), edit
+the `<api>__<version>.json` file under `discovery/` and write the unified diff
+to `overrides/`:
 
 ```console
-$ git diff discovery/googleapis/<api>.json > overrides/<name>.diff
+$ git diff discovery/<package>/<api>__<version>.json > overrides/<name>.diff
 ```
 
 When the override corresponds to a GitHub issue, name the diff after the issue
