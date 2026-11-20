@@ -1,16 +1,21 @@
 name: Health
+permissions:
+  contents: read
+
 on:
   pull_request:
     branches: [ master ]
-    types: [opened, synchronize, reopened, labeled, unlabeled]
+    types: [opened, synchronize, reopened, edited, labeled, unlabeled]
 
 jobs:
   health:
-    uses: dart-lang/ecosystem/.github/workflows/health.yaml@main
+    uses: dart-lang/ecosystem/.github/workflows/health.yaml@1d2b5ff862c6b93cd86dd06eadac4c9f4d5d6c20 # main
     with:
       sdk: stable
       # Drop coverage
-      checks: "changelog,license,breaking,do-not-submit,leaking,unused-dependencies"
+      checks: "changelog,license,breaking,do-not-submit,leaking,unused-dependencies,publish"
+      fail_on: "changelog,do-not-submit,publish"
+      warn_on: "license,breaking,leaking,unused-dependencies"
       license: |
         // Copyright %YEAR% Google LLC
         //
