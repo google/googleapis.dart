@@ -10,7 +10,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import '../access_credentials.dart';
-import '../auth_endpoints.dart';
+import '../access_token.dart';
 import '../crypto/rsa.dart';
 import '../crypto/rsa_sign.dart';
 import '../known_uris.dart';
@@ -27,14 +27,25 @@ class JwtFlow extends BaseFlow {
   final List<String> _scopes;
   final String? _user;
   final http.Client _client;
+  final String _universeDomain;
+  final Uri? _tokenUri;
+  final String? _privateKeyId;
 
   JwtFlow(
     this._clientEmail,
     RSAPrivateKey key,
     this._user,
     this._scopes,
-    this._client,
-  ) : _signer = RS256Signer(key);
+    this._client, {
+    String universeDomain = defaultUniverseDomain,
+    Uri? tokenUri,
+    String? privateKeyId,
+  }) : _signer = RS256Signer(key),
+       _universeDomain = universeDomain.isEmpty
+           ? defaultUniverseDomain
+           : universeDomain,
+       _tokenUri = tokenUri,
+       _privateKeyId = privateKeyId;
 
   @override
   Future<AccessCredentials> run() async {
@@ -42,32 +53,77 @@ class JwtFlow extends BaseFlow {
         DateTime.now().toUtc().millisecondsSinceEpoch ~/ 1000 -
         maxExpectedTimeDiffInSeconds;
 
-    final jwtHeader = {'alg': 'RS256', 'typ': 'JWT'};
+    final jwtHeader = {
+      'alg': 'RS256',
+      'typ': 'JWT',
+      if (_privateKeyId != null && _privateKeyId.isNotEmpty)
+        'kid': _privateKeyId,
+    };
     final jwtHeaderBase64 = _base64url(ascii.encode(jsonEncode(jwtHeader)));
 
+    // Per AIP-4111, non-default universe domains use self-signed JWTs directly
+    // instead of exchanging an assertion at oauth2.googleapis.com/token.
+    if (_universeDomain != defaultUniverseDomain) {
+      if (_user != null) {
+        throw UnsupportedError(
+          'Domain-wide delegation is not supported for non-default universe '
+          'domains.',
+        );
+      }
+
+      final jwtClaimSet = {
+        'iss': _clientEmail,
+        'sub': _clientEmail,
+        if (_scopes.isNotEmpty) 'scope': _scopes.join(' '),
+        'exp': timestamp + 3600,
+        'iat': timestamp,
+      };
+      final jwt = _signJwt(jwtHeaderBase64, jwtClaimSet);
+      final expiry = DateTime.fromMillisecondsSinceEpoch(
+        (timestamp + 3600) * 1000,
+        isUtc: true,
+      );
+      return AccessCredentials(
+        AccessToken('Bearer', jwt, expiry),
+        null,
+        _scopes,
+        universeDomain: _universeDomain,
+      );
+    }
+
+    final tokenEndpoint = _tokenUri ?? googleOauth2TokenEndpoint;
     final jwtClaimSet = {
       'iss': _clientEmail,
       'scope': _scopes.join(' '),
-      'aud': googleOauth2TokenEndpoint.toString(),
+      'aud': tokenEndpoint.toString(),
       'exp': timestamp + 3600,
       'iat': timestamp,
       if (_user != null) 'sub': _user,
     };
-    final jwtClaimSetBase64 = _base64url(utf8.encode(jsonEncode(jwtClaimSet)));
-
-    final jwtSignatureInput = '$jwtHeaderBase64.$jwtClaimSetBase64';
-    final jwtSignatureInputInBytes = ascii.encode(jwtSignatureInput);
-
-    final signature = _signer.sign(jwtSignatureInputInBytes);
-    final jwt = '$jwtSignatureInput.${_base64url(signature)}';
+    final jwt = _signJwt(jwtHeaderBase64, jwtClaimSet);
 
     // https://developers.google.com/identity/protocols/oauth2/service-account#authorizingrequests
-    final response = await _client.oauthTokenRequest({
-      'grant_type': _uri,
-      'assertion': jwt,
-    }, authEndpoints: const GoogleAuthEndpoints());
+    final response = await _client.requestJson(
+      'POST',
+      tokenEndpoint,
+      'Failed to obtain access credentials.',
+      body: {'grant_type': _uri, 'assertion': jwt},
+    );
     final accessToken = parseAccessToken(response);
-    return AccessCredentials(accessToken, null, _scopes);
+    return AccessCredentials(
+      accessToken,
+      null,
+      _scopes,
+      universeDomain: _universeDomain,
+    );
+  }
+
+  String _signJwt(String jwtHeaderBase64, Map<String, Object> jwtClaimSet) {
+    final jwtClaimSetBase64 = _base64url(utf8.encode(jsonEncode(jwtClaimSet)));
+    final jwtSignatureInput = '$jwtHeaderBase64.$jwtClaimSetBase64';
+    final jwtSignatureInputInBytes = ascii.encode(jwtSignatureInput);
+    final signature = _signer.sign(jwtSignatureInputInBytes);
+    return '$jwtSignatureInput.${_base64url(signature)}';
   }
 }
 

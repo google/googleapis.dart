@@ -491,4 +491,159 @@ void main() {
 
     impersonated.close();
   });
+
+  test(
+    'inherits universeDomain from TPC sourceClient when not specified',
+    () async {
+      var requestCount = 0;
+      final baseClient = mockClient((request) async {
+        requestCount++;
+        if (requestCount == 1) {
+          expect(request.url.host, 'iamcredentials.s3nsapis.fr');
+          expect(request.url.path, endsWith(':generateAccessToken'));
+          return http.Response(
+            jsonEncode({
+              'accessToken': 'tpc-imp-token',
+              'expireTime': DateTime.now()
+                  .toUtc()
+                  .add(const Duration(hours: 1))
+                  .toIso8601String(),
+            }),
+            200,
+            headers: jsonContentType,
+          );
+        } else {
+          expect(request.url.host, 'iamcredentials.s3nsapis.fr');
+          expect(request.url.path, endsWith(':signBlob'));
+          return http.Response(
+            jsonEncode({
+              'signedBlob': base64Encode([9, 8, 7]),
+              'keyId': 'tpc-key',
+            }),
+            200,
+            headers: jsonContentType,
+          );
+        }
+      }, expectClose: false);
+
+      final sourceClient = authenticatedClient(
+        baseClient,
+        AccessCredentials(
+          AccessToken(
+            'Bearer',
+            'tpc-source-token',
+            DateTime.now().toUtc().add(const Duration(hours: 1)),
+          ),
+          null,
+          [],
+          universeDomain: 's3nsapis.fr',
+        ),
+      );
+
+      final impersonated = await clientViaServiceAccountImpersonation(
+        sourceClient: sourceClient,
+        targetServiceAccount: 'target@project.iam.gserviceaccount.com',
+        targetScopes: ['scope1'],
+      );
+
+      expect(impersonated.universeDomain, 's3nsapis.fr');
+      expect(impersonated.credentials.universeDomain, 's3nsapis.fr');
+
+      final sig = await impersonated.sign([1, 2, 3]);
+      expect(sig.signedBlob, base64Encode([9, 8, 7]));
+
+      impersonated.close();
+    },
+  );
+
+  test('rejects cross-universe mismatch with TPC sourceClient', () {
+    final sourceClient = authenticatedClient(
+      mockClient(
+        (request) async =>
+            fail('Should not issue HTTP request to ${request.url}'),
+        expectClose: false,
+      ),
+      AccessCredentials(
+        AccessToken(
+          'Bearer',
+          'tpc-source-token',
+          DateTime.now().toUtc().add(const Duration(hours: 1)),
+        ),
+        null,
+        [],
+        universeDomain: 's3nsapis.fr',
+      ),
+    );
+
+    expect(
+      () => clientViaServiceAccountImpersonation(
+        sourceClient: sourceClient,
+        targetServiceAccount: 'target@project.iam.gserviceaccount.com',
+        targetScopes: ['scope1'],
+        universeDomain: 'googleapis.com',
+      ),
+      throwsArgumentError,
+    );
+  });
+
+  test('sign honors explicit endpoint override and delegates', () async {
+    var requestCount = 0;
+    final baseClient = mockClient((request) async {
+      requestCount++;
+      if (requestCount == 1) {
+        return http.Response(
+          jsonEncode({
+            'accessToken': 'imp-token',
+            'expireTime': DateTime.now()
+                .toUtc()
+                .add(const Duration(hours: 1))
+                .toIso8601String(),
+          }),
+          200,
+          headers: jsonContentType,
+        );
+      } else {
+        expect(request.url.host, 'custom-iam.example.com');
+        expect(request.url.path, endsWith(':signBlob'));
+        final body = jsonDecode(request.body) as Map<String, dynamic>;
+        expect(body['delegates'], ['delegate@project.iam.gserviceaccount.com']);
+        return http.Response(
+          jsonEncode({
+            'signedBlob': base64Encode([1, 2]),
+            'keyId': 'key-1',
+          }),
+          200,
+          headers: jsonContentType,
+        );
+      }
+    }, expectClose: false);
+
+    final sourceClient = authenticatedClient(
+      baseClient,
+      AccessCredentials(
+        AccessToken(
+          'Bearer',
+          'source-token',
+          DateTime.now().toUtc().add(const Duration(hours: 1)),
+        ),
+        null,
+        [],
+      ),
+    );
+
+    final impersonated = await clientViaServiceAccountImpersonation(
+      sourceClient: sourceClient,
+      targetServiceAccount: 'target@project.iam.gserviceaccount.com',
+      targetScopes: ['scope1'],
+      delegates: ['delegate@project.iam.gserviceaccount.com'],
+    );
+
+    final sig = await impersonated.sign([
+      1,
+      2,
+      3,
+    ], endpoint: 'https://custom-iam.example.com');
+    expect(sig.signedBlob, base64Encode([1, 2]));
+    impersonated.close();
+  });
 }

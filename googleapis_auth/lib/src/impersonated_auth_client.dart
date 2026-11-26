@@ -57,7 +57,9 @@ Future<ImpersonatedAuthClient> clientViaServiceAccountImpersonation({
   required String targetServiceAccount,
   required List<String> targetScopes,
   List<String>? delegates,
-  String universeDomain = defaultUniverseDomain,
+  String? universeDomain,
+  String? endpoint,
+  String? quotaProject,
   Duration lifetime = const Duration(hours: 1),
   http.Client? baseClient,
 }) async {
@@ -67,6 +69,8 @@ Future<ImpersonatedAuthClient> clientViaServiceAccountImpersonation({
     targetScopes: targetScopes,
     delegates: delegates,
     universeDomain: universeDomain,
+    endpoint: endpoint,
+    quotaProject: quotaProject,
     lifetime: lifetime,
     baseClient: baseClient,
   );
@@ -94,10 +98,15 @@ class ImpersonatedAuthClient extends AutoRefreshDelegatingClient {
   /// The email of the target service account being impersonated.
   final String targetServiceAccount;
 
+  /// The universe domain used for IAM Credentials API requests and issued
+  /// credentials.
+  final String universeDomain;
+
   final AuthClient _sourceClient;
   final List<String> _targetScopes;
   final List<String>? _delegates;
-  final String _universeDomain;
+  final String? _endpoint;
+  final String? _quotaProject;
   final Duration _lifetime;
 
   AccessCredentials _credentials;
@@ -117,7 +126,17 @@ class ImpersonatedAuthClient extends AutoRefreshDelegatingClient {
   /// on the next service account in the chain.
   ///
   /// [universeDomain] specifies the universe domain for constructing the IAM
-  /// endpoint. Defaults to [defaultUniverseDomain].
+  /// endpoint. If omitted or empty, inherits [sourceClient]'s credential
+  /// universe domain (which defaults to [defaultUniverseDomain]). Throws an
+  /// [ArgumentError] if [sourceClient] holds non-default universe credentials
+  /// that do not match [universeDomain].
+  ///
+  /// [endpoint] specifies an optional custom IAM Credentials API base endpoint
+  /// URL (e.g. `https://us-central1-iamcredentials.googleapis.com`). If
+  /// provided, takes precedence over [universeDomain].
+  ///
+  /// [quotaProject] specifies an optional quota project to send in the
+  /// `X-Goog-User-Project` header on authenticated requests.
   ///
   /// [lifetime] specifies how long the access token should be valid. Defaults
   /// to 3600 seconds (1 hour). Maximum is 43200 seconds (12 hours).
@@ -125,23 +144,64 @@ class ImpersonatedAuthClient extends AutoRefreshDelegatingClient {
   /// [baseClient] is an optional [http.Client] that will be used for
   /// the returned client's authenticated requests. If not provided, a new
   /// [http.Client] will be instantiated.
-  ImpersonatedAuthClient({
+  factory ImpersonatedAuthClient({
+    required AuthClient sourceClient,
+    required String targetServiceAccount,
+    required List<String> targetScopes,
+    List<String>? delegates,
+    String? universeDomain,
+    String? endpoint,
+    String? quotaProject,
+    Duration lifetime = const Duration(hours: 1),
+    http.Client? baseClient,
+  }) {
+    final sourceUniverse = sourceClient.credentials.universeDomain;
+    final resolvedUniverse = (universeDomain == null || universeDomain.isEmpty)
+        ? sourceUniverse
+        : universeDomain;
+    if (sourceUniverse != defaultUniverseDomain &&
+        sourceUniverse != resolvedUniverse) {
+      throw ArgumentError.value(
+        universeDomain,
+        'universeDomain',
+        'Cannot impersonate in universe "$resolvedUniverse" using source '
+            'credentials from universe "$sourceUniverse".',
+      );
+    }
+    return ImpersonatedAuthClient._(
+      sourceClient: sourceClient,
+      targetServiceAccount: targetServiceAccount,
+      targetScopes: targetScopes,
+      delegates: delegates,
+      universeDomain: resolvedUniverse,
+      endpoint: endpoint,
+      quotaProject: quotaProject,
+      lifetime: lifetime,
+      baseClient: baseClient,
+    );
+  }
+
+  ImpersonatedAuthClient._({
     required AuthClient sourceClient,
     required this.targetServiceAccount,
     required List<String> targetScopes,
-    List<String>? delegates,
-    String universeDomain = defaultUniverseDomain,
-    Duration lifetime = const Duration(hours: 1),
-    http.Client? baseClient,
+    required List<String>? delegates,
+    required this.universeDomain,
+    required String? endpoint,
+    required String? quotaProject,
+    required Duration lifetime,
+    required http.Client? baseClient,
   }) : _sourceClient = sourceClient,
        _targetScopes = List.unmodifiable(targetScopes),
        _delegates = delegates != null ? List.unmodifiable(delegates) : null,
-       _universeDomain = universeDomain,
+       _endpoint = endpoint,
+       _quotaProject = quotaProject,
        _lifetime = lifetime,
        _credentials = AccessCredentials(
          AccessToken('Bearer', '', DateTime.now().toUtc()),
          null,
          targetScopes,
+         universeDomain: universeDomain,
        ),
        super(
          baseClient ?? http.Client(),
@@ -162,8 +222,12 @@ class ImpersonatedAuthClient extends AutoRefreshDelegatingClient {
   /// Throws [ServerRequestFailedException] if the request fails.
   Future<AccessCredentials> generateAccessToken() async {
     final encodedEmail = Uri.encodeComponent(targetServiceAccount);
+    final rawEndpoint = _endpoint ?? 'https://iamcredentials.$universeDomain';
+    final baseEndpoint = rawEndpoint.endsWith('/')
+        ? rawEndpoint.substring(0, rawEndpoint.length - 1)
+        : rawEndpoint;
     final tokenUrl = Uri.parse(
-      'https://iamcredentials.$_universeDomain/v1/projects/-/serviceAccounts/$encodedEmail:generateAccessToken',
+      '$baseEndpoint/v1/projects/-/serviceAccounts/$encodedEmail:generateAccessToken',
     );
 
     final requestBody = jsonEncode({
@@ -195,6 +259,7 @@ class ImpersonatedAuthClient extends AutoRefreshDelegatingClient {
       AccessToken('Bearer', accessToken, expiry),
       null,
       _targetScopes,
+      universeDomain: universeDomain,
     );
   }
 
@@ -203,17 +268,25 @@ class ImpersonatedAuthClient extends AutoRefreshDelegatingClient {
   /// This method calls the IAM Credentials API signBlob endpoint to sign data
   /// as the impersonated service account.
   ///
+  /// If [endpoint] is provided, it overrides the configured IAM Credentials
+  /// API base endpoint / [universeDomain] for this request.
+  ///
   /// Returns a record containing the signature as a base64-encoded String and
   /// the key ID used to sign the blob.
   ///
-  /// Throws [ServerRequestFailedException] if the signing operation fails.
+  /// Throws [http.ClientException] if the signing operation fails.
   ///
   /// See: https://cloud.google.com/iam/docs/reference/credentials/rest/v1/projects.serviceAccounts/signBlob
-  Future<({String signedBlob, String keyId})> sign(List<int> data) => signBlob(
+  Future<({String signedBlob, String keyId})> sign(
+    List<int> data, {
+    String? endpoint,
+  }) => signBlob(
     _sourceClient,
     data,
     serviceAccountEmail: targetServiceAccount,
-    universeDomain: _universeDomain,
+    delegates: _delegates,
+    endpoint: endpoint ?? _endpoint,
+    universeDomain: universeDomain,
   );
 
   @override
@@ -222,10 +295,18 @@ class ImpersonatedAuthClient extends AutoRefreshDelegatingClient {
       final newCredentials = await generateAccessToken();
       notifyAboutNewCredentials(newCredentials);
       _credentials = newCredentials;
-      _authClient = authenticatedClient(baseClient, _credentials);
+      _authClient = authenticatedClient(
+        baseClient,
+        _credentials,
+        quotaProject: _quotaProject,
+      );
     }
 
-    _authClient ??= authenticatedClient(baseClient, _credentials);
+    _authClient ??= authenticatedClient(
+      baseClient,
+      _credentials,
+      quotaProject: _quotaProject,
+    );
     return _authClient!.send(request);
   }
 }

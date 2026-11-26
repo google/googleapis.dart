@@ -37,6 +37,9 @@ class ServiceAccountCredentials {
   /// The project ID from the service account JSON file, if available.
   final String? projectId;
 
+  /// The private key ID from the service account JSON file, if available.
+  final String? privateKeyId;
+
   /// The universe domain for this service account.
   ///
   /// Defaults to [defaultUniverseDomain] if not specified in
@@ -47,6 +50,14 @@ class ServiceAccountCredentials {
 
   /// The quota project to use for requests.
   final String? quotaProject;
+
+  /// The OAuth 2.0 token endpoint URI from the service account JSON file,
+  /// if available.
+  ///
+  /// Used for OAuth 2.0 token exchanges in the default universe domain
+  /// ([defaultUniverseDomain]). For non-default universe domains, self-signed
+  /// JWTs are used directly without calling this endpoint.
+  final Uri? tokenUri;
 
   /// Private key as an [RSAPrivateKey].
   final RSAPrivateKey privateRSAKey;
@@ -73,17 +84,23 @@ class ServiceAccountCredentials {
                 'client_email': final String email,
               }
           when (map['project_id'] is String?) &&
+              (map['private_key_id'] is String?) &&
               (map['universe_domain'] is String?) &&
-              (map['quota_project_id'] is String?) =>
+              (map['quota_project_id'] is String?) &&
+              (map['token_uri'] is String?) =>
         ServiceAccountCredentials(
           email,
           ClientId(identifier),
           privateKey,
           impersonatedUser: impersonatedUser,
           projectId: map['project_id'] as String?,
-          universeDomain:
-              map['universe_domain'] as String? ?? defaultUniverseDomain,
+          privateKeyId: map['private_key_id'] as String?,
+          universeDomain: switch (map['universe_domain'] as String?) {
+            null || '' => defaultUniverseDomain,
+            final domain => domain,
+          },
           quotaProject: map['quota_project_id'] as String?,
+          tokenUri: _parseTokenUri(map['token_uri'] as String?),
         ),
       final Map map when map['type'] != 'service_account' =>
         throw ArgumentError(
@@ -115,21 +132,32 @@ class ServiceAccountCredentials {
   ///
   /// The optional named argument [projectId] is the GCP project ID.
   ///
+  /// The optional named argument [privateKeyId] is the key ID included in
+  /// signed JWT headers when present.
+  ///
   /// The optional named argument [universeDomain] specifies the universe
   /// domain.
-  /// Defaults to [defaultUniverseDomain] if not provided.
+  /// Defaults to [defaultUniverseDomain] if not provided or empty.
   ///
   /// The optional named argument [quotaProject] specifies the quota project
   /// to use for requests.
+  ///
+  /// The optional named argument [tokenUri] specifies a custom OAuth 2.0 token
+  /// endpoint URI for default-universe token exchange.
   ServiceAccountCredentials(
     this.email,
     this.clientId,
     this.privateKey, {
     this.impersonatedUser,
     this.projectId,
-    this.universeDomain = defaultUniverseDomain,
+    this.privateKeyId,
+    String universeDomain = defaultUniverseDomain,
     this.quotaProject,
-  }) : privateRSAKey = keyFromString(privateKey);
+    this.tokenUri,
+  }) : universeDomain = universeDomain.isEmpty
+           ? defaultUniverseDomain
+           : universeDomain,
+       privateRSAKey = keyFromString(privateKey);
 
   /// Signs the given [data] using RSA-SHA256 with this service account's
   /// private key.
@@ -137,4 +165,26 @@ class ServiceAccountCredentials {
   /// This is useful for creating custom signed tokens or signing arbitrary
   /// data with the service account's credentials.
   Uint8List sign(List<int> data) => RS256Signer(privateRSAKey).sign(data);
+}
+
+Uri? _parseTokenUri(String? value) {
+  if (value == null || value.isEmpty) return null;
+  final uri = Uri.tryParse(value);
+  if (uri == null || !uri.hasScheme || uri.host.isEmpty) {
+    throw ArgumentError.value(
+      value,
+      'token_uri',
+      'Invalid token_uri: must be a valid absolute URI.',
+    );
+  }
+  final isLoopback =
+      uri.host == 'localhost' || uri.host == '127.0.0.1' || uri.host == '::1';
+  if (uri.scheme != 'https' && !(uri.scheme == 'http' && isLoopback)) {
+    throw ArgumentError.value(
+      value,
+      'token_uri',
+      'Invalid token_uri: must use https (or http for localhost).',
+    );
+  }
+  return uri;
 }

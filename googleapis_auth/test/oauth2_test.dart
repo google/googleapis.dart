@@ -77,6 +77,7 @@ void main() {
       'project_id': 'test-project',
       'universe_domain': 'example.com',
       'quota_project_id': 'test-quota',
+      'token_uri': 'https://oauth2.googleapis.com/token',
     };
 
     test('from valid individual params', () {
@@ -175,8 +176,10 @@ void main() {
     test('throws ArgumentError for non-String optional fields in JSON', () {
       for (final field in [
         'project_id',
+        'private_key_id',
         'universe_domain',
         'quota_project_id',
+        'token_uri',
       ]) {
         expect(
           () =>
@@ -184,6 +187,42 @@ void main() {
           throwsArgumentError,
         );
       }
+    });
+
+    test('parses private_key_id and token_uri from JSON', () {
+      final creds = ServiceAccountCredentials.fromJson(credentials);
+      expect(creds.privateKeyId, '301029');
+      expect(creds.tokenUri, Uri.parse('https://oauth2.googleapis.com/token'));
+    });
+
+    test('normalizes empty universe_domain to defaultUniverseDomain', () {
+      final creds = ServiceAccountCredentials.fromJson({
+        ...credentials,
+        'universe_domain': '',
+      });
+      expect(creds.universeDomain, defaultUniverseDomain);
+    });
+
+    test('validates token_uri scheme and host', () {
+      expect(
+        () => ServiceAccountCredentials.fromJson({
+          ...credentials,
+          'token_uri': 'not-a-uri',
+        }),
+        throwsArgumentError,
+      );
+      expect(
+        () => ServiceAccountCredentials.fromJson({
+          ...credentials,
+          'token_uri': 'http://oauth2.example.com/token',
+        }),
+        throwsArgumentError,
+      );
+      final localCreds = ServiceAccountCredentials.fromJson({
+        ...credentials,
+        'token_uri': 'http://localhost:8080/token',
+      });
+      expect(localCreds.tokenUri, Uri.parse('http://localhost:8080/token'));
     });
 
     test('sign data', () {
@@ -837,6 +876,80 @@ void main() {
         client.close();
       });
 
+      test(
+        'clientViaServiceAccount uses self-signed JWT for TPC universe',
+        () async {
+          final credentials = ServiceAccountCredentials.fromJson({
+            'private_key_id': 'tpc-kid',
+            'private_key': testPrivateKeyString,
+            'client_email': 'sa@tpc-proj.iam.gserviceaccount.com',
+            'client_id': 'myid',
+            'type': 'service_account',
+            'universe_domain': 's3nsapis.fr',
+            'token_uri': 'https://oauth2.googleapis.com/token',
+          });
+
+          final client = await clientViaServiceAccount(
+            credentials,
+            ['https://www.googleapis.com/auth/cloud-platform'],
+            baseClient: mockClient((request) async {
+              expect(request.url.host, 'storage.s3nsapis.fr');
+              expect(request.headers['Authorization'], startsWith('Bearer '));
+              return Response('ok', 200);
+            }, expectClose: false),
+          );
+
+          expect(client.credentials.universeDomain, 's3nsapis.fr');
+          final response = await client.get(
+            Uri.https('storage.s3nsapis.fr', '/b/bucket'),
+          );
+          expect(response.statusCode, 200);
+
+          client.close();
+        },
+      );
+
+      test(
+        'clientViaServiceAccount honors custom token_uri in default universe',
+        () async {
+          final customTokenUri = Uri.parse(
+            'https://oauth2.custom.example/token',
+          );
+          final credentials = ServiceAccountCredentials.fromJson({
+            'private_key_id': '301029',
+            'private_key': testPrivateKeyString,
+            'client_email': 'test@test.iam.gserviceaccount.com',
+            'client_id': 'myid',
+            'type': 'service_account',
+            'token_uri': customTokenUri.toString(),
+          });
+
+          final client = await clientViaServiceAccount(
+            credentials,
+            ['https://www.googleapis.com/auth/cloud-platform'],
+            baseClient: mockClient(
+              expectAsync1((request) async {
+                expect(request.method, 'POST');
+                expect(request.url, customTokenUri);
+                return Response(
+                  jsonEncode({
+                    'access_token': 'test_token',
+                    'token_type': 'Bearer',
+                    'expires_in': 3600,
+                  }),
+                  200,
+                  headers: jsonContentType,
+                );
+              }),
+              expectClose: false,
+            ),
+          );
+
+          expect(client.credentials.accessToken.data, 'test_token');
+          client.close();
+        },
+      );
+
       test('clientViaMetadataServer returns null credentials', () async {
         final client = await clientViaMetadataServer(
           baseClient: mockClient(
@@ -856,11 +969,12 @@ void main() {
                 return Response('s1\ns2', 200);
               }
               return Response('Not found', 404);
-            }, count: 2),
+            }, count: 3),
             expectClose: false,
           ),
         );
 
+        expect(client.credentials.universeDomain, defaultUniverseDomain);
         client.close();
       }, testOn: 'vm');
     });

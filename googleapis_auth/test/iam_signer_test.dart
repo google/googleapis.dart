@@ -84,4 +84,25 @@ void main() {
       throwsA(isA<ClientException>()),
     );
   });
+
+  test('signBlob normalizes trailing slash on custom endpoint', () async {
+    final client = MockClient((request) async {
+      expect(
+        request.url.toString(),
+        'https://iamcredentials.s3nsapis.fr/v1/projects/-/serviceAccounts/test-email%40example.com:signBlob',
+      );
+      return Response(
+        jsonEncode({'signedBlob': 'c2lnbmF0dXJl', 'keyId': 'key-id'}),
+        200,
+      );
+    });
+
+    final signature = await signBlob(
+      client,
+      [1, 2, 3],
+      serviceAccountEmail: 'test-email@example.com',
+      endpoint: 'https://iamcredentials.s3nsapis.fr/',
+    );
+    expect(signature.signedBlob, 'c2lnbmF0dXJl');
+  });
 }

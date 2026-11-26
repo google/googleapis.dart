@@ -12,6 +12,7 @@ import 'dart:io';
 
 import 'package:googleapis_auth/src/adc_utils.dart'
     show fromApplicationsCredentialsFile;
+import 'package:googleapis_auth/src/exceptions.dart';
 import 'package:googleapis_auth/src/known_uris.dart';
 import 'package:http/http.dart';
 import 'package:test/test.dart';
@@ -112,5 +113,192 @@ void main() {
     expect(r.body, 'hello world');
 
     c.close();
+  });
+
+  test('impersonated_service_account with TPC service_account source uses TPC '
+      'IAM host and forwards delegates and quota project', () async {
+    await d
+        .file(
+          'tpc_impersonated_sa.json',
+          json.encode({
+            'type': 'impersonated_service_account',
+            'service_account_impersonation_url':
+                'https://iamcredentials.s3nsapis.fr/v1/projects/-/serviceAccounts/target%40example.com:generateAccessToken',
+            'delegates': ['projects/-/serviceAccounts/mid@example.com'],
+            'quota_project_id': 'tpc-quota',
+            'source_credentials': {
+              'type': 'service_account',
+              'client_id': 'id',
+              'client_email': 'source@tpc.iam.gserviceaccount.com',
+              'private_key_id': 'k1',
+              'private_key': testPrivateKeyString,
+              'universe_domain': 's3nsapis.fr',
+            },
+          }),
+        )
+        .create();
+
+    final c = await fromApplicationsCredentialsFile(
+      File(d.path('tpc_impersonated_sa.json')),
+      'test-credentials-file',
+      ['target_scope'],
+      mockClient(expectClose: false, (Request request) async {
+        final url = request.url;
+        expect(url.host, isNot('oauth2.googleapis.com'));
+        expect(url.host, isNot('iamcredentials.googleapis.com'));
+
+        if (url.toString() ==
+            'https://iamcredentials.s3nsapis.fr/v1/projects/-/serviceAccounts/target%40example.com:generateAccessToken') {
+          expect(request.method, 'POST');
+          // Self-signed JWT from TPC service account source
+          final authHeader = request.headers['Authorization']!;
+          expect(authHeader, startsWith('Bearer '));
+          expect(
+            authHeader.substring('Bearer '.length).split('.'),
+            hasLength(3),
+          );
+
+          final body = jsonDecode(request.body) as Map<String, dynamic>;
+          expect(body['scope'], ['target_scope']);
+          expect(body['delegates'], [
+            'projects/-/serviceAccounts/mid@example.com',
+          ]);
+
+          return Response(
+            jsonEncode({
+              'accessToken': 'tpc_target_token',
+              'expireTime': DateTime.now()
+                  .toUtc()
+                  .add(const Duration(hours: 1))
+                  .toIso8601String(),
+            }),
+            200,
+            headers: jsonContentType,
+          );
+        }
+
+        if (url.toString() == 'https://storage.s3nsapis.fr/b/bucket/o/obj') {
+          expect(
+            request.headers,
+            containsPair('Authorization', 'Bearer tpc_target_token'),
+          );
+          expect(
+            request.headers,
+            containsPair('X-Goog-User-Project', 'tpc-quota'),
+          );
+          return Response('tpc impersonated ok', 200);
+        }
+
+        return Response('not found: $url', 404);
+      }),
+    );
+
+    expect(c.credentials.accessToken.data, 'tpc_target_token');
+    expect(c.credentials.universeDomain, 's3nsapis.fr');
+
+    final r = await c.get(Uri.https('storage.s3nsapis.fr', '/b/bucket/o/obj'));
+    expect(r.statusCode, 200);
+    expect(r.body, 'tpc impersonated ok');
+
+    c.close();
+  });
+
+  test('impersonated_service_account backed by TPC external_account uses TPC '
+      'IAM host', () async {
+    await d.file('ext_source_token.txt', 'ext-jwt').create();
+    await d
+        .file(
+          'tpc_impersonated_ext.json',
+          json.encode({
+            'type': 'impersonated_service_account',
+            'service_account_impersonation_url':
+                'https://iamcredentials.s3nsapis.fr/v1/projects/-/serviceAccounts/target@example.com:generateAccessToken',
+            'source_credentials': {
+              'type': 'external_account',
+              'audience': 'tpc-aud',
+              'subject_token_type': 'urn:ietf:params:oauth:token-type:jwt',
+              'token_url': 'https://sts.s3nsapis.fr/v1/token',
+              'credential_source': {'file': d.path('ext_source_token.txt')},
+            },
+          }),
+        )
+        .create();
+
+    final c = await fromApplicationsCredentialsFile(
+      File(d.path('tpc_impersonated_ext.json')),
+      'test-credentials-file',
+      ['target_scope'],
+      mockClient(expectClose: false, (Request request) async {
+        final url = request.url;
+        expect(url.host, isNot('iamcredentials.googleapis.com'));
+        if (url.toString() == 'https://sts.s3nsapis.fr/v1/token') {
+          return Response(
+            jsonEncode({
+              'token_type': 'Bearer',
+              'access_token': 'tpc_sts_token',
+              'expires_in': 3600,
+            }),
+            200,
+            headers: jsonContentType,
+          );
+        }
+        if (url.toString() ==
+            'https://iamcredentials.s3nsapis.fr/v1/projects/-/serviceAccounts/target%40example.com:generateAccessToken') {
+          expect(request.headers['Authorization'], 'Bearer tpc_sts_token');
+          return Response(
+            jsonEncode({
+              'accessToken': 'tpc_impersonated_token',
+              'expireTime': DateTime.now()
+                  .toUtc()
+                  .add(const Duration(hours: 1))
+                  .toIso8601String(),
+            }),
+            200,
+            headers: jsonContentType,
+          );
+        }
+        return Response('not found: $url', 404);
+      }),
+    );
+
+    expect(c.credentials.accessToken.data, 'tpc_impersonated_token');
+    expect(c.credentials.universeDomain, 's3nsapis.fr');
+    c.close();
+  });
+
+  test('impersonated_service_account rejects cross-universe mismatch before '
+      'network calls', () async {
+    await d.file('ext_mismatch_token.txt', 'ext-jwt').create();
+    await d
+        .file(
+          'tpc_impersonated_mismatch.json',
+          json.encode({
+            'type': 'impersonated_service_account',
+            'service_account_impersonation_url':
+                'https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/target@example.com:generateAccessToken',
+            'source_credentials': {
+              'type': 'external_account',
+              'audience': 'tpc-aud',
+              'subject_token_type': 'urn:ietf:params:oauth:token-type:jwt',
+              'token_url': 'https://sts.s3nsapis.fr/v1/token',
+              'credential_source': {'file': d.path('ext_mismatch_token.txt')},
+            },
+          }),
+        )
+        .create();
+
+    await expectLater(
+      fromApplicationsCredentialsFile(
+        File(d.path('tpc_impersonated_mismatch.json')),
+        'test-credentials-file',
+        ['target_scope'],
+        mockClient(
+          (request) async =>
+              fail('Should not issue HTTP request to ${request.url}'),
+          expectClose: false,
+        ),
+      ),
+      throwsA(isA<CredentialsFileException>()),
+    );
   });
 }

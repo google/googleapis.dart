@@ -27,10 +27,31 @@ void main() {
     expect(decoded.refreshToken, 'refreshToken');
     expect(decoded.idToken, 'idToken');
     expect(decoded.scopes, ['scope1']);
+    expect(decoded.universeDomain, 'googleapis.com');
     expect(decoded.accessToken.expiry, credentials.accessToken.expiry);
     expect(decoded.accessToken.data, credentials.accessToken.data);
     expect(decoded.accessToken.type, credentials.accessToken.type);
 
+    final decodedMap = jsonDecode(encoded) as Map<String, dynamic>;
+    expect(decodedMap, isNot(contains('universeDomain')));
+    expect(jsonEncode(decoded), encoded);
+  });
+
+  test('AccessCredentials round-trip with custom universeDomain', () {
+    final credentials = AccessCredentials(
+      AccessToken('type', 'data', DateTime.now().toUtc()),
+      'refreshToken',
+      ['scope1'],
+      idToken: 'idToken',
+      universeDomain: 's3nsapis.fr',
+    );
+
+    final encoded = jsonEncode(credentials);
+    final decodedMap = jsonDecode(encoded) as Map<String, dynamic>;
+    expect(decodedMap['universeDomain'], 's3nsapis.fr');
+
+    final decoded = AccessCredentials.fromJson(decodedMap);
+    expect(decoded.universeDomain, 's3nsapis.fr');
     expect(jsonEncode(decoded), encoded);
   });
 

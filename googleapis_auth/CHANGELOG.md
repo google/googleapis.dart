@@ -1,3 +1,20 @@
+## 2.4.0-wip
+
+- Added `universeDomain` to `AccessCredentials` (defaulting to `googleapis.com`,
+  omitted from `toJson()` when default) and propagated universe domains across
+  service accounts, GCE metadata server credentials, STS external accounts,
+  credential refresh, and `AuthClient.sign()`.
+- Added `privateKeyId` and `tokenUri` properties to `ServiceAccountCredentials`.
+- `JwtFlow` now issues self-signed JWTs directly (with `kid` when available) for
+  non-default `universe_domain` service accounts, rejects domain-wide delegation
+  outside `googleapis.com`, and honors custom `token_uri` endpoints in the
+  default universe.
+- Impersonation ADC parsing and `ImpersonatedAuthClient` now preserve the full
+  HTTPS impersonation endpoint and `universe_domain`, validate cross-universe
+  mismatches before token exchange, forward `delegates` and `quotaProject`, and
+  expose `ImpersonatedAuthClient.universeDomain` along with optional `endpoint`
+  and `quotaProject` parameters.
+
 ## 2.3.7
 
 - Fix Markdown warning alert formatting in README.

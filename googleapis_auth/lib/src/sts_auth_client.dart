@@ -25,6 +25,7 @@ class StsAuthClient extends AutoRefreshDelegatingClient {
   final String _tokenUrl;
   final List<String> _scopes;
   final String? _quotaProject;
+  final String _universeDomain;
 
   AccessCredentials _credentials;
   http.Client? _authClient;
@@ -44,6 +45,9 @@ class StsAuthClient extends AutoRefreshDelegatingClient {
   ///
   /// [scopes] are the OAuth2 scopes to request.
   ///
+  /// [universeDomain] specifies the universe domain for the exchanged
+  /// credentials. Defaults to [defaultUniverseDomain].
+  ///
   /// [baseClient] is an optional [http.Client] that will be used for
   /// the returned client's authenticated requests and for retrieving external
   /// tokens.
@@ -54,6 +58,7 @@ class StsAuthClient extends AutoRefreshDelegatingClient {
     required String tokenUrl,
     required List<String> scopes,
     String? quotaProject,
+    String universeDomain = defaultUniverseDomain,
     http.Client? baseClient,
   }) : _credentialSource = credentialSource,
        _audience = audience,
@@ -61,10 +66,14 @@ class StsAuthClient extends AutoRefreshDelegatingClient {
        _tokenUrl = tokenUrl,
        _scopes = List.unmodifiable(scopes),
        _quotaProject = quotaProject,
+       _universeDomain = universeDomain.isEmpty
+           ? defaultUniverseDomain
+           : universeDomain,
        _credentials = AccessCredentials(
          AccessToken('Bearer', '', DateTime.now().toUtc()),
          null,
          scopes,
+         universeDomain: universeDomain,
        ),
        super(
          baseClient ?? http.Client(),
@@ -113,6 +122,7 @@ class StsAuthClient extends AutoRefreshDelegatingClient {
       AccessToken('Bearer', accessToken, expiryDate(expiresIn)),
       null,
       _scopes,
+      universeDomain: _universeDomain,
     );
   }
 
@@ -199,6 +209,7 @@ Future<StsAuthClient> clientViaStsTokenExchange({
   required String tokenUrl,
   required List<String> scopes,
   String? quotaProject,
+  String universeDomain = defaultUniverseDomain,
   http.Client? baseClient,
 }) async {
   final stsClient = StsAuthClient(
@@ -208,6 +219,7 @@ Future<StsAuthClient> clientViaStsTokenExchange({
     tokenUrl: tokenUrl,
     scopes: scopes,
     quotaProject: quotaProject,
+    universeDomain: universeDomain,
     baseClient: baseClient,
   );
 

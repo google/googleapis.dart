@@ -190,5 +190,6 @@ Future<AccessCredentials> refreshCredentials(
     credentials.refreshToken,
     credentials.scopes,
     idToken: idToken,
+    universeDomain: credentials.universeDomain,
   );
 }

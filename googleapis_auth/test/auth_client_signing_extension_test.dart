@@ -159,6 +159,7 @@ void main() {
         } else {
           // signBlob request via ImpersonatedAuthClient.sign()
           expect(request.method, 'POST');
+          expect(request.url.host, 'iamcredentials.example.com');
           expect(request.url.toString(), contains(':signBlob'));
 
           return http.Response(
@@ -189,9 +190,8 @@ void main() {
         targetScopes: ['https://www.googleapis.com/auth/cloud-platform'],
       );
 
-      // Explicitly call the extension method with endpoint parameter
-      // The endpoint is ignored since ImpersonatedAuthClient uses its
-      // configured universe domain
+      // Explicitly call the extension method with endpoint parameter and verify
+      // the custom endpoint is forwarded to ImpersonatedAuthClient.sign.
       final signature = await AuthClientSigningExtension(
         impersonated,
       ).sign(dataToSign, endpoint: 'https://iamcredentials.example.com');
@@ -288,4 +288,63 @@ void main() {
       client.close();
     },
   );
+
+  test(
+    'sign uses credentials.universeDomain when endpoint is omitted (including '
+    'through delegating AuthClient wrappers)',
+    () async {
+      final baseClient = mockClient((request) async {
+        expect(request.method, 'POST');
+        expect(request.url.host, 'iamcredentials.s3nsapis.fr');
+        expect(request.url.path, endsWith(':signBlob'));
+        expect(request.headers['Authorization'], 'Bearer tpc-token');
+
+        return http.Response(
+          jsonEncode({
+            'signedBlob': base64Encode([11, 22, 33]),
+            'keyId': 'tpc-key-id',
+          }),
+          200,
+          headers: jsonContentType,
+        );
+      }, expectClose: false);
+
+      final tpcCredentials = AccessCredentials(
+        AccessToken(
+          'Bearer',
+          'tpc-token',
+          DateTime.now().toUtc().add(const Duration(hours: 1)),
+        ),
+        null,
+        [],
+        universeDomain: 's3nsapis.fr',
+      );
+      final innerClient = authenticatedClient(baseClient, tpcCredentials);
+      final wrappedClient = _DelegatingAuthClient(innerClient);
+
+      final signature = await wrappedClient.sign(
+        dataToSign,
+        serviceAccountEmail: 'sa@tpc.iam.gserviceaccount.com',
+      );
+
+      expect(signature, base64Encode([11, 22, 33]));
+      wrappedClient.close();
+    },
+  );
+}
+
+class _DelegatingAuthClient extends http.BaseClient implements AuthClient {
+  _DelegatingAuthClient(this._inner);
+
+  final AuthClient _inner;
+
+  @override
+  AccessCredentials get credentials => _inner.credentials;
+
+  @override
+  Future<http.StreamedResponse> send(http.BaseRequest request) =>
+      _inner.send(request);
+
+  @override
+  void close() => _inner.close();
 }

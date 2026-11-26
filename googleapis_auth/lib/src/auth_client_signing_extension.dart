@@ -14,6 +14,7 @@ import 'impersonated_auth_client.dart';
 import 'metadata_server_stub.dart'
     if (dart.library.io) 'metadata_server_io.dart';
 import 'service_account_credentials.dart';
+import 'utils.dart';
 
 /// Extension providing smart signing capabilities for [AuthClient].
 ///
@@ -64,9 +65,9 @@ extension AuthClientSigningExtension on AuthClient {
   /// parameters:
   ///
   /// 1.  **Impersonated client:** If this client is an
-  ///     [ImpersonatedAuthClient], signing is delegated to its `sign` method.
-  ///     The `serviceAccountCredentials`, `serviceAccountEmail`, and
-  ///     `endpoint` parameters of this extension method are ignored.
+  ///     [ImpersonatedAuthClient], signing is delegated to its `sign` method,
+  ///     forwarding [endpoint] if provided. The [serviceAccountCredentials]
+  ///     and [serviceAccountEmail] parameters are ignored.
   ///
   /// 2.  **Local signing with private key:** If [serviceAccountCredentials] are
   ///     provided, they are used to sign the data locally using RSA-SHA256 if
@@ -83,10 +84,10 @@ extension AuthClientSigningExtension on AuthClient {
   ///       an [UnsupportedError].
   ///     - The [endpoint] is an optional custom IAM Credentials API endpoint.
   ///       This is useful when working with different universe domains. If not
-  ///       provided, the endpoint is automatically determined from the
-  ///       credential's universe domain (e.g.,
-  ///       `https://iamcredentials.googleapis.com` for the default universe,
-  ///       or a custom universe domain from the service account JSON).
+  ///       provided, the endpoint is automatically determined from
+  ///       [AccessCredentials.universeDomain] on this client's [credentials]
+  ///       (e.g., `https://iamcredentials.googleapis.com` for the default
+  ///       universe, or `https://iamcredentials.<universe_domain>`).
   ///
   /// Returns the signature as a String (base64-encoded).
   ///
@@ -100,7 +101,7 @@ extension AuthClientSigningExtension on AuthClient {
   ///   data,
   ///   serviceAccountCredentials: credentials,
   /// );
-  /// print('Signature (base64): ${signature.signedBlob}');
+  /// print('Signature (base64): $signature');
   /// ```
   Future<String> sign(
     List<int> data, {
@@ -111,7 +112,7 @@ extension AuthClientSigningExtension on AuthClient {
     // Check if this is an impersonated client
     if (this is ImpersonatedAuthClient) {
       final impersonated = this as ImpersonatedAuthClient;
-      return (await impersonated.sign(data)).signedBlob;
+      return (await impersonated.sign(data, endpoint: endpoint)).signedBlob;
     }
 
     if (serviceAccountCredentials != null) {
@@ -124,6 +125,9 @@ extension AuthClientSigningExtension on AuthClient {
       data,
       serviceAccountEmail: serviceAccountEmail,
       endpoint: endpoint,
+      universeDomain: endpoint == null
+          ? credentials.universeDomain
+          : defaultUniverseDomain,
     )).signedBlob;
   }
 }

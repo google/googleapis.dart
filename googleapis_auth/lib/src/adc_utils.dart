@@ -17,6 +17,7 @@ import 'impersonated_auth_client.dart';
 import 'service_account_client.dart';
 import 'service_account_credentials.dart';
 import 'sts_auth_client.dart';
+import 'utils.dart';
 
 Future<AutoRefreshingAuthClient> fromApplicationsCredentialsFile(
   File file,
@@ -62,12 +63,22 @@ Future<AutoRefreshingAuthClient> _clientViaApplicationCredentials(
   final quotaProject =
       Platform.environment['GOOGLE_CLOUD_QUOTA_PROJECT'] ??
       credentials['quota_project_id'] as String?;
+  final jsonUniverseDomain = _parseUniverseDomain(credentials, fileSource);
+
   if (credentials case {
     'type': 'authorized_user',
     'client_id': final String clientIdString,
     'client_secret': final String? clientSecret,
     'refresh_token': final String? refreshToken,
   }) {
+    if (jsonUniverseDomain != null &&
+        jsonUniverseDomain != defaultUniverseDomain) {
+      throw CredentialsFileException(
+        'Unsupported universe_domain "$jsonUniverseDomain" for '
+        'authorized_user credentials from '
+        '${fileSource ?? 'the provided credentials'}.',
+      );
+    }
     if (refreshToken == null) {
       throw CredentialsFileException(
         'Failed to parse JSON from credentials file from '
@@ -103,6 +114,36 @@ Future<AutoRefreshingAuthClient> _clientViaApplicationCredentials(
     'service_account_impersonation_url': final String url,
     'source_credentials': final Map<String, dynamic> source,
   }) {
+    final impersonationInfo = _parseImpersonationUrl(url);
+    final urlUniverse = impersonationInfo.universeDomain;
+    if (jsonUniverseDomain != null &&
+        urlUniverse != null &&
+        jsonUniverseDomain != urlUniverse) {
+      throw CredentialsFileException(
+        'Universe domain mismatch in '
+        '${fileSource ?? 'the provided credentials'}: '
+        'universe_domain "$jsonUniverseDomain" does not match '
+        'service_account_impersonation_url universe "$urlUniverse".',
+      );
+    }
+    final declaredTargetUniverse = jsonUniverseDomain ?? urlUniverse;
+    final declaredSourceUniverse = _inferUniverseDomainFromJson(
+      source,
+      fileSource,
+    );
+    if (declaredTargetUniverse != null &&
+        declaredSourceUniverse != null &&
+        declaredTargetUniverse != declaredSourceUniverse) {
+      throw CredentialsFileException(
+        'Universe domain mismatch in '
+        '${fileSource ?? 'the provided credentials'}: '
+        'source_credentials universe "$declaredSourceUniverse" does not match '
+        'impersonation universe "$declaredTargetUniverse".',
+      );
+    }
+
+    final delegates = _parseDelegates(credentials['delegates'], fileSource);
+
     final sourceClient = await _clientViaApplicationCredentials(
       source,
       ['https://www.googleapis.com/auth/iam'],
@@ -110,22 +151,33 @@ Future<AutoRefreshingAuthClient> _clientViaApplicationCredentials(
       fileSource: fileSource,
     );
 
-    final match = _impersonationUrlRegExp.firstMatch(url);
-    if (match == null) {
-      throw ArgumentError.value(
-        url,
-        'service_account_impersonation_url',
-        'Invalid impersonation URL',
+    final sourceUniverse = sourceClient.credentials.universeDomain;
+    final targetUniverse = declaredTargetUniverse ?? sourceUniverse;
+    if (sourceUniverse != targetUniverse) {
+      sourceClient.close();
+      throw CredentialsFileException(
+        'Universe domain mismatch in '
+        '${fileSource ?? 'the provided credentials'}: '
+        'source credentials universe "$sourceUniverse" does not match '
+        'impersonation universe "$targetUniverse".',
       );
     }
-    final targetServiceAccount = match.group(1)!;
 
-    return clientViaServiceAccountImpersonation(
-      sourceClient: sourceClient,
-      targetServiceAccount: targetServiceAccount,
-      targetScopes: scopes,
-      baseClient: baseClient,
-    );
+    try {
+      return await clientViaServiceAccountImpersonation(
+        sourceClient: sourceClient,
+        targetServiceAccount: impersonationInfo.serviceAccount,
+        targetScopes: scopes,
+        delegates: delegates,
+        universeDomain: targetUniverse,
+        endpoint: impersonationInfo.customEndpoint,
+        quotaProject: quotaProject,
+        baseClient: baseClient,
+      );
+    } catch (_) {
+      sourceClient.close();
+      rethrow;
+    }
   }
 
   if (credentials case {
@@ -137,45 +189,75 @@ Future<AutoRefreshingAuthClient> _clientViaApplicationCredentials(
   }) {
     final serviceAccountImpersonationUrl =
         credentials['service_account_impersonation_url'] as String?;
+    final resolvedTokenUrl = tokenUrl.replaceAll(
+      '{universe_domain}',
+      jsonUniverseDomain ?? defaultUniverseDomain,
+    );
+    final stsHostUniverse = _universeDomainFromStsTokenUrl(resolvedTokenUrl);
+    if (jsonUniverseDomain != null &&
+        stsHostUniverse != null &&
+        jsonUniverseDomain != stsHostUniverse) {
+      throw CredentialsFileException(
+        'Universe domain mismatch in '
+        '${fileSource ?? 'the provided credentials'}: '
+        'universe_domain "$jsonUniverseDomain" does not match '
+        'token_url universe "$stsHostUniverse".',
+      );
+    }
+    final stsUniverse =
+        jsonUniverseDomain ?? stsHostUniverse ?? defaultUniverseDomain;
+
+    _ParsedImpersonationUrl? impersonationInfo;
+    if (serviceAccountImpersonationUrl != null) {
+      // Parse and validate before exchanging the STS token so a mismatched or
+      // malformed impersonation URL fails fast without transmitting a live
+      // token across universe boundaries.
+      //
+      // See: https://cloud.google.com/iam/docs/workload-identity-federation
+      // See also the "service_account_impersonation_url" definition at:
+      // https://google.aip.dev/auth/4117
+      impersonationInfo = _parseImpersonationUrl(
+        serviceAccountImpersonationUrl,
+      );
+      final impersonationUniverse = impersonationInfo.universeDomain;
+      if (impersonationUniverse != null &&
+          impersonationUniverse != stsUniverse) {
+        throw CredentialsFileException(
+          'Universe domain mismatch in '
+          '${fileSource ?? 'the provided credentials'}: '
+          'STS universe "$stsUniverse" does not match '
+          'service_account_impersonation_url universe '
+          '"$impersonationUniverse".',
+        );
+      }
+    }
 
     final stsClient = await clientViaStsTokenExchange(
       credentialSource: credentialSource,
       audience: audience,
       subjectTokenType: subjectTokenType,
-      tokenUrl: tokenUrl,
+      tokenUrl: resolvedTokenUrl,
       scopes: scopes,
-      quotaProject: credentials['quota_project_id'] as String?,
+      quotaProject: quotaProject,
+      universeDomain: stsUniverse,
       baseClient: baseClient,
     );
 
-    if (serviceAccountImpersonationUrl != null) {
-      // It's possible for external credentials to specify a service account
-      // to impersonate. This is common in Workload Identity Federation where
-      // the external identity (e.g. AWS, Azure, OIDC) is first exchanged for
-      // an STS token, which is then used to impersonate a specific Google Cloud
-      // service account.
-      //
-      // See: https://cloud.google.com/iam/docs/workload-identity-federation
-      // See also the "service_account_impersonation_url" definition at:
-      // https://google.aip.dev/auth/4117
-      final match = _impersonationUrlRegExp.firstMatch(
-        serviceAccountImpersonationUrl,
-      );
-      if (match == null) {
-        throw ArgumentError.value(
-          serviceAccountImpersonationUrl,
-          'service_account_impersonation_url',
-          'Invalid impersonation URL',
+    if (impersonationInfo != null) {
+      try {
+        return await clientViaServiceAccountImpersonation(
+          sourceClient: stsClient,
+          targetServiceAccount: impersonationInfo.serviceAccount,
+          targetScopes: scopes,
+          universeDomain: impersonationInfo.universeDomain ?? stsUniverse,
+          endpoint: impersonationInfo.customEndpoint,
+          quotaProject: quotaProject,
+          baseClient: baseClient,
         );
+      } catch (_) {
+        stsClient.close();
+        rethrow;
       }
-      final targetServiceAccount = match.group(1)!;
-
-      return clientViaServiceAccountImpersonation(
-        sourceClient: stsClient,
-        targetServiceAccount: targetServiceAccount,
-        targetScopes: scopes,
-        baseClient: baseClient,
-      );
     }
     return stsClient;
   }
@@ -188,8 +270,14 @@ Future<AutoRefreshingAuthClient> _clientViaApplicationCredentials(
   );
 }
 
+typedef _ParsedImpersonationUrl = ({
+  String serviceAccount,
+  String? universeDomain,
+  String? customEndpoint,
+});
+
 /// Matches the target service account email from a service account
-/// impersonation URL.
+/// impersonation URL path.
 ///
 /// Example URL:
 /// `https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/SA_NAME@PROJECT.iam.gserviceaccount.com:generateAccessToken`
@@ -197,5 +285,114 @@ Future<AutoRefreshingAuthClient> _clientViaApplicationCredentials(
 /// See:
 /// https://cloud.google.com/iam/docs/reference/credentials/rest/v1/projects.serviceAccounts/generateAccessToken
 final _impersonationUrlRegExp = RegExp(
-  r'serviceAccounts/([^:]+):generateAccessToken',
+  r'/v1/projects/[^/]+/serviceAccounts/([^/:]+):generateAccessToken$',
 );
+
+_ParsedImpersonationUrl _parseImpersonationUrl(String url) {
+  final uri = Uri.tryParse(url);
+  if (uri == null || uri.scheme != 'https' || uri.host.isEmpty) {
+    throw ArgumentError.value(
+      url,
+      'service_account_impersonation_url',
+      'Invalid impersonation URL',
+    );
+  }
+  final match = _impersonationUrlRegExp.firstMatch(uri.path);
+  if (match == null) {
+    throw ArgumentError.value(
+      url,
+      'service_account_impersonation_url',
+      'Invalid impersonation URL',
+    );
+  }
+
+  final serviceAccount = Uri.decodeComponent(match.group(1)!);
+  final host = uri.host.toLowerCase();
+  String? universeDomain;
+  String? customEndpoint;
+
+  if (host.startsWith('iamcredentials.') &&
+      host.length > 'iamcredentials.'.length) {
+    universeDomain = host.substring('iamcredentials.'.length);
+    if (uri.hasPort) {
+      customEndpoint = uri.origin;
+    }
+  } else {
+    final regionalMarker = host.indexOf('-iamcredentials.');
+    if (regionalMarker > 0 &&
+        regionalMarker + '-iamcredentials.'.length < host.length) {
+      universeDomain = host.substring(
+        regionalMarker + '-iamcredentials.'.length,
+      );
+      customEndpoint = uri.origin;
+    } else {
+      customEndpoint = uri.origin;
+    }
+  }
+
+  return (
+    serviceAccount: serviceAccount,
+    universeDomain: universeDomain,
+    customEndpoint: customEndpoint,
+  );
+}
+
+String? _parseUniverseDomain(
+  Map<String, dynamic> credentials,
+  String? fileSource,
+) {
+  final raw = credentials['universe_domain'];
+  if (raw == null) return null;
+  if (raw is! String) {
+    throw CredentialsFileException(
+      'Invalid universe_domain in '
+      '${fileSource ?? 'the provided credentials'}: expected a String.',
+    );
+  }
+  return raw.isEmpty ? null : raw;
+}
+
+String? _universeDomainFromStsTokenUrl(String tokenUrl) {
+  final uri = Uri.tryParse(tokenUrl);
+  if (uri == null || uri.host.isEmpty) return null;
+  final host = uri.host.toLowerCase();
+  if (host.startsWith('sts.') && host.length > 'sts.'.length) {
+    return host.substring('sts.'.length);
+  }
+  final regionalMarker = host.indexOf('-sts.');
+  if (regionalMarker > 0 && regionalMarker + '-sts.'.length < host.length) {
+    return host.substring(regionalMarker + '-sts.'.length);
+  }
+  return null;
+}
+
+String? _inferUniverseDomainFromJson(
+  Map<String, dynamic> credentials,
+  String? fileSource,
+) {
+  final explicit = _parseUniverseDomain(credentials, fileSource);
+  if (explicit != null) return explicit;
+  return switch (credentials['type']) {
+    'service_account' || 'authorized_user' => defaultUniverseDomain,
+    'external_account' => switch (credentials['token_url']) {
+      final String tokenUrl =>
+        _universeDomainFromStsTokenUrl(
+              tokenUrl.replaceAll('{universe_domain}', defaultUniverseDomain),
+            ) ??
+            defaultUniverseDomain,
+      _ => null,
+    },
+    _ => null,
+  };
+}
+
+List<String>? _parseDelegates(Object? raw, String? fileSource) {
+  if (raw == null) return null;
+  if (raw is! List || raw.any((e) => e is! String)) {
+    throw CredentialsFileException(
+      'Invalid delegates in ${fileSource ?? 'the provided credentials'}: '
+      'expected a List of Strings.',
+    );
+  }
+  return raw.cast<String>();
+}

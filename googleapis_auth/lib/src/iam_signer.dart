@@ -56,10 +56,16 @@ Future<({String signedBlob, String keyId})> signBlob(
       );
   final encodedEmail = Uri.encodeComponent(email);
 
-  endpoint ??= 'https://iamcredentials.$universeDomain';
+  final effectiveUniverse = universeDomain.isEmpty
+      ? defaultUniverseDomain
+      : universeDomain;
+  final rawEndpoint = endpoint ?? 'https://iamcredentials.$effectiveUniverse';
+  final normalizedEndpoint = rawEndpoint.endsWith('/')
+      ? rawEndpoint.substring(0, rawEndpoint.length - 1)
+      : rawEndpoint;
 
   final signBlobUrl = Uri.parse(
-    '$endpoint/v1/projects/-/serviceAccounts/$encodedEmail:signBlob',
+    '$normalizedEndpoint/v1/projects/-/serviceAccounts/$encodedEmail:signBlob',
   );
 
   final requestBody = jsonEncode({
