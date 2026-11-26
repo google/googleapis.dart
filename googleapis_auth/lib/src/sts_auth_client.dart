@@ -63,7 +63,7 @@ class StsAuthClient extends AutoRefreshDelegatingClient {
   }) : _credentialSource = credentialSource,
        _audience = audience,
        _subjectTokenType = subjectTokenType,
-       _tokenUri = _parseTokenUrl(tokenUrl),
+       _tokenUri = parseTokenUri(tokenUrl, name: 'tokenUrl'),
        _scopes = List.unmodifiable(scopes),
        _quotaProject = quotaProject,
        _universeDomain = normalizeUniverseDomain(universeDomain),
@@ -77,18 +77,6 @@ class StsAuthClient extends AutoRefreshDelegatingClient {
          baseClient ?? http.Client(),
          closeUnderlyingClient: baseClient == null,
        );
-
-  static Uri _parseTokenUrl(String tokenUrl) {
-    final uri = Uri.tryParse(tokenUrl);
-    if (uri == null) {
-      throw ArgumentError.value(
-        tokenUrl,
-        'tokenUrl',
-        'Invalid tokenUrl: must be a valid absolute URI.',
-      );
-    }
-    return validateTokenUri(uri, name: 'tokenUrl');
-  }
 
   @override
   AccessCredentials get credentials => _credentials;

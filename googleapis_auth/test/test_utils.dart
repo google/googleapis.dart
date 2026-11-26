@@ -4,9 +4,13 @@
 // license that can be found in the LICENSE file or at
 // https://developers.google.com/open-source/licenses/bsd
 
+import 'dart:async';
+import 'dart:convert';
+
 import 'package:googleapis_auth/googleapis_auth.dart';
 import 'package:googleapis_auth/src/crypto/pem.dart';
-import 'package:googleapis_auth/src/utils.dart';
+import 'package:googleapis_auth/src/utils.dart'
+    show maxExpectedTimeDiffInSeconds;
 import 'package:googleapis_auth/src/version.dart';
 import 'package:http/http.dart';
 import 'package:http/testing.dart';
@@ -38,6 +42,83 @@ class TransportException implements Exception {}
 Client get transportFailure =>
     MockClient(expectAsync1((_) async => throw TransportException()));
 
+Client get neverClient => mockClient(
+  (request) async => fail('Should not issue HTTP request: ${request.url}'),
+  expectClose: false,
+);
+
+Response jsonResponse(Object body, {int statusCode = 200}) =>
+    Response(jsonEncode(body), statusCode, headers: jsonContentType);
+
+Response oauthTokenResponse({String token = 'atoken', int expiresIn = 3600}) =>
+    jsonResponse({
+      'token_type': 'Bearer',
+      'access_token': token,
+      'expires_in': expiresIn,
+    });
+
+Response iamTokenResponse({
+  String token = 'impersonated-token',
+  Duration expiresIn = const Duration(hours: 1),
+}) => jsonResponse({
+  'accessToken': token,
+  'expireTime': DateTime.now().toUtc().add(expiresIn).toIso8601String(),
+});
+
+Response signBlobResponse(List<int> bytes, {String keyId = 'key-id'}) =>
+    jsonResponse({'signedBlob': base64Encode(bytes), 'keyId': keyId});
+
+AccessCredentials testCredentials({
+  String token = 'source-token',
+  String universeDomain = defaultUniverseDomain,
+}) => AccessCredentials(
+  AccessToken(
+    'Bearer',
+    token,
+    DateTime.now().toUtc().add(const Duration(hours: 1)),
+  ),
+  null,
+  const [],
+  universeDomain: universeDomain,
+);
+
+AuthClient testAuthClient(
+  Client baseClient, {
+  String token = 'source-token',
+  String universeDomain = defaultUniverseDomain,
+}) => authenticatedClient(
+  baseClient,
+  testCredentials(token: token, universeDomain: universeDomain),
+);
+
+({Map<String, dynamic> header, Map<String, dynamic> claims}) decodeJwt(
+  String jwt,
+) {
+  final parts = jwt.split('.');
+  expect(parts, hasLength(3));
+  Map<String, dynamic> decodePart(String part) =>
+      jsonDecode(utf8.decode(base64Url.decode(base64Url.normalize(part))))
+          as Map<String, dynamic>;
+  return (header: decodePart(parts[0]), claims: decodePart(parts[1]));
+}
+
+Client routeMockClient(
+  Map<String, FutureOr<Response> Function(Request)> routes, {
+  int? count,
+  bool expectClose = false,
+}) {
+  Future<Response> handler(Request request) async {
+    final route = routes[request.url.toString()];
+    if (route == null) fail('Unexpected HTTP request: ${request.url}');
+    return await route(request);
+  }
+
+  return mockClient(
+    count != null ? expectAsync1(handler, count: count) : handler,
+    expectClose: expectClose,
+  );
+}
+
 const testPrivateKeyString = '''-----BEGIN RSA PRIVATE KEY-----
 MIIEowIBAAKCAQEAuDOwXO14ltE1j2O0iDSuqtbw/1kMKjeiki3oehk2zNoUte42
 /s2rX15nYCkKtYG/r8WYvKzb31P4Uow1S4fFydKNWxgX4VtEjHgeqfPxeCL9wiJc
@@ -67,6 +148,26 @@ QpYYDJZwkgZrVQoKMIdCs9xfyVhZERq945NYLekwE1t2W+tOVBgR
 -----END RSA PRIVATE KEY-----''';
 
 final testPrivateKey = keyFromString(testPrivateKeyString);
+
+Map<String, Object?> serviceAccountJson({
+  String email = 'test@test.iam.gserviceaccount.com',
+  String clientId = 'myid',
+  String? privateKeyId = '301029',
+  String? projectId,
+  String? quotaProjectId,
+  String? universeDomain,
+  String? tokenUri,
+}) => {
+  'type': 'service_account',
+  'client_email': email,
+  'client_id': clientId,
+  'private_key': testPrivateKeyString,
+  'private_key_id': ?privateKeyId,
+  'project_id': ?projectId,
+  'quota_project_id': ?quotaProjectId,
+  'universe_domain': ?universeDomain,
+  'token_uri': ?tokenUri,
+};
 
 void expectExpiryOneHourFromNow(AccessToken accessToken) {
   final now = DateTime.now().toUtc();

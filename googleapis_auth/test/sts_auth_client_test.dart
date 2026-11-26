@@ -6,13 +6,14 @@
 
 import 'dart:convert';
 
-import 'package:googleapis_auth/src/exceptions.dart';
 import 'package:googleapis_auth/src/sts_auth_client.dart';
 import 'package:http/http.dart';
 import 'package:test/test.dart';
 import 'package:test_descriptor/test_descriptor.dart' as d;
 
 import 'test_utils.dart';
+
+const _stsUrl = 'https://sts.googleapis.com/v1/token';
 
 void main() {
   test('clientViaStsTokenExchange file credentials', testOn: 'vm', () async {
@@ -22,27 +23,19 @@ void main() {
       credentialSource: {'file': d.path('token.txt')},
       audience: 'my-audience',
       subjectTokenType: 'my-token-type',
-      tokenUrl: 'https://sts.googleapis.com/v1/token',
-      scopes: ['s1'],
-      baseClient: mockClient(expectClose: false, (Request request) async {
-        if (request.url.toString() == 'https://sts.googleapis.com/v1/token') {
+      tokenUrl: _stsUrl,
+      scopes: const ['s1'],
+      baseClient: routeMockClient({
+        _stsUrl: (request) {
           expectXGoogApiClientHeader(request);
           final body = jsonDecode(request.body) as Map<String, dynamic>;
           expect(body['subjectToken'], 'my-token');
           expect(body['audience'], 'my-audience');
-          return Response(
-            jsonEncode({
-              'token_type': 'Bearer',
-              'access_token': 'atoken',
-              'expires_in': 3600,
-            }),
-            200,
-            headers: {'content-type': 'application/json'},
-          );
-        }
-        return Response('not found', 404);
-      }),
+          return oauthTokenResponse();
+        },
+      }, count: 1),
     );
+    addTearDown(c.close);
 
     expect(c.credentials.accessToken.data, 'atoken');
   });
@@ -56,29 +49,21 @@ void main() {
       },
       audience: 'my-audience',
       subjectTokenType: 'my-token-type',
-      tokenUrl: 'https://sts.googleapis.com/v1/token',
-      scopes: ['s1'],
-      baseClient: mockClient(expectClose: false, (Request request) async {
-        if (request.url.toString() == 'http://localhost/token') {
+      tokenUrl: _stsUrl,
+      scopes: const ['s1'],
+      baseClient: routeMockClient({
+        'http://localhost/token': (request) {
           expect(request.headers['x-header'], 'value');
-          return Response(jsonEncode({'special_token': 'my-url-token'}), 200);
-        }
-        if (request.url.toString() == 'https://sts.googleapis.com/v1/token') {
+          return jsonResponse({'special_token': 'my-url-token'});
+        },
+        _stsUrl: (request) {
           final body = jsonDecode(request.body) as Map<String, dynamic>;
           expect(body['subjectToken'], 'my-url-token');
-          return Response(
-            jsonEncode({
-              'token_type': 'Bearer',
-              'access_token': 'atoken',
-              'expires_in': 3600,
-            }),
-            200,
-            headers: {'content-type': 'application/json'},
-          );
-        }
-        return Response('not found', 404);
-      }),
+          return oauthTokenResponse();
+        },
+      }, count: 2),
     );
+    addTearDown(c.close);
 
     expect(c.credentials.accessToken.data, 'atoken');
   });
@@ -86,8 +71,8 @@ void main() {
   test(
     'clientViaStsTokenExchange url credentials invalid json format',
     () async {
-      expect(
-        () => clientViaStsTokenExchange(
+      await expectLater(
+        clientViaStsTokenExchange(
           credentialSource: {
             'url': 'http://localhost/token',
             'format': {
@@ -97,25 +82,18 @@ void main() {
           },
           audience: 'my-audience',
           subjectTokenType: 'my-token-type',
-          tokenUrl: 'https://sts.googleapis.com/v1/token',
-          scopes: ['s1'],
-          baseClient: mockClient(expectClose: false, (Request request) async {
-            if (request.url.toString() == 'http://localhost/token') {
-              return Response('not-valid-json', 200);
-            }
-            return Response('not found', 404);
-          }),
+          tokenUrl: _stsUrl,
+          scopes: const ['s1'],
+          baseClient: routeMockClient({
+            'http://localhost/token': (_) => Response('not-valid-json', 200),
+          }, count: 1),
         ),
-        throwsA(isA<ServerRequestFailedException>()),
+        throwsA(isServerRequestFailedException),
       );
     },
   );
 
   test('StsAuthClient validates tokenUrl and universeDomain', () {
-    final neverClient = mockClient(
-      (request) async => fail('Should not issue HTTP request: ${request.url}'),
-      expectClose: false,
-    );
     expect(
       () => StsAuthClient(
         credentialSource: const {'file': 'unused'},

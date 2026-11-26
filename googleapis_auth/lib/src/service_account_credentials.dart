@@ -100,7 +100,10 @@ class ServiceAccountCredentials {
             final domain => domain,
           },
           quotaProject: map['quota_project_id'] as String?,
-          tokenUri: _parseTokenUri(map['token_uri'] as String?),
+          tokenUri: switch (map['token_uri'] as String?) {
+            null || '' => null,
+            final value => parseTokenUri(value, name: 'token_uri'),
+          },
         ),
       final Map map when map['type'] != 'service_account' =>
         throw ArgumentError(
@@ -164,17 +167,4 @@ class ServiceAccountCredentials {
   /// This is useful for creating custom signed tokens or signing arbitrary
   /// data with the service account's credentials.
   Uint8List sign(List<int> data) => RS256Signer(privateRSAKey).sign(data);
-}
-
-Uri? _parseTokenUri(String? value) {
-  if (value == null || value.isEmpty) return null;
-  final uri = Uri.tryParse(value);
-  if (uri == null) {
-    throw ArgumentError.value(
-      value,
-      'token_uri',
-      'Invalid token_uri: must be a valid absolute URI.',
-    );
-  }
-  return validateTokenUri(uri, name: 'token_uri');
 }

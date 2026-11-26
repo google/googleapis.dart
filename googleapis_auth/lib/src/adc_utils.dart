@@ -56,6 +56,25 @@ Future<AutoRefreshingAuthClient> fromApplicationsCredentialsFile(
 
 const _maxSourceNestingDepth = 10;
 
+String _sourceLabel(String? fileSource) =>
+    fileSource ?? 'the provided credentials';
+
+String _resolveTemplate(String url, String? universe) =>
+    url.replaceAll('{universe_domain}', universe ?? defaultUniverseDomain);
+
+void _checkUniverseMatch(
+  String? expected,
+  String? actual,
+  String detail,
+  String? fileSource,
+) {
+  if (expected != null && actual != null && expected != actual) {
+    throw CredentialsFileException(
+      'Universe domain mismatch in ${_sourceLabel(fileSource)}: $detail.',
+    );
+  }
+}
+
 Future<AutoRefreshingAuthClient> _clientViaApplicationCredentials(
   Map<String, dynamic> credentials,
   List<String> scopes,
@@ -66,7 +85,7 @@ Future<AutoRefreshingAuthClient> _clientViaApplicationCredentials(
   if (depth > _maxSourceNestingDepth) {
     throw CredentialsFileException(
       'Impersonation credential chain exceeds maximum nesting depth in '
-      '${fileSource ?? 'the provided credentials'}.',
+      '${_sourceLabel(fileSource)}.',
     );
   }
   final quotaProject =
@@ -149,7 +168,7 @@ Future<AutoRefreshingAuthClient> _clientFromAuthorizedUser(
   required String? jsonUniverseDomain,
   required String? fileSource,
 }) async {
-  final sourceLabel = fileSource ?? 'the provided credentials';
+  final sourceLabel = _sourceLabel(fileSource);
   if (jsonUniverseDomain != null &&
       jsonUniverseDomain != defaultUniverseDomain) {
     throw CredentialsFileException(
@@ -210,41 +229,37 @@ Future<AutoRefreshingAuthClient> _clientFromImpersonatedServiceAccount(
   required String? fileSource,
   required int depth,
 }) async {
-  final sourceLabel = fileSource ?? 'the provided credentials';
   final declaredSourceUniverse = _inferUniverseDomainFromJson(
     source,
     fileSource,
     depth: depth + 1,
   );
-  final resolvedUrl = impersonationUrl.replaceAll(
-    '{universe_domain}',
-    jsonUniverseDomain ?? declaredSourceUniverse ?? defaultUniverseDomain,
+  final impersonationInfo = _parseImpersonationUrl(
+    _resolveTemplate(
+      impersonationUrl,
+      jsonUniverseDomain ?? declaredSourceUniverse,
+    ),
+    fileSource,
   );
-  final impersonationInfo = _parseImpersonationUrl(resolvedUrl, fileSource);
   final urlUniverse = impersonationInfo.hostUniverse;
-  if (jsonUniverseDomain != null &&
-      urlUniverse != null &&
-      jsonUniverseDomain != urlUniverse) {
-    throw CredentialsFileException(
-      'Universe domain mismatch in $sourceLabel: '
-      'universe_domain "$jsonUniverseDomain" does not match '
-      'service_account_impersonation_url universe "$urlUniverse".',
-    );
-  }
+  _checkUniverseMatch(
+    jsonUniverseDomain,
+    urlUniverse,
+    'universe_domain "$jsonUniverseDomain" does not match '
+    'service_account_impersonation_url universe "$urlUniverse"',
+    fileSource,
+  );
   final targetUniverse =
       jsonUniverseDomain ?? urlUniverse ?? declaredSourceUniverse;
-  if (declaredSourceUniverse != null &&
-      targetUniverse != null &&
-      declaredSourceUniverse != targetUniverse) {
-    throw CredentialsFileException(
-      'Universe domain mismatch in $sourceLabel: '
-      'source_credentials universe "$declaredSourceUniverse" does not match '
-      'impersonation universe "$targetUniverse".',
-    );
-  }
+  _checkUniverseMatch(
+    declaredSourceUniverse,
+    targetUniverse,
+    'source_credentials universe "$declaredSourceUniverse" does not match '
+    'impersonation universe "$targetUniverse"',
+    fileSource,
+  );
 
   final delegates = _parseDelegates(credentials['delegates'], fileSource);
-
   final sourceClient = await _clientViaApplicationCredentials(
     source,
     ['https://www.googleapis.com/auth/iam'],
@@ -258,7 +273,7 @@ Future<AutoRefreshingAuthClient> _clientFromImpersonatedServiceAccount(
   if (sourceUniverse != resolvedUniverse) {
     sourceClient.close();
     throw CredentialsFileException(
-      'Universe domain mismatch in $sourceLabel: '
+      'Universe domain mismatch in ${_sourceLabel(fileSource)}: '
       'source credentials universe "$sourceUniverse" does not match '
       'impersonation universe "$resolvedUniverse".',
     );
@@ -286,7 +301,6 @@ Future<AutoRefreshingAuthClient> _clientFromExternalAccount(
   required String? jsonUniverseDomain,
   required String? fileSource,
 }) async {
-  final sourceLabel = fileSource ?? 'the provided credentials';
   final rawTokenUrl = _parseOptionalString(
     credentials,
     'token_url',
@@ -300,53 +314,37 @@ Future<AutoRefreshingAuthClient> _clientFromExternalAccount(
     'service_account_impersonation_url',
     fileSource,
   );
-  final resolvedTokenUrl = tokenUrl.replaceAll(
-    '{universe_domain}',
-    jsonUniverseDomain ?? defaultUniverseDomain,
+  final resolvedTokenUrl = _resolveTemplate(tokenUrl, jsonUniverseDomain);
+  final stsHostUniverse = universeDomainFromStsHost(
+    _parseAdcUri(resolvedTokenUrl, 'token_url', fileSource).host,
   );
-  final stsHostUniverse = _parseStsTokenUrlUniverse(
-    resolvedTokenUrl,
+  _checkUniverseMatch(
+    jsonUniverseDomain,
+    stsHostUniverse,
+    'universe_domain "$jsonUniverseDomain" does not match '
+    'token_url universe "$stsHostUniverse"',
     fileSource,
   );
-  if (jsonUniverseDomain != null &&
-      stsHostUniverse != null &&
-      jsonUniverseDomain != stsHostUniverse) {
-    throw CredentialsFileException(
-      'Universe domain mismatch in $sourceLabel: '
-      'universe_domain "$jsonUniverseDomain" does not match '
-      'token_url universe "$stsHostUniverse".',
-    );
-  }
 
   var effectiveUniverse = jsonUniverseDomain ?? stsHostUniverse;
   _ParsedImpersonationUrl? impersonationInfo;
   if (serviceAccountImpersonationUrl != null) {
     // Parse and validate before exchanging the STS token so a mismatched or
     // malformed impersonation URL fails fast without transmitting a live
-    // token across universe boundaries.
-    //
-    // See: https://cloud.google.com/iam/docs/workload-identity-federation
-    // See also the "service_account_impersonation_url" definition at:
-    // https://google.aip.dev/auth/4117
-    final resolvedImpersonationUrl = serviceAccountImpersonationUrl.replaceAll(
-      '{universe_domain}',
-      effectiveUniverse ?? defaultUniverseDomain,
-    );
+    // token across universe boundaries (AIP-4117).
     impersonationInfo = _parseImpersonationUrl(
-      resolvedImpersonationUrl,
+      _resolveTemplate(serviceAccountImpersonationUrl, effectiveUniverse),
       fileSource,
     );
-    final impUniverse = impersonationInfo.hostUniverse;
-    if (effectiveUniverse != null &&
-        impUniverse != null &&
-        impUniverse != effectiveUniverse) {
-      throw CredentialsFileException(
-        'Universe domain mismatch in $sourceLabel: '
-        'STS universe "$effectiveUniverse" does not match '
-        'service_account_impersonation_url universe "$impUniverse".',
-      );
-    }
-    effectiveUniverse ??= impUniverse;
+    _checkUniverseMatch(
+      effectiveUniverse,
+      impersonationInfo.hostUniverse,
+      'STS universe "$effectiveUniverse" does not match '
+      'service_account_impersonation_url universe '
+      '"${impersonationInfo.hostUniverse}"',
+      fileSource,
+    );
+    effectiveUniverse ??= impersonationInfo.hostUniverse;
   }
 
   final resolvedUniverse = effectiveUniverse ?? defaultUniverseDomain;
@@ -408,12 +406,6 @@ typedef _ParsedImpersonationUrl = ({
 
 /// Matches the target service account email from a service account
 /// impersonation URL path.
-///
-/// Example URL:
-/// `https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/SA_NAME@PROJECT.iam.gserviceaccount.com:generateAccessToken`
-///
-/// See:
-/// https://cloud.google.com/iam/docs/reference/credentials/rest/v1/projects.serviceAccounts/generateAccessToken
 final _impersonationUrlRegExp = RegExp(
   r'^/v1/projects/[^/]+/serviceAccounts/([^/:]+):generateAccessToken$',
 );
@@ -422,7 +414,7 @@ bool _isSupportedAuthorizedUserTokenUri(String tokenUriString) {
   final uri = Uri.tryParse(tokenUriString);
   if (uri == null ||
       uri.scheme != 'https' ||
-      (uri.hasPort && uri.port != 443) ||
+      uri.port != 443 ||
       uri.userInfo.isNotEmpty ||
       uri.hasQuery ||
       uri.hasFragment) {
@@ -437,26 +429,33 @@ bool _isSupportedAuthorizedUserTokenUri(String tokenUriString) {
   };
 }
 
-_ParsedImpersonationUrl _parseImpersonationUrl(String url, String? fileSource) {
-  final sourceLabel = fileSource ?? 'the provided credentials';
-  final uri = Uri.tryParse(url);
-  if (uri == null ||
-      !uri.hasScheme ||
-      uri.host.isEmpty ||
-      uri.userInfo.isNotEmpty ||
-      uri.hasQuery ||
-      uri.hasFragment ||
-      (uri.scheme != 'https' &&
-          !(uri.scheme == 'http' && isLoopbackHost(uri.host)))) {
+Uri _parseAdcUri(
+  String url,
+  String name,
+  String? fileSource, {
+  bool allowQuery = true,
+}) {
+  final (:uri, :error) = tryValidateHttpsUri(url, name, allowQuery: allowQuery);
+  if (error != null) {
     throw CredentialsFileException(
-      'Invalid service_account_impersonation_url "$url" in $sourceLabel: must '
-      'use https (or http for localhost) without userinfo, query, or fragment.',
+      '$error ("$url" in ${_sourceLabel(fileSource)}).',
     );
   }
+  return uri!;
+}
+
+_ParsedImpersonationUrl _parseImpersonationUrl(String url, String? fileSource) {
+  final uri = _parseAdcUri(
+    url,
+    'service_account_impersonation_url',
+    fileSource,
+    allowQuery: false,
+  );
   final match = _impersonationUrlRegExp.firstMatch(uri.path);
   if (match == null) {
     throw CredentialsFileException(
-      'Invalid service_account_impersonation_url path "$url" in $sourceLabel.',
+      'Invalid service_account_impersonation_url path "$url" in '
+      '${_sourceLabel(fileSource)}.',
     );
   }
 
@@ -475,24 +474,6 @@ _ParsedImpersonationUrl _parseImpersonationUrl(String url, String? fileSource) {
   );
 }
 
-String? _parseStsTokenUrlUniverse(String tokenUrl, String? fileSource) {
-  final sourceLabel = fileSource ?? 'the provided credentials';
-  final uri = Uri.tryParse(tokenUrl);
-  if (uri == null ||
-      !uri.hasScheme ||
-      uri.host.isEmpty ||
-      uri.userInfo.isNotEmpty ||
-      uri.hasFragment ||
-      (uri.scheme != 'https' &&
-          !(uri.scheme == 'http' && isLoopbackHost(uri.host)))) {
-    throw CredentialsFileException(
-      'Invalid token_url "$tokenUrl" in $sourceLabel: must use https (or '
-      'http for localhost) without userinfo or fragment.',
-    );
-  }
-  return universeDomainFromStsHost(uri.host);
-}
-
 String? _parseOptionalString(
   Map<String, dynamic> credentials,
   String key,
@@ -502,8 +483,7 @@ String? _parseOptionalString(
   if (raw == null) return null;
   if (raw is! String) {
     throw CredentialsFileException(
-      'Invalid $key in ${fileSource ?? 'the provided credentials'}: '
-      'expected a String.',
+      'Invalid $key in ${_sourceLabel(fileSource)}: expected a String.',
     );
   }
   return raw;
@@ -518,9 +498,8 @@ String? _parseUniverseDomain(
   final normalized = tryNormalizeUniverseDomain(raw);
   if (normalized == null) {
     throw CredentialsFileException(
-      'Invalid universe_domain "$raw" in '
-      '${fileSource ?? 'the provided credentials'}: must be a valid DNS '
-      'domain name.',
+      'Invalid universe_domain "$raw" in ${_sourceLabel(fileSource)}: '
+      'must be a valid DNS domain name.',
     );
   }
   return normalized;
@@ -534,7 +513,7 @@ String? _inferUniverseDomainFromJson(
   if (depth > _maxSourceNestingDepth) {
     throw CredentialsFileException(
       'Impersonation credential chain exceeds maximum nesting depth in '
-      '${fileSource ?? 'the provided credentials'}.',
+      '${_sourceLabel(fileSource)}.',
     );
   }
   final explicit = _parseUniverseDomain(credentials, fileSource);
@@ -542,14 +521,10 @@ String? _inferUniverseDomainFromJson(
   return switch (credentials['type']) {
     'service_account' || 'authorized_user' => defaultUniverseDomain,
     'external_account' => switch (credentials['token_url']) {
-      final String tokenUrl when tokenUrl.isNotEmpty => () {
-        final resolved = tokenUrl.replaceAll(
-          '{universe_domain}',
-          defaultUniverseDomain,
-        );
-        final uri = Uri.tryParse(resolved);
-        return uri != null ? universeDomainFromStsHost(uri.host) : null;
-      }(),
+      final String url when url.isNotEmpty => _hostUniverse(
+        _resolveTemplate(url, null),
+        universeDomainFromStsHost,
+      ),
       null || '' => defaultUniverseDomain,
       _ => null,
     },
@@ -562,6 +537,11 @@ String? _inferUniverseDomainFromJson(
   };
 }
 
+String? _hostUniverse(String url, String? Function(String host) extract) {
+  final uri = Uri.tryParse(url);
+  return uri != null ? extract(uri.host) : null;
+}
+
 String? _inferImpersonationSourceUniverse(
   Map<String, dynamic> credentials,
   String? fileSource, {
@@ -569,28 +549,24 @@ String? _inferImpersonationSourceUniverse(
 }) {
   final url = credentials['service_account_impersonation_url'];
   if (url is String && !url.contains('{universe_domain}')) {
-    final uri = Uri.tryParse(url);
-    final hostUniverse = uri != null
-        ? universeDomainFromIamHost(uri.host)
-        : null;
+    final hostUniverse = _hostUniverse(url, universeDomainFromIamHost);
     if (hostUniverse != null) return hostUniverse;
   }
-  final nestedSource = credentials['source_credentials'];
-  if (nestedSource is Map<String, dynamic>) {
-    return _inferUniverseDomainFromJson(
+  return switch (credentials['source_credentials']) {
+    final Map<String, dynamic> nestedSource => _inferUniverseDomainFromJson(
       nestedSource,
       fileSource,
       depth: depth + 1,
-    );
-  }
-  return null;
+    ),
+    _ => null,
+  };
 }
 
 List<String>? _parseDelegates(Object? raw, String? fileSource) {
   if (raw == null) return null;
   if (raw is! List || raw.any((e) => e is! String)) {
     throw CredentialsFileException(
-      'Invalid delegates in ${fileSource ?? 'the provided credentials'}: '
+      'Invalid delegates in ${_sourceLabel(fileSource)}: '
       'expected a List of Strings.',
     );
   }

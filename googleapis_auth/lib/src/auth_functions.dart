@@ -96,7 +96,6 @@ AutoRefreshingAuthClient autoRefreshingClient(
   if (credentials.refreshToken == null) {
     throw ArgumentError('Refresh token in AccessCredentials was `null`.');
   }
-  validateAuthEndpointsForUniverse(authEndpoints, credentials.universeDomain);
   return AutoRefreshingClient(baseClient, authEndpoints, clientId, credentials);
 }
 

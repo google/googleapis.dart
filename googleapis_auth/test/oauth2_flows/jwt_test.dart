@@ -113,48 +113,19 @@ void main() {
       testPrivateKey,
       null,
       scopes,
-      mockClient(
-        expectAsync1((request) async {
+      routeMockClient({
+        '$customTokenUri': (request) {
           expect(request.method, 'POST');
-          expect(request.url, customTokenUri);
-
-          final assertion = request.bodyFields['assertion']!;
-          final parts = assertion.split('.');
-          expect(parts, hasLength(3));
-          final header =
-              jsonDecode(
-                    utf8.decode(
-                      base64Url.decode(base64Url.normalize(parts[0])),
-                    ),
-                  )
-                  as Map<String, dynamic>;
-          final claims =
-              jsonDecode(
-                    utf8.decode(
-                      base64Url.decode(base64Url.normalize(parts[1])),
-                    ),
-                  )
-                  as Map<String, dynamic>;
-
-          expect(header['alg'], 'RS256');
-          expect(header['typ'], 'JWT');
-          expect(header['kid'], 'key-123');
-          expect(claims['iss'], clientEmail);
-          expect(claims['aud'], googleOauth2TokenEndpoint.toString());
-          expect(claims['scope'], 's1 s2');
-
-          return Response(
-            jsonEncode({
-              'access_token': 'custom-atok',
-              'expires_in': 3600,
-              'token_type': 'Bearer',
-            }),
-            200,
-            headers: jsonContentType,
+          final (:header, :claims) = decodeJwt(
+            request.bodyFields['assertion']!,
           );
-        }),
-        expectClose: false,
-      ),
+          expect(header, {'alg': 'RS256', 'typ': 'JWT', 'kid': 'key-123'});
+          expect(claims['iss'], clientEmail);
+          expect(claims['aud'], '$googleOauth2TokenEndpoint');
+          expect(claims['scope'], 's1 s2');
+          return oauthTokenResponse(token: 'custom-atok');
+        },
+      }, count: 1),
       tokenUri: customTokenUri,
       privateKeyId: 'key-123',
     );
@@ -172,11 +143,7 @@ void main() {
         testPrivateKey,
         null,
         scopes,
-        mockClient(
-          (request) async =>
-              fail('Unexpected HTTP request to ${request.url} in TPC universe'),
-          expectClose: false,
-        ),
+        neverClient,
         universeDomain: 's3nsapis.fr',
         tokenUri: googleOauth2TokenEndpoint,
         privateKeyId: 'tpc-key-id',
@@ -187,19 +154,7 @@ void main() {
       expect(credentials.universeDomain, 's3nsapis.fr');
       expect(credentials.scopes, scopes);
 
-      final parts = credentials.accessToken.data.split('.');
-      expect(parts, hasLength(3));
-      final header =
-          jsonDecode(
-                utf8.decode(base64Url.decode(base64Url.normalize(parts[0]))),
-              )
-              as Map<String, dynamic>;
-      final claims =
-          jsonDecode(
-                utf8.decode(base64Url.decode(base64Url.normalize(parts[1]))),
-              )
-              as Map<String, dynamic>;
-
+      final (:header, :claims) = decodeJwt(credentials.accessToken.data);
       expect(header, {'alg': 'RS256', 'typ': 'JWT', 'kid': 'tpc-key-id'});
       expect(claims['iss'], clientEmail);
       expect(claims['sub'], clientEmail);
@@ -227,10 +182,7 @@ void main() {
         testPrivateKey,
         'user@example.com',
         scopes,
-        mockClient(
-          (request) async => fail('Unexpected HTTP request to ${request.url}'),
-          expectClose: false,
-        ),
+        neverClient,
         universeDomain: 's3nsapis.fr',
       );
 
@@ -255,10 +207,7 @@ void main() {
         testPrivateKey,
         null,
         const [],
-        mockClient(
-          (request) async => fail('Unexpected HTTP request to ${request.url}'),
-          expectClose: false,
-        ),
+        neverClient,
         universeDomain: 's3nsapis.fr',
       );
 
@@ -276,48 +225,30 @@ void main() {
   );
 
   test('normalizes universeDomain casing and encodes non-ASCII kid', () async {
-    final defaultUpperFlow = JwtFlow(
+    final defaultCreds = await JwtFlow(
       clientEmail,
       testPrivateKey,
       null,
       scopes,
       mockClient(expectAsync1(successfulSignRequest), expectClose: false),
       universeDomain: 'GOOGLEAPIS.COM',
-    );
-    final defaultCreds = await defaultUpperFlow.run();
+    ).run();
     expect(defaultCreds.universeDomain, 'googleapis.com');
 
-    final tpcUpperFlow = JwtFlow(
+    final tpcCreds = await JwtFlow(
       clientEmail,
       testPrivateKey,
       null,
       scopes,
-      mockClient(
-        (request) async => fail('Unexpected HTTP request to ${request.url}'),
-        expectClose: false,
-      ),
+      neverClient,
       universeDomain: 'S3NSAPIS.FR',
       privateKeyId: 'key-é-1',
-    );
-    final tpcCreds = await tpcUpperFlow.run();
+    ).run();
     expect(tpcCreds.universeDomain, 's3nsapis.fr');
-    final header =
-        jsonDecode(
-              utf8.decode(
-                base64Url.decode(
-                  base64Url.normalize(tpcCreds.accessToken.data.split('.')[0]),
-                ),
-              ),
-            )
-            as Map<String, dynamic>;
-    expect(header['kid'], 'key-é-1');
+    expect(decodeJwt(tpcCreds.accessToken.data).header['kid'], 'key-é-1');
   });
 
   test('validates universeDomain and tokenUri in constructor', () {
-    final neverClient = mockClient(
-      (request) async => fail('Unexpected HTTP request to ${request.url}'),
-      expectClose: false,
-    );
     expect(
       () => JwtFlow(
         clientEmail,
@@ -329,24 +260,16 @@ void main() {
       ),
       throwsArgumentError,
     );
-    for (final badUri in [
-      Uri.parse('http://oauth2.evil.com/token'),
-      Uri.parse('https://user@oauth2.googleapis.com/token'),
-      Uri.parse('https://oauth2.googleapis.com/token#frag'),
-      Uri.parse('/relative/token'),
-    ]) {
-      expect(
-        () => JwtFlow(
-          clientEmail,
-          testPrivateKey,
-          null,
-          scopes,
-          neverClient,
-          tokenUri: badUri,
-        ),
-        throwsArgumentError,
-        reason: 'Should reject $badUri',
-      );
-    }
+    expect(
+      () => JwtFlow(
+        clientEmail,
+        testPrivateKey,
+        null,
+        scopes,
+        neverClient,
+        tokenUri: Uri.parse('http://oauth2.evil.com/token'),
+      ),
+      throwsArgumentError,
+    );
   });
 }

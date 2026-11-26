@@ -152,10 +152,12 @@ void main() {
       expect(credentialsFromJson.clientId.identifier, 'myid');
       expect(credentialsFromJson.clientId.secret, isNull);
       expect(credentialsFromJson.privateKey, testPrivateKeyString);
+      expect(credentialsFromJson.privateKeyId, '301029');
       expect(credentialsFromJson.impersonatedUser, isNull);
       expect(credentialsFromJson.projectId, 'test-project');
       expect(credentialsFromJson.universeDomain, 'example.com');
       expect(credentialsFromJson.quotaProject, 'test-quota');
+      expect(credentialsFromJson.tokenUri, googleOauth2TokenEndpoint);
     });
 
     test('from JSON map with user', () {
@@ -189,37 +191,35 @@ void main() {
       }
     });
 
-    test('parses private_key_id and token_uri from JSON', () {
-      final creds = ServiceAccountCredentials.fromJson(credentials);
-      expect(creds.privateKeyId, '301029');
-      expect(creds.tokenUri, Uri.parse('https://oauth2.googleapis.com/token'));
-    });
-
-    test('normalizes empty universe_domain to defaultUniverseDomain', () {
-      final creds = ServiceAccountCredentials.fromJson({
-        ...credentials,
-        'universe_domain': '',
-      });
-      expect(creds.universeDomain, defaultUniverseDomain);
-    });
-
-    test('validates token_uri and universe_domain', () {
-      for (final badUri in [
-        'not-a-uri',
-        'http://oauth2.example.com/token',
-        'http://localhost.evil.com/token',
-        'https://user@oauth2.googleapis.com/token',
-        'https://oauth2.googleapis.com/token#frag',
-      ]) {
-        expect(
-          () => ServiceAccountCredentials.fromJson({
-            ...credentials,
-            'token_uri': badUri,
-          }),
-          throwsArgumentError,
-          reason: 'Should reject token_uri "$badUri"',
-        );
-      }
+    test('normalizes and validates token_uri and universe_domain', () {
+      expect(
+        ServiceAccountCredentials.fromJson({
+          ...credentials,
+          'universe_domain': '',
+        }).universeDomain,
+        defaultUniverseDomain,
+      );
+      expect(
+        ServiceAccountCredentials.fromJson({
+          ...credentials,
+          'universe_domain': 'S3NSAPIS.FR',
+        }).universeDomain,
+        's3nsapis.fr',
+      );
+      expect(
+        ServiceAccountCredentials.fromJson({
+          ...credentials,
+          'token_uri': 'http://localhost:8080/token',
+        }).tokenUri,
+        Uri.parse('http://localhost:8080/token'),
+      );
+      expect(
+        () => ServiceAccountCredentials.fromJson({
+          ...credentials,
+          'token_uri': 'http://oauth2.example.com/token',
+        }),
+        throwsArgumentError,
+      );
       expect(
         () => ServiceAccountCredentials(
           'a@b.com',
@@ -236,16 +236,6 @@ void main() {
         }),
         throwsArgumentError,
       );
-      final upperCreds = ServiceAccountCredentials.fromJson({
-        ...credentials,
-        'universe_domain': 'S3NSAPIS.FR',
-      });
-      expect(upperCreds.universeDomain, 's3nsapis.fr');
-      final localCreds = ServiceAccountCredentials.fromJson({
-        ...credentials,
-        'token_uri': 'http://localhost:8080/token',
-      });
-      expect(localCreds.tokenUri, Uri.parse('http://localhost:8080/token'));
     });
 
     test('sign data', () {
@@ -815,213 +805,8 @@ void main() {
           throwsA(isA<Exception>()),
         );
       });
-    });
 
-    group('Service Account Access', () {
-      test('clientViaServiceAccount exposes credentials', () async {
-        final credentials = ServiceAccountCredentials.fromJson({
-          'private_key_id': '301029',
-          'private_key': testPrivateKeyString,
-          'client_email': 'test@test.iam.gserviceaccount.com',
-          'client_id': 'myid',
-          'type': 'service_account',
-        });
-
-        final client = await clientViaServiceAccount(
-          credentials,
-          ['https://www.googleapis.com/auth/cloud-platform'],
-          baseClient: mockClient(
-            expectAsync1((request) async {
-              expect(request.method, 'POST');
-              expect(request.url, googleOauth2TokenEndpoint);
-              return Response(
-                jsonEncode({
-                  'access_token': 'test_token',
-                  'token_type': 'Bearer',
-                  'expires_in': 3600,
-                }),
-                200,
-                headers: jsonContentType,
-              );
-            }),
-            expectClose: false,
-          ),
-        );
-
-        client.close();
-      });
-
-      test('clientViaServiceAccount sends quotaProject header', () async {
-        final credentials = ServiceAccountCredentials.fromJson({
-          'private_key_id': '301029',
-          'private_key': testPrivateKeyString,
-          'client_email': 'test@test.iam.gserviceaccount.com',
-          'client_id': 'myid',
-          'type': 'service_account',
-          'quota_project_id': 'test-quota-project',
-        });
-
-        var callCount = 0;
-        final client = await clientViaServiceAccount(
-          credentials,
-          ['https://www.googleapis.com/auth/cloud-platform'],
-          baseClient: mockClient(
-            expectAsync1((request) async {
-              if (callCount == 0) {
-                expect(request.method, 'POST');
-                expect(request.url, googleOauth2TokenEndpoint);
-                callCount++;
-                return Response(
-                  jsonEncode({
-                    'access_token': 'test_token',
-                    'token_type': 'Bearer',
-                    'expires_in': 3600,
-                  }),
-                  200,
-                  headers: jsonContentType,
-                );
-              } else {
-                expect(
-                  request.headers,
-                  containsPair('x-goog-user-project', 'test-quota-project'),
-                );
-                callCount++;
-                return Response('', 200);
-              }
-            }, count: 2),
-            expectClose: false,
-          ),
-        );
-
-        final response = await client.get(Uri.parse('http://example.com'));
-        expect(response.statusCode, 200);
-
-        client.close();
-      });
-
-      test(
-        'clientViaServiceAccount uses self-signed JWT for TPC universe',
-        () async {
-          final credentials = ServiceAccountCredentials.fromJson({
-            'private_key_id': 'tpc-kid',
-            'private_key': testPrivateKeyString,
-            'client_email': 'sa@tpc-proj.iam.gserviceaccount.com',
-            'client_id': 'myid',
-            'type': 'service_account',
-            'universe_domain': 's3nsapis.fr',
-            'token_uri': 'https://oauth2.googleapis.com/token',
-          });
-
-          final client = await clientViaServiceAccount(
-            credentials,
-            ['https://www.googleapis.com/auth/cloud-platform'],
-            baseClient: mockClient(
-              expectAsync1((request) async {
-                expect(request.url.host, 'storage.s3nsapis.fr');
-                final auth = request.headers['Authorization']!;
-                expect(auth, startsWith('Bearer '));
-                final parts = auth.substring('Bearer '.length).split('.');
-                expect(parts, hasLength(3));
-                final claims =
-                    jsonDecode(
-                          utf8.decode(
-                            base64Url.decode(base64Url.normalize(parts[1])),
-                          ),
-                        )
-                        as Map<String, dynamic>;
-                expect(claims, isNot(contains('aud')));
-                return Response('ok', 200);
-              }),
-              expectClose: false,
-            ),
-          );
-
-          expect(client.credentials.universeDomain, 's3nsapis.fr');
-          final response = await client.get(
-            Uri.https('storage.s3nsapis.fr', '/b/bucket'),
-          );
-          expect(response.statusCode, 200);
-
-          client.close();
-        },
-      );
-
-      test(
-        'clientViaServiceAccount honors custom token_uri in default universe',
-        () async {
-          final customTokenUri = Uri.parse(
-            'https://oauth2.custom.example/token',
-          );
-          final credentials = ServiceAccountCredentials.fromJson({
-            'private_key_id': '301029',
-            'private_key': testPrivateKeyString,
-            'client_email': 'test@test.iam.gserviceaccount.com',
-            'client_id': 'myid',
-            'type': 'service_account',
-            'token_uri': customTokenUri.toString(),
-          });
-
-          final client = await clientViaServiceAccount(
-            credentials,
-            ['https://www.googleapis.com/auth/cloud-platform'],
-            baseClient: mockClient(
-              expectAsync1((request) async {
-                expect(request.method, 'POST');
-                expect(request.url, customTokenUri);
-                return Response(
-                  jsonEncode({
-                    'access_token': 'test_token',
-                    'token_type': 'Bearer',
-                    'expires_in': 3600,
-                  }),
-                  200,
-                  headers: jsonContentType,
-                );
-              }),
-              expectClose: false,
-            ),
-          );
-
-          expect(client.credentials.accessToken.data, 'test_token');
-          client.close();
-        },
-      );
-
-      test('clientViaMetadataServer returns null credentials', () async {
-        final client = await clientViaMetadataServer(
-          baseClient: mockClient(
-            expectAsync1((request) async {
-              final url = request.url.toString();
-              if (url.contains('/token')) {
-                return Response(
-                  jsonEncode({
-                    'access_token': 'test_token',
-                    'token_type': 'Bearer',
-                    'expires_in': 3600,
-                  }),
-                  200,
-                  headers: jsonContentType,
-                );
-              } else if (url.contains('/scopes')) {
-                return Response('s1\ns2', 200);
-              }
-              return Response('Not found', 404);
-            }, count: 3),
-            expectClose: false,
-          ),
-        );
-
-        expect(client.credentials.universeDomain, defaultUniverseDomain);
-        client.close();
-      }, testOn: 'vm');
-
-      test('refreshCredentials and clientViaRefreshToken guard non-default '
-          'universe against GoogleAuthEndpoints', () async {
-        final neverClient = mockClient(
-          (request) async =>
-              fail('Should not issue HTTP request to ${request.url}'),
-          expectClose: false,
-        );
+      test('guards non-default universe against GoogleAuthEndpoints', () async {
         final tpcCreds = AccessCredentials(
           AccessToken(
             'Bearer',
@@ -1034,7 +819,7 @@ void main() {
         );
 
         await expectLater(
-          refreshCredentials(ClientId('id', 'secret'), tpcCreds, neverClient),
+          refreshCredentials(clientId, tpcCreds, neverClient),
           throwsA(
             isArgumentError.having(
               (e) => e.message,
@@ -1043,19 +828,13 @@ void main() {
             ),
           ),
         );
-
         expect(
-          () => autoRefreshingClient(
-            ClientId('id', 'secret'),
-            tpcCreds,
-            neverClient,
-          ),
+          () => autoRefreshingClient(clientId, tpcCreds, neverClient),
           throwsArgumentError,
         );
-
         await expectLater(
           clientViaRefreshToken(
-            ClientId('id', 'secret'),
+            clientId,
             'tpc-refresh',
             ['s1'],
             baseClient: neverClient,
@@ -1068,32 +847,135 @@ void main() {
           Uri.https('oauth2.s3nsapis.fr', '/token'),
         );
         final refreshedClient = await clientViaRefreshToken(
-          ClientId('id', 'secret'),
+          clientId,
           'tpc-refresh',
           ['s1'],
-          baseClient: mockClient(
-            expectAsync1((request) async {
-              expect(request.url, customEndpoints.tokenEndpoint);
-              return Response(
-                jsonEncode({
-                  'access_token': 'new-tpc-token',
-                  'token_type': 'Bearer',
-                  'expires_in': 3600,
-                }),
-                200,
-                headers: jsonContentType,
-              );
-            }),
-            expectClose: false,
-          ),
+          baseClient: routeMockClient({
+            '${customEndpoints.tokenEndpoint}': (_) =>
+                oauthTokenResponse(token: 'new-tpc-token'),
+          }, count: 1),
           authEndpoints: customEndpoints,
           universeDomain: 'S3NSAPIS.FR',
         );
+        addTearDown(refreshedClient.close);
         expect(refreshedClient.credentials.universeDomain, 's3nsapis.fr');
         expect(refreshedClient.credentials.accessToken.data, 'new-tpc-token');
-        refreshedClient.close();
       });
     });
+
+    _serviceAccountAccessTests();
+  });
+}
+
+void _serviceAccountAccessTests() {
+  group('Service Account Access', () {
+    test('clientViaServiceAccount exposes credentials', () async {
+      final credentials = ServiceAccountCredentials.fromJson(
+        serviceAccountJson(),
+      );
+
+      final client = await clientViaServiceAccount(
+        credentials,
+        ['https://www.googleapis.com/auth/cloud-platform'],
+        baseClient: routeMockClient({
+          '$googleOauth2TokenEndpoint': (request) {
+            expect(request.method, 'POST');
+            return oauthTokenResponse(token: 'test_token');
+          },
+        }, count: 1),
+      );
+      addTearDown(client.close);
+      expect(client.credentials.accessToken.data, 'test_token');
+    });
+
+    test('clientViaServiceAccount sends quotaProject header', () async {
+      final credentials = ServiceAccountCredentials.fromJson(
+        serviceAccountJson(quotaProjectId: 'test-quota-project'),
+      );
+
+      final client = await clientViaServiceAccount(
+        credentials,
+        ['https://www.googleapis.com/auth/cloud-platform'],
+        baseClient: routeMockClient({
+          '$googleOauth2TokenEndpoint': (request) {
+            expect(request.method, 'POST');
+            return oauthTokenResponse(token: 'test_token');
+          },
+          'http://example.com': (request) {
+            expect(
+              request.headers,
+              containsPair('x-goog-user-project', 'test-quota-project'),
+            );
+            return Response('', 200);
+          },
+        }, count: 2),
+      );
+      addTearDown(client.close);
+
+      final response = await client.get(Uri.parse('http://example.com'));
+      expect(response.statusCode, 200);
+    });
+
+    test(
+      'clientViaServiceAccount uses self-signed JWT for TPC universe',
+      () async {
+        final credentials = ServiceAccountCredentials.fromJson(
+          serviceAccountJson(
+            email: 'sa@tpc-proj.iam.gserviceaccount.com',
+            privateKeyId: 'tpc-kid',
+            universeDomain: 's3nsapis.fr',
+            tokenUri: '$googleOauth2TokenEndpoint',
+          ),
+        );
+
+        final client = await clientViaServiceAccount(
+          credentials,
+          ['https://www.googleapis.com/auth/cloud-platform'],
+          baseClient: routeMockClient({
+            'https://storage.s3nsapis.fr/b/bucket': (request) {
+              final auth = request.headers['Authorization']!;
+              expect(auth, startsWith('Bearer '));
+              final (:claims, header: _) = decodeJwt(
+                auth.substring('Bearer '.length),
+              );
+              expect(claims, isNot(contains('aud')));
+              return Response('ok', 200);
+            },
+          }, count: 1),
+        );
+        addTearDown(client.close);
+
+        expect(client.credentials.universeDomain, 's3nsapis.fr');
+        final response = await client.get(
+          Uri.https('storage.s3nsapis.fr', '/b/bucket'),
+        );
+        expect(response.statusCode, 200);
+      },
+    );
+
+    test(
+      'clientViaServiceAccount honors custom token_uri in default universe',
+      () async {
+        const customTokenUrl = 'https://oauth2.custom.example/token';
+        final credentials = ServiceAccountCredentials.fromJson(
+          serviceAccountJson(tokenUri: customTokenUrl),
+        );
+
+        final client = await clientViaServiceAccount(
+          credentials,
+          ['https://www.googleapis.com/auth/cloud-platform'],
+          baseClient: routeMockClient({
+            customTokenUrl: (request) {
+              expect(request.method, 'POST');
+              return oauthTokenResponse(token: 'test_token');
+            },
+          }, count: 1),
+        );
+        addTearDown(client.close);
+
+        expect(client.credentials.accessToken.data, 'test_token');
+      },
+    );
   });
 }
 

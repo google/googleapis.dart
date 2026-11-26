@@ -7,10 +7,9 @@
 @Timeout(Duration(seconds: 2))
 library;
 
-import 'dart:convert';
-
-import 'package:googleapis_auth/googleapis_auth.dart' as public_api;
-import 'package:googleapis_auth/src/utils.dart';
+import 'package:googleapis_auth/googleapis_auth.dart'
+    show defaultUniverseDomain;
+import 'package:googleapis_auth/src/utils.dart' hide defaultUniverseDomain;
 import 'package:http/http.dart';
 import 'package:test/test.dart';
 
@@ -66,8 +65,7 @@ void main() {
   test('requestJson throws for JSON that is not a Map', () async {
     final body = <void>[];
     final client = mockClient(
-      (request) async =>
-          Response(jsonEncode(body), 200, headers: jsonContentType),
+      (request) async => jsonResponse(body),
       expectClose: false,
     );
 
@@ -87,8 +85,7 @@ void main() {
 
   test('requestJson throws for non-200 status code', () async {
     final client = mockClient(
-      (request) async =>
-          Response(jsonEncode({}), 500, headers: jsonContentType),
+      (request) async => jsonResponse({}, statusCode: 500),
       expectClose: false,
     );
 
@@ -104,92 +101,125 @@ void main() {
     );
   });
 
-  test('defaultUniverseDomain is exported publicly', () {
-    expect(public_api.defaultUniverseDomain, 'googleapis.com');
+  test('normalizeUniverseDomain normalizes valid values and rejects invalid '
+      'DNS hostnames', () {
+    expect(normalizeUniverseDomain(null), defaultUniverseDomain);
+    expect(normalizeUniverseDomain(''), defaultUniverseDomain);
+    expect(normalizeUniverseDomain('GOOGLEAPIS.COM'), defaultUniverseDomain);
+    expect(normalizeUniverseDomain('S3NSAPIS.FR'), 's3nsapis.fr');
+
+    for (final invalid in [
+      '   ',
+      'singlelabel',
+      'googleapis.com@evil.com',
+      's3nsapis.fr/evil',
+      's3nsapis.fr:443',
+      's3nsapis.fr#frag',
+      'https://s3nsapis.fr',
+    ]) {
+      expect(
+        () => normalizeUniverseDomain(invalid),
+        throwsArgumentError,
+        reason: invalid,
+      );
+    }
+  });
+
+  test('validateTokenUri and parseTokenUri enforce HTTPS or loopback HTTP', () {
+    for (final valid in [
+      'https://oauth2.googleapis.com/token',
+      'http://localhost:8080/token',
+      'http://127.0.0.1:8080/token',
+      'http://[::1]:8080/token',
+    ]) {
+      expect(parseTokenUri(valid).toString(), valid);
+    }
+
+    for (final invalid in [
+      '',
+      'not-a-uri',
+      '/relative/token',
+      'http://oauth2.evil.com/token',
+      'https://user@oauth2.googleapis.com/token',
+      'https://oauth2.googleapis.com/token#frag',
+    ]) {
+      expect(
+        () => parseTokenUri(invalid),
+        throwsArgumentError,
+        reason: invalid,
+      );
+    }
   });
 
   test('universeDomainFromIamHost and universeDomainFromStsHost parse global, '
       'regional, mTLS, REP, and PSC hosts', () {
-    const iamCases = {
-      'iamcredentials.googleapis.com': 'googleapis.com',
-      'iamcredentials.s3nsapis.fr': 's3nsapis.fr',
-      'us-central1-iamcredentials.googleapis.com': 'googleapis.com',
-      'eu-west9-iamcredentials.s3nsapis.fr': 's3nsapis.fr',
-      'iamcredentials.mtls.googleapis.com': 'googleapis.com',
-      'iamcredentials.mtls.s3nsapis.fr': 's3nsapis.fr',
-      'us-central1-iamcredentials.mtls.s3nsapis.fr': 's3nsapis.fr',
-      'iamcredentials.us-central1.rep.googleapis.com': 'googleapis.com',
-      'iamcredentials.eu-west9.rep.s3nsapis.fr': 's3nsapis.fr',
-      'iamcredentials.eu-west9.rep.mtls.s3nsapis.fr': 's3nsapis.fr',
-      'iamcredentials.mtls.eu-west9.rep.s3nsapis.fr': 's3nsapis.fr',
-      'iamcredentials-mypsc.p.googleapis.com': 'googleapis.com',
-      'iamcredentials-mypsc.p.s3nsapis.fr': 's3nsapis.fr',
-      'attacker.com-iamcredentials.googleapis.com': null,
-      'iamcredentials.mtls.com': null,
-      'proxy.corp.example': null,
-      'localhost': null,
-    };
-    for (final MapEntry(key: host, value: expected) in iamCases.entries) {
-      expect(universeDomainFromIamHost(host), expected, reason: host);
-    }
+    const templates = [
+      ('{s}.googleapis.com', 'googleapis.com'),
+      ('{s}.s3nsapis.fr', 's3nsapis.fr'),
+      ('us-central1-{s}.googleapis.com', 'googleapis.com'),
+      ('eu-west9-{s}.s3nsapis.fr', 's3nsapis.fr'),
+      ('{s}.mtls.googleapis.com', 'googleapis.com'),
+      ('{s}.mtls.s3nsapis.fr', 's3nsapis.fr'),
+      ('us-central1-{s}.mtls.s3nsapis.fr', 's3nsapis.fr'),
+      ('{s}.us-central1.rep.googleapis.com', 'googleapis.com'),
+      ('{s}.eu-west9.rep.s3nsapis.fr', 's3nsapis.fr'),
+      ('{s}.eu-west9.rep.mtls.s3nsapis.fr', 's3nsapis.fr'),
+      ('{s}.mtls.eu-west9.rep.s3nsapis.fr', 's3nsapis.fr'),
+      ('{s}-mypsc.p.googleapis.com', 'googleapis.com'),
+      ('{s}-mypsc.p.s3nsapis.fr', 's3nsapis.fr'),
+      ('attacker.com-{s}.googleapis.com', null),
+      ('{s}.mtls.com', null),
+      ('proxy.corp.example', null),
+      ('localhost', null),
+    ];
 
-    const stsCases = {
-      'sts.googleapis.com': 'googleapis.com',
-      'sts.s3nsapis.fr': 's3nsapis.fr',
-      'us-central1-sts.googleapis.com': 'googleapis.com',
-      'eu-west9-sts.s3nsapis.fr': 's3nsapis.fr',
-      'sts.mtls.googleapis.com': 'googleapis.com',
-      'sts.mtls.s3nsapis.fr': 's3nsapis.fr',
-      'us-central1-sts.mtls.s3nsapis.fr': 's3nsapis.fr',
-      'sts.us-central1.rep.googleapis.com': 'googleapis.com',
-      'sts.eu-west9.rep.s3nsapis.fr': 's3nsapis.fr',
-      'sts.eu-west9.rep.mtls.s3nsapis.fr': 's3nsapis.fr',
-      'sts.mtls.eu-west9.rep.s3nsapis.fr': 's3nsapis.fr',
-      'sts-mypsc.p.googleapis.com': 'googleapis.com',
-      'sts-mypsc.p.s3nsapis.fr': 's3nsapis.fr',
-      'attacker.com-sts.googleapis.com': null,
-      'sts.mtls.com': null,
-      'proxy.corp.example': null,
-      'localhost': null,
-    };
-    for (final MapEntry(key: host, value: expected) in stsCases.entries) {
-      expect(universeDomainFromStsHost(host), expected, reason: host);
+    for (final (template, expected) in templates) {
+      final iamHost = template.replaceAll('{s}', 'iamcredentials');
+      expect(universeDomainFromIamHost(iamHost), expected, reason: iamHost);
+      final stsHost = template.replaceAll('{s}', 'sts');
+      expect(universeDomainFromStsHost(stsHost), expected, reason: stsHost);
     }
   });
 
-  test('validateIamEndpoint allows same-universe mTLS/REP/PSC and rejects '
-      'cross-universe variants', () {
+  test('validateIamEndpoint enforces origin format and symmetric universe '
+      'isolation', () {
     for (final valid in [
       'https://iamcredentials.mtls.s3nsapis.fr',
       'https://iamcredentials.eu-west9.rep.s3nsapis.fr',
       'https://iamcredentials.eu-west9.rep.mtls.s3nsapis.fr',
       'https://iamcredentials-mypsc.p.s3nsapis.fr',
+      'https://custom-proxy.example',
+      'http://localhost:8080',
     ]) {
       expect(validateIamEndpoint(valid, 's3nsapis.fr'), valid);
     }
-
-    for (final mismatched in [
-      'https://iamcredentials.mtls.googleapis.com',
-      'https://iamcredentials.us-central1.rep.googleapis.com',
-      'https://iamcredentials-mypsc.p.googleapis.com',
-    ]) {
-      expect(
-        () => validateIamEndpoint(mismatched, 's3nsapis.fr'),
-        throwsArgumentError,
-        reason: mismatched,
-      );
-    }
-
-    for (final tpcEndpoint in [
+    expect(
+      validateIamEndpoint('https://iamcredentials.s3nsapis.fr/', null),
       'https://iamcredentials.s3nsapis.fr',
-      'https://iamcredentials.mtls.s3nsapis.fr',
-      'https://iamcredentials.eu-west9.rep.s3nsapis.fr',
-      'https://iamcredentials-mypsc.p.s3nsapis.fr',
+    );
+
+    for (final (endpoint, universe) in [
+      ('', 's3nsapis.fr'),
+      ('http://iamcredentials.s3nsapis.fr', 's3nsapis.fr'),
+      ('https://user@iamcredentials.s3nsapis.fr', 's3nsapis.fr'),
+      ('https://iamcredentials.s3nsapis.fr/extra', 's3nsapis.fr'),
+      ('https://iamcredentials.s3nsapis.fr?q=1', 's3nsapis.fr'),
+      ('https://iamcredentials.s3nsapis.fr#frag', 's3nsapis.fr'),
+      ('https://iamcredentials.mtls.googleapis.com', 's3nsapis.fr'),
+      ('https://iamcredentials.us-central1.rep.googleapis.com', 's3nsapis.fr'),
+      ('https://iamcredentials-mypsc.p.googleapis.com', 's3nsapis.fr'),
+      ('https://iamcredentials.s3nsapis.fr', defaultUniverseDomain),
+      ('https://iamcredentials.mtls.s3nsapis.fr', defaultUniverseDomain),
+      (
+        'https://iamcredentials.eu-west9.rep.s3nsapis.fr',
+        defaultUniverseDomain,
+      ),
+      ('https://iamcredentials-mypsc.p.s3nsapis.fr', defaultUniverseDomain),
     ]) {
       expect(
-        () => validateIamEndpoint(tpcEndpoint, defaultUniverseDomain),
+        () => validateIamEndpoint(endpoint, universe),
         throwsArgumentError,
-        reason: tpcEndpoint,
+        reason: '$endpoint for $universe',
       );
     }
   });

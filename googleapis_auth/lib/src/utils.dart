@@ -33,18 +33,13 @@ final _universeDomainRegExp = RegExp(
   '^$_dnsLabelPattern(?:\\.$_dnsLabelPattern)+\$',
 );
 
-final _regionalIamHostRegExp = RegExp(
-  '^$_dnsLabelPattern-iamcredentials\\.(.+)\$',
+RegExp _serviceHostRegExp(String service) => RegExp(
+  '^(?:$service\\.|$service-$_dnsLabelPattern\\.p\\.|'
+  '$_dnsLabelPattern-$service\\.)(.+)\$',
 );
 
-final _pscIamHostRegExp = RegExp(
-  '^iamcredentials-$_dnsLabelPattern\\.p\\.(.+)\$',
-);
-
-final _regionalStsHostRegExp = RegExp('^$_dnsLabelPattern-sts\\.(.+)\$');
-
-final _pscStsHostRegExp = RegExp('^sts-$_dnsLabelPattern\\.p\\.(.+)\$');
-
+final _iamHostRegExp = _serviceHostRegExp('iamcredentials');
+final _stsHostRegExp = _serviceHostRegExp('sts');
 final _repPrefixRegExp = RegExp('^$_dnsLabelPattern\\.rep\\.(.+)\$');
 
 /// Returns the normalized (lowercased) DNS hostname for [universeDomain], or
@@ -86,54 +81,85 @@ bool isLoopbackHost(String host) {
   return lower == 'localhost' || lower == '127.0.0.1' || lower == '::1';
 }
 
+/// Validates an HTTPS (or loopback HTTP) URI from a [Uri] or [String].
+///
+/// Returns `(uri: parsed, error: null)` on success, or
+/// `(uri: null, error: msg)` describing why validation failed.
+({Uri? uri, String? error}) tryValidateHttpsUri(
+  Object? input,
+  String name, {
+  bool allowQuery = true,
+  bool requireBaseOrigin = false,
+}) {
+  final uri = input is Uri
+      ? input
+      : (input is String ? Uri.tryParse(input) : null);
+  if (uri == null || !uri.hasScheme || uri.host.isEmpty) {
+    return (uri: null, error: 'Invalid $name: must be a valid absolute URI.');
+  }
+  if (uri.userInfo.isNotEmpty ||
+      uri.hasFragment ||
+      (!allowQuery && uri.hasQuery)) {
+    final disallowed = allowQuery
+        ? 'userinfo or a fragment'
+        : 'userinfo, query, or fragment';
+    return (uri: null, error: 'Invalid $name: must not contain $disallowed.');
+  }
+  if (requireBaseOrigin && uri.path.isNotEmpty && uri.path != '/') {
+    return (
+      uri: null,
+      error: 'Invalid $name: must be a base origin URL without a path.',
+    );
+  }
+  if (uri.scheme != 'https' &&
+      !(uri.scheme == 'http' && isLoopbackHost(uri.host))) {
+    return (
+      uri: null,
+      error: 'Invalid $name: must use https (or http for localhost).',
+    );
+  }
+  return (uri: uri, error: null);
+}
+
 /// Validates an OAuth 2.0 or STS token endpoint [uri].
 ///
 /// Requires `https` (or `http` for loopback hosts), non-empty host, no
 /// userinfo, and no fragment.
 Uri validateTokenUri(Uri uri, {String name = 'tokenUri'}) {
-  if (!uri.hasScheme || uri.host.isEmpty) {
-    throw ArgumentError.value(
-      uri,
-      name,
-      'Invalid $name: must be a valid absolute URI.',
-    );
+  final (uri: validated, :error) = tryValidateHttpsUri(uri, name);
+  if (error != null) {
+    throw ArgumentError.value(uri, name, error);
   }
-  if (uri.userInfo.isNotEmpty || uri.hasFragment) {
-    throw ArgumentError.value(
-      uri,
-      name,
-      'Invalid $name: must not contain userinfo or a fragment.',
-    );
+  return validated!;
+}
+
+/// Parses and validates a string OAuth 2.0 or STS token endpoint URI.
+Uri parseTokenUri(String value, {String name = 'tokenUri'}) {
+  final (:uri, :error) = tryValidateHttpsUri(value, name);
+  if (error != null) {
+    throw ArgumentError.value(value, name, error);
   }
-  if (uri.scheme != 'https' &&
-      !(uri.scheme == 'http' && isLoopbackHost(uri.host))) {
-    throw ArgumentError.value(
-      uri,
-      name,
-      'Invalid $name: must use https (or http for localhost).',
-    );
-  }
-  return uri;
+  return uri!;
 }
 
 String? _stripEndpointModifiers(String candidate) {
   var result = candidate;
-  if (result.startsWith('mtls.')) {
+  final hadLeadingMtls = result.startsWith('mtls.');
+  if (hadLeadingMtls) {
     result = result.substring('mtls.'.length);
-    final repMatch = _repPrefixRegExp.firstMatch(result);
-    if (repMatch != null) {
-      result = repMatch.group(1)!;
-    }
-  } else {
-    final repMatch = _repPrefixRegExp.firstMatch(result);
-    if (repMatch != null) {
-      result = repMatch.group(1)!;
-      if (result.startsWith('mtls.')) {
-        result = result.substring('mtls.'.length);
-      }
+  }
+  if (_repPrefixRegExp.firstMatch(result) case final repMatch?) {
+    result = repMatch.group(1)!;
+    if (!hadLeadingMtls && result.startsWith('mtls.')) {
+      result = result.substring('mtls.'.length);
     }
   }
   return tryNormalizeUniverseDomain(result);
+}
+
+String? _universeDomainFromServiceHost(String host, RegExp pattern) {
+  final candidate = pattern.firstMatch(host.toLowerCase())?.group(1);
+  return candidate == null ? null : _stripEndpointModifiers(candidate);
 }
 
 /// Extracts and validates the universe domain from an IAM Credentials API host
@@ -142,15 +168,8 @@ String? _stripEndpointModifiers(String candidate) {
 /// or Private Service Connect `iamcredentials-<psc>.p.<universe>`).
 ///
 /// Returns `null` if [host] is not a recognized IAM Credentials API host.
-String? universeDomainFromIamHost(String host) {
-  final lower = host.toLowerCase();
-  final candidate = lower.startsWith('iamcredentials.')
-      ? lower.substring('iamcredentials.'.length)
-      : (_regionalIamHostRegExp.firstMatch(lower) ??
-                _pscIamHostRegExp.firstMatch(lower))
-            ?.group(1);
-  return candidate == null ? null : _stripEndpointModifiers(candidate);
-}
+String? universeDomainFromIamHost(String host) =>
+    _universeDomainFromServiceHost(host, _iamHostRegExp);
 
 /// Extracts and validates the universe domain from an STS API host
 /// (`sts.<universe>`, `<region>-sts.<universe>`, `sts.mtls.<universe>`,
@@ -158,15 +177,8 @@ String? universeDomainFromIamHost(String host) {
 /// `sts-<psc>.p.<universe>`).
 ///
 /// Returns `null` if [host] is not a recognized STS API host.
-String? universeDomainFromStsHost(String host) {
-  final lower = host.toLowerCase();
-  final candidate = lower.startsWith('sts.')
-      ? lower.substring('sts.'.length)
-      : (_regionalStsHostRegExp.firstMatch(lower) ??
-                _pscStsHostRegExp.firstMatch(lower))
-            ?.group(1);
-  return candidate == null ? null : _stripEndpointModifiers(candidate);
-}
+String? universeDomainFromStsHost(String host) =>
+    _universeDomainFromServiceHost(host, _stsHostRegExp);
 
 /// Validates and normalizes an IAM Credentials API base [endpoint] URL for
 /// [expectedUniverse].
@@ -180,37 +192,16 @@ String validateIamEndpoint(
   String? expectedUniverse, {
   String name = 'endpoint',
 }) {
-  final uri = Uri.tryParse(endpoint);
-  if (uri == null || !uri.hasScheme || uri.host.isEmpty) {
-    throw ArgumentError.value(
-      endpoint,
-      name,
-      'Invalid $name: must be a valid absolute URL.',
-    );
+  final (:uri, :error) = tryValidateHttpsUri(
+    endpoint,
+    name,
+    allowQuery: false,
+    requireBaseOrigin: true,
+  );
+  if (error != null) {
+    throw ArgumentError.value(endpoint, name, error);
   }
-  if (uri.userInfo.isNotEmpty || uri.hasQuery || uri.hasFragment) {
-    throw ArgumentError.value(
-      endpoint,
-      name,
-      'Invalid $name: must not contain userinfo, query, or fragment.',
-    );
-  }
-  if (uri.path.isNotEmpty && uri.path != '/') {
-    throw ArgumentError.value(
-      endpoint,
-      name,
-      'Invalid $name: must be a base origin URL without a path.',
-    );
-  }
-  if (uri.scheme != 'https' &&
-      !(uri.scheme == 'http' && isLoopbackHost(uri.host))) {
-    throw ArgumentError.value(
-      endpoint,
-      name,
-      'Invalid $name: must use https (or http for localhost).',
-    );
-  }
-  final endpointUniverse = universeDomainFromIamHost(uri.host);
+  final endpointUniverse = universeDomainFromIamHost(uri!.host);
   if (expectedUniverse != null &&
       endpointUniverse != null &&
       endpointUniverse != expectedUniverse) {

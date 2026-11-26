@@ -160,7 +160,12 @@ class ImpersonatedAuthClient extends AutoRefreshDelegatingClient {
        _sourceClient = sourceClient,
        _targetScopes = List.unmodifiable(targetScopes),
        _delegates = delegates != null ? List.unmodifiable(delegates) : null,
-       _endpoint = _resolveEndpoint(sourceClient, universeDomain, endpoint),
+       _endpoint = endpoint != null
+           ? validateIamEndpoint(
+               endpoint,
+               _resolveUniverseDomain(sourceClient, universeDomain),
+             )
+           : null,
        _quotaProject = quotaProject,
        _lifetime = lifetime,
        _credentials = AccessCredentials(
@@ -191,19 +196,6 @@ class ImpersonatedAuthClient extends AutoRefreshDelegatingClient {
       );
     }
     return resolvedUniverse;
-  }
-
-  static String? _resolveEndpoint(
-    AuthClient sourceClient,
-    String? universeDomain,
-    String? endpoint,
-  ) {
-    if (endpoint == null) return null;
-    final resolvedUniverse = _resolveUniverseDomain(
-      sourceClient,
-      universeDomain,
-    );
-    return validateIamEndpoint(endpoint, resolvedUniverse);
   }
 
   @override
@@ -280,9 +272,7 @@ class ImpersonatedAuthClient extends AutoRefreshDelegatingClient {
     data,
     serviceAccountEmail: targetServiceAccount,
     delegates: _delegates,
-    endpoint: endpoint != null
-        ? validateIamEndpoint(endpoint, universeDomain)
-        : _endpoint,
+    endpoint: endpoint ?? _endpoint,
     universeDomain: universeDomain,
   );
 
@@ -292,11 +282,7 @@ class ImpersonatedAuthClient extends AutoRefreshDelegatingClient {
       final newCredentials = await generateAccessToken();
       notifyAboutNewCredentials(newCredentials);
       _credentials = newCredentials;
-      _authClient = authenticatedClient(
-        baseClient,
-        _credentials,
-        quotaProject: _quotaProject,
-      );
+      _authClient = null;
     }
 
     _authClient ??= authenticatedClient(
