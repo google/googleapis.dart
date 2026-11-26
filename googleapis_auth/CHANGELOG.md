@@ -1,10 +1,11 @@
 ## 2.4.0-wip
 
-- Added `universeDomain` to `AccessCredentials` (defaulting to `googleapis.com`,
-  normalized to lowercase and validated as a DNS domain name, omitted from
-  `toJson()` when default) and propagated universe domains across service
-  accounts, GCE metadata server credentials, STS external accounts, credential
-  refresh, `signBlob()`, and `AuthClient.sign()`.
+- Exported `defaultUniverseDomain` (`googleapis.com`), added `universeDomain` to
+  `AccessCredentials` (defaulting to `googleapis.com`, normalized to lowercase
+  and validated as a DNS domain name, omitted from `toJson()` when default), and
+  propagated universe domains across service accounts, GCE metadata server
+  credentials, STS external accounts, credential refresh, `signBlob()`, and
+  `AuthClient.sign()`.
 - Added optional `universeDomain` parameter to `clientViaRefreshToken()` and
   `obtainAccessCredentialsViaCodeExchange()`, and rejected using default
   `GoogleAuthEndpoints` (`oauth2.googleapis.com`) with non-default universe

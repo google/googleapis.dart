@@ -610,7 +610,7 @@ void main() {
           ),
         ),
         throwsA(
-          isArgumentError.having(
+          isA<CredentialsFileException>().having(
             (e) => e.message,
             'message',
             contains('https'),
@@ -647,34 +647,53 @@ void main() {
           ),
         ),
         (
-          'arbitrary non-STS token_url host',
+          'mTLS cross-universe mismatch in token_url',
           {
             'type': 'external_account',
             'universe_domain': 's3nsapis.fr',
             'audience': 'aud',
             'subject_token_type': 'urn:ietf:params:oauth:token-type:jwt',
-            'token_url': 'https://attacker.example/v1/token',
+            'token_url': 'https://sts.mtls.googleapis.com/v1/token',
             'credential_source': {'file': d.path('sec_token.txt')},
           },
           isA<CredentialsFileException>().having(
             (e) => e.message,
             'message',
-            contains('STS API host'),
+            contains('Universe domain mismatch'),
           ),
         ),
         (
-          'multi-label regional spoof in token_url',
+          'REP cross-universe mismatch in impersonation URL',
           {
             'type': 'external_account',
+            'universe_domain': 's3nsapis.fr',
             'audience': 'aud',
             'subject_token_type': 'urn:ietf:params:oauth:token-type:jwt',
-            'token_url': 'https://attacker.com-sts.googleapis.com/v1/token',
+            'token_url': 'https://sts.s3nsapis.fr/v1/token',
+            'service_account_impersonation_url':
+                'https://iamcredentials.us-central1.rep.googleapis.com/v1/projects/-/serviceAccounts/sa@p.iam.gserviceaccount.com:generateAccessToken',
             'credential_source': {'file': d.path('sec_token.txt')},
           },
           isA<CredentialsFileException>().having(
             (e) => e.message,
             'message',
-            contains('STS API host'),
+            contains('Universe domain mismatch'),
+          ),
+        ),
+        (
+          'PSC cross-universe mismatch in token_url',
+          {
+            'type': 'external_account',
+            'universe_domain': 's3nsapis.fr',
+            'audience': 'aud',
+            'subject_token_type': 'urn:ietf:params:oauth:token-type:jwt',
+            'token_url': 'https://sts-mypsc.p.googleapis.com/v1/token',
+            'credential_source': {'file': d.path('sec_token.txt')},
+          },
+          isA<CredentialsFileException>().having(
+            (e) => e.message,
+            'message',
+            contains('Universe domain mismatch'),
           ),
         ),
         (
@@ -725,24 +744,6 @@ void main() {
           ),
         ),
         (
-          'arbitrary non-IAM impersonation host',
-          {
-            'type': 'external_account',
-            'universe_domain': 's3nsapis.fr',
-            'audience': 'aud',
-            'subject_token_type': 'urn:ietf:params:oauth:token-type:jwt',
-            'token_url': 'https://sts.s3nsapis.fr/v1/token',
-            'service_account_impersonation_url':
-                'https://attacker.example/v1/projects/-/serviceAccounts/sa@p.iam.gserviceaccount.com:generateAccessToken',
-            'credential_source': {'file': d.path('sec_token.txt')},
-          },
-          isArgumentError.having(
-            (e) => e.message,
-            'message',
-            contains('IAM Credentials API host'),
-          ),
-        ),
-        (
           'unanchored impersonation path prefix',
           {
             'type': 'external_account',
@@ -753,23 +754,10 @@ void main() {
                 'https://iamcredentials.googleapis.com/evil/v1/projects/-/serviceAccounts/sa@p.iam.gserviceaccount.com:generateAccessToken',
             'credential_source': {'file': d.path('sec_token.txt')},
           },
-          isArgumentError.having((e) => e.message, 'message', contains('path')),
-        ),
-        (
-          'multi-label regional IAM spoof',
-          {
-            'type': 'external_account',
-            'audience': 'aud',
-            'subject_token_type': 'urn:ietf:params:oauth:token-type:jwt',
-            'token_url': 'https://sts.googleapis.com/v1/token',
-            'service_account_impersonation_url':
-                'https://attacker.com-iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/sa@p.iam.gserviceaccount.com:generateAccessToken',
-            'credential_source': {'file': d.path('sec_token.txt')},
-          },
-          isArgumentError.having(
+          isA<CredentialsFileException>().having(
             (e) => e.message,
             'message',
-            contains('IAM Credentials API host'),
+            contains('path'),
           ),
         ),
         (
@@ -783,10 +771,25 @@ void main() {
                 'https://user@iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/sa@p.iam.gserviceaccount.com:generateAccessToken?x=1',
             'credential_source': {'file': d.path('sec_token.txt')},
           },
-          isArgumentError.having(
+          isA<CredentialsFileException>().having(
             (e) => e.message,
             'message',
             contains('userinfo'),
+          ),
+        ),
+        (
+          'non-string token_url',
+          {
+            'type': 'external_account',
+            'audience': 'aud',
+            'subject_token_type': 'urn:ietf:params:oauth:token-type:jwt',
+            'token_url': 123,
+            'credential_source': {'file': d.path('sec_token.txt')},
+          },
+          isA<CredentialsFileException>().having(
+            (e) => e.message,
+            'message',
+            contains('token_url'),
           ),
         ),
         (
@@ -905,41 +908,204 @@ void main() {
         );
       }
 
-      // Accepts explicit default googleapis.com token_uri and universe_domain.
+      // Accepts canonical default-universe Google OAuth2 token_uri values.
+      for (final (idx, tokenUri) in [
+        'https://oauth2.googleapis.com/token',
+        'https://oauth2.mtls.googleapis.com/token',
+        'https://accounts.google.com/o/oauth2/token',
+        'https://www.googleapis.com/oauth2/v4/token',
+      ].indexed) {
+        final name = 'ok_user_$idx.json';
+        await d
+            .file(
+              name,
+              json.encode({
+                'client_id': 'id',
+                'client_secret': 'secret',
+                'refresh_token': 'refresh',
+                'type': 'authorized_user',
+                'universe_domain': 'GOOGLEAPIS.COM',
+                'token_uri': tokenUri,
+              }),
+            )
+            .create();
+        final client = await fromApplicationsCredentialsFile(
+          File(d.path(name)),
+          'test-credentials-file',
+          [],
+          mockClient(
+            expectAsync1((request) async {
+              expect(request.url, googleOauth2TokenEndpoint);
+              return Response(
+                jsonEncode({
+                  'token_type': 'Bearer',
+                  'access_token': 'atoken',
+                  'expires_in': 3600,
+                }),
+                200,
+                headers: jsonContentType,
+              );
+            }),
+          ),
+        );
+        expect(client.credentials.universeDomain, 'googleapis.com');
+        client.close();
+      }
+    },
+  );
+
+  test(
+    'external_account defaults omitted token_url per universe_domain',
+    () async {
+      await d.file('default_sts_token.txt', 'subject-jwt').create();
+      for (final (name, universe, expectedUrl, expectedUniverse) in [
+        (
+          'ext_no_token_url_default.json',
+          null,
+          'https://sts.googleapis.com/v1/token',
+          'googleapis.com',
+        ),
+        (
+          'ext_no_token_url_tpc.json',
+          's3nsapis.fr',
+          'https://sts.s3nsapis.fr/v1/token',
+          's3nsapis.fr',
+        ),
+      ]) {
+        await d
+            .file(
+              name,
+              json.encode({
+                'type': 'external_account',
+                'universe_domain': ?universe,
+                'audience': 'aud',
+                'subject_token_type': 'urn:ietf:params:oauth:token-type:jwt',
+                'credential_source': {'file': d.path('default_sts_token.txt')},
+              }),
+            )
+            .create();
+        final client = await fromApplicationsCredentialsFile(
+          File(d.path(name)),
+          'test-credentials-file',
+          ['s1'],
+          mockClient(
+            expectAsync1((request) async {
+              expect(request.url.toString(), expectedUrl);
+              return Response(
+                jsonEncode({
+                  'token_type': 'Bearer',
+                  'access_token': 'sts-tok',
+                  'expires_in': 3600,
+                }),
+                200,
+                headers: jsonContentType,
+              );
+            }),
+            expectClose: false,
+          ),
+        );
+        expect(client.credentials.universeDomain, expectedUniverse);
+        client.close();
+      }
+    },
+  );
+
+  test('external_account supports mTLS, REP, PSC, proxy, and localhost '
+      'STS and IAM endpoints', () async {
+    await d.file('endpoint_variants_token.txt', 'subject-jwt').create();
+    final cases = [
+      (
+        'mtls',
+        's3nsapis.fr',
+        'https://sts.mtls.s3nsapis.fr/v1/token',
+        'https://iamcredentials.mtls.s3nsapis.fr',
+      ),
+      (
+        'rep',
+        's3nsapis.fr',
+        'https://sts.eu-west9.rep.s3nsapis.fr/v1/token',
+        'https://iamcredentials.eu-west9.rep.s3nsapis.fr',
+      ),
+      (
+        'psc',
+        's3nsapis.fr',
+        'https://sts-mypsc.p.s3nsapis.fr/v1/token',
+        'https://iamcredentials-mypsc.p.s3nsapis.fr',
+      ),
+      (
+        'proxy',
+        's3nsapis.fr',
+        'https://proxy.corp.example/v1/token',
+        'https://iam-proxy.corp.example',
+      ),
+      (
+        'localhost',
+        's3nsapis.fr',
+        'http://localhost:8080/v1/token',
+        'http://localhost:8081',
+      ),
+    ];
+
+    for (final (label, universe, stsUrl, iamOrigin) in cases) {
+      final name = 'ext_variant_$label.json';
       await d
           .file(
-            'ok_user.json',
+            name,
             json.encode({
-              'client_id': 'id',
-              'client_secret': 'secret',
-              'refresh_token': 'refresh',
-              'type': 'authorized_user',
-              'universe_domain': 'GOOGLEAPIS.COM',
-              'token_uri': 'https://oauth2.googleapis.com/token',
+              'type': 'external_account',
+              'universe_domain': universe,
+              'audience': 'aud',
+              'subject_token_type': 'urn:ietf:params:oauth:token-type:jwt',
+              'token_url': stsUrl,
+              'service_account_impersonation_url':
+                  '$iamOrigin/v1/projects/-/serviceAccounts/sa@p.iam.gserviceaccount.com:generateAccessToken',
+              'credential_source': {
+                'file': d.path('endpoint_variants_token.txt'),
+              },
             }),
           )
           .create();
+
       final client = await fromApplicationsCredentialsFile(
-        File(d.path('ok_user.json')),
+        File(d.path(name)),
         'test-credentials-file',
-        [],
+        ['s1'],
         mockClient(
           expectAsync1((request) async {
-            expect(request.url, googleOauth2TokenEndpoint);
-            return Response(
-              jsonEncode({
-                'token_type': 'Bearer',
-                'access_token': 'atoken',
-                'expires_in': 3600,
-              }),
-              200,
-              headers: jsonContentType,
-            );
-          }),
+            final url = request.url.toString();
+            if (url == stsUrl) {
+              return Response(
+                jsonEncode({
+                  'token_type': 'Bearer',
+                  'access_token': 'sts-$label',
+                  'expires_in': 3600,
+                }),
+                200,
+                headers: jsonContentType,
+              );
+            }
+            if (url ==
+                '$iamOrigin/v1/projects/-/serviceAccounts/sa%40p.iam.gserviceaccount.com:generateAccessToken') {
+              return Response(
+                jsonEncode({
+                  'accessToken': 'imp-$label',
+                  'expireTime': DateTime.now()
+                      .toUtc()
+                      .add(const Duration(hours: 1))
+                      .toIso8601String(),
+                }),
+                200,
+                headers: jsonContentType,
+              );
+            }
+            fail('Unexpected request for $label: $url');
+          }, count: 2),
+          expectClose: false,
         ),
       );
-      expect(client.credentials.universeDomain, 'googleapis.com');
+      expect(client.credentials.accessToken.data, 'imp-$label');
+      expect(client.credentials.universeDomain, universe);
       client.close();
-    },
-  );
+    }
+  });
 }

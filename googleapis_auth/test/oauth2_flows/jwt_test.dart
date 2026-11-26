@@ -9,6 +9,8 @@ import 'dart:convert';
 
 import 'package:googleapis_auth/src/known_uris.dart';
 import 'package:googleapis_auth/src/oauth2_flows/jwt.dart';
+import 'package:googleapis_auth/src/utils.dart'
+    show maxExpectedTimeDiffInSeconds;
 import 'package:http/http.dart';
 import 'package:test/test.dart';
 
@@ -184,7 +186,6 @@ void main() {
       expect(credentials.accessToken.type, 'Bearer');
       expect(credentials.universeDomain, 's3nsapis.fr');
       expect(credentials.scopes, scopes);
-      expectExpiryOneHourFromNow(credentials.accessToken);
 
       final parts = credentials.accessToken.data.split('.');
       expect(parts, hasLength(3));
@@ -204,6 +205,17 @@ void main() {
       expect(claims['sub'], clientEmail);
       expect(claims['scope'], 's1 s2');
       expect(claims, isNot(contains('aud')));
+
+      final iat = claims['iat'] as int;
+      final exp = claims['exp'] as int;
+      expect(exp - iat, 3600);
+      expect(
+        credentials.accessToken.expiry,
+        DateTime.fromMillisecondsSinceEpoch(
+          (exp - maxExpectedTimeDiffInSeconds) * 1000,
+          isUtc: true,
+        ),
+      );
     },
   );
 

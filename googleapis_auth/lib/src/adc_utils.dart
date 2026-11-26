@@ -14,7 +14,6 @@ import 'auth_endpoints.dart';
 import 'auth_functions.dart';
 import 'auth_http_utils.dart';
 import 'impersonated_auth_client.dart';
-import 'known_uris.dart';
 import 'service_account_client.dart';
 import 'service_account_credentials.dart';
 import 'sts_auth_client.dart';
@@ -116,14 +115,12 @@ Future<AutoRefreshingAuthClient> _clientViaApplicationCredentials(
     'type': 'external_account',
     'audience': final String audience,
     'subject_token_type': final String subjectTokenType,
-    'token_url': final String tokenUrl,
     'credential_source': final Map<String, dynamic> credentialSource,
   }) {
     return _clientFromExternalAccount(
       credentials,
       audience: audience,
       subjectTokenType: subjectTokenType,
-      tokenUrl: tokenUrl,
       credentialSource: credentialSource,
       scopes: scopes,
       baseClient: baseClient,
@@ -165,23 +162,13 @@ Future<AutoRefreshingAuthClient> _clientFromAuthorizedUser(
     'token_uri',
     fileSource,
   );
-  if (tokenUriString != null && tokenUriString.isNotEmpty) {
-    final uri = Uri.tryParse(tokenUriString);
-    final isDefaultEndpoint =
-        uri != null &&
-        uri.scheme == 'https' &&
-        uri.host.toLowerCase() == googleOauth2TokenEndpoint.host &&
-        (!uri.hasPort || uri.port == 443) &&
-        uri.userInfo.isEmpty &&
-        !uri.hasQuery &&
-        !uri.hasFragment &&
-        uri.path == '/token';
-    if (!isDefaultEndpoint) {
-      throw CredentialsFileException(
-        'Unsupported token_uri "$tokenUriString" for authorized_user '
-        'credentials from $sourceLabel.',
-      );
-    }
+  if (tokenUriString != null &&
+      tokenUriString.isNotEmpty &&
+      !_isSupportedAuthorizedUserTokenUri(tokenUriString)) {
+    throw CredentialsFileException(
+      'Unsupported token_uri "$tokenUriString" for authorized_user '
+      'credentials from $sourceLabel.',
+    );
   }
   if (refreshToken == null) {
     throw CredentialsFileException(
@@ -233,20 +220,26 @@ Future<AutoRefreshingAuthClient> _clientFromImpersonatedServiceAccount(
     '{universe_domain}',
     jsonUniverseDomain ?? declaredSourceUniverse ?? defaultUniverseDomain,
   );
-  final impersonationInfo = _parseImpersonationUrl(resolvedUrl);
-  final urlUniverse = impersonationInfo.universeDomain;
-  if (jsonUniverseDomain != null && jsonUniverseDomain != urlUniverse) {
+  final impersonationInfo = _parseImpersonationUrl(resolvedUrl, fileSource);
+  final urlUniverse = impersonationInfo.hostUniverse;
+  if (jsonUniverseDomain != null &&
+      urlUniverse != null &&
+      jsonUniverseDomain != urlUniverse) {
     throw CredentialsFileException(
       'Universe domain mismatch in $sourceLabel: '
       'universe_domain "$jsonUniverseDomain" does not match '
       'service_account_impersonation_url universe "$urlUniverse".',
     );
   }
-  if (declaredSourceUniverse != null && declaredSourceUniverse != urlUniverse) {
+  final targetUniverse =
+      jsonUniverseDomain ?? urlUniverse ?? declaredSourceUniverse;
+  if (declaredSourceUniverse != null &&
+      targetUniverse != null &&
+      declaredSourceUniverse != targetUniverse) {
     throw CredentialsFileException(
       'Universe domain mismatch in $sourceLabel: '
       'source_credentials universe "$declaredSourceUniverse" does not match '
-      'impersonation universe "$urlUniverse".',
+      'impersonation universe "$targetUniverse".',
     );
   }
 
@@ -261,18 +254,20 @@ Future<AutoRefreshingAuthClient> _clientFromImpersonatedServiceAccount(
   );
 
   final sourceUniverse = sourceClient.credentials.universeDomain;
-  if (sourceUniverse != urlUniverse) {
+  final resolvedUniverse = targetUniverse ?? sourceUniverse;
+  if (sourceUniverse != resolvedUniverse) {
     sourceClient.close();
     throw CredentialsFileException(
       'Universe domain mismatch in $sourceLabel: '
       'source credentials universe "$sourceUniverse" does not match '
-      'impersonation universe "$urlUniverse".',
+      'impersonation universe "$resolvedUniverse".',
     );
   }
 
   return _impersonateWithCleanup(
     sourceClient: sourceClient,
     impersonationInfo: impersonationInfo,
+    universeDomain: resolvedUniverse,
     scopes: scopes,
     delegates: delegates,
     quotaProject: quotaProject,
@@ -284,7 +279,6 @@ Future<AutoRefreshingAuthClient> _clientFromExternalAccount(
   Map<String, dynamic> credentials, {
   required String audience,
   required String subjectTokenType,
-  required String tokenUrl,
   required Map<String, dynamic> credentialSource,
   required List<String> scopes,
   required Client baseClient,
@@ -293,6 +287,14 @@ Future<AutoRefreshingAuthClient> _clientFromExternalAccount(
   required String? fileSource,
 }) async {
   final sourceLabel = fileSource ?? 'the provided credentials';
+  final rawTokenUrl = _parseOptionalString(
+    credentials,
+    'token_url',
+    fileSource,
+  );
+  final tokenUrl = (rawTokenUrl == null || rawTokenUrl.isEmpty)
+      ? 'https://sts.{universe_domain}/v1/token'
+      : rawTokenUrl;
   final serviceAccountImpersonationUrl = _parseOptionalString(
     credentials,
     'service_account_impersonation_url',
@@ -302,15 +304,21 @@ Future<AutoRefreshingAuthClient> _clientFromExternalAccount(
     '{universe_domain}',
     jsonUniverseDomain ?? defaultUniverseDomain,
   );
-  final stsUniverse = _parseStsTokenUrlUniverse(resolvedTokenUrl, fileSource);
-  if (jsonUniverseDomain != null && jsonUniverseDomain != stsUniverse) {
+  final stsHostUniverse = _parseStsTokenUrlUniverse(
+    resolvedTokenUrl,
+    fileSource,
+  );
+  if (jsonUniverseDomain != null &&
+      stsHostUniverse != null &&
+      jsonUniverseDomain != stsHostUniverse) {
     throw CredentialsFileException(
       'Universe domain mismatch in $sourceLabel: '
       'universe_domain "$jsonUniverseDomain" does not match '
-      'token_url universe "$stsUniverse".',
+      'token_url universe "$stsHostUniverse".',
     );
   }
 
+  var effectiveUniverse = jsonUniverseDomain ?? stsHostUniverse;
   _ParsedImpersonationUrl? impersonationInfo;
   if (serviceAccountImpersonationUrl != null) {
     // Parse and validate before exchanging the STS token so a mismatched or
@@ -322,19 +330,26 @@ Future<AutoRefreshingAuthClient> _clientFromExternalAccount(
     // https://google.aip.dev/auth/4117
     final resolvedImpersonationUrl = serviceAccountImpersonationUrl.replaceAll(
       '{universe_domain}',
-      stsUniverse,
+      effectiveUniverse ?? defaultUniverseDomain,
     );
-    impersonationInfo = _parseImpersonationUrl(resolvedImpersonationUrl);
-    if (impersonationInfo.universeDomain != stsUniverse) {
+    impersonationInfo = _parseImpersonationUrl(
+      resolvedImpersonationUrl,
+      fileSource,
+    );
+    final impUniverse = impersonationInfo.hostUniverse;
+    if (effectiveUniverse != null &&
+        impUniverse != null &&
+        impUniverse != effectiveUniverse) {
       throw CredentialsFileException(
         'Universe domain mismatch in $sourceLabel: '
-        'STS universe "$stsUniverse" does not match '
-        'service_account_impersonation_url universe '
-        '"${impersonationInfo.universeDomain}".',
+        'STS universe "$effectiveUniverse" does not match '
+        'service_account_impersonation_url universe "$impUniverse".',
       );
     }
+    effectiveUniverse ??= impUniverse;
   }
 
+  final resolvedUniverse = effectiveUniverse ?? defaultUniverseDomain;
   final stsClient = await clientViaStsTokenExchange(
     credentialSource: credentialSource,
     audience: audience,
@@ -342,7 +357,7 @@ Future<AutoRefreshingAuthClient> _clientFromExternalAccount(
     tokenUrl: resolvedTokenUrl,
     scopes: scopes,
     quotaProject: quotaProject,
-    universeDomain: stsUniverse,
+    universeDomain: resolvedUniverse,
     baseClient: baseClient,
   );
 
@@ -350,6 +365,7 @@ Future<AutoRefreshingAuthClient> _clientFromExternalAccount(
     return _impersonateWithCleanup(
       sourceClient: stsClient,
       impersonationInfo: impersonationInfo,
+      universeDomain: resolvedUniverse,
       scopes: scopes,
       quotaProject: quotaProject,
       baseClient: baseClient,
@@ -361,6 +377,7 @@ Future<AutoRefreshingAuthClient> _clientFromExternalAccount(
 Future<ImpersonatedAuthClient> _impersonateWithCleanup({
   required AuthClient sourceClient,
   required _ParsedImpersonationUrl impersonationInfo,
+  required String universeDomain,
   required List<String> scopes,
   required String? quotaProject,
   required Client baseClient,
@@ -372,7 +389,7 @@ Future<ImpersonatedAuthClient> _impersonateWithCleanup({
       targetServiceAccount: impersonationInfo.serviceAccount,
       targetScopes: scopes,
       delegates: delegates,
-      universeDomain: impersonationInfo.universeDomain,
+      universeDomain: universeDomain,
       endpoint: impersonationInfo.customEndpoint,
       quotaProject: quotaProject,
       baseClient: baseClient,
@@ -385,7 +402,7 @@ Future<ImpersonatedAuthClient> _impersonateWithCleanup({
 
 typedef _ParsedImpersonationUrl = ({
   String serviceAccount,
-  String universeDomain,
+  String? hostUniverse,
   String? customEndpoint,
 });
 
@@ -401,72 +418,79 @@ final _impersonationUrlRegExp = RegExp(
   r'^/v1/projects/[^/]+/serviceAccounts/([^/:]+):generateAccessToken$',
 );
 
-_ParsedImpersonationUrl _parseImpersonationUrl(String url) {
-  final uri = Uri.tryParse(url);
+bool _isSupportedAuthorizedUserTokenUri(String tokenUriString) {
+  final uri = Uri.tryParse(tokenUriString);
   if (uri == null ||
       uri.scheme != 'https' ||
-      uri.host.isEmpty ||
+      (uri.hasPort && uri.port != 443) ||
       uri.userInfo.isNotEmpty ||
       uri.hasQuery ||
       uri.hasFragment) {
-    throw ArgumentError.value(
-      url,
-      'service_account_impersonation_url',
-      'Invalid impersonation URL: must use https without userinfo, query, '
-          'or fragment.',
+    return false;
+  }
+  return switch ((uri.host.toLowerCase(), uri.path)) {
+    ('oauth2.googleapis.com', '/token') ||
+    ('oauth2.mtls.googleapis.com', '/token') ||
+    ('accounts.google.com', '/o/oauth2/token') ||
+    ('www.googleapis.com', '/oauth2/v4/token') => true,
+    _ => false,
+  };
+}
+
+_ParsedImpersonationUrl _parseImpersonationUrl(String url, String? fileSource) {
+  final sourceLabel = fileSource ?? 'the provided credentials';
+  final uri = Uri.tryParse(url);
+  if (uri == null ||
+      !uri.hasScheme ||
+      uri.host.isEmpty ||
+      uri.userInfo.isNotEmpty ||
+      uri.hasQuery ||
+      uri.hasFragment ||
+      (uri.scheme != 'https' &&
+          !(uri.scheme == 'http' && isLoopbackHost(uri.host)))) {
+    throw CredentialsFileException(
+      'Invalid service_account_impersonation_url "$url" in $sourceLabel: must '
+      'use https (or http for localhost) without userinfo, query, or fragment.',
     );
   }
   final match = _impersonationUrlRegExp.firstMatch(uri.path);
   if (match == null) {
-    throw ArgumentError.value(
-      url,
-      'service_account_impersonation_url',
-      'Invalid impersonation URL path.',
+    throw CredentialsFileException(
+      'Invalid service_account_impersonation_url path "$url" in $sourceLabel.',
     );
   }
 
-  final universeDomain = universeDomainFromIamHost(uri.host);
-  if (universeDomain == null) {
-    throw ArgumentError.value(
-      url,
-      'service_account_impersonation_url',
-      'Invalid impersonation URL: host must be an IAM Credentials API host.',
-    );
-  }
-
+  final hostUniverse = universeDomainFromIamHost(uri.host);
   final serviceAccount = Uri.decodeComponent(match.group(1)!);
-  final host = uri.host.toLowerCase();
   final isStandardGlobalHost =
-      host == 'iamcredentials.$universeDomain' && !uri.hasPort;
+      hostUniverse != null &&
+      uri.scheme == 'https' &&
+      uri.host.toLowerCase() == 'iamcredentials.$hostUniverse' &&
+      !uri.hasPort;
 
   return (
     serviceAccount: serviceAccount,
-    universeDomain: universeDomain,
+    hostUniverse: hostUniverse,
     customEndpoint: isStandardGlobalHost ? null : uri.origin,
   );
 }
 
-String _parseStsTokenUrlUniverse(String tokenUrl, String? fileSource) {
+String? _parseStsTokenUrlUniverse(String tokenUrl, String? fileSource) {
   final sourceLabel = fileSource ?? 'the provided credentials';
   final uri = Uri.tryParse(tokenUrl);
   if (uri == null ||
-      uri.scheme != 'https' ||
+      !uri.hasScheme ||
       uri.host.isEmpty ||
       uri.userInfo.isNotEmpty ||
-      uri.hasFragment) {
+      uri.hasFragment ||
+      (uri.scheme != 'https' &&
+          !(uri.scheme == 'http' && isLoopbackHost(uri.host)))) {
     throw CredentialsFileException(
-      'Invalid token_url "$tokenUrl" in $sourceLabel: must use https without '
-      'userinfo or fragment.',
+      'Invalid token_url "$tokenUrl" in $sourceLabel: must use https (or '
+      'http for localhost) without userinfo or fragment.',
     );
   }
-  final universe = universeDomainFromStsHost(uri.host);
-  if (universe == null) {
-    throw CredentialsFileException(
-      'Invalid token_url "$tokenUrl" in $sourceLabel: host must be an STS '
-      'API host.',
-    );
-  }
-  return universe;
+  return universeDomainFromStsHost(uri.host);
 }
 
 String? _parseOptionalString(
@@ -518,7 +542,7 @@ String? _inferUniverseDomainFromJson(
   return switch (credentials['type']) {
     'service_account' || 'authorized_user' => defaultUniverseDomain,
     'external_account' => switch (credentials['token_url']) {
-      final String tokenUrl => () {
+      final String tokenUrl when tokenUrl.isNotEmpty => () {
         final resolved = tokenUrl.replaceAll(
           '{universe_domain}',
           defaultUniverseDomain,
@@ -526,6 +550,7 @@ String? _inferUniverseDomainFromJson(
         final uri = Uri.tryParse(resolved);
         return uri != null ? universeDomainFromStsHost(uri.host) : null;
       }(),
+      null || '' => defaultUniverseDomain,
       _ => null,
     },
     'impersonated_service_account' => _inferImpersonationSourceUniverse(

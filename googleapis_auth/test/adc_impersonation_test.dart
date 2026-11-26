@@ -357,4 +357,62 @@ void main() {
       );
     }
   });
+
+  test('impersonated_service_account supports mTLS, REP, and custom proxy '
+      'endpoints without universe corruption', () async {
+    for (final (label, iamOrigin) in [
+      ('mtls', 'https://iamcredentials.mtls.s3nsapis.fr'),
+      ('rep', 'https://iamcredentials.eu-west9.rep.s3nsapis.fr'),
+      ('proxy', 'https://iam-proxy.corp.example'),
+    ]) {
+      final name = 'tpc_imp_$label.json';
+      await d
+          .file(
+            name,
+            json.encode({
+              'type': 'impersonated_service_account',
+              'service_account_impersonation_url':
+                  '$iamOrigin/v1/projects/-/serviceAccounts/target@example.com:generateAccessToken',
+              'source_credentials': {
+                'type': 'service_account',
+                'client_id': 'id',
+                'client_email': 'source@tpc.iam.gserviceaccount.com',
+                'private_key_id': 'k1',
+                'private_key': testPrivateKeyString,
+                'universe_domain': 's3nsapis.fr',
+              },
+            }),
+          )
+          .create();
+
+      final c = await fromApplicationsCredentialsFile(
+        File(d.path(name)),
+        'test-credentials-file',
+        ['target_scope'],
+        mockClient(
+          expectAsync1((Request request) async {
+            expect(
+              request.url.toString(),
+              '$iamOrigin/v1/projects/-/serviceAccounts/target%40example.com:generateAccessToken',
+            );
+            return Response(
+              jsonEncode({
+                'accessToken': 'tok-$label',
+                'expireTime': DateTime.now()
+                    .toUtc()
+                    .add(const Duration(hours: 1))
+                    .toIso8601String(),
+              }),
+              200,
+              headers: jsonContentType,
+            );
+          }),
+          expectClose: false,
+        ),
+      );
+      expect(c.credentials.accessToken.data, 'tok-$label');
+      expect(c.credentials.universeDomain, 's3nsapis.fr');
+      c.close();
+    }
+  });
 }

@@ -86,7 +86,7 @@ class JwtFlow extends BaseFlow {
       };
       final jwt = _signJwt(jwtHeaderBase64, jwtClaimSet);
       final expiry = DateTime.fromMillisecondsSinceEpoch(
-        (timestamp + 3600) * 1000,
+        (timestamp + 3600 - maxExpectedTimeDiffInSeconds) * 1000,
         isUtc: true,
       );
       return AccessCredentials(

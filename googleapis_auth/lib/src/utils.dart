@@ -27,18 +27,25 @@ const maxExpectedTimeDiffInSeconds = 20;
 /// may use a different universe domain.
 const defaultUniverseDomain = 'googleapis.com';
 
+const _dnsLabelPattern = r'[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?';
+
 final _universeDomainRegExp = RegExp(
-  r'^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?'
-  r'(?:\.[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?)+$',
+  '^$_dnsLabelPattern(?:\\.$_dnsLabelPattern)+\$',
 );
 
 final _regionalIamHostRegExp = RegExp(
-  r'^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?-iamcredentials\.(.+)$',
+  '^$_dnsLabelPattern-iamcredentials\\.(.+)\$',
 );
 
-final _regionalStsHostRegExp = RegExp(
-  r'^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?-sts\.(.+)$',
+final _pscIamHostRegExp = RegExp(
+  '^iamcredentials-$_dnsLabelPattern\\.p\\.(.+)\$',
 );
+
+final _regionalStsHostRegExp = RegExp('^$_dnsLabelPattern-sts\\.(.+)\$');
+
+final _pscStsHostRegExp = RegExp('^sts-$_dnsLabelPattern\\.p\\.(.+)\$');
+
+final _repPrefixRegExp = RegExp('^$_dnsLabelPattern\\.rep\\.(.+)\$');
 
 /// Returns the normalized (lowercased) DNS hostname for [universeDomain], or
 /// `null` if [universeDomain] is not a valid DNS domain name.
@@ -109,38 +116,56 @@ Uri validateTokenUri(Uri uri, {String name = 'tokenUri'}) {
   return uri;
 }
 
+String? _stripEndpointModifiers(String candidate) {
+  var result = candidate;
+  if (result.startsWith('mtls.')) {
+    result = result.substring('mtls.'.length);
+    final repMatch = _repPrefixRegExp.firstMatch(result);
+    if (repMatch != null) {
+      result = repMatch.group(1)!;
+    }
+  } else {
+    final repMatch = _repPrefixRegExp.firstMatch(result);
+    if (repMatch != null) {
+      result = repMatch.group(1)!;
+      if (result.startsWith('mtls.')) {
+        result = result.substring('mtls.'.length);
+      }
+    }
+  }
+  return tryNormalizeUniverseDomain(result);
+}
+
 /// Extracts and validates the universe domain from an IAM Credentials API host
-/// (`iamcredentials.<universe>` or `<region>-iamcredentials.<universe>`).
+/// (`iamcredentials.<universe>`, `<region>-iamcredentials.<universe>`,
+/// `iamcredentials.mtls.<universe>`, `iamcredentials.<region>.rep.<universe>`,
+/// or Private Service Connect `iamcredentials-<psc>.p.<universe>`).
 ///
 /// Returns `null` if [host] is not a recognized IAM Credentials API host.
 String? universeDomainFromIamHost(String host) {
   final lower = host.toLowerCase();
   final candidate = lower.startsWith('iamcredentials.')
       ? lower.substring('iamcredentials.'.length)
-      : _regionalIamHostRegExp.firstMatch(lower)?.group(1);
-  if (candidate == null ||
-      candidate.length > 253 ||
-      !_universeDomainRegExp.hasMatch(candidate)) {
-    return null;
-  }
-  return candidate;
+      : (_regionalIamHostRegExp.firstMatch(lower) ??
+                _pscIamHostRegExp.firstMatch(lower))
+            ?.group(1);
+  return candidate == null ? null : _stripEndpointModifiers(candidate);
 }
 
 /// Extracts and validates the universe domain from an STS API host
-/// (`sts.<universe>` or `<region>-sts.<universe>`).
+/// (`sts.<universe>`, `<region>-sts.<universe>`, `sts.mtls.<universe>`,
+/// `sts.<region>.rep.<universe>`, or Private Service Connect
+/// `sts-<psc>.p.<universe>`).
 ///
 /// Returns `null` if [host] is not a recognized STS API host.
 String? universeDomainFromStsHost(String host) {
   final lower = host.toLowerCase();
   final candidate = lower.startsWith('sts.')
       ? lower.substring('sts.'.length)
-      : _regionalStsHostRegExp.firstMatch(lower)?.group(1);
-  if (candidate == null ||
-      candidate.length > 253 ||
-      !_universeDomainRegExp.hasMatch(candidate)) {
-    return null;
-  }
-  return candidate;
+      : (_regionalStsHostRegExp.firstMatch(lower) ??
+                _pscStsHostRegExp.firstMatch(lower))
+            ?.group(1);
+  return candidate == null ? null : _stripEndpointModifiers(candidate);
 }
 
 /// Validates and normalizes an IAM Credentials API base [endpoint] URL for
