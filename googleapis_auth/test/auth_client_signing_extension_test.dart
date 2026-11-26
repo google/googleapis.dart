@@ -161,7 +161,7 @@ void main() {
         } else {
           // signBlob request via ImpersonatedAuthClient.sign()
           expect(request.method, 'POST');
-          expect(request.url.host, 'iamcredentials.example.com');
+          expect(request.url.host, 'us-central1-iamcredentials.googleapis.com');
           expect(request.url.toString(), contains(':signBlob'));
 
           return http.Response(
@@ -194,9 +194,10 @@ void main() {
 
       // Explicitly call the extension method with endpoint parameter and verify
       // the custom endpoint is forwarded to ImpersonatedAuthClient.sign.
-      final signature = await AuthClientSigningExtension(
-        impersonated,
-      ).sign(dataToSign, endpoint: 'https://iamcredentials.example.com');
+      final signature = await AuthClientSigningExtension(impersonated).sign(
+        dataToSign,
+        endpoint: 'https://us-central1-iamcredentials.googleapis.com',
+      );
 
       expect(signature, base64Encode([5, 6, 7, 8]));
 
@@ -277,6 +278,7 @@ void main() {
         ),
         null,
         [],
+        universeDomain: 'example.com',
       );
       final client = authenticatedClient(baseClient, credentials);
 
@@ -363,6 +365,35 @@ void main() {
         dataToSign,
         serviceAccountEmail: 'sa@tpc.iam.gserviceaccount.com',
         endpoint: 'https://iamcredentials.googleapis.com',
+      ),
+      throwsA(
+        isArgumentError.having(
+          (e) => e.message,
+          'message',
+          contains('Endpoint universe'),
+        ),
+      ),
+    );
+
+    final gduClient = authenticatedClient(
+      neverClient,
+      AccessCredentials(
+        AccessToken(
+          'Bearer',
+          'gdu-token',
+          DateTime.now().toUtc().add(const Duration(hours: 1)),
+        ),
+        null,
+        [],
+      ),
+    );
+    addTearDown(gduClient.close);
+
+    await expectLater(
+      gduClient.sign(
+        dataToSign,
+        serviceAccountEmail: 'sa@gdu.iam.gserviceaccount.com',
+        endpoint: 'https://iamcredentials.s3nsapis.fr',
       ),
       throwsA(
         isArgumentError.having(

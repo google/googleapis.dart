@@ -101,7 +101,7 @@ class JwtFlow extends BaseFlow {
     final jwtClaimSet = {
       'iss': _clientEmail,
       'scope': _scopes.join(' '),
-      'aud': tokenEndpoint.toString(),
+      'aud': googleOauth2TokenEndpoint.toString(),
       'exp': timestamp + 3600,
       'iat': timestamp,
       if (_user != null) 'sub': _user,

@@ -228,6 +228,53 @@ void main() {
         ),
         throwsArgumentError,
       );
+
+      // Symmetric isolation: googleapis.com AuthClient cannot target TPC IAM.
+      final gduClient = authenticatedClient(
+        neverClient,
+        AccessCredentials(
+          AccessToken(
+            'Bearer',
+            'gdu-token',
+            DateTime.now().toUtc().add(const Duration(hours: 1)),
+          ),
+          null,
+          [],
+        ),
+      );
+      addTearDown(gduClient.close);
+
+      await expectLater(
+        signBlob(
+          gduClient,
+          [1, 2, 3],
+          serviceAccountEmail: 'sa@gdu.iam.gserviceaccount.com',
+          universeDomain: 's3nsapis.fr',
+        ),
+        throwsA(
+          isArgumentError.having(
+            (e) => e.message,
+            'message',
+            contains('universe'),
+          ),
+        ),
+      );
+
+      await expectLater(
+        signBlob(
+          gduClient,
+          [1, 2, 3],
+          serviceAccountEmail: 'sa@gdu.iam.gserviceaccount.com',
+          endpoint: 'https://iamcredentials.s3nsapis.fr',
+        ),
+        throwsA(
+          isArgumentError.having(
+            (e) => e.message,
+            'message',
+            contains('Endpoint universe'),
+          ),
+        ),
+      );
     },
   );
 }

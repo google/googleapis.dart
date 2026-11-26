@@ -231,4 +231,15 @@ void main() {
     );
     await expectLater(flow.run(refresh: true), throwsA(isTransportException));
   });
+
+  test('times out if universe-domain endpoint stalls', () async {
+    final flow = MetadataServerAuthorizationFlow(
+      metadataMock(count: 3, onUniverse: (_) => Completer<Response>().future),
+      universeDomainTimeout: const Duration(milliseconds: 20),
+    );
+    await expectLater(
+      flow.run(refresh: true),
+      throwsA(isA<TimeoutException>()),
+    );
+  });
 }

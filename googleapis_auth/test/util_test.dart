@@ -179,5 +179,18 @@ void main() {
         reason: mismatched,
       );
     }
+
+    for (final tpcEndpoint in [
+      'https://iamcredentials.s3nsapis.fr',
+      'https://iamcredentials.mtls.s3nsapis.fr',
+      'https://iamcredentials.eu-west9.rep.s3nsapis.fr',
+      'https://iamcredentials-mypsc.p.s3nsapis.fr',
+    ]) {
+      expect(
+        () => validateIamEndpoint(tpcEndpoint, defaultUniverseDomain),
+        throwsArgumentError,
+        reason: tpcEndpoint,
+      );
+    }
   });
 }

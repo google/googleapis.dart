@@ -128,15 +128,14 @@ class ImpersonatedAuthClient extends AutoRefreshDelegatingClient {
   /// [universeDomain] specifies the universe domain for constructing the IAM
   /// endpoint. If omitted or empty, inherits [sourceClient]'s credential
   /// universe domain (which defaults to [defaultUniverseDomain]). Throws an
-  /// [ArgumentError] if [sourceClient] holds non-default universe credentials
-  /// that do not match [universeDomain].
+  /// [ArgumentError] if [sourceClient]'s credential universe domain does not
+  /// match [universeDomain].
   ///
   /// [endpoint] specifies an optional custom IAM Credentials API base endpoint
   /// URL (e.g. `https://us-central1-iamcredentials.googleapis.com`). If
   /// provided, takes precedence over [universeDomain]. Must use `https` (or
   /// `http` for loopback hosts) with no path, query, fragment, or userinfo, and
-  /// cannot point to an IAM host from a different universe when
-  /// [universeDomain] is non-default.
+  /// cannot point to an IAM host from a different universe.
   ///
   /// [quotaProject] specifies an optional quota project to send in the
   /// `X-Goog-User-Project` header on authenticated requests.
@@ -183,8 +182,7 @@ class ImpersonatedAuthClient extends AutoRefreshDelegatingClient {
     final resolvedUniverse = (universeDomain == null || universeDomain.isEmpty)
         ? sourceUniverse
         : normalizeUniverseDomain(universeDomain);
-    if (sourceUniverse != defaultUniverseDomain &&
-        sourceUniverse != resolvedUniverse) {
+    if (sourceUniverse != resolvedUniverse) {
       throw ArgumentError.value(
         universeDomain,
         'universeDomain',

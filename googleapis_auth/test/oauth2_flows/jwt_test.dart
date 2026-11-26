@@ -140,7 +140,7 @@ void main() {
           expect(header['typ'], 'JWT');
           expect(header['kid'], 'key-123');
           expect(claims['iss'], clientEmail);
-          expect(claims['aud'], customTokenUri.toString());
+          expect(claims['aud'], googleOauth2TokenEndpoint.toString());
           expect(claims['scope'], 's1 s2');
 
           return Response(

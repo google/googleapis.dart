@@ -22,12 +22,19 @@ import 'base_flow.dart';
 /// metadata server, looking first for one set in the environment under
 /// `$GCE_METADATA_HOST`.
 class MetadataServerAuthorizationFlow extends BaseFlow {
+  static const _defaultUniverseDomainTimeout = Duration(seconds: 3);
+
   final String email;
   final http.Client _client;
+  final Duration _universeDomainTimeout;
   String? _cachedUniverseDomain;
 
-  MetadataServerAuthorizationFlow(http.Client client, {this.email = 'default'})
-    : _client = client;
+  MetadataServerAuthorizationFlow(
+    http.Client client, {
+    this.email = 'default',
+    Duration universeDomainTimeout = _defaultUniverseDomainTimeout,
+  }) : _client = client,
+       _universeDomainTimeout = universeDomainTimeout;
 
   @override
   Future<AccessCredentials> run({bool refresh = false}) async {
@@ -63,10 +70,12 @@ class MetadataServerAuthorizationFlow extends BaseFlow {
     if (!refresh && _cachedUniverseDomain != null) {
       return _cachedUniverseDomain!;
     }
-    final response = await _client.get(
-      gceMetadataUrl('universe/universe-domain'),
-      headers: const {'Metadata-Flavor': 'Google'},
-    );
+    final response = await _client
+        .get(
+          gceMetadataUrl('universe/universe-domain'),
+          headers: const {'Metadata-Flavor': 'Google'},
+        )
+        .timeout(_universeDomainTimeout);
     if (response.statusCode == 200) {
       final trimmed = response.body.trim();
       if (trimmed.isEmpty) {

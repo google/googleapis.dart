@@ -146,6 +146,7 @@ void main() {
       ),
       null,
       [],
+      universeDomain: 'example.com',
     );
     final sourceClient = authenticatedClient(baseClient, sourceCredentials);
 
@@ -635,6 +636,57 @@ void main() {
         2,
         3,
       ], endpoint: 'https://iamcredentials.googleapis.com'),
+      throwsA(
+        isArgumentError.having(
+          (e) => e.message,
+          'message',
+          contains('Endpoint universe'),
+        ),
+      ),
+    );
+
+    // Symmetric isolation: googleapis.com source credentials cannot target TPC.
+    final gduSourceClient = authenticatedClient(
+      mockClient(
+        (request) async =>
+            fail('Should not issue HTTP request to ${request.url}'),
+        expectClose: false,
+      ),
+      AccessCredentials(
+        AccessToken(
+          'Bearer',
+          'gdu-source-token',
+          DateTime.now().toUtc().add(const Duration(hours: 1)),
+        ),
+        null,
+        [],
+      ),
+    );
+    addTearDown(gduSourceClient.close);
+
+    expect(
+      () => ImpersonatedAuthClient(
+        sourceClient: gduSourceClient,
+        targetServiceAccount: 'target@project.iam.gserviceaccount.com',
+        targetScopes: ['scope1'],
+        universeDomain: 's3nsapis.fr',
+      ),
+      throwsA(
+        isArgumentError.having(
+          (e) => e.message,
+          'message',
+          contains('Cannot impersonate in universe'),
+        ),
+      ),
+    );
+
+    expect(
+      () => ImpersonatedAuthClient(
+        sourceClient: gduSourceClient,
+        targetServiceAccount: 'target@project.iam.gserviceaccount.com',
+        targetScopes: ['scope1'],
+        endpoint: 'https://iamcredentials.s3nsapis.fr',
+      ),
       throwsA(
         isArgumentError.having(
           (e) => e.message,

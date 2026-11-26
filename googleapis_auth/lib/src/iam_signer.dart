@@ -35,8 +35,7 @@ import 'version.dart';
 /// [endpoint] specifies a custom IAM Credentials API base endpoint URL.
 /// If provided, takes precedence over [universeDomain]. Must use `https` (or
 /// `http` for loopback hosts) with no path, query, fragment, or userinfo, and
-/// cannot target an IAM host from a different universe when using non-default
-/// universe credentials.
+/// cannot target an IAM host from a different universe.
 ///
 /// [universeDomain] specifies the universe domain for constructing the IAM
 /// endpoint. If omitted or empty, inherits [AuthClient.credentials]'s
@@ -57,22 +56,23 @@ Future<({String signedBlob, String keyId})> signBlob(
   final clientUniverse = client is AuthClient
       ? client.credentials.universeDomain
       : null;
-  final effectiveUniverse = (universeDomain == null || universeDomain.isEmpty)
-      ? (clientUniverse ?? defaultUniverseDomain)
+  final explicitUniverse = (universeDomain == null || universeDomain.isEmpty)
+      ? null
       : normalizeUniverseDomain(universeDomain);
   if (clientUniverse != null &&
-      clientUniverse != defaultUniverseDomain &&
-      clientUniverse != effectiveUniverse) {
+      explicitUniverse != null &&
+      clientUniverse != explicitUniverse) {
     throw ArgumentError.value(
       universeDomain,
       'universeDomain',
-      'Cannot call signBlob in universe "$effectiveUniverse" using '
+      'Cannot call signBlob in universe "$explicitUniverse" using '
           'credentials from universe "$clientUniverse".',
     );
   }
+  final expectedUniverse = explicitUniverse ?? clientUniverse;
   final normalizedEndpoint = endpoint != null
-      ? validateIamEndpoint(endpoint, effectiveUniverse)
-      : 'https://iamcredentials.$effectiveUniverse';
+      ? validateIamEndpoint(endpoint, expectedUniverse)
+      : 'https://iamcredentials.${expectedUniverse ?? defaultUniverseDomain}';
 
   final email =
       serviceAccountEmail ??

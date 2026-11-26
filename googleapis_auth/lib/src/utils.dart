@@ -173,11 +173,11 @@ String? universeDomainFromStsHost(String host) {
 ///
 /// Requires `https` (or `http` for loopback hosts), non-empty host, no
 /// userinfo, query, or fragment, and an empty or `/` path. When
-/// [expectedUniverse] is non-default, rejects IAM hosts belonging to a
+/// [expectedUniverse] is non-null, rejects recognized IAM hosts belonging to a
 /// different universe.
 String validateIamEndpoint(
   String endpoint,
-  String expectedUniverse, {
+  String? expectedUniverse, {
   String name = 'endpoint',
 }) {
   final uri = Uri.tryParse(endpoint);
@@ -211,7 +211,7 @@ String validateIamEndpoint(
     );
   }
   final endpointUniverse = universeDomainFromIamHost(uri.host);
-  if (expectedUniverse != defaultUniverseDomain &&
+  if (expectedUniverse != null &&
       endpointUniverse != null &&
       endpointUniverse != expectedUniverse) {
     throw ArgumentError.value(
