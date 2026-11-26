@@ -222,7 +222,119 @@ void main() {
         universeDomain: 's3nsapis.fr',
       );
 
-      await expectLater(flow.run(), throwsUnsupportedError);
+      await expectLater(
+        flow.run(),
+        throwsA(
+          isUnsupportedError.having(
+            (e) => e.message,
+            'message',
+            contains('Domain-wide delegation'),
+          ),
+        ),
+      );
     },
   );
+
+  test(
+    'non-default universe rejects empty scopes before network calls',
+    () async {
+      final flow = JwtFlow(
+        clientEmail,
+        testPrivateKey,
+        null,
+        const [],
+        mockClient(
+          (request) async => fail('Unexpected HTTP request to ${request.url}'),
+          expectClose: false,
+        ),
+        universeDomain: 's3nsapis.fr',
+      );
+
+      await expectLater(
+        flow.run(),
+        throwsA(
+          isArgumentError.having(
+            (e) => e.message,
+            'message',
+            contains('Scopes cannot be empty'),
+          ),
+        ),
+      );
+    },
+  );
+
+  test('normalizes universeDomain casing and encodes non-ASCII kid', () async {
+    final defaultUpperFlow = JwtFlow(
+      clientEmail,
+      testPrivateKey,
+      null,
+      scopes,
+      mockClient(expectAsync1(successfulSignRequest), expectClose: false),
+      universeDomain: 'GOOGLEAPIS.COM',
+    );
+    final defaultCreds = await defaultUpperFlow.run();
+    expect(defaultCreds.universeDomain, 'googleapis.com');
+
+    final tpcUpperFlow = JwtFlow(
+      clientEmail,
+      testPrivateKey,
+      null,
+      scopes,
+      mockClient(
+        (request) async => fail('Unexpected HTTP request to ${request.url}'),
+        expectClose: false,
+      ),
+      universeDomain: 'S3NSAPIS.FR',
+      privateKeyId: 'key-é-1',
+    );
+    final tpcCreds = await tpcUpperFlow.run();
+    expect(tpcCreds.universeDomain, 's3nsapis.fr');
+    final header =
+        jsonDecode(
+              utf8.decode(
+                base64Url.decode(
+                  base64Url.normalize(tpcCreds.accessToken.data.split('.')[0]),
+                ),
+              ),
+            )
+            as Map<String, dynamic>;
+    expect(header['kid'], 'key-é-1');
+  });
+
+  test('validates universeDomain and tokenUri in constructor', () {
+    final neverClient = mockClient(
+      (request) async => fail('Unexpected HTTP request to ${request.url}'),
+      expectClose: false,
+    );
+    expect(
+      () => JwtFlow(
+        clientEmail,
+        testPrivateKey,
+        null,
+        scopes,
+        neverClient,
+        universeDomain: 'googleapis.com@evil.com',
+      ),
+      throwsArgumentError,
+    );
+    for (final badUri in [
+      Uri.parse('http://oauth2.evil.com/token'),
+      Uri.parse('https://user@oauth2.googleapis.com/token'),
+      Uri.parse('https://oauth2.googleapis.com/token#frag'),
+      Uri.parse('/relative/token'),
+    ]) {
+      expect(
+        () => JwtFlow(
+          clientEmail,
+          testPrivateKey,
+          null,
+          scopes,
+          neverClient,
+          tokenUri: badUri,
+        ),
+        throwsArgumentError,
+        reason: 'Should reject $badUri',
+      );
+    }
+  });
 }

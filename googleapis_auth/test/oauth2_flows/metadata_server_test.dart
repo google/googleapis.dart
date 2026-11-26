@@ -70,27 +70,34 @@ void main() {
     return Future.value(Response(body, statusCode));
   }
 
-  test('successful run', () async {
-    final flow = MetadataServerAuthorizationFlow(
-      mockClient(
-        expectAsync1((request) {
-          final url = request.url.toString();
-          if (url == tokenUrl) {
-            return successfulAccessToken(request);
-          } else if (url == scopesUrl) {
-            return successfulScopes(request);
-          } else if (url == universeUrl) {
-            return successfulUniverse(request);
-          } else {
-            fail(
-              'Invalid URL $url '
-              '(expected: $tokenUrl, $scopesUrl, or $universeUrl).',
-            );
-          }
-        }, count: 3),
-        expectClose: false,
-      ),
+  Client metadataMock({
+    Future<Response> Function(Request)? onToken,
+    Future<Response> Function(Request)? onScopes,
+    Future<Response> Function(Request)? onUniverse,
+    int? count,
+  }) {
+    Future<Response> handler(Request request) {
+      final url = request.url.toString();
+      if (url == tokenUrl) {
+        return (onToken ?? successfulAccessToken)(request);
+      }
+      if (url == scopesUrl) {
+        return (onScopes ?? successfulScopes)(request);
+      }
+      if (url == universeUrl) {
+        return (onUniverse ?? successfulUniverse)(request);
+      }
+      fail('Unexpected URL $url');
+    }
+
+    return mockClient(
+      count != null ? expectAsync1(handler, count: count) : handler,
+      expectClose: false,
     );
+  }
+
+  test('successful run', () async {
+    final flow = MetadataServerAuthorizationFlow(metadataMock(count: 3));
 
     final credentials = await flow.run(refresh: true);
     expect(credentials.accessToken.data, 'atok');
@@ -102,20 +109,9 @@ void main() {
 
   test('successful run with custom universe domain', () async {
     final flow = MetadataServerAuthorizationFlow(
-      mockClient(
-        expectAsync1((request) {
-          final url = request.url.toString();
-          if (url == tokenUrl) {
-            return successfulAccessToken(request);
-          } else if (url == scopesUrl) {
-            return successfulScopes(request);
-          } else if (url == universeUrl) {
-            return successfulUniverse(request, body: 's3nsapis.fr\n');
-          } else {
-            fail('Unexpected URL $url');
-          }
-        }, count: 3),
-        expectClose: false,
+      metadataMock(
+        count: 3,
+        onUniverse: (r) => successfulUniverse(r, body: 'S3NSAPIS.FR\n'),
       ),
     );
 
@@ -126,15 +122,11 @@ void main() {
   test('falls back to default universe domain on 404 or empty body', () async {
     for (final (status, body) in [(404, 'Not Found'), (200, '   ')]) {
       final flow = MetadataServerAuthorizationFlow(
-        mockClient((request) {
-          final url = request.url.toString();
-          if (url == tokenUrl) return successfulAccessToken(request);
-          if (url == scopesUrl) return successfulScopes(request);
-          if (url == universeUrl) {
-            return successfulUniverse(request, statusCode: status, body: body);
-          }
-          fail('Unexpected URL $url');
-        }, expectClose: false),
+        metadataMock(
+          count: 3,
+          onUniverse: (r) =>
+              successfulUniverse(r, statusCode: status, body: body),
+        ),
       );
 
       final credentials = await flow.run(refresh: true);
@@ -144,15 +136,10 @@ void main() {
 
   test('throws on non-404 error from universe-domain endpoint', () async {
     final flow = MetadataServerAuthorizationFlow(
-      mockClient((request) {
-        final url = request.url.toString();
-        if (url == tokenUrl) return successfulAccessToken(request);
-        if (url == scopesUrl) return successfulScopes(request);
-        if (url == universeUrl) {
-          return successfulUniverse(request, statusCode: 500, body: 'boom');
-        }
-        fail('Unexpected URL $url');
-      }, expectClose: false),
+      metadataMock(
+        count: 3,
+        onUniverse: (r) => successfulUniverse(r, statusCode: 500, body: 'boom'),
+      ),
     );
 
     await expectLater(
@@ -167,19 +154,42 @@ void main() {
     );
   });
 
+  test('rejects malformed universe domain body from metadata server', () async {
+    for (final badBody in [
+      'googleapis.com@evil.com',
+      's3nsapis.fr/evil',
+      '<html>error</html>',
+    ]) {
+      final flow = MetadataServerAuthorizationFlow(
+        metadataMock(
+          count: 3,
+          onUniverse: (r) => successfulUniverse(r, body: badBody),
+        ),
+      );
+
+      await expectLater(
+        flow.run(refresh: true),
+        throwsA(
+          isServerRequestFailedException.having(
+            (e) => e.message,
+            'message',
+            contains('invalid universe domain'),
+          ),
+        ),
+        reason: 'Should reject "$badBody"',
+      );
+    }
+  });
+
   test('caches universe domain across runs unless refresh is true', () async {
     var universeRequests = 0;
     final flow = MetadataServerAuthorizationFlow(
-      mockClient((request) {
-        final url = request.url.toString();
-        if (url == tokenUrl) return successfulAccessToken(request);
-        if (url == scopesUrl) return successfulScopes(request);
-        if (url == universeUrl) {
+      metadataMock(
+        onUniverse: (r) {
           universeRequests++;
-          return successfulUniverse(request, body: 's3nsapis.fr');
-        }
-        fail('Unexpected URL $url');
-      }, expectClose: false),
+          return successfulUniverse(r, body: 's3nsapis.fr');
+        },
+      ),
     );
 
     final first = await flow.run();
@@ -192,58 +202,33 @@ void main() {
     expect(universeRequests, 2);
   });
 
-  test('throws on invalid server response', () {
-    var requestNr = 0;
+  test('throws on invalid server response', () async {
     final flow = MetadataServerAuthorizationFlow(
-      mockClient(
-        expectAsync1((request) {
-          if (requestNr++ == 0) {
-            return invalidAccessToken(request);
-          } else {
-            return successfulScopes(request);
-          }
-        }),
-        expectClose: false,
-      ),
+      metadataMock(count: 1, onToken: invalidAccessToken),
     );
-    // parseAccessToken still throws ServerRequestFailedException if keys are
-    // missing
-    expect(flow.run(refresh: true), throwsA(isServerRequestFailedException));
+    await expectLater(
+      flow.run(refresh: true),
+      throwsA(isServerRequestFailedException),
+    );
   });
 
-  test('throws on token transport error', () {
-    var requestNr = 0;
+  test('throws on token transport error', () async {
     final flow = MetadataServerAuthorizationFlow(
-      mockClient(
-        expectAsync1((request) {
-          if (requestNr++ == 0) {
-            return transportFailure.get(Uri.http('failure'));
-          } else {
-            return successfulScopes(request);
-          }
-        }),
-        expectClose: false,
+      metadataMock(
+        count: 1,
+        onToken: (_) => transportFailure.get(Uri.http('failure')),
       ),
     );
-    // getMetadataValue does not wrap custom TransportException
-    expect(flow.run(refresh: true), throwsA(isTransportException));
+    await expectLater(flow.run(refresh: true), throwsA(isTransportException));
   });
 
-  test('throws on scopes transport error', () {
-    var requestNr = 0;
+  test('throws on scopes transport error', () async {
     final flow = MetadataServerAuthorizationFlow(
-      mockClient(
-        expectAsync1((request) {
-          if (requestNr++ == 0) {
-            return successfulAccessToken(request);
-          } else {
-            return transportFailure.get(Uri.http('failure'));
-          }
-        }, count: 2),
-        expectClose: false,
+      metadataMock(
+        count: 2,
+        onScopes: (_) => transportFailure.get(Uri.http('failure')),
       ),
     );
-    // getMetadataValue does not wrap custom TransportException
-    expect(flow.run(refresh: true), throwsA(isTransportException));
+    await expectLater(flow.run(refresh: true), throwsA(isTransportException));
   });
 }

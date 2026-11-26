@@ -55,6 +55,58 @@ void main() {
     expect(jsonEncode(decoded), encoded);
   });
 
+  test('AccessCredentials normalizes and validates universeDomain', () {
+    final upperDefault = AccessCredentials(
+      AccessToken('type', 'data', DateTime.now().toUtc()),
+      null,
+      ['scope1'],
+      universeDomain: 'GOOGLEAPIS.COM',
+    );
+    expect(upperDefault.universeDomain, 'googleapis.com');
+    final decodedBase =
+        jsonDecode(jsonEncode(upperDefault)) as Map<String, dynamic>;
+    expect(decodedBase, isNot(contains('universeDomain')));
+
+    final upperTpc = AccessCredentials.fromJson({
+      ...decodedBase,
+      'universeDomain': 'S3NSAPIS.FR',
+    });
+    expect(upperTpc.universeDomain, 's3nsapis.fr');
+
+    for (final invalid in [
+      '   ',
+      'googleapis.com@evil.com',
+      's3nsapis.fr/evil',
+      's3nsapis.fr:443',
+      's3nsapis.fr#frag',
+      'https://s3nsapis.fr',
+    ]) {
+      expect(
+        () => AccessCredentials(
+          AccessToken('type', 'data', DateTime.now().toUtc()),
+          null,
+          ['scope1'],
+          universeDomain: invalid,
+        ),
+        throwsA(
+          isArgumentError.having(
+            (e) => e.message,
+            'message',
+            contains('Invalid universe domain'),
+          ),
+        ),
+        reason: 'Should reject "$invalid"',
+      );
+    }
+
+    expect(
+      () => AccessCredentials.fromJson({...decodedBase, 'universeDomain': 123}),
+      throwsA(
+        isArgumentError.having((e) => e.message, 'message', contains('String')),
+      ),
+    );
+  });
+
   test('ClientId round-trip', () {
     final clientId = ClientId('identifier', 'secret');
 

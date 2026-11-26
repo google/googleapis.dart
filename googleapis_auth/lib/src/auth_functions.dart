@@ -96,6 +96,7 @@ AutoRefreshingAuthClient autoRefreshingClient(
   if (credentials.refreshToken == null) {
     throw ArgumentError('Refresh token in AccessCredentials was `null`.');
   }
+  validateAuthEndpointsForUniverse(authEndpoints, credentials.universeDomain);
   return AutoRefreshingClient(baseClient, authEndpoints, clientId, credentials);
 }
 
@@ -113,6 +114,10 @@ AutoRefreshingAuthClient autoRefreshingClient(
 ///
 /// If [quotaProject] is provided, it will be added to the `X-Goog-User-Project`
 /// header for all requests.
+///
+/// [universeDomain] specifies the universe domain for the returned credentials
+/// (defaults to [defaultUniverseDomain]). If non-default, a custom
+/// [authEndpoints] implementation must be provided.
 Future<AutoRefreshingAuthClient> clientViaRefreshToken(
   ClientId clientId,
   String refreshToken,
@@ -120,7 +125,11 @@ Future<AutoRefreshingAuthClient> clientViaRefreshToken(
   Client? baseClient,
   AuthEndpoints authEndpoints = const GoogleAuthEndpoints(),
   String? quotaProject,
+  String universeDomain = defaultUniverseDomain,
 }) async {
+  final normalizedUniverse = normalizeUniverseDomain(universeDomain);
+  validateAuthEndpointsForUniverse(authEndpoints, normalizedUniverse);
+
   final setupClient = setupBaseClient(baseClient);
   final closeUnderlyingClient = baseClient == null;
 
@@ -136,6 +145,7 @@ Future<AutoRefreshingAuthClient> clientViaRefreshToken(
         ),
         refreshToken,
         scopes,
+        universeDomain: normalizedUniverse,
       ),
       setupClient,
       authEndpoints: authEndpoints,
@@ -170,6 +180,7 @@ Future<AccessCredentials> refreshCredentials(
   if (refreshToken == null) {
     throw ArgumentError('clientId.refreshToken cannot be null.');
   }
+  validateAuthEndpointsForUniverse(authEndpoints, credentials.universeDomain);
 
   // https://developers.google.com/identity/protocols/oauth2/native-app#offline
   final jsonMap = await client.oauthTokenRequest({

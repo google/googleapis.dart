@@ -32,19 +32,25 @@ class AccessCredentials {
     this.scopes, {
     this.idToken,
     String universeDomain = defaultUniverseDomain,
-  }) : universeDomain = universeDomain.isEmpty
-           ? defaultUniverseDomain
-           : universeDomain;
+  }) : universeDomain = normalizeUniverseDomain(universeDomain);
 
-  factory AccessCredentials.fromJson(Map<String, dynamic> json) =>
-      AccessCredentials(
-        AccessToken.fromJson(json['accessToken'] as Map<String, dynamic>),
-        json['refreshToken'] as String?,
-        (json['scopes'] as List<dynamic>).map((e) => e as String).toList(),
-        idToken: json['idToken'] as String?,
-        universeDomain:
-            json['universeDomain'] as String? ?? defaultUniverseDomain,
+  factory AccessCredentials.fromJson(Map<String, dynamic> json) {
+    final rawUniverse = json['universeDomain'];
+    if (rawUniverse is! String?) {
+      throw ArgumentError.value(
+        rawUniverse,
+        'universeDomain',
+        'Expected a String or null.',
       );
+    }
+    return AccessCredentials(
+      AccessToken.fromJson(json['accessToken'] as Map<String, dynamic>),
+      json['refreshToken'] as String?,
+      (json['scopes'] as List<dynamic>).map((e) => e as String).toList(),
+      idToken: json['idToken'] as String?,
+      universeDomain: rawUniverse ?? defaultUniverseDomain,
+    );
+  }
 
   Map<String, dynamic> toJson() => <String, dynamic>{
     'accessToken': accessToken,

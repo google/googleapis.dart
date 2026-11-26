@@ -27,6 +27,199 @@ const maxExpectedTimeDiffInSeconds = 20;
 /// may use a different universe domain.
 const defaultUniverseDomain = 'googleapis.com';
 
+final _universeDomainRegExp = RegExp(
+  r'^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?'
+  r'(?:\.[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?)+$',
+);
+
+final _regionalIamHostRegExp = RegExp(
+  r'^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?-iamcredentials\.(.+)$',
+);
+
+final _regionalStsHostRegExp = RegExp(
+  r'^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?-sts\.(.+)$',
+);
+
+/// Returns the normalized (lowercased) DNS hostname for [universeDomain], or
+/// `null` if [universeDomain] is not a valid DNS domain name.
+String? tryNormalizeUniverseDomain(String universeDomain) {
+  final normalized = universeDomain.toLowerCase();
+  if (normalized.length > 253 || !_universeDomainRegExp.hasMatch(normalized)) {
+    return null;
+  }
+  return normalized;
+}
+
+/// Normalizes and validates [universeDomain].
+///
+/// Returns [defaultUniverseDomain] when [universeDomain] is `null` or empty.
+/// Lowercases valid DNS hostnames and throws [ArgumentError] for whitespace or
+/// malformed domain names.
+String normalizeUniverseDomain(
+  String? universeDomain, {
+  String name = 'universeDomain',
+}) {
+  if (universeDomain == null || universeDomain.isEmpty) {
+    return defaultUniverseDomain;
+  }
+  final normalized = tryNormalizeUniverseDomain(universeDomain);
+  if (normalized == null) {
+    throw ArgumentError.value(
+      universeDomain,
+      name,
+      'Invalid universe domain: must be a valid DNS domain name.',
+    );
+  }
+  return normalized;
+}
+
+/// Whether [host] refers to a loopback address.
+bool isLoopbackHost(String host) {
+  final lower = host.toLowerCase();
+  return lower == 'localhost' || lower == '127.0.0.1' || lower == '::1';
+}
+
+/// Validates an OAuth 2.0 or STS token endpoint [uri].
+///
+/// Requires `https` (or `http` for loopback hosts), non-empty host, no
+/// userinfo, and no fragment.
+Uri validateTokenUri(Uri uri, {String name = 'tokenUri'}) {
+  if (!uri.hasScheme || uri.host.isEmpty) {
+    throw ArgumentError.value(
+      uri,
+      name,
+      'Invalid $name: must be a valid absolute URI.',
+    );
+  }
+  if (uri.userInfo.isNotEmpty || uri.hasFragment) {
+    throw ArgumentError.value(
+      uri,
+      name,
+      'Invalid $name: must not contain userinfo or a fragment.',
+    );
+  }
+  if (uri.scheme != 'https' &&
+      !(uri.scheme == 'http' && isLoopbackHost(uri.host))) {
+    throw ArgumentError.value(
+      uri,
+      name,
+      'Invalid $name: must use https (or http for localhost).',
+    );
+  }
+  return uri;
+}
+
+/// Extracts and validates the universe domain from an IAM Credentials API host
+/// (`iamcredentials.<universe>` or `<region>-iamcredentials.<universe>`).
+///
+/// Returns `null` if [host] is not a recognized IAM Credentials API host.
+String? universeDomainFromIamHost(String host) {
+  final lower = host.toLowerCase();
+  final candidate = lower.startsWith('iamcredentials.')
+      ? lower.substring('iamcredentials.'.length)
+      : _regionalIamHostRegExp.firstMatch(lower)?.group(1);
+  if (candidate == null ||
+      candidate.length > 253 ||
+      !_universeDomainRegExp.hasMatch(candidate)) {
+    return null;
+  }
+  return candidate;
+}
+
+/// Extracts and validates the universe domain from an STS API host
+/// (`sts.<universe>` or `<region>-sts.<universe>`).
+///
+/// Returns `null` if [host] is not a recognized STS API host.
+String? universeDomainFromStsHost(String host) {
+  final lower = host.toLowerCase();
+  final candidate = lower.startsWith('sts.')
+      ? lower.substring('sts.'.length)
+      : _regionalStsHostRegExp.firstMatch(lower)?.group(1);
+  if (candidate == null ||
+      candidate.length > 253 ||
+      !_universeDomainRegExp.hasMatch(candidate)) {
+    return null;
+  }
+  return candidate;
+}
+
+/// Validates and normalizes an IAM Credentials API base [endpoint] URL for
+/// [expectedUniverse].
+///
+/// Requires `https` (or `http` for loopback hosts), non-empty host, no
+/// userinfo, query, or fragment, and an empty or `/` path. When
+/// [expectedUniverse] is non-default, rejects IAM hosts belonging to a
+/// different universe.
+String validateIamEndpoint(
+  String endpoint,
+  String expectedUniverse, {
+  String name = 'endpoint',
+}) {
+  final uri = Uri.tryParse(endpoint);
+  if (uri == null || !uri.hasScheme || uri.host.isEmpty) {
+    throw ArgumentError.value(
+      endpoint,
+      name,
+      'Invalid $name: must be a valid absolute URL.',
+    );
+  }
+  if (uri.userInfo.isNotEmpty || uri.hasQuery || uri.hasFragment) {
+    throw ArgumentError.value(
+      endpoint,
+      name,
+      'Invalid $name: must not contain userinfo, query, or fragment.',
+    );
+  }
+  if (uri.path.isNotEmpty && uri.path != '/') {
+    throw ArgumentError.value(
+      endpoint,
+      name,
+      'Invalid $name: must be a base origin URL without a path.',
+    );
+  }
+  if (uri.scheme != 'https' &&
+      !(uri.scheme == 'http' && isLoopbackHost(uri.host))) {
+    throw ArgumentError.value(
+      endpoint,
+      name,
+      'Invalid $name: must use https (or http for localhost).',
+    );
+  }
+  final endpointUniverse = universeDomainFromIamHost(uri.host);
+  if (expectedUniverse != defaultUniverseDomain &&
+      endpointUniverse != null &&
+      endpointUniverse != expectedUniverse) {
+    throw ArgumentError.value(
+      endpoint,
+      name,
+      'Endpoint universe "$endpointUniverse" does not match credential '
+      'universe "$expectedUniverse".',
+    );
+  }
+  return uri.origin;
+}
+
+/// Validates that [authEndpoints] is compatible with [universeDomain].
+///
+/// Rejects [GoogleAuthEndpoints] (`oauth2.googleapis.com`) when
+/// [universeDomain] is non-default to prevent leaking credentials across
+/// universes.
+void validateAuthEndpointsForUniverse(
+  AuthEndpoints authEndpoints,
+  String universeDomain,
+) {
+  if (universeDomain != defaultUniverseDomain &&
+      authEndpoints is GoogleAuthEndpoints) {
+    throw ArgumentError.value(
+      authEndpoints,
+      'authEndpoints',
+      'Cannot use default GoogleAuthEndpoints (oauth2.googleapis.com) with '
+          'non-default universe domain "$universeDomain". Provide a custom '
+          'AuthEndpoints implementation.',
+    );
+  }
+}
+
 AccessToken parseAccessToken(Map<String, dynamic> jsonMap) => switch (jsonMap) {
   {
     'token_type': 'Bearer',

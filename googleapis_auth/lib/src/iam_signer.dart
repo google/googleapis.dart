@@ -8,6 +8,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
+import 'auth_client.dart';
 import 'metadata_server_stub.dart'
     if (dart.library.io) 'metadata_server_io.dart';
 import 'utils.dart';
@@ -31,11 +32,16 @@ import 'version.dart';
 /// [delegates] specifies the sequence of service accounts in a delegation
 /// chain.
 ///
-/// [endpoint] specifies a custom IAM Credentials API endpoint URL.
-/// If provided, takes precedence over [universeDomain].
+/// [endpoint] specifies a custom IAM Credentials API base endpoint URL.
+/// If provided, takes precedence over [universeDomain]. Must use `https` (or
+/// `http` for loopback hosts) with no path, query, fragment, or userinfo, and
+/// cannot target an IAM host from a different universe when using non-default
+/// universe credentials.
 ///
 /// [universeDomain] specifies the universe domain for constructing the IAM
-/// endpoint. Defaults to [defaultUniverseDomain].
+/// endpoint. If omitted or empty, inherits [AuthClient.credentials]'s
+/// `universeDomain` when [client] is an [AuthClient], otherwise defaults to
+/// [defaultUniverseDomain].
 ///
 /// [refresh] if `true`, the service account email cache is cleared and
 /// re-computed before signing (only used if [serviceAccountEmail] is `null`).
@@ -45,9 +51,29 @@ Future<({String signedBlob, String keyId})> signBlob(
   String? serviceAccountEmail,
   List<String>? delegates,
   String? endpoint,
-  String universeDomain = defaultUniverseDomain,
+  String? universeDomain,
   bool refresh = false,
 }) async {
+  final clientUniverse = client is AuthClient
+      ? client.credentials.universeDomain
+      : null;
+  final effectiveUniverse = (universeDomain == null || universeDomain.isEmpty)
+      ? (clientUniverse ?? defaultUniverseDomain)
+      : normalizeUniverseDomain(universeDomain);
+  if (clientUniverse != null &&
+      clientUniverse != defaultUniverseDomain &&
+      clientUniverse != effectiveUniverse) {
+    throw ArgumentError.value(
+      universeDomain,
+      'universeDomain',
+      'Cannot call signBlob in universe "$effectiveUniverse" using '
+          'credentials from universe "$clientUniverse".',
+    );
+  }
+  final normalizedEndpoint = endpoint != null
+      ? validateIamEndpoint(endpoint, effectiveUniverse)
+      : 'https://iamcredentials.$effectiveUniverse';
+
   final email =
       serviceAccountEmail ??
       await serviceAccountEmailFromMetadataServer(
@@ -55,14 +81,6 @@ Future<({String signedBlob, String keyId})> signBlob(
         refresh: refresh,
       );
   final encodedEmail = Uri.encodeComponent(email);
-
-  final effectiveUniverse = universeDomain.isEmpty
-      ? defaultUniverseDomain
-      : universeDomain;
-  final rawEndpoint = endpoint ?? 'https://iamcredentials.$effectiveUniverse';
-  final normalizedEndpoint = rawEndpoint.endsWith('/')
-      ? rawEndpoint.substring(0, rawEndpoint.length - 1)
-      : rawEndpoint;
 
   final signBlobUrl = Uri.parse(
     '$normalizedEndpoint/v1/projects/-/serviceAccounts/$encodedEmail:signBlob',

@@ -1,19 +1,27 @@
 ## 2.4.0-wip
 
 - Added `universeDomain` to `AccessCredentials` (defaulting to `googleapis.com`,
-  omitted from `toJson()` when default) and propagated universe domains across
-  service accounts, GCE metadata server credentials, STS external accounts,
-  credential refresh, and `AuthClient.sign()`.
+  normalized to lowercase and validated as a DNS domain name, omitted from
+  `toJson()` when default) and propagated universe domains across service
+  accounts, GCE metadata server credentials, STS external accounts, credential
+  refresh, `signBlob()`, and `AuthClient.sign()`.
+- Added optional `universeDomain` parameter to `clientViaRefreshToken()` and
+  `obtainAccessCredentialsViaCodeExchange()`, and rejected using default
+  `GoogleAuthEndpoints` (`oauth2.googleapis.com`) with non-default universe
+  credentials.
 - Added `privateKeyId` and `tokenUri` properties to `ServiceAccountCredentials`.
 - `JwtFlow` now issues self-signed JWTs directly (with `kid` when available) for
   non-default `universe_domain` service accounts, rejects domain-wide delegation
-  outside `googleapis.com`, and honors custom `token_uri` endpoints in the
-  default universe.
-- Impersonation ADC parsing and `ImpersonatedAuthClient` now preserve the full
-  HTTPS impersonation endpoint and `universe_domain`, validate cross-universe
-  mismatches before token exchange, forward `delegates` and `quotaProject`, and
-  expose `ImpersonatedAuthClient.universeDomain` along with optional `endpoint`
-  and `quotaProject` parameters.
+  and empty scopes outside `googleapis.com`, and honors custom `token_uri`
+  endpoints in the default universe.
+- Hardened ADC credential loading (`authorized_user`, `external_account`, and
+  `impersonated_service_account`): rejects non-default `universe_domain` and
+  `token_uri` on `authorized_user`, validates HTTPS IAM/STS endpoints and
+  cross-universe mismatches before token exchange, supports `{universe_domain}`
+  substitution in `token_url` and `service_account_impersonation_url`, forwards
+  `delegates` and `quotaProject`, and exposes
+  `ImpersonatedAuthClient.universeDomain` along with optional `endpoint` and
+  `quotaProject` parameters.
 
 ## 2.3.7
 

@@ -79,38 +79,40 @@ void main() {
 
   test('sign with impersonated client uses IAM API', () async {
     var requestCount = 0;
-    final baseClient = mockClient((request) async {
-      final metadataResponse = _mockMetadataResponse(request);
-      if (metadataResponse != null) return metadataResponse;
+    final baseClient = mockClient(
+      expectAsync1((request) async {
+        requestCount++;
 
-      requestCount++;
+        if (requestCount == 1) {
+          // Initial generateAccessToken for impersonated client
+          final expireTime = DateTime.now().toUtc().add(
+            const Duration(hours: 1),
+          );
+          return http.Response(
+            jsonEncode({
+              'accessToken': 'impersonated-token',
+              'expireTime': expireTime.toIso8601String(),
+            }),
+            200,
+            headers: jsonContentType,
+          );
+        } else {
+          // signBlob request via ImpersonatedAuthClient.sign()
+          expect(request.method, 'POST');
+          expect(request.url.toString(), contains(':signBlob'));
 
-      if (requestCount == 1) {
-        // Initial generateAccessToken for impersonated client
-        final expireTime = DateTime.now().toUtc().add(const Duration(hours: 1));
-        return http.Response(
-          jsonEncode({
-            'accessToken': 'impersonated-token',
-            'expireTime': expireTime.toIso8601String(),
-          }),
-          200,
-          headers: jsonContentType,
-        );
-      } else {
-        // signBlob request via ImpersonatedAuthClient.sign()
-        expect(request.method, 'POST');
-        expect(request.url.toString(), contains(':signBlob'));
-
-        return http.Response(
-          jsonEncode({
-            'signedBlob': base64Encode([1, 2, 3, 4, 5]),
-            'keyId': 'key-id',
-          }),
-          200,
-          headers: jsonContentType,
-        );
-      }
-    }, expectClose: false);
+          return http.Response(
+            jsonEncode({
+              'signedBlob': base64Encode([1, 2, 3, 4, 5]),
+              'keyId': 'key-id',
+            }),
+            200,
+            headers: jsonContentType,
+          );
+        }
+      }, count: 2),
+      expectClose: false,
+    );
 
     final sourceCredentials = AccessCredentials(
       AccessToken(
@@ -293,21 +295,24 @@ void main() {
     'sign uses credentials.universeDomain when endpoint is omitted (including '
     'through delegating AuthClient wrappers)',
     () async {
-      final baseClient = mockClient((request) async {
-        expect(request.method, 'POST');
-        expect(request.url.host, 'iamcredentials.s3nsapis.fr');
-        expect(request.url.path, endsWith(':signBlob'));
-        expect(request.headers['Authorization'], 'Bearer tpc-token');
+      final baseClient = mockClient(
+        expectAsync1((request) async {
+          expect(request.method, 'POST');
+          expect(request.url.host, 'iamcredentials.s3nsapis.fr');
+          expect(request.url.path, endsWith(':signBlob'));
+          expect(request.headers['Authorization'], 'Bearer tpc-token');
 
-        return http.Response(
-          jsonEncode({
-            'signedBlob': base64Encode([11, 22, 33]),
-            'keyId': 'tpc-key-id',
-          }),
-          200,
-          headers: jsonContentType,
-        );
-      }, expectClose: false);
+          return http.Response(
+            jsonEncode({
+              'signedBlob': base64Encode([11, 22, 33]),
+              'keyId': 'tpc-key-id',
+            }),
+            200,
+            headers: jsonContentType,
+          );
+        }),
+        expectClose: false,
+      );
 
       final tpcCredentials = AccessCredentials(
         AccessToken(
@@ -331,6 +336,43 @@ void main() {
       wrappedClient.close();
     },
   );
+
+  test('sign rejects cross-universe endpoint override on TPC clients before '
+      'network calls', () async {
+    final neverClient = mockClient(
+      (request) async => fail('Should not issue HTTP request: ${request.url}'),
+      expectClose: false,
+    );
+    final tpcCredentials = AccessCredentials(
+      AccessToken(
+        'Bearer',
+        'tpc-token',
+        DateTime.now().toUtc().add(const Duration(hours: 1)),
+      ),
+      null,
+      [],
+      universeDomain: 's3nsapis.fr',
+    );
+    final wrappedClient = _DelegatingAuthClient(
+      authenticatedClient(neverClient, tpcCredentials),
+    );
+    addTearDown(wrappedClient.close);
+
+    await expectLater(
+      wrappedClient.sign(
+        dataToSign,
+        serviceAccountEmail: 'sa@tpc.iam.gserviceaccount.com',
+        endpoint: 'https://iamcredentials.googleapis.com',
+      ),
+      throwsA(
+        isArgumentError.having(
+          (e) => e.message,
+          'message',
+          contains('Endpoint universe'),
+        ),
+      ),
+    );
+  });
 }
 
 class _DelegatingAuthClient extends http.BaseClient implements AuthClient {

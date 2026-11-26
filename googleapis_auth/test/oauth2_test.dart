@@ -203,21 +203,44 @@ void main() {
       expect(creds.universeDomain, defaultUniverseDomain);
     });
 
-    test('validates token_uri scheme and host', () {
+    test('validates token_uri and universe_domain', () {
+      for (final badUri in [
+        'not-a-uri',
+        'http://oauth2.example.com/token',
+        'http://localhost.evil.com/token',
+        'https://user@oauth2.googleapis.com/token',
+        'https://oauth2.googleapis.com/token#frag',
+      ]) {
+        expect(
+          () => ServiceAccountCredentials.fromJson({
+            ...credentials,
+            'token_uri': badUri,
+          }),
+          throwsArgumentError,
+          reason: 'Should reject token_uri "$badUri"',
+        );
+      }
       expect(
-        () => ServiceAccountCredentials.fromJson({
-          ...credentials,
-          'token_uri': 'not-a-uri',
-        }),
+        () => ServiceAccountCredentials(
+          'a@b.com',
+          ClientId('id'),
+          testPrivateKeyString,
+          tokenUri: Uri.parse('http://oauth2.example.com/token'),
+        ),
         throwsArgumentError,
       );
       expect(
         () => ServiceAccountCredentials.fromJson({
           ...credentials,
-          'token_uri': 'http://oauth2.example.com/token',
+          'universe_domain': 'googleapis.com@evil.com',
         }),
         throwsArgumentError,
       );
+      final upperCreds = ServiceAccountCredentials.fromJson({
+        ...credentials,
+        'universe_domain': 'S3NSAPIS.FR',
+      });
+      expect(upperCreds.universeDomain, 's3nsapis.fr');
       final localCreds = ServiceAccountCredentials.fromJson({
         ...credentials,
         'token_uri': 'http://localhost:8080/token',
@@ -892,11 +915,25 @@ void main() {
           final client = await clientViaServiceAccount(
             credentials,
             ['https://www.googleapis.com/auth/cloud-platform'],
-            baseClient: mockClient((request) async {
-              expect(request.url.host, 'storage.s3nsapis.fr');
-              expect(request.headers['Authorization'], startsWith('Bearer '));
-              return Response('ok', 200);
-            }, expectClose: false),
+            baseClient: mockClient(
+              expectAsync1((request) async {
+                expect(request.url.host, 'storage.s3nsapis.fr');
+                final auth = request.headers['Authorization']!;
+                expect(auth, startsWith('Bearer '));
+                final parts = auth.substring('Bearer '.length).split('.');
+                expect(parts, hasLength(3));
+                final claims =
+                    jsonDecode(
+                          utf8.decode(
+                            base64Url.decode(base64Url.normalize(parts[1])),
+                          ),
+                        )
+                        as Map<String, dynamic>;
+                expect(claims, isNot(contains('aud')));
+                return Response('ok', 200);
+              }),
+              expectClose: false,
+            ),
           );
 
           expect(client.credentials.universeDomain, 's3nsapis.fr');
@@ -977,6 +1014,95 @@ void main() {
         expect(client.credentials.universeDomain, defaultUniverseDomain);
         client.close();
       }, testOn: 'vm');
+
+      test('refreshCredentials and clientViaRefreshToken guard non-default '
+          'universe against GoogleAuthEndpoints', () async {
+        final neverClient = mockClient(
+          (request) async =>
+              fail('Should not issue HTTP request to ${request.url}'),
+          expectClose: false,
+        );
+        final tpcCreds = AccessCredentials(
+          AccessToken(
+            'Bearer',
+            'expired',
+            DateTime.fromMillisecondsSinceEpoch(0, isUtc: true),
+          ),
+          'tpc-refresh',
+          ['s1'],
+          universeDomain: 's3nsapis.fr',
+        );
+
+        await expectLater(
+          refreshCredentials(ClientId('id', 'secret'), tpcCreds, neverClient),
+          throwsA(
+            isArgumentError.having(
+              (e) => e.message,
+              'message',
+              contains('GoogleAuthEndpoints'),
+            ),
+          ),
+        );
+
+        expect(
+          () => autoRefreshingClient(
+            ClientId('id', 'secret'),
+            tpcCreds,
+            neverClient,
+          ),
+          throwsArgumentError,
+        );
+
+        await expectLater(
+          clientViaRefreshToken(
+            ClientId('id', 'secret'),
+            'tpc-refresh',
+            ['s1'],
+            baseClient: neverClient,
+            universeDomain: 's3nsapis.fr',
+          ),
+          throwsArgumentError,
+        );
+
+        final customEndpoints = _CustomAuthEndpoints(
+          Uri.https('oauth2.s3nsapis.fr', '/token'),
+        );
+        final refreshedClient = await clientViaRefreshToken(
+          ClientId('id', 'secret'),
+          'tpc-refresh',
+          ['s1'],
+          baseClient: mockClient(
+            expectAsync1((request) async {
+              expect(request.url, customEndpoints.tokenEndpoint);
+              return Response(
+                jsonEncode({
+                  'access_token': 'new-tpc-token',
+                  'token_type': 'Bearer',
+                  'expires_in': 3600,
+                }),
+                200,
+                headers: jsonContentType,
+              );
+            }),
+            expectClose: false,
+          ),
+          authEndpoints: customEndpoints,
+          universeDomain: 'S3NSAPIS.FR',
+        );
+        expect(refreshedClient.credentials.universeDomain, 's3nsapis.fr');
+        expect(refreshedClient.credentials.accessToken.data, 'new-tpc-token');
+        refreshedClient.close();
+      });
     });
   });
+}
+
+class _CustomAuthEndpoints extends AuthEndpoints {
+  _CustomAuthEndpoints(this.tokenEndpoint);
+
+  @override
+  Uri get authorizationEndpoint => Uri.https('accounts.s3nsapis.fr', '/auth');
+
+  @override
+  final Uri tokenEndpoint;
 }

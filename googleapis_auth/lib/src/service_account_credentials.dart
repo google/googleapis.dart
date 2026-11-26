@@ -153,10 +153,9 @@ class ServiceAccountCredentials {
     this.privateKeyId,
     String universeDomain = defaultUniverseDomain,
     this.quotaProject,
-    this.tokenUri,
-  }) : universeDomain = universeDomain.isEmpty
-           ? defaultUniverseDomain
-           : universeDomain,
+    Uri? tokenUri,
+  }) : universeDomain = normalizeUniverseDomain(universeDomain),
+       tokenUri = tokenUri != null ? validateTokenUri(tokenUri) : null,
        privateRSAKey = keyFromString(privateKey);
 
   /// Signs the given [data] using RSA-SHA256 with this service account's
@@ -170,21 +169,12 @@ class ServiceAccountCredentials {
 Uri? _parseTokenUri(String? value) {
   if (value == null || value.isEmpty) return null;
   final uri = Uri.tryParse(value);
-  if (uri == null || !uri.hasScheme || uri.host.isEmpty) {
+  if (uri == null) {
     throw ArgumentError.value(
       value,
       'token_uri',
       'Invalid token_uri: must be a valid absolute URI.',
     );
   }
-  final isLoopback =
-      uri.host == 'localhost' || uri.host == '127.0.0.1' || uri.host == '::1';
-  if (uri.scheme != 'https' && !(uri.scheme == 'http' && isLoopback)) {
-    throw ArgumentError.value(
-      value,
-      'token_uri',
-      'Invalid token_uri: must use https (or http for localhost).',
-    );
-  }
-  return uri;
+  return validateTokenUri(uri, name: 'token_uri');
 }

@@ -142,55 +142,58 @@ void main() {
       File(d.path('tpc_impersonated_sa.json')),
       'test-credentials-file',
       ['target_scope'],
-      mockClient(expectClose: false, (Request request) async {
-        final url = request.url;
-        expect(url.host, isNot('oauth2.googleapis.com'));
-        expect(url.host, isNot('iamcredentials.googleapis.com'));
+      mockClient(
+        expectAsync1((Request request) async {
+          final url = request.url;
+          expect(url.host, isNot('oauth2.googleapis.com'));
+          expect(url.host, isNot('iamcredentials.googleapis.com'));
 
-        if (url.toString() ==
-            'https://iamcredentials.s3nsapis.fr/v1/projects/-/serviceAccounts/target%40example.com:generateAccessToken') {
-          expect(request.method, 'POST');
-          // Self-signed JWT from TPC service account source
-          final authHeader = request.headers['Authorization']!;
-          expect(authHeader, startsWith('Bearer '));
-          expect(
-            authHeader.substring('Bearer '.length).split('.'),
-            hasLength(3),
-          );
+          if (url.toString() ==
+              'https://iamcredentials.s3nsapis.fr/v1/projects/-/serviceAccounts/target%40example.com:generateAccessToken') {
+            expect(request.method, 'POST');
+            // Self-signed JWT from TPC service account source
+            final authHeader = request.headers['Authorization']!;
+            expect(authHeader, startsWith('Bearer '));
+            expect(
+              authHeader.substring('Bearer '.length).split('.'),
+              hasLength(3),
+            );
 
-          final body = jsonDecode(request.body) as Map<String, dynamic>;
-          expect(body['scope'], ['target_scope']);
-          expect(body['delegates'], [
-            'projects/-/serviceAccounts/mid@example.com',
-          ]);
+            final body = jsonDecode(request.body) as Map<String, dynamic>;
+            expect(body['scope'], ['target_scope']);
+            expect(body['delegates'], [
+              'projects/-/serviceAccounts/mid@example.com',
+            ]);
 
-          return Response(
-            jsonEncode({
-              'accessToken': 'tpc_target_token',
-              'expireTime': DateTime.now()
-                  .toUtc()
-                  .add(const Duration(hours: 1))
-                  .toIso8601String(),
-            }),
-            200,
-            headers: jsonContentType,
-          );
-        }
+            return Response(
+              jsonEncode({
+                'accessToken': 'tpc_target_token',
+                'expireTime': DateTime.now()
+                    .toUtc()
+                    .add(const Duration(hours: 1))
+                    .toIso8601String(),
+              }),
+              200,
+              headers: jsonContentType,
+            );
+          }
 
-        if (url.toString() == 'https://storage.s3nsapis.fr/b/bucket/o/obj') {
-          expect(
-            request.headers,
-            containsPair('Authorization', 'Bearer tpc_target_token'),
-          );
-          expect(
-            request.headers,
-            containsPair('X-Goog-User-Project', 'tpc-quota'),
-          );
-          return Response('tpc impersonated ok', 200);
-        }
+          if (url.toString() == 'https://storage.s3nsapis.fr/b/bucket/o/obj') {
+            expect(
+              request.headers,
+              containsPair('Authorization', 'Bearer tpc_target_token'),
+            );
+            expect(
+              request.headers,
+              containsPair('X-Goog-User-Project', 'tpc-quota'),
+            );
+            return Response('tpc impersonated ok', 200);
+          }
 
-        return Response('not found: $url', 404);
-      }),
+          fail('Unexpected HTTP request to $url');
+        }, count: 2),
+        expectClose: false,
+      ),
     );
 
     expect(c.credentials.accessToken.data, 'tpc_target_token');
@@ -212,7 +215,7 @@ void main() {
           json.encode({
             'type': 'impersonated_service_account',
             'service_account_impersonation_url':
-                'https://iamcredentials.s3nsapis.fr/v1/projects/-/serviceAccounts/target@example.com:generateAccessToken',
+                'https://iamcredentials.{universe_domain}/v1/projects/-/serviceAccounts/target@example.com:generateAccessToken',
             'source_credentials': {
               'type': 'external_account',
               'audience': 'tpc-aud',
@@ -228,37 +231,40 @@ void main() {
       File(d.path('tpc_impersonated_ext.json')),
       'test-credentials-file',
       ['target_scope'],
-      mockClient(expectClose: false, (Request request) async {
-        final url = request.url;
-        expect(url.host, isNot('iamcredentials.googleapis.com'));
-        if (url.toString() == 'https://sts.s3nsapis.fr/v1/token') {
-          return Response(
-            jsonEncode({
-              'token_type': 'Bearer',
-              'access_token': 'tpc_sts_token',
-              'expires_in': 3600,
-            }),
-            200,
-            headers: jsonContentType,
-          );
-        }
-        if (url.toString() ==
-            'https://iamcredentials.s3nsapis.fr/v1/projects/-/serviceAccounts/target%40example.com:generateAccessToken') {
-          expect(request.headers['Authorization'], 'Bearer tpc_sts_token');
-          return Response(
-            jsonEncode({
-              'accessToken': 'tpc_impersonated_token',
-              'expireTime': DateTime.now()
-                  .toUtc()
-                  .add(const Duration(hours: 1))
-                  .toIso8601String(),
-            }),
-            200,
-            headers: jsonContentType,
-          );
-        }
-        return Response('not found: $url', 404);
-      }),
+      mockClient(
+        expectAsync1((Request request) async {
+          final url = request.url;
+          expect(url.host, isNot('iamcredentials.googleapis.com'));
+          if (url.toString() == 'https://sts.s3nsapis.fr/v1/token') {
+            return Response(
+              jsonEncode({
+                'token_type': 'Bearer',
+                'access_token': 'tpc_sts_token',
+                'expires_in': 3600,
+              }),
+              200,
+              headers: jsonContentType,
+            );
+          }
+          if (url.toString() ==
+              'https://iamcredentials.s3nsapis.fr/v1/projects/-/serviceAccounts/target%40example.com:generateAccessToken') {
+            expect(request.headers['Authorization'], 'Bearer tpc_sts_token');
+            return Response(
+              jsonEncode({
+                'accessToken': 'tpc_impersonated_token',
+                'expireTime': DateTime.now()
+                    .toUtc()
+                    .add(const Duration(hours: 1))
+                    .toIso8601String(),
+              }),
+              200,
+              headers: jsonContentType,
+            );
+          }
+          fail('Unexpected HTTP request to $url');
+        }, count: 2),
+        expectClose: false,
+      ),
     );
 
     expect(c.credentials.accessToken.data, 'tpc_impersonated_token');
@@ -269,36 +275,86 @@ void main() {
   test('impersonated_service_account rejects cross-universe mismatch before '
       'network calls', () async {
     await d.file('ext_mismatch_token.txt', 'ext-jwt').create();
-    await d
-        .file(
-          'tpc_impersonated_mismatch.json',
-          json.encode({
+    final neverClient = mockClient(
+      (request) async =>
+          fail('Should not issue HTTP request to ${request.url}'),
+      expectClose: false,
+    );
+
+    final mismatchedSources = <(String, Map<String, dynamic>)>[
+      (
+        'external_account TPC source -> googleapis.com',
+        {
+          'type': 'impersonated_service_account',
+          'service_account_impersonation_url':
+              'https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/target@example.com:generateAccessToken',
+          'source_credentials': {
+            'type': 'external_account',
+            'audience': 'tpc-aud',
+            'subject_token_type': 'urn:ietf:params:oauth:token-type:jwt',
+            'token_url': 'https://sts.s3nsapis.fr/v1/token',
+            'credential_source': {'file': d.path('ext_mismatch_token.txt')},
+          },
+        },
+      ),
+      (
+        'service_account TPC source -> googleapis.com',
+        {
+          'type': 'impersonated_service_account',
+          'service_account_impersonation_url':
+              'https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/target@example.com:generateAccessToken',
+          'source_credentials': {
+            'type': 'service_account',
+            'client_id': 'id',
+            'client_email': 'source@tpc.iam.gserviceaccount.com',
+            'private_key': testPrivateKeyString,
+            'universe_domain': 's3nsapis.fr',
+          },
+        },
+      ),
+      (
+        'nested impersonated_service_account googleapis.com -> TPC',
+        {
+          'type': 'impersonated_service_account',
+          'universe_domain': 's3nsapis.fr',
+          'service_account_impersonation_url':
+              'https://iamcredentials.s3nsapis.fr/v1/projects/-/serviceAccounts/target@example.com:generateAccessToken',
+          'source_credentials': {
             'type': 'impersonated_service_account',
             'service_account_impersonation_url':
-                'https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/target@example.com:generateAccessToken',
+                'https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/mid@example.com:generateAccessToken',
             'source_credentials': {
-              'type': 'external_account',
-              'audience': 'tpc-aud',
-              'subject_token_type': 'urn:ietf:params:oauth:token-type:jwt',
-              'token_url': 'https://sts.s3nsapis.fr/v1/token',
-              'credential_source': {'file': d.path('ext_mismatch_token.txt')},
+              'type': 'authorized_user',
+              'client_id': 'id',
+              'client_secret': 'secret',
+              'refresh_token': 'refresh',
             },
-          }),
-        )
-        .create();
-
-    await expectLater(
-      fromApplicationsCredentialsFile(
-        File(d.path('tpc_impersonated_mismatch.json')),
-        'test-credentials-file',
-        ['target_scope'],
-        mockClient(
-          (request) async =>
-              fail('Should not issue HTTP request to ${request.url}'),
-          expectClose: false,
-        ),
+          },
+        },
       ),
-      throwsA(isA<CredentialsFileException>()),
-    );
+    ];
+
+    for (var i = 0; i < mismatchedSources.length; i++) {
+      final (label, config) = mismatchedSources[i];
+      final name = 'tpc_impersonated_mismatch_$i.json';
+      await d.file(name, json.encode(config)).create();
+
+      await expectLater(
+        fromApplicationsCredentialsFile(
+          File(d.path(name)),
+          'test-credentials-file',
+          ['target_scope'],
+          neverClient,
+        ),
+        throwsA(
+          isA<CredentialsFileException>().having(
+            (e) => e.message,
+            'message',
+            contains('Universe domain mismatch'),
+          ),
+        ),
+        reason: 'Case failed: $label',
+      );
+    }
   });
 }

@@ -41,10 +41,8 @@ class JwtFlow extends BaseFlow {
     Uri? tokenUri,
     String? privateKeyId,
   }) : _signer = RS256Signer(key),
-       _universeDomain = universeDomain.isEmpty
-           ? defaultUniverseDomain
-           : universeDomain,
-       _tokenUri = tokenUri,
+       _universeDomain = normalizeUniverseDomain(universeDomain),
+       _tokenUri = tokenUri != null ? validateTokenUri(tokenUri) : null,
        _privateKeyId = privateKeyId;
 
   @override
@@ -59,7 +57,7 @@ class JwtFlow extends BaseFlow {
       if (_privateKeyId != null && _privateKeyId.isNotEmpty)
         'kid': _privateKeyId,
     };
-    final jwtHeaderBase64 = _base64url(ascii.encode(jsonEncode(jwtHeader)));
+    final jwtHeaderBase64 = _base64url(utf8.encode(jsonEncode(jwtHeader)));
 
     // Per AIP-4111, non-default universe domains use self-signed JWTs directly
     // instead of exchanging an assertion at oauth2.googleapis.com/token.
@@ -70,11 +68,19 @@ class JwtFlow extends BaseFlow {
           'domains.',
         );
       }
+      if (_scopes.isEmpty) {
+        throw ArgumentError.value(
+          _scopes,
+          'scopes',
+          'Scopes cannot be empty for self-signed JWTs in non-default '
+              'universe domains.',
+        );
+      }
 
       final jwtClaimSet = {
         'iss': _clientEmail,
         'sub': _clientEmail,
-        if (_scopes.isNotEmpty) 'scope': _scopes.join(' '),
+        'scope': _scopes.join(' '),
         'exp': timestamp + 3600,
         'iat': timestamp,
       };

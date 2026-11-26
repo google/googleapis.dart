@@ -69,9 +69,18 @@ class MetadataServerAuthorizationFlow extends BaseFlow {
     );
     if (response.statusCode == 200) {
       final trimmed = response.body.trim();
-      return _cachedUniverseDomain = trimmed.isNotEmpty
-          ? trimmed
-          : defaultUniverseDomain;
+      if (trimmed.isEmpty) {
+        return _cachedUniverseDomain = defaultUniverseDomain;
+      }
+      final normalized = tryNormalizeUniverseDomain(trimmed);
+      if (normalized == null) {
+        throw ServerRequestFailedException(
+          'Metadata server returned an invalid universe domain: "$trimmed".',
+          statusCode: response.statusCode,
+          responseContent: response.body,
+        );
+      }
+      return _cachedUniverseDomain = normalized;
     }
     // 404 indicates an older metadata server without universe-domain support.
     if (response.statusCode == 404) {

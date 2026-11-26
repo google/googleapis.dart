@@ -8,7 +8,7 @@
 library;
 
 import 'dart:convert';
-import 'package:googleapis_auth/src/iam_signer.dart';
+import 'package:googleapis_auth/googleapis_auth.dart';
 import 'package:http/http.dart';
 import 'package:http/testing.dart';
 import 'package:test/test.dart';
@@ -86,16 +86,18 @@ void main() {
   });
 
   test('signBlob normalizes trailing slash on custom endpoint', () async {
-    final client = MockClient((request) async {
-      expect(
-        request.url.toString(),
-        'https://iamcredentials.s3nsapis.fr/v1/projects/-/serviceAccounts/test-email%40example.com:signBlob',
-      );
-      return Response(
-        jsonEncode({'signedBlob': 'c2lnbmF0dXJl', 'keyId': 'key-id'}),
-        200,
-      );
-    });
+    final client = MockClient(
+      expectAsync1((request) async {
+        expect(
+          request.url.toString(),
+          'https://iamcredentials.s3nsapis.fr/v1/projects/-/serviceAccounts/test-email%40example.com:signBlob',
+        );
+        return Response(
+          jsonEncode({'signedBlob': 'c2lnbmF0dXJl', 'keyId': 'key-id'}),
+          200,
+        );
+      }),
+    );
 
     final signature = await signBlob(
       client,
@@ -105,4 +107,127 @@ void main() {
     );
     expect(signature.signedBlob, 'c2lnbmF0dXJl');
   });
+
+  test('signBlob infers universeDomain from AuthClient credentials', () async {
+    final baseClient = MockClient(
+      expectAsync1((request) async {
+        expect(
+          request.url.toString(),
+          'https://iamcredentials.s3nsapis.fr/v1/projects/-/serviceAccounts/sa%40tpc.iam.gserviceaccount.com:signBlob',
+        );
+        expect(request.headers['Authorization'], 'Bearer tpc-token');
+        return Response(
+          jsonEncode({'signedBlob': 'c2lnbmF0dXJl', 'keyId': 'tpc-key'}),
+          200,
+        );
+      }),
+    );
+    final tpcClient = authenticatedClient(
+      baseClient,
+      AccessCredentials(
+        AccessToken(
+          'Bearer',
+          'tpc-token',
+          DateTime.now().toUtc().add(const Duration(hours: 1)),
+        ),
+        null,
+        [],
+        universeDomain: 's3nsapis.fr',
+      ),
+    );
+    addTearDown(tpcClient.close);
+
+    final signature = await signBlob(tpcClient, [
+      1,
+      2,
+      3,
+    ], serviceAccountEmail: 'sa@tpc.iam.gserviceaccount.com');
+    expect(signature.signedBlob, 'c2lnbmF0dXJl');
+  });
+
+  test(
+    'signBlob rejects cross-universe overrides and malformed endpoints',
+    () async {
+      final neverClient = MockClient(
+        (request) async =>
+            fail('Should not issue HTTP request: ${request.url}'),
+      );
+      final tpcClient = authenticatedClient(
+        neverClient,
+        AccessCredentials(
+          AccessToken(
+            'Bearer',
+            'tpc-token',
+            DateTime.now().toUtc().add(const Duration(hours: 1)),
+          ),
+          null,
+          [],
+          universeDomain: 's3nsapis.fr',
+        ),
+      );
+      addTearDown(tpcClient.close);
+
+      await expectLater(
+        signBlob(
+          tpcClient,
+          [1, 2, 3],
+          serviceAccountEmail: 'sa@tpc.iam.gserviceaccount.com',
+          universeDomain: 'googleapis.com',
+        ),
+        throwsA(
+          isArgumentError.having(
+            (e) => e.message,
+            'message',
+            contains('universe'),
+          ),
+        ),
+      );
+
+      await expectLater(
+        signBlob(
+          tpcClient,
+          [1, 2, 3],
+          serviceAccountEmail: 'sa@tpc.iam.gserviceaccount.com',
+          endpoint: 'https://iamcredentials.googleapis.com',
+        ),
+        throwsA(
+          isArgumentError.having(
+            (e) => e.message,
+            'message',
+            contains('Endpoint universe'),
+          ),
+        ),
+      );
+
+      for (final badEndpoint in [
+        '',
+        'http://iamcredentials.s3nsapis.fr',
+        'https://user@iamcredentials.s3nsapis.fr',
+        'https://iamcredentials.s3nsapis.fr/extra',
+        'https://iamcredentials.s3nsapis.fr?q=1',
+        'https://iamcredentials.s3nsapis.fr#frag',
+      ]) {
+        await expectLater(
+          signBlob(
+            tpcClient,
+            [1, 2, 3],
+            serviceAccountEmail: 'sa@tpc.iam.gserviceaccount.com',
+            endpoint: badEndpoint,
+          ),
+          throwsArgumentError,
+          reason: 'Should reject endpoint "$badEndpoint"',
+        );
+      }
+
+      await expectLater(
+        signBlob(
+          neverClient,
+          [1, 2, 3],
+          serviceAccountEmail: 'sa@example.com',
+          universeDomain: 'googleapis.com@evil.com',
+        ),
+        throwsArgumentError,
+      );
+    },
+  );
 }

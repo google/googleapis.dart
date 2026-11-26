@@ -110,4 +110,34 @@ void main() {
       );
     },
   );
+
+  test('StsAuthClient validates tokenUrl and universeDomain', () {
+    final neverClient = mockClient(
+      (request) async => fail('Should not issue HTTP request: ${request.url}'),
+      expectClose: false,
+    );
+    expect(
+      () => StsAuthClient(
+        credentialSource: const {'file': 'unused'},
+        audience: 'aud',
+        subjectTokenType: 'type',
+        tokenUrl: 'http://sts.s3nsapis.fr/v1/token',
+        scopes: const ['s1'],
+        baseClient: neverClient,
+      ),
+      throwsArgumentError,
+    );
+    expect(
+      () => StsAuthClient(
+        credentialSource: const {'file': 'unused'},
+        audience: 'aud',
+        subjectTokenType: 'type',
+        tokenUrl: 'https://sts.s3nsapis.fr/v1/token',
+        scopes: const ['s1'],
+        universeDomain: 'googleapis.com@evil.com',
+        baseClient: neverClient,
+      ),
+      throwsArgumentError,
+    );
+  });
 }

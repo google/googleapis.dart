@@ -22,7 +22,7 @@ class StsAuthClient extends AutoRefreshDelegatingClient {
   final Map<String, dynamic> _credentialSource;
   final String _audience;
   final String _subjectTokenType;
-  final String _tokenUrl;
+  final Uri _tokenUri;
   final List<String> _scopes;
   final String? _quotaProject;
   final String _universeDomain;
@@ -63,12 +63,10 @@ class StsAuthClient extends AutoRefreshDelegatingClient {
   }) : _credentialSource = credentialSource,
        _audience = audience,
        _subjectTokenType = subjectTokenType,
-       _tokenUrl = tokenUrl,
+       _tokenUri = _parseTokenUrl(tokenUrl),
        _scopes = List.unmodifiable(scopes),
        _quotaProject = quotaProject,
-       _universeDomain = universeDomain.isEmpty
-           ? defaultUniverseDomain
-           : universeDomain,
+       _universeDomain = normalizeUniverseDomain(universeDomain),
        _credentials = AccessCredentials(
          AccessToken('Bearer', '', DateTime.now().toUtc()),
          null,
@@ -79,6 +77,18 @@ class StsAuthClient extends AutoRefreshDelegatingClient {
          baseClient ?? http.Client(),
          closeUnderlyingClient: baseClient == null,
        );
+
+  static Uri _parseTokenUrl(String tokenUrl) {
+    final uri = Uri.tryParse(tokenUrl);
+    if (uri == null) {
+      throw ArgumentError.value(
+        tokenUrl,
+        'tokenUrl',
+        'Invalid tokenUrl: must be a valid absolute URI.',
+      );
+    }
+    return validateTokenUri(uri, name: 'tokenUrl');
+  }
 
   @override
   AccessCredentials get credentials => _credentials;
@@ -97,7 +107,7 @@ class StsAuthClient extends AutoRefreshDelegatingClient {
 
     final responseJson = await baseClient.requestJson(
       'POST',
-      Uri.parse(_tokenUrl),
+      _tokenUri,
       'Failed to exchange external account credential for access token.',
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode({
