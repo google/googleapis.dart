@@ -14,8 +14,29 @@ import 'http_client_base.dart';
 import 'service_account_credentials.dart';
 import 'version.dart';
 
+/// Returns the headers that authenticate a request with [credentials] and,
+/// when [quotaProject] is set, bill it to that project. Keys are lowercase.
+Map<String, String> requestHeadersFor(
+  AccessCredentials credentials,
+  String? quotaProject,
+) => Map.unmodifiable({
+  'authorization': 'Bearer ${credentials.accessToken.data}',
+  'x-goog-user-project': ?quotaProject,
+});
+
+/// A client of this package that can return the headers it adds to requests.
+///
+/// Not exported: the public entry point is the `requestHeaders()` extension
+/// method on [AuthClient].
+abstract interface class RequestHeadersSource {
+  /// The headers that authenticate a request, refreshing the credentials
+  /// first if they have expired.
+  Future<Map<String, String>> requestHeaders();
+}
+
 /// Will close the underlying `http.Client` depending on a constructor argument.
-class AuthenticatedClient extends DelegatingClient implements AuthClient {
+class AuthenticatedClient extends DelegatingClient
+    implements AuthClient, RequestHeadersSource {
   @override
   final AccessCredentials credentials;
   final String? quotaProject;
@@ -50,6 +71,10 @@ class AuthenticatedClient extends DelegatingClient implements AuthClient {
     }
     return response;
   }
+
+  @override
+  Future<Map<String, String>> requestHeaders() async =>
+      requestHeadersFor(credentials, quotaProject);
 }
 
 /// Adds 'key' query parameter when making HTTP requests.
@@ -113,31 +138,38 @@ class AutoRefreshingClient extends AutoRefreshDelegatingClient {
 
   @override
   Future<StreamedResponse> send(BaseRequest request) async {
-    if (!credentials.accessToken.hasExpired) {
-      // TODO: Can this return a "access token expired" message?
-      // If so, we should handle it.
-      return authClient.send(request);
-    } else {
-      final cred = await refreshCredentials(
-        clientId,
-        credentials,
-        baseClient,
-        authEndpoints: authEndpoints,
-      );
-      notifyAboutNewCredentials(cred);
-      credentials = cred;
-      authClient = AuthenticatedClient(
-        baseClient,
-        cred,
-        quotaProject: quotaProject,
-      );
-      return authClient.send(request);
-    }
+    // TODO: Can this return a "access token expired" message?
+    // If so, we should handle it.
+    await _refreshIfExpired();
+    return authClient.send(request);
+  }
+
+  @override
+  Future<Map<String, String>> requestHeaders() async {
+    await _refreshIfExpired();
+    return requestHeadersFor(credentials, quotaProject);
+  }
+
+  Future<void> _refreshIfExpired() async {
+    if (!credentials.accessToken.hasExpired) return;
+    final cred = await refreshCredentials(
+      clientId,
+      credentials,
+      baseClient,
+      authEndpoints: authEndpoints,
+    );
+    notifyAboutNewCredentials(cred);
+    credentials = cred;
+    authClient = AuthenticatedClient(
+      baseClient,
+      cred,
+      quotaProject: quotaProject,
+    );
   }
 }
 
 abstract class AutoRefreshDelegatingClient extends DelegatingClient
-    implements AutoRefreshingAuthClient {
+    implements AutoRefreshingAuthClient, RequestHeadersSource {
   final StreamController<AccessCredentials> _credentialStreamController =
       StreamController.broadcast(sync: true);
 

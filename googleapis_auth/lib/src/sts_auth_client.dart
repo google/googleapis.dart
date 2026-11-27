@@ -174,19 +174,28 @@ class StsAuthClient extends AutoRefreshDelegatingClient {
 
   @override
   Future<http.StreamedResponse> send(http.BaseRequest request) async {
-    if (_credentials.accessToken.hasExpired) {
-      final newCredentials = await generateAccessToken();
-      notifyAboutNewCredentials(newCredentials);
-      _credentials = newCredentials;
-      _authClient = null; // Force re-creation of the authenticated client.
-    }
-
+    await _refreshIfExpired();
     _authClient ??= AuthenticatedClient(
       baseClient,
       _credentials,
       quotaProject: _quotaProject,
     );
     return _authClient!.send(request);
+  }
+
+  @override
+  Future<Map<String, String>> requestHeaders() async {
+    await _refreshIfExpired();
+    return requestHeadersFor(_credentials, _quotaProject);
+  }
+
+  Future<void> _refreshIfExpired() async {
+    if (_credentials.accessToken.hasExpired) {
+      final newCredentials = await generateAccessToken();
+      notifyAboutNewCredentials(newCredentials);
+      _credentials = newCredentials;
+      _authClient = null; // Force re-creation of the authenticated client.
+    }
   }
 }
 

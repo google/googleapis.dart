@@ -43,6 +43,7 @@
 library;
 
 export 'src/auth_client.dart';
+export 'src/auth_client_request_headers.dart';
 export 'src/auth_client_signing_extension.dart';
 export 'src/auth_endpoints.dart';
 export 'src/auth_functions.dart';

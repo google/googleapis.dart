@@ -218,14 +218,23 @@ class ImpersonatedAuthClient extends AutoRefreshDelegatingClient {
 
   @override
   Future<http.StreamedResponse> send(http.BaseRequest request) async {
+    await _refreshIfExpired();
+    _authClient ??= authenticatedClient(baseClient, _credentials);
+    return _authClient!.send(request);
+  }
+
+  @override
+  Future<Map<String, String>> requestHeaders() async {
+    await _refreshIfExpired();
+    return requestHeadersFor(_credentials, null);
+  }
+
+  Future<void> _refreshIfExpired() async {
     if (_credentials.accessToken.hasExpired) {
       final newCredentials = await generateAccessToken();
       notifyAboutNewCredentials(newCredentials);
       _credentials = newCredentials;
       _authClient = authenticatedClient(baseClient, _credentials);
     }
-
-    _authClient ??= authenticatedClient(baseClient, _credentials);
-    return _authClient!.send(request);
   }
 }

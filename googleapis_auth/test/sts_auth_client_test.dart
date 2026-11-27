@@ -6,7 +6,7 @@
 
 import 'dart:convert';
 
-import 'package:googleapis_auth/src/exceptions.dart';
+import 'package:googleapis_auth/googleapis_auth.dart';
 import 'package:googleapis_auth/src/sts_auth_client.dart';
 import 'package:http/http.dart';
 import 'package:test/test.dart';
@@ -110,4 +110,68 @@ void main() {
       );
     },
   );
+
+  group('requestHeaders', () {
+    StsAuthClient stsClient(void Function() onTokenRequest) => StsAuthClient(
+      credentialSource: {'url': 'http://localhost/token'},
+      audience: 'my-audience',
+      subjectTokenType: 'my-token-type',
+      tokenUrl: 'https://sts.googleapis.com/v1/token',
+      scopes: ['s1'],
+      quotaProject: 'my-project',
+      baseClient: mockClient(expectClose: false, (Request request) async {
+        if (request.url.toString() == 'http://localhost/token') {
+          return Response('subject-token', 200);
+        }
+        onTokenRequest();
+        return Response(
+          jsonEncode({'access_token': 'new-token', 'expires_in': 3600}),
+          200,
+          headers: jsonContentType,
+        );
+      }),
+    );
+
+    test('valid token: no network call', () async {
+      final client = stsClient(() => fail('Unexpected token exchange'))
+        ..initialCredentials = AccessCredentials(
+          AccessToken('Bearer', 'token', _inOneHour()),
+          null,
+          ['s1'],
+        );
+      expect(await client.requestHeaders(), {
+        'authorization': 'Bearer token',
+        'x-goog-user-project': 'my-project',
+      });
+    });
+
+    test('expired token: exchanges once and notifies', () async {
+      var exchanges = 0;
+      final client = stsClient(() => exchanges++)
+        ..initialCredentials = AccessCredentials(
+          AccessToken(
+            'Bearer',
+            'old-token',
+            DateTime.now().toUtc().subtract(const Duration(hours: 1)),
+          ),
+          null,
+          ['s1'],
+        );
+      final updates = <AccessCredentials>[];
+      client.credentialUpdates.listen(updates.add);
+
+      final headers1 = await client.requestHeaders();
+      final headers2 = await client.requestHeaders();
+      const expected = {
+        'authorization': 'Bearer new-token',
+        'x-goog-user-project': 'my-project',
+      };
+      expect(headers1, expected);
+      expect(headers2, expected);
+      expect(exchanges, 1);
+      expect(updates.single.accessToken.data, 'new-token');
+    });
+  });
 }
+
+DateTime _inOneHour() => DateTime.now().toUtc().add(const Duration(hours: 1));

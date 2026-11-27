@@ -1,3 +1,10 @@
+## 2.4.0
+
+- Added the `requestHeaders()` extension method on `AuthClient`. It returns
+  the `authorization` and `x-goog-user-project` headers the client adds to
+  requests, refreshing expired credentials first, for transports that do not
+  use `package:http` such as gRPC.
+
 ## 2.3.7
 
 - Fix Markdown warning alert formatting in README.

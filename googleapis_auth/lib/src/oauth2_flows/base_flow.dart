@@ -53,13 +53,23 @@ class _FlowClient extends AutoRefreshDelegatingClient {
 
   @override
   Future<StreamedResponse> send(BaseRequest request) async {
+    await _refreshIfExpired();
+    return _authClient.send(request);
+  }
+
+  @override
+  Future<Map<String, String>> requestHeaders() async {
+    await _refreshIfExpired();
+    return requestHeadersFor(_credentials, _quotaProject);
+  }
+
+  Future<void> _refreshIfExpired() async {
     if (_credentials.accessToken.hasExpired) {
       final newCredentials = await _flow.run();
       notifyAboutNewCredentials(newCredentials);
       _credentials = newCredentials;
       _authClient = _recreateClient(newCredentials);
     }
-    return _authClient.send(request);
   }
 
   Client _recreateClient(AccessCredentials credentials) =>
