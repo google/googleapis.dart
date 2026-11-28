@@ -119,6 +119,27 @@ bool _isLoopbackHost(String host) {
   return (uri: uri, error: null);
 }
 
+/// Validates an OAuth 2.0 or STS token endpoint [uri].
+///
+/// Requires `https` (or `http` for loopback hosts), non-empty host, no
+/// userinfo, and no fragment.
+Uri validateTokenUri(Uri uri, {String name = 'tokenUri'}) {
+  final (uri: validated, :error) = tryValidateHttpsUri(uri, name);
+  if (error != null) {
+    throw ArgumentError.value(uri, name, error);
+  }
+  return validated!;
+}
+
+/// Parses and validates a string OAuth 2.0 or STS token endpoint URI.
+Uri parseTokenUri(String value, {String name = 'tokenUri'}) {
+  final (:uri, :error) = tryValidateHttpsUri(value, name);
+  if (error != null) {
+    throw ArgumentError.value(value, name, error);
+  }
+  return uri!;
+}
+
 String? _stripEndpointModifiers(String candidate) {
   var result = candidate;
   final hadLeadingMtls = result.startsWith('mtls.');
