@@ -27,11 +27,78 @@ void main() {
     expect(decoded.refreshToken, 'refreshToken');
     expect(decoded.idToken, 'idToken');
     expect(decoded.scopes, ['scope1']);
+    expect(decoded.universeDomain, 'googleapis.com');
     expect(decoded.accessToken.expiry, credentials.accessToken.expiry);
     expect(decoded.accessToken.data, credentials.accessToken.data);
     expect(decoded.accessToken.type, credentials.accessToken.type);
 
+    final decodedMap = jsonDecode(encoded) as Map<String, dynamic>;
+    expect(decodedMap, isNot(contains('universeDomain')));
     expect(jsonEncode(decoded), encoded);
+  });
+
+  test('AccessCredentials round-trip with custom universeDomain', () {
+    final credentials = AccessCredentials(
+      AccessToken('type', 'data', DateTime.utc(2026)),
+      'refreshToken',
+      ['scope1'],
+      idToken: 'idToken',
+      universeDomain: 's3nsapis.fr',
+    );
+    final encoded = jsonEncode(credentials);
+    final decodedMap = jsonDecode(encoded) as Map<String, dynamic>;
+    expect(decodedMap['universeDomain'], 's3nsapis.fr');
+
+    final decoded = AccessCredentials.fromJson(decodedMap);
+    expect(decoded.universeDomain, 's3nsapis.fr');
+    expect(jsonEncode(decoded), encoded);
+  });
+
+  test('AccessCredentials normalizes and validates universeDomain', () {
+    final upperDefault = AccessCredentials(
+      AccessToken('type', 'data', DateTime.utc(2026)),
+      null,
+      ['scope1'],
+      universeDomain: 'GOOGLEAPIS.COM',
+    );
+    expect(upperDefault.universeDomain, 'googleapis.com');
+    final decodedBase =
+        jsonDecode(jsonEncode(upperDefault)) as Map<String, dynamic>;
+    expect(decodedBase, isNot(contains('universeDomain')));
+
+    expect(
+      AccessCredentials.fromJson({
+        ...decodedBase,
+        'universeDomain': 'S3NSAPIS.FR',
+      }).universeDomain,
+      's3nsapis.fr',
+    );
+
+    for (final invalid in ['   ', 'googleapis.com@evil.com']) {
+      expect(
+        () => AccessCredentials(
+          AccessToken('type', 'data', DateTime.utc(2026)),
+          null,
+          ['scope1'],
+          universeDomain: invalid,
+        ),
+        throwsA(
+          isArgumentError.having(
+            (e) => e.message,
+            'message',
+            contains('Invalid universe domain'),
+          ),
+        ),
+        reason: 'Should reject "$invalid"',
+      );
+    }
+
+    expect(
+      () => AccessCredentials.fromJson({...decodedBase, 'universeDomain': 123}),
+      throwsA(
+        isArgumentError.having((e) => e.message, 'message', contains('String')),
+      ),
+    );
   });
 
   test('ClientId round-trip', () {

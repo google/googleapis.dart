@@ -26,6 +26,7 @@
 /// {@canonicalFor exceptions.UserConsentException}
 /// {@canonicalFor response_type.ResponseType}
 /// {@canonicalFor service_account_credentials.ServiceAccountCredentials}
+/// {@canonicalFor utils.defaultUniverseDomain}
 ///
 /// {@template googleapis_auth_returned_auto_refresh_client}
 /// Returns an [AutoRefreshingAuthClient] that will automatically refresh the
@@ -52,3 +53,4 @@ export 'src/exceptions.dart';
 export 'src/iam_signer.dart';
 export 'src/response_type.dart';
 export 'src/service_account_credentials.dart';
+export 'src/utils.dart' show defaultUniverseDomain;

@@ -753,6 +753,62 @@ void main() {
           throwsA(isA<Exception>()),
         );
       });
+
+      test('guards non-default universe against GoogleAuthEndpoints', () async {
+        final tpcCreds = AccessCredentials(
+          AccessToken(
+            'Bearer',
+            'expired',
+            DateTime.fromMillisecondsSinceEpoch(0, isUtc: true),
+          ),
+          'tpc-refresh',
+          ['s1'],
+          universeDomain: 's3nsapis.fr',
+        );
+
+        await expectLater(
+          refreshCredentials(clientId, tpcCreds, neverClient),
+          throwsA(
+            isArgumentError.having(
+              (e) => e.message,
+              'message',
+              contains('GoogleAuthEndpoints'),
+            ),
+          ),
+        );
+        expect(
+          () => autoRefreshingClient(clientId, tpcCreds, neverClient),
+          throwsArgumentError,
+        );
+        await expectLater(
+          clientViaRefreshToken(
+            clientId,
+            'tpc-refresh',
+            ['s1'],
+            baseClient: neverClient,
+            universeDomain: 's3nsapis.fr',
+          ),
+          throwsArgumentError,
+        );
+
+        final customEndpoints = _CustomAuthEndpoints(
+          Uri.https('oauth2.s3nsapis.fr', '/token'),
+        );
+        final refreshedClient = await clientViaRefreshToken(
+          clientId,
+          'tpc-refresh',
+          ['s1'],
+          baseClient: routeMockClient({
+            '${customEndpoints.tokenEndpoint}': (_) =>
+                oauthTokenResponse(token: 'new-tpc-token'),
+          }, count: 1),
+          authEndpoints: customEndpoints,
+          universeDomain: 'S3NSAPIS.FR',
+        );
+        addTearDown(refreshedClient.close);
+        expect(refreshedClient.credentials.universeDomain, 's3nsapis.fr');
+        expect(refreshedClient.credentials.accessToken.data, 'new-tpc-token');
+      });
     });
 
     group('Service Account Access', () {
@@ -856,13 +912,24 @@ void main() {
                 return Response('s1\ns2', 200);
               }
               return Response('Not found', 404);
-            }, count: 2),
+            }, count: 3),
             expectClose: false,
           ),
         );
 
+        expect(client.credentials.universeDomain, defaultUniverseDomain);
         client.close();
       }, testOn: 'vm');
     });
   });
+}
+
+class _CustomAuthEndpoints extends AuthEndpoints {
+  _CustomAuthEndpoints(this.tokenEndpoint);
+
+  @override
+  Uri get authorizationEndpoint => Uri.https('accounts.s3nsapis.fr', '/auth');
+
+  @override
+  final Uri tokenEndpoint;
 }

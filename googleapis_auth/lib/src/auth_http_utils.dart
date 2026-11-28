@@ -12,6 +12,7 @@ import 'auth_endpoints.dart';
 import 'auth_functions.dart';
 import 'http_client_base.dart';
 import 'service_account_credentials.dart';
+import 'utils.dart';
 import 'version.dart';
 
 /// Will close the underlying `http.Client` depending on a constructor argument.
@@ -104,6 +105,7 @@ class AutoRefreshingClient extends AutoRefreshDelegatingClient {
     this.quotaProject,
   }) : assert(credentials.accessToken.type == 'Bearer'),
        assert(credentials.refreshToken != null) {
+    validateAuthEndpointsForUniverse(authEndpoints, credentials.universeDomain);
     authClient = AuthenticatedClient(
       baseClient,
       credentials,

@@ -10,6 +10,7 @@ import 'dart:io';
 
 import 'package:googleapis_auth/googleapis_auth.dart';
 import 'package:googleapis_auth/src/known_uris.dart';
+import 'package:googleapis_auth/src/oauth2_flows/auth_code.dart';
 import 'package:googleapis_auth/src/oauth2_flows/authorization_code_grant_manual_flow.dart';
 import 'package:googleapis_auth/src/oauth2_flows/authorization_code_grant_server_flow.dart';
 import 'package:http/http.dart';
@@ -419,5 +420,40 @@ void main() {
         await expectLater(flow.run(), throwsA(isUserConsentException));
       });
     }, testOn: '!browser');
+
+    group('obtainAccessCredentialsViaCodeExchange universeDomain', () {
+      test('rejects default GoogleAuthEndpoints for non-default universe', () {
+        expect(
+          obtainAccessCredentialsViaCodeExchange(
+            neverClient,
+            clientId,
+            'mycode',
+            universeDomain: 's3nsapis.fr',
+          ),
+          throwsArgumentError,
+        );
+      });
+
+      test('normalizes universeDomain with custom AuthEndpoints', () async {
+        final customEndpoints = CustomAuthEndpoints();
+        final credentials = await obtainAccessCredentialsViaCodeExchange(
+          routeMockClient({
+            '${customEndpoints.tokenEndpoint}': (_) => jsonResponse({
+              'token_type': 'Bearer',
+              'access_token': 'tokendata',
+              'expires_in': 3600,
+              'refresh_token': 'my-refresh-token',
+              'scope': 's1 s2',
+            }),
+          }, count: 1),
+          clientId,
+          'mycode',
+          authEndpoints: customEndpoints,
+          universeDomain: 'S3NSAPIS.FR',
+        );
+        expect(credentials.universeDomain, 's3nsapis.fr');
+        expect(credentials.accessToken.data, 'tokendata');
+      });
+    });
   });
 }
