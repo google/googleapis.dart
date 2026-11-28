@@ -91,6 +91,17 @@ AuthClient testAuthClient(
   _testCredentials(token: token, universeDomain: universeDomain),
 );
 
+({Map<String, dynamic> header, Map<String, dynamic> claims}) decodeJwt(
+  String jwt,
+) {
+  final parts = jwt.split('.');
+  expect(parts, hasLength(3));
+  Map<String, dynamic> decodePart(String part) =>
+      jsonDecode(utf8.decode(base64Url.decode(base64Url.normalize(part))))
+          as Map<String, dynamic>;
+  return (header: decodePart(parts[0]), claims: decodePart(parts[1]));
+}
+
 Client routeMockClient(
   Map<String, FutureOr<Response> Function(Request)> routes, {
   int? count,
@@ -137,6 +148,26 @@ QpYYDJZwkgZrVQoKMIdCs9xfyVhZERq945NYLekwE1t2W+tOVBgR
 -----END RSA PRIVATE KEY-----''';
 
 final testPrivateKey = keyFromString(testPrivateKeyString);
+
+Map<String, Object?> serviceAccountJson({
+  String email = 'test@test.iam.gserviceaccount.com',
+  String clientId = 'myid',
+  String? privateKeyId = '301029',
+  String? projectId,
+  String? quotaProjectId,
+  String? universeDomain,
+  String? tokenUri,
+}) => {
+  'type': 'service_account',
+  'client_email': email,
+  'client_id': clientId,
+  'private_key': testPrivateKeyString,
+  'private_key_id': ?privateKeyId,
+  'project_id': ?projectId,
+  'quota_project_id': ?quotaProjectId,
+  'universe_domain': ?universeDomain,
+  'token_uri': ?tokenUri,
+};
 
 void expectExpiryOneHourFromNow(AccessToken accessToken) {
   final now = DateTime.now().toUtc();

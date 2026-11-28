@@ -13,6 +13,11 @@
   `ImpersonatedAuthClient` (exposing `ImpersonatedAuthClient.universeDomain` and
   optional `endpoint`/`quotaProject` parameters), enforcing HTTPS IAM endpoints
   and symmetric cross-universe isolation.
+- Added `privateKeyId` and `tokenUri` properties to `ServiceAccountCredentials`.
+- `JwtFlow` now issues self-signed JWTs directly (with `kid` when available) for
+  non-default `universe_domain` service accounts, rejects domain-wide delegation
+  and empty scopes outside `googleapis.com`, and honors custom `token_uri`
+  endpoints in the default universe.
 
 ## 2.3.7
 

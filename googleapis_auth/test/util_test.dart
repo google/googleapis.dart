@@ -146,6 +146,36 @@ void main() {
       }
     });
 
+    test(
+      'validateTokenUri and parseTokenUri enforce HTTPS or loopback HTTP',
+      () {
+        for (final valid in [
+          'https://oauth2.googleapis.com/token',
+          'http://localhost:8080/token',
+          'http://127.0.0.1:8080/token',
+          'http://[::1]:8080/token',
+        ]) {
+          expect(parseTokenUri(valid).toString(), valid);
+          expect(validateTokenUri(Uri.parse(valid)).toString(), valid);
+        }
+
+        for (final invalid in [
+          '',
+          'not-a-uri',
+          '/relative/token',
+          'http://oauth2.evil.com/token',
+          'https://user@oauth2.googleapis.com/token',
+          'https://oauth2.googleapis.com/token#frag',
+        ]) {
+          expect(
+            () => parseTokenUri(invalid),
+            throwsArgumentError,
+            reason: invalid,
+          );
+        }
+      },
+    );
+
     test('universeDomainFromIamHost parses global, regional, mTLS, REP, and '
         'PSC hosts', () {
       const templates = [

@@ -28,6 +28,9 @@ Future<AccessCredentials> obtainAccessCredentialsViaServiceAccount(
   clientCredentials.impersonatedUser,
   scopes,
   client,
+  universeDomain: clientCredentials.universeDomain,
+  tokenUri: clientCredentials.tokenUri,
+  privateKeyId: clientCredentials.privateKeyId,
 ).run();
 
 /// Obtains oauth2 credentials and returns an authenticated HTTP client.
@@ -59,6 +62,9 @@ Future<AutoRefreshingAuthClient> clientViaServiceAccount(
     clientCredentials.impersonatedUser,
     scopes,
     c,
+    universeDomain: clientCredentials.universeDomain,
+    tokenUri: clientCredentials.tokenUri,
+    privateKeyId: clientCredentials.privateKeyId,
   ),
   baseClient: baseClient,
   quotaProject: quotaProject ?? clientCredentials.quotaProject,

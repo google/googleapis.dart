@@ -9,6 +9,8 @@ import 'dart:convert';
 
 import 'package:googleapis_auth/src/known_uris.dart';
 import 'package:googleapis_auth/src/oauth2_flows/jwt.dart';
+import 'package:googleapis_auth/src/utils.dart'
+    show maxExpectedTimeDiffInSeconds;
 import 'package:http/http.dart';
 import 'package:test/test.dart';
 
@@ -102,5 +104,172 @@ void main() {
     );
 
     await expectLater(flow.run(), throwsA(isTransportException));
+  });
+
+  test('uses custom tokenUri for default universe domain', () async {
+    final customTokenUri = Uri.parse('https://oauth2.custom.example/token');
+    final flow = JwtFlow(
+      clientEmail,
+      testPrivateKey,
+      null,
+      scopes,
+      routeMockClient({
+        '$customTokenUri': (request) {
+          expect(request.method, 'POST');
+          final (:header, :claims) = decodeJwt(
+            request.bodyFields['assertion']!,
+          );
+          expect(header, {'alg': 'RS256', 'typ': 'JWT', 'kid': 'key-123'});
+          expect(claims['iss'], clientEmail);
+          expect(claims['aud'], '$googleOauth2TokenEndpoint');
+          expect(claims['scope'], 's1 s2');
+          return oauthTokenResponse(token: 'custom-atok');
+        },
+      }, count: 1),
+      tokenUri: customTokenUri,
+      privateKeyId: 'key-123',
+    );
+
+    final credentials = await flow.run();
+    expect(credentials.accessToken.data, 'custom-atok');
+    expect(credentials.universeDomain, 'googleapis.com');
+  });
+
+  test(
+    'non-default universe uses self-signed JWT with zero HTTP requests',
+    () async {
+      final flow = JwtFlow(
+        clientEmail,
+        testPrivateKey,
+        null,
+        scopes,
+        neverClient,
+        universeDomain: 's3nsapis.fr',
+        tokenUri: googleOauth2TokenEndpoint,
+        privateKeyId: 'tpc-key-id',
+      );
+
+      final credentials = await flow.run();
+      expect(credentials.accessToken.type, 'Bearer');
+      expect(credentials.universeDomain, 's3nsapis.fr');
+      expect(credentials.scopes, scopes);
+
+      final (:header, :claims) = decodeJwt(credentials.accessToken.data);
+      expect(header, {'alg': 'RS256', 'typ': 'JWT', 'kid': 'tpc-key-id'});
+      expect(claims['iss'], clientEmail);
+      expect(claims['sub'], clientEmail);
+      expect(claims['scope'], 's1 s2');
+      expect(claims, isNot(contains('aud')));
+
+      final iat = claims['iat'] as int;
+      final exp = claims['exp'] as int;
+      expect(exp - iat, 3600);
+      expect(
+        credentials.accessToken.expiry,
+        DateTime.fromMillisecondsSinceEpoch(
+          (exp - maxExpectedTimeDiffInSeconds) * 1000,
+          isUtc: true,
+        ),
+      );
+    },
+  );
+
+  test(
+    'non-default universe rejects domain-wide delegation before network calls',
+    () async {
+      final flow = JwtFlow(
+        clientEmail,
+        testPrivateKey,
+        'user@example.com',
+        scopes,
+        neverClient,
+        universeDomain: 's3nsapis.fr',
+      );
+
+      await expectLater(
+        flow.run(),
+        throwsA(
+          isUnsupportedError.having(
+            (e) => e.message,
+            'message',
+            contains('Domain-wide delegation'),
+          ),
+        ),
+      );
+    },
+  );
+
+  test(
+    'non-default universe rejects empty scopes before network calls',
+    () async {
+      final flow = JwtFlow(
+        clientEmail,
+        testPrivateKey,
+        null,
+        const [],
+        neverClient,
+        universeDomain: 's3nsapis.fr',
+      );
+
+      await expectLater(
+        flow.run(),
+        throwsA(
+          isArgumentError.having(
+            (e) => e.message,
+            'message',
+            contains('Scopes cannot be empty'),
+          ),
+        ),
+      );
+    },
+  );
+
+  test('normalizes universeDomain casing and encodes non-ASCII kid', () async {
+    final defaultCreds = await JwtFlow(
+      clientEmail,
+      testPrivateKey,
+      null,
+      scopes,
+      mockClient(expectAsync1(successfulSignRequest), expectClose: false),
+      universeDomain: 'GOOGLEAPIS.COM',
+    ).run();
+    expect(defaultCreds.universeDomain, 'googleapis.com');
+
+    final tpcCreds = await JwtFlow(
+      clientEmail,
+      testPrivateKey,
+      null,
+      scopes,
+      neverClient,
+      universeDomain: 'S3NSAPIS.FR',
+      privateKeyId: 'key-é-1',
+    ).run();
+    expect(tpcCreds.universeDomain, 's3nsapis.fr');
+    expect(decodeJwt(tpcCreds.accessToken.data).header['kid'], 'key-é-1');
+  });
+
+  test('validates universeDomain and tokenUri in constructor', () {
+    expect(
+      () => JwtFlow(
+        clientEmail,
+        testPrivateKey,
+        null,
+        scopes,
+        neverClient,
+        universeDomain: 'googleapis.com@evil.com',
+      ),
+      throwsArgumentError,
+    );
+    expect(
+      () => JwtFlow(
+        clientEmail,
+        testPrivateKey,
+        null,
+        scopes,
+        neverClient,
+        tokenUri: Uri.parse('http://oauth2.evil.com/token'),
+      ),
+      throwsArgumentError,
+    );
   });
 }
