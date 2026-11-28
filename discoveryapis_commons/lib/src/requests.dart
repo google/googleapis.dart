@@ -4,6 +4,7 @@
 // license that can be found in the LICENSE file or at
 // https://developers.google.com/open-source/licenses/bsd
 
+import 'dart:convert';
 import 'dart:core';
 
 /// Represents a media consisting of a stream of bytes, a content type and a
@@ -183,8 +184,15 @@ class DetailedApiRequestError extends ApiRequestError {
   }) : super(message);
 
   @override
-  String toString() =>
-      'DetailedApiRequestError(status: $status, message: $message)';
+  String toString() {
+    final response = jsonResponse;
+    if (response == null) {
+      return 'DetailedApiRequestError(status: $status, message: $message)';
+    }
+    final pretty = const JsonEncoder.withIndent('  ').convert(response);
+    return 'DetailedApiRequestError(status: $status, message: $message, '
+        'jsonResponse: $pretty)';
+  }
 }
 
 /// Instances of this class can be added to a [DetailedApiRequestError] to

@@ -1,3 +1,8 @@
+## 1.0.9-wip
+
+- `DetailedApiRequestError.toString()` now includes `jsonResponse` (pretty
+  printed) when it is available.
+
 ## 1.0.8
 
 - Fix detection of web usage.
