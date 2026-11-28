@@ -83,6 +83,35 @@ const isDetailedApiRequestError = TypeMatcher<DetailedApiRequestError>();
 const isTestError = TypeMatcher<TestError>();
 
 void main() {
+  group('DetailedApiRequestError.toString', () {
+    test('without jsonResponse', () {
+      expect(
+        DetailedApiRequestError(404, 'Not found').toString(),
+        'DetailedApiRequestError(status: 404, message: Not found)',
+      );
+    });
+
+    test('includes jsonResponse when present', () {
+      final error = DetailedApiRequestError(
+        400,
+        'Bad request',
+        jsonResponse: {
+          'error': {'code': 400, 'status': 'INVALID_ARGUMENT'},
+        },
+      );
+      expect(
+        error.toString(),
+        'DetailedApiRequestError(status: 400, message: Bad request, '
+        'jsonResponse: {\n'
+        '  "error": {\n'
+        '    "code": 400,\n'
+        '    "status": "INVALID_ARGUMENT"\n'
+        '  }\n'
+        '})',
+      );
+    });
+  });
+
   group('isJson', () {
     for (var entry in {
       'application/json': true,
