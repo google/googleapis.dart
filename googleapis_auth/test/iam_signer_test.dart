@@ -84,4 +84,101 @@ void main() {
       throwsA(isA<ClientException>()),
     );
   });
+
+  test('signBlob allows custom endpoint on raw http.Client and normalizes '
+      'trailing slash', () async {
+    final client = MockClient(
+      expectAsync1((request) async {
+        expect(
+          request.url.toString(),
+          'https://iamcredentials.s3nsapis.fr/v1/projects/-/serviceAccounts/test-email%40example.com:signBlob',
+        );
+        return signBlobResponse(utf8.encode('signature'));
+      }),
+    );
+
+    final signature = await signBlob(
+      client,
+      [1, 2, 3],
+      serviceAccountEmail: 'test-email@example.com',
+      endpoint: 'https://iamcredentials.s3nsapis.fr/',
+    );
+    expect(signature.signedBlob, base64Encode(utf8.encode('signature')));
+  });
+
+  test('signBlob infers universeDomain from AuthClient credentials', () async {
+    final baseClient = MockClient(
+      expectAsync1((request) async {
+        expect(
+          request.url.toString(),
+          'https://iamcredentials.s3nsapis.fr/v1/projects/-/serviceAccounts/sa%40tpc.iam.gserviceaccount.com:signBlob',
+        );
+        expect(request.headers['Authorization'], 'Bearer tpc-token');
+        return signBlobResponse(utf8.encode('signature'), keyId: 'tpc-key');
+      }),
+    );
+    final tpcClient = testAuthClient(
+      baseClient,
+      token: 'tpc-token',
+      universeDomain: 's3nsapis.fr',
+    );
+    addTearDown(tpcClient.close);
+
+    final signature = await signBlob(tpcClient, [
+      1,
+      2,
+      3,
+    ], serviceAccountEmail: 'sa@tpc.iam.gserviceaccount.com');
+    expect(signature.signedBlob, base64Encode(utf8.encode('signature')));
+  });
+
+  test('signBlob rejects symmetric cross-universe overrides and invalid '
+      'endpoints before network calls', () async {
+    final tpcClient = testAuthClient(
+      neverClient,
+      token: 'tpc-token',
+      universeDomain: 's3nsapis.fr',
+    );
+    final gduClient = testAuthClient(neverClient, token: 'gdu-token');
+    addTearDown(() {
+      tpcClient.close();
+      gduClient.close();
+    });
+
+    for (final (label, client, universe, endpoint) in [
+      ('TPC client -> GDU universe', tpcClient, 'googleapis.com', null),
+      (
+        'TPC client -> GDU endpoint',
+        tpcClient,
+        null,
+        'https://iamcredentials.googleapis.com',
+      ),
+      ('GDU client -> TPC universe', gduClient, 's3nsapis.fr', null),
+      (
+        'GDU client -> TPC endpoint',
+        gduClient,
+        null,
+        'https://iamcredentials.s3nsapis.fr',
+      ),
+      (
+        'malformed endpoint',
+        tpcClient,
+        null,
+        'http://iamcredentials.s3nsapis.fr',
+      ),
+      ('malformed universe', neverClient, 'googleapis.com@evil.com', null),
+    ]) {
+      await expectLater(
+        signBlob(
+          client,
+          [1, 2, 3],
+          serviceAccountEmail: 'sa@example.com',
+          universeDomain: universe,
+          endpoint: endpoint,
+        ),
+        throwsArgumentError,
+        reason: label,
+      );
+    }
+  });
 }

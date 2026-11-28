@@ -33,6 +33,14 @@ final _universeDomainRegExp = RegExp(
   '^$_dnsLabelPattern(?:\\.$_dnsLabelPattern)+\$',
 );
 
+RegExp _serviceHostRegExp(String service) => RegExp(
+  '^(?:$service\\.|$service-$_dnsLabelPattern\\.p\\.|'
+  '$_dnsLabelPattern-$service\\.)(.+)\$',
+);
+
+final _iamHostRegExp = _serviceHostRegExp('iamcredentials');
+final _repPrefixRegExp = RegExp('^$_dnsLabelPattern\\.rep\\.(.+)\$');
+
 /// Returns the normalized (lowercased) DNS hostname for [universeDomain], or
 /// `null` if [universeDomain] is not a valid DNS domain name.
 String? tryNormalizeUniverseDomain(String universeDomain) {
@@ -64,6 +72,115 @@ String normalizeUniverseDomain(
     );
   }
   return normalized;
+}
+
+bool _isLoopbackHost(String host) {
+  final lower = host.toLowerCase();
+  return lower == 'localhost' || lower == '127.0.0.1' || lower == '::1';
+}
+
+/// Validates an HTTPS (or loopback HTTP) URI from a [Uri] or [String].
+///
+/// Returns `(uri: parsed, error: null)` on success, or
+/// `(uri: null, error: msg)` describing why validation failed.
+({Uri? uri, String? error}) tryValidateHttpsUri(
+  Object? input,
+  String name, {
+  bool allowQuery = true,
+  bool requireBaseOrigin = false,
+}) {
+  final uri = input is Uri
+      ? input
+      : (input is String ? Uri.tryParse(input) : null);
+  if (uri == null || !uri.hasScheme || uri.host.isEmpty) {
+    return (uri: null, error: 'Invalid $name: must be a valid absolute URI.');
+  }
+  if (uri.userInfo.isNotEmpty ||
+      uri.hasFragment ||
+      (!allowQuery && uri.hasQuery)) {
+    final disallowed = allowQuery
+        ? 'userinfo or a fragment'
+        : 'userinfo, query, or fragment';
+    return (uri: null, error: 'Invalid $name: must not contain $disallowed.');
+  }
+  if (requireBaseOrigin && uri.path.isNotEmpty && uri.path != '/') {
+    return (
+      uri: null,
+      error: 'Invalid $name: must be a base origin URL without a path.',
+    );
+  }
+  if (uri.scheme != 'https' &&
+      !(uri.scheme == 'http' && _isLoopbackHost(uri.host))) {
+    return (
+      uri: null,
+      error: 'Invalid $name: must use https (or http for localhost).',
+    );
+  }
+  return (uri: uri, error: null);
+}
+
+String? _stripEndpointModifiers(String candidate) {
+  var result = candidate;
+  final hadLeadingMtls = result.startsWith('mtls.');
+  if (hadLeadingMtls) {
+    result = result.substring('mtls.'.length);
+  }
+  if (_repPrefixRegExp.firstMatch(result) case final repMatch?) {
+    result = repMatch.group(1)!;
+    if (!hadLeadingMtls && result.startsWith('mtls.')) {
+      result = result.substring('mtls.'.length);
+    }
+  }
+  return tryNormalizeUniverseDomain(result);
+}
+
+String? _universeDomainFromServiceHost(String host, RegExp pattern) {
+  final candidate = pattern.firstMatch(host.toLowerCase())?.group(1);
+  return candidate == null ? null : _stripEndpointModifiers(candidate);
+}
+
+/// Extracts and validates the universe domain from an IAM Credentials API host
+/// (`iamcredentials.<universe>`, `<region>-iamcredentials.<universe>`,
+/// `iamcredentials.mtls.<universe>`, `iamcredentials.<region>.rep.<universe>`,
+/// or Private Service Connect `iamcredentials-<psc>.p.<universe>`).
+///
+/// Returns `null` if [host] is not a recognized IAM Credentials API host.
+String? universeDomainFromIamHost(String host) =>
+    _universeDomainFromServiceHost(host, _iamHostRegExp);
+
+/// Validates and normalizes an IAM Credentials API base [endpoint] URL for
+/// [expectedUniverse].
+///
+/// Requires `https` (or `http` for loopback hosts), non-empty host, no
+/// userinfo, query, or fragment, and an empty or `/` path. When
+/// [expectedUniverse] is non-null, rejects recognized IAM hosts belonging to a
+/// different universe.
+String validateIamEndpoint(
+  String endpoint,
+  String? expectedUniverse, {
+  String name = 'endpoint',
+}) {
+  final (:uri, :error) = tryValidateHttpsUri(
+    endpoint,
+    name,
+    allowQuery: false,
+    requireBaseOrigin: true,
+  );
+  if (error != null) {
+    throw ArgumentError.value(endpoint, name, error);
+  }
+  final endpointUniverse = universeDomainFromIamHost(uri!.host);
+  if (expectedUniverse != null &&
+      endpointUniverse != null &&
+      endpointUniverse != expectedUniverse) {
+    throw ArgumentError.value(
+      endpoint,
+      name,
+      'Endpoint universe "$endpointUniverse" does not match credential '
+      'universe "$expectedUniverse".',
+    );
+  }
+  return uri.origin;
 }
 
 /// Validates that [authEndpoints] is compatible with [universeDomain].
