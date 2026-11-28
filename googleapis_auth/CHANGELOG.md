@@ -9,6 +9,10 @@
   `obtainAccessCredentialsViaCodeExchange()`, and rejected using default
   `GoogleAuthEndpoints` (`oauth2.googleapis.com`) with non-default universe
   credentials.
+- Propagated `universeDomain` through `signBlob()`, `AuthClient.sign()`, and
+  `ImpersonatedAuthClient` (exposing `ImpersonatedAuthClient.universeDomain` and
+  optional `endpoint`/`quotaProject` parameters), enforcing HTTPS IAM endpoints
+  and symmetric cross-universe isolation.
 
 ## 2.3.7
 

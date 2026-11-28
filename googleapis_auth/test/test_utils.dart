@@ -57,6 +57,40 @@ Response oauthTokenResponse({String token = 'atoken', int expiresIn = 3600}) =>
       'expires_in': expiresIn,
     });
 
+Response iamTokenResponse({
+  String token = 'impersonated-token',
+  Duration expiresIn = const Duration(hours: 1),
+}) => jsonResponse({
+  'accessToken': token,
+  'expireTime': DateTime.now().toUtc().add(expiresIn).toIso8601String(),
+});
+
+Response signBlobResponse(List<int> bytes, {String keyId = 'key-id'}) =>
+    jsonResponse({'signedBlob': base64Encode(bytes), 'keyId': keyId});
+
+AccessCredentials _testCredentials({
+  String token = 'source-token',
+  String universeDomain = defaultUniverseDomain,
+}) => AccessCredentials(
+  AccessToken(
+    'Bearer',
+    token,
+    DateTime.now().toUtc().add(const Duration(hours: 1)),
+  ),
+  null,
+  const [],
+  universeDomain: universeDomain,
+);
+
+AuthClient testAuthClient(
+  Client baseClient, {
+  String token = 'source-token',
+  String universeDomain = defaultUniverseDomain,
+}) => authenticatedClient(
+  baseClient,
+  _testCredentials(token: token, universeDomain: universeDomain),
+);
+
 Client routeMockClient(
   Map<String, FutureOr<Response> Function(Request)> routes, {
   int? count,

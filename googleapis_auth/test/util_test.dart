@@ -145,5 +145,79 @@ void main() {
         expect(tryNormalizeUniverseDomain(invalid), isNull);
       }
     });
+
+    test('universeDomainFromIamHost parses global, regional, mTLS, REP, and '
+        'PSC hosts', () {
+      const templates = [
+        ('{s}.googleapis.com', 'googleapis.com'),
+        ('{s}.s3nsapis.fr', 's3nsapis.fr'),
+        ('us-central1-{s}.googleapis.com', 'googleapis.com'),
+        ('eu-west9-{s}.s3nsapis.fr', 's3nsapis.fr'),
+        ('{s}.mtls.googleapis.com', 'googleapis.com'),
+        ('{s}.mtls.s3nsapis.fr', 's3nsapis.fr'),
+        ('us-central1-{s}.mtls.s3nsapis.fr', 's3nsapis.fr'),
+        ('{s}.us-central1.rep.googleapis.com', 'googleapis.com'),
+        ('{s}.eu-west9.rep.s3nsapis.fr', 's3nsapis.fr'),
+        ('{s}.eu-west9.rep.mtls.s3nsapis.fr', 's3nsapis.fr'),
+        ('{s}.mtls.eu-west9.rep.s3nsapis.fr', 's3nsapis.fr'),
+        ('{s}-mypsc.p.googleapis.com', 'googleapis.com'),
+        ('{s}-mypsc.p.s3nsapis.fr', 's3nsapis.fr'),
+        ('attacker.com-{s}.googleapis.com', null),
+        ('{s}.mtls.com', null),
+        ('proxy.corp.example', null),
+        ('localhost', null),
+      ];
+
+      for (final (template, expected) in templates) {
+        final iamHost = template.replaceAll('{s}', 'iamcredentials');
+        expect(universeDomainFromIamHost(iamHost), expected, reason: iamHost);
+      }
+    });
+
+    test('validateIamEndpoint enforces origin format and symmetric universe '
+        'isolation', () {
+      for (final valid in [
+        'https://iamcredentials.mtls.s3nsapis.fr',
+        'https://iamcredentials.eu-west9.rep.s3nsapis.fr',
+        'https://iamcredentials.eu-west9.rep.mtls.s3nsapis.fr',
+        'https://iamcredentials-mypsc.p.s3nsapis.fr',
+        'https://custom-proxy.example',
+        'http://localhost:8080',
+      ]) {
+        expect(validateIamEndpoint(valid, 's3nsapis.fr'), valid);
+      }
+      expect(
+        validateIamEndpoint('https://iamcredentials.s3nsapis.fr/', null),
+        'https://iamcredentials.s3nsapis.fr',
+      );
+
+      for (final (endpoint, universe) in [
+        ('', 's3nsapis.fr'),
+        ('http://iamcredentials.s3nsapis.fr', 's3nsapis.fr'),
+        ('https://user@iamcredentials.s3nsapis.fr', 's3nsapis.fr'),
+        ('https://iamcredentials.s3nsapis.fr/extra', 's3nsapis.fr'),
+        ('https://iamcredentials.s3nsapis.fr?q=1', 's3nsapis.fr'),
+        ('https://iamcredentials.s3nsapis.fr#frag', 's3nsapis.fr'),
+        ('https://iamcredentials.mtls.googleapis.com', 's3nsapis.fr'),
+        (
+          'https://iamcredentials.us-central1.rep.googleapis.com',
+          's3nsapis.fr',
+        ),
+        ('https://iamcredentials-mypsc.p.googleapis.com', 's3nsapis.fr'),
+        ('https://iamcredentials.s3nsapis.fr', defaultUniverseDomain),
+        ('https://iamcredentials.mtls.s3nsapis.fr', defaultUniverseDomain),
+        (
+          'https://iamcredentials.eu-west9.rep.s3nsapis.fr',
+          defaultUniverseDomain,
+        ),
+        ('https://iamcredentials-mypsc.p.s3nsapis.fr', defaultUniverseDomain),
+      ]) {
+        expect(
+          () => validateIamEndpoint(endpoint, universe),
+          throwsArgumentError,
+          reason: '$endpoint for $universe',
+        );
+      }
+    });
   });
 }
