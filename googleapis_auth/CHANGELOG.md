@@ -18,6 +18,12 @@
   non-default `universe_domain` service accounts, rejects domain-wide delegation
   and empty scopes outside `googleapis.com`, and honors custom `token_uri`
   endpoints in the default universe.
+- Hardened STS and ADC credential loading (`authorized_user`, `external_account`,
+  and `impersonated_service_account`): rejects non-default `universe_domain` and
+  `token_uri` on `authorized_user`, validates HTTPS IAM/STS endpoints and
+  cross-universe mismatches before token exchange, supports `{universe_domain}`
+  substitution in `token_url` and `service_account_impersonation_url`, and
+  forwards `delegates` and `quotaProject`.
 
 ## 2.3.7
 

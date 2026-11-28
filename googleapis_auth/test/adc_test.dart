@@ -19,7 +19,16 @@ import 'package:test/test.dart';
 import 'package:test_descriptor/test_descriptor.dart' as d;
 import 'package:test_process/test_process.dart';
 
+import 'src/adc_test_utils.dart';
 import 'test_utils.dart';
+
+const _tpcStorageUrl = 'https://storage.s3nsapis.fr/b/bucket/o/obj';
+const _gduStsUrl = 'https://sts.googleapis.com/v1/token';
+const _tpcStsUrl = 'https://sts.s3nsapis.fr/v1/token';
+const _gduIamPath =
+    '/v1/projects/-/serviceAccounts/foo@bar.iam.gserviceaccount.com:generateAccessToken';
+const _gduIamEncodedPath =
+    '/v1/projects/-/serviceAccounts/foo%40bar.iam.gserviceaccount.com:generateAccessToken';
 
 void main() {
   test('authorized_user credentials', () async {
@@ -390,5 +399,353 @@ void main() {
     expect(r.body, 'hello world');
 
     c.close();
+  });
+
+  _tpcAdcTests();
+}
+
+void _tpcAdcTests() {
+  Future<String> writeSubjectToken([
+    String fileName = 'subject_token.txt',
+    String token = 'my-subject-token',
+  ]) async {
+    await d.file(fileName, token).create();
+    return d.path(fileName);
+  }
+
+  test(
+    'authorized_user rejects non-default universe_domain and invalid token_uri',
+    () async {
+      for (final (label, extra, expectedText) in [
+        (
+          'non-default universe_domain',
+          {'universe_domain': 's3nsapis.fr'},
+          'universe_domain',
+        ),
+        (
+          'TPC token_uri',
+          {'token_uri': 'https://oauth2.s3nsapis.fr/token'},
+          'token_uri',
+        ),
+        (
+          'userinfo token_uri',
+          {'token_uri': 'https://user@oauth2.googleapis.com/token'},
+          'token_uri',
+        ),
+        (
+          'http token_uri',
+          {'token_uri': 'http://oauth2.googleapis.com/token'},
+          'token_uri',
+        ),
+        ('non-string token_uri', {'token_uri': 123}, 'token_uri'),
+      ]) {
+        await expectAdcError(
+          {...authorizedUserJson, ...extra},
+          expectedText,
+          scopes: const [],
+          fileName: 'bad_user_${label.replaceAll(' ', '_')}.json',
+          reason: 'Case failed: $label',
+        );
+      }
+    },
+  );
+
+  test(
+    'authorized_user accepts canonical Google OAuth2 token_uri values',
+    () async {
+      for (final (idx, tokenUri) in [
+        'https://oauth2.googleapis.com/token',
+        'https://oauth2.mtls.googleapis.com/token',
+        'https://accounts.google.com/o/oauth2/token',
+        'https://www.googleapis.com/oauth2/v4/token',
+      ].indexed) {
+        final client = await loadAdcCreds(
+          {
+            ...authorizedUserJson,
+            'universe_domain': 'GOOGLEAPIS.COM',
+            'token_uri': tokenUri,
+          },
+          routeMockClient(
+            {'$googleOauth2TokenEndpoint': (_) => oauthTokenResponse()},
+            count: 1,
+            expectClose: true,
+          ),
+          scopes: const [],
+          fileName: 'ok_user_$idx.json',
+        );
+        expect(client.credentials.universeDomain, 'googleapis.com');
+        client.close();
+      }
+    },
+  );
+
+  test('external_account with TPC impersonation uses TPC IAM host', () async {
+    final tokenFile = await writeSubjectToken('tpc_token.txt', 'tpc-token');
+    final c = await loadAdcCreds(
+      externalAccountJson(
+        tokenFile,
+        audience: 'tpc-audience',
+        tokenUrl: _tpcStsUrl,
+        impersonationUrl: 'https://iamcredentials.s3nsapis.fr$_gduIamPath',
+        quotaProjectId: 'tpc-quota',
+      ),
+      routeMockClient({
+        _tpcStsUrl: (_) => oauthTokenResponse(token: 'tpc-sts-token'),
+        'https://iamcredentials.s3nsapis.fr$_gduIamEncodedPath': (request) {
+          expect(request.method, 'POST');
+          expect(
+            request.headers,
+            containsPair('Authorization', 'Bearer tpc-sts-token'),
+          );
+          return iamTokenResponse(token: 'tpc-impersonated-token');
+        },
+        _tpcStorageUrl: (request) {
+          expect(
+            request.headers,
+            containsPair('Authorization', 'Bearer tpc-impersonated-token'),
+          );
+          expect(
+            request.headers,
+            containsPair('X-Goog-User-Project', 'tpc-quota'),
+          );
+          return Response('tpc ok', 200);
+        },
+      }, count: 3),
+    );
+    expect(c.credentials.accessToken.data, 'tpc-impersonated-token');
+    expect(c.credentials.universeDomain, 's3nsapis.fr');
+
+    final r = await c.get(Uri.parse(_tpcStorageUrl));
+    expect(r.statusCode, 200);
+    expect(r.body, 'tpc ok');
+    c.close();
+  });
+
+  test('external_account substitutes {universe_domain} in token_url and '
+      'regional impersonation host', () async {
+    final tokenFile = await writeSubjectToken('tpc_token3.txt', 'tpc-token3');
+    final c = await loadAdcCreds(
+      externalAccountJson(
+        tokenFile,
+        universeDomain: 'S3NSAPIS.FR',
+        tokenUrl: 'https://sts.{universe_domain}/v1/token',
+        impersonationUrl:
+            'https://eu-west9-iamcredentials.{universe_domain}$_gduIamPath',
+      ),
+      routeMockClient({
+        _tpcStsUrl: (_) => oauthTokenResponse(token: 'tpc-sts-token'),
+        'https://eu-west9-iamcredentials.s3nsapis.fr$_gduIamEncodedPath': (_) =>
+            iamTokenResponse(token: 'regional-impersonated-token'),
+      }, count: 2),
+    );
+    expect(c.credentials.accessToken.data, 'regional-impersonated-token');
+    expect(c.credentials.universeDomain, 's3nsapis.fr');
+    c.close();
+  });
+
+  test(
+    'external_account defaults omitted token_url per universe_domain',
+    () async {
+      final tokenFile = await writeSubjectToken('default_sts_token.txt');
+      for (final (name, universe, expectedUrl, expectedUniverse) in [
+        ('ext_default.json', null, _gduStsUrl, 'googleapis.com'),
+        ('ext_tpc.json', 's3nsapis.fr', _tpcStsUrl, 's3nsapis.fr'),
+      ]) {
+        final client = await loadAdcCreds(
+          externalAccountJson(
+            tokenFile,
+            tokenUrl: null,
+            universeDomain: universe,
+          ),
+          routeMockClient({
+            expectedUrl: (_) => oauthTokenResponse(token: 'sts-tok'),
+          }, count: 1),
+          fileName: name,
+        );
+        expect(client.credentials.universeDomain, expectedUniverse);
+        client.close();
+      }
+    },
+  );
+
+  test('external_account supports mTLS, REP, PSC, proxy, and localhost '
+      'STS and IAM endpoints', () async {
+    final tokenFile = await writeSubjectToken('endpoint_variants_token.txt');
+    const saPath =
+        '/v1/projects/-/serviceAccounts/sa@p.iam.gserviceaccount.com:generateAccessToken';
+    const saEncodedPath =
+        '/v1/projects/-/serviceAccounts/sa%40p.iam.gserviceaccount.com:generateAccessToken';
+
+    for (final (label, stsUrl, iamOrigin) in [
+      (
+        'mtls',
+        'https://sts.mtls.s3nsapis.fr/v1/token',
+        'https://iamcredentials.mtls.s3nsapis.fr',
+      ),
+      (
+        'rep',
+        'https://sts.eu-west9.rep.s3nsapis.fr/v1/token',
+        'https://iamcredentials.eu-west9.rep.s3nsapis.fr',
+      ),
+      (
+        'psc',
+        'https://sts-mypsc.p.s3nsapis.fr/v1/token',
+        'https://iamcredentials-mypsc.p.s3nsapis.fr',
+      ),
+      (
+        'proxy',
+        'https://proxy.corp.example/v1/token',
+        'https://iam-proxy.corp.example',
+      ),
+      ('localhost', 'http://localhost:8080/v1/token', 'http://localhost:8081'),
+    ]) {
+      final client = await loadAdcCreds(
+        externalAccountJson(
+          tokenFile,
+          universeDomain: 's3nsapis.fr',
+          tokenUrl: stsUrl,
+          impersonationUrl: '$iamOrigin$saPath',
+        ),
+        routeMockClient({
+          stsUrl: (_) => oauthTokenResponse(token: 'sts-$label'),
+          '$iamOrigin$saEncodedPath': (_) =>
+              iamTokenResponse(token: 'imp-$label'),
+        }, count: 2),
+        fileName: 'ext_variant_$label.json',
+      );
+      expect(client.credentials.accessToken.data, 'imp-$label');
+      expect(client.credentials.universeDomain, 's3nsapis.fr');
+      client.close();
+    }
+  });
+
+  test('external_account rejects invalid, mismatched, and untrusted '
+      'configs before network calls', () async {
+    final tokenFile = await writeSubjectToken('sec_token.txt', 'token');
+    const saPath =
+        '/v1/projects/-/serviceAccounts/sa@p.iam.gserviceaccount.com:generateAccessToken';
+
+    final badConfigs = <(String, Map<String, Object?>, String)>[
+      (
+        'inferred cross-universe mismatch',
+        externalAccountJson(
+          tokenFile,
+          tokenUrl: _tpcStsUrl,
+          impersonationUrl: 'https://iamcredentials.googleapis.com$saPath',
+        ),
+        'Universe domain mismatch',
+      ),
+      (
+        'non-HTTPS impersonation URL',
+        externalAccountJson(
+          tokenFile,
+          impersonationUrl: 'http://iamcredentials.googleapis.com$saPath',
+        ),
+        'https',
+      ),
+      (
+        'cleartext token_url',
+        externalAccountJson(
+          tokenFile,
+          tokenUrl: 'http://sts.s3nsapis.fr/v1/token',
+        ),
+        'https',
+      ),
+      (
+        'mTLS cross-universe mismatch in token_url',
+        externalAccountJson(
+          tokenFile,
+          universeDomain: 's3nsapis.fr',
+          tokenUrl: 'https://sts.mtls.googleapis.com/v1/token',
+        ),
+        'Universe domain mismatch',
+      ),
+      (
+        'REP cross-universe mismatch in impersonation URL',
+        externalAccountJson(
+          tokenFile,
+          universeDomain: 's3nsapis.fr',
+          tokenUrl: _tpcStsUrl,
+          impersonationUrl:
+              'https://iamcredentials.us-central1.rep.googleapis.com$saPath',
+        ),
+        'Universe domain mismatch',
+      ),
+      (
+        'PSC cross-universe mismatch in token_url',
+        externalAccountJson(
+          tokenFile,
+          universeDomain: 's3nsapis.fr',
+          tokenUrl: 'https://sts-mypsc.p.googleapis.com/v1/token',
+        ),
+        'Universe domain mismatch',
+      ),
+      (
+        'userinfo in token_url',
+        externalAccountJson(
+          tokenFile,
+          tokenUrl: 'https://sts.s3nsapis.fr@evil.com/v1/token',
+        ),
+        'userinfo',
+      ),
+      (
+        'injected universe_domain',
+        externalAccountJson(
+          tokenFile,
+          universeDomain: 'googleapis.com@evil.com',
+          tokenUrl: 'https://sts.{universe_domain}/v1/token',
+        ),
+        'Invalid universe_domain',
+      ),
+      (
+        'TPC universe_domain with hardcoded googleapis.com token_url',
+        externalAccountJson(tokenFile, universeDomain: 's3nsapis.fr'),
+        'Universe domain mismatch',
+      ),
+      (
+        'unanchored impersonation path prefix',
+        externalAccountJson(
+          tokenFile,
+          impersonationUrl: 'https://iamcredentials.googleapis.com/evil$saPath',
+        ),
+        'path',
+      ),
+      (
+        'userinfo/query in impersonation URL',
+        externalAccountJson(
+          tokenFile,
+          impersonationUrl:
+              'https://user@iamcredentials.googleapis.com$saPath?x=1',
+        ),
+        'userinfo',
+      ),
+      (
+        'non-string token_url',
+        externalAccountJson(tokenFile, overrides: {'token_url': 123}),
+        'token_url',
+      ),
+      (
+        'non-string quota_project_id',
+        externalAccountJson(tokenFile, overrides: {'quota_project_id': 123}),
+        'quota_project_id',
+      ),
+      (
+        'non-string service_account_impersonation_url',
+        externalAccountJson(
+          tokenFile,
+          overrides: {'service_account_impersonation_url': 42},
+        ),
+        'service_account_impersonation_url',
+      ),
+    ];
+
+    for (final (i, (label, config, expected)) in badConfigs.indexed) {
+      await expectAdcError(
+        config,
+        expected,
+        fileName: 'bad_ext_$i.json',
+        reason: 'Case failed: $label',
+      );
+    }
   });
 }

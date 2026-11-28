@@ -176,8 +176,8 @@ void main() {
       },
     );
 
-    test('universeDomainFromIamHost parses global, regional, mTLS, REP, and '
-        'PSC hosts', () {
+    test('universeDomainFromIamHost and universeDomainFromStsHost parse '
+        'global, regional, mTLS, REP, and PSC hosts', () {
       const templates = [
         ('{s}.googleapis.com', 'googleapis.com'),
         ('{s}.s3nsapis.fr', 's3nsapis.fr'),
@@ -201,6 +201,8 @@ void main() {
       for (final (template, expected) in templates) {
         final iamHost = template.replaceAll('{s}', 'iamcredentials');
         expect(universeDomainFromIamHost(iamHost), expected, reason: iamHost);
+        final stsHost = template.replaceAll('{s}', 'sts');
+        expect(universeDomainFromStsHost(stsHost), expected, reason: stsHost);
       }
     });
 
