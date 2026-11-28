@@ -27,6 +27,66 @@ const maxExpectedTimeDiffInSeconds = 20;
 /// may use a different universe domain.
 const defaultUniverseDomain = 'googleapis.com';
 
+const _dnsLabelPattern = r'[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?';
+
+final _universeDomainRegExp = RegExp(
+  '^$_dnsLabelPattern(?:\\.$_dnsLabelPattern)+\$',
+);
+
+/// Returns the normalized (lowercased) DNS hostname for [universeDomain], or
+/// `null` if [universeDomain] is not a valid DNS domain name.
+String? tryNormalizeUniverseDomain(String universeDomain) {
+  final normalized = universeDomain.toLowerCase();
+  if (normalized.length > 253 || !_universeDomainRegExp.hasMatch(normalized)) {
+    return null;
+  }
+  return normalized;
+}
+
+/// Normalizes and validates [universeDomain].
+///
+/// Returns [defaultUniverseDomain] when [universeDomain] is `null` or empty.
+/// Lowercases valid DNS hostnames and throws [ArgumentError] for whitespace or
+/// malformed domain names.
+String normalizeUniverseDomain(
+  String? universeDomain, {
+  String name = 'universeDomain',
+}) {
+  if (universeDomain == null || universeDomain.isEmpty) {
+    return defaultUniverseDomain;
+  }
+  final normalized = tryNormalizeUniverseDomain(universeDomain);
+  if (normalized == null) {
+    throw ArgumentError.value(
+      universeDomain,
+      name,
+      'Invalid universe domain: must be a valid DNS domain name.',
+    );
+  }
+  return normalized;
+}
+
+/// Validates that [authEndpoints] is compatible with [universeDomain].
+///
+/// Rejects [GoogleAuthEndpoints] (`oauth2.googleapis.com`) when
+/// [universeDomain] is non-default to prevent leaking credentials across
+/// universes.
+void validateAuthEndpointsForUniverse(
+  AuthEndpoints authEndpoints,
+  String universeDomain,
+) {
+  if (universeDomain != defaultUniverseDomain &&
+      authEndpoints is GoogleAuthEndpoints) {
+    throw ArgumentError.value(
+      authEndpoints,
+      'authEndpoints',
+      'Cannot use default GoogleAuthEndpoints (oauth2.googleapis.com) with '
+          'non-default universe domain "$universeDomain". Provide a custom '
+          'AuthEndpoints implementation.',
+    );
+  }
+}
+
 AccessToken parseAccessToken(Map<String, dynamic> jsonMap) => switch (jsonMap) {
   {
     'token_type': 'Bearer',

@@ -116,7 +116,10 @@ Future<AccessCredentials> obtainAccessCredentialsViaCodeExchange(
   String redirectUrl = 'postmessage',
   String? codeVerifier,
   AuthEndpoints authEndpoints = const GoogleAuthEndpoints(),
+  String universeDomain = defaultUniverseDomain,
 }) async {
+  final normalizedUniverse = normalizeUniverseDomain(universeDomain);
+  validateAuthEndpointsForUniverse(authEndpoints, normalizedUniverse);
   final jsonMap = await client.oauthTokenRequest({
     'client_id': clientId.identifier,
     'client_secret': clientId.secret ?? '',
@@ -139,7 +142,13 @@ Future<AccessCredentials> obtainAccessCredentialsViaCodeExchange(
   }
   final scopes = scope.split(' ').toList();
 
-  return AccessCredentials(accessToken, refreshToken, scopes, idToken: idToken);
+  return AccessCredentials(
+    accessToken,
+    refreshToken,
+    scopes,
+    idToken: idToken,
+    universeDomain: normalizedUniverse,
+  );
 }
 
 List<String> parseScopes(Map<String, dynamic> json) {

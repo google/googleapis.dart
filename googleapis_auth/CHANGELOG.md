@@ -1,3 +1,15 @@
+## 2.4.0-wip
+
+- Exported `defaultUniverseDomain` (`googleapis.com`), added `universeDomain` to
+  `AccessCredentials` (defaulting to `googleapis.com`, normalized to lowercase
+  and validated as a DNS domain name, omitted from `toJson()` when default), and
+  propagated universe domains across GCE metadata server credentials and
+  credential refresh.
+- Added optional `universeDomain` parameter to `clientViaRefreshToken()` and
+  `obtainAccessCredentialsViaCodeExchange()`, and rejected using default
+  `GoogleAuthEndpoints` (`oauth2.googleapis.com`) with non-default universe
+  credentials.
+
 ## 2.3.7
 
 - Fix Markdown warning alert formatting in README.

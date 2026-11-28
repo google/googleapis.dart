@@ -9,7 +9,9 @@ library;
 
 import 'dart:convert';
 
-import 'package:googleapis_auth/src/utils.dart';
+import 'package:googleapis_auth/googleapis_auth.dart'
+    show defaultUniverseDomain;
+import 'package:googleapis_auth/src/utils.dart' hide defaultUniverseDomain;
 import 'package:http/http.dart';
 import 'package:test/test.dart';
 
@@ -101,5 +103,47 @@ void main() {
         ),
       ),
     );
+  });
+
+  group('universe domain helpers', () {
+    test('normalizeUniverseDomain normalizes valid values', () {
+      expect(normalizeUniverseDomain(null), defaultUniverseDomain);
+      expect(normalizeUniverseDomain(''), defaultUniverseDomain);
+      expect(normalizeUniverseDomain('GOOGLEAPIS.COM'), defaultUniverseDomain);
+      expect(normalizeUniverseDomain('S3NSAPIS.FR'), 's3nsapis.fr');
+      expect(
+        normalizeUniverseDomain('my-universe.cloud.example'),
+        'my-universe.cloud.example',
+      );
+    });
+
+    test('normalizeUniverseDomain rejects malformed values', () {
+      for (final invalid in [
+        '   ',
+        's3nsapis.fr ',
+        ' s3nsapis.fr',
+        'singlelabel',
+        '.s3nsapis.fr',
+        's3nsapis.fr.',
+        's3nsapis..fr',
+        '-s3nsapis.fr',
+        's3nsapis-.fr',
+        'googleapis.com@evil.com',
+        's3nsapis.fr/evil',
+        's3nsapis.fr?x=1',
+        's3nsapis.fr#frag',
+        's3nsapis.fr:443',
+        'https://s3nsapis.fr',
+        '${'a' * 64}.example.com',
+        '${'a' * 60}.${'b' * 60}.${'c' * 60}.${'d' * 60}.${'e' * 20}',
+      ]) {
+        expect(
+          () => normalizeUniverseDomain(invalid),
+          throwsArgumentError,
+          reason: 'Should reject "$invalid"',
+        );
+        expect(tryNormalizeUniverseDomain(invalid), isNull);
+      }
+    });
   });
 }
