@@ -39,6 +39,7 @@ RegExp _serviceHostRegExp(String service) => RegExp(
 );
 
 final _iamHostRegExp = _serviceHostRegExp('iamcredentials');
+final _stsHostRegExp = _serviceHostRegExp('sts');
 final _repPrefixRegExp = RegExp('^$_dnsLabelPattern\\.rep\\.(.+)\$');
 
 /// Returns the normalized (lowercased) DNS hostname for [universeDomain], or
@@ -168,6 +169,15 @@ String? _universeDomainFromServiceHost(String host, RegExp pattern) {
 /// Returns `null` if [host] is not a recognized IAM Credentials API host.
 String? universeDomainFromIamHost(String host) =>
     _universeDomainFromServiceHost(host, _iamHostRegExp);
+
+/// Extracts and validates the universe domain from an STS API host
+/// (`sts.<universe>`, `<region>-sts.<universe>`, `sts.mtls.<universe>`,
+/// `sts.<region>.rep.<universe>`, or Private Service Connect
+/// `sts-<psc>.p.<universe>`).
+///
+/// Returns `null` if [host] is not a recognized STS API host.
+String? universeDomainFromStsHost(String host) =>
+    _universeDomainFromServiceHost(host, _stsHostRegExp);
 
 /// Validates and normalizes an IAM Credentials API base [endpoint] URL for
 /// [expectedUniverse].
